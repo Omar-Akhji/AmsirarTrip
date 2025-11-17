@@ -27,6 +27,3 @@ dist-ssr
 .env
 .env.*
 
-# Large assets (upload separately to server)
-public/images/
-public/videos/
