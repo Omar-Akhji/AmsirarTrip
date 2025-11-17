@@ -1,0 +1,74 @@
+export const TOURS_DATA = [
+    {
+        id: 1,
+        image: '/images/Tours/Tour1.webp',
+        title: 'tour1.title',
+        author: 'tours.cities.marrakech',
+        category: 'tours',
+        description: 'tours.tour1.description',
+        duration: 3,
+        start: 'tours.cities.marrakech',
+        end: 'tours.cities.marrakech',
+        route: '/tours/1'
+    },
+    {
+        id: 2,
+        image: '/images/Tours/Tour2.webp',
+        title: 'tour2.title',
+        author: 'tours.cities.casablanca',
+        category: 'tours',
+        description: 'tours.tour2.description',
+        duration: 6,
+        start: 'tours.cities.casablanca',
+        end: 'tours.cities.marrakech',
+        route: '/tours/2'
+    },
+    {
+        id: 3,
+        image: '/images/Tours/Tour3.webp',
+        title: 'tour3.title',
+        author: 'tours.cities.fes',
+        category: 'tours',
+        description: 'tours.tour3.description',
+        duration: 3,
+        start: 'tours.cities.fes',
+        end: 'tours.cities.marrakech',
+        route: '/tours/3'
+    },
+    {
+        id: 4,
+        image: '/images/Tours/Tour4.webp',
+        title: 'tour4.title',
+        author: 'tours.cities.casablanca',
+        category: 'tours',
+        description: 'tours.tour4.description',
+        duration: 5,
+        start: 'tours.cities.casablanca',
+        end: 'tours.cities.marrakech',
+        route: '/tours/4'
+    },
+    {
+        id: 5,
+        image: '/images/Tours/Tour5.webp',
+        title: 'tour5.title',
+        author: 'tours.cities.marrakech',
+        category: 'tours',
+        description: 'tours.tour5.description',
+        duration: 10,
+        start: 'tours.cities.marrakech',
+        end: 'tours.cities.marrakech',
+        route: '/tours/5'
+    },
+    {
+        id: 6,
+        image: '/images/Tours/Tour6.webp',
+        title: 'tour6.title',
+        author: 'tours.cities.marrakech',
+        category: 'tours',
+        description: 'tours.tour6.description',
+        duration: 4,
+        start: 'tours.cities.marrakech',
+        end: 'tours.cities.marrakech',
+        route: '/tours/6'
+    }
+];

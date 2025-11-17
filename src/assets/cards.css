@@ -1,0 +1,104 @@
+/* Card Components - Shared styles for tour/excursion cards */
+.card-article {
+  margin-bottom: 2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-img {
+  border-radius: 8px;
+  cursor: pointer;
+  height: auto;
+  object-fit: cover;
+  width: 100%;
+}
+
+.card-data {
+  background-color: #fff;
+  border-radius: 1rem;
+  bottom: -9rem;
+  box-shadow: 0 8px 24px hsl(0deg 0% 0% / 15%);
+  cursor: pointer;
+  left: 0;
+  margin-inline: auto;
+  opacity: 0;
+  padding: 1.5rem 2rem;
+  position: absolute;
+  right: 0;
+  transition: opacity 1s 1s;
+  width: 90%;
+}
+
+.card-title {
+  color: #000;
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  color: #777;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+/* Card animation */
+.card-article:hover .card-data {
+  animation: show-data 1s forwards;
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.card-article:hover {
+  animation: remove-overflow 2s forwards;
+}
+
+.card-article:not(:hover) {
+  animation: show-overflow 2s forwards;
+}
+
+.card-article:not(:hover) .card-data {
+  animation: remove-data 1s forwards;
+}
+
+@keyframes show-data {
+  50% {
+    transform: translateY(-10rem);
+  }
+
+  100% {
+    transform: translateY(-7rem);
+  }
+}
+
+@keyframes remove-overflow {
+  to {
+    overflow: initial;
+  }
+}
+
+@keyframes show-overflow {
+  0% {
+    overflow: initial;
+    pointer-events: none;
+  }
+
+  50% {
+    overflow: hidden;
+  }
+}
+
+@keyframes remove-data {
+  0% {
+    transform: translateY(-7rem);
+  }
+
+  50% {
+    transform: translateY(-10rem);
+  }
+
+  100% {
+    transform: translateY(0.5rem);
+  }
+}

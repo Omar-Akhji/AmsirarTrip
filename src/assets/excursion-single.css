@@ -1,0 +1,219 @@
+/* =============== EXCURSION SINGLE PAGE STYLES =============== */
+
+.excursion-single-row {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+}
+
+.excursion-single-content {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 10px 23px -8px rgb(0 0 0 / 8%);
+  line-height: 1.6;
+  padding: 1.25rem;
+}
+
+.excursion-single-row > article {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 10px 23px -8px rgb(0 0 0 / 8%);
+  padding: 1.25rem;
+}
+
+.excursion-single-content h3 {
+  color: var(--orange);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 2rem 0 1rem;
+}
+
+/* Info card styling for highlighted excursion metadata */
+.excursion-single-content .info-card {
+  background: linear-gradient(135deg, #fff 0%, #fff7f3 100%);
+  border: 1px solid var(--orange-light);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px -6px rgb(229 74 31 / 18%);
+  padding: 1.5rem 1.25rem 1.25rem;
+  position: relative;
+}
+
+.excursion-single-content .info-card::before {
+  background: linear-gradient(90deg, var(--orange) 0%, #ff7a3d 100%);
+  border-radius: 6px 6px 0 0;
+  content: "";
+  height: 6px;
+  left: -1px;
+  position: absolute;
+  top: -1px;
+  width: calc(100% + 2px);
+}
+
+.excursion-single-content .info-card h3 {
+  margin-top: 1.4rem;
+}
+
+.info-card .info-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.info-card .badge {
+  align-items: center;
+  background: #fff;
+  border: 1px solid var(--orange-light);
+  border-radius: 30px;
+  color: #333;
+  display: inline-flex;
+  font-size: 0.75rem;
+  font-weight: 600;
+  gap: 0.4rem;
+  letter-spacing: 0.5px;
+  padding: 0.45rem 0.85rem;
+  text-transform: uppercase;
+}
+
+.info-card .badge i {
+  color: var(--orange);
+  font-size: 0.9rem;
+}
+
+.icon-list li {
+  display: flex;
+  gap: 0.55rem;
+  line-height: 1.5;
+}
+
+.icon-list li i {
+  color: var(--orange);
+  flex: 0 0 auto;
+  font-size: 0.85rem;
+  margin-top: 0.4rem;
+}
+
+.excursion-single-content .text {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.excursion-single-content ul {
+  margin-bottom: 1.5rem;
+  margin-left: 1.5rem;
+}
+
+.excursion-single-content li {
+  margin-bottom: 0.5rem;
+}
+
+.excursion-sidebar-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0.938rem;
+}
+
+.excursion-tripadvisor-box {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+  display: inline-block;
+  padding: 0.625rem;
+}
+
+.excursion-welcome-text-box {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
+  margin-top: 0.938rem;
+  padding: 0.938rem;
+}
+
+.excursion-welcome-text-box h4 {
+  color: var(--orange);
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-bottom: 2rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.excursion-welcome-text-box .brand-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.excursion-welcome-text-box .brand-main {
+  color: black;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.excursion-welcome-text-box .brand-sub {
+  background: var(--orange);
+  border-radius: 12px;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin-top: 0.3rem;
+  padding: 0.2rem 0.5rem;
+}
+
+.excursion-welcome-text-box p {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0 0 1rem;
+}
+
+.excursion-welcome-text-box p:last-child {
+  margin-bottom: 0;
+}
+
+/* Style checkmarks in the transfer services text */
+.excursion-welcome-text-box p br + br + br {
+  margin-bottom: 0.5rem;
+}
+
+.excursion-welcome-text-box p br + br + br + br {
+  margin-bottom: 0.5rem;
+}
+
+/* Style FontAwesome check icons */
+.excursion-welcome-text-box i.fas.fa-check {
+  color: #28a745;
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+}
+
+/* =============== RESPONSIVE BREAKPOINTS =============== */
+
+@media screen and (width >= 992px) {
+  .excursion-single-row {
+    align-items: start;
+    gap: 3rem;
+    grid-template-columns: 2fr 1fr;
+  }
+
+  .excursion-single-row > article {
+    grid-column: 1 / 2;
+  }
+
+  .excursion-single-row > .excursion-single-sidebar {
+    align-self: start;
+    grid-column: 2 / 3;
+    grid-row: 1;
+  }
+
+  .excursion-single-sidebar {
+    height: fit-content;
+    position: sticky;
+    top: 2rem;
+  }
+}
