@@ -7,7 +7,7 @@
     "_comment": "Development scripts for Vite and linting",
     "dev": "vite",
     "build": "vite build",
-    "build:full": "npm run build && copy server.js dist\\ && copy package.json dist\\ && copy .env dist\\",
+    "build:full": "npm run build && cp server.js dist/ && cp package.json dist/ && cp .env dist/",
     "preview": "vite preview",
     "lint": "eslint .",
     "_comment_lintcss": "Runs Stylelint against authored styles and generated utility layers",
