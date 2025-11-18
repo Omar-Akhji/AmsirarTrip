@@ -27,6 +27,7 @@ const allowedOrigins = [
     'http://127.0.0.1:5173',    // Alternative localhost (remove in prod)
     'http://localhost:5174',    // Vite dev server alt port (remove in prod)
     'http://127.0.0.1:5174',    // Alternative localhost alt port (remove in prod)
+    'http://72.61.110.67:3001', // VPS IP for testing
     process.env.CLIENT_ORIGIN     // Production domain from environment variable
 ].filter(Boolean);
 
