@@ -42,6 +42,10 @@
     text-align: left;
     transform: translateX(0);
   }
+
+  .booking-form .form-row {
+    flex-direction: column;
+  }
 }
 
 @media screen and (width >= 678px) {
