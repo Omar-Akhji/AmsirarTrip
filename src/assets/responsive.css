@@ -166,20 +166,6 @@
   }
 }
 
-@media screen and (width >= 1400px) {
-  .featured-row,
-  .services-row,
-  .test-row,
-  .tour-row {
-    gap: 2rem;
-    grid-template-columns: 1fr;
-  }
-
-  .facts-row {
-    grid-template-columns: repeat(4, 1fr);
-  }
-}
-
 @media screen and (width >= 768px) and (width <= 1050px) {
   .services-rotator {
     align-items: start;
