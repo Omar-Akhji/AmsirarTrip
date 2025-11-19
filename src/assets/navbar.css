@@ -14,6 +14,7 @@
 
 .navbar .container {
   justify-content: space-between;
+  max-width: none;
 }
 
 .navbar-top-row-fullwidth {
@@ -32,7 +33,7 @@
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
-  max-width: 82.5rem;
+  max-width: none;
   padding: 0 2rem;
   position: relative;
   width: 100%;

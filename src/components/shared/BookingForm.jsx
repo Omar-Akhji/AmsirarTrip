@@ -104,8 +104,8 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId }) => {
 
     return (
         <section id="booking" className="section">
-            <main className="section-center">
-                <article className="container">
+            <article className="section-center">
+                <div className="container">
                     <div className="row">
                         <section className="booking-form">
                             <section className="booking-bg">
@@ -141,32 +141,28 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId }) => {
                                 )}
                                 <div className="form-row">
                                     <div className="form-group-half">
-                                        <div className="form-group">
-                                            <input
-                                                className="form-control"
-                                                type="text"
-                                                name="fullName"
-                                                placeholder={t('booking.fullName', 'Full Name')}
-                                                value={formData.fullName}
-                                                onChange={handleInputChange}
-                                                autoComplete="name"
-                                                required
-                                            />
-                                        </div>
+                                        <input
+                                            className="form-control"
+                                            type="text"
+                                            name="fullName"
+                                            placeholder={t('booking.fullName', 'Full Name')}
+                                            value={formData.fullName}
+                                            onChange={handleInputChange}
+                                            autoComplete="name"
+                                            required
+                                        />
                                     </div>
                                     <div className="form-group-half">
-                                        <div className="form-group">
-                                            <input
-                                                className="form-control"
-                                                type="tel"
-                                                name="phone"
-                                                placeholder={t('booking.phone', 'Phone Number')}
-                                                value={formData.phone}
-                                                onChange={handleInputChange}
-                                                autoComplete="tel"
-                                                required
-                                            />
-                                        </div>
+                                        <input
+                                            className="form-control"
+                                            type="tel"
+                                            name="phone"
+                                            placeholder={t('booking.phone', 'Phone Number')}
+                                            value={formData.phone}
+                                            onChange={handleInputChange}
+                                            autoComplete="tel"
+                                            required
+                                        />
                                     </div>
                                 </div>
                                 <div className="form-group">
@@ -183,34 +179,30 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId }) => {
                                 </div>
                                 <div className="form-row">
                                     <div className="form-group-half">
-                                        <div className="form-group">
-                                            <input
-                                                className="form-control"
-                                                type="number"
-                                                name="numberOfPeople"
-                                                placeholder={t('booking.numberOfPeople', 'Number of People')}
-                                                value={formData.numberOfPeople}
-                                                onChange={handleInputChange}
-                                                autoComplete="off"
-                                                min="1"
-                                                required
-                                            />
-                                        </div>
+                                        <input
+                                            className="form-control"
+                                            type="number"
+                                            name="numberOfPeople"
+                                            placeholder={t('booking.numberOfPeople', 'Number of People')}
+                                            value={formData.numberOfPeople}
+                                            onChange={handleInputChange}
+                                            autoComplete="off"
+                                            min="1"
+                                            required
+                                        />
                                     </div>
                                     <div className="form-group-half">
-                                        <div className="form-group">
-                                            <DatePicker
-                                                name="reservationDate"
-                                                selected={formData.reservationDate}
-                                                onChange={(date) => setFormData(prev => ({ ...prev, reservationDate: date }))}
-                                                placeholderText={t('booking.reservationDate')}
-                                                className="form-control"
-                                                dateFormat="yyyy-MM-dd"
-                                                minDate={new Date(Date.now() + 3 * 24 * 60 * 60 * 1000)}
-                                                portalId="root"
-                                                autoComplete="off"
-                                            />
-                                        </div>
+                                        <DatePicker
+                                            name="reservationDate"
+                                            selected={formData.reservationDate}
+                                            onChange={(date) => setFormData(prev => ({ ...prev, reservationDate: date }))}
+                                            placeholderText={t('booking.reservationDate')}
+                                            className="form-control"
+                                            dateFormat="yyyy-MM-dd"
+                                            minDate={new Date(Date.now() + 3 * 24 * 60 * 60 * 1000)}
+                                            portalId="root"
+                                            autoComplete="off"
+                                        />
                                     </div>
                                 </div>
                                 <div className="form-group">
@@ -239,8 +231,8 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId }) => {
                             </form>
                         </section>
                     </div>
-                </article>
-            </main>
+                </div>
+            </article>
         </section>
     );
 };
