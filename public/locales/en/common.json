@@ -533,14 +533,15 @@
   "tour8.excludes": "Lunches & drinks\nEntrance fees\nTips & personal expenses",
   "tour8.goodToKnow": "Departure: 7:00–8:00 AM from Marrakech\nDuration: 3 Days / 2 Nights\nDistance: ~500 km each way\nBring: Warm clothes (desert nights can be cold), sunglasses, hat, sunscreen, camera\nOptional: Sandboarding, extra nights in desert camp, photography sessions",
   "tour9.overview": "Embark on a captivating 7-day journey through North Morocco, from the vibrant coastal city of Tangier to the enchanting imperial city of Marrakech. Discover ancient Roman ruins, imperial palaces, the mystical Blue City of Chefchaouen, and the bustling souks of Fes and Marrakech. This tour offers a perfect blend of history, culture, and natural beauty.",
-  "tour9.day1": "Day 1: Arrival in Tangier ➜ City Highlights Tour",
-  "tour9.day2": "Day 2: Tangier ➜ Tetouan ➜ Chefchaouen (Blue City)",
-  "tour9.day3": "Day 3: Chefchaouen ➜ Volubilis ➜ Meknes ➜ Fes",
-  "tour9.day4": "Day 4: Full Day Exploring Fes ➜ Imperial, Spiritual & Cultural Capital",
-  "tour9.day5": "Day 5: Fes ➜ Ifrane ➜ Azrou ➜ Beni Mellal ➜ Marrakech",
-  "tour9.day6": "Day 6: Full Day Exploring Marrakech",
-  "tour9.day7": "Day 7: Marrakech ➜ Departure",
+  "tour9.day1": "Day 1:",
+  "tour9.day2": "Day 2:",
+  "tour9.day3": "Day 3:",
+  "tour9.day4": "Day 4:",
+  "tour9.day5": "Day 5:",
+  "tour9.day6": "Day 6:",
+  "tour9.day7": "Day 7:",
   "tour9.day1.text": [
+    "Arrival in Tangier ➜ City Highlights Tour",
     "Pick-up from Tangier Airport/Port (Tanger Med or city port).",
     "Visit Cap Spartel, where the Mediterranean meets the Atlantic.",
     "Explore the Hercules Caves.",
@@ -548,6 +549,7 @@
     "Walk along Tangier’s Corniche and beach promenade."
   ],
   "tour9.day2.text": [
+    "Tangier ➜ Tetouan ➜ Chefchaouen (Blue City)",
     "Drive toward Tetouan, 'The White Dove.'",
     "Visit the UNESCO-listed Medina.",
     "Pass by the King’s Palace (exterior).",
@@ -556,16 +558,19 @@
     "Sunset walk to the Spanish Mosque viewpoint."
   ],
   "tour9.day3.text": [
+    "Chefchaouen ➜ Volubilis ➜ Meknes ➜ Fes",
     "Morning free in Chefchaouen.",
     "Drive to the Roman ruins of Volubilis (guided visit available).",
     "Continue to Meknes, a Moroccan imperial city: Bab Mansour, Sahrij Swani, Old Medina.",
     "Arrival in Fes in the evening."
   ],
   "tour9.day4.text": [
+    "Full Day Exploring Fes ➜ Imperial, Spiritual & Cultural Capital",
     "Guided tour with a certified local guide: Fes el-Bali (oldest part of the city), Al-Qarawiyyin University (the world’s oldest), Tannery of Chouara, Bou Inania and Attarine Madrasas, Nejjarine Square and Museum, Pottery and zellige workshops.",
     "Free evening to relax or enjoy a traditional Moroccan dinner show."
   ],
   "tour9.day5.text": [
+    "Fes ➜ Ifrane ➜ Azrou ➜ Beni Mellal ➜ Marrakech",
     "Drive through the Middle Atlas Mountains.",
     "Stop in Ifrane, 'Little Switzerland.'",
     "Visit the Cedar Forest of Azrou to see the wild Barbary macaques.",
@@ -573,10 +578,12 @@
     "Arrive in Marrakech by evening."
   ],
   "tour9.day6.text": [
+    "Full Day Exploring Marrakech",
     "Guided city tour: Koutoubia Mosque (exterior), Bahia Palace, Saadian Tombs, Jewish Quarter (Mellah), Medina & Souks, Jemaa El Fna Square.",
     "Optional afternoon visit to Majorelle Garden, Yves Saint Laurent Museum."
   ],
   "tour9.day7.text": [
+    "Marrakech ➜ Departure",
     "Free time depending on your flight schedule.",
     "Transfer to Marrakech Menara Airport."
   ],
