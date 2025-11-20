@@ -97,7 +97,7 @@ export const TOURS_DATA = [
     },
     {
         id: 9,
-        image: '/images/Tours/Tour9.jpg',
+        image: '/images/Tours/Tour9.webp',
         title: 'tour9.title',
         author: 'tours.cities.tangier',
         category: 'tours',
