@@ -73,7 +73,7 @@ export const TOURS_DATA = [
     },
     {
         id: 7,
-        image: '/images/Tours/Tour7.jpg',
+        image: '/images/Tours/Tour7.webp',
         title: 'tour7.title',
         author: 'tours.cities.agadir',
         category: 'tours',
