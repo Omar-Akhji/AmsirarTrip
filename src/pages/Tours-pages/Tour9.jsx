@@ -34,7 +34,7 @@ const Tour9 = () => {
                             <p>
                                 <img
                                     className="img-frame-orange"
-                                    src="/images/Tours/Tour9.jpg"
+                                    src="/images/Tours/Tour9.webp"
                                     alt="Blog detail image"
                                 />
                             </p>
