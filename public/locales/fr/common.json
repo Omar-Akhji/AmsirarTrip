@@ -552,25 +552,28 @@
   "tour8.excludes": "Déjeuners & boissons\nFrais d'entrée\nPourboires & dépenses personnelles",
   "tour8.goodToKnow": "Départ : 7h00–8h00 de Marrakech\nDurée : 3 jours / 2 nuits\nDistance : ~500 km aller-retour\nApportez : Vêtements chauds (les nuits du désert peuvent être froides), lunettes de soleil, chapeau, crème solaire, appareil photo\nOptionnel : Sandboard, nuits supplémentaires au camp du désert, séances de photographie",
   "tour9.overview": "Embarquez pour un voyage captivant de 7 jours à travers le nord du Maroc, de la ville côtière animée de Tanger à la ville impériale enchanteresse de Marrakech. Découvrez les ruines romaines antiques, les palais impériaux, la mystique ville bleue de Chefchaouen et les souks animés de Fès et Marrakech. Cette visite offre un mélange parfait d'histoire, de culture et de beauté naturelle.",
-  "tour9.day1": "Jour 1 : Arrivée à Tanger ➜ Visite des points forts de la ville",
+  "tour9.day1": "Jour 1 :",
   "tour9.day1.text": [
+    "Arrivée à Tanger ➜ Visite des points forts de la ville",
     "Ramassage à l'aéroport/port de Tanger (Tanger Med ou port de la ville).",
     "Visite du Cap Spartel, où la Méditerranée rencontre l'Atlantique.",
     "Explorez les Grottes d'Hercule.",
     "Explorez la Kasbah, la vieille Médina et le Petit Socco.",
     "Promenade le long de la Corniche de Tanger et de la promenade de plage."
   ],
-  "tour9.day2": "Jour 2 : Tanger ➜ Tétouan ➜ Chefchaouen (Ville Bleue)",
+  "tour9.day2": "Jour 2 :",
   "tour9.day2.text": [
-    "Route vers Tétouan, « La Colombe Blanche ».",
+    "Tanger ➜ Tétouan ➜ Chefchaouen (Ville Bleue)",
+    "Route vers Tétouan, « La Colombe Blanche »." ,
     "Visite de la Médina classée UNESCO.",
     "Passez devant le Palais du Roi (extérieur).",
     "Continuez vers Chefchaouen, la perle bleue.",
     "Explorez la vieille médina, la place Outa El Hammam, la rivière Ras El Ma, et les boutiques d'artisans.",
     "Promenade au coucher du soleil vers le point de vue de la Mosquée espagnole."
   ],
-  "tour9.day3": "Jour 3 : Chefchaouen ➜ Volubilis ➜ Meknès ➜ Fès",
+  "tour9.day3": "Jour 3 :",
   "tour9.day3.text": [
+    "Chefchaouen ➜ Volubilis ➜ Meknès ➜ Fès",
     "Matinée libre à Chefchaouen.",
     "Route vers les ruines romaines de Volubilis (visite guidée disponible).",
     "Continuez vers Meknès, une ville impériale marocaine :",
@@ -579,8 +582,9 @@
     "Vieille Médina",
     "Arrivée à Fès en soirée."
   ],
-  "tour9.day4": "Jour 4 : Journée complète d'exploration de Fès ➜ Capitale Impériale, Spirituelle & Culturelle",
+  "tour9.day4": "Jour 4 :",
   "tour9.day4.text": [
+    "Journée complète d'exploration de Fès ➜ Capitale Impériale, Spirituelle & Culturelle",
     "Visite guidée avec un guide local certifié :",
     "Fès el-Bali (la partie la plus ancienne de la ville)",
     "Université Al-Qarawiyyin (la plus ancienne université au monde)",
@@ -590,16 +594,18 @@
     "Ateliers de poterie et zellige",
     "Soirée libre pour se détendre ou profiter d'un dîner traditionnel marocain avec spectacle."
   ],
-  "tour9.day5": "Jour 5 : Fès ➜ Ifrane ➜ Azrou ➜ Beni Mellal ➜ Marrakech",
+  "tour9.day5": "Jour 5 :",
   "tour9.day5.text": [
+    "Fès ➜ Ifrane ➜ Azrou ➜ Beni Mellal ➜ Marrakech",
     "Route à travers les Monts du Moyen Atlas.",
-    "Arrêt à Ifrane, « La Petite Suisse ».",
+    "Arrêt à Ifrane, « La Petite Suisse »." ,
     "Visite de la Forêt de Cèdres d'Azrou pour voir les macaques de Barbarie sauvages.",
     "Continuez à travers Beni Mellal.",
     "Arrivée à Marrakech en soirée."
   ],
-  "tour9.day6": "Jour 6 : Journée complète d'exploration de Marrakech",
+  "tour9.day6": "Jour 6 :",
   "tour9.day6.text": [
+    "Journée complète d'exploration de Marrakech",
     "Visite guidée de la ville :",
     "Mosquée Koutoubia (extérieur)",
     "Palais Bahia",
@@ -611,8 +617,9 @@
     "Jardin Majorelle",
     "Musée Yves Saint Laurent"
   ],
-  "tour9.day7": "Jour 7 : Marrakech ➜ Départ",
+  "tour9.day7": "Jour 7 :",
   "tour9.day7.text": [
+    "Marrakech ➜ Départ",
     "Temps libre selon l'horaire de votre vol.",
     "Transfert vers l'aéroport Marrakech Menara."
   ],
