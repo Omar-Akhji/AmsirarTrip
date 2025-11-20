@@ -16,6 +16,9 @@ const Tour3 = React.lazy(() => import("./pages/Tours-pages/Tour3"));
 const Tour4 = React.lazy(() => import("./pages/Tours-pages/Tour4"));
 const Tour5 = React.lazy(() => import("./pages/Tours-pages/Tour5"));
 const Tour6 = React.lazy(() => import("./pages/Tours-pages/Tour6"));
+const Tour7 = React.lazy(() => import("./pages/Tours-pages/Tour7"));
+const Tour8 = React.lazy(() => import("./pages/Tours-pages/Tour8"));
+const Tour9 = React.lazy(() => import("./pages/Tours-pages/Tour9"));
 const Excursion1 = React.lazy(() => import("./pages/Excursions-pages/Excursion1"));
 const Excursion2 = React.lazy(() => import("./pages/Excursions-pages/Excursion2"));
 const Excursion3 = React.lazy(() => import("./pages/Excursions-pages/Excursion3"));
@@ -55,6 +58,9 @@ const AppContent = () => {
             <Route path={ROUTES.TOUR_4} element={<Tour4 />} />
             <Route path={ROUTES.TOUR_5} element={<Tour5 />} />
             <Route path={ROUTES.TOUR_6} element={<Tour6 />} />
+            <Route path={ROUTES.TOUR_7} element={<Tour7 />} />
+            <Route path={ROUTES.TOUR_8} element={<Tour8 />} />
+            <Route path={ROUTES.TOUR_9} element={<Tour9 />} />
             <Route path={ROUTES.EXCURSION_1} element={<Excursion1 />} />
             <Route path={ROUTES.EXCURSION_2} element={<Excursion2 />} />
             <Route path={ROUTES.EXCURSION_3} element={<Excursion3 />} />

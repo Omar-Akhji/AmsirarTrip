@@ -116,6 +116,7 @@ header.header-rotator {
 
 .services-icon img,
 .services-icon svg {
+  border-radius: 0;
   display: inline-block;
   height: 1.5em;
   vertical-align: middle;
@@ -287,6 +288,7 @@ header.header-sm {
 
 .facts-item img,
 .facts-item svg {
+  border-radius: 0;
   display: inline-block;
   height: 1.5em;
   vertical-align: middle;
@@ -897,66 +899,84 @@ section#video {
 
 /* Enhanced Tour Section Styles */
 #tour-single .tour-section {
-  background: #f8f9fa;
-  border-left: 4px solid var(--orange);
-  border-radius: 8px;
+  background: linear-gradient(180deg, #fff 0%, #fbfcfc 100%);
+  border-left: 4px solid rgb(229 74 31 / 95%);
+  border-radius: 10px;
   margin-bottom: 2rem;
   padding: 1.5rem;
+  transition: box-shadow 220ms ease, transform 220ms ease;
 }
 
+/* Tour section title: Day label + location/short description */
 #tour-single .tour-section h3 {
-  align-items: center;
   color: var(--dark);
-  display: flex;
-  font-size: 1.3rem;
-  font-weight: 600;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
+  display: block;
+  font-size: 1.45rem;
+  font-weight: 800;
+  line-height: 1.08;
+  margin-bottom: 0.6rem;
 }
 
+/* Icon on the left of the Day title */
 #tour-single .tour-section h3 i {
+  align-items: center;
+  background: transparent;
+  border-radius: 6px;
   color: var(--orange);
-  font-size: 1.1rem;
+  display: inline-flex;
+  font-size: 1.15rem;
+  justify-content: center;
+  margin-right: 0.6rem;
+  padding: 6px;
+  vertical-align: middle;
 }
 
 #tour-single .tour-overview {
   background: #fff;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
-  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgb(16 24 40 / 6%);
+  padding: 1.15rem;
 }
 
 #tour-single .day-content {
-  background: #fff;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
-  padding: 1rem;
+  background: linear-gradient(180deg, #fff 0%, #fff 100%);
+  border-radius: 8px;
+  box-shadow: 0 8px 28px rgb(16 24 40 / 6%);
+  padding: 1.15rem;
 }
 
 #tour-single .day-details {
-  border-top: 1px solid #eee;
+  border-top: 1px solid #f1f3f5;
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 0.75rem;
   margin-top: 1rem;
   padding-top: 1rem;
 }
 
 #tour-single .detail-item {
   align-items: center;
-  background: #f8f9fa;
-  border: 1px solid #e9ecef;
-  border-radius: 20px;
-  color: #666;
-  display: flex;
-  font-size: 0.9rem;
-  gap: 0.5rem;
-  padding: 0.5rem 0.8rem;
+  background: linear-gradient(180deg, #fff 0%, #fbfbfb 100%);
+  border: 1px solid rgb(0 0 0 / 6%);
+  border-radius: 999px;
+  box-shadow: 0 2px 6px rgb(16 24 40 / 3%);
+  color: #4b5563;
+  display: inline-flex;
+  font-size: 0.92rem;
+  gap: 0.6rem;
+  padding: 0.45rem 0.9rem;
 }
 
 #tour-single .detail-item i {
-  color: var(--orange);
-  font-size: 0.8rem;
+  align-items: center;
+  background: var(--orange);
+  border-radius: 50%;
+  color: #fff;
+  display: inline-flex;
+  font-size: 0.75rem;
+  height: 20px;
+  justify-content: center;
+  width: 20px;
 }
 
 #tour-single .includes-section {
@@ -1012,15 +1032,16 @@ section#video {
 }
 
 #tour-single .tour-section .route-text {
-  color: #666;
+  color: #6b7280;
   display: block;
-  font-size: 0.9rem;
-  font-weight: 500;
-  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 0.35rem;
 }
 
 #tour-single .tour-section .route-text i {
   color: var(--orange);
+  margin-right: 0.35rem;
 }
 
 #facts {
@@ -1404,6 +1425,7 @@ section#video {
 }
 
 .welcome-text-box h4 {
+  background-color: transparent;
   color: var(--orange);
   font-size: 1.1rem;
   font-weight: 600;
@@ -1414,6 +1436,7 @@ section#video {
 }
 
 .welcome-text-box .brand-container {
+  /* stylelint-disable-next-line order/properties-alphabetical-order */
   align-items: center;
   display: flex;
   flex-direction: column;

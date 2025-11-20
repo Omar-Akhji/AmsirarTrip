@@ -212,7 +212,7 @@ export default function Tour5() {
 
               {/* Tour Includes */}
               <div className="tour-section includes-section">
-                <h3><i className="fas fa-check-circle"></i> {t('tours.includes')}</h3>
+                <h3> {t('tours.includes')}</h3>
                 <ul className="tour-list includes-list">
                   {t('tour5.includes').split('\n').map((line, index) => (
                     <li key={index}><i className="fas fa-check-circle"></i> {line}</li>
@@ -222,7 +222,7 @@ export default function Tour5() {
 
               {/* Tour Excludes */}
               <div className="tour-section excludes-section">
-                <h3><i className="fas fa-times-circle"></i> {t('tours.excludes')}</h3>
+                <h3> {t('tours.excludes')}</h3>
                 <ul className="tour-list excludes-list">
                   {t('tour5.excludes').split('\n').map((line, index) => (
                     <li key={index}><i className="fas fa-times-circle"></i> {line}</li>
@@ -232,7 +232,7 @@ export default function Tour5() {
 
               {/* Good to Know */}
               <div className="tour-section tips-section">
-                <h3><i className="fas fa-lightbulb"></i> {t('tours.goodToKnow')}</h3>
+                <h3> {t('tours.goodToKnow')}</h3>
                 <ul className="tour-list tips-list">
                   {t('tour5.goodToKnow').split('\n').map((line, index) => (
                     <li key={index}><i className="fas fa-lightbulb"></i> {line}</li>

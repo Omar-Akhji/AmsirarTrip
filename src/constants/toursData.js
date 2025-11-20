@@ -70,5 +70,41 @@ export const TOURS_DATA = [
         start: 'tours.cities.marrakech',
         end: 'tours.cities.marrakech',
         route: '/tours/6'
+    },
+    {
+        id: 7,
+        image: '/images/Tours/Tour7.jpg',
+        title: 'tour7.title',
+        author: 'tours.cities.agadir',
+        category: 'tours',
+        description: 'tours.tour7.description',
+        duration: 4,
+        start: 'tours.cities.agadir',
+        end: 'tours.cities.marrakech',
+        route: '/tours/7'
+    },
+    {
+        id: 8,
+        image: '/images/Tours/Tour8.webp',
+        title: 'tour8.title',
+        author: 'tours.cities.marrakech',
+        category: 'tours',
+        description: 'tours.tour8.description',
+        duration: 3,
+        start: 'tours.cities.marrakech',
+        end: 'tours.cities.marrakech',
+        route: '/tours/8'
+    },
+    {
+        id: 9,
+        image: '/images/Tours/Tour9.jpg',
+        title: 'tour9.title',
+        author: 'tours.cities.tangier',
+        category: 'tours',
+        description: 'tours.tour9.description',
+        duration: 7,
+        start: 'tours.cities.tangier',
+        end: 'tours.cities.marrakech',
+        route: '/tours/9'
     }
 ];
