@@ -389,7 +389,7 @@
   "tour8.excludes": "Almuerzos y bebidas\nTarifas de entrada (si aplican)\nPropinas y gastos personales",
   "tour8.goodToKnow": "Salida: Marrakech (aeropuerto o hotel)\nFin: Marrakech (aeropuerto o hotel)\nDuración: 3 días / 2 noches\nDisponible: Diariamente, todo el año",
   "tour9.overview": "Embarque en un viaje cautivador de 7 días a través del norte de Marruecos, desde la vibrante ciudad costera de Tánger hasta la encantadora ciudad imperial de Marrakech. Descubra ruinas romanas antiguas, palacios imperiales, la mística ciudad azul de Chefchaouen y los bulliciosos zocos de Fez y Marrakech. Este tour ofrece una mezcla perfecta de historia, cultura y belleza natural.",
-  "tour9.day1": "Día 1: Llegada a Tánger – Tour de puntos destacados de la ciudad",
+  "tour9.day1": "Día 1: Llegada a Tánger ➜ Tour de puntos destacados de la ciudad",
   "tour9.day1.text": [
     "Recogida en el aeropuerto/puerto de Tánger (Tánger Med o puerto de la ciudad).",
     "Visite Cabo Espartel, donde el Mediterráneo se encuentra con el Atlántico.",
@@ -397,7 +397,7 @@
     "Explore la Kasbah, la medina antigua y Petit Socco.",
     "Paseo a lo largo de la Corniche de Tánger y el paseo marítimo."
   ],
-  "tour9.day2": "Día 2: Tánger → Tetuán → Chefchaouen (Ciudad Azul)",
+  "tour9.day2": "Día 2: Tánger ➜ Tetuán ➜ Chefchaouen (Ciudad Azul)",
   "tour9.day2.text": [
     "Viaje hacia Tetuán, \"La Paloma Blanca\".",
     "Visite la Medina catalogada por la UNESCO.",
@@ -406,7 +406,7 @@
     "Explore la medina antigua, la plaza Outa El Hammam, el río Ras El Ma y las tiendas de artesanos.",
     "Paseo al atardecer hacia el mirador de la Mezquita Española."
   ],
-  "tour9.day3": "Día 3: Chefchaouen → Volubilis → Meknès → Fez",
+  "tour9.day3": "Día 3: Chefchaouen ➜ Volubilis ➜ Meknès ➜ Fez",
   "tour9.day3.text": [
     "Mañana libre en Chefchaouen.",
     "Viaje a las ruinas romanas de Volubilis (tour guiado disponible).",
@@ -416,7 +416,7 @@
     "Medina antigua",
     "Llegada a Fez por la tarde."
   ],
-  "tour9.day4": "Día 4: Exploración completa de Fez – Capital Imperial, Espiritual y Cultural",
+  "tour9.day4": "Día 4: Exploración completa de Fez ➜ Capital Imperial, Espiritual y Cultural",
   "tour9.day4.text": [
     "Tour guiado con un guía local certificado:",
     "Fez el-Bali (la parte más antigua de la ciudad)",
@@ -427,7 +427,7 @@
     "Talleres de cerámica y zellige",
     "Noche libre para relajarse o disfrutar de una cena tradicional marroquí con espectáculo."
   ],
-  "tour9.day5": "Día 5: Fez → Ifrane → Azrou → Beni Mellal → Marrakech",
+  "tour9.day5": "Día 5: Fez ➜ Ifrane ➜ Azrou ➜ Beni Mellal ➜ Marrakech",
   "tour9.day5.text": [
     "Viaje a través de las Montañas del Atlas Medio.",
     "Parada en Ifrane, \"Pequeña Suiza\".",
@@ -448,7 +448,7 @@
     "Jardín Majorelle",
     "Museo Yves Saint Laurent"
   ],
-  "tour9.day7": "Día 7: Marrakech – Salida",
+  "tour9.day7": "Día 7: Marrakech ➜ Salida",
   "tour9.day7.text": [
     "Tiempo libre dependiendo de su horario de vuelo.",
     "Traslado al aeropuerto Marrakech Menara."

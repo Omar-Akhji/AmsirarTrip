@@ -431,7 +431,7 @@
   "tour8.excludes": "Mittagessen & Getränke\nEintrittsgebühren\nTrinkgeld & persönliche Ausgaben",
   "tour8.goodToKnow": "Abfahrt: 7:00–8:00 Uhr von Marrakech\nDauer: 3 Tage / 2 Nächte\nEntfernung: ~500 km hin und zurück\nMitbringen: Warme Kleidung (Wüstennächte können kalt sein), Sonnenbrille, Hut, Sonnencreme, Kamera\nOptional: Sandboarding, zusätzliche Nächte im Wüstencamp, Fotoshootings",
   "tour9.overview": "Begeben Sie sich auf eine faszinierende 7-tägige Reise durch Nordmarokko, von der lebendigen Küstenstadt Tanger zur bezaubernden Kaiserstadt Marrakesch. Entdecken Sie antike römische Ruinen, Kaiserpaläste, die mystische Blaue Stadt Chefchaouen und die lebhaften Souks von Fès und Marrakesch. Diese Tour bietet eine perfekte Mischung aus Geschichte, Kultur und natürlicher Schönheit.",
-  "tour9.day1": "Tag 1: Ankunft in Tanger – Stadt-Highlights-Tour",
+  "tour9.day1": "Tag 1: Ankunft in Tanger ➜ Stadt-Highlights-Tour",
   "tour9.day1.text": [
     "Abholung vom Flughafen/Hafen Tanger (Tanger Med oder Stadt-Hafen).",
     "Besuchen Sie Kap Spartel, wo das Mittelmeer auf den Atlantik trifft.",
@@ -439,7 +439,7 @@
     "Erkunden Sie die Kasbah, die alte Medina und Petit Socco.",
     "Spaziergang entlang der Tanger Corniche und der Strandpromenade."
   ],
-  "tour9.day2": "Tag 2: Tanger → Tétouan → Chefchaouen (Blaue Stadt)",
+  "tour9.day2": "Tag 2: Tanger ➜ Tétouan ➜ Chefchaouen (Blaue Stadt)",
   "tour9.day2.text": [
     "Fahrt nach Tétouan, „Die Weiße Taube“.",
     "Besuch der UNESCO-gelisteten Medina.",
@@ -448,7 +448,7 @@
     "Erkunden Sie die alte Medina, den Platz Outa El Hammam, den Fluss Ras El Ma und die Kunsthandwerksläden.",
     "Sonnenuntergangsspaziergang zum Aussichtspunkt der Spanischen Moschee."
   ],
-  "tour9.day3": "Tag 3: Chefchaouen → Volubilis → Meknès → Fès",
+  "tour9.day3": "Tag 3: Chefchaouen ➜ Volubilis ➜ Meknès ➜ Fès",
   "tour9.day3.text": [
     "Freier Morgen in Chefchaouen.",
     "Fahrt zu den römischen Ruinen von Volubilis (geführte Tour verfügbar).",
@@ -458,7 +458,7 @@
     "Alte Medina",
     "Abends Ankunft in Fès."
   ],
-  "tour9.day4": "Tag 4: Ganztägige Erkundung von Fès – Kaiserliche, Spirituelle & Kulturelle Hauptstadt",
+  "tour9.day4": "Tag 4: Ganztägige Erkundung von Fès ➜ Kaiserliche, Spirituelle & Kulturelle Hauptstadt",
   "tour9.day4.text": [
     "Geführte Tour mit einem zertifizierten lokalen Guide:",
     "Fès el-Bali (der älteste Teil der Stadt)",
@@ -469,7 +469,7 @@
     "Keramik- und Zellige-Werkstätten",
     "Freier Abend zum Entspannen oder Genießen eines traditionellen marokkanischen Abendessens mit Show."
   ],
-  "tour9.day5": "Tag 5: Fès → Ifrane → Azrou → Beni Mellal → Marrakech",
+  "tour9.day5": "Tag 5: Fès ➜ Ifrane ➜ Azrou ➜ Beni Mellal ➜ Marrakech",
   "tour9.day5.text": [
     "Fahrt durch die Mittleren Atlas-Berge.",
     "Stopp in Ifrane, „Klein-Schweiz“.",
@@ -490,7 +490,7 @@
     "Majorelle-Garten",
     "Yves Saint Laurent Museum"
   ],
-  "tour9.day7": "Tag 7: Marrakech – Abreise",
+  "tour9.day7": "Tag 7: Marrakech ➜ Abreise",
   "tour9.day7.text": [
     "Freizeit je nach Flugplan.",
     "Transfer zum Flughafen Marrakech Menara."
