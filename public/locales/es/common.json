@@ -389,16 +389,18 @@
   "tour8.excludes": "Almuerzos y bebidas\nTarifas de entrada (si aplican)\nPropinas y gastos personales",
   "tour8.goodToKnow": "Salida: Marrakech (aeropuerto o hotel)\nFin: Marrakech (aeropuerto o hotel)\nDuración: 3 días / 2 noches\nDisponible: Diariamente, todo el año",
   "tour9.overview": "Embarque en un viaje cautivador de 7 días a través del norte de Marruecos, desde la vibrante ciudad costera de Tánger hasta la encantadora ciudad imperial de Marrakech. Descubra ruinas romanas antiguas, palacios imperiales, la mística ciudad azul de Chefchaouen y los bulliciosos zocos de Fez y Marrakech. Este tour ofrece una mezcla perfecta de historia, cultura y belleza natural.",
-  "tour9.day1": "Día 1: Llegada a Tánger ➜ Tour de puntos destacados de la ciudad",
+  "tour9.day1": "Día 1:",
   "tour9.day1.text": [
+    "Llegada a Tánger – Tour de puntos destacados de la ciudad",
     "Recogida en el aeropuerto/puerto de Tánger (Tánger Med o puerto de la ciudad).",
     "Visite Cabo Espartel, donde el Mediterráneo se encuentra con el Atlántico.",
     "Explore las Cuevas de Hércules.",
     "Explore la Kasbah, la medina antigua y Petit Socco.",
     "Paseo a lo largo de la Corniche de Tánger y el paseo marítimo."
   ],
-  "tour9.day2": "Día 2: Tánger ➜ Tetuán ➜ Chefchaouen (Ciudad Azul)",
+  "tour9.day2": "Día 2:",
   "tour9.day2.text": [
+    "Tánger ➜ Tetuán ➜ Chefchaouen (Ciudad Azul)",
     "Viaje hacia Tetuán, \"La Paloma Blanca\".",
     "Visite la Medina catalogada por la UNESCO.",
     "Pase por el Palacio Real (exterior).",
