@@ -57,10 +57,10 @@ const Tour9 = () => {
                             {/* Day 1 */}
                             <div className="tour-section">
                                 <h3><i className="fas fa-sun"></i> {t('tour9.day1')}</h3>
-                                <p className="route-text">Tangier</p>
+                                <p className="route-text">{t('tour9.day1.text', { returnObjects: true })[0]}</p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
-                                        {t('tour9.day1.text', { returnObjects: true }).map((item, idx) => (
+                                        {t('tour9.day1.text', { returnObjects: true }).slice(1).map((item, idx) => (
                                             <li key={idx}><i className="fa-regular fa-circle-dot"></i> {item}</li>
                                         ))}
                                     </ul>
@@ -74,10 +74,10 @@ const Tour9 = () => {
                             {/* Day 2 */}
                             <div className="tour-section">
                                 <h3><i className="fas fa-moon"></i> {t('tour9.day2')}</h3>
-                                <p className="route-text">Tangier <i className="fas fa-arrow-right"></i> Tetouan <i className="fas fa-arrow-right"></i> Chefchaouen</p>
+                                <p className="route-text">{t('tour9.day2.text', { returnObjects: true })[0]}</p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
-                                        {t('tour9.day2.text', { returnObjects: true }).map((item, idx) => (
+                                        {t('tour9.day2.text', { returnObjects: true }).slice(1).map((item, idx) => (
                                             <li key={idx}><i className="fa-regular fa-circle-dot"></i> {item}</li>
                                         ))}
                                     </ul>
@@ -91,10 +91,10 @@ const Tour9 = () => {
                             {/* Day 3 */}
                             <div className="tour-section">
                                 <h3><i className="fas fa-home"></i> {t('tour9.day3')}</h3>
-                                <p className="route-text">Chefchaouen <i className="fas fa-arrow-right"></i> Volubilis <i className="fas fa-arrow-right"></i> Meknes <i className="fas fa-arrow-right"></i> Fes</p>
+                                <p className="route-text">{t('tour9.day3.text', { returnObjects: true })[0]}</p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
-                                        {t('tour9.day3.text', { returnObjects: true }).map((item, idx) => (
+                                        {t('tour9.day3.text', { returnObjects: true }).slice(1).map((item, idx) => (
                                             <li key={idx}><i className="fa-regular fa-circle-dot"></i> {item}</li>
                                         ))}
                                     </ul>
@@ -108,10 +108,10 @@ const Tour9 = () => {
                             {/* Day 4 */}
                             <div className="tour-section">
                                 <h3><i className="fas fa-sun"></i> {t('tour9.day4')}</h3>
-                                <p className="route-text">Fes</p>
+                                <p className="route-text">{t('tour9.day4.text', { returnObjects: true })[0]}</p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
-                                        {t('tour9.day4.text', { returnObjects: true }).map((item, idx) => (
+                                        {t('tour9.day4.text', { returnObjects: true }).slice(1).map((item, idx) => (
                                             <li key={idx}><i className="fa-regular fa-circle-dot"></i> {item}</li>
                                         ))}
                                     </ul>
@@ -125,10 +125,10 @@ const Tour9 = () => {
                             {/* Day 5 */}
                             <div className="tour-section">
                                 <h3><i className="fas fa-moon"></i> {t('tour9.day5')}</h3>
-                                <p className="route-text">Fes <i className="fas fa-arrow-right"></i> Ifrane <i className="fas fa-arrow-right"></i> Azrou <i className="fas fa-arrow-right"></i> Beni Mellal <i className="fas fa-arrow-right"></i> Marrakech</p>
+                                <p className="route-text">{t('tour9.day5.text', { returnObjects: true })[0]}</p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
-                                        {t('tour9.day5.text', { returnObjects: true }).map((item, idx) => (
+                                        {t('tour9.day5.text', { returnObjects: true }).slice(1).map((item, idx) => (
                                             <li key={idx}><i className="fa-regular fa-circle-dot"></i> {item}</li>
                                         ))}
                                     </ul>
@@ -142,10 +142,10 @@ const Tour9 = () => {
                             {/* Day 6 */}
                             <div className="tour-section">
                                 <h3><i className="fas fa-home"></i> {t('tour9.day6')}</h3>
-                                <p className="route-text">Marrakech</p>
+                                <p className="route-text">{t('tour9.day6.text', { returnObjects: true })[0]}</p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
-                                        {t('tour9.day6.text', { returnObjects: true }).map((item, idx) => (
+                                        {t('tour9.day6.text', { returnObjects: true }).slice(1).map((item, idx) => (
                                             <li key={idx}><i className="fa-regular fa-circle-dot"></i> {item}</li>
                                         ))}
                                     </ul>
@@ -159,10 +159,10 @@ const Tour9 = () => {
                             {/* Day 7 */}
                             <div className="tour-section">
                                 <h3><i className="fas fa-plane"></i> {t('tour9.day7')}</h3>
-                                <p className="route-text">Marrakech</p>
+                                <p className="route-text">{t('tour9.day7.text', { returnObjects: true })[0]}</p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
-                                        {t('tour9.day7.text', { returnObjects: true }).map((item, idx) => (
+                                        {t('tour9.day7.text', { returnObjects: true }).slice(1).map((item, idx) => (
                                             <li key={idx}><i className="fa-regular fa-circle-dot"></i> {item}</li>
                                         ))}
                                     </ul>
