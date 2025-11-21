@@ -450,8 +450,9 @@
     "Erkunden Sie die alte Medina, den Platz Outa El Hammam, den Fluss Ras El Ma und die Kunsthandwerksläden.",
     "Sonnenuntergangsspaziergang zum Aussichtspunkt der Spanischen Moschee."
   ],
-  "tour9.day3": "Tag 3: Chefchaouen ➜ Volubilis ➜ Meknès ➜ Fès",
+  "tour9.day3": "Tag 3:",
   "tour9.day3.text": [
+    "Chefchaouen Volubilis Meknès Fès",
     "Freier Morgen in Chefchaouen.",
     "Fahrt zu den römischen Ruinen von Volubilis (geführte Tour verfügbar).",
     "Weiterfahrt nach Meknès, einer marokkanischen Kaiserstadt:",
@@ -460,8 +461,9 @@
     "Alte Medina",
     "Abends Ankunft in Fès."
   ],
-  "tour9.day4": "Tag 4: Ganztägige Erkundung von Fès ➜ Kaiserliche, Spirituelle & Kulturelle Hauptstadt",
+  "tour9.day4": "Tag 4:",
   "tour9.day4.text": [
+    "Ganztägige Erkundung von Fès ➜ Kaiserliche, Spirituelle & Kulturelle Hauptstadt",
     "Geführte Tour mit einem zertifizierten lokalen Guide:",
     "Fès el-Bali (der älteste Teil der Stadt)",
     "Al-Qarawiyyin-Universität (die älteste Universität der Welt)",
@@ -471,16 +473,18 @@
     "Keramik- und Zellige-Werkstätten",
     "Freier Abend zum Entspannen oder Genießen eines traditionellen marokkanischen Abendessens mit Show."
   ],
-  "tour9.day5": "Tag 5: Fès ➜ Ifrane ➜ Azrou ➜ Beni Mellal ➜ Marrakech",
+  "tour9.day5": "Tag 5:",
   "tour9.day5.text": [
+    "Fès ➜ Ifrane ➜ Azrou ➜ Beni Mellal ➜ Marrakech",
     "Fahrt durch die Mittleren Atlas-Berge.",
     "Stopp in Ifrane, „Klein-Schweiz“.",
     "Besuch des Zedernwaldes von Azrou, um wilde Berberaffen zu sehen.",
     "Weiterfahrt durch Beni Mellal.",
     "Abends Ankunft in Marrakech."
   ],
-  "tour9.day6": "Tag 6: Ganztägige Erkundung von Marrakech",
+  "tour9.day6": "Tag 6:",
   "tour9.day6.text": [
+    "Ganztägige Erkundung von Marrakech",
     "Geführte Stadt-Tour:",
     "Koutoubia-Moschee (Außenansicht)",
     "Bahia-Palast",
@@ -492,8 +496,9 @@
     "Majorelle-Garten",
     "Yves Saint Laurent Museum"
   ],
-  "tour9.day7": "Tag 7: Marrakech ➜ Abreise",
+  "tour9.day7": "Tag 7:",
   "tour9.day7.text": [
+    "Marrakech ➜ Abreise",
     "Freizeit je nach Flugplan.",
     "Transfer zum Flughafen Marrakech Menara."
   ],

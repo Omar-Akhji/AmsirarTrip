@@ -408,8 +408,9 @@
     "Explore la medina antigua, la plaza Outa El Hammam, el río Ras El Ma y las tiendas de artesanos.",
     "Paseo al atardecer hacia el mirador de la Mezquita Española."
   ],
-  "tour9.day3": "Día 3: Chefchaouen ➜ Volubilis ➜ Meknès ➜ Fez",
+  "tour9.day3": "Día 3:",
   "tour9.day3.text": [
+    "Chefchaouen Volubilis Meknès Fez",
     "Mañana libre en Chefchaouen.",
     "Viaje a las ruinas romanas de Volubilis (tour guiado disponible).",
     "Continúe hacia Meknès, una ciudad imperial marroquí:",
@@ -418,8 +419,9 @@
     "Medina antigua",
     "Llegada a Fez por la tarde."
   ],
-  "tour9.day4": "Día 4: Exploración completa de Fez ➜ Capital Imperial, Espiritual y Cultural",
+  "tour9.day4": "Día 4:",
   "tour9.day4.text": [
+    "Exploración completa de Fez ➜ Capital Imperial, Espiritual y Cultural",
     "Tour guiado con un guía local certificado:",
     "Fez el-Bali (la parte más antigua de la ciudad)",
     "Universidad Al-Qarawiyyin (la universidad más antigua del mundo)",
@@ -429,16 +431,18 @@
     "Talleres de cerámica y zellige",
     "Noche libre para relajarse o disfrutar de una cena tradicional marroquí con espectáculo."
   ],
-  "tour9.day5": "Día 5: Fez ➜ Ifrane ➜ Azrou ➜ Beni Mellal ➜ Marrakech",
+  "tour9.day5": "Día 5:",
   "tour9.day5.text": [
+    "Fez ➜ Ifrane ➜ Azrou ➜ Beni Mellal ➜ Marrakech",
     "Viaje a través de las Montañas del Atlas Medio.",
     "Parada en Ifrane, \"Pequeña Suiza\".",
     "Visite el Bosque de Cedros de Azrou para ver monos de Berbería salvajes.",
     "Continúe a través de Beni Mellal.",
     "Llegada a Marrakech por la tarde."
   ],
-  "tour9.day6": "Día 6: Exploración completa de Marrakech",
+  "tour9.day6": "Día 6:",
   "tour9.day6.text": [
+    "Exploración completa de Marrakech",
     "Tour guiado de la ciudad:",
     "Mezquita Koutoubia (exterior)",
     "Palacio Bahia",
@@ -450,8 +454,9 @@
     "Jardín Majorelle",
     "Museo Yves Saint Laurent"
   ],
-  "tour9.day7": "Día 7: Marrakech ➜ Salida",
+  "tour9.day7": "Día 7:",
   "tour9.day7.text": [
+    "Marrakech ➜ Salida",
     "Tiempo libre dependiendo de su horario de vuelo.",
     "Traslado al aeropuerto Marrakech Menara."
   ],

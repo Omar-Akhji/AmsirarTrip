@@ -56,8 +56,8 @@ const Tour9 = () => {
 
                             {/* Day 1 */}
                             <div className="tour-section">
-                                <h3><i className="fas fa-sun"></i> Day 1</h3>
-                                <p className="route-text">Arrival in Tangier <i className="fas fa-arrow-right"></i> City Highlights Tour</p>
+                                <h3><i className="fas fa-sun"></i> {t('tour9.day1')}</h3>
+                                <p className="route-text">Tangier</p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
                                         {t('tour9.day1.text', { returnObjects: true }).map((item, idx) => (
@@ -73,8 +73,8 @@ const Tour9 = () => {
 
                             {/* Day 2 */}
                             <div className="tour-section">
-                                <h3><i className="fas fa-moon"></i> Day 2</h3>
-                                <p className="route-text">Tangier <i className="fas fa-arrow-right"></i> Tetouan <i className="fas fa-arrow-right"></i> Chefchaouen (Blue City)</p>
+                                <h3><i className="fas fa-moon"></i> {t('tour9.day2')}</h3>
+                                <p className="route-text">Tangier <i className="fas fa-arrow-right"></i> Tetouan <i className="fas fa-arrow-right"></i> Chefchaouen</p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
                                         {t('tour9.day2.text', { returnObjects: true }).map((item, idx) => (
@@ -90,7 +90,7 @@ const Tour9 = () => {
 
                             {/* Day 3 */}
                             <div className="tour-section">
-                                <h3><i className="fas fa-home"></i> Day 3</h3>
+                                <h3><i className="fas fa-home"></i> {t('tour9.day3')}</h3>
                                 <p className="route-text">Chefchaouen <i className="fas fa-arrow-right"></i> Volubilis <i className="fas fa-arrow-right"></i> Meknes <i className="fas fa-arrow-right"></i> Fes</p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
@@ -107,8 +107,8 @@ const Tour9 = () => {
 
                             {/* Day 4 */}
                             <div className="tour-section">
-                                <h3><i className="fas fa-sun"></i> Day 4</h3>
-                                <p className="route-text">Full Day Exploring Fes <i className="fas fa-arrow-right"></i> Imperial, Spiritual & Cultural Capital</p>
+                                <h3><i className="fas fa-sun"></i> {t('tour9.day4')}</h3>
+                                <p className="route-text">Fes</p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
                                         {t('tour9.day4.text', { returnObjects: true }).map((item, idx) => (
@@ -124,7 +124,7 @@ const Tour9 = () => {
 
                             {/* Day 5 */}
                             <div className="tour-section">
-                                <h3><i className="fas fa-moon"></i> Day 5</h3>
+                                <h3><i className="fas fa-moon"></i> {t('tour9.day5')}</h3>
                                 <p className="route-text">Fes <i className="fas fa-arrow-right"></i> Ifrane <i className="fas fa-arrow-right"></i> Azrou <i className="fas fa-arrow-right"></i> Beni Mellal <i className="fas fa-arrow-right"></i> Marrakech</p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
@@ -141,8 +141,8 @@ const Tour9 = () => {
 
                             {/* Day 6 */}
                             <div className="tour-section">
-                                <h3><i className="fas fa-home"></i> Day 6</h3>
-                                <p className="route-text">Full Day Exploring Marrakech</p>
+                                <h3><i className="fas fa-home"></i> {t('tour9.day6')}</h3>
+                                <p className="route-text">Marrakech</p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
                                         {t('tour9.day6.text', { returnObjects: true }).map((item, idx) => (
@@ -158,8 +158,8 @@ const Tour9 = () => {
 
                             {/* Day 7 */}
                             <div className="tour-section">
-                                <h3><i className="fas fa-plane"></i> Day 7</h3>
-                                <p className="route-text">Marrakech <i className="fas fa-arrow-right"></i> Departure</p>
+                                <h3><i className="fas fa-plane"></i> {t('tour9.day7')}</h3>
+                                <p className="route-text">Marrakech</p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
                                         {t('tour9.day7.text', { returnObjects: true }).map((item, idx) => (
