@@ -57,7 +57,7 @@ const Tour9 = () => {
                             {/* Day 1 */}
                             <div className="tour-section">
                                 <h3><i className="fas fa-sun"></i> {t('tour9.day1')}</h3>
-                                <p className="route-text" dangerouslySetInnerHTML={{__html: t('tour9.day1.text', { returnObjects: true })[0].replace(/➜/g, '<i class="fas fa-arrow-right orange"></i>')}}></p>
+                                <p className="route-text" dangerouslySetInnerHTML={{ __html: t('tour9.day1.text', { returnObjects: true })[0].replace(/➜/g, '<i class="fas fa-arrow-right orange"></i>') }}></p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
                                         {t('tour9.day1.text', { returnObjects: true }).slice(1).map((item, idx) => (
@@ -74,7 +74,7 @@ const Tour9 = () => {
                             {/* Day 2 */}
                             <div className="tour-section">
                                 <h3><i className="fas fa-moon"></i> {t('tour9.day2')}</h3>
-                                <p className="route-text" dangerouslySetInnerHTML={{__html: t('tour9.day2.text', { returnObjects: true })[0].replace(/➜/g, '<i class="fas fa-arrow-right orange"></i>')}}></p>
+                                <p className="route-text" dangerouslySetInnerHTML={{ __html: t('tour9.day2.text', { returnObjects: true })[0].replace(/➜/g, '<i class="fas fa-arrow-right orange"></i>') }}></p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
                                         {t('tour9.day2.text', { returnObjects: true }).slice(1).map((item, idx) => (
@@ -91,7 +91,7 @@ const Tour9 = () => {
                             {/* Day 3 */}
                             <div className="tour-section">
                                 <h3><i className="fas fa-home"></i> {t('tour9.day3')}</h3>
-                                <p className="route-text" dangerouslySetInnerHTML={{__html: t('tour9.day3.text', { returnObjects: true })[0].replace(/➜/g, '<i class="fas fa-arrow-right orange"></i>')}}></p>
+                                <p className="route-text" dangerouslySetInnerHTML={{ __html: t('tour9.day3.text', { returnObjects: true })[0].replace(/➜/g, '<i class="fas fa-arrow-right orange"></i>') }}></p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
                                         {t('tour9.day3.text', { returnObjects: true }).slice(1).map((item, idx) => (
@@ -108,7 +108,7 @@ const Tour9 = () => {
                             {/* Day 4 */}
                             <div className="tour-section">
                                 <h3><i className="fas fa-sun"></i> {t('tour9.day4')}</h3>
-                                <p className="route-text" dangerouslySetInnerHTML={{__html: t('tour9.day4.text', { returnObjects: true })[0].replace(/➜/g, '<i class="fas fa-arrow-right orange"></i>')}}></p>
+                                <p className="route-text" dangerouslySetInnerHTML={{ __html: t('tour9.day4.text', { returnObjects: true })[0].replace(/➜/g, '<i class="fas fa-arrow-right orange"></i>') }}></p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
                                         {t('tour9.day4.text', { returnObjects: true }).slice(1).map((item, idx) => (
@@ -125,7 +125,7 @@ const Tour9 = () => {
                             {/* Day 5 */}
                             <div className="tour-section">
                                 <h3><i className="fas fa-moon"></i> {t('tour9.day5')}</h3>
-                                <p className="route-text" dangerouslySetInnerHTML={{__html: t('tour9.day5.text', { returnObjects: true })[0].replace(/➜/g, '<i class="fas fa-arrow-right orange"></i>')}}></p>
+                                <p className="route-text" dangerouslySetInnerHTML={{ __html: t('tour9.day5.text', { returnObjects: true })[0].replace(/➜/g, '<i class="fas fa-arrow-right orange"></i>') }}></p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
                                         {t('tour9.day5.text', { returnObjects: true }).slice(1).map((item, idx) => (
@@ -142,7 +142,7 @@ const Tour9 = () => {
                             {/* Day 6 */}
                             <div className="tour-section">
                                 <h3><i className="fas fa-home"></i> {t('tour9.day6')}</h3>
-                                <p className="route-text" dangerouslySetInnerHTML={{__html: t('tour9.day6.text', { returnObjects: true })[0].replace(/➜/g, '<i class="fas fa-arrow-right orange"></i>')}}></p>
+                                <p className="route-text" dangerouslySetInnerHTML={{ __html: t('tour9.day6.text', { returnObjects: true })[0].replace(/➜/g, '<i class="fas fa-arrow-right orange"></i>') }}></p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
                                         {t('tour9.day6.text', { returnObjects: true }).slice(1).map((item, idx) => (
@@ -159,7 +159,7 @@ const Tour9 = () => {
                             {/* Day 7 */}
                             <div className="tour-section">
                                 <h3><i className="fas fa-plane"></i> {t('tour9.day7')}</h3>
-                                <p className="route-text" dangerouslySetInnerHTML={{__html: t('tour9.day7.text', { returnObjects: true })[0].replace(/➜/g, '<i class="fas fa-arrow-right orange"></i>')}}></p>
+                                <p className="route-text" dangerouslySetInnerHTML={{ __html: t('tour9.day7.text', { returnObjects: true })[0].replace(/➜/g, '<i class="fas fa-arrow-right orange"></i>') }}></p>
                                 <div className="day-content">
                                     <ul className="text icon-list">
                                         {t('tour9.day7.text', { returnObjects: true }).slice(1).map((item, idx) => (
