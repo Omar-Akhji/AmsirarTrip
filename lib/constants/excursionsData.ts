@@ -3,7 +3,7 @@ import { ROUTES } from "@/lib/constants/routes";
 export const EXCURSIONS_DATA = [
   {
     id: 1,
-    image: "/images/Excursions/Ouzoud Waterfalls.webp",
+    image: "/images/Excursions/Ouzoud_Waterfalls.webp",
     title: "excursion.list.ouzoud.title",
     alt: "excursion.list.ouzoud.alt",
     description: "excursion.list.ouzoud.description",
@@ -23,7 +23,7 @@ export const EXCURSIONS_DATA = [
   },
   {
     id: 3,
-    image: "/images/Excursions/Imlil & Toubkal.webp",
+    image: "/images/Excursions/Imlil_Toubkal.webp",
     title: "excursion.list.imlil.title",
     alt: "excursion.list.imlil.alt",
     description: "excursion.list.imlil.description",
@@ -33,7 +33,7 @@ export const EXCURSIONS_DATA = [
   },
   {
     id: 4,
-    image: "/images/Excursions/Ourika Valley.webp",
+    image: "/images/Excursions/Ourika_Valley.webp",
     title: "excursion.list.ourika.title",
     alt: "excursion.list.ourika.alt",
     description: "excursion.list.ourika.description",
@@ -53,7 +53,7 @@ export const EXCURSIONS_DATA = [
   },
   {
     id: 6,
-    image: "/images/Excursions/Hot Air Balloon Ride.webp",
+    image: "/images/Excursions/Hot_Air_Balloon_Ride.webp",
     title: "excursion.list.balloon.title",
     alt: "excursion.list.balloon.alt",
     description: "excursion.list.balloon.description",

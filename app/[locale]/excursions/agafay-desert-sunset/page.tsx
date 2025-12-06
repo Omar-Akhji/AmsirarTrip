@@ -30,7 +30,7 @@ export async function generateMetadata({
     ],
     path: "/excursions/5",
     locale,
-    image: "/images/Excursions/Ourika Valley.webp",
+    image: "/images/Excursions/Agafay.webp",
     type: "article",
   });
 }

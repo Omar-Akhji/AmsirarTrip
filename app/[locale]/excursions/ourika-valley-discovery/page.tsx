@@ -49,7 +49,7 @@ export default function Excursion4Page() {
                 "Explore Berber villages, visit an argan cooperative, and hike to the Setti Fatma waterfalls.",
               provider: "AmsirarTrip",
               image:
-                "https://amsirartrip.com/images/Excursions/Ourika Valley.webp",
+                "https://amsirartrip.com/images/Excursions/Ourika_Valley.webp",
               duration: "P1D",
               location: "Ourika Valley, Morocco",
               url: "https://amsirartrip.com/en/excursions/4",
@@ -60,7 +60,7 @@ export default function Excursion4Page() {
       <ExcursionLayout
         excursionKey="excursion4"
         bookingId={4}
-        imageSrc="/images/Excursions/Ourika Valley.webp"
+        imageSrc="/images/Excursions/Ourika_Valley.webp"
       />
     </>
   );

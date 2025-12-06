@@ -49,7 +49,7 @@ export default function Excursion6Page() {
                 "Lift off before dawn for sweeping views of Marrakech, then savor a Berber breakfast after landing.",
               provider: "AmsirarTrip",
               image:
-                "https://amsirartrip.com/images/Excursions/Hot Air Balloon Ride.webp",
+                "https://amsirartrip.com/images/Excursions/Hot_Air_Balloon_Ride.webp",
               duration: "P1D",
               location: "Marrakech, Morocco",
               url: "https://amsirartrip.com/en/excursions/6",
@@ -60,7 +60,7 @@ export default function Excursion6Page() {
       <ExcursionLayout
         excursionKey="excursion6"
         bookingId={6}
-        imageSrc="/images/Excursions/Hot Air Balloon Ride.webp"
+        imageSrc="/images/Excursions/Hot_Air_Balloon_Ride.webp"
       />
     </>
   );

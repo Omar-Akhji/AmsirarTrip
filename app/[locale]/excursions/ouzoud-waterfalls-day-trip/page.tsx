@@ -30,7 +30,7 @@ export async function generateMetadata({
     ],
     path: "/excursions/1",
     locale,
-    image: "/images/Excursions/Ouzoud Waterfalls.webp",
+    image: "/images/Excursions/Ouzoud_Waterfalls.webp",
     type: "article",
   });
 }
@@ -49,7 +49,7 @@ export default function Excursion1Page() {
                 "Journey to Morocco's tallest waterfalls, meet playful macaques, and cool off by the cascades.",
               provider: "AmsirarTrip",
               image:
-                "https://amsirartrip.com/images/Excursions/Ouzoud Waterfalls.webp",
+                "https://amsirartrip.com/images/Excursions/Ouzoud_Waterfalls.webp",
               duration: "P1D",
               location: "Ouzoud, Morocco",
               url: "https://amsirartrip.com/en/excursions/1",

@@ -65,10 +65,7 @@ const ExcursionLayout: React.FC<ExcursionLayoutProps> = ({
     t(`${excursionKey}.highlights.2`),
     t(`${excursionKey}.highlights.3`),
   ].filter(Boolean); // Filter out any empty strings
-  const rawSidebarItems = rawT.raw("excursion.sidebar.items");
-  const sidebarItems = Array.isArray(rawSidebarItems)
-    ? (rawSidebarItems as string[])
-    : [];
+  const sidebarItems = (rawT.raw("excursion.sidebar.items") as string[]) || [];
 
   const title = t(`${excursionKey}.title`);
   const bookingTitle = t(`${excursionKey}.bookingTitle`);

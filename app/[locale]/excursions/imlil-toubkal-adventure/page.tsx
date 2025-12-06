@@ -46,7 +46,7 @@ export default function Excursion3Page() {
                 "Experience the High Atlas Mountains with a day trip to Imlil and Mount Toubkal. Hike scenic trails, meet Berber families, and enjoy panoramic views of Morocco's highest peak.",
               provider: "AmsirarTrip",
               image:
-                "https://amsirartrip.com/images/Excursions/Imlil & Toubkal.webp",
+                "https://amsirartrip.com/images/Excursions/Imlil_Toubkal.webp",
               duration: "P1D",
               location: "Imlil & Mount Toubkal, Morocco",
               url: "https://amsirartrip.com/en/excursions/3",
@@ -57,7 +57,7 @@ export default function Excursion3Page() {
       <ExcursionLayout
         excursionKey="excursion3"
         bookingId={3}
-        imageSrc="/images/Excursions/Imlil & Toubkal.webp"
+        imageSrc="/images/Excursions/Imlil_Toubkal.webp"
       />
     </>
   );
