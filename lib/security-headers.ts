@@ -12,7 +12,7 @@ export const getSecurityHeaders = () => {
     form-action 'self';
     frame-ancestors 'none';
     block-all-mixed-content;
-    ${process.env.NODE_ENV === "production" ? "upgrade-insecure-requests;" : ""}
+    ${process.env.NODE_ENV === "production" ? "" : ""}
   `;
 
   return [
