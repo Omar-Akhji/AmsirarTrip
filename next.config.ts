@@ -47,7 +47,7 @@ const nextConfig: NextConfig = {
     // reactCompiler: process.env.NODE_ENV === "production",
     // Optimize package imports to reduce bundle size
     optimizePackageImports: [
-      "framer-motion",
+      // "framer-motion",
       "lucide-react",
       "date-fns",
       "@radix-ui/react-popover",
