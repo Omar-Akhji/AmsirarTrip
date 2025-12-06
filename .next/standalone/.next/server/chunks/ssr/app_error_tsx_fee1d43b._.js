@@ -1,0 +1,3 @@
+module.exports=[78141,a=>{"use strict";var b=a.i(87924),c=a.i(72131);function d({error:a,reset:d}){return(0,c.useEffect)(()=>{console.error(a)},[a]),(0,b.jsxs)("div",{className:"flex min-h-screen flex-col items-center justify-center bg-gray-100",children:[(0,b.jsx)("h2",{className:"mb-4 text-2xl font-bold text-gray-800",children:"Something went wrong!"}),(0,b.jsx)("button",{onClick:()=>d(),className:"rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600",children:"Try again"})]})}a.s(["default",()=>d])}];
+
+//# sourceMappingURL=app_error_tsx_fee1d43b._.js.map

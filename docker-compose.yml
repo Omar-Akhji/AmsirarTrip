@@ -1,0 +1,20 @@
+services:
+  app:
+    container_name: amsirartrip
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    # Add other environment variables here or use an env_file
+    # env_file:
+    #   - .env.production
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

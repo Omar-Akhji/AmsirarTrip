@@ -1,0 +1,11 @@
+{
+  "pages": {},
+  "app": {
+    "[project]/app/[locale]/tours/grand-moroccan-circuit-10-days/page": [
+      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
+      "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
+    ]
+  },
+  "appUsingSizeAdjust": true,
+  "pagesUsingSizeAdjust": false
+}
