@@ -10,6 +10,7 @@ export const getSecurityHeaders = () => {
     object-src 'none';
     base-uri 'self';
     form-action 'self';
+    upgrade-insecure-requests;
     frame-ancestors 'none';
     block-all-mixed-content;
     ${process.env.NODE_ENV === "production" ? "" : ""}

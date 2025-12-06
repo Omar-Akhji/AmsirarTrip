@@ -42,25 +42,7 @@ export class ErrorBoundary extends Component<Props, State> {
       // Production mode: Show generic error message
       if (process.env.NODE_ENV === "production") {
         console.error("ErrorBoundary caught error:", this.state.error);
-        // TEMPORARY DEBUGGING: Show error in production to diagnose issue
-        return (
-          <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 pt-20">
-            <div className="w-full max-w-2xl rounded-lg border border-red-200 bg-white p-6 shadow-lg">
-              <h2 className="mb-4 text-xl font-bold text-red-600">
-                Application Error
-              </h2>
-              <p className="mb-2 text-gray-700">
-                An error occurred in the application:
-              </p>
-              <pre className="overflow-auto rounded border border-gray-300 bg-gray-100 p-4 text-sm text-red-800">
-                {this.state.error?.message}
-                {"\n"}
-                {this.state.error?.stack}
-              </pre>
-            </div>
-          </div>
-        );
-        // return null;
+        return null;
       }
 
       // Development mode: Show detailed error information
