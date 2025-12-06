@@ -168,7 +168,7 @@ const BookingForm: React.FC<BookingFormProps> = ({
         message: formData.message,
         language: i18n.language,
         duration: tourDuration ?? undefined,
-        recaptchaToken,
+        recaptchaToken: recaptchaToken || "",
       });
 
       if (result.ok) {
