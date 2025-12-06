@@ -3,8 +3,11 @@
  * Ensures all required env vars are present at build/runtime
  */
 
-type RequiredEnv = "GMAIL_USER" | "GMAIL_PASS" | "RECAPTCHA_SECRET_KEY";
-type OptionalEnv = "MAIL_TO" | "NEXT_PUBLIC_RECAPTCHA_SITE_KEY";
+type RequiredEnv = "GMAIL_USER" | "GMAIL_PASS";
+type OptionalEnv =
+  | "MAIL_TO"
+  | "NEXT_PUBLIC_RECAPTCHA_SITE_KEY"
+  | "RECAPTCHA_SECRET_KEY";
 
 /**
  * Get a required environment variable
