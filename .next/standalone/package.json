@@ -14,7 +14,9 @@
     "lint:css:fix": "stylelint \"app/**/*.css\" --fix",
     "type-check": "tsc --noEmit",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "verify:local": "node scripts/verify-security.mjs",
+    "verify:prod": "node scripts/verify-security.mjs https://amsirartrip.com"
   },
   "dependencies": {
     "@radix-ui/react-popover": "1.1.15",

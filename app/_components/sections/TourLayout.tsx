@@ -82,8 +82,11 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
   const tourData = (TOURS_DATA.find((tour) => tour.id === bookingId) ||
     {}) as Partial<TourData>;
 
-  // Use type assertion for array return
-  const sidebarItems = (t.raw("tours.sidebar.items") as string[]) || [];
+  // Use type assertion for array return, with safe fallback
+  const rawSidebarItems = t.raw("tours.sidebar.items");
+  const sidebarItems = Array.isArray(rawSidebarItems)
+    ? (rawSidebarItems as string[])
+    : [];
 
   // Get translation data
   const title = t(`${tourKey}.title`);
