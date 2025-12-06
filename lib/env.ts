@@ -3,31 +3,8 @@
  * Ensures all required env vars are present at build/runtime
  */
 
-const requiredEnvVars = [
-  "GMAIL_USER",
-  "GMAIL_PASS",
-  "RECAPTCHA_SECRET_KEY",
-] as const;
-
-type RequiredEnv = (typeof requiredEnvVars)[number];
+type RequiredEnv = "GMAIL_USER" | "GMAIL_PASS" | "RECAPTCHA_SECRET_KEY";
 type OptionalEnv = "MAIL_TO" | "NEXT_PUBLIC_RECAPTCHA_SITE_KEY";
-
-function validateEnv() {
-  const missing: string[] = [];
-
-  for (const envVar of requiredEnvVars) {
-    if (!process.env[envVar]) {
-      missing.push(envVar);
-    }
-  }
-
-  if (missing.length > 0) {
-    throw new Error(
-      `Missing required environment variables: ${missing.join(", ")}\n` +
-        `Please check your .env.local file.`
-    );
-  }
-}
 
 /**
  * Get a required environment variable
@@ -55,16 +32,25 @@ export function getOptionalEnv(
  * Validate environment on server startup
  * Only runs on server-side
  */
-if (typeof window === "undefined") {
-  validateEnv();
-}
+// Validate validation function is no longer called at top level
+// if (typeof window === "undefined") {
+//   validateEnv();
+// }
 
 export const env = {
-  GMAIL_USER: getEnv("GMAIL_USER"),
-  GMAIL_PASS: getEnv("GMAIL_PASS"),
-  RECAPTCHA_SECRET_KEY: getEnv("RECAPTCHA_SECRET_KEY"),
-  MAIL_TO: getOptionalEnv("MAIL_TO"),
-  NEXT_PUBLIC_RECAPTCHA_SITE_KEY: getOptionalEnv(
-    "NEXT_PUBLIC_RECAPTCHA_SITE_KEY"
-  ),
+  get GMAIL_USER() {
+    return getEnv("GMAIL_USER");
+  },
+  get GMAIL_PASS() {
+    return getEnv("GMAIL_PASS");
+  },
+  get RECAPTCHA_SECRET_KEY() {
+    return getEnv("RECAPTCHA_SECRET_KEY");
+  },
+  get MAIL_TO() {
+    return getOptionalEnv("MAIL_TO");
+  },
+  get NEXT_PUBLIC_RECAPTCHA_SITE_KEY() {
+    return getOptionalEnv("NEXT_PUBLIC_RECAPTCHA_SITE_KEY");
+  },
 } as const;
