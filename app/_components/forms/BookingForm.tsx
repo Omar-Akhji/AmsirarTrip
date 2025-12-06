@@ -123,9 +123,9 @@ const BookingForm: React.FC<BookingFormProps> = ({
       return;
     }
 
-    // Validate CAPTCHA
+    // Validate CAPTCHA (only if configured)
     const recaptchaToken = recaptchaRef.current?.getValue();
-    if (!recaptchaToken) {
+    if (RECAPTCHA_V2_SITE_KEY && !recaptchaToken) {
       setErrors({
         captcha: t(
           "booking.errors.captcha",
@@ -584,22 +584,28 @@ const BookingForm: React.FC<BookingFormProps> = ({
                         : "border-gray-200"
                     )}
                   >
-                    <ReCAPTCHA
-                      ref={recaptchaRef}
-                      sitekey={RECAPTCHA_V2_SITE_KEY}
-                      onChange={(token) => {
-                        setFormData((prev) => ({
-                          ...prev,
-                          recaptchaToken: token,
-                        }));
-                        if (errors.recaptchaToken) {
-                          setErrors((prev) => ({
+                    {RECAPTCHA_V2_SITE_KEY ? (
+                      <ReCAPTCHA
+                        ref={recaptchaRef}
+                        sitekey={RECAPTCHA_V2_SITE_KEY}
+                        onChange={(token) => {
+                          setFormData((prev) => ({
                             ...prev,
-                            recaptchaToken: "",
+                            recaptchaToken: token,
                           }));
-                        }
-                      }}
-                    />
+                          if (errors.recaptchaToken) {
+                            setErrors((prev) => ({
+                              ...prev,
+                              recaptchaToken: "",
+                            }));
+                          }
+                        }}
+                      />
+                    ) : (
+                      <div className="rounded bg-amber-50 p-2 text-sm text-amber-600">
+                        CAPTCHA configuration missing.
+                      </div>
+                    )}
                   </div>
                   {errors.recaptchaToken && touched.recaptchaToken && (
                     <p
