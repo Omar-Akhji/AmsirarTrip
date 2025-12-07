@@ -27,7 +27,7 @@ export async function generateMetadata({
     ],
     path: "/excursions/3",
     locale,
-    image: "/images/Excursions/Ait Ben Haddou.webp",
+    image: "/images/Excursions/Imlil_Toubkal.webp",
     type: "article",
   });
 }

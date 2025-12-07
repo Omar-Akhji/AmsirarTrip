@@ -30,7 +30,7 @@ export async function generateMetadata({
     ],
     path: "/excursions/6",
     locale,
-    image: "/images/Excursions/Imlil.webp",
+    image: "/images/Excursions/Hot_Air_Balloon_Ride.webp",
     type: "article",
   });
 }
