@@ -60,7 +60,7 @@ export default function Excursion1Page() {
       <ExcursionLayout
         excursionKey="excursion1"
         bookingId={1}
-        imageSrc="/images/Excursions/Ouzoud Waterfalls.webp"
+        imageSrc="/images/Excursions/Ouzoud_Waterfalls.webp"
       />
     </>
   );
