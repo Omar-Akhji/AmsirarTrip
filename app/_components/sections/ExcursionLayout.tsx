@@ -89,7 +89,7 @@ const ExcursionLayout: React.FC<ExcursionLayoutProps> = ({
         ></div>
         <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 py-24 text-center lg:flex-row lg:items-center lg:py-28 lg:text-left">
           <div className="flex-1 space-y-6 pt-6 text-center lg:pt-12">
-            <span className="block text-4xl font-semibold tracking-[0.45em] text-orange-200 uppercase">
+            <span className="block text-4xl font-semibold tracking-[0.2em] text-orange-200 uppercase">
               {t("excursion.detailsTitle")}
             </span>
             <div className="mt-2">

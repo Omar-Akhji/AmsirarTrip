@@ -213,7 +213,7 @@ const BookingForm: React.FC<BookingFormProps> = ({
     }
   };
 
-  const baseSectionClass = `py-10 bg-gray-50 ${
+  const baseSectionClass = `py-20 md:py-10 bg-gray-50 ${
     fullWidth ? "booking-form-fullwidth" : ""
   }`;
   const innerWrapperClass = `booking-form-inner mx-auto w-full max-w-6xl ${
