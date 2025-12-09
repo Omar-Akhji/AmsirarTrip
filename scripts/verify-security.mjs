@@ -1,7 +1,8 @@
 import http from "http";
 import https from "https";
 
-const BASE_URL = process.argv[2] || process.env.BASE_URL || "http://localhost:3000";
+const BASE_URL =
+  process.argv[2] || process.env.BASE_URL || "http://localhost:3000";
 
 const colors = {
   reset: "\x1b[0m",
@@ -91,7 +92,7 @@ async function runTests() {
     await assert(
       "X-Frame-Options",
       homeRes.headers["x-frame-options"] === "DENY" ||
-      homeRes.headers["x-frame-options"] === "SAMEORIGIN",
+        homeRes.headers["x-frame-options"] === "SAMEORIGIN",
       "X-Frame-Options should be DENY or SAMEORIGIN"
     );
     await assert(
