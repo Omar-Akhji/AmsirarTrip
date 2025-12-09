@@ -1078,9 +1078,9 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId, fullWidth
             document.getElementsByName(firstErrorField)[0]?.focus();
             return;
         }
-        // Validate CAPTCHA
+        // Validate CAPTCHA (only if configured)
         const recaptchaToken = recaptchaRef.current?.getValue();
-        if (!recaptchaToken) {
+        if (__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$client$2d$env$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["RECAPTCHA_V2_SITE_KEY"] && !recaptchaToken) {
             setErrors({
                 captcha: t("booking.errors.captcha", "Please complete the CAPTCHA verification.")
             });
@@ -1103,7 +1103,7 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId, fullWidth
                 message: formData.message,
                 language: i18n.language,
                 duration: tourDuration ?? undefined,
-                recaptchaToken
+                recaptchaToken: recaptchaToken || ""
             });
             if (result.ok) {
                 setButtonText("Your booking request has been sent");
@@ -1693,7 +1693,7 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId, fullWidth
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                         className: (0, __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$utils$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["cn"])("rounded-2xl border border-dashed p-3", errors.recaptchaToken && touched.recaptchaToken ? "border-red-300" : "border-gray-200"),
-                                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$google$2d$recaptcha$2f$lib$2f$esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"], {
+                                                        children: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$client$2d$env$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["RECAPTCHA_V2_SITE_KEY"] ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$google$2d$recaptcha$2f$lib$2f$esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__["default"], {
                                                             ref: recaptchaRef,
                                                             sitekey: __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$client$2d$env$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["RECAPTCHA_V2_SITE_KEY"],
                                                             onChange: (token)=>{
@@ -1710,8 +1710,15 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId, fullWidth
                                                             }
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                            lineNumber: 587,
-                                                            columnNumber: 21
+                                                            lineNumber: 588,
+                                                            columnNumber: 23
+                                                        }, ("TURBOPACK compile-time value", void 0)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                            className: "rounded bg-amber-50 p-2 text-sm text-amber-600",
+                                                            children: "CAPTCHA configuration missing."
+                                                        }, void 0, false, {
+                                                            fileName: "[project]/app/_components/forms/BookingForm.tsx",
+                                                            lineNumber: 605,
+                                                            columnNumber: 23
                                                         }, ("TURBOPACK compile-time value", void 0))
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/_components/forms/BookingForm.tsx",
@@ -1724,7 +1731,7 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId, fullWidth
                                                         children: errors.recaptchaToken
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                        lineNumber: 605,
+                                                        lineNumber: 611,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
@@ -1745,19 +1752,19 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId, fullWidth
                                                             size: "sm"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                            lineNumber: 621,
+                                                            lineNumber: 627,
                                                             columnNumber: 36
                                                         }, ("TURBOPACK compile-time value", void 0)),
                                                         submitting ? t("booking.sending", "Sending...") : buttonText === "booking.checkAvailability" ? t(buttonText, "Reserve Now") : buttonText
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                    lineNumber: 615,
+                                                    lineNumber: 621,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                lineNumber: 614,
+                                                lineNumber: 620,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
@@ -1802,7 +1809,7 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId, fullWidth
                                 "aria-hidden": "true"
                             }, void 0, false, {
                                 fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                lineNumber: 640,
+                                lineNumber: 646,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1810,7 +1817,7 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId, fullWidth
                                 "aria-hidden": "true"
                             }, void 0, false, {
                                 fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                lineNumber: 644,
+                                lineNumber: 650,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0)),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1826,7 +1833,7 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId, fullWidth
                                                         children: t("booking.checkBadge", "Check us")
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                        lineNumber: 652,
+                                                        lineNumber: 658,
                                                         columnNumber: 19
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -1834,13 +1841,13 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId, fullWidth
                                                         children: t("booking.checkTitle", "Find us on TripAdvisor")
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                        lineNumber: 655,
+                                                        lineNumber: 661,
                                                         columnNumber: 19
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                lineNumber: 651,
+                                                lineNumber: 657,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1854,23 +1861,23 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId, fullWidth
                                                         className: "h-15 w-15 object-contain"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                        lineNumber: 661,
+                                                        lineNumber: 667,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                    lineNumber: 660,
+                                                    lineNumber: 666,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             }, void 0, false, {
                                                 fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                lineNumber: 659,
+                                                lineNumber: 665,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                        lineNumber: 650,
+                                        lineNumber: 656,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1881,7 +1888,7 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId, fullWidth
                                                 children: "4.5"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                lineNumber: 673,
+                                                lineNumber: 679,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0)),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1893,19 +1900,19 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId, fullWidth
                                                         children: t("booking.reviewCount", "Based on 180+ travellers")
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                        lineNumber: 676,
+                                                        lineNumber: 682,
                                                         columnNumber: 19
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                lineNumber: 674,
+                                                lineNumber: 680,
                                                 columnNumber: 17
                                             }, ("TURBOPACK compile-time value", void 0))
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                        lineNumber: 672,
+                                        lineNumber: 678,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1913,7 +1920,7 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId, fullWidth
                                         children: t("booking.checkCopy", "Read honest reviews and, if you prefer, request your booking directly through our TripAdvisor listing.")
                                     }, void 0, false, {
                                         fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                        lineNumber: 682,
+                                        lineNumber: 688,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1926,7 +1933,7 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId, fullWidth
                                                         children: idx + 1
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                        lineNumber: 692,
+                                                        lineNumber: 698,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0)),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1934,18 +1941,18 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId, fullWidth
                                                         children: perk
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                        lineNumber: 695,
+                                                        lineNumber: 701,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 ]
                                             }, idx, true, {
                                                 fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                lineNumber: 691,
+                                                lineNumber: 697,
                                                 columnNumber: 19
                                             }, ("TURBOPACK compile-time value", void 0)))
                                     }, void 0, false, {
                                         fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                        lineNumber: 689,
+                                        lineNumber: 695,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0)),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1970,42 +1977,42 @@ const BookingForm = ({ tourTitle, tourId, excursionTitle, excursionId, fullWidth
                                                         strokeLinejoin: "round"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                        lineNumber: 717,
+                                                        lineNumber: 723,
                                                         columnNumber: 21
                                                     }, ("TURBOPACK compile-time value", void 0))
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                    lineNumber: 711,
+                                                    lineNumber: 717,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0)),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                     children: t("booking.checkCta", "Check reviews & book")
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                                    lineNumber: 725,
+                                                    lineNumber: 731,
                                                     columnNumber: 19
                                                 }, ("TURBOPACK compile-time value", void 0))
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                            lineNumber: 701,
+                                            lineNumber: 707,
                                             columnNumber: 17
                                         }, ("TURBOPACK compile-time value", void 0))
                                     }, void 0, false, {
                                         fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                        lineNumber: 700,
+                                        lineNumber: 706,
                                         columnNumber: 15
                                     }, ("TURBOPACK compile-time value", void 0))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                                lineNumber: 649,
+                                lineNumber: 655,
                                 columnNumber: 13
                             }, ("TURBOPACK compile-time value", void 0))
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/_components/forms/BookingForm.tsx",
-                        lineNumber: 633,
+                        lineNumber: 639,
                         columnNumber: 11
                     }, ("TURBOPACK compile-time value", void 0))
                 ]

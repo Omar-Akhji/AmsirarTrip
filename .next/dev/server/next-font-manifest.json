@@ -1,10 +1,22 @@
 {
   "app": {
-    "[project]/app/[locale]/excursions/page": [
+    "[project]/app/[locale]/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/page": [
+    "[project]/app/[locale]/tours/caravan-and-kasbah-experience-3-days/page": [
+      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
+      "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
+    ],
+    "[project]/app/[locale]/tours/chegaga-wilderness-expedition-3-days/page": [
+      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
+      "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
+    ],
+    "[project]/app/[locale]/tours/coast-and-cities-explorer-6-days/page": [
+      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
+      "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
+    ],
+    "[project]/app/[locale]/tours/imperial-cities-and-coastline-5-days/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],

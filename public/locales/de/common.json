@@ -499,244 +499,347 @@
   },
   "tour2": {
     "overview": "Diese 6-tägige Reise führt Sie durch Marokkos ikonischste Städte und atemberaubende Landschaften. Von der kosmopolitischen Energie Casablancas über den blauen Charme Chefchaouens, die antike Medina von Fès bis zu den goldenen Dünen der Sahara — erleben Sie Marokkos Kultur, Farben und Traditionen in einem unvergesslichen Abenteuer.",
-    "title": "Küsten- & Städte-Entdecker",
     "day1": {
-      "accommodation": "Riad/Hotel in Chefchaouen",
+      "title": "Casablanca ➜ Rabat ➜ Chefchaouen",
+      "text": [
+        "Abholung von Ihrem Hotel oder dem Flughafen in Casablanca.",
+        "Besuch der Hassan-II.-Moschee, der größten Marokkos, direkt am Atlantik.",
+        "Fahrt nach Rabat, der Hauptstadt Marokkos: Hassan-Turm, Mausoleum von Mohamed V. und Kasbah des Oudayas.",
+        "Weiterfahrt nach Norden durch das Rif-Gebirge zur atemberaubenden blauen Stadt Chefchaouen.",
+        "Freier Abend, um die blau gestrichenen Straßen zu erkunden und in der Medina zu entspannen."
+      ],
+      "accommodation": "Hotel/Riad in Chefchaouen",
       "meals": "Frühstück inbegriffen"
     },
     "day2": {
-      "accommodation": "Riad in Fès",
+      "title": "Chefchaouen ➜ Volubilis ➜ Meknès ➜ Fès",
+      "text": [
+        "Morgen zur freien Verfügung in Chefchaouen für Fotos und Spaziergänge in der Medina.",
+        "Abfahrt zu den römischen Ruinen von Volubilis (UNESCO-Weltkulturerbe).",
+        "Besuch von Meknès, einer der Königsstädte: Bab-Mansour-Tor und El-Hedim-Platz.",
+        "Weiterfahrt nach Fès, dem kulturellen und spirituellen Herzen Marokkos."
+      ],
+      "accommodation": "Riad in der Medina von Fès",
       "meals": "Frühstück inbegriffen"
     },
     "day3": {
+      "title": "Geführte Tour durch Fès",
+      "text": [
+        "Nach dem Frühstück treffen Sie Ihren lokalen Führer für einen ganzen Tag zur Entdeckung von Fès el Bali, einer der ältesten ummauerten Städte der Welt.",
+        "Besuch der Al-Qarawiyyin-Universität, Bou-Inania-Madrasa, Nejjarine-Brunnen und der Chouara-Gerbereien.",
+        "Erkunden Sie die Souks, Handwerkerviertel und verborgenen Innenhöfe der Medina.",
+        "Optionaler Panoramablick von den Mereniden-Gräbern vor der Rückkehr in Ihr Riad."
+      ],
       "accommodation": "Riad in Fès",
       "meals": "Frühstück inbegriffen"
     },
     "day4": {
-      "accommodation": "Hotel in Midelt",
-      "meals": "Frühstück inbegriffen"
+      "title": "Fès ➜ Midelt ➜ Ziz‑Tal ➜ Merzouga-Wüste",
+      "text": [
+        "Frühe Abfahrt durch den Mittleren Atlas, vorbei an Ifrane (die \"Schweiz Marokkos\") und dem Zedernwald von Azrou.",
+        "Mittagessen in Midelt, dann Weiterfahrt durch das malerische Ziz-Tal.",
+        "Ankunft in Merzouga — Tor zur Sahara-Wüste.",
+        "Kamelritt über die Erg Chebbi-Dünen, Sonnenuntergang und Abendessen unter den Sternen."
+      ],
+      "accommodation": "Wüstencamp in Merzouga (Standard oder Luxus)",
+      "meals": "Abendessen & Frühstück inbegriffen",
+      "activities": "Kamelritt, Sandboarding, Berbermusik"
     },
     "day5": {
-      "accommodation": "Wüstencamp in Merzouga",
-      "meals": "Frühstück & Abendessen inbegriffen"
+      "title": "Merzouga ➜ Todra-Schlucht ➜ Dades-Tal",
+      "text": [
+        "Früh aufstehen, um den Sonnenaufgang über den Dünen zu bewundern.",
+        "Nach dem Frühstück verlassen Sie die Wüste in Richtung der spektakulären Todra-Schlucht.",
+        "Spaziergang entlang der Schlucht und Mittagessen in einem lokalen Café.",
+        "Weiterfahrt durch das Dades-Tal, bekannt als das \"Tal der tausend Kasbahs\"."
+      ],
+      "accommodation": "Hotel/Riad im Dades-Tal",
+      "meals": "Abendessen & Frühstück inbegriffen"
     },
     "day6": {
+      "title": "Dades-Tal ➜ Ouarzazate ➜ Ait Ben Haddou ➜ Marrakesch",
+      "text": [
+        "Nach dem Frühstück Fahrt durch Kalaat M’gouna (Tal der Rosen) und die Skoura-Oase.",
+        "Besuch der berühmten Kasbah Ait Ben Haddou (UNESCO) und Drehort vieler Filme.",
+        "Weiterfahrt über den Hohen Atlas via Tizi n’Tichka-Pass (2.260 m).",
+        "Ankunft in Marrakesch am Abend, Transfer zu Ihrer Unterkunft."
+      ],
       "meals": "Frühstück inbegriffen"
-    }
+    },
+    "includes": "Privater Transport in klimatisiertem 4x4 oder Minibus\nEnglisch/Französisch sprechender Fahrer-Reiseleiter\n5 Nächte Unterkunft (Hotels, Riads, Wüstencamp)\nKamelritt in der Sahara\nFrühstück & Abendessen (wie erwähnt)\nLokaler Führer in Fès\nSandboarding & Unterhaltung im Camp",
+    "excludes": "Mittagessen & Getränke\nEintrittsgebühren\nTrinkgeld & persönliche Ausgaben",
+    "goodToKnow": "Abfahrt: Casablanca (Flughafen oder Hotel)\nEnde: Marrakesch\nDauer: 6 Tage / 5 Nächte\nVerfügbarkeit: Tägliche Abfahrten, ganzjährig\nAnpassung: Diese Tour kann an Ihre Vorlieben angepasst werden",
+    "title": "Küsten- & Städte-Entdecker"
   },
   "tour3": {
-    "title": "Karawanen- & Kasbah-Erlebnis",
-    "overview": "Erleben Sie ein intensives 3‑tägiges Abenteuer von Fès durch die Sahara‑Wüste nach Marrakesch. Entdecken Sie die Königsstädte, die majestätischen Dünen von Merzouga und die lebendige Medina von Marrakesch.",
+    "overview": "Erleben Sie ein unvergessliches 3-tägiges Abenteuer von Fès nach Marrakesch durch die faszinierenden Landschaften Südmarokkos. Reisen Sie über das Mittlere Atlasgebirge, reiten Sie auf Kamelen in die Merzouga-Wüste, verbringen Sie eine magische Nacht unter den Sternen und erkunden Sie Kasbahs und Täler auf dem Weg nach Marrakesch.",
     "day1": {
+      "title": "Fès ➜ Ifrane ➜ Azrou ➜ Midelt ➜ Ziz-Tal ➜ Merzouga-Wüste",
       "text": [
-        "Früher Start von Fès, Fahrt durch den Mittleren Atlas mit Stopps in Ifrane (Schweizer Alpen Marokkos) und Azrou (Zedernwälder).",
-        "Weiter nach Midelt und durch die Ziz-Schlucht nach Merzouga.",
-        "Ankunft am späten Nachmittag.",
-        "🏡 Unterkunft: Hotel in Merzouga"
+        "Abholung von Ihrem Hotel in Fès am frühen Morgen.",
+        "Fahrt durch den Mittleren Atlas mit Halt in Ifrane, der \"Schweiz Marokkos\".",
+        "Stopp im Zedernwald von Azrou, um die wilden Affen zu sehen.",
+        "Weiterfahrt nach Süden für das Mittagessen in Midelt.",
+        "Fahrt durch das Ziz-Tal mit seinen Palmenhainen und Kasbahs.",
+        "Ankunft in Merzouga am Nachmittag, wo Ihr Kamelritt beginnt.",
+        "Ritt durch die Erg Chebbi-Dünen, Sonnenuntergang genießen und Übernachtung im Wüstencamp."
       ],
-      "accommodation": "Wüstencamp in Merzouga",
+      "accommodation": "Wüstencamp in Merzouga (Standard oder Luxus)",
       "meals": "Abendessen & Frühstück inbegriffen",
-      "activities": "Kamelausritt & Sonnenuntergang"
+      "activities": "Kamelritt, Sonnenuntergang, Berbermusik"
     },
     "day2": {
+      "title": "Merzouga ➜ Todra-Schlucht ➜ Dades-Tal",
       "text": [
-        "Kamelritt in die Erg Chebbi-Dünen, Sonnenuntergang und traditionelles Berberessen.",
-        "Übernachtung im Wüstencamp unter den Sternen.",
-        "🏕 Unterkunft: Wüstencamp"
+        "Früh aufstehen, um den Sonnenaufgang über den Dünen zu sehen – ein unvergesslicher Moment.",
+        "Rückkehr mit dem Kamel nach Merzouga für Frühstück und Dusche.",
+        "Fahrt nach Tinghir und Erkundung der atemberaubenden Todra-Schlucht.",
+        "Spaziergang zwischen den hoch aufragenden Felswänden.",
+        "Weiterfahrt ins schöne Dades-Tal, bekannt für seine Felsformationen.",
+        "Abendessen und Übernachtung in einem Hotel mit Blick auf das Tal."
       ],
       "accommodation": "Hotel/Riad im Dades-Tal",
       "meals": "Abendessen & Frühstück inbegriffen"
     },
     "day3": {
+      "title": "Dades-Tal ➜ Ouarzazate ➜ Ait Ben Haddou ➜ Marrakesch",
       "text": [
-        "Sonnenaufgang über den Dünen, Frühstück, dann Fahrt durch das Draa-Tal zurück nach Marrakesch.",
-        "🏡 Unterkunft: Hotel in Marrakesch"
+        "Nach dem Frühstück Weiterfahrt durch das Tal der Rosen und die Skoura-Oase nach Ouarzazate.",
+        "Besuch der Kasbah Ait Ben Haddou, UNESCO-Weltkulturerbe und Filmkulisse.",
+        "Überquerung des Hohen Atlas über den Tizi n’Tichka-Pass (2.260 m) mit Panoramablick.",
+        "Ankunft in Marrakesch am Abend, Transfer zu Ihrer Unterkunft."
       ],
       "meals": "Frühstück inbegriffen",
-      "arrival": "Um ca. 19:00–20:00 Uhr"
+      "arrival": "Gegen 19:00–20:00 Uhr"
     },
-    "includes": "Transport in klimatisiertem 4x4\nEnglisch/Französisch sprechender Fahrer\n2 Nächte Unterkunft (Hotel + Camp)\nKamelritt und Wüstencamp\nFrühstücke und Abendessen",
-    "excludes": "Mittagessen & Getränke\nEintrittsgebühren\nTrinkgeld",
-    "goodToKnow": "Abfahrt: Morgens von Fès\nRückkehr: Abend des Tages 3 in Marrakesch\nDauer: 3 Tage / 2 Nächte\nVerfügbarkeit: Täglich"
+    "includes": "Abholung in Fès & Rücktransfer in Marrakesch\nPrivater Transport in klimatisiertem 4x4 oder Minibus\nEnglisch/Französisch sprechender Fahrer-Reiseleiter\n1 Nacht im Dades-Tal (Hotel/Riad)\n1 Nacht im Wüstencamp (Standard oder Luxus)\nKamelritt in den Merzouga-Dünen\nFrühstück & Abendessen wie erwähnt\nSandboarding (optional)",
+    "excludes": "Mittagessen & Getränke\nEintrittsgebühren (falls zutreffend)\nTrinkgeld & persönliche Ausgaben",
+    "goodToKnow": "Abfahrt: 07:30 Uhr von Fès\nEnde: Marrakesch (Abend von Tag 3)\nGepäck: Kleiner Koffer oder Rucksack auf dem Kamel möglich\nMitbringen: Sonnenbrille, Sonnencreme, Hut, warme Kleidung (Wüstennächte sind kalt)",
+    "title": "Karawanen- & Kasbah-Erlebnis"
   },
   "tour4": {
-    "title": "Imperiale Städte & Küste",
-    "overview": "Entdecken Sie die Höhepunkte Marokkos auf dieser 5‑tägigen Tour von Casablanca nach Fès. Besuchen Sie die Königsstädte Rabat, Meknès und Fès, mit einem Abstecher in die Sahara‑Wüste.",
+    "overview": "Entdecken Sie die Höhepunkte Marokkos auf dieser 5-tägigen Reise von Casablanca nach Fès. Erkunden Sie die modernen und historischen Highlights von Casablanca, die politische Hauptstadt Rabat, die malerische blaue Stadt Chefchaouen, die antiken römischen Ruinen von Volubilis und die Kaiserstadt Meknès, bevor Sie Fès, die spirituelle und kulturelle Hauptstadt Marokkos, erreichen.\nDiese Tour bietet eine perfekte Balance aus Geschichte, Kultur und atemberaubender Landschaft.",
+    "title": "Kaiserstädte & Küste",
     "day1": {
+      "title": "Ankunft in Casablanca",
       "text": [
-        "Abholung vom Flughafen/Hotel in Casablanca.",
-        "Besuch der Hassan-II-Moschee (externe Besichtigung).",
-        "Fahrt nach Rabat, der Hauptstadt, mit Besuch der Kasbah Oudayas.",
-        "Weiter nach Meknès.",
-        "🏡 Unterkunft: Hotel in Meknès"
+        "Abholung vom Flughafen Casablanca Mohammed V oder Ihrem Hotel.",
+        "Besuch der Hassan-II.-Moschee, einer der größten Moscheen der Welt, direkt am Atlantik gelegen.",
+        "Erkundung der Corniche Ain Diab und der alten Medina von Casablanca.",
+        "Freier Abend zum Entspannen oder Abendessen in einem lokalen Restaurant."
       ],
       "accommodation": "Hotel in Casablanca",
-      "meals": "Abendessen inbegriffen"
+      "meals": "Keine oder optionales Abendessen"
     },
     "day2": {
+      "title": "Casablanca ➜ Rabat ➜ Chefchaouen",
       "text": [
-        "Besichtigung der römischen Ruinen von Volubilis (UNESCO).",
-        "Fahrt nach Fès mit Stopp in Moulay Idriss.",
-        "🏡 Unterkunft: Riad in Fès"
+        "Nach dem Frühstück Abfahrt nach Rabat, der Hauptstadt Marokkos.",
+        "Besuch des Hassan-Turms, des Mausoleums von Mohamed V. und der Kasbah des Oudayas mit Blick auf den Fluss Bou Regreg.",
+        "Weiterfahrt durch das Rif-Gebirge in das atemberaubende Chefchaouen, bekannt als die Blaue Perle Marokkos.",
+        "Genießen Sie einen friedlichen Spaziergang durch die blau gestrichenen Straßen und lebhaften Märkte."
       ],
       "accommodation": "Riad/Hotel in Chefchaouen",
       "meals": "Frühstück inbegriffen"
     },
     "day3": {
+      "title": "Chefchaouen ➜ Volubilis ➜ Meknès ➜ Fès",
       "text": [
-        "Geführte Tour durch die Medina von Fès, die größte autofreie Stadt der Welt.",
-        "Besuch der Gerbereien, Moscheen und Souks.",
-        "🍽 Mahlzeiten: Frühstück inbegriffen"
+        "Morgen zur freien Verfügung, um weitere Fotos in Chefchaouen zu machen.",
+        "Abfahrt zu den antiken römischen Ruinen von Volubilis (UNESCO-Weltkulturerbe).",
+        "Weiterfahrt nach Meknès, einer der vier Königsstädte Marokkos, um das Bab-Mansour-Tor, den El-Hedim-Platz und das Mausoleum von Moulay Ismail zu besuchen.",
+        "Ankunft in Fès gegen Abend."
       ],
       "accommodation": "Riad/Hotel in Fès",
       "meals": "Frühstück inbegriffen"
     },
     "day4": {
+      "title": "Ganztägige geführte Tour durch Fès",
       "text": [
-        "Fahrt durch den Mittleren Atlas nach Merzouga.",
-        "Stopps in Ifrane und Azrou.",
-        "🏡 Unterkunft: Hotel in Merzouga"
+        "Nach dem Frühstück treffen Sie Ihren lokalen Führer für eine umfassende Erkundung von Fès el Bali, der ältesten lebenden mittelalterlichen Stadt der Welt.",
+        "Besuch der Universität Al-Qarawiyyin, der Bou-Inania-Madrasa, des Nejjarine-Brunnens und der farbenfrohen Chouara-Gerbereien.",
+        "Erkunden Sie traditionelle Märkte, Handwerksbetriebe und Aussichtspunkte.",
+        "Freier Abend in Ihrem Riad."
       ],
       "accommodation": "Riad/Hotel in Fès",
       "meals": "Frühstück inbegriffen"
     },
     "day5": {
+      "title": "Fès ➜ Transfer / Abreise",
       "text": [
-        "Kurzer Wüstenaufenthalt, dann Rückfahrt nach Fès via Erfoud.",
-        "🏡 Unterkunft: Riad in Fès"
+        "Frühstück in Ihrem Riad.",
+        "Je nach Zeitplan Transfer zum Flughafen Fès oder Flughafen Casablanca.",
+        "Ende der Tour mit wunderbaren Erinnerungen an Marokko!"
       ],
       "meals": "Frühstück inbegriffen"
     },
-    "includes": "Transport in klimatisiertem 4x4\nEnglisch/Französisch sprechender Fahrer\n4 Nächte Unterkunft\nLokale Führer in den Städten\nFrühstücke",
-    "excludes": "Mittagessen & Getränke\nEintrittsgebühren\nTrinkgeld",
-    "goodToKnow": "Abfahrt: Casablanca (Hotel oder Flughafen)\nEnde: Fès oder Casablanca\nDauer: 5 Tage / 4 Nächte\nVerfügbarkeit: Tägliche Abfahrten\nAnpassung: Zusätzliche Nächte, Hotel‑Upgrades oder Fortsetzung in die Wüste"
+    "includes": "Privater Transport in klimatisiertem 4x4 oder Minibus\nEnglisch/Französisch sprechender Fahrer-Reiseleiter\n4 Nächte Unterkunft (Hotels/Riads)\nLokaler Führer in Fès\nFrühstücken wie erwähnt\nFlughafentransfers (Casablanca & Fès)",
+    "excludes": "Mittagessen & Abendessen nicht erwähnt\nEintrittsgebühren\nTrinkgeld & persönliche Ausgaben",
+    "goodToKnow": "Abfahrt: Casablanca (Hotel oder Flughafen)\nEnde: Fès oder Casablanca\nDauer: 5 Tage / 4 Nächte\nVerfügbarkeit: Tägliche Abfahrten\nAnpassung: Fügen Sie Nächte hinzu, upgraden Sie Hotels oder setzen Sie die Tour in die Sahara fort"
   },
   "tour5": {
     "title": "Große Marokko-Rundreise",
-    "overview": "Diese 10‑tägige Tour von Marrakesch nach Casablanca ermöglicht es Ihnen, das Beste Marokkos zu erleben – von den Dünen der Sahara‑Wüste zu den imperialen Städten, den Bergen des Atlas und der Atlantikküste.",
+    "overview": "Diese 10-tägige Tour von Marrakesch nach Casablanca ermöglicht es Ihnen, das Beste Marokkos zu erleben – von den Dünen der Sahara-Wüste zu den Königsstädten, den Bergen des Atlas und der Atlantikküste.\nReiten Sie auf Kamelen in den Sonnenuntergang, erkunden Sie alte Kasbahs, wandern Sie durch blaue Gassen und entdecken Sie Marokkos reiche Geschichte und Gastfreundschaft.",
     "day1": {
+      "title": "Ankunft in Marrakesch",
       "text": [
-        "Abholung am Flughafen von Marrakesch und Transfer zu Ihrem Riad/Hotel.",
-        "Freizeit, um den Platz Jemaa el-Fna zu erkunden.",
-        "🏡 Unterkunft: Riad/Hotel in Marrakesch"
+        "Abholung vom Flughafen Marrakesch und Transfer zu Ihrem Riad/Hotel.",
+        "Freizeit, um den Platz Jemaa el-Fna zu erkunden, das pulsierende Herz von Marrakesch.",
+        "Optionales Abendessen in einem traditionellen Restaurant mit marokkanischer Musik."
       ],
-      "accommodation": "Riad/Hotel in Marrakech"
+      "accommodation": "Riad/Hotel in Marrakesch",
+      "meals": "Keine oder optionales Abendessen"
     },
     "day2": {
+      "title": "Marrakesch – Geführte Stadttour",
       "text": [
-        "Geführte Tour: Koutoubia, Bahia-Palast, Saadier-Gräber.",
-        "Optionaler Besuch des Majorelle-Gartens.",
-        "🍽 Mahlzeiten: Frühstück inbegriffen"
+        "Geführte Tour zu den historischen und kulturellen Stätten von Marrakesch:",
+        "Koutoubia-Moschee, Bahia-Palast und Saadier-Gräber.",
+        "Erkunden Sie die Souks der Medina und den Majorelle-Garten (optionaler Besuch).",
+        "Nachmittag zur freien Verfügung für Cafés, Shopping oder Hammam & Spa."
       ],
-      "accommodation": "Riad/Hotel in Marrakech",
+      "accommodation": "Riad/Hotel in Marrakesch",
       "meals": "Frühstück inbegriffen"
     },
     "day3": {
+      "title": "Marrakesch ➜ Ait Ben Haddou ➜ Ouarzazate ➜ Dades-Tal",
       "text": [
-        "Überquerung des Hohen Atlas über den Tizi n'Tichka-Pass.",
-        "Besuch von Ait Ben Haddou (UNESCO) und Ouarzazate.",
-        "🏡 Unterkunft: Hotel/Riad im Dadestal"
+        "Abfahrt von Marrakesch über das Hohe Atlasgebirge über den Tizi n’Tichka-Pass (2.260 m).",
+        "Besuch der Kasbah Ait Ben Haddou, UNESCO-Weltkulturerbe.",
+        "Weiterfahrt nach Ouarzazate, bekannt als das \"Hollywood Afrikas\".",
+        "Fahrt durch die Skoura-Oase und das Tal der Rosen zum Dades-Tal."
       ],
-      "accommodation": "Hotel/Riad im Dades-Tal"
+      "accommodation": "Hotel/Riad im Dades-Tal",
+      "meals": "Abendessen & Frühstück inbegriffen"
     },
     "day4": {
+      "title": "Dades-Tal ➜ Todra-Schluchten ➜ Merzouga-Wüste",
       "text": [
-        "Wanderung in den Todraschluchten, dann Weiterfahrt nach Merzouga.",
-        "Kamelritt in Erg Chebbi und Nacht im Wüstencamp.",
-        "🏕 Unterkunft: Wüstencamp (Standard oder Luxus)"
+        "Frühstück und Abfahrt zu den Todra-Schluchten, Marokkos berühmtestem Canyon.",
+        "Weiterfahrt über Tinejdad und Erfoud, berühmt für Fossilien und Datteln.",
+        "Ankunft in Merzouga, dem Tor zur Sahara-Wüste.",
+        "Kamelritt in die Erg Chebbi-Dünen, Sonnenuntergang genießen, Abendessen und eine Nacht unter den Sternen."
       ],
-      "accommodation": "Wüstencamp (Standard oder Luxus)",
-      "meals": "Frühstück und Abendessen inbegriffen"
+      "accommodation": "Wüstencamp in Merzouga (Standard oder Luxus)",
+      "meals": "Abendessen & Frühstück inbegriffen",
+      "activities": "Kamelritt, Sandboarding, Berbermusik"
     },
     "day5": {
+      "title": "Merzouga ➜ Ziz-Tal ➜ Midelt ➜ Fès",
       "text": [
-        "Sonnenaufgang über den Dünen, Frühstück, dann Fahrt via Ziz-Tal.",
-        "Überquerung des Mittleren Atlas (Midelt, Azrou-Wälder, Ifrane).",
-        "🏡 Unterkunft: Riad in Fès"
+        "Frühes Aufstehen für den Sonnenaufgang über den Dünen.",
+        "Nach dem Frühstück verlassen Sie die Wüste über Rissani und das Ziz-Tal.",
+        "Überquerung des Mittleren Atlas, vorbei an Midelt, dem Zedernwald von Azrou und Ifrane.",
+        "Ankunft in Fès am Abend."
       ],
       "accommodation": "Riad in Fès",
       "meals": "Frühstück inbegriffen"
     },
-    "includes": "Privater Transport in klimatisiertem 4x4 oder Minibus\nEnglisch/Französisch sprechender Fahrer‑Reiseleiter\n9 Nächte Unterkunft (Hotels, Riads, Wüstencamp)\nKamelritt in der Merzouga‑Wüste\nLokale Führer in Marrakesch & Fès\nFrühstücke und Abendessen wie erwähnt",
-    "excludes": "Mittagessen & Getränke\nEintrittsgebühren (falls zutreffend)\nTrinkgeld & persönliche Ausgaben",
-    "goodToKnow": "Abfahrt: Marrakesch (Flughafen oder Hotel)\nEnde: Casablanca (Flughafen oder Hotel)\nDauer: 10 Tage / 9 Nächte\nVerfügbar: Täglich, ganzjährig",
     "day6": {
+      "title": "Geführte Tour durch Fès",
+      "text": [
+        "Treffen Sie Ihren lokalen Führer für einen ganztägigen Besuch von Fès el Bali, Marokkos ältester Medina.",
+        "Erkunden Sie die Universität Al-Qarawiyyin, die Bou-Inania-Madrasa, den Nejjarine-Brunnen und die Chouara-Gerbereien.",
+        "Schlendern Sie durch die Souks und Handwerksbetriebe."
+      ],
       "accommodation": "Riad in Fès",
       "meals": "Frühstück inbegriffen"
     },
     "day7": {
+      "title": "Fès ➜ Meknès ➜ Volubilis ➜ Chefchaouen",
+      "text": [
+        "Abfahrt nach Meknès, eine der vier Königsstädte. Besuch des Bab-Mansour-Tors und des El-Hedim-Platzes.",
+        "Erkunden Sie die römischen Ruinen von Volubilis, eine UNESCO-Stätte.",
+        "Weiterfahrt nach Norden durch das Rif-Gebirge zur blauen Stadt Chefchaouen."
+      ],
       "accommodation": "Riad/Hotel in Chefchaouen",
       "meals": "Frühstück inbegriffen"
     },
     "day8": {
-      "accommodation": "Hotel in Rabat",
+      "title": "Chefchaouen – Freier Tag",
+      "text": [
+        "Freier Tag, um die magischen blauen Straßen von Chefchaouen zu genießen.",
+        "Optionale kurze Wanderungen, Fotografie oder Entspannung im Café."
+      ],
+      "accommodation": "Riad/Hotel in Chefchaouen",
       "meals": "Frühstück inbegriffen"
     },
     "day9": {
+      "title": "Chefchaouen ➜ Rabat ➜ Casablanca",
+      "text": [
+        "Nach dem Frühstück Fahrt nach Rabat, der Hauptstadt Marokkos.",
+        "Besuch des Hassan-Turms, des Mausoleums von Mohamed V. und der Kasbah des Oudayas.",
+        "Weiterfahrt nach Casablanca, dem wirtschaftlichen Zentrum Marokkos."
+      ],
       "accommodation": "Hotel in Casablanca",
       "meals": "Frühstück inbegriffen"
     },
     "day10": {
+      "title": "Casablanca – Abreise",
+      "text": [
+        "Frühstück in Ihrem Hotel.",
+        "Transfer zum Flughafen Casablanca für Ihren Heimflug.",
+        "Ende der Tour mit unvergesslichen Erinnerungen!"
+      ],
       "meals": "Frühstück inbegriffen"
-    }
+    },
+    "includes": "Privater Transport in klimatisiertem 4x4 oder Minibus\nEnglisch/Französisch sprechender Fahrer-Reiseleiter\n9 Nächte Unterkunft (Hotels/Riads)\nLokaler Führer in Marrakesch & Fès\nFrühstücken wie erwähnt\nFlughafentransfers",
+    "excludes": "Mittagessen & Abendessen nicht erwähnt\nEintrittsgebühren\nTrinkgeld & persönliche Ausgaben",
+    "goodToKnow": "Abfahrt: Marrakesch (Hotel oder Flughafen)\nEnde: Casablanca (Flughafen)\nDauer: 10 Tage / 9 Nächte\nVerfügbarkeit: Tägliche Abfahrten\nAnpassung: Route umkehren oder Nächte hinzufügen"
   },
   "tour6": {
     "title": "Atlas & Wüste Erlebnis",
-    "overview": "Entdecken Sie Marokko in 12 Tagen mit dieser umfassenden Tour von Casablanca nach Marrakesch, vorbei an den imperialen Städten, der Sahara‑Wüste und den Bergen des Atlas.",
+    "overview": "Dieses 4-tägige Abenteuer von Marrakesch in die Wüste Merzouga lässt Sie die atemberaubenden Landschaften Marokkos erleben – vom Hohen Atlasgebirge und alten Kasbahs bis zu den Dünen der Sahara.\nGenießen Sie Kamelreiten, Wüstencamping, Berbermusik unter den Sternen und charmante Täler entlang des Weges.",
     "day1": {
+      "title": "Marrakesch ➜ Ait Ben Haddou ➜ Ouarzazate ➜ Dades-Tal",
       "text": [
-        "Abholung am Flughafen von Casablanca und Transfer zu Ihrem Hotel.",
-        "Freizeit, um die moderne Stadt zu erkunden.",
-        "🏡 Unterkunft: Hotel in Casablanca"
+        "Frühe Abfahrt von Marrakesch.",
+        "Überquerung des Hohen Atlas über den Tizi n’Tichka-Pass (2.260m) mit Panoramastopps.",
+        "Besuch der Kasbah Ait Ben Haddou, UNESCO-Weltkulturerbe und Drehort vieler Filme (Gladiator, Game of Thrones).",
+        "Weiterfahrt nach Ouarzazate, bekannt als das \"Hollywood Afrikas\".",
+        "Fahrt durch das Tal der Rosen und die Skoura-Oase zum Dades-Tal."
       ],
       "accommodation": "Hotel/Riad im Dades-Tal",
       "meals": "Abendessen & Frühstück inbegriffen"
     },
     "day2": {
+      "title": "Dades-Tal ➜ Todra-Schluchten ➜ Merzouga-Wüste",
       "text": [
-        "Besichtigung von Rabat (Hauptstadt), dann Meknès und Fès.",
-        "Erkundung historischer Stätten.",
-        "🏡 Unterkunft: Riad in Fès"
+        "Frühstück im Hotel, dann Fahrt zu den beeindruckenden Todra-Schluchten, wo Sie zwischen 300 m hohen Felswänden spazieren können.",
+        "Weiterfahrt durch Tinejdad und Erfoud, bekannt für Fossilien und Datteln.",
+        "Ankunft in Merzouga, dem Tor zur Sahara-Wüste.",
+        "Treffen Sie Ihre Kamelkarawane und reiten Sie durch die Erg Chebbi-Dünen zu Ihrem Wüstencamp.",
+        "Genießen Sie ein traditionelles Abendessen, Berbertrommeln und eine Nacht unter den Sternen."
       ],
       "accommodation": "Wüstencamp in Merzouga (Standard oder Luxus)",
       "meals": "Abendessen & Frühstück inbegriffen",
-      "activities": "Kamelausritt, Sandboarden"
+      "activities": "Kamelritt, Sandboarding, Sonnenuntergang, Lagerfeuermusik"
     },
     "day3": {
+      "title": "Merzouga ➜ Alnif ➜ Draa-Tal ➜ Ouarzazate",
       "text": [
-        "Geführte Tour: Medina von Fès, Gerbereien, Moscheen.",
-        "Souks und Gärten.",
-        "🍽 Mahlzeiten: Frühstück inbegriffen"
+        "Frühes Aufstehen, um den Sonnenaufgang über den Dünen zu erleben – ein atemberaubender Moment.",
+        "Kamelritt oder Fahrt zurück ins Dorf zum Frühstück und Duschen.",
+        "Abfahrt durch Alnif und Tazzarine, entlang des malerischen Draa-Tals, eines der längsten Flusstäler Marokkos.",
+        "Weiterfahrt Richtung Ouarzazate.",
+        "Abendessen und Übernachtung in einem traditionellen Riad oder Hotel in Ouarzazate."
       ],
       "accommodation": "Hotel/Riad in Ouarzazate",
       "meals": "Abendessen & Frühstück inbegriffen"
     },
     "day4": {
+      "title": "Ouarzazate ➜ Hoher Atlas ➜ Marrakesch",
       "text": [
-        "Fahrt durch den Mittleren Atlas nach Merzouga.",
-        "Stopps in Zedernwäldern und Berglandschaften.",
-        "🏡 Unterkunft: Hotel in Merzouga"
+        "Nach dem Frühstück Besuch der Taourirt-Kasbah oder der Atlas-Filmstudios (optional).",
+        "Rückfahrt nach Marrakesch über das Hohe Atlasgebirge.",
+        "Ankunft in Marrakesch am späten Nachmittag."
       ],
       "meals": "Frühstück inbegriffen",
-      "arrival": "Um ca. 17:00–18:00 Uhr"
+      "arrival": "Gegen 17:00–18:00 Uhr"
     },
-    "day5": {
-      "text": [
-        "Kamelritt in Erg Chebbi.",
-        "Traditionelles Abendessen und Nacht im Wüstencamp.",
-        "🏕 Unterkunft: Wüstencamp"
-      ]
-    },
-    "day6": {
-      "text": [
-        "Sonnenaufgang, Frühstück, dann Fahrt ins Dadestal.",
-        "Besichtigung der Todraschlucht.",
-        "🏡 Unterkunft: Hotel im Dadestal"
-      ]
-    },
-    "includes": "Privater Transport in klimatisiertem 4x4 oder Minibus\nEnglisch/Französisch sprechender Fahrer‑Reiseleiter\n11 Nächte Unterkunft (Hotels, Riads, Wüstencamp)\nKamelritt in der Merzouga‑Wüste\nLokale Führer in den imperialen Städten\nFrühstücke und Abendessen wie erwähnt",
+    "includes": "Abholung und Rücktransfer in Marrakesch\nPrivater Transport in klimatisiertem 4x4 oder Minibus\nEnglisch/Französisch sprechender Fahrer-Reiseleiter\n2 Nächte in traditionellen Riads/Hotels\n1 Nacht im Wüstencamp (Standard oder Luxus)\nKamelritt in den Merzouga-Dünen\nFrühstücke & Abendessen (wie erwähnt)\nSandboarding (optional)",
     "excludes": "Mittagessen & Getränke\nEintrittsgebühren (falls zutreffend)\nTrinkgeld & persönliche Ausgaben",
-    "goodToKnow": "Abfahrt: Casablanca (Flughafen oder Hotel)\nEnde: Marrakesch (Flughafen oder Hotel)\nDauer: 12 Tage / 11 Nächte\nVerfügbar: Täglich, ganzjährig"
+    "goodToKnow": "Abfahrt: 07:30 Uhr von Marrakesch\nEnde: Marrakesch (Abend von Tag 4)\nEntfernung: ~1.000 km insgesamt\nMitbringen: Sonnenbrille, Hut, Sonnencreme und warme Kleidung für Wüstennächte\nAnpassung: Kann in Fès beginnen oder enden / Upgrade auf Luxuscamp möglich"
   },
   "tour7": {
     "title": "Küsten- & Wüsten-Odyssee",

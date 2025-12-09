@@ -1,5 +1,8 @@
 {
-  "/[locale]/excursions/page": "app/[locale]/excursions/page.js",
   "/[locale]/page": "app/[locale]/page.js",
+  "/[locale]/tours/caravan-and-kasbah-experience-3-days/page": "app/[locale]/tours/caravan-and-kasbah-experience-3-days/page.js",
+  "/[locale]/tours/chegaga-wilderness-expedition-3-days/page": "app/[locale]/tours/chegaga-wilderness-expedition-3-days/page.js",
+  "/[locale]/tours/coast-and-cities-explorer-6-days/page": "app/[locale]/tours/coast-and-cities-explorer-6-days/page.js",
+  "/[locale]/tours/imperial-cities-and-coastline-5-days/page": "app/[locale]/tours/imperial-cities-and-coastline-5-days/page.js",
   "/[locale]/tours/page": "app/[locale]/tours/page.js"
 }

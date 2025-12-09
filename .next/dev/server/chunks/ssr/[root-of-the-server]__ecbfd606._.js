@@ -1007,8 +1007,8 @@ __turbopack_context__.s([
     "hasRecaptchaV2",
     ()=>hasRecaptchaV2
 ]);
-const RECAPTCHA_V2_SITE_KEY = ("TURBOPACK compile-time value", "your-recaptcha-v2-site-key") || "";
-const RECAPTCHA_V3_SITE_KEY = ("TURBOPACK compile-time value", "your-recaptcha-v3-site-key") || "";
+const RECAPTCHA_V2_SITE_KEY = ("TURBOPACK compile-time value", "6LdmbhAsAAAAADk-anER1LaxxsionIS1NAcfkPWd") || "6LdibCMsAAAAAEs4tGP69c05XHL_G35zjtMpbI7I";
+const RECAPTCHA_V3_SITE_KEY = ("TURBOPACK compile-time value", "6LedUgcsAAAAAH3uZQvD_5dqJkcW5A6ef0DLaVKG") || "";
 const hasRecaptchaV2 = Boolean(RECAPTCHA_V2_SITE_KEY);
 }),
 "[project]/app/_components/layout/Footer.tsx [app-ssr] (ecmascript)", ((__turbopack_context__) => {

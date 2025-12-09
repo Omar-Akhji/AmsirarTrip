@@ -1065,8 +1065,8 @@ __turbopack_context__.s([
     ()=>hasRecaptchaV2
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
-const RECAPTCHA_V2_SITE_KEY = ("TURBOPACK compile-time value", "your-recaptcha-v2-site-key") || "";
-const RECAPTCHA_V3_SITE_KEY = ("TURBOPACK compile-time value", "your-recaptcha-v3-site-key") || "";
+const RECAPTCHA_V2_SITE_KEY = ("TURBOPACK compile-time value", "6LdmbhAsAAAAADk-anER1LaxxsionIS1NAcfkPWd") || "6LdibCMsAAAAAEs4tGP69c05XHL_G35zjtMpbI7I";
+const RECAPTCHA_V3_SITE_KEY = ("TURBOPACK compile-time value", "6LedUgcsAAAAAH3uZQvD_5dqJkcW5A6ef0DLaVKG") || "";
 const hasRecaptchaV2 = Boolean(RECAPTCHA_V2_SITE_KEY);
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
