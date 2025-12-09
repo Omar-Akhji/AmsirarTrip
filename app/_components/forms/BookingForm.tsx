@@ -229,13 +229,13 @@ const BookingForm: React.FC<BookingFormProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
-            className="overflow-hidden rounded-2xl bg-white shadow-lg lg:col-span-3"
+            className="overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-orange-100 lg:col-span-3"
           >
-            <div className="bg-linear-to-r from-orange-500 to-orange-600 p-6 text-white">
+            <div className="bg-linear-to-r from-orange-500 to-orange-600 px-6 py-8 text-white">
               <h2 className="text-2xl font-bold md:text-3xl">
                 {t("booking.makeReservation", "Make your reservation")}
               </h2>
-              <p className="mt-1 text-sm opacity-90 md:text-base">
+              <p className="mt-3 text-sm text-orange-50/90 md:text-base">
                 {t(
                   "booking.description",
                   "Book your perfect Morocco adventure with us"
@@ -243,10 +243,14 @@ const BookingForm: React.FC<BookingFormProps> = ({
               </p>
             </div>
 
-            <form onSubmit={handleSubmit} className="grid gap-4 p-6" noValidate>
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-5 p-6 md:p-8"
+              noValidate
+            >
               {/* Error Summary */}
               {errors.submit && (
-                <div className="rounded-lg border border-orange-200 bg-orange-50 p-4 text-sm text-orange-900">
+                <div className="rounded-2xl border border-orange-200 bg-orange-50 px-4 py-3 text-sm text-orange-900">
                   <div className="flex items-start gap-2">
                     <svg
                       className="mt-0.5 h-5 w-5 shrink-0"
@@ -265,54 +269,61 @@ const BookingForm: React.FC<BookingFormProps> = ({
               )}
 
               {tourTitle && tourId && (
-                <motion.input
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                  className="w-full rounded-lg border border-gray-200 bg-gray-100 px-4 py-2 text-sm text-gray-700"
-                  type="text"
-                  name="selectedTour"
-                  placeholder={t("booking.selectedTour", "Selected Tour")}
-                  value={`${tourTitle} - Duration: ${
-                    TOURS_DATA.find((t) => t.id === Number(tourId))?.duration ||
-                    ""
-                  } Days`}
-                  readOnly
-                />
+                <div className="mb-6">
+                  <motion.input
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: 0.1 }}
+                    className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700"
+                    type="text"
+                    name="selectedTour"
+                    placeholder={t("booking.selectedTour", "Selected Tour")}
+                    value={`${tourTitle} - Duration: ${
+                      TOURS_DATA.find((t) => t.id === Number(tourId))
+                        ?.duration || ""
+                    } Days`}
+                    readOnly
+                  />
+                </div>
               )}
 
               {excursionTitle && excursionId && (
-                <motion.input
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.1 }}
-                  className="w-full rounded-lg border border-gray-200 bg-gray-100 px-4 py-2 text-sm text-gray-700"
-                  type="text"
-                  name="selectedTour"
-                  placeholder={t(
-                    "booking.selectedExcursion",
-                    "Selected Excursion"
-                  )}
-                  value={excursionTitle}
-                  readOnly
-                />
+                <div className="mb-6">
+                  <motion.input
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.3, delay: 0.1 }}
+                    className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700"
+                    type="text"
+                    name="selectedTour"
+                    placeholder={t(
+                      "booking.selectedExcursion",
+                      "Selected Excursion"
+                    )}
+                    value={excursionTitle}
+                    readOnly
+                  />
+                </div>
               )}
 
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: 0.2 }}
                 >
+                  <label htmlFor="fullName" className="sr-only">
+                    {t("booking.fullName", "Full Name")}
+                  </label>
                   <input
                     className={cn(
-                      "w-full rounded-lg border px-4 py-2 focus:ring-2 focus:outline-none",
+                      "w-full rounded-2xl border px-4 py-3 text-sm focus:border-orange-400 focus:ring-2 focus:ring-orange-200",
                       errors.fullName && touched.fullName
                         ? "border-red-300 focus:ring-red-200"
-                        : "border-gray-200 focus:ring-orange-200"
+                        : "border-gray-200"
                     )}
                     type="text"
                     id="fullName"
@@ -347,12 +358,15 @@ const BookingForm: React.FC<BookingFormProps> = ({
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: 0.3 }}
                 >
+                  <label htmlFor="phone" className="sr-only">
+                    {t("booking.phone", "Phone Number")}
+                  </label>
                   <input
                     className={cn(
-                      "w-full rounded-lg border px-4 py-2 focus:ring-2 focus:outline-none",
+                      "w-full rounded-2xl border px-4 py-3 text-sm focus:border-orange-400 focus:ring-2 focus:ring-orange-200",
                       errors.phone && touched.phone
                         ? "border-red-300 focus:ring-red-200"
-                        : "border-gray-200 focus:ring-orange-200"
+                        : "border-gray-200"
                     )}
                     type="tel"
                     id="phone"
@@ -383,12 +397,15 @@ const BookingForm: React.FC<BookingFormProps> = ({
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: 0.4 }}
               >
+                <label htmlFor="email" className="sr-only">
+                  {t("booking.email", "Email")}
+                </label>
                 <input
                   className={cn(
-                    "w-full rounded-lg border px-4 py-2 focus:ring-2 focus:outline-none",
+                    "w-full rounded-2xl border px-4 py-3 text-sm focus:border-orange-400 focus:ring-2 focus:ring-orange-200",
                     errors.email && touched.email
                       ? "border-red-300 focus:ring-red-200"
-                      : "border-gray-200 focus:ring-orange-200"
+                      : "border-gray-200"
                   )}
                   type="email"
                   id="email"
@@ -412,19 +429,22 @@ const BookingForm: React.FC<BookingFormProps> = ({
                 )}
               </motion.div>
 
-              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
                 <motion.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: 0.5 }}
                 >
+                  <label htmlFor="numberOfPeople" className="sr-only">
+                    {t("booking.numberOfPeople", "Number of People")}
+                  </label>
                   <input
                     className={cn(
-                      "w-full rounded-lg border px-4 py-2 focus:ring-2 focus:outline-none",
+                      "w-full rounded-2xl border px-4 py-3 text-sm focus:border-orange-400 focus:ring-2 focus:ring-orange-200",
                       errors.numberOfPeople && touched.numberOfPeople
                         ? "border-red-300 focus:ring-red-200"
-                        : "border-gray-200 focus:ring-orange-200"
+                        : "border-gray-200"
                     )}
                     type="number"
                     id="numberOfPeople"
@@ -471,7 +491,7 @@ const BookingForm: React.FC<BookingFormProps> = ({
                       <Button
                         variant="outline"
                         className={cn(
-                          "h-auto w-full justify-start rounded-lg px-4 py-2 text-left font-normal hover:bg-gray-50",
+                          "h-auto w-full justify-start rounded-2xl border-gray-200 px-4 py-3 text-left text-sm font-normal hover:bg-gray-50 hover:text-gray-900",
                           !formData.reservationDate && "text-gray-500",
                           errors.reservationDate && touched.reservationDate
                             ? "border-red-300"
@@ -536,17 +556,21 @@ const BookingForm: React.FC<BookingFormProps> = ({
               </div>
 
               <div className="w-full">
+                <label htmlFor="message" className="sr-only">
+                  {t("booking.message", "Your message")}
+                </label>
                 <motion.textarea
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: 0.7 }}
                   className={cn(
-                    "w-full rounded-lg border px-4 py-3 focus:ring-2 focus:ring-orange-200 focus:outline-none",
+                    "w-full rounded-2xl border px-4 py-3 text-sm focus:border-orange-400 focus:ring-2 focus:ring-orange-200",
                     errors.message && touched.message
                       ? "border-red-300"
                       : "border-gray-200"
                   )}
+                  id="message"
                   name="message"
                   placeholder={t("booking.message", "Your message")}
                   value={formData.message}
@@ -573,7 +597,7 @@ const BookingForm: React.FC<BookingFormProps> = ({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.3, delay: 0.8 }}
-                className="flex flex-col items-center gap-4 md:flex-row md:justify-between"
+                className="flex flex-col gap-4 lg:flex-row lg:items-center"
               >
                 <div>
                   <div
@@ -617,9 +641,9 @@ const BookingForm: React.FC<BookingFormProps> = ({
                   )}
                 </div>
 
-                <div className="w-full md:w-40">
+                <div className="w-full flex-1">
                   <button
-                    className="flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-orange-600 px-4 py-2 font-semibold text-white shadow transition-all hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60"
+                    className="flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-semibold tracking-wide text-white uppercase shadow-lg shadow-orange-500/25 transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
                     type="submit"
                     disabled={submitting}
                     aria-busy={submitting}
