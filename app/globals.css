@@ -565,11 +565,29 @@ img {
 /* Responsive styles */
 @media screen and (max-width: 767px) {
   header.header-sm {
-    min-height: 60vh;
+    min-height: 50vh;
   }
 
   header:not(.header-sm) {
-    min-height: 70vh;
+    min-height: 60vh;
+  }
+
+  /* Fix full-bleed header on mobile to prevent overflow */
+  header {
+    width: 100% !important;
+    left: auto !important;
+    right: auto !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-top: 5rem !important; /* Reduce padding on mobile */
+  }
+
+  /* Prevent zoom on inputs on iOS */
+  input,
+  select,
+  textarea,
+  button {
+    font-size: 16px !important;
   }
 
   #featured .card-article {
