@@ -223,13 +223,13 @@ const BookingForm: React.FC<BookingFormProps> = ({
   return (
     <section id="booking" className={baseSectionClass}>
       <div className={innerWrapperClass}>
-        <div className="grid gap-6 lg:grid-cols-[3fr_2fr]">
+        <div className="grid gap-8 lg:grid-cols-5">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6 }}
-            className="overflow-hidden rounded-2xl bg-white shadow-lg"
+            className="overflow-hidden rounded-2xl bg-white shadow-lg lg:col-span-3"
           >
             <div className="bg-linear-to-r from-orange-500 to-orange-600 p-6 text-white">
               <h2 className="text-2xl font-bold md:text-3xl">
@@ -641,7 +641,7 @@ const BookingForm: React.FC<BookingFormProps> = ({
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="relative overflow-hidden rounded-3xl bg-slate-950 p-6 text-white shadow-2xl ring-1 shadow-slate-900/40 ring-white/10 lg:p-8"
+            className="relative overflow-hidden rounded-3xl bg-slate-950 p-6 text-white shadow-2xl ring-1 shadow-slate-900/40 ring-white/10 lg:col-span-2 lg:p-8"
           >
             <div
               className="absolute -top-20 -right-10 h-48 w-48 rounded-full bg-orange-500/30 blur-3xl"

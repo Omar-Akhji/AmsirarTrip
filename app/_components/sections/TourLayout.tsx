@@ -136,14 +136,14 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
 
   return (
     <>
-      <header className="header-sm relative isolate flex overflow-hidden bg-slate-900 text-white">
+      <header className="relative isolate overflow-hidden bg-slate-950 text-white">
         <div
           className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(248,250,252,0.08),transparent_60%)]"
           aria-hidden="true"
         ></div>
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 py-16 lg:flex-row lg:items-center">
-          <div className="flex-1">
-            <span className="text-4xl font-semibold tracking-[0.45em] text-orange-200 uppercase">
+        <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 py-24 text-center lg:flex-row lg:items-center lg:py-28 lg:text-left">
+          <div className="flex-1 space-y-6 pt-6 text-center lg:pt-12">
+            <span className="block text-4xl font-semibold tracking-[0.45em] text-orange-200 uppercase">
               {t("tours.detailsTitle")}
             </span>
             <div className="mt-2">

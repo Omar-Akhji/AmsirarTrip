@@ -5067,24 +5067,11 @@ img {
 
 @media screen and (max-width: 767px) {
   header.header-sm {
-    min-height: 50vh;
-  }
-
-  header:not(.header-sm) {
     min-height: 60vh;
   }
 
-  header {
-    width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-top: 5rem !important;
-    left: auto !important;
-    right: auto !important;
-  }
-
-  input, select, textarea, button {
-    font-size: 16px !important;
+  header:not(.header-sm) {
+    min-height: 70vh;
   }
 
   #featured .card-article {
