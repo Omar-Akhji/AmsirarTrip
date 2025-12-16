@@ -1,0 +1,131 @@
+PROPRIETARY LICENSE
+
+Copyright © 2024-2025 AmsirarTrip. All Rights Reserved.
+
+================================================================================
+
+OWNERSHIP AND COPYRIGHT
+
+This software and all associated files, documentation, images, and code
+(the "Software") are the exclusive property of:
+
+    Company:    Amsirar / AmsirarTrip
+    Website:    https://www.amsirartrip.com
+    Developer:  Omar Akhji
+    GitHub:     https://github.com/Omar-Akhji
+
+================================================================================
+
+LICENSE GRANT
+
+NO LICENSE IS GRANTED. This Software is proprietary and confidential.
+
+All rights to the Software are expressly reserved by AmsirarTrip. No part of
+this Software may be used, copied, modified, merged, published, distributed,
+sublicensed, or sold without prior written authorization from AmsirarTrip.
+
+================================================================================
+
+RESTRICTIONS
+
+You MAY NOT:
+
+    ✗ Copy, reproduce, or duplicate the Software
+    ✗ Modify, adapt, translate, or create derivative works
+    ✗ Distribute, transfer, sublicense, lease, lend, or rent the Software
+    ✗ Reverse engineer, decompile, disassemble, or attempt to derive source code
+    ✗ Remove or alter any proprietary notices, labels, or marks
+    ✗ Use the Software for any commercial purpose
+    ✗ Use the Software for any purpose other than as expressly authorized
+
+================================================================================
+
+INTELLECTUAL PROPERTY
+
+All intellectual property rights in and to the Software, including but not
+limited to:
+
+    • Source code and object code
+    • Design, structure, and organization
+    • User interface and user experience
+    • Graphics, images, and visual elements
+    • Documentation and technical materials
+    • Trade secrets and know-how
+    • Trademarks: "AmsirarTrip", "Amsirar", and associated logos
+
+are and shall remain the exclusive property of AmsirarTrip.
+
+================================================================================
+
+AUTHORIZED USE
+
+This Software may only be used by:
+
+    • Authorized employees and contractors of AmsirarTrip
+    • Individuals expressly authorized in writing by AmsirarTrip
+    • For internal business purposes of AmsirarTrip only
+
+================================================================================
+
+THIRD-PARTY SOFTWARE
+
+This Software incorporates open-source and third-party software components
+that are subject to their respective licenses. These components include but
+are not limited to:
+
+    • Next.js (MIT License)
+    • React (MIT License)
+    • Tailwind CSS (MIT License)
+    • TypeScript (Apache License 2.0)
+    • Other dependencies as listed in package.json
+
+The licenses of these third-party components are not affected by this license
+and remain subject to their original terms.
+
+================================================================================
+
+DISCLAIMER OF WARRANTY
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
+
+IN NO EVENT SHALL AMSIRARTRIP OR OMAR AKHJI BE LIABLE FOR ANY CLAIM, DAMAGES,
+OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE,
+ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+
+================================================================================
+
+GOVERNING LAW
+
+This license shall be governed by and construed in accordance with the laws
+of the Kingdom of Morocco, without regard to its conflict of law provisions.
+
+================================================================================
+
+CONTACT INFORMATION
+
+For licensing inquiries, permissions, or authorization requests:
+
+    Email:      amsirare@gmail.com
+    Phone:      +212 (0) 6 61 17 31 44
+    Address:    Marrakech, Morocco
+    Developer:  Omar Akhji (https://github.com/Omar-Akhji/)
+
+================================================================================
+
+VIOLATION
+
+Unauthorized use, copying, distribution, or modification of this Software
+constitutes copyright infringement and may result in severe civil and criminal
+penalties, and will be prosecuted to the maximum extent possible under law.
+
+================================================================================
+
+Last Updated: December 16, 2025
+Version: 1.0.0
+
+================================================================================
+
+ALL RIGHTS RESERVED
