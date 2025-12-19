@@ -1,64 +1,111 @@
 # AmsirarTrip - Morocco Travel & Tours Website
 
-A modern Next.js 15 application for a Morocco travel and tourism website, featuring desert tours, city excursions, and adventure camping experiences.
+A modern Next.js 16 application for a Morocco travel and tourism website, featuring desert tours, city excursions, and adventure camping experiences.
 
 ## 🚀 Features
 
-- **Server-Side Rendering**: Next.js 15 with App Router for optimal performance
+- **Server-Side Rendering**: Next.js 16 with App Router and Turbopack
 - **Internationalization**: Multi-language support (English, French, German, Spanish) with next-intl
 - **Responsive Design**: Mobile-first design with Tailwind CSS v4
+- **Feature-Based Architecture**: Modular feature folders for scalability
 - **Image Galleries**: Dynamic header image rotation and photo galleries
 - **Tour Listings**: Featured tours with detailed information
 - **Booking System**: Integrated booking forms with reCAPTCHA protection
 - **API Routes**: Built-in Next.js API routes for email notifications
-- **Modern React**: Built with React 19 and React Compiler
+- **Modern React**: Built with React 19
 
 ## 🛠️ Tech Stack
 
-- **Framework**: Next.js 15 with App Router
-- **Frontend**: React 19 with React Compiler
-- **Styling**: Tailwind CSS v4 with custom PostCSS
+- **Framework**: Next.js 16 with App Router & Turbopack
+- **Frontend**: React 19
+- **Styling**: Tailwind CSS v4 with PostCSS
 - **Internationalization**: next-intl for multi-language support
+- **Animations**: Framer Motion
 - **API**: Next.js API Routes with Nodemailer
-- **Icons**: Font Awesome
+- **Security**: DOMPurify, Zod validation, reCAPTCHA v2
+- **Icons**: Lucide React
 - **Fonts**: Google Fonts (Montserrat, Yellowtail)
 
 ## 📁 Project Structure
 
-```/
+```
 src/
-├── components/
-│   ├── shared/
-│   │   ├── Navbar.jsx          # Navigation with hamburger menu
-│   │   ├── Footer.jsx          # Site footer
-│   │   ├── Preloader.jsx       # Loading animation component
-│   │   └── HeaderRotator.jsx   # Hero image carousel
-│   └── home/
-│       ├── FeaturedTours.jsx
-│       ├── ServicesSection.jsx
-│       ├── TestimonialsSection.jsx
-│       └── VideoSection.jsx
-├── pages/
-│   ├── Home.jsx
-│   ├── Gallery.jsx
-│   ├── About.jsx
-│   ├── Contact.jsx
-│   ├── Tours.jsx
-│   └── Tours-pages/            # Individual tour detail pages
-├── constants/
-│   ├── routes.js               # Route constants
-│   └── toursData.js            # Tour information
-├── hooks/
-│   ├── useNavbar.js            # Navbar scroll/resize effects
-│   └── [other utility hooks]
-└── assets/                     # CSS layers (fonts, normalize, utility, style, responsive)
+├── app/                          # Next.js App Router
+│   ├── [locale]/                 # Internationalized routes
+│   │   ├── page.tsx              # Home page
+│   │   ├── about/                # About page
+│   │   ├── contact/              # Contact page
+│   │   ├── tours/                # Tours listing & details
+│   │   └── excursions/           # Excursions listing & details
+│   └── api/                      # API routes
+│       ├── booking/              # Booking submissions
+│       ├── contact/              # Contact form
+│       └── newsletter/           # Newsletter signup
+│
+├── features/                     # Feature-based modules
+│   ├── about/                    # About page feature
+│   │   └── components/           # About-specific components
+│   ├── booking/                  # Booking system
+│   │   └── components/           # Booking forms
+│   ├── contact/                  # Contact feature
+│   │   └── components/           # Contact forms
+│   ├── excursions/               # Excursions feature
+│   │   ├── components/           # Excursion components
+│   │   ├── data/                 # Excursion data
+│   │   ├── hooks/                # Excursion-specific hooks
+│   │   ├── types/                # TypeScript types
+│   │   └── index.ts              # Barrel export
+│   ├── home/                     # Homepage feature
+│   │   └── components/           # Home sections
+│   └── tours/                    # Tours feature
+│       ├── components/           # Tour components
+│       ├── data/                 # Tour data (toursData.ts)
+│       ├── types/                # TypeScript types
+│       └── index.ts              # Barrel export
+│
+├── shared/                       # Shared/reusable code
+│   ├── layout/                   # Layout components
+│   │   ├── Navbar.tsx            # Navigation
+│   │   ├── Footer.tsx            # Site footer
+│   │   └── Sidebar.tsx           # Tour/Excursion sidebar
+│   ├── ui/                       # UI primitives
+│   │   ├── Button.tsx            # Button component
+│   │   ├── Calendar.tsx          # Date picker
+│   │   └── Popover.tsx           # Popover component
+│   └── utilities/                # Utility components
+│       └── ErrorBoundary.tsx     # Error handling
+│
+├── lib/                          # Core utilities & config
+│   ├── api-utils.ts              # API helpers & sanitization
+│   ├── schemas.ts                # Zod validation schemas
+│   ├── metadata.ts               # SEO metadata
+│   ├── security-headers.ts       # Security headers config
+│   ├── structuredData.ts         # JSON-LD structured data
+│   ├── env.ts                    # Environment variables
+│   ├── hooks/                    # Custom React hooks
+│   └── constants/                # App constants
+│
+├── i18n/                         # Internationalization config
+│   └── request.ts                # next-intl configuration
+│
+├── components/                   # Legacy components (being migrated)
+└── proxy.ts                      # Middleware proxy config
+
+public/
+├── images/                       # Static images
+├── locales/                      # Translation files
+│   ├── en/                       # English
+│   ├── fr/                       # French
+│   ├── de/                       # German
+│   └── es/                       # Spanish
+└── videos/                       # Video assets
 ```
 
 ## 🏃‍♂️ Getting Started
 
 ### Prerequisites
 
-- Node.js (v18+)
+- Node.js (v20+)
 - npm or yarn
 
 ### Installation
@@ -66,7 +113,7 @@ src/
 1. Clone the repository
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Omar-Akhji/AmsirarTrip.git
    cd AmsirarTrip
    ```
 
@@ -98,78 +145,63 @@ npm run build
 npm run start
 ```
 
+### Docker Deployment
+
+```bash
+# Build and run with Docker
+docker compose build
+docker compose up -d
+```
+
 ### Development Commands
 
-````bash
-npm run dev          # Start Next.js development server
+```bash
+npm run dev          # Start Next.js dev server (Turbopack)
 npm run build        # Build for production
 npm run start        # Start production server
 npm run lint         # Run ESLint
+npm run lint:fix     # Fix ESLint issues
 npm run lint:css     # Run Stylelint
 npm run type-check   # TypeScript type checking
-
-```bash
-npm run preview
-````
-
-### Lint Code
-
-```bash
-npm run lint
+npm run format       # Format with Prettier
 ```
 
-## 🎨 Key Components
+## 🎨 Feature Module Pattern
 
-### Preloader Component
+Each feature follows this structure:
 
-Handles loading states for images and fonts with smooth animations.
-
-```jsx
-import { Preloader } from "./components/shared";
-
-// Automatically manages loading state based on route changes
-<Preloader />;
+```
+features/tours/
+├── components/           # Feature-specific components
+│   ├── TourCard.tsx
+│   └── TourLayout.tsx
+├── data/                 # Feature data
+│   └── toursData.ts
+├── types/                # TypeScript interfaces
+│   └── index.ts
+└── index.ts              # Barrel export
 ```
 
-### HeaderRotator Component
+Import features using barrel exports:
 
-Creates an animated image carousel for hero sections.
-
-```jsx
-import { HeaderRotator } from "./components/shared";
-
-<HeaderRotator
-  images="/images/header-1.jpg,/images/header-2.jpg"
-  interval={3000}
->
-  <div className="hero-content">
-    <h1>Welcome to Morocco</h1>
-  </div>
-</HeaderRotator>;
-```
-
-### Navbar Component
-
-Responsive navigation with hamburger menu for mobile devices.
-
-```jsx
-import { Navbar } from "./components/shared";
-
-<Navbar />; // Automatically handles scroll effects and mobile menu
+```typescript
+import { toursData, Tour } from "@/features/tours";
 ```
 
 ## 📋 Development Guidelines
 
-### CSS Import Order (Critical)
+### Import Aliases
 
-Maintain this exact order in `src/main.jsx`:
+Use path aliases for clean imports:
 
-```javascript
-import "./assets/fonts.css";
-import "./assets/normalize.css";
-import "./assets/utility.css";
-import "./assets/style.css";
-import "./assets/responsive.css";
+```typescript
+// ✅ Correct
+import { Button } from "@/shared/ui/button";
+import { toursData } from "@/features/tours";
+import { sanitizeString } from "@/lib/api-utils";
+
+// ❌ Wrong
+import { Button } from "../../../shared/ui/button";
 ```
 
 ### Asset Paths
@@ -180,90 +212,45 @@ Always use absolute paths starting with `/`:
 // ✅ Correct
 <img src="/images/tour-1.jpg" alt="Tour" />
 
-// ❌ Wrong - breaks on nested routes
+// ❌ Wrong
 <img src="../images/tour-1.jpg" alt="Tour" />
 ```
-
-### Route Constants
-
-Import routes from constants instead of hardcoding:
-
-```jsx
-import { ROUTES } from './constants/routes';
-
-// ✅ Correct
-<Route path={ROUTES.HOME} element={<Home />} />
-
-// ❌ Wrong
-<Route path="/home" element={<Home />} />
-```
-
-### Component Organization
-
-Group related components in folders with index.js exports:
-
-```javascript
-// src/components/shared/index.js
-export { default as Navbar } from "./Navbar";
-export { default as Footer } from "./Footer";
-export { default as Preloader } from "./Preloader";
-export { default as HeaderRotator } from "./HeaderRotator";
-```
-
-## 🔧 Configuration
-
-### Styling & PostCSS pipeline
-
-Styling is handled with Tailwind CSS v4 and a PostCSS pipeline (Tailwind + Autoprefixer). Custom CSS is in `src/styles/App.css` and `src/styles/index.scss`.
-
-### ESLint
-
-Configured with `eslint-config-next` in `.eslintrc.json`:
-
-- Next.js core web vitals rules
-- TypeScript error ignoring during build (temporary, see next.config.ts)
-- Image optimization warnings
-
-### Next.js Configuration
-
-React Compiler enabled in `next.config.ts` for optimized builds. TypeScript build errors are temporarily ignored to allow builds while type issues are resolved.
 
 ## 📱 Responsive Design
 
 The site is fully responsive with breakpoints:
 
 - Mobile: < 768px
-- Tablet: 768px - 991px
-- Desktop: > 991px
+- Tablet: 768px - 1024px
+- Desktop: > 1024px
+- Large Desktop: > 1250px
 
-## 🌍 Browser Support
+## 🌍 Internationalization
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+Supported languages:
+
+- 🇬🇧 English (en)
+- 🇫🇷 French (fr)
+- 🇩🇪 German (de)
+- 🇪🇸 Spanish (es)
+
+Translation files are in `public/locales/{lang}/common.json`.
 
 ## 🔒 Security
 
 This application implements comprehensive security measures:
 
-- ✅ **Input Validation**: All user inputs sanitized and validated
-- ✅ **CSRF Protection**: Cross-site request forgery prevention
-- ✅ **XSS Protection**: Content Security Policy and HTML escaping
-- ✅ **Rate Limiting**: IP-based rate limiting with automatic blocking
+- ✅ **Input Validation**: DOMPurify sanitization + Zod schemas
+- ✅ **XSS Protection**: Content Security Policy headers
+- ✅ **Rate Limiting**: IP-based rate limiting with auto-blocking
 - ✅ **reCAPTCHA v2**: Bot protection on all forms
-- ✅ **Email Security**: Secure Nodemailer configuration with Gmail
-- ✅ **Environment Variables**: Validated and type-safe access
+- ✅ **Email Security**: Secure Nodemailer with Gmail
+- ✅ **Environment Variables**: Validated and type-safe
 
 **Security Documentation**:
 
 - [`SECURITY.md`](./SECURITY.md) - Comprehensive security guide
-- [`SECURITY-QUICK-REFERENCE.md`](./SECURITY-QUICK-REFERENCE.md) - Quick reference card
-- [`SECURITY-AUDIT-REPORT.md`](./SECURITY-AUDIT-REPORT.md) - Full audit report
-- [`HOSTINGER-DEPLOYMENT.md`](./HOSTINGER-DEPLOYMENT.md) - Secure deployment guide
-
-**Security Rating**: B+ (Good) ✅  
-**OWASP Compliance**: 10/10 ✅
+- [`SECURITY-QUICK-REFERENCE.md`](./SECURITY-QUICK-REFERENCE.md) - Quick reference
 
 ## 📄 License
 
