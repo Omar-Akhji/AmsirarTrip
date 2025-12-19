@@ -1,10 +1,10 @@
 {
-  "[project]/app/_components/forms/BookingForm.tsx [app-client] (ecmascript, next/dynamic entry)": {
-    "id": "[project]/app/_components/forms/BookingForm.tsx [app-client] (ecmascript, next/dynamic entry)",
+  "[project]/src/features/booking/components/BookingForm.tsx [app-client] (ecmascript, next/dynamic entry)": {
+    "id": "[project]/src/features/booking/components/BookingForm.tsx [app-client] (ecmascript, next/dynamic entry)",
     "files": [
-      "static/chunks/_83bf4ebd._.js",
+      "static/chunks/src_9e5b387c._.js",
       "static/chunks/node_modules_f0eef4b6._.js",
-      "static/chunks/app__components_forms_BookingForm_tsx_7a570220._.js"
+      "static/chunks/src_features_booking_components_BookingForm_tsx_cca8572e._.js"
     ]
   }
 }

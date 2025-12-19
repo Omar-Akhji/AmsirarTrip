@@ -1,82 +1,82 @@
 {
   "app": {
-    "[project]/app/[locale]/about/page": [
+    "[project]/src/app/[locale]/about/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/contact/page": [
+    "[project]/src/app/[locale]/contact/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/excursions/agafay-desert-sunset/page": [
+    "[project]/src/app/[locale]/excursions/agafay-desert-sunset/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/excursions/essaouira-coastal-escape/page": [
+    "[project]/src/app/[locale]/excursions/essaouira-coastal-escape/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/excursions/imlil-toubkal-adventure/page": [
+    "[project]/src/app/[locale]/excursions/imlil-toubkal-adventure/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/excursions/ourika-valley-discovery/page": [
+    "[project]/src/app/[locale]/excursions/ourika-valley-discovery/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/excursions/ouzoud-waterfalls-day-trip/page": [
+    "[project]/src/app/[locale]/excursions/ouzoud-waterfalls-day-trip/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/excursions/page": [
+    "[project]/src/app/[locale]/excursions/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/excursions/sunrise-hot-air-balloon/page": [
+    "[project]/src/app/[locale]/excursions/sunrise-hot-air-balloon/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/page": [
+    "[project]/src/app/[locale]/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/tours/atlas-and-desert-escape-4-days/page": [
+    "[project]/src/app/[locale]/tours/atlas-and-desert-escape-4-days/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/tours/caravan-and-kasbah-experience-3-days/page": [
+    "[project]/src/app/[locale]/tours/caravan-and-kasbah-experience-3-days/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/tours/chegaga-wilderness-expedition-3-days/page": [
+    "[project]/src/app/[locale]/tours/chegaga-wilderness-expedition-3-days/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/tours/coast-and-cities-explorer-6-days/page": [
+    "[project]/src/app/[locale]/tours/coast-and-cities-explorer-6-days/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/tours/coastal-and-desert-odyssey-4-days/page": [
+    "[project]/src/app/[locale]/tours/coastal-and-desert-odyssey-4-days/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/tours/grand-moroccan-circuit-10-days/page": [
+    "[project]/src/app/[locale]/tours/grand-moroccan-circuit-10-days/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/tours/imperial-cities-and-coastline-5-days/page": [
+    "[project]/src/app/[locale]/tours/imperial-cities-and-coastline-5-days/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/tours/merzouga-desert-adventure-3-days/page": [
+    "[project]/src/app/[locale]/tours/merzouga-desert-adventure-3-days/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/tours/northern-heritage-trail-7-days/page": [
+    "[project]/src/app/[locale]/tours/northern-heritage-trail-7-days/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ],
-    "[project]/app/[locale]/tours/page": [
+    "[project]/src/app/[locale]/tours/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ]

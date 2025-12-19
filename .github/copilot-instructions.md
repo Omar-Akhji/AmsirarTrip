@@ -13,7 +13,7 @@ AmsirarTrip is a Next.js 15 tourism website for Morocco travel experiences:
 - Fully SSR with App Router patterns
 - Static tour/excursion data (no database)
 - i18n: English, French, German, Spanish (locale prefix: `as-needed`)
-- **Components:** Physical location `app/_components/`, import via `@/components/*` alias
+- **Architecture:** Feature-based structure in `src/features/`, shared components in `src/shared/`
 - Forms use client components; most content is server components
 - Security: reCAPTCHA + rate limiting on all POST APIs + middleware CSRF protection
 - Metadata: Auto-generated with locale alternates for all pages
@@ -22,52 +22,63 @@ AmsirarTrip is a Next.js 15 tourism website for Morocco travel experiences:
 
 **TypeScript Path Mappings** (in `tsconfig.json`):
 
-- `@/components/*` → `app/_components/*` (UI components, layouts, sections, forms)
-- `@/lib/*` → `lib/*` (utilities, hooks, constants, validation)
-- `@/i18n/*` → `i18n/*` (routing config, request helpers)
-- `@/*` → `app/*` or `lib/*` (fallback for top-level imports)
+- `@/*` → `src/*` (universal alias for all src/ content)
+- Import examples:
+  - `@/features/tours/components/TourLayout`
+  - `@/shared/layout/Navbar`
+  - `@/lib/hooks/useTranslation`
 
 **Directory Structure:**
 
 ```
-app/
-  layout.tsx (root, sets up fonts & scripts)
-  [locale]/
-    layout.tsx (i18n provider wrapper)
-    page.tsx (home page)
-    tours/ & tours/[slug]/ (tour detail pages)
-    excursions/ & excursions/[slug]/ (excursion detail pages)
-    contact/ & about/ (static pages)
-  api/
-    contact/route.ts, booking/route.ts, newsletter/route.ts, health/route.ts
+src/
+  app/
+    layout.tsx (root, sets up fonts & scripts)
+    [locale]/
+      layout.tsx (i18n provider wrapper)
+      page.tsx (home page)
+      tours/ & tours/[slug]/ (tour detail pages)
+      excursions/ & excursions/[slug]/ (excursion detail pages)
+      contact/ & about/ (static pages)
+    api/
+      contact/route.ts, booking/route.ts, newsletter/route.ts, health/route.ts
 
-app/_components/  (← Note: underscore prefix, not components/)
-  layout/: Navbar, Footer, Loader, NavigationProgress
-  sections/: HomeView, TourLayout, ExcursionLayout, AboutView, ContactView
-  forms/: ContactFormTailwind, BookingForm
-  ui/: button, input, popover, calendar, Loading
+  features/  (← Feature-based architecture)
+    home/components/: HomeView.tsx
+    tours/components/: TourLayout.tsx
+    tours/data/: tour-specific data (if any)
+    excursions/components/: ExcursionLayout.tsx
+    contact/components/: ContactView.tsx, ContactFormTailwind.tsx
+    booking/components/: BookingForm.tsx
+    about/components/: AboutView.tsx
 
-lib/
-  env.ts (server-only env validation)
-  client-env.ts (public env vars)
-  api-utils.ts (error handlers, rate limiting, response formatters)
-  validation.ts (client-side validators)
-  schemas.ts (Zod schemas for API validation)
-  metadata.ts (SEO metadata generator)
-  sanitize.ts (DOMPurify helpers)
-  security-headers.ts (Helmet-style headers)
-  hooks/: useTranslation, useNavbar, useHeaderRotator
-  constants/: routes.ts, toursData.ts, translations.ts
+  shared/  (← Cross-feature shared components)
+    layout/: Navbar.tsx, Footer.tsx, Loader.tsx, NavigationProgress.tsx
+    ui/: button.tsx, input.tsx, popover.tsx, calendar.tsx, Loading.tsx
+    utilities/: ErrorBoundary.tsx
+
+  lib/
+    env.ts (server-only env validation)
+    client-env.ts (public env vars)
+    api-utils.ts (error handlers, rate limiting, response formatters)
+    validation.ts (client-side validators)
+    schemas.ts (Zod schemas for API validation)
+    metadata.ts (SEO metadata generator)
+    sanitize.ts (DOMPurify helpers)
+    security-headers.ts (Helmet-style headers)
+    structuredData.ts (JSON-LD generation)
+    hooks/: useTranslation.ts, useNavbar.ts, useHeaderRotator.ts
+    constants/: routes.ts, toursData.ts, translations.ts
+
+  i18n/
+    routing.ts (next-intl routing config)
+    request.ts (getMessages helpers)
+
+  proxy.ts (CSRF protection, API security, i18n routing - root level)
 
 public/
   locales/ (en/, fr/, de/, es/ - JSON i18n files)
   images/ (Header/, Home/, Tours/, Excursions/)
-
-i18n/
-  routing.ts (next-intl routing config)
-  request.ts (getMessages helpers)
-
-proxy.ts (CSRF protection, API security, i18n routing - root level, Next.js 16+)
 ```
 
 ## ROUTING & PAGE PATTERNS
@@ -75,12 +86,16 @@ proxy.ts (CSRF protection, API security, i18n routing - root level, Next.js 16+)
 All page routes use the `[locale]` parameter (en, fr, de, es):
 
 ```tsx
-// app/[locale]/page.tsx - Home page pattern
+// src/app/[locale]/page.tsx - Home page pattern
 import { getTranslations } from "next-intl/server";
 import { generateSEOMetadata, defaultKeywords } from "@/lib/metadata";
-import HomeView from "@/components/sections/HomeView";
+import HomeView from "@/features/home/components/HomeView";
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "home" });
 
@@ -101,9 +116,10 @@ export default function HomePage() {
 
 **Key Rules:**
 
-- **Import Pattern:** Always use `@/components` alias (maps to `app/_components/`)
-  - Example: `import { Navbar } from "@/components/layout"`
-  - Example: `import TourLayout from "@/components/sections/TourLayout"`
+- **Import Pattern:** Always use `@/*` alias (maps to `src/*`)
+  - Example: `import { Navbar } from "@/shared/layout"`
+  - Example: `import TourLayout from "@/features/tours/components/TourLayout"`
+  - Example: `import { useTranslation } from "@/lib/hooks/useTranslation"`
 - Use `getTranslations` for server-side i18n (not useTranslations)
 - Always `await params` (Next.js 15 async param pattern)
 - Pass dictionary/translations to client components via props
@@ -123,7 +139,19 @@ export async function generateMetadata({ params }) {
 }
 ```
 
-**Client Components:** Use custom `useTranslation` hook from `@/lib/hooks/useTranslation`
+**Client Components:** Use `useTranslations` from "next-intl"
+
+```tsx
+"use client";
+import { useTranslations } from "next-intl";
+
+export default function MyComponent() {
+  const t = useTranslations();
+  return <h1>{t("home.title")}</h1>;
+}
+```
+
+**OR** use custom `useTranslation` hook from `@/lib/hooks/useTranslation`:
 
 ```tsx
 "use client";
@@ -335,23 +363,29 @@ env.MAIL_TO; // Optional (fallback to GMAIL_USER)
 
 **File Structure:**
 
-- Reusable UI → `app/_components/ui/` (button, input, popover, calendar, Loading)
-- Page layouts → `app/_components/sections/` (HomeView, TourLayout, ContactView)
-- App chrome → `app/_components/layout/` (Navbar, Footer, NavigationProgress)
+- Reusable UI → `src/shared/ui/` (button, input, popover, calendar, Loading)
+- Feature components → `src/features/{feature}/components/` (HomeView, TourLayout, ContactView)
+- App chrome → `src/shared/layout/` (Navbar, Footer, NavigationProgress)
+- Utilities → `src/shared/utilities/` (ErrorBoundary)
 
 **Server vs Client Components:**
 
 ```tsx
-// ✅ Server Component (default for content)
-export default function HomeView() {
-  const t = await getTranslations({ locale, namespace: "home" });
+// ✅ Server Component (default for content pages)
+import { getTranslations } from "next-intl/server";
+
+export default async function TourPage({ params }: Props) {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: "tours" });
   return <div>{t("title")}</div>;
 }
 
 // ✅ Client Component (for interactivity/forms)
 ("use client");
+import { useTranslations } from "next-intl";
+
 export default function ContactForm() {
-  const { t } = useTranslation();
+  const t = useTranslations();
   const [form, setForm] = useState({});
   return <form onSubmit={handleSubmit}>...</form>;
 }
@@ -375,9 +409,9 @@ export default function Component({ title, items, onSelect }: ComponentProps) {
 
 - Use `"use client"` only when needed (state, events, hooks, animations)
 - For animations: use framer-motion + client component
-- All text via translation keys via `useTranslation()` hook (client) or `getTranslations()` (server)
+- All text via translation keys using `useTranslations()` (client) or `getTranslations()` (server)
 - Images use Next.js `<Image/>` component with optimization
-- Tailwind only — no CSS files
+- Tailwind only — no CSS files (except `app/globals.css`)
 - Export default for page-level components
 - Named exports for reusable components (in `index.ts`)
 
@@ -513,10 +547,10 @@ In each `public/locales/{locale}/common.json`:
 
 ### Step 3: Create the Detail Page
 
-Create `app/[locale]/tours/7/page.tsx`:
+Create `src/app/[locale]/tours/sahara-desert-adventure-7-days/page.tsx`:
 
 ```tsx
-import TourLayout from "@/components/sections/TourLayout";
+import TourLayout from "@/features/tours/components/TourLayout";
 import { getTranslations } from "next-intl/server";
 import { generateSEOMetadata } from "@/lib/metadata";
 import { generateTourJsonLd } from "@/lib/structuredData";
@@ -533,10 +567,10 @@ export async function generateMetadata({
   const t = await getTranslations({ locale });
 
   return generateSEOMetadata({
-    title: `${t("tour7.title")} - 4 Day Desert Adventure`,
+    title: `${t("tour7.title")} - 7 Day Desert Adventure`,
     description: t("tour7.overview"),
     keywords: ["Sahara", "desert", "Morocco", "adventure"],
-    path: `/${locale}/tours/7`,
+    path: "/tours/sahara-desert-adventure-7-days",
     locale,
     image: "/images/Tours/Tour7.webp",
     type: "article",
@@ -571,7 +605,7 @@ export default function Tour7Page() {
 - TourLayout uses `tourKey` (i18n namespace), `bookingId` (for forms), `imageSrc`
 - Always include JSON-LD structured data via `generateTourJsonLd()` + `sanitizeJsonLd()`
 - Metadata must include `type`, `publishedTime`, `modifiedTime`, `author` for articles
-- Path format: `/${locale}/tours/{id}` (include locale in path for SEO)
+- Path format: `/tours/{slug}` (without locale prefix - handled by routing)
 - Import `Script` from `next/script` for structured data injection
 
 ### Step 4: Verify Image Assets
@@ -585,7 +619,7 @@ export default function Tour7Page() {
 
 - [ ] Data object in `toursData.ts` with all required fields
 - [ ] i18n keys added to all 4 language files (en, fr, de, es)
-- [ ] Detail page created at `app/[locale]/tours/{id}/page.tsx`
+- [ ] Detail page created at `src/app/[locale]/tours/{slug}/page.tsx`
 - [ ] Metadata generated with `generateSEOMetadata()`
 - [ ] Image asset exists at `public/images/Tours/`
 - [ ] Links and routes tested in all supported languages

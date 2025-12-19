@@ -23,10 +23,7 @@
       }
     ],
     "paths": {
-      "@/*": ["./app/*", "./lib/*"],
-      "@/components/*": ["./app/_components/*"],
-      "@/lib/*": ["./lib/*"],
-      "@/i18n/*": ["./i18n/*"]
+      "@/*": ["./src/*"]
     },
     "typeRoots": ["./types", "./node_modules/@types"]
   },

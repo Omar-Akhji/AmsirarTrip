@@ -47,217 +47,217 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 }
 
 
-// Validate ../../../app/[locale]/about/page.tsx
+// Validate ../../../src/app/[locale]/about/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/about">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/about/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/about/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/contact/page.tsx
+// Validate ../../../src/app/[locale]/contact/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/contact">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/contact/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/contact/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/excursions/agafay-desert-sunset/page.tsx
+// Validate ../../../src/app/[locale]/excursions/agafay-desert-sunset/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/excursions/agafay-desert-sunset">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/excursions/agafay-desert-sunset/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/excursions/agafay-desert-sunset/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/excursions/essaouira-coastal-escape/page.tsx
+// Validate ../../../src/app/[locale]/excursions/essaouira-coastal-escape/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/excursions/essaouira-coastal-escape">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/excursions/essaouira-coastal-escape/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/excursions/essaouira-coastal-escape/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/excursions/imlil-toubkal-adventure/page.tsx
+// Validate ../../../src/app/[locale]/excursions/imlil-toubkal-adventure/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/excursions/imlil-toubkal-adventure">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/excursions/imlil-toubkal-adventure/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/excursions/imlil-toubkal-adventure/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/excursions/ourika-valley-discovery/page.tsx
+// Validate ../../../src/app/[locale]/excursions/ourika-valley-discovery/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/excursions/ourika-valley-discovery">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/excursions/ourika-valley-discovery/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/excursions/ourika-valley-discovery/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/excursions/ouzoud-waterfalls-day-trip/page.tsx
+// Validate ../../../src/app/[locale]/excursions/ouzoud-waterfalls-day-trip/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/excursions/ouzoud-waterfalls-day-trip">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/excursions/ouzoud-waterfalls-day-trip/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/excursions/ouzoud-waterfalls-day-trip/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/excursions/page.tsx
+// Validate ../../../src/app/[locale]/excursions/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/excursions">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/excursions/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/excursions/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/excursions/sunrise-hot-air-balloon/page.tsx
+// Validate ../../../src/app/[locale]/excursions/sunrise-hot-air-balloon/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/excursions/sunrise-hot-air-balloon">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/excursions/sunrise-hot-air-balloon/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/excursions/sunrise-hot-air-balloon/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/page.tsx
+// Validate ../../../src/app/[locale]/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/tours/atlas-and-desert-escape-4-days/page.tsx
+// Validate ../../../src/app/[locale]/tours/atlas-and-desert-escape-4-days/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/tours/atlas-and-desert-escape-4-days">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/tours/atlas-and-desert-escape-4-days/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/tours/atlas-and-desert-escape-4-days/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/tours/caravan-and-kasbah-experience-3-days/page.tsx
+// Validate ../../../src/app/[locale]/tours/caravan-and-kasbah-experience-3-days/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/tours/caravan-and-kasbah-experience-3-days">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/tours/caravan-and-kasbah-experience-3-days/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/tours/caravan-and-kasbah-experience-3-days/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/tours/chegaga-wilderness-expedition-3-days/page.tsx
+// Validate ../../../src/app/[locale]/tours/chegaga-wilderness-expedition-3-days/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/tours/chegaga-wilderness-expedition-3-days">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/tours/chegaga-wilderness-expedition-3-days/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/tours/chegaga-wilderness-expedition-3-days/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/tours/coast-and-cities-explorer-6-days/page.tsx
+// Validate ../../../src/app/[locale]/tours/coast-and-cities-explorer-6-days/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/tours/coast-and-cities-explorer-6-days">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/tours/coast-and-cities-explorer-6-days/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/tours/coast-and-cities-explorer-6-days/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/tours/coastal-and-desert-odyssey-4-days/page.tsx
+// Validate ../../../src/app/[locale]/tours/coastal-and-desert-odyssey-4-days/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/tours/coastal-and-desert-odyssey-4-days">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/tours/coastal-and-desert-odyssey-4-days/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/tours/coastal-and-desert-odyssey-4-days/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/tours/grand-moroccan-circuit-10-days/page.tsx
+// Validate ../../../src/app/[locale]/tours/grand-moroccan-circuit-10-days/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/tours/grand-moroccan-circuit-10-days">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/tours/grand-moroccan-circuit-10-days/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/tours/grand-moroccan-circuit-10-days/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/tours/imperial-cities-and-coastline-5-days/page.tsx
+// Validate ../../../src/app/[locale]/tours/imperial-cities-and-coastline-5-days/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/tours/imperial-cities-and-coastline-5-days">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/tours/imperial-cities-and-coastline-5-days/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/tours/imperial-cities-and-coastline-5-days/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/tours/merzouga-desert-adventure-3-days/page.tsx
+// Validate ../../../src/app/[locale]/tours/merzouga-desert-adventure-3-days/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/tours/merzouga-desert-adventure-3-days">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/tours/merzouga-desert-adventure-3-days/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/tours/merzouga-desert-adventure-3-days/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/tours/northern-heritage-trail-7-days/page.tsx
+// Validate ../../../src/app/[locale]/tours/northern-heritage-trail-7-days/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/tours/northern-heritage-trail-7-days">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/tours/northern-heritage-trail-7-days/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/tours/northern-heritage-trail-7-days/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/[locale]/tours/page.tsx
+// Validate ../../../src/app/[locale]/tours/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/[locale]/tours">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/tours/page.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/tours/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/api/booking/route.ts
+// Validate ../../../src/app/api/booking/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/booking">> = Specific
-  const handler = {} as typeof import("../../../app/api/booking/route.js")
+  const handler = {} as typeof import("../../../src/app/api/booking/route.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/api/contact/route.ts
+// Validate ../../../src/app/api/contact/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/contact">> = Specific
-  const handler = {} as typeof import("../../../app/api/contact/route.js")
+  const handler = {} as typeof import("../../../src/app/api/contact/route.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/api/health/route.ts
+// Validate ../../../src/app/api/health/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/health">> = Specific
-  const handler = {} as typeof import("../../../app/api/health/route.js")
+  const handler = {} as typeof import("../../../src/app/api/health/route.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
 }
 
-// Validate ../../../app/api/newsletter/route.ts
+// Validate ../../../src/app/api/newsletter/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/newsletter">> = Specific
-  const handler = {} as typeof import("../../../app/api/newsletter/route.js")
+  const handler = {} as typeof import("../../../src/app/api/newsletter/route.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check
@@ -267,10 +267,10 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
 
 
 
-// Validate ../../../app/[locale]/layout.tsx
+// Validate ../../../src/app/[locale]/layout.tsx
 {
   type __IsExpected<Specific extends LayoutConfig<"/[locale]">> = Specific
-  const handler = {} as typeof import("../../../app/[locale]/layout.js")
+  const handler = {} as typeof import("../../../src/app/[locale]/layout.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

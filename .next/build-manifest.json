@@ -7,14 +7,13 @@
     "static/chunks/a6dad97d9634a72d.js"
   ],
   "lowPriorityFiles": [
-    "static/1VUzFFgKDUs5KyaF7IjCE/_ssgManifest.js",
-    "static/1VUzFFgKDUs5KyaF7IjCE/_buildManifest.js"
+    "static/L-2WEz-VV2f4miUY-qa6z/_ssgManifest.js",
+    "static/L-2WEz-VV2f4miUY-qa6z/_buildManifest.js"
   ],
   "rootMainFiles": [
-    "static/chunks/4606ebc6fc85671c.js",
-    "static/chunks/031ee6c7161da158.js",
-    "static/chunks/94bde6376cf279be.js",
-    "static/chunks/87ba26378370db42.js",
-    "static/chunks/turbopack-7f58da29ddab86f8.js"
+    "static/chunks/1ff107567b0c7f18.js",
+    "static/chunks/349ff5d670a6f4a0.js",
+    "static/chunks/a4da672515da97b6.js",
+    "static/chunks/turbopack-af06e3b7034241dc.js"
   ]
 }
