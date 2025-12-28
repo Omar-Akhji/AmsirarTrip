@@ -35,6 +35,12 @@ export const metadata: Metadata = {
   description:
     "Explore Morocco with local experts. Authentic Sahara desert tours, imperial city excursions, Atlas Mountains treks, and private guided experiences. 20+ years serving travelers. Book your dream Morocco adventure today.",
   keywords: [
+    "AmsirarTrip",
+    "Amsirar Trip",
+    "amsirartrip",
+    "Amsirar",
+    "Amsirar Tours",
+    "Amsirar Morocco",
     "Morocco tours",
     "Sahara desert trips",
     "Marrakech excursions",

@@ -1,2 +1,10 @@
+// Home feature module exports
+
 // Components
-export { default as HomeView } from "./components/HomeView";
+export {
+  HomeView,
+  FeaturedTours,
+  ServicesSection,
+  TestimonialsSection,
+  VideoSection,
+} from "./components";

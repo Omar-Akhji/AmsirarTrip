@@ -1,645 +1,105 @@
 ﻿# AmsirarTrip — AI Agent Instructions
 
-This file defines essential architecture, patterns, and constraints for AI agents working in this codebase.
+Next.js 16 tourism website for Morocco travel. **Feature-based architecture** with SSR, i18n (4 languages), and security-first API design.
 
-## PROJECT CONTEXT
-
-AmsirarTrip is a Next.js 15 tourism website for Morocco travel experiences:
-
-**Tech Stack:** Next.js 15 (App Router), React 19, TypeScript, TailwindCSS v4, Zod (validation), next-intl (i18n), Nodemailer, reCAPTCHA v2
-
-**Key Facts:**
-
-- Fully SSR with App Router patterns
-- Static tour/excursion data (no database)
-- i18n: English, French, German, Spanish (locale prefix: `as-needed`)
-- **Architecture:** Feature-based structure in `src/features/`, shared components in `src/shared/`
-- Forms use client components; most content is server components
-- Security: reCAPTCHA + rate limiting on all POST APIs + middleware CSRF protection
-- Metadata: Auto-generated with locale alternates for all pages
-
-## FOLDER STRUCTURE & IMPORT ALIASES
-
-**TypeScript Path Mappings** (in `tsconfig.json`):
-
-- `@/*` → `src/*` (universal alias for all src/ content)
-- Import examples:
-  - `@/features/tours/components/TourLayout`
-  - `@/shared/layout/Navbar`
-  - `@/lib/hooks/useTranslation`
-
-**Directory Structure:**
+## Architecture Overview
 
 ```
 src/
-  app/
-    layout.tsx (root, sets up fonts & scripts)
-    [locale]/
-      layout.tsx (i18n provider wrapper)
-      page.tsx (home page)
-      tours/ & tours/[slug]/ (tour detail pages)
-      excursions/ & excursions/[slug]/ (excursion detail pages)
-      contact/ & about/ (static pages)
-    api/
-      contact/route.ts, booking/route.ts, newsletter/route.ts, health/route.ts
-
-  features/  (← Feature-based architecture)
-    home/components/: HomeView.tsx
-    tours/components/: TourLayout.tsx
-    tours/data/: tour-specific data (if any)
-    excursions/components/: ExcursionLayout.tsx
-    contact/components/: ContactView.tsx, ContactFormTailwind.tsx
-    booking/components/: BookingForm.tsx
-    about/components/: AboutView.tsx
-
-  shared/  (← Cross-feature shared components)
-    layout/: Navbar.tsx, Footer.tsx, Loader.tsx, NavigationProgress.tsx
-    ui/: button.tsx, input.tsx, popover.tsx, calendar.tsx, Loading.tsx
-    utilities/: ErrorBoundary.tsx
-
-  lib/
-    env.ts (server-only env validation)
-    client-env.ts (public env vars)
-    api-utils.ts (error handlers, rate limiting, response formatters)
-    validation.ts (client-side validators)
-    schemas.ts (Zod schemas for API validation)
-    metadata.ts (SEO metadata generator)
-    sanitize.ts (DOMPurify helpers)
-    security-headers.ts (Helmet-style headers)
-    structuredData.ts (JSON-LD generation)
-    hooks/: useTranslation.ts, useNavbar.ts, useHeaderRotator.ts
-    constants/: routes.ts, toursData.ts, translations.ts
-
-  i18n/
-    routing.ts (next-intl routing config)
-    request.ts (getMessages helpers)
-
-  proxy.ts (CSRF protection, API security, i18n routing - root level)
-
-public/
-  locales/ (en/, fr/, de/, es/ - JSON i18n files)
-  images/ (Header/, Home/, Tours/, Excursions/)
+├── app/[locale]/          # Pages with locale param (en/fr/de/es)
+│   ├── tours/[slug]/      # Dynamic tour pages via generateStaticParams
+│   └── api/               # POST routes: booking, contact, newsletter
+├── features/              # Feature modules (tours, booking, contact, home)
+│   └── {feature}/         # components/, data/, types/, index.ts (barrel)
+├── shared/                # Cross-feature: layout/, ui/, utilities/
+├── lib/                   # Core utilities (see Key Files below)
+└── i18n/                  # next-intl routing config
 ```
 
-## ROUTING & PAGE PATTERNS
+**Data Flow:** Static tour data in `features/tours/data/` → Pages consume via `TourLayout` → Forms POST to API routes with Zod validation.
 
-All page routes use the `[locale]` parameter (en, fr, de, es):
+## Key Files & Patterns
+
+| File                               | Purpose                                                            |
+| ---------------------------------- | ------------------------------------------------------------------ |
+| `lib/metadata.ts`                  | `generateSEOMetadata()` — ALWAYS use for page metadata             |
+| `lib/schemas.ts`                   | Zod schemas with DOMPurify transforms for API validation           |
+| `lib/api-utils.ts`                 | `checkRateLimit()`, `createErrorResponse()`, `withErrorHandling()` |
+| `lib/env.ts`                       | Server env getter — throws if required vars missing                |
+| `i18n/routing.ts`                  | Locales: `['en','fr','de','es']`, prefix: `as-needed`              |
+| `features/tours/data/toursData.ts` | Static tour definitions with i18n keys                             |
+
+## Critical Patterns
+
+### Page Component (Server)
 
 ```tsx
-// src/app/[locale]/page.tsx - Home page pattern
-import { getTranslations } from "next-intl/server";
-import { generateSEOMetadata, defaultKeywords } from "@/lib/metadata";
-import HomeView from "@/features/home/components/HomeView";
-
+// Always await params in Next.js 15+
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "home" });
-
-  return generateSEOMetadata({
-    title: t("meta.title"),
-    description: t("meta.description"),
-    keywords: defaultKeywords,
-    path: "",
-    locale,
-    image: "/images/Header/header-1.webp",
-  });
-}
-
-export default function HomePage() {
-  return <HomeView />;
-}
-```
-
-**Key Rules:**
-
-- **Import Pattern:** Always use `@/*` alias (maps to `src/*`)
-  - Example: `import { Navbar } from "@/shared/layout"`
-  - Example: `import TourLayout from "@/features/tours/components/TourLayout"`
-  - Example: `import { useTranslation } from "@/lib/hooks/useTranslation"`
-- Use `getTranslations` for server-side i18n (not useTranslations)
-- Always `await params` (Next.js 15 async param pattern)
-- Pass dictionary/translations to client components via props
-- Metadata is ALWAYS generated server-side
-
-## I18N PATTERNS (next-intl)
-
-**Server Components:** Use `getTranslations` from "next-intl/server"
-
-```tsx
-import { getTranslations } from "next-intl/server";
-
-export async function generateMetadata({ params }) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "home" });
-  return { title: t("meta.title") };
-}
-```
-
-**Client Components:** Use `useTranslations` from "next-intl"
-
-```tsx
-"use client";
-import { useTranslations } from "next-intl";
-
-export default function MyComponent() {
-  const t = useTranslations();
-  return <h1>{t("home.title")}</h1>;
-}
-```
-
-**OR** use custom `useTranslation` hook from `@/lib/hooks/useTranslation`:
-
-```tsx
-"use client";
-import { useTranslation } from "@/lib/hooks/useTranslation";
-
-export default function MyComponent() {
-  const { t } = useTranslation();
-  return <h1>{t("home.title")}</h1>;
-}
-```
-
-**Translation Files:** Located in `public/locales/{locale}/common.json`
-
-- Keys are nested: `home.title`, `nav.home`, `about.section1`
-- Never invent new keys; check existing files first
-- All text MUST come from JSON, never hardcoded
-
-**Supported Languages:**
-
-- `en` (English)
-- `fr` (French)
-- `de` (German)
-- `es` (Spanish)
-
-## SEO & METADATA PATTERNS
-
-Every page MUST use `generateSEOMetadata` from `@/lib/metadata`:
-
-```tsx
-export async function generateMetadata({ params }) {
+}) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "tours" });
-
   return generateSEOMetadata({
     title: t("meta.title"),
-    description: t("meta.description"),
-    keywords: ["Morocco", "tours", "Sahara"],
     path: "/tours",
     locale,
-    image: "/images/Tours/tour-1.webp",
   });
 }
 ```
 
-**Required Fields:**
+### i18n Usage
 
-- `title` (auto-suffixed with " | AmsirarTrip")
-- `description` (max 160 chars, auto-truncated)
-- `path` (route without locale: "" for home, "/tours", "/contact")
-- `locale` (en, fr, de, es)
-- `image` (absolute path, default: "/images/Header/header-1.webp")
+- **Server:** `getTranslations()` from `next-intl/server`
+- **Client:** `useTranslations()` from `next-intl`
+- **Files:** `public/locales/{en,fr,de,es}/common.json`
+- **Rule:** Never hardcode text — all strings via translation keys
 
-**Auto-generated:**
-
-- Canonical URL with full locale path
-- Language alternates (hreflang) for all 4 languages
-- OpenGraph + Twitter cards
-- Structured data for Organization, LocalBusiness, Product
-
-**Do NOT:**
-
-- Leave metadata fields empty
-- Use hardcoded titles (use translation keys)
-- Create custom metadata objects — always use `generateSEOMetadata`
-
-## SECURITY RULES (MANDATORY)
-
-All API routes MUST enforce:
-
-- ✔ **Rate limiting**: `checkRateLimit(ip, maxRequests, windowMs)` — blocks IPs after violations
-- ✔ **reCAPTCHA v2**: `verifyRecaptcha(token)` — REQUIRED on all forms
-- ✔ **Input validation**: Zod schemas via `ContactSchema.safeParse()`
-- ✔ **Sanitization**: `sanitizeInput()` for strings, `escapeHtml()` in emails
-- ✔ **Error handling**: Never expose internal errors to client (see `api-utils.ts`)
-- ✔ **No console.log()**: Use logging utilities only
-- ✔ **Env validation**: Import from `@/lib/env` via `env.GMAIL_USER` (throws if missing)
-- ✔ **Email injection prevention**: Validate email format, sanitize name/message fields
-
-**Forbidden:**
-
-- No eval(), no `dangerouslySetInnerHTML`
-- No hardcoded secrets in code
-- No raw Nodemailer configs — use `sendMail()` helper
-- No direct error messages to clients
-- No user data in HTML without escaping
-
-**Common Pattern (Contact Form):**
-
-1. Client: Validate with `validateContactForm()`, submit with reCAPTCHA token
-2. Server: Rate limit IP → Validate Zod schema → Verify reCAPTCHA → Sanitize inputs → Send email
-3. Response: Always JSON (never HTML), sanitized error messages
-
-## API ROUTES (EXACT PATTERN)
-
-All routes in `app/api/*/route.ts` use this structure:
-
-```typescript
-import { NextRequest } from "next/server";
-import { env } from "@/lib/env";
-import {
-  withErrorHandling,
-  createErrorResponse,
-  createSuccessResponse,
-  checkRateLimit,
-  logApiRequest,
-  logSuspiciousActivity,
-} from "@/lib/api-utils";
-import { ContactSchema } from "@/lib/schemas"; // Zod validation
-
-export const POST = withErrorHandling(async (request: NextRequest) => {
-  // 1. Extract IP (handle proxy headers)
-  const ip =
-    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-    request.headers.get("x-real-ip") ||
-    "unknown";
-
-  // 2. Rate Limit Check
-  const rateLimit = checkRateLimit(ip, 10, 60000); // 10 req/min
-  if (!rateLimit.allowed) {
-    if (rateLimit.blocked)
-      logSuspiciousActivity(ip, "BLOCKED_REQUEST", "/api/contact");
-    return createErrorResponse(
-      "Too many requests. Please try again later.",
-      429,
-      "RATE_LIMIT"
-    );
-  }
-
-  // 3. Parse & Validate (Zod)
-  const body = await request.json().catch(() => ({}));
-  const validation = ContactSchema.safeParse(body);
-
-  if (!validation.success) {
-    return createErrorResponse(
-      "Invalid request. Please check your input.",
-      400,
-      "VALIDATION_ERROR",
-      validation.error.flatten()
-    );
-  }
-
-  const { name, email, message, recaptchaToken } = validation.data;
-
-  // 4. reCAPTCHA Verification (REQUIRED)
-  if (!(await verifyRecaptcha(recaptchaToken))) {
-    logSuspiciousActivity(ip, "CAPTCHA_FAILED", "/api/contact");
-    return createErrorResponse(
-      "Security verification failed. Please try again.",
-      400,
-      "CAPTCHA_FAILED"
-    );
-  }
-
-  // 5. Process Request (example: send email)
-  const result = await sendMail({
-    to: env.MAIL_TO,
-    subject: `New message from ${name}`,
-    html: `<p>${escapeHtml(message)}</p>`,
-  });
-
-  if (!result.success) {
-    return createErrorResponse("Email failed to send", 500, "EMAIL_ERROR");
-  }
-
-  // 6. Success Response
-  return createSuccessResponse({ message: "Message delivered successfully" });
-});
-```
-
-**Required Utilities (in `@/lib/api-utils.ts`):**
-
-- `checkRateLimit(ip, maxReqs, windowMs)` → `{ allowed, remaining, blocked }`
-- `verifyRecaptcha(token)` → `Promise<boolean>`
-- `createErrorResponse(msg, status, code?, details?)`
-- `createSuccessResponse(data?, message?, status?)`
-- `withErrorHandling(handler)` → wraps function, catches errors
-- `sanitizeInput(str)` → removes XSS
-- `escapeHtml(str)` → HTML entity escape
-
-**Schemas (in `@/lib/schemas.ts` — Zod):**
-
-```typescript
-export const ContactSchema = z.object({
-  name: z.string().min(2),
-  email: z.string().email(),
-  message: z.string().min(10),
-  recaptchaToken: z.string(),
-});
-```
-
-**Environment Variables (from `@/lib/env.ts`):**
-
-```typescript
-import { env } from "@/lib/env";
-env.GMAIL_USER; // Required
-env.GMAIL_PASS; // Required
-env.RECAPTCHA_SECRET_KEY; // Required
-env.MAIL_TO; // Optional (fallback to GMAIL_USER)
-```
-
-**CRITICAL:**
-
-- Never return raw error messages from catch blocks
-- No `console.log()` in production routes
-- Always validate & sanitize before processing
-- Rate limiting & reCAPTCHA are non-optional
-
-## UI / COMPONENT PATTERNS
-
-**File Structure:**
-
-- Reusable UI → `src/shared/ui/` (button, input, popover, calendar, Loading)
-- Feature components → `src/features/{feature}/components/` (HomeView, TourLayout, ContactView)
-- App chrome → `src/shared/layout/` (Navbar, Footer, NavigationProgress)
-- Utilities → `src/shared/utilities/` (ErrorBoundary)
-
-**Server vs Client Components:**
+### API Route Security (Mandatory)
 
 ```tsx
-// ✅ Server Component (default for content pages)
-import { getTranslations } from "next-intl/server";
-
-export default async function TourPage({ params }: Props) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "tours" });
-  return <div>{t("title")}</div>;
-}
-
-// ✅ Client Component (for interactivity/forms)
-("use client");
-import { useTranslations } from "next-intl";
-
-export default function ContactForm() {
-  const t = useTranslations();
-  const [form, setForm] = useState({});
-  return <form onSubmit={handleSubmit}>...</form>;
-}
+// Every POST route must follow this order:
+const ip = request.headers.get("x-forwarded-for")?.split(",")[0] || "unknown";
+const rateLimit = checkRateLimit(ip, 10, 60000); // 1. Rate limit
+if (!rateLimit.allowed) return createErrorResponse("...", 429);
+const validation = Schema.safeParse(body); // 2. Zod validation
+if (!validation.success) return createErrorResponse("...", 400);
+await verifyRecaptcha(recaptchaToken); // 3. reCAPTCHA verify
+// 4. Process with sanitized data (schemas auto-sanitize via DOMPurify)
 ```
 
-**Props & Interfaces:**
+### Component Conventions
 
-```typescript
-interface ComponentProps {
-  title: string;
-  items: Item[];
-  onSelect?: (item: Item) => void;
-}
+- `"use client"` only for interactivity (forms, animations, hooks)
+- Animations: framer-motion
+- Styling: Tailwind only (no CSS files except `globals.css`)
+- Images: `next/image` with WebP format
+- Imports: Always use `@/*` alias → `src/*`
 
-export default function Component({ title, items, onSelect }: ComponentProps) {
-  // ...
-}
-```
-
-**Key Rules:**
-
-- Use `"use client"` only when needed (state, events, hooks, animations)
-- For animations: use framer-motion + client component
-- All text via translation keys using `useTranslations()` (client) or `getTranslations()` (server)
-- Images use Next.js `<Image/>` component with optimization
-- Tailwind only — no CSS files (except `app/globals.css`)
-- Export default for page-level components
-- Named exports for reusable components (in `index.ts`)
-
-## DEVELOPMENT WORKFLOW
-
-**Build & Test:**
+## Commands
 
 ```bash
-npm run dev           # Start dev server (http://localhost:3000)
-npm run build         # Build for production
-npm run lint          # Run ESLint
-npm run lint:fix      # Auto-fix lint issues
-npm run type-check    # TypeScript type checking
-npm run format        # Format code with Prettier + Tailwind
-npm run format:check  # Check formatting without modifying files
-npm test              # Run tests (via test.cjs)
+npm run dev          # Dev server
+npm run build        # Production build
+npm run lint:fix     # ESLint auto-fix
+npm run type-check   # TypeScript validation
+npm run format       # Prettier + Tailwind class sorting
 ```
 
-**Key npm scripts** (in `package.json`):
+## Adding Tours/Excursions
 
-- Development: `dev`, `lint:fix`, `type-check`
-- Debugging: Check `next.config.ts` for React Compiler & image optimization
-- Environment: Copy `.env.example` → `.env.local` with actual credentials
+1. Add to `features/tours/data/toursData.ts` (use i18n keys for text)
+2. Add translations to all 4 `public/locales/{locale}/common.json`
+3. Tour pages use dynamic `[slug]` routing with `generateStaticParams()`
+4. Include JSON-LD via `generateTourJsonLd()` + `sanitizeJsonLd()`
 
-**Environment Setup:**
-Required in `.env.local`:
+## Rules
 
-```
-GMAIL_USER=your-email@gmail.com
-GMAIL_PASS=your-app-password
-RECAPTCHA_SECRET_KEY=your-secret-key
-NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your-site-key
-MAIL_TO=contact@example.com  (optional)
-```
-
-**Code Formatting:**
-
-The project uses **Prettier** with **Tailwind CSS plugin** for automatic code formatting and class sorting:
-
-- **Configuration:** `.prettierrc` (80 char width, semicolons, double quotes)
-- **Ignored files:** `.prettierignore` (node_modules, .next, build outputs, public assets)
-- **Auto-format:** Run `npm run format` before commits
-- **CI check:** Use `npm run format:check` in pipelines
-- **Tailwind sorting:** Classes are automatically sorted per official recommended order
-- **IDE integration:** Install Prettier extension for format-on-save
-
-**Formatting Rules:**
-
-- Run `npm run format` after editing components with Tailwind classes
-- All TypeScript/TSX files are formatted with Prettier
-- Tailwind classes are sorted automatically (no manual ordering needed)
-- Format before `git commit` to ensure consistency
-
-## CODE STYLE (MANDATORY)
-
-- **TypeScript:** Strict mode (no `any`)
-- **Naming:** PascalCase components, camelCase functions/variables
-- **Exports:** Named exports (except Next.js pages)
-- **Styles:** Tailwind classes only (no CSS files)
-- **Async:** Always use async/await (no promises)
-- **Imports:** Named imports from components, sorted alphabetically
-- **Comments:** JSDoc for complex functions only
-
-```typescript
-// ✅ Good
-import { useTranslation } from "@/lib/hooks/useTranslation";
-import Image from "next/image";
-
-interface UserProps {
-  name: string;
-  age: number;
-}
-
-export function UserCard({ name, age }: UserProps): JSX.Element {
-  const { t } = useTranslation();
-  return <div className="flex gap-2">{name}</div>;
-}
-
-// ❌ Bad
-import * as utils from "@/lib/utils";
-const UserCard = ({ name, age }: any) => <div>{name}</div>;
-export default UserCard;
-```
-
-## CREATING TOURS & EXCURSIONS (WORKFLOW)
-
-When adding a new tour or excursion, follow this 4-step process:
-
-### Step 1: Add Data to `lib/constants/toursData.ts`
-
-```typescript
-export const TOURS_DATA = [
-  {
-    id: 7,
-    image: "/images/Tours/Tour7.webp",
-    title: "tour7.title", // ← i18n key
-    author: "tours.cities.marrakech", // ← i18n key
-    category: "tours", // 'tours' or 'excursions'
-    description: "tours.tour7.description", // ← i18n key
-    duration: 5, // hours or days
-    start: "tours.cities.marrakech", // ← i18n key
-    end: "tours.cities.marrakech", // ← i18n key
-    route: "/tours/7", // URL slug
-  },
-];
-```
-
-**Key Rules:**
-
-- All text (title, description, location) MUST use i18n keys, not hardcoded strings
-- Route format: `/tours/{id}` for tours, `/excursions/{slug}` for excursions
-- Image paths must exist in `public/images/Tours/` or `public/images/Excursions/`
-- Use `.webp` format for performance
-
-### Step 2: Add Translation Keys to i18n Files
-
-In each `public/locales/{locale}/common.json`:
-
-```json
-{
-  "tours": {
-    "tour7": {
-      "title": "Sahara Desert Adventure",
-      "description": "Experience the majesty of the Sahara with expert guides...",
-      "duration": "5 days",
-      "highlights": ["Camel trekking", "Berber villages", "Stargazing"]
-    }
-  }
-}
-```
-
-**Repeat for all 4 languages:** en, fr, de, es
-
-### Step 3: Create the Detail Page
-
-Create `src/app/[locale]/tours/sahara-desert-adventure-7-days/page.tsx`:
-
-```tsx
-import TourLayout from "@/features/tours/components/TourLayout";
-import { getTranslations } from "next-intl/server";
-import { generateSEOMetadata } from "@/lib/metadata";
-import { generateTourJsonLd } from "@/lib/structuredData";
-import { sanitizeJsonLd } from "@/lib/sanitize";
-import { Metadata } from "next";
-import Script from "next/script";
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale });
-
-  return generateSEOMetadata({
-    title: `${t("tour7.title")} - 7 Day Desert Adventure`,
-    description: t("tour7.overview"),
-    keywords: ["Sahara", "desert", "Morocco", "adventure"],
-    path: "/tours/sahara-desert-adventure-7-days",
-    locale,
-    image: "/images/Tours/Tour7.webp",
-    type: "article",
-    publishedTime: "2024-01-15T00:00:00Z",
-    modifiedTime: new Date().toISOString(),
-    author: "AmsirarTrip",
-  });
-}
-
-export default function Tour7Page() {
-  const jsonLd = sanitizeJsonLd(generateTourJsonLd("tour7", 7));
-
-  return (
-    <>
-      <Script
-        id="tour7-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-      <TourLayout
-        tourKey="tour7"
-        bookingId={7}
-        imageSrc="/images/Tours/Tour7.webp"
-      />
-    </>
-  );
-}
-```
-
-**Key Rules:**
-
-- TourLayout uses `tourKey` (i18n namespace), `bookingId` (for forms), `imageSrc`
-- Always include JSON-LD structured data via `generateTourJsonLd()` + `sanitizeJsonLd()`
-- Metadata must include `type`, `publishedTime`, `modifiedTime`, `author` for articles
-- Path format: `/tours/{slug}` (without locale prefix - handled by routing)
-- Import `Script` from `next/script` for structured data injection
-
-### Step 4: Verify Image Assets
-
-- Add tour image: `public/images/Tours/Tour7.webp`
-- Image size: min 1200×630px (for SEO OpenGraph)
-- Format: WebP for optimal performance
-- Test responsive rendering on mobile/tablet
-
-**Checklist Before Submitting:**
-
-- [ ] Data object in `toursData.ts` with all required fields
-- [ ] i18n keys added to all 4 language files (en, fr, de, es)
-- [ ] Detail page created at `src/app/[locale]/tours/{slug}/page.tsx`
-- [ ] Metadata generated with `generateSEOMetadata()`
-- [ ] Image asset exists at `public/images/Tours/`
-- [ ] Links and routes tested in all supported languages
-- [ ] No hardcoded text in components
-
-## AGENT BEHAVIOR RULES
-
-1. **Always check existing patterns** — match the codebase style exactly
-2. **Ask before guessing** — if requirements are unclear, ask
-3. **No new dependencies** — use existing packages only (next-intl, framer-motion, zod, etc.)
-4. **No new folders** — unless explicitly requested
-5. **Security first** — validate, sanitize, rate limit on all inputs
-6. **SEO-aware** — always include metadata, use hreflang for locales
-7. **Performance-conscious** — server components by default, optimize images
-8. **No hardcoded text** — all strings from i18n JSON files
-9. **Type-safe** — full TypeScript coverage, no `any`
-10. **Production-ready** — code is immediately deployable
-
-================================================================================
-
-# END OF FILE
-
-================================================================================
+- **Security:** Rate limit + reCAPTCHA + Zod validation on all forms
+- **SEO:** Every page needs `generateSEOMetadata()` with locale alternates
+- **Types:** Strict TypeScript, no `any`
+- **Env:** Use `env.GMAIL_USER` from `lib/env.ts` (validates at runtime)
+- **No new deps** without explicit request
+- Match existing patterns exactly — check similar files first

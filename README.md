@@ -28,7 +28,7 @@ A modern Next.js 16 application for a Morocco travel and tourism website, featur
 
 ## 📁 Project Structure
 
-```
+```/
 src/
 ├── app/                          # Next.js App Router
 │   ├── [locale]/                 # Internationalized routes
@@ -170,7 +170,7 @@ npm run format       # Format with Prettier
 
 Each feature follows this structure:
 
-```
+```/
 features/tours/
 ├── components/           # Feature-specific components
 │   ├── TourCard.tsx
@@ -247,10 +247,7 @@ This application implements comprehensive security measures:
 - ✅ **Email Security**: Secure Nodemailer with Gmail
 - ✅ **Environment Variables**: Validated and type-safe
 
-**Security Documentation**:
-
-- [`SECURITY.md`](./SECURITY.md) - Comprehensive security guide
-- [`SECURITY-QUICK-REFERENCE.md`](./SECURITY-QUICK-REFERENCE.md) - Quick reference
+See [`SECURITY.md`](./SECURITY.md) for the comprehensive security guide.
 
 ## 📄 License
 

@@ -160,9 +160,9 @@ export default function ToursView() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="group relative mb-8 block h-[470px] cursor-pointer overflow-hidden rounded-3xl bg-white shadow-[0_1px_2px_rgba(0,0,0,0.1)] transition-all duration-500 ease-out group-hover:min-h-[540px]"
+                  className="group relative mb-8 block h-117.5 cursor-pointer overflow-hidden rounded-3xl bg-white shadow-[0_1px_2px_rgba(0,0,0,0.1)] transition-all duration-500 ease-out group-hover:min-h-135"
                 >
-                  <div className="thumbnail relative h-[400px] overflow-hidden rounded-t-3xl bg-black">
+                  <div className="thumbnail relative h-100 overflow-hidden rounded-t-3xl bg-black">
                     <Image
                       src={tour.image}
                       alt={t(tour.title)}
@@ -176,15 +176,15 @@ export default function ToursView() {
                     </span>
                   </div>
 
-                  <div className="post-content absolute bottom-0 box-border min-h-50 w-full rounded-b-3xl bg-white p-[30px] pb-16 transition-all duration-500 ease-out">
+                  <div className="post-content absolute bottom-0 box-border min-h-50 w-full rounded-b-3xl bg-white p-7.5 pb-16 transition-all duration-500 ease-out">
                     <div className="mb-3 flex justify-center">
                       <span className="inline-flex items-center gap-2 rounded-[20px] border border-orange-600 bg-white/10 px-3 py-1 text-xs font-semibold text-orange-600 uppercase backdrop-blur-sm">
                         <ClockIcon className="size-3 text-orange-600" />
-                        <span>
+                        <time dateTime={`P${tour.duration}D`}>
                           {t("tours.durationLabel", {
                             count: tour.duration,
                           }).toUpperCase()}
-                        </span>
+                        </time>
                       </span>
                     </div>
 

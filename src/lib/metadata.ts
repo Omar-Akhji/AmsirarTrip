@@ -115,7 +115,7 @@ export function generateSEOMetadata({
       },
     },
     verification: {
-      google: "your-google-verification-code", // Add actual verification code
+      // google: "YOUR_ACTUAL_GOOGLE_VERIFICATION_CODE", // Get from Google Search Console
       // yandex: "your-yandex-verification-code",
       // bing: "your-bing-verification-code",
     },
@@ -123,6 +123,12 @@ export function generateSEOMetadata({
 }
 
 export const defaultKeywords = [
+  "AmsirarTrip",
+  "Amsirar Trip",
+  "amsirartrip",
+  "Amsirar",
+  "Amsirar Tours",
+  "Amsirar Morocco",
   "Morocco tours",
   "Sahara desert trips",
   "Marrakech excursions",
@@ -139,7 +145,6 @@ export const defaultKeywords = [
   "Morocco tour packages",
   "guided tours Morocco",
   "Morocco holiday packages",
-  "Morocco desert camping",
   "Moroccan adventure",
   "Merzouga tours",
   "Morocco day trips",

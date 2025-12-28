@@ -65,7 +65,7 @@ All environment variables are validated at startup via `lib/env.ts`:
 
 ### Security Best Practices
 
-1. **Generate App Password for Gmail**: https://myaccount.google.com/apppasswords
+1. **Generate App Password for Gmail**: <https://myaccount.google.com/apppasswords>
 2. **Never use real Gmail password** (security risk)
 3. **Use different keys for dev/production**
 4. **Rotate secrets every 6-12 months**
@@ -398,8 +398,8 @@ npm install @logtail/node
 
 ### If Credentials Are Compromised
 
-1. **Immediately rotate Gmail App Password**: https://myaccount.google.com/apppasswords
-2. **Regenerate reCAPTCHA keys**: https://www.google.com/recaptcha/admin
+1. **Immediately rotate Gmail App Password**: <https://myaccount.google.com/apppasswords>
+2. **Regenerate reCAPTCHA keys**: <https://www.google.com/recaptcha/admin>
 3. **Update Hostinger environment variables**
 4. **Redeploy application**
 5. **Monitor logs for suspicious activity**
@@ -417,10 +417,10 @@ Check logs for:
 
 ## Security Contacts
 
-- **Project Lead**: omar.akhji2019@gmail.com
-- **Google reCAPTCHA**: https://www.google.com/recaptcha/admin
-- **Gmail Security**: https://myaccount.google.com/security
-- **Hostinger Support**: https://www.hostinger.com/cpanel-login
+- **Project Lead**: <omar.akhji2019@gmail.com>
+- **Google reCAPTCHA**: <https://www.google.com/recaptcha/admin>
+- **Gmail Security**: <https://myaccount.google.com/security>
+- **Hostinger Support**: <https://www.hostinger.com/cpanel-login>
 
 ---
 

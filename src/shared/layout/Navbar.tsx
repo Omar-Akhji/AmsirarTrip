@@ -141,7 +141,7 @@ const LanguageSelector: React.FC<
             width={25}
             height={25}
             className={cn(
-              size === "sm" ? "size-5" : "size-[25px]",
+              size === "sm" ? "size-5" : "size-6.25",
               "object-contain"
             )}
           />
@@ -401,7 +401,7 @@ const Navbar: React.FC = () => {
                 width={iconSize}
                 height={iconSize}
                 className={cn(
-                  compact ? "size-5" : "size-[25px]",
+                  compact ? "size-5" : "size-6.25",
                   "object-contain"
                 )}
               />

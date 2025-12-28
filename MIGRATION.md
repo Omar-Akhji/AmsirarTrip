@@ -23,7 +23,7 @@ npm install
 cp .env.example .env.local
 ```
 
-3. Configure environment variables in `.env.local`:
+1. Configure environment variables in `.env.local`:
    - reCAPTCHA keys (v2 and v3)
    - Gmail SMTP credentials
    - Recipient email address
@@ -45,7 +45,7 @@ npm run start
 
 ## 📁 Project Structure
 
-```
+```modular / Based features
 ├── app/                          # Next.js App Router
 │   ├── [locale]/                 # Internationalized routes
 │   │   ├── layout.tsx            # Locale-specific layout

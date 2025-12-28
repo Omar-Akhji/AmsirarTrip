@@ -99,52 +99,13 @@
       "namedRegex": "^/(?<nxtPlocale>[^/]+?)/excursions(?:/)?$"
     },
     {
-      "page": "/[locale]/excursions/agafay-desert-sunset",
-      "regex": "^/([^/]+?)/excursions/agafay\\-desert\\-sunset(?:/)?$",
+      "page": "/[locale]/excursions/[slug]",
+      "regex": "^/([^/]+?)/excursions/([^/]+?)(?:/)?$",
       "routeKeys": {
-        "nxtPlocale": "nxtPlocale"
+        "nxtPlocale": "nxtPlocale",
+        "nxtPslug": "nxtPslug"
       },
-      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/excursions/agafay\\-desert\\-sunset(?:/)?$"
-    },
-    {
-      "page": "/[locale]/excursions/essaouira-coastal-escape",
-      "regex": "^/([^/]+?)/excursions/essaouira\\-coastal\\-escape(?:/)?$",
-      "routeKeys": {
-        "nxtPlocale": "nxtPlocale"
-      },
-      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/excursions/essaouira\\-coastal\\-escape(?:/)?$"
-    },
-    {
-      "page": "/[locale]/excursions/imlil-toubkal-adventure",
-      "regex": "^/([^/]+?)/excursions/imlil\\-toubkal\\-adventure(?:/)?$",
-      "routeKeys": {
-        "nxtPlocale": "nxtPlocale"
-      },
-      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/excursions/imlil\\-toubkal\\-adventure(?:/)?$"
-    },
-    {
-      "page": "/[locale]/excursions/ourika-valley-discovery",
-      "regex": "^/([^/]+?)/excursions/ourika\\-valley\\-discovery(?:/)?$",
-      "routeKeys": {
-        "nxtPlocale": "nxtPlocale"
-      },
-      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/excursions/ourika\\-valley\\-discovery(?:/)?$"
-    },
-    {
-      "page": "/[locale]/excursions/ouzoud-waterfalls-day-trip",
-      "regex": "^/([^/]+?)/excursions/ouzoud\\-waterfalls\\-day\\-trip(?:/)?$",
-      "routeKeys": {
-        "nxtPlocale": "nxtPlocale"
-      },
-      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/excursions/ouzoud\\-waterfalls\\-day\\-trip(?:/)?$"
-    },
-    {
-      "page": "/[locale]/excursions/sunrise-hot-air-balloon",
-      "regex": "^/([^/]+?)/excursions/sunrise\\-hot\\-air\\-balloon(?:/)?$",
-      "routeKeys": {
-        "nxtPlocale": "nxtPlocale"
-      },
-      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/excursions/sunrise\\-hot\\-air\\-balloon(?:/)?$"
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/excursions/(?<nxtPslug>[^/]+?)(?:/)?$"
     },
     {
       "page": "/[locale]/tours",
@@ -155,76 +116,13 @@
       "namedRegex": "^/(?<nxtPlocale>[^/]+?)/tours(?:/)?$"
     },
     {
-      "page": "/[locale]/tours/atlas-and-desert-escape-4-days",
-      "regex": "^/([^/]+?)/tours/atlas\\-and\\-desert\\-escape\\-4\\-days(?:/)?$",
+      "page": "/[locale]/tours/[slug]",
+      "regex": "^/([^/]+?)/tours/([^/]+?)(?:/)?$",
       "routeKeys": {
-        "nxtPlocale": "nxtPlocale"
+        "nxtPlocale": "nxtPlocale",
+        "nxtPslug": "nxtPslug"
       },
-      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/tours/atlas\\-and\\-desert\\-escape\\-4\\-days(?:/)?$"
-    },
-    {
-      "page": "/[locale]/tours/caravan-and-kasbah-experience-3-days",
-      "regex": "^/([^/]+?)/tours/caravan\\-and\\-kasbah\\-experience\\-3\\-days(?:/)?$",
-      "routeKeys": {
-        "nxtPlocale": "nxtPlocale"
-      },
-      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/tours/caravan\\-and\\-kasbah\\-experience\\-3\\-days(?:/)?$"
-    },
-    {
-      "page": "/[locale]/tours/chegaga-wilderness-expedition-3-days",
-      "regex": "^/([^/]+?)/tours/chegaga\\-wilderness\\-expedition\\-3\\-days(?:/)?$",
-      "routeKeys": {
-        "nxtPlocale": "nxtPlocale"
-      },
-      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/tours/chegaga\\-wilderness\\-expedition\\-3\\-days(?:/)?$"
-    },
-    {
-      "page": "/[locale]/tours/coast-and-cities-explorer-6-days",
-      "regex": "^/([^/]+?)/tours/coast\\-and\\-cities\\-explorer\\-6\\-days(?:/)?$",
-      "routeKeys": {
-        "nxtPlocale": "nxtPlocale"
-      },
-      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/tours/coast\\-and\\-cities\\-explorer\\-6\\-days(?:/)?$"
-    },
-    {
-      "page": "/[locale]/tours/coastal-and-desert-odyssey-4-days",
-      "regex": "^/([^/]+?)/tours/coastal\\-and\\-desert\\-odyssey\\-4\\-days(?:/)?$",
-      "routeKeys": {
-        "nxtPlocale": "nxtPlocale"
-      },
-      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/tours/coastal\\-and\\-desert\\-odyssey\\-4\\-days(?:/)?$"
-    },
-    {
-      "page": "/[locale]/tours/grand-moroccan-circuit-10-days",
-      "regex": "^/([^/]+?)/tours/grand\\-moroccan\\-circuit\\-10\\-days(?:/)?$",
-      "routeKeys": {
-        "nxtPlocale": "nxtPlocale"
-      },
-      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/tours/grand\\-moroccan\\-circuit\\-10\\-days(?:/)?$"
-    },
-    {
-      "page": "/[locale]/tours/imperial-cities-and-coastline-5-days",
-      "regex": "^/([^/]+?)/tours/imperial\\-cities\\-and\\-coastline\\-5\\-days(?:/)?$",
-      "routeKeys": {
-        "nxtPlocale": "nxtPlocale"
-      },
-      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/tours/imperial\\-cities\\-and\\-coastline\\-5\\-days(?:/)?$"
-    },
-    {
-      "page": "/[locale]/tours/merzouga-desert-adventure-3-days",
-      "regex": "^/([^/]+?)/tours/merzouga\\-desert\\-adventure\\-3\\-days(?:/)?$",
-      "routeKeys": {
-        "nxtPlocale": "nxtPlocale"
-      },
-      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/tours/merzouga\\-desert\\-adventure\\-3\\-days(?:/)?$"
-    },
-    {
-      "page": "/[locale]/tours/northern-heritage-trail-7-days",
-      "regex": "^/([^/]+?)/tours/northern\\-heritage\\-trail\\-7\\-days(?:/)?$",
-      "routeKeys": {
-        "nxtPlocale": "nxtPlocale"
-      },
-      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/tours/northern\\-heritage\\-trail\\-7\\-days(?:/)?$"
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/tours/(?<nxtPslug>[^/]+?)(?:/)?$"
     }
   ],
   "staticRoutes": [

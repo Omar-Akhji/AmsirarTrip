@@ -4,9 +4,9 @@ This guide covers deploying AmsirarTrip to a VPS (Hostinger, DigitalOcean, Hetzn
 
 ## Prerequisites
 
-1.  **VPS Server**: Ubuntu 22.04 or 24.04 (Recommended).
-2.  **Domain**: Pointed to your VPS IP address.
-3.  **Docker & Docker Compose**: Installed on the VPS.
+1. **VPS Server**: Ubuntu 22.04 or 24.04 (Recommended).
+2. **Domain**: Pointed to your VPS IP address.
+3. **Docker & Docker Compose**: Installed on the VPS.
 
 ---
 
@@ -58,14 +58,14 @@ You have two main methods to deploy:
 
 ### Method A: Build on VPS (Simpler for updates)
 
-1.  **Clone your repository** on the VPS:
+1. **Clone your repository** on the VPS:
 
     ```bash
     git clone https://github.com/yourusername/amsirartrip.git
     cd amsirartrip
     ```
 
-2.  **Create/Edit Environment Variables**:
+2. **Create/Edit Environment Variables**:
     Create a `.env.production` file (DO NOT COMMIT THIS TO GIT):
 
     ```bash
@@ -83,18 +83,22 @@ You have two main methods to deploy:
     RECAPTCHA_SECRET_KEY=your-secret
     ```
 
-3.  **Start with Docker Compose**:
+3. **Start with Docker Compose**:
+
     ```bash
     docker compose up -d --build
     ```
 
 ### Method B: Generic Transfer (No Git on VPS)
 
-1.  **Copy files to VPS** (Dockerfile, docker-compose.yml, public/, package.json, src/, etc.):
+1. **Copy files to VPS** (Dockerfile, docker-compose.yml, public/, package.json, src/, etc.):
+
     ```bash
     scp -r . root@your-vps-ip:/app/amsirartrip
     ```
-2.  **SSH and Build**:
+
+2. **SSH and Build**:
+
     ```bash
     ssh root@your-vps-ip
     cd /app/amsirartrip

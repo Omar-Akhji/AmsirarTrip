@@ -120,8 +120,8 @@ export default function FooterTailwind() {
       {/* Decorative background elements */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="bg-orange/5 absolute -top-16 -right-16 size-72 rounded-full blur-3xl" />
-        <div className="bg-orange/3 absolute -bottom-20 -left-20 size-[350px] rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-radial from-white/2 to-transparent" />
+        <div className="bg-orange/3 absolute -bottom-20 -left-20 size-87.5 rounded-full blur-3xl" />
+        <div className="absolute top-1/2 left-1/2 h-125 w-125 -translate-x-1/2 -translate-y-1/2 rounded-full bg-radial from-white/2 to-transparent" />
       </div>
 
       {/* Top accent removed */}
@@ -188,7 +188,7 @@ export default function FooterTailwind() {
                         />
                       </svg>
                     </div>
-                    <p className="max-w-[270px] text-sm leading-relaxed text-slate-400">
+                    <p className="max-w-67.5 text-sm leading-relaxed text-slate-400">
                       Imm. J appt N° 5, Résidence La Perle de l&apos;Atlas,
                       angle Rue aboubakr, Marrakech
                     </p>
@@ -372,7 +372,7 @@ export default function FooterTailwind() {
                       aria-label={t("footer.social.facebook")}
                       className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
                     >
-                      <i className="fab fa-facebook-f text-base text-[#111] sm:text-lg"></i>
+                      <i className="fab fa-facebook-f text-dark-grey text-base sm:text-lg"></i>
                     </a>
                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                     <a
@@ -380,21 +380,21 @@ export default function FooterTailwind() {
                       aria-label={t("footer.social.twitter")}
                       className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
                     >
-                      <i className="fab fa-x-twitter text-base text-[#111] sm:text-lg"></i>
+                      <i className="fab fa-x-twitter text-dark-grey text-base sm:text-lg"></i>
                     </a>
                     <a
                       href="https://www.instagram.com/amsirar.trip?igsh=ZDlxanNsbTA5M2Zi"
                       aria-label={t("footer.social.instagram")}
                       className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
                     >
-                      <i className="fab fa-instagram text-base text-[#111] sm:text-lg"></i>
+                      <i className="fab fa-instagram text-dark-grey text-base sm:text-lg"></i>
                     </a>
                     <a
                       href="https://www.tiktok.com/@amsirartrip"
                       aria-label={t("footer.social.tiktok")}
                       className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
                     >
-                      <i className="fab fa-tiktok text-base text-[#111] sm:text-lg"></i>
+                      <i className="fab fa-tiktok text-dark-grey text-base sm:text-lg"></i>
                     </a>
                   </div>
                 </nav>
@@ -407,10 +407,15 @@ export default function FooterTailwind() {
         <div className="border-t border-white/10">
           <div className="mx-auto max-w-7xl p-4 px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <p className="text-center text-sm text-slate-500">
-                {t("footer.copyright")}
+              <p className="text-center text-xl text-slate-500">
+                <small>
+                  ©{" "}
+                  <time dateTime={new Date().getFullYear().toString()}>
+                    {new Date().getFullYear()}
+                  </time>{" "}
+                  AmsirarTrip. Ltd. {t("footer.copyright")}
+                </small>
               </p>
-              {/* Legal links removed */}
             </div>
           </div>
         </div>

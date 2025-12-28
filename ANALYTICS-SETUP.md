@@ -386,7 +386,7 @@ fbEvent("Contact", {
 2. Create Project
 3. Copy Project ID
 
-### Step 2: Add to Project
+### Step 2: "Add to Project"
 
 Update `app/[locale]/layout.tsx`:
 

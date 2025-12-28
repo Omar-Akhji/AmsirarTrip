@@ -7,5 +7,10 @@
   "useTabs": false,
   "arrowParens": "always",
   "endOfLine": "lf",
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "jsxSingleQuote": false,
+  "proseWrap": "preserve",
+  "htmlWhitespaceSensitivity": "css",
   "plugins": ["prettier-plugin-tailwindcss"]
 }

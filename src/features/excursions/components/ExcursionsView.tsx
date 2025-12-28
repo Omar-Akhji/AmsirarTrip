@@ -158,9 +158,9 @@ export default function ExcursionView() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="group relative mb-8 block h-[470px] cursor-pointer overflow-hidden rounded-3xl bg-white shadow-[0_1px_2px_rgba(0,0,0,0.15)] transition-all duration-500 ease-out"
+                  className="group relative mb-8 block h-117.5 cursor-pointer overflow-hidden rounded-3xl bg-white shadow-[0_1px_2px_rgba(0,0,0,0.15)] transition-all duration-500 ease-out"
                 >
-                  <div className="thumbnail relative h-[400px] overflow-hidden rounded-t-3xl bg-black">
+                  <div className="thumbnail relative h-100 overflow-hidden rounded-t-3xl bg-black">
                     <Image
                       src={excursion.image}
                       alt={t(excursion.alt)}
@@ -175,7 +175,7 @@ export default function ExcursionView() {
                     </span>
                   </div>
 
-                  <div className="post-content absolute bottom-0 box-border min-h-50 w-full rounded-b-3xl bg-white p-[30px] pb-24 transition-all duration-500 ease-out">
+                  <div className="post-content absolute bottom-0 box-border min-h-50 w-full rounded-b-3xl bg-white p-7.5 pb-24 transition-all duration-500 ease-out">
                     <h3 className="m-0 mb-2 text-[1.3rem] leading-[1.2] font-bold tracking-[0.5px] text-orange-600">
                       {t(excursion.title)}
                     </h3>
