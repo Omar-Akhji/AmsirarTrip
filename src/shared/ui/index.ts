@@ -10,3 +10,4 @@ export {
   Skeleton,
   CardSkeleton,
 } from "./Loading";
+export * from "./icons";

@@ -228,7 +228,7 @@ const BookingForm: React.FC<BookingFormProps> = ({
             className="overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-orange-100 lg:col-span-3"
           >
             <div className="bg-linear-to-r from-orange-500 to-orange-600 px-6 py-8 text-white">
-              <h2 className="text-2xl font-bold md:text-3xl">
+              <h2 className="text-xl font-bold sm:text-2xl md:text-3xl">
                 {t("booking.makeReservation", "Make your reservation")}
               </h2>
               <p className="mt-3 text-sm text-orange-50/90 md:text-base">
@@ -596,36 +596,38 @@ const BookingForm: React.FC<BookingFormProps> = ({
                 className="flex flex-col gap-4 lg:flex-row lg:items-center"
               >
                 <div>
-                  <div
-                    className={cn(
-                      "rounded-2xl border border-dashed p-3",
-                      errors.recaptchaToken && touched.recaptchaToken
-                        ? "border-red-300"
-                        : "border-gray-200"
-                    )}
-                  >
-                    {RECAPTCHA_V2_SITE_KEY ? (
-                      <ReCAPTCHA
-                        ref={recaptchaRef}
-                        sitekey={RECAPTCHA_V2_SITE_KEY}
-                        onChange={(token) => {
-                          setFormData((prev) => ({
-                            ...prev,
-                            recaptchaToken: token,
-                          }));
-                          if (errors.recaptchaToken) {
-                            setErrors((prev) => ({
+                  <div className="flex w-full justify-center overflow-hidden lg:justify-start">
+                    <div
+                      className={cn(
+                        "origin-center scale-85 rounded-2xl border border-dashed p-3 sm:scale-100 lg:origin-left",
+                        errors.recaptchaToken && touched.recaptchaToken
+                          ? "border-red-300"
+                          : "border-gray-200"
+                      )}
+                    >
+                      {RECAPTCHA_V2_SITE_KEY ? (
+                        <ReCAPTCHA
+                          ref={recaptchaRef}
+                          sitekey={RECAPTCHA_V2_SITE_KEY}
+                          onChange={(token) => {
+                            setFormData((prev) => ({
                               ...prev,
-                              recaptchaToken: "",
+                              recaptchaToken: token,
                             }));
-                          }
-                        }}
-                      />
-                    ) : (
-                      <div className="rounded bg-amber-50 p-2 text-sm text-amber-600">
-                        CAPTCHA configuration missing.
-                      </div>
-                    )}
+                            if (errors.recaptchaToken) {
+                              setErrors((prev) => ({
+                                ...prev,
+                                recaptchaToken: "",
+                              }));
+                            }
+                          }}
+                        />
+                      ) : (
+                        <div className="rounded bg-amber-50 p-2 text-sm text-amber-600">
+                          CAPTCHA configuration missing.
+                        </div>
+                      )}
+                    </div>
                   </div>
                   {errors.recaptchaToken && touched.recaptchaToken && (
                     <p
@@ -678,7 +680,7 @@ const BookingForm: React.FC<BookingFormProps> = ({
                   <p className="text-[11px] font-semibold tracking-[0.45em] text-amber-200 uppercase">
                     {t("booking.checkBadge", "Check us")}
                   </p>
-                  <h3 className="mt-1 text-2xl font-semibold">
+                  <h3 className="mt-1 text-xl font-semibold sm:text-2xl">
                     {t("booking.checkTitle", "Find us on TripAdvisor")}
                   </h3>
                 </div>

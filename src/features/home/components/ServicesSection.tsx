@@ -38,7 +38,7 @@ const ServicesSection = () => {
             </p>
             <h2
               id="services-heading"
-              className="mt-4 text-3xl leading-tight font-bold tracking-[0.2em] text-white uppercase md:text-4xl"
+              className="mt-4 text-2xl leading-tight font-bold tracking-widest text-white uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
             >
               {t("services.lgTitle")}
             </h2>

@@ -6,6 +6,13 @@ import { Link } from "@/i18n/routing";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { EXCURSIONS_DATA } from "@/features/excursions/data/excursionsData";
 import { motion } from "framer-motion";
+import { ArrowIcon } from "@/shared/ui/icons";
+import { fadeInUp, fadeInScale } from "@/lib/constants/animations";
+import {
+  PageHeader,
+  HeaderCTA,
+  HeaderSecondaryCTA,
+} from "@/shared/layout/PageHeader";
 
 export default function ExcursionView() {
   const { t } = useTranslation();
@@ -44,47 +51,21 @@ export default function ExcursionView() {
 
   return (
     <>
-      <header className="relative isolate overflow-hidden bg-slate-950 text-white">
-        <div
-          className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(249,115,22,0.35),transparent_65%)]"
-          aria-hidden="true"
-        ></div>
-        <div
-          className="absolute inset-0 z-10 bg-linear-to-br from-slate-900/80 via-slate-900/60 to-slate-900 opacity-80"
-          aria-hidden="true"
-        ></div>
-        <div
-          className="absolute inset-0 z-10 bg-linear-to-br from-black/60 via-black/20 to-transparent"
-          aria-hidden="true"
-        ></div>
-        <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 py-24 text-center lg:flex-row lg:items-center lg:py-28 lg:text-left">
-          <div className="contact-hero-content flex-1 space-y-6 pt-6 text-center lg:pt-12">
-            <h1 className="text-4xl font-semibold tracking-[0.2em] text-orange-200 uppercase sm:text-5xl">
-              {t("excursion.title")}
-            </h1>
-            <p className="text-lg text-slate-200 lg:text-xl">
-              {t("excursion.headerSubtitle")}
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-2 lg:justify-start">
-              <a
-                href="https://www.tripadvisor.de/Attraction_Review-g293734-d32584739-Reviews-Amsirar_Travel-Marrakech_Marrakech_Safi.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/20"
-              >
-                Offers on TripAdvisor
-              </a>
-              <a
-                href="#excursions-grid"
-                className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10"
-              >
-                <span>{t("excursion.detailsTitle")}</span>
-                <ArrowIcon className="size-4" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </header>
+      <PageHeader
+        title={t("excursion.title")}
+        subtitle={t("excursion.headerSubtitle")}
+      >
+        <HeaderSecondaryCTA
+          href="https://www.tripadvisor.de/Attraction_Review-g293734-d32584739-Reviews-Amsirar_Travel-Marrakech_Marrakech_Safi.html"
+          external
+        >
+          Offers on TripAdvisor
+        </HeaderSecondaryCTA>
+        <HeaderCTA href="#excursions-grid">
+          <span>{t("excursion.detailsTitle")}</span>
+          <ArrowIcon className="size-4" />
+        </HeaderCTA>
+      </PageHeader>
 
       <main className="text-slate-900">
         <section className="py-12" aria-labelledby="excursion-highlights">
@@ -95,7 +76,7 @@ export default function ExcursionView() {
               </p>
               <h2
                 id="excursion-highlights"
-                className="mt-4 text-3xl leading-tight font-bold md:text-4xl"
+                className="mt-4 text-2xl leading-tight font-bold sm:text-3xl md:text-4xl"
               >
                 {t("excursion.detailsTitle")}
               </h2>
@@ -108,9 +89,7 @@ export default function ExcursionView() {
               {highlightStats.map((stat, idx) => (
                 <motion.article
                   key={stat.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
+                  {...fadeInUp}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   className="rounded-3xl border border-orange-100 bg-white px-6 py-6 shadow-lg shadow-orange-100/70"
                 >
@@ -141,7 +120,7 @@ export default function ExcursionView() {
               </p>
               <h2
                 id="excursion-grid-heading"
-                className="mt-4 text-3xl leading-tight font-bold md:text-4xl"
+                className="mt-4 text-2xl leading-tight font-bold sm:text-3xl md:text-4xl"
               >
                 {t("excursion.blog.lgTitle")}
               </h2>
@@ -154,9 +133,7 @@ export default function ExcursionView() {
               {EXCURSIONS_DATA.map((excursion, idx) => (
                 <motion.article
                   key={excursion.id}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, amount: 0.2 }}
+                  {...fadeInScale}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   className="group relative mb-8 block h-117.5 cursor-pointer overflow-hidden rounded-3xl bg-white shadow-[0_1px_2px_rgba(0,0,0,0.15)] transition-all duration-500 ease-out"
                 >
@@ -204,23 +181,5 @@ export default function ExcursionView() {
         </section>
       </main>
     </>
-  );
-}
-
-function ArrowIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <path d="M5 12h14" />
-      <path d="M13 6l6 6-6 6" />
-    </svg>
   );
 }

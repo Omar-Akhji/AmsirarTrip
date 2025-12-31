@@ -5,6 +5,16 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { CountUp } from "@/shared/ui";
 import { motion } from "framer-motion";
+import {
+  PageHeader,
+  HeaderCTA,
+  HeaderSecondaryCTA,
+} from "@/shared/layout/PageHeader";
+import {
+  slideInLeftLarge,
+  slideInRightLarge,
+  fadeInUp,
+} from "@/lib/constants/animations";
 
 export default function AboutView() {
   const t = useTranslations();
@@ -44,52 +54,19 @@ export default function AboutView() {
 
   return (
     <>
-      {/* Hero Header - styled like Excursion header (split layout + info card) */}
-      <header className="relative isolate overflow-hidden bg-slate-950 text-white">
-        <div
-          className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(249,115,22,0.35),transparent_65%)]"
-          aria-hidden="true"
-        ></div>
-        <div
-          className="absolute inset-0 z-10 bg-linear-to-br from-slate-900/80 via-slate-900/60 to-slate-900 opacity-80"
-          aria-hidden="true"
-        ></div>
-        <div
-          className="absolute inset-0 z-10 bg-linear-to-br from-black/60 via-black/20 to-transparent"
-          aria-hidden="true"
-        ></div>
-        <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 py-24 text-center lg:flex-row lg:items-center lg:py-28 lg:text-left">
-          <div className="contact-hero-content flex-1 space-y-6 pt-6 text-center lg:pt-12">
-            <h1
-              id="about-page-title"
-              className="text-4xl font-semibold tracking-[0.2em] text-orange-200 uppercase sm:text-5xl"
-            >
-              {t("about.title")}
-            </h1>
-            <p className="text-lg text-slate-200 lg:text-xl">
-              {t("about.headerSubtitle")}
-            </p>
-
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-2 lg:justify-start">
-              <a
-                href="#about"
-                className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10"
-              >
-                <span>{t("about.ourStory")}</span>
-                <span className="sr-only">{t("about.ourStory")}</span>
-              </a>
-              <a
-                href="#facts"
-                className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur-sm transition hover:-translate-y-0.5 hover:bg-white/20"
-              >
-                {t("about.facts.smTitle")}
-              </a>
-            </div>
-          </div>
-
-          {/* Right column removed per request - single-column hero */}
-        </div>
-      </header>
+      <PageHeader
+        title={t("about.title")}
+        subtitle={t("about.headerSubtitle")}
+        headingId="about-page-title"
+      >
+        <HeaderCTA href="#about">
+          <span>{t("about.ourStory")}</span>
+          <span className="sr-only">{t("about.ourStory")}</span>
+        </HeaderCTA>
+        <HeaderSecondaryCTA href="#facts">
+          {t("about.facts.smTitle")}
+        </HeaderSecondaryCTA>
+      </PageHeader>
 
       <main>
         <section
@@ -108,7 +85,7 @@ export default function AboutView() {
               </p>
               <h2
                 id="our-story-heading"
-                className="mt-6 text-3xl leading-tight font-extrabold tracking-[0.2em] text-gray-900 uppercase md:text-4xl"
+                className="mt-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
               >
                 {t("about.ourStory")}
               </h2>
@@ -118,13 +95,7 @@ export default function AboutView() {
             </div>
 
             <div className="grid items-center gap-12 lg:grid-cols-2">
-              <motion.div
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6 }}
-                className="order-2 lg:order-1"
-              >
+              <motion.div {...slideInLeftLarge} className="order-2 lg:order-1">
                 <article
                   className="space-y-8"
                   aria-labelledby="experience-heading"
@@ -187,13 +158,7 @@ export default function AboutView() {
                 </article>
               </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6 }}
-                className="order-1 lg:order-2"
-              >
+              <motion.div {...slideInRightLarge} className="order-1 lg:order-2">
                 <figure className="relative">
                   <div className="absolute inset-0 rotate-3 transform rounded-3xl bg-linear-to-br from-orange-500/20 to-amber-500/20"></div>
                   <div className="relative aspect-4/3 overflow-hidden rounded-3xl bg-white shadow-2xl">
@@ -238,7 +203,7 @@ export default function AboutView() {
               </p>
               <h2
                 id="facts-heading"
-                className="mt-4 text-3xl leading-tight font-bold tracking-[0.2em] text-white uppercase md:text-4xl"
+                className="mt-4 text-2xl leading-tight font-bold tracking-widest text-white uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
               >
                 {t("about.facts.lgTitle")}
               </h2>
@@ -248,9 +213,7 @@ export default function AboutView() {
               {factStats.map((fact, idx) => (
                 <motion.li
                   key={fact.id}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
+                  {...fadeInUp}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                 >
                   <article
@@ -298,7 +261,6 @@ export default function AboutView() {
           </div>
         </section>
       </main>
-      {/* Facts Section - background image and refined cards (JSX only) */}
     </>
   );
 }

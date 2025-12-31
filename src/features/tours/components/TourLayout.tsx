@@ -7,6 +7,8 @@ import dynamic from "next/dynamic";
 import { TOURS_DATA } from "../data";
 import { motion } from "framer-motion";
 
+import { PageHeader } from "@/shared/layout/PageHeader";
+
 const BookingForm = dynamic(
   () => import("@/features/booking/components/BookingForm"),
   {
@@ -139,24 +141,11 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
 
   return (
     <>
-      <header className="relative isolate overflow-hidden bg-slate-950 text-white">
-        <div
-          className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(248,250,252,0.08),transparent_60%)]"
-          aria-hidden="true"
-        ></div>
-        <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 py-24 text-center lg:flex-row lg:items-center lg:py-28 lg:text-left">
-          <div className="flex-1 space-y-6 pt-6 text-center lg:pt-12">
-            <span className="block text-4xl font-semibold tracking-[0.2em] text-orange-200 uppercase">
-              {t("tours.detailsTitle")}
-            </span>
-            <div className="mt-2">
-              <p className="mt-1 text-xl text-slate-300">
-                {t("tours.detailsSubtitle")}
-              </p>
-            </div>
-          </div>
-        </div>
-      </header>
+      <PageHeader
+        title={title}
+        subtitle={t("tours.detailsSubtitle")}
+        smTitle={t("tours.detailsTitle")}
+      />
 
       <main>
         <section id="tour-single" className="py-14">
@@ -176,10 +165,10 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
               <div className="mb-6 text-center">
                 <div className="mx-auto inline-block">
                   <span
-                    className="mb-3 block h-1 w-16 rounded-full bg-amber-300"
+                    className="mb-3 hidden h-1 w-16 rounded-full bg-amber-300 sm:block"
                     aria-hidden="true"
                   ></span>
-                  <h1 className="mt-2 text-3xl leading-tight font-extrabold text-amber-600 md:text-4xl">
+                  <h1 className="mt-2 text-2xl leading-tight font-extrabold text-amber-600 sm:text-3xl md:text-4xl">
                     {title}
                   </h1>
                 </div>
@@ -252,17 +241,17 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                 </div>
 
                 <div>
-                  <h2 className="mb-4 text-2xl font-bold text-slate-900">
+                  <h2 className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
                     {t("tours.overview")}
                   </h2>
-                  <p className="leading-relaxed whitespace-pre-line text-gray-700">
+                  <p className="text-sm leading-relaxed whitespace-pre-line text-gray-700 sm:text-base">
                     {overview}
                   </p>
                 </div>
 
                 {/* Itinerary */}
                 <div>
-                  <h2 className="mb-8 text-2xl font-bold text-slate-900">
+                  <h2 className="mb-8 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
                     {t("tours.itinerary")}
                   </h2>
                   <div className="space-y-8">
@@ -284,7 +273,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                               </div>
                             </div>
                             <div className="min-w-0 flex-1">
-                              <h3 className="text-xl leading-tight font-bold tracking-tight text-slate-900">
+                              <h3 className="text-lg leading-tight font-bold tracking-tight text-slate-900 sm:text-xl md:text-2xl">
                                 {dayLabel} {day.number}
                               </h3>
                             </div>
@@ -315,7 +304,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
 
                         {/* Day Content */}
                         {day.text.length > 0 && (
-                          <div className="border-orange ml-5.5 space-y-3 border-l-4 pl-6">
+                          <div className="border-orange space-y-3 border-l-0 pl-0 sm:ml-5.5 sm:border-l-4 sm:pl-6">
                             {day.text.map((item, idx) => (
                               <div key={idx} className="flex items-start gap-3">
                                 <div className="mt-1 shrink-0">
@@ -323,7 +312,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                                     <CheckIcon />
                                   </div>
                                 </div>
-                                <p className="flex-1 text-sm leading-relaxed text-gray-700">
+                                <p className="flex-1 text-sm leading-relaxed text-gray-700 sm:text-base">
                                   {item}
                                 </p>
                               </div>
@@ -338,7 +327,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                 {/* Includes */}
                 {includes && (
                   <div>
-                    <h2 className="mb-4 text-2xl font-bold text-slate-900">
+                    <h2 className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
                       {t("tours.included")}
                     </h2>
                     <div className="rounded-lg border border-green-200 bg-green-50 p-6">
@@ -350,7 +339,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                               <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-green-500 text-xs text-white">
                                 <CheckIcon />
                               </span>
-                              <span className="flex-1 text-left text-gray-700">
+                              <span className="flex-1 text-left text-sm text-gray-700 sm:text-base">
                                 {item}
                               </span>
                             </li>
@@ -363,7 +352,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                 {/* Excludes */}
                 {excludes && (
                   <div>
-                    <h2 className="mb-4 text-2xl font-bold text-slate-900">
+                    <h2 className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
                       {t("tours.excluded")}
                     </h2>
                     <div className="rounded-lg border border-red-200 bg-red-50 p-6">
@@ -375,7 +364,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                               <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-red-500 text-xs text-white">
                                 ✕
                               </span>
-                              <span className="flex-1 text-left text-gray-700">
+                              <span className="flex-1 text-left text-sm text-gray-700 sm:text-base">
                                 {item}
                               </span>
                             </li>
@@ -388,7 +377,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                 {/* Good to Know */}
                 {goodToKnow && (
                   <div>
-                    <h2 className="mb-4 text-2xl font-bold text-slate-900">
+                    <h2 className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
                       {t("tours.goodToKnow")}
                     </h2>
                     <div className="rounded-lg border border-blue-200 bg-blue-50 p-6">
@@ -400,7 +389,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                               <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-blue-500 text-xs font-bold text-white">
                                 i
                               </span>
-                              <span className="flex-1 text-left text-gray-700">
+                              <span className="flex-1 text-left text-sm text-gray-700 sm:text-base">
                                 {item}
                               </span>
                             </li>

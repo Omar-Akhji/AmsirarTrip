@@ -7,6 +7,8 @@ import { useTranslations } from "next-intl";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { motion } from "framer-motion";
 
+import { PageHeader } from "@/shared/layout/PageHeader";
+
 interface TransProps {
   i18nKey: string;
   components?: Record<string, React.ReactNode>;
@@ -85,25 +87,11 @@ const ExcursionLayout: React.FC<ExcursionLayoutProps> = ({
 
   return (
     <>
-      <header className="relative isolate overflow-hidden bg-slate-950 text-white">
-        <div
-          className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(248,250,252,0.08),transparent_60%)]"
-          aria-hidden="true"
-        ></div>
-        <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 py-24 text-center lg:flex-row lg:items-center lg:py-28 lg:text-left">
-          <div className="flex-1 space-y-6 pt-6 text-center lg:pt-12">
-            <span className="block text-4xl font-semibold tracking-[0.2em] text-orange-200 uppercase">
-              {t("excursion.detailsTitle")}
-            </span>
-            <div className="mt-2">
-              <p className="mt-1 text-xl text-slate-300">
-                Stories, tips, and insights from our adventures
-              </p>
-            </div>
-          </div>
-          {/* right column removed — image moved into article for tour-like layout */}
-        </div>
-      </header>
+      <PageHeader
+        title={title}
+        subtitle="Stories, tips, and insights from our adventures"
+        smTitle={t("excursion.detailsTitle")}
+      />
 
       <main>
         <section id="excursion-single" className="py-14">
@@ -123,10 +111,10 @@ const ExcursionLayout: React.FC<ExcursionLayoutProps> = ({
               <div className="mb-6 text-center">
                 <div className="mx-auto inline-block">
                   <span
-                    className="mb-3 block h-1 w-16 rounded-full bg-amber-300"
+                    className="mb-3 hidden h-1 w-16 rounded-full bg-amber-300 sm:block"
                     aria-hidden="true"
                   ></span>
-                  <h1 className="text-orange mt-2 text-3xl leading-tight font-extrabold md:text-4xl">
+                  <h1 className="text-orange mt-2 text-2xl leading-tight font-extrabold sm:text-3xl md:text-4xl">
                     {title}
                   </h1>
                 </div>
@@ -184,7 +172,7 @@ const ExcursionLayout: React.FC<ExcursionLayoutProps> = ({
                 </div>
 
                 <div>
-                  <h2 className="text-xl font-semibold text-slate-900">
+                  <h2 className="text-xl font-semibold text-slate-900 sm:text-2xl md:text-3xl">
                     {t("excursion.common.highlights")}
                   </h2>
                   <ul className="mt-4 grid gap-3">
@@ -202,17 +190,19 @@ const ExcursionLayout: React.FC<ExcursionLayoutProps> = ({
                             <CheckIcon />
                           </span>
                         </div>
-                        <p className="text-left leading-relaxed">{item}</p>
+                        <p className="text-left text-sm leading-relaxed sm:text-base">
+                          {item}
+                        </p>
                       </motion.li>
                     ))}
                   </ul>
                 </div>
 
                 <div className="space-y-4">
-                  <h2 className="text-xl font-semibold text-slate-900">
+                  <h2 className="text-xl font-semibold text-slate-900 sm:text-2xl md:text-3xl">
                     {t("excursion.common.overview")}
                   </h2>
-                  <p className="text-base leading-relaxed text-slate-600">
+                  <p className="text-sm leading-relaxed text-slate-600 sm:text-base">
                     {t(`${excursionKey}.overview`)}
                   </p>
                 </div>
@@ -232,7 +222,7 @@ const ExcursionLayout: React.FC<ExcursionLayoutProps> = ({
                     {t("excursion.sidebar.subBrand")}
                   </span>
                   <div
-                    className="my-4 border-t border-slate-700"
+                    className="my-4 hidden border-t border-slate-700 sm:block"
                     aria-hidden="true"
                   ></div>
                   <p className="mt-2 text-sm text-slate-200">

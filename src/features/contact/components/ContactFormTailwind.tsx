@@ -440,32 +440,34 @@ const ContactFormTailwind = () => {
                 className="flex flex-col gap-4 lg:flex-row lg:items-center"
               >
                 <div>
-                  <div
-                    className={cn(
-                      "rounded-2xl border border-dashed p-3",
-                      errors.recaptchaToken && touched.recaptchaToken
-                        ? "border-red-300"
-                        : "border-gray-200"
-                    )}
-                  >
-                    {hasRecaptchaV2 ? (
-                      <ReCAPTCHA
-                        ref={recaptchaRef}
-                        sitekey={RECAPTCHA_V2_SITE_KEY}
-                        onChange={() => {
-                          if (errors.recaptchaToken) {
-                            setErrors((prev) => ({
-                              ...prev,
-                              recaptchaToken: "",
-                            }));
-                          }
-                        }}
-                      />
-                    ) : (
-                      <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-600">
-                        ReCAPTCHA not configured (Site Key missing)
-                      </div>
-                    )}
+                  <div className="flex w-full justify-center overflow-hidden lg:justify-start">
+                    <div
+                      className={cn(
+                        "origin-center scale-85 rounded-2xl border border-dashed p-3 sm:scale-100 lg:origin-left",
+                        errors.recaptchaToken && touched.recaptchaToken
+                          ? "border-red-300"
+                          : "border-gray-200"
+                      )}
+                    >
+                      {hasRecaptchaV2 ? (
+                        <ReCAPTCHA
+                          ref={recaptchaRef}
+                          sitekey={RECAPTCHA_V2_SITE_KEY}
+                          onChange={() => {
+                            if (errors.recaptchaToken) {
+                              setErrors((prev) => ({
+                                ...prev,
+                                recaptchaToken: "",
+                              }));
+                            }
+                          }}
+                        />
+                      ) : (
+                        <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-600">
+                          ReCAPTCHA not configured (Site Key missing)
+                        </div>
+                      )}
+                    </div>
                   </div>
                   {errors.recaptchaToken && touched.recaptchaToken && (
                     <p
@@ -502,7 +504,7 @@ const ContactFormTailwind = () => {
               <p className="text-xs font-semibold tracking-[0.45em] text-orange-200 uppercase">
                 {t("contact.form.infoBadge", "Need details?")}
               </p>
-              <h3 className="mt-3 text-3xl font-bold">
+              <h3 className="mt-3 text-2xl font-bold sm:text-3xl">
                 {t("contact.form.infoTitle", "Plan handcrafted experiences")}
               </h3>
               <p className="mt-4 text-sm text-slate-200">

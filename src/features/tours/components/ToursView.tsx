@@ -6,6 +6,13 @@ import { Link } from "@/i18n/routing";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { TOURS_DATA } from "../data";
 import { motion } from "framer-motion";
+import { ArrowIcon, PhoneIcon, ClockIcon } from "@/shared/ui/icons";
+import { fadeInUp, fadeInScale } from "@/lib/constants/animations";
+import {
+  PageHeader,
+  HeaderCTA,
+  HeaderSecondaryCTA,
+} from "@/shared/layout/PageHeader";
 
 export default function ToursView() {
   const { t } = useTranslation();
@@ -45,48 +52,16 @@ export default function ToursView() {
 
   return (
     <>
-      <header className="relative isolate overflow-hidden bg-slate-950 text-white">
-        <div
-          className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(249,115,22,0.35),transparent_65%)]"
-          aria-hidden="true"
-        ></div>
-        <div
-          className="absolute inset-0 z-10 bg-linear-to-br from-slate-900/80 via-slate-900/60 to-slate-900 opacity-80"
-          aria-hidden="true"
-        ></div>
-        <div
-          className="absolute inset-0 z-10 bg-linear-to-br from-black/60 via-black/20 to-transparent"
-          aria-hidden="true"
-        ></div>
-        <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-col gap-12 px-4 py-24 text-center lg:flex-row lg:items-center lg:py-28 lg:text-left">
-          <div className="contact-hero-content flex-1 space-y-6 pt-6 text-center lg:pt-12">
-            <h1 className="text-4xl font-semibold tracking-[0.2em] text-orange-200 uppercase sm:text-5xl">
-              {t("tours.title")}
-            </h1>
-            <p className="text-lg text-slate-200 lg:text-xl">
-              {t("tours.headerSubtitle")}
-            </p>
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-2 lg:justify-center">
-              <a
-                href="#tours-grid"
-                className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10"
-              >
-                <span>{t("tours.detailsTitle")}</span>
-                <ArrowIcon className="size-4" />
-              </a>
-              <a
-                href="tel:+212661173144"
-                className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:-translate-y-0.5"
-              >
-                <PhoneIcon className="size-4" />
-                <span>{t("helplineTitle")}</span>
-              </a>
-            </div>
-          </div>
-
-          {/* No right column for Tours header; single column hero like Contact/About */}
-        </div>
-      </header>
+      <PageHeader title={t("tours.title")} subtitle={t("tours.headerSubtitle")}>
+        <HeaderCTA href="#tours-grid">
+          <span>{t("tours.detailsTitle")}</span>
+          <ArrowIcon className="size-4" />
+        </HeaderCTA>
+        <HeaderSecondaryCTA href="tel:+212661173144">
+          <PhoneIcon className="size-4" />
+          <span>{t("helplineTitle")}</span>
+        </HeaderSecondaryCTA>
+      </PageHeader>
 
       <main className="text-slate-900">
         <section className="py-12" aria-labelledby="tour-highlights">
@@ -97,7 +72,7 @@ export default function ToursView() {
               </p>
               <h2
                 id="tour-highlights"
-                className="mt-4 text-3xl leading-tight font-bold md:text-4xl"
+                className="mt-4 text-2xl leading-tight font-bold sm:text-3xl md:text-4xl"
               >
                 {t("tours.detailsTitle")}
               </h2>
@@ -110,9 +85,7 @@ export default function ToursView() {
               {tourStats.map((stat, idx) => (
                 <motion.article
                   key={stat.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
+                  {...fadeInUp}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   className="rounded-3xl border border-orange-100 bg-white px-6 py-6 shadow-lg shadow-orange-100/70"
                 >
@@ -143,7 +116,7 @@ export default function ToursView() {
               </p>
               <h2
                 id="tours-grid-heading"
-                className="mt-4 text-3xl leading-tight font-bold md:text-4xl"
+                className="mt-4 text-2xl leading-tight font-bold sm:text-3xl md:text-4xl"
               >
                 {t("tours.tour.lgTitle")}
               </h2>
@@ -156,9 +129,7 @@ export default function ToursView() {
               {TOURS_DATA.map((tour, idx) => (
                 <motion.article
                   key={tour.id}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true, amount: 0.2 }}
+                  {...fadeInScale}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   className="group relative mb-8 block h-117.5 cursor-pointer overflow-hidden rounded-3xl bg-white shadow-[0_1px_2px_rgba(0,0,0,0.1)] transition-all duration-500 ease-out group-hover:min-h-135"
                 >
@@ -231,58 +202,5 @@ export default function ToursView() {
         </section>
       </main>
     </>
-  );
-}
-
-function ArrowIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <path d="M5 12h14" />
-      <path d="M13 6l6 6-6 6" />
-    </svg>
-  );
-}
-
-function ClockIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 7v5l3 2" />
-    </svg>
-  );
-}
-
-function PhoneIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.8"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      aria-hidden="true"
-      {...props}
-    >
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.12 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2L8.09 9.91a16 16 0 0 0 6 6l1.38-1.38a2 2 0 0 1 2-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92Z" />
-    </svg>
   );
 }
