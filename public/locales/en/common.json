@@ -1408,5 +1408,10 @@
       "privacyPolicy": "Privacy Policy",
       "termsOfService": "Terms of Service"
     }
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "description": "Sorry, the page you're looking for doesn't exist or has been moved.",
+    "backHome": "Back to Home"
   }
 }

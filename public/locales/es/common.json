@@ -1400,5 +1400,10 @@
       "privacyPolicy": "Política de Privacidad",
       "termsOfService": "Términos de Servicio"
     }
+  },
+  "notFound": {
+    "title": "Página no encontrada",
+    "description": "Lo sentimos, la página que buscas no existe o ha sido movida.",
+    "backHome": "Volver al inicio"
   }
 }

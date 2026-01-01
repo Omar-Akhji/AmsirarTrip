@@ -1401,5 +1401,10 @@
       "privacyPolicy": "Datenschutzerklärung",
       "termsOfService": "AGB"
     }
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "description": "Entschuldigung, die gesuchte Seite existiert nicht oder wurde verschoben.",
+    "backHome": "Zurück zur Startseite"
   }
 }
