@@ -54,6 +54,11 @@ export default function ExcursionView() {
       <PageHeader
         title={t("excursion.title")}
         subtitle={t("excursion.headerSubtitle")}
+        bgImage="/images/Header/header-1.webp"
+        breadcrumbs={[
+          { label: t("nav.home"), href: "/" },
+          { label: t("nav.excursions") },
+        ]}
       >
         <HeaderSecondaryCTA
           href="https://www.tripadvisor.de/Attraction_Review-g293734-d32584739-Reviews-Amsirar_Travel-Marrakech_Marrakech_Safi.html"

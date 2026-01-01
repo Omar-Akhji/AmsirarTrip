@@ -416,6 +416,22 @@ export default function FooterTailwind() {
                   AmsirarTrip. Ltd. {t("footer.copyright")}
                 </small>
               </p>
+
+              <div className="flex gap-4 text-xl text-slate-500">
+                <Link
+                  href="/privacy-policy"
+                  className="text-slate-500 transition-colors hover:text-white"
+                >
+                  <small>{t("legal.footer.privacyPolicy")}</small>
+                </Link>
+                <span className="text-white/20">|</span>
+                <Link
+                  href="/terms-of-service"
+                  className="text-slate-500 transition-colors hover:text-white"
+                >
+                  <small>{t("legal.footer.termsOfService")}</small>
+                </Link>
+              </div>
             </div>
           </div>
         </div>

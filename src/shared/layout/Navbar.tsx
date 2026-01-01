@@ -35,7 +35,7 @@ interface LanguageSelectorProps {
 const NAV_LINKS: NavLink[] = [
   { to: "/", labelKey: "nav.home" },
   { to: "/tours", labelKey: "nav.tours" },
-  { to: "/excursions", labelKey: "nav.excursion" },
+  { to: "/excursions", labelKey: "nav.excursions" },
   { to: "/about", labelKey: "nav.about" },
   { to: "/contact", labelKey: "nav.contact" },
 ];

@@ -4,7 +4,7 @@
   "nav": {
     "home": "Accueil",
     "tours": "Circuits",
-    "excursion": "Excursion",
+    "excursions": "Excursion",
     "about": "À propos",
     "contact": "Contact"
   },
@@ -1302,6 +1302,95 @@
         "meals": "Petit-déjeuner inclus",
         "arrival": "Vers 17h00–18h00"
       }
+    }
+  },
+  "legal": {
+    "backToHome": "Retour à l'accueil",
+    "privacy": {
+      "meta": {
+        "title": "Politique de confidentialité",
+        "description": "Découvrez comment AmsirarTrip collecte, utilise et protège vos informations personnelles lors de l'utilisation de nos services de voyage au Maroc."
+      },
+      "title": "Politique de confidentialité",
+      "subtitle": "Votre vie privée est importante pour nous",
+      "lastUpdated": "Dernière mise à jour : Janvier 2026",
+      "sections": {
+        "informationCollection": {
+          "title": "Informations que nous collectons",
+          "content": "Nous collectons les informations que vous nous fournissez directement, telles que votre nom, adresse e-mail, numéro de téléphone et préférences de voyage lorsque vous effectuez une réservation, nous contactez ou vous abonnez à notre newsletter. Nous collectons également automatiquement certaines informations sur votre appareil et votre interaction avec notre site web."
+        },
+        "informationUse": {
+          "title": "Comment nous utilisons vos informations",
+          "content": "Nous utilisons les informations collectées pour traiter vos réservations, communiquer avec vous concernant vos arrangements de voyage, vous envoyer des documents promotionnels (avec votre consentement), améliorer nos services et respecter nos obligations légales. Nous ne vendons jamais vos informations personnelles à des tiers."
+        },
+        "cookies": {
+          "title": "Cookies et suivi",
+          "content": "Notre site web utilise des cookies et des technologies similaires pour améliorer votre expérience de navigation, analyser le trafic du site et personnaliser le contenu. Vous pouvez contrôler les préférences des cookies via les paramètres de votre navigateur. Les cookies essentiels sont nécessaires au bon fonctionnement du site."
+        },
+        "dataSecurity": {
+          "title": "Sécurité des données",
+          "content": "Nous mettons en œuvre des mesures techniques et organisationnelles appropriées pour protéger vos informations personnelles contre tout accès, modification, divulgation ou destruction non autorisés. Toutes les transactions de paiement sont cryptées à l'aide de la technologie SSL."
+        },
+        "thirdParties": {
+          "title": "Services tiers",
+          "content": "Nous pouvons partager vos informations avec des tiers de confiance qui nous aident à exploiter notre site web, à mener nos activités ou à vous servir. Ces parties acceptent de garder vos informations confidentielles et de les utiliser uniquement aux fins que nous spécifions."
+        },
+        "yourRights": {
+          "title": "Vos droits",
+          "content": "Vous avez le droit d'accéder, de corriger ou de supprimer vos informations personnelles. Vous pouvez également vous opposer au traitement, demander la portabilité des données et retirer votre consentement à tout moment. Pour exercer ces droits, veuillez nous contacter aux coordonnées ci-dessous."
+        },
+        "contact": {
+          "title": "Nous contacter",
+          "content": "Si vous avez des questions concernant cette politique de confidentialité ou nos pratiques en matière de données, veuillez nous contacter à amsirare@gmail.com ou nous appeler au +212 (0) 6 61 17 31 44. Notre bureau est situé à Imm. J appt N° 5, Résidence La Perle de l'Atlas, Marrakech, Maroc."
+        }
+      }
+    },
+    "terms": {
+      "meta": {
+        "title": "Conditions d'utilisation",
+        "description": "Lisez les conditions générales d'utilisation des services de voyage et de réservation de circuits au Maroc d'AmsirarTrip."
+      },
+      "title": "Conditions d'utilisation",
+      "subtitle": "Veuillez lire attentivement ces conditions avant d'utiliser nos services",
+      "lastUpdated": "Dernière mise à jour : Janvier 2026",
+      "sections": {
+        "acceptance": {
+          "title": "Acceptation des conditions",
+          "content": "En accédant ou en utilisant le site web et les services d'AmsirarTrip, vous acceptez d'être lié par ces conditions d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser nos services. Nous nous réservons le droit de modifier ces conditions à tout moment, et votre utilisation continue constitue une acceptation de tout changement."
+        },
+        "services": {
+          "title": "Nos services",
+          "content": "AmsirarTrip fournit des services de planification de voyage, de réservation de circuits, d'excursions et de services de voyage connexes au Maroc. Tous les services sont soumis à disponibilité et confirmation. Les descriptions sur notre site web sont à titre illustratif et les expériences réelles peuvent varier en fonction de la météo, des conditions locales et d'autres facteurs."
+        },
+        "bookings": {
+          "title": "Réservation et paiement",
+          "content": "Toutes les réservations nécessitent un acompte pour confirmer votre réservation. Le paiement intégral est généralement dû avant la date de début du circuit, comme indiqué dans votre confirmation de réservation. Les prix sont indiqués dans la devise mentionnée et peuvent être sujets à modification jusqu'à réception du paiement intégral. Des frais supplémentaires peuvent s'appliquer pour les activités optionnelles ou les surclassements."
+        },
+        "cancellation": {
+          "title": "Annulation et remboursements",
+          "content": "Les politiques d'annulation varient selon le circuit ou l'excursion réservée. Généralement, les annulations effectuées plus de 30 jours avant le départ bénéficient d'un remboursement intégral moins les frais administratifs. Les annulations 15-29 jours avant le départ bénéficient d'un remboursement de 50%. Les annulations moins de 15 jours avant le départ ne sont pas remboursables. Nous recommandons une assurance voyage."
+        },
+        "liability": {
+          "title": "Limitation de responsabilité",
+          "content": "AmsirarTrip agit en tant qu'intermédiaire entre vous et divers prestataires de services. Bien que nous sélectionnions soigneusement nos partenaires, nous ne pouvons être tenus responsables de leurs actions ou omissions. Notre responsabilité est limitée au montant total payé pour la réservation. Nous ne sommes pas responsables des retards, modifications ou annulations dus à des circonstances indépendantes de notre volonté."
+        },
+        "intellectualProperty": {
+          "title": "Propriété intellectuelle",
+          "content": "Tout le contenu de ce site web, y compris les textes, images, logos et graphiques, est la propriété d'AmsirarTrip et est protégé par les lois sur le droit d'auteur et les marques. Vous ne pouvez pas reproduire, distribuer ou utiliser tout contenu sans notre autorisation écrite préalable."
+        },
+        "governingLaw": {
+          "title": "Loi applicable",
+          "content": "Ces conditions d'utilisation sont régies par les lois du Royaume du Maroc. Tout litige découlant de ces conditions ou de votre utilisation de nos services sera soumis à la compétence exclusive des tribunaux de Marrakech, Maroc."
+        },
+        "contact": {
+          "title": "Coordonnées",
+          "content": "Pour toute question concernant ces conditions d'utilisation, veuillez nous contacter à amsirare@gmail.com ou appeler le +212 (0) 6 61 17 31 44. Vous pouvez également visiter notre bureau à Imm. J appt N° 5, Résidence La Perle de l'Atlas, Marrakech, Maroc."
+        }
+      }
+    },
+    "footer": {
+      "privacyPolicy": "Politique de confidentialité",
+      "termsOfService": "Conditions d'utilisation"
     }
   }
 }

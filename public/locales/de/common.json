@@ -4,7 +4,7 @@
   "nav": {
     "home": "Startseite",
     "tours": "Touren",
-    "excursion": "Ausflug",
+    "excursions": "Ausflug",
     "about": "Über uns",
     "contact": "Kontakt"
   },
@@ -1311,6 +1311,95 @@
         "meals": "Frühstück inbegriffen",
         "arrival": "Um ca. 17:00–18:00 Uhr"
       }
+    }
+  },
+  "legal": {
+    "backToHome": "Zurück zur Startseite",
+    "privacy": {
+      "meta": {
+        "title": "Datenschutzerklärung",
+        "description": "Erfahren Sie, wie AmsirarTrip Ihre personenbezogenen Daten sammelt, verwendet und schützt."
+      },
+      "title": "Datenschutzerklärung",
+      "subtitle": "Ihr Datenschutz ist uns wichtig",
+      "lastUpdated": "Zuletzt aktualisiert: Januar 2026",
+      "sections": {
+        "informationCollection": {
+          "title": "Gesammelte Informationen",
+          "content": "Wir sammeln Informationen, die Sie uns direkt zur Verfügung stellen, wie Ihren Namen, Ihre E-Mail-Adresse und Ihre Telefonnummer, wenn Sie eine Buchung vornehmen oder uns kontaktieren."
+        },
+        "informationUse": {
+          "title": "Verwendung Ihrer Informationen",
+          "content": "Wir verwenden Ihre Informationen, um Ihre Buchungen zu bearbeiten, mit Ihnen zu kommunizieren und unsere Dienstleistungen zu verbessern."
+        },
+        "cookies": {
+          "title": "Cookies",
+          "content": "Unsere Website verwendet Cookies, um Ihre Benutzererfahrung zu verbessern."
+        },
+        "dataSecurity": {
+          "title": "Datensicherheit",
+          "content": "Wir ergreifen angemessene Maßnahmen, um Ihre Daten vor unbefugtem Zugriff zu schützen."
+        },
+        "thirdParties": {
+          "title": "Drittanbieter",
+          "content": "Wir geben Ihre Daten nur an vertrauenswürdige Partner weiter, die uns bei der Erbringung unserer Dienstleistungen unterstützen."
+        },
+        "yourRights": {
+          "title": "Ihre Rechte",
+          "content": "Sie haben das Recht, auf Ihre personenbezogenen Daten zuzugreifen, sie zu korrigieren oder zu löschen."
+        },
+        "contact": {
+          "title": "Kontakt",
+          "content": "Wenn Sie Fragen zum Datenschutz haben, kontaktieren Sie uns bitte unter amsirare@gmail.com."
+        }
+      }
+    },
+    "terms": {
+      "meta": {
+        "title": "Allgemeine Geschäftsbedingungen",
+        "description": "Lesen Sie die Bedingungen für die Nutzung der Reise- und Buchungsdienste von AmsirarTrip."
+      },
+      "title": "Allgemeine Geschäftsbedingungen",
+      "subtitle": "Bitte lesen Sie diese Bedingungen sorgfältig durch",
+      "lastUpdated": "Zuletzt aktualisiert: Januar 2026",
+      "sections": {
+        "acceptance": {
+          "title": "Annahme der Bedingungen",
+          "content": "Durch die Nutzung unserer Website erklären Sie sich mit diesen Bedingungen einverstanden."
+        },
+        "services": {
+          "title": "Unsere Dienstleistungen",
+          "content": "AmsirarTrip bietet Reiseplanung und Buchungsdienste für Touren in Marokko an."
+        },
+        "bookings": {
+          "title": "Buchung und Zahlung",
+          "content": "Buchungen erfordern eine Anzahlung zur Bestätigung Ihrer Reservierung."
+        },
+        "cancellation": {
+          "title": "Stornierung",
+          "content": "Stornierungsbedingungen variieren je nach gebuchter Tour."
+        },
+        "liability": {
+          "title": "Haftungsausschluss",
+          "content": "AmsirarTrip haftet nicht für Verzögerungen oder Änderungen aufgrund von Umständen, die außerhalb unserer Kontrolle liegen."
+        },
+        "intellectualProperty": {
+          "title": "Geistiges Eigentum",
+          "content": "Alle Inhalte auf dieser Website sind Eigentum von AmsirarTrip."
+        },
+        "governingLaw": {
+          "title": "Anwendbares Recht",
+          "content": "Diese Bedingungen unterliegen dem Recht des Königreichs Marokko."
+        },
+        "contact": {
+          "title": "Kontakt",
+          "content": "Bei Fragen zu diesen Bedingungen kontaktieren Sie uns bitte unter amsirare@gmail.com."
+        }
+      }
+    },
+    "footer": {
+      "privacyPolicy": "Datenschutzerklärung",
+      "termsOfService": "AGB"
     }
   }
 }

@@ -611,11 +611,11 @@ img {
 /* Responsive styles */
 @media screen and (width <= 767px) {
   header.header-sm {
-    min-height: 60vh;
+    min-height: 50vh;
   }
 
-  header:not(.header-sm) {
-    min-height: 70vh;
+  header:not(.header-sm, .home-header) {
+    min-height: 55vh;
   }
 
   #featured .card-article {
@@ -624,8 +624,8 @@ img {
 }
 
 @media screen and (width >= 768px) {
-  header:not(.header-sm) {
-    min-height: 85vh;
+  header:not(.header-sm, .home-header) {
+    min-height: 55vh;
   }
 
   .featured-row {
@@ -636,8 +636,8 @@ img {
 }
 
 @media screen and (width >= 1091px) {
-  header:not(.header-sm) {
-    min-height: 100vh;
+  header:not(.header-sm, .home-header) {
+    min-height: 60vh;
   }
 }
 
@@ -671,20 +671,14 @@ img {
 
 header {
   position: relative;
-  right: 50%;
-  left: 50%;
+  box-sizing: border-box;
   flex-direction: column;
-  width: 100vw;
   padding-top: 7rem;
-  margin-right: -50vw;
-  margin-left: -50vw;
+  border-radius: 1rem;
+  overflow: hidden;
   text-align: center;
   color: white;
-  background-image: url("/images/Header/header-1.webp");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  box-sizing: border-box;
+  background: url("/images/Header/header-1.webp") center / cover no-repeat;
 }
 
 ::-webkit-calendar-picker-indicator {
@@ -692,7 +686,7 @@ header {
 }
 
 header.header-sm {
-  min-height: 90vh;
+  min-height: 50vh;
 }
 
 #services {

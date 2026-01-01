@@ -145,6 +145,12 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
         title={title}
         subtitle={t("tours.detailsSubtitle")}
         smTitle={t("tours.detailsTitle")}
+        bgImage="/images/Header/header-1.webp"
+        breadcrumbs={[
+          { label: t("nav.home"), href: "/" },
+          { label: t("nav.tours"), href: "/tours" },
+          { label: t("tours.detailsTitle") },
+        ]}
       />
 
       <main>

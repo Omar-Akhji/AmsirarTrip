@@ -58,6 +58,11 @@ export default function AboutView() {
         title={t("about.title")}
         subtitle={t("about.headerSubtitle")}
         headingId="about-page-title"
+        bgImage="/images/Header/header-1.webp"
+        breadcrumbs={[
+          { label: t("nav.home"), href: "/" },
+          { label: t("nav.about") },
+        ]}
       >
         <HeaderCTA href="#about">
           <span>{t("about.ourStory")}</span>

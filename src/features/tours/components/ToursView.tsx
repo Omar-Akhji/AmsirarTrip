@@ -52,7 +52,15 @@ export default function ToursView() {
 
   return (
     <>
-      <PageHeader title={t("tours.title")} subtitle={t("tours.headerSubtitle")}>
+      <PageHeader
+        title={t("tours.title")}
+        subtitle={t("tours.headerSubtitle")}
+        bgImage="/images/Header/header-1.webp"
+        breadcrumbs={[
+          { label: t("nav.home"), href: "/" },
+          { label: t("nav.tours") },
+        ]}
+      >
         <HeaderCTA href="#tours-grid">
           <span>{t("tours.detailsTitle")}</span>
           <ArrowIcon className="size-4" />

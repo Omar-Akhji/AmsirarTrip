@@ -91,6 +91,12 @@ const ExcursionLayout: React.FC<ExcursionLayoutProps> = ({
         title={title}
         subtitle="Stories, tips, and insights from our adventures"
         smTitle={t("excursion.detailsTitle")}
+        bgImage="/images/Header/header-1.webp"
+        breadcrumbs={[
+          { label: t("nav.home"), href: "/" },
+          { label: t("nav.excursions"), href: "/excursions" },
+          { label: t("excursion.detailsTitle") },
+        ]}
       />
 
       <main>

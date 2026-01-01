@@ -71,6 +71,11 @@ export default function ContactView() {
         subtitle={t("contact.headerSubtitle")}
         smTitle={t("contact.smTitle", "get in touch with us")}
         gradientPosition="top-right"
+        bgImage="/images/Header/header-1.webp"
+        breadcrumbs={[
+          { label: t("nav.home"), href: "/" },
+          { label: t("nav.contact") },
+        ]}
       >
         <HeaderCTA href="#contact-form-section">
           <span>{t("contact.form.cta", "Send message")}</span>

@@ -4,7 +4,7 @@
   "nav": {
     "home": "Inicio",
     "tours": "Circuitos",
-    "excursion": "Excursión",
+    "excursions": "Excursión",
     "about": "Acerca de",
     "contact": "Contacto"
   },
@@ -1310,6 +1310,95 @@
         "meals": "Desayuno incluido",
         "arrival": "Alrededor de las 17:00–18:00"
       }
+    }
+  },
+  "legal": {
+    "backToHome": "Volver al inicio",
+    "privacy": {
+      "meta": {
+        "title": "Política de Privacidad",
+        "description": "Conozca cómo AmsirarTrip recopila, utiliza und protege su información personal."
+      },
+      "title": "Política de Privacidad",
+      "subtitle": "Su privacidad es importante para nosotros",
+      "lastUpdated": "Última actualización: enero de 2026",
+      "sections": {
+        "informationCollection": {
+          "title": "Información que recopilamos",
+          "content": "Recopilamos la información que usted nos proporciona directamente, como su nombre, correo electrónico y número de teléfono al realizar una reserva o contactarnos."
+        },
+        "informationUse": {
+          "title": "Uso de su información",
+          "content": "Utilizamos su información para procesar sus reservas, comunicarnos con usted y mejorar nuestros servicios."
+        },
+        "cookies": {
+          "title": "Cookies",
+          "content": "Nuestro sitio web utiliza cookies para mejorar su experiencia de navegación."
+        },
+        "dataSecurity": {
+          "title": "Seguridad de los datos",
+          "content": "Implementamos medidas de seguridad para proteger su información personal."
+        },
+        "thirdParties": {
+          "title": "Terceros",
+          "content": "Solo compartimos su información con socios de confianza que nos ayudan a proporcionar nuestros servicios."
+        },
+        "yourRights": {
+          "title": "Sus derechos",
+          "content": "Tiene derecho a acceder, corregir o eliminar sus datos personales."
+        },
+        "contact": {
+          "title": "Contacto",
+          "content": "Si tiene preguntas sobre la privacidad, contáctenos en amsirare@gmail.com."
+        }
+      }
+    },
+    "terms": {
+      "meta": {
+        "title": "Términos de Servicio",
+        "description": "Lea los términos y condiciones para el uso de los servicios de viaje y reserva de AmsirarTrip."
+      },
+      "title": "Términos de Servicio",
+      "subtitle": "Lea estos términos detenidamente",
+      "lastUpdated": "Última actualización: enero de 2026",
+      "sections": {
+        "acceptance": {
+          "title": "Aceptación de los términos",
+          "content": "Al acceder a nuestro sitio web, usted acepta estar sujeto a estos Términos de Servicio."
+        },
+        "services": {
+          "title": "Nuestros servicios",
+          "content": "AmsirarTrip proporciona servicios de planificación de viajes y reservas de tours en Marruecos."
+        },
+        "bookings": {
+          "title": "Reserva y pago",
+          "content": "Las reservas requieren un depósito para confirmar su reserva."
+        },
+        "cancellation": {
+          "title": "Cancelación",
+          "content": "Las políticas de cancelación varían según el tour reservado."
+        },
+        "liability": {
+          "title": "Limitación de responsabilidad",
+          "content": "AmsirarTrip no es responsable de retrasos o cambios debido a circunstancias fuera de nuestro control."
+        },
+        "intellectualProperty": {
+          "title": "Propiedad intelectual",
+          "content": "Todo el contenido de este sitio web es propiedad de AmsirarTrip."
+        },
+        "governingLaw": {
+          "title": "Ley aplicable",
+          "content": "Estos términos se rigen por las leyes del Reino de Marruecos."
+        },
+        "contact": {
+          "title": "Contacto",
+          "content": "Para preguntas sobre estos términos, contáctenos en amsirare@gmail.com."
+        }
+      }
+    },
+    "footer": {
+      "privacyPolicy": "Política de Privacidad",
+      "termsOfService": "Términos de Servicio"
     }
   }
 }
