@@ -1,10 +1,17 @@
 import { Metadata } from "next";
 
 const SITE_NAME = "AmsirarTrip";
-const SITE_TAGLINE = "Morocco Travel Experts";
 const BASE_URL = "https://amsirartrip.com";
 const COMPANY_PHONE = "+212 (0) 6 61 17 31 44";
 const COMPANY_EMAIL = "contact@amsirartrip.com";
+
+// Localized taglines for SEO metadata
+const SITE_TAGLINES: Record<string, string> = {
+  en: "Morocco Travel Experts",
+  fr: "Experts du Voyage au Maroc",
+  de: "Marokko Reise-Experten",
+  es: "Expertos en Viajes a Marruecos",
+};
 
 export interface SEOConfig {
   title: string;
@@ -32,9 +39,10 @@ export function generateSEOMetadata({
   author,
 }: SEOConfig): Metadata {
   const url = `${BASE_URL}${path}`;
+  const tagline = SITE_TAGLINES[locale] || SITE_TAGLINES.en;
   const fullTitle = title.includes(SITE_NAME)
     ? title
-    : `${title} | ${SITE_NAME} - ${SITE_TAGLINE}`;
+    : `${title} | ${SITE_NAME} - ${tagline}`;
 
   // Ensure description is optimal length (150-160 chars)
   const truncatedDescription =
