@@ -269,8 +269,8 @@ const Navbar: React.FC = () => {
   useEffect(() => {
     const evaluateViewport = () => {
       const width = window.innerWidth;
-      if (width < 767) setViewport("mobile");
-      else if (width <= 1050) setViewport("tablet");
+      if (width < 768) setViewport("mobile");
+      else if (width < 1090) setViewport("tablet");
       else setViewport("desktop");
     };
 
