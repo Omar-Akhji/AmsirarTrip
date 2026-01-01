@@ -33,7 +33,7 @@
   },
   "tours": {
     "meta": {
-      "title": "Unsere Touren | AmsirarTrip",
+      "title": "Unsere Touren",
       "description": "Entdecken Sie unsere sorgfältig zusammengestellten mehrtägigen Touren durch Marokko. Von der Sahara-Wüste zu den Königsstädten, finden Sie Ihr perfektes Abenteuer."
     },
     "title": "Unsere Touren",
@@ -168,7 +168,7 @@
   },
   "excursion": {
     "meta": {
-      "title": "Unsere Ausflüge | AmsirarTrip",
+      "title": "Unsere Ausflüge",
       "description": "Entdecken Sie unsere Tagesausflüge von Marrakesch aus. Erkunden Sie die Atlas-Berge, die Sahara-Wüste und Küstenjuwelen mit erfahrenen lokalen Führern."
     },
     "title": "Unsere Ausflüge",
@@ -270,7 +270,7 @@
   },
   "about": {
     "meta": {
-      "title": "Über uns | AmsirarTrip",
+      "title": "Über uns",
       "description": "Erfahren Sie mehr über AmsirarTrip, unsere Geschichte und unsere Leidenschaft, die Schönheit Marokkos mit Reisenden aus aller Welt zu teilen."
     },
     "title": "Über uns",
@@ -301,7 +301,7 @@
   },
   "contact": {
     "meta": {
-      "title": "Kontakt | AmsirarTrip",
+      "title": "Kontakt",
       "description": "Kontaktieren Sie AmsirarTrip für Marokko-Touren, Wüstenabenteuer und Reiseanfragen. Unser Team ist bereit, Ihnen bei der Planung Ihrer perfekten Marokko-Reise zu helfen."
     },
     "title": "Kontakt",

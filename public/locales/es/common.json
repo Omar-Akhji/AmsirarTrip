@@ -33,7 +33,7 @@
   },
   "tours": {
     "meta": {
-      "title": "Nuestros tours | AmsirarTrip",
+      "title": "Nuestros tours",
       "description": "Explora nuestros tours multi-día cuidadosamente elaborados a través de Marruecos. Desde el desierto del Sahara hasta las ciudades imperiales, encuentra tu aventura perfecta."
     },
     "title": "Nuestros tours",
@@ -168,7 +168,7 @@
   },
   "excursion": {
     "meta": {
-      "title": "Nuestras excursiones | AmsirarTrip",
+      "title": "Nuestras excursiones",
       "description": "Descubre nuestras excursiones de un día desde Marrakech. Explora las montañas del Atlas, el desierto del Sahara y las joyas costeras con guías locales expertos."
     },
     "title": "Nuestras excursiones",
@@ -270,7 +270,7 @@
   },
   "about": {
     "meta": {
-      "title": "Acerca de | AmsirarTrip",
+      "title": "Acerca de",
       "description": "Conoce a AmsirarTrip, nuestra historia y nuestra pasión por compartir la belleza de Marruecos con viajeros de todo el mundo."
     },
     "title": "Acerca de",
@@ -301,7 +301,7 @@
   },
   "contact": {
     "meta": {
-      "title": "Contacto | AmsirarTrip",
+      "title": "Contacto",
       "description": "Ponte en contacto con AmsirarTrip para tours en Marruecos, aventuras en el desierto y consultas de viaje. Nuestro equipo está listo para ayudarte a planificar tu viaje perfecto a Marruecos."
     },
     "title": "Contacto",

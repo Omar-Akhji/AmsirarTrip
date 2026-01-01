@@ -33,7 +33,7 @@
   },
   "tours": {
     "meta": {
-      "title": "Nos circuits | AmsirarTrip",
+      "title": "Nos circuits",
       "description": "Explorez nos circuits multi-jours soigneusement élaborés à travers le Maroc. Du désert du Sahara aux villes impériales, trouvez votre aventure parfaite."
     },
     "title": "Nos excursions",
@@ -168,7 +168,7 @@
   },
   "excursion": {
     "meta": {
-      "title": "Nos excursions | AmsirarTrip",
+      "title": "Nos excursions",
       "description": "Découvrez nos excursions d'une journée depuis Marrakech. Explorez les montagnes de l'Atlas, le désert du Sahara et les joyaux côtiers avec des guides locaux experts."
     },
     "title": "Nos excursions",
@@ -270,7 +270,7 @@
   },
   "about": {
     "meta": {
-      "title": "À propos de nous | AmsirarTrip",
+      "title": "À propos",
       "description": "Découvrez AmsirarTrip, notre histoire et notre passion pour partager la beauté du Maroc avec les voyageurs du monde entier."
     },
     "title": "À propos de nous",
@@ -295,13 +295,13 @@
       "lgTitle": "faits marquants",
       "photos": "photos prises",
       "beaches": "plages visitées",
-      "mountains": "montagnes gravies",
+      "mountains": "mountains gravies",
       "cruises": "croisières organisées"
     }
   },
   "contact": {
     "meta": {
-      "title": "Nous Contacter | AmsirarTrip",
+      "title": "Nous Contacter",
       "description": "Contactez AmsirarTrip pour vos circuits au Maroc, aventures dans le désert et demandes de voyage. Notre équipe est prête à vous aider à planifier votre voyage marocain parfait."
     },
     "title": "Nous contacter",
