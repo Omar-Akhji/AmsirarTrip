@@ -4,6 +4,8 @@
   "/[locale]/excursions/[slug]/page": "/[locale]/excursions/[slug]",
   "/[locale]/excursions/page": "/[locale]/excursions",
   "/[locale]/page": "/[locale]",
+  "/[locale]/privacy-policy/page": "/[locale]/privacy-policy",
+  "/[locale]/terms-of-service/page": "/[locale]/terms-of-service",
   "/[locale]/tours/[slug]/page": "/[locale]/tours/[slug]",
   "/[locale]/tours/page": "/[locale]/tours",
   "/_global-error/page": "/_global-error",

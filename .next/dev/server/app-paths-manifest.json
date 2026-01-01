@@ -1,8 +1,11 @@
 {
-  "/[locale]/about/page": "app/[locale]/about/page.js",
   "/[locale]/contact/page": "app/[locale]/contact/page.js",
   "/[locale]/excursions/page": "app/[locale]/excursions/page.js",
   "/[locale]/page": "app/[locale]/page.js",
+  "/[locale]/privacy-policy/page": "app/[locale]/privacy-policy/page.js",
+  "/[locale]/terms-of-service/page": "app/[locale]/terms-of-service/page.js",
   "/[locale]/tours/[slug]/page": "app/[locale]/tours/[slug]/page.js",
-  "/[locale]/tours/page": "app/[locale]/tours/page.js"
+  "/[locale]/tours/page": "app/[locale]/tours/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js"
 }

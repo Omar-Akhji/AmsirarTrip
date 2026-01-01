@@ -108,6 +108,22 @@
       "namedRegex": "^/(?<nxtPlocale>[^/]+?)/excursions/(?<nxtPslug>[^/]+?)(?:/)?$"
     },
     {
+      "page": "/[locale]/privacy-policy",
+      "regex": "^/([^/]+?)/privacy\\-policy(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/privacy\\-policy(?:/)?$"
+    },
+    {
+      "page": "/[locale]/terms-of-service",
+      "regex": "^/([^/]+?)/terms\\-of\\-service(?:/)?$",
+      "routeKeys": {
+        "nxtPlocale": "nxtPlocale"
+      },
+      "namedRegex": "^/(?<nxtPlocale>[^/]+?)/terms\\-of\\-service(?:/)?$"
+    },
+    {
       "page": "/[locale]/tours",
       "regex": "^/([^/]+?)/tours(?:/)?$",
       "routeKeys": {

@@ -4,6 +4,8 @@
   "/[locale]/excursions/[slug]/page": "app/[locale]/excursions/[slug]/page.js",
   "/[locale]/excursions/page": "app/[locale]/excursions/page.js",
   "/[locale]/page": "app/[locale]/page.js",
+  "/[locale]/privacy-policy/page": "app/[locale]/privacy-policy/page.js",
+  "/[locale]/terms-of-service/page": "app/[locale]/terms-of-service/page.js",
   "/[locale]/tours/[slug]/page": "app/[locale]/tours/[slug]/page.js",
   "/[locale]/tours/page": "app/[locale]/tours/page.js",
   "/_global-error/page": "app/_global-error/page.js",
