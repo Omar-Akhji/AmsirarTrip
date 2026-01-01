@@ -43,7 +43,9 @@ export function generateSEOMetadata({
       : description;
 
   return {
-    title: title,
+    title: {
+      absolute: fullTitle,
+    },
     description: truncatedDescription,
     keywords: keywords.length > 0 ? keywords.join(", ") : undefined,
     authors: author
