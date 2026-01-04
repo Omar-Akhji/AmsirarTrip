@@ -118,8 +118,10 @@ export default function proxy(request: NextRequest) {
 
   // 0. Redirect www to non-www (canonical URL)
   // BUT allow sitemap.xml and robots.txt to be served on www for SEO
-  const isSeoFile = pathname === "/sitemap.xml" || pathname === "/robots.txt";
-  if (host.startsWith("www.") && !isSeoFile) {
+  if (
+    host.startsWith("www.") &&
+    !pathname.match(/\/(sitemap\.xml|robots\.txt)$/)
+  ) {
     const newHost = host.replace("www.", "").replace(/:.*$/, ""); // Remove www and any port
     const redirectUrl = `https://${newHost}${pathname}${request.nextUrl.search}`;
     return NextResponse.redirect(redirectUrl, 301);
