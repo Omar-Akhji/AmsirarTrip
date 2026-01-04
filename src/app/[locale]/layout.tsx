@@ -8,7 +8,10 @@ import { routing } from "@/i18n/routing";
 import { ReactNode } from "react";
 import type { Metadata, Viewport } from "next";
 import { Montserrat, Yellowtail } from "next/font/google";
-import { generateOrganizationJsonLd } from "@/lib/structuredData";
+import {
+  generateOrganizationJsonLd,
+  generateWebSiteJsonLd,
+} from "@/lib/structuredData";
 import { sanitizeJsonLd } from "@/lib/sanitize";
 import "../globals.css";
 import Script from "next/script";
@@ -29,7 +32,7 @@ const yellowtail = Yellowtail({
 export const metadata: Metadata = {
   title: {
     default:
-      "AmsirarTrip - Authentic Morocco Tours, Desert Adventures & Cultural Experiences",
+      "AmsirarTrip (Amsirar) - Morocco Tours, Sahara Desert Adventures & Excursions",
     template: "%s | AmsirarTrip - Morocco Travel Experts",
   },
   description:
@@ -154,6 +157,7 @@ export default async function LocaleLayout({
 
   const messages = await getMessages();
   const organizationJsonLd = generateOrganizationJsonLd();
+  const webSiteJsonLd = generateWebSiteJsonLd();
 
   return (
     <html
@@ -187,6 +191,12 @@ export default async function LocaleLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: sanitizeJsonLd(organizationJsonLd),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: sanitizeJsonLd(webSiteJsonLd),
           }}
         />
       </head>

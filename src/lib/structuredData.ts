@@ -135,10 +135,26 @@ export function generateOrganizationJsonLd() {
     image: "https://amsirartrip.com/images/Header/header-1.webp",
     description:
       "AmsirarTrip is a specialist Morocco travel agency offering authentic Sahara desert tours, imperial city excursions, Atlas Mountains treks, and cultural experiences. Book your Morocco adventure with local experts.",
+    legalName: "Amsirar Transport Touristique",
+    foundingDate: "2004",
+    numberOfEmployees: {
+      "@type": "QuantitativeValue",
+      minValue: 10,
+      maxValue: 50,
+    },
+    knowsAbout: [
+      "Morocco Tourism",
+      "Sahara Desert Tours",
+      "Atlas Mountains Trekking",
+      "Cultural Heritage",
+    ],
     address: {
       "@type": "PostalAddress",
-      addressCountry: "MA",
+      streetAddress: "Marrakech",
       addressLocality: "Marrakech",
+      addressRegion: "Marrakech-Safi",
+      postalCode: "40000",
+      addressCountry: "MA",
     },
     contactPoint: {
       "@type": "ContactPoint",
