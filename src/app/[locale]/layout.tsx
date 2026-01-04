@@ -40,8 +40,10 @@ export const metadata: Metadata = {
   keywords: [
     "AmsirarTrip",
     "Amsirar Trip",
+    "Amsirartrip",
     "amsirartrip",
     "Amsirar",
+    "amsirar",
     "Amsirar Tours",
     "Amsirar Morocco",
     "Morocco tours",

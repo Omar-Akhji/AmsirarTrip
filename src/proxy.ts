@@ -118,10 +118,7 @@ export default function proxy(request: NextRequest) {
 
   // 0. Redirect www to non-www (canonical URL)
   // BUT allow sitemap.xml and robots.txt to be served on www for SEO
-  if (
-    host.startsWith("www.") &&
-    !pathname.match(/\/(sitemap\.xml|robots\.txt)$/)
-  ) {
+  if (host.startsWith("www.")) {
     const newHost = host.replace("www.", "").replace(/:.*$/, ""); // Remove www and any port
     const redirectUrl = `https://${newHost}${pathname}${request.nextUrl.search}`;
     return NextResponse.redirect(redirectUrl, 301);
@@ -175,7 +172,5 @@ export const config = {
   // - api routes (handled separately)
   // - sitemap.xml, robots.txt (SEO files - must not be redirected)
   // - Static files with extensions
-  matcher: [
-    "/((?!_next|_vercel|api|sitemap\\.xml|robots\\.txt|favicon\\.ico|.*\\..*).*)",
-  ],
+  matcher: ["/((?!_next|_vercel|api|favicon\\.ico|.*\\..*).*)"],
 };

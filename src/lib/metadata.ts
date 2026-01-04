@@ -134,9 +134,11 @@ export function generateSEOMetadata({
 
 export const defaultKeywords = [
   "AmsirarTrip",
-  "Amsirar Trip",
+  "Amsirartrip",
   "amsirartrip",
   "Amsirar",
+  "amsirar",
+  "Amsirar Trip",
   "Amsirar Tours",
   "Amsirar Morocco",
   "Morocco tours",

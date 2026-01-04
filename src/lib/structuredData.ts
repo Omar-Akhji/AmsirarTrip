@@ -121,21 +121,20 @@ export function generateOrganizationJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "TravelAgency",
-    name: "AmsirarTrip",
+    name: "Amsirar",
     alternateName: [
+      "AmsirarTrip",
       "Amsirar Trip",
       "amsirartrip",
-      "Amsirar",
       "Amsirar Tours",
-      "Amsirar Transport Touristique",
       "Amsirar Morocco",
     ],
     url: "https://amsirartrip.com",
     logo: "https://amsirartrip.com/horse-head.svg",
     image: "https://amsirartrip.com/images/Header/header-1.webp",
     description:
-      "AmsirarTrip is a specialist Morocco travel agency offering authentic Sahara desert tours, imperial city excursions, Atlas Mountains treks, and cultural experiences. Book your Morocco adventure with local experts.",
-    legalName: "Amsirar Transport Touristique",
+      "Amsirar is a specialist Morocco travel agency offering authentic Sahara desert tours, imperial city excursions, Atlas Mountains treks, and cultural experiences. Book your Morocco adventure with local experts.",
+    legalName: "Amsirar",
     foundingDate: "2004",
     numberOfEmployees: {
       "@type": "QuantitativeValue",
