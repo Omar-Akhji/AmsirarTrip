@@ -113,6 +113,15 @@ function botProtectionMiddleware(request: NextRequest): NextResponse | null {
 }
 
 export default function proxy(request: NextRequest) {
+  const host = request.headers.get("host") || "";
+
+  // 0. Redirect www to non-www (canonical URL)
+  if (host.startsWith("www.")) {
+    const url = request.nextUrl.clone();
+    url.host = host.replace("www.", "");
+    return NextResponse.redirect(url, 301);
+  }
+
   // 1. Bot Protection
   const botResponse = botProtectionMiddleware(request);
   if (botResponse) return botResponse;
