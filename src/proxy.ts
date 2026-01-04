@@ -155,6 +155,13 @@ export default function proxy(request: NextRequest) {
 }
 
 export const config = {
-  // Match all pathnames including API routes
-  matcher: ["/((?!_next|_vercel|.*\\..*).*)"],
+  // Match all pathnames EXCEPT:
+  // - _next (Next.js internals)
+  // - _vercel (Vercel internals)
+  // - api routes (handled separately)
+  // - sitemap.xml, robots.txt (SEO files - must not be redirected)
+  // - Static files with extensions
+  matcher: [
+    "/((?!_next|_vercel|api|sitemap\\.xml|robots\\.txt|favicon\\.ico|.*\\..*).*)",
+  ],
 };

@@ -5,8 +5,8 @@
       "runtime": "nodejs",
       "matchers": [
         {
-          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?(?:\\/((?!_next|_vercel|.*\\..*).*))(\\.json)?[\\/#\\?]?$",
-          "originalSource": "/((?!_next|_vercel|.*\\..*).*)"
+          "regexp": "^(?:\\/(_next\\/data\\/[^/]{1,}))?(?:\\/((?!_next|_vercel|api|sitemap\\.xml|robots\\.txt|favicon\\.ico|.*\\..*).*))(\\.json)?[\\/#\\?]?$",
+          "originalSource": "/((?!_next|_vercel|api|sitemap\\.xml|robots\\.txt|favicon\\.ico|.*\\..*).*)"
         }
       ]
     }
