@@ -122,9 +122,9 @@ export default function proxy(request: NextRequest) {
     host.startsWith("www.") &&
     !pathname.match(/\/(sitemap\.xml|robots\.txt)$/)
   ) {
-    const url = request.nextUrl.clone();
-    url.host = host.replace("www.", "");
-    return NextResponse.redirect(url, 301);
+    const newHost = host.replace("www.", "").replace(/:.*$/, ""); // Remove www and any port
+    const redirectUrl = `https://${newHost}${pathname}${request.nextUrl.search}`;
+    return NextResponse.redirect(redirectUrl, 301);
   }
 
   // 1. Bot Protection
