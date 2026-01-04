@@ -14,5 +14,6 @@
   "/api/contact/route": "app/api/contact/route.js",
   "/api/health/route": "app/api/health/route.js",
   "/api/newsletter/route": "app/api/newsletter/route.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
   "/sitemap.xml/route": "app/sitemap.xml/route.js"
 }

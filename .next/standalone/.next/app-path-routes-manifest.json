@@ -14,5 +14,6 @@
   "/api/contact/route": "/api/contact",
   "/api/health/route": "/api/health",
   "/api/newsletter/route": "/api/newsletter",
+  "/robots.txt/route": "/robots.txt",
   "/sitemap.xml/route": "/sitemap.xml"
 }

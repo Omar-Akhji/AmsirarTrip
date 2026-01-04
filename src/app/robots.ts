@@ -1,15 +1,14 @@
 import { MetadataRoute } from "next";
 
 const BASE_URL = "https://amsirartrip.com";
-const locales = ["en", "fr", "es", "de"];
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
         userAgent: "*",
-        allow: ["/", "/images/", "/fonts/", "/videos/", "/_next/image"],
-        disallow: ["/api/", "/_next/static/", "/*.json$"],
+        allow: "/",
+        disallow: ["/api/", "/_next/", "/private/"],
       },
       {
         userAgent: "Googlebot",
@@ -42,10 +41,7 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
       },
     ],
-    sitemap: [
-      `${BASE_URL}/sitemap.xml`,
-      ...locales.map((locale) => `${BASE_URL}/${locale}/sitemap.xml`),
-    ],
+    sitemap: `${BASE_URL}/sitemap.xml`,
     host: BASE_URL,
   };
 }

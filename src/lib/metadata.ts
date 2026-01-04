@@ -31,7 +31,7 @@ export function generateSEOMetadata({
   description,
   keywords = [],
   path,
-  image = "/images/Header/header-1.webp",
+  image = `${BASE_URL}/images/Header/header-1.webp`,
   locale = "en",
   type = "website",
   publishedTime,

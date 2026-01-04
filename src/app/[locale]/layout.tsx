@@ -83,14 +83,14 @@ export const metadata: Metadata = {
       "Explore Morocco with local experts. Sahara desert tours, imperial city excursions, Atlas Mountains treks. 20+ years experience. Book your authentic Morocco adventure.",
     images: [
       {
-        url: "/images/Header/header-1.webp",
+        url: "https://amsirartrip.com/images/Header/header-1.webp",
         width: 1200,
         height: 630,
         alt: "AmsirarTrip - Morocco Desert Tours and Cultural Experiences",
         type: "image/webp",
       },
       {
-        url: "/images/Tours/Tour1.webp",
+        url: "https://amsirartrip.com/images/Tours/Tour1.webp",
         width: 1200,
         height: 630,
         alt: "Morocco Sahara Desert Tour Experience",
@@ -107,7 +107,7 @@ export const metadata: Metadata = {
     description:
       "Explore Morocco with local experts. Sahara desert tours, imperial city excursions, Atlas Mountains treks. 20+ years experience. Book your dream trip today.",
     images: {
-      url: "/images/Header/header-1.webp",
+      url: "https://amsirartrip.com/images/Header/header-1.webp",
       alt: "AmsirarTrip Morocco Desert Tours",
     },
   },
@@ -121,6 +121,9 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
+  },
+  verification: {
+    google: "google0f872d7714bfce7d",
   },
 };
 
@@ -167,6 +170,13 @@ export default async function LocaleLayout({
         />
         <link rel="dns-prefetch" href="https://kit.fontawesome.com" />
         <link rel="canonical" href={`https://amsirartrip.com/${locale}`} />
+        {/* Preload LCP hero image for faster loading */}
+        <link
+          rel="preload"
+          href="/images/Header/header-1.webp"
+          as="image"
+          type="image/webp"
+        />
         <meta name="theme-color" content="#1a1a1a" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta

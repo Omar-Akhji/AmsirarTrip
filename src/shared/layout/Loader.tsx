@@ -14,7 +14,9 @@ const Loader: React.FC<LoaderProps> = ({
   autoHide = true,
   duration = 800,
 }) => {
-  const [show, setShow] = useState(true);
+  // Start with loader hidden to avoid blocking LCP on initial page load
+  // Loader will show only during navigation transitions
+  const [show, setShow] = useState(false);
   const pathname = usePathname();
 
   // Show loader on initial load and hide after duration

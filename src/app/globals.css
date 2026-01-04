@@ -517,6 +517,13 @@ img {
 /* Home header background slider */
 .home-header {
   position: relative;
+  min-height: 70vh; /* Reserve space to prevent CLS */
+}
+
+@media (width >= 1024px) {
+  .home-header {
+    min-height: 80vh;
+  }
 }
 
 .home-header .home-header-bg {

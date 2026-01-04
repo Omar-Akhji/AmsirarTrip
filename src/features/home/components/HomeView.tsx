@@ -138,7 +138,7 @@ export default function HomeView() {
         className="home-header relative isolate mx-1.25 mt-0 mb-1.25 w-[calc(100%-10px)] max-w-360 overflow-hidden rounded-2xl bg-slate-950 shadow-xl"
         aria-labelledby="hero-heading"
       >
-        {/* Background images */}
+        {/* Background images with CSS crossfade animation */}
         {headerImages.map((image, index) => (
           <div
             key={image}
