@@ -20,8 +20,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Generate entries for each locale
   locales.forEach((locale) => {
     routes.forEach((route) => {
+      const isDefaultLocale = locale === "en";
+      const localePath = isDefaultLocale ? route : `/${locale}${route}`;
+      const url = `${BASE_URL}${localePath}`;
+
       sitemap.push({
-        url: `${BASE_URL}/${locale}${route}`,
+        url,
         lastModified: new Date(),
         changeFrequency:
           route.includes("/tours/") || route.includes("/excursions/")
@@ -37,7 +41,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
               : 0.7,
         alternates: {
           languages: Object.fromEntries(
-            locales.map((loc) => [loc, `${BASE_URL}/${loc}${route}`])
+            locales.map((loc) => {
+              const locPath = loc === "en" ? route : `/${loc}${route}`;
+              return [loc, `${BASE_URL}${locPath}`];
+            })
           ),
         },
       });

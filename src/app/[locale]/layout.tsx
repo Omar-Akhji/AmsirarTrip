@@ -175,7 +175,7 @@ export default async function LocaleLayout({
           crossOrigin="anonymous"
         />
         <link rel="dns-prefetch" href="https://kit.fontawesome.com" />
-        <link rel="canonical" href={`https://amsirartrip.com/${locale}`} />
+
         {/* Preload LCP hero image for faster loading */}
         <link
           rel="preload"

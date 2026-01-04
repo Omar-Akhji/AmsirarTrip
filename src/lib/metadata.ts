@@ -38,7 +38,9 @@ export function generateSEOMetadata({
   modifiedTime,
   author,
 }: SEOConfig): Metadata {
-  const url = `${BASE_URL}${path}`;
+  const isDefaultLocale = locale === "en";
+  const localePath = isDefaultLocale ? path : `/${locale}${path}`;
+  const url = `${BASE_URL}${localePath}`;
   const tagline = SITE_TAGLINES[locale] || SITE_TAGLINES.en;
   const fullTitle = title.includes(SITE_NAME)
     ? title
@@ -75,7 +77,7 @@ export function generateSEOMetadata({
     alternates: {
       canonical: url,
       languages: {
-        en: `${BASE_URL}/en${path}`,
+        en: `${BASE_URL}${path}`,
         fr: `${BASE_URL}/fr${path}`,
         es: `${BASE_URL}/es${path}`,
         de: `${BASE_URL}/de${path}`,

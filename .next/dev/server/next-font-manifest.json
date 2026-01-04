@@ -1,30 +1,6 @@
 {
   "app": {
-    "[project]/src/app/[locale]/about/page": [
-      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
-      "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
-    ],
-    "[project]/src/app/[locale]/contact/page": [
-      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
-      "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
-    ],
-    "[project]/src/app/[locale]/excursions/page": [
-      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
-      "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
-    ],
-    "[project]/src/app/[locale]/page": [
-      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
-      "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
-    ],
-    "[project]/src/app/[locale]/privacy-policy/page": [
-      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
-      "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
-    ],
-    "[project]/src/app/[locale]/terms-of-service/page": [
-      "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
-      "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
-    ],
-    "[project]/src/app/[locale]/tours/page": [
+    "[project]/src/app/[locale]/tours/[slug]/page": [
       "static/media/e8f2fbee2754df70-s.p.9b7a96b4.woff2",
       "static/media/32a036eac4f5c29a-s.p.335ef037.woff2"
     ]

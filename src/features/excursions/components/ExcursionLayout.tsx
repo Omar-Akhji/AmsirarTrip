@@ -120,9 +120,9 @@ const ExcursionLayout: React.FC<ExcursionLayoutProps> = ({
                     className="mb-3 hidden h-1 w-16 rounded-full bg-amber-300 sm:block"
                     aria-hidden="true"
                   ></span>
-                  <h1 className="text-orange mt-2 text-2xl leading-tight font-extrabold sm:text-3xl md:text-4xl">
+                  <h2 className="text-orange mt-2 text-2xl leading-tight font-extrabold sm:text-3xl md:text-4xl">
                     {title}
-                  </h1>
+                  </h2>
                 </div>
               </div>
 
