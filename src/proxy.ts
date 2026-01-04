@@ -114,9 +114,14 @@ function botProtectionMiddleware(request: NextRequest): NextResponse | null {
 
 export default function proxy(request: NextRequest) {
   const host = request.headers.get("host") || "";
+  const { pathname } = request.nextUrl;
 
   // 0. Redirect www to non-www (canonical URL)
-  if (host.startsWith("www.")) {
+  // BUT allow sitemap.xml and robots.txt to be served on www for SEO
+  if (
+    host.startsWith("www.") &&
+    !pathname.match(/\/(sitemap\.xml|robots\.txt)$/)
+  ) {
     const url = request.nextUrl.clone();
     url.host = host.replace("www.", "");
     return NextResponse.redirect(url, 301);
