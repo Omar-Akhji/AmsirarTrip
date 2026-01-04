@@ -76,7 +76,7 @@ export default async function TourPage({ params }: PageProps) {
               duration: tour.duration,
               startLocation: tour.startLocation,
               endLocation: tour.endLocation,
-              url: `https://amsirartrip.com/en/tours/${slug}`,
+              url: `https://amsirartrip.com/tours/${slug}`,
             })
           ),
         }}

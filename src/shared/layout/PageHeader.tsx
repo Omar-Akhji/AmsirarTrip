@@ -44,7 +44,7 @@ export function PageHeader({
 
   return (
     <header
-      className="relative isolate mx-1.25 mt-0 mb-1.25 w-[calc(100%-10px)] max-w-360 overflow-hidden rounded-2xl bg-slate-950 text-white shadow-xl"
+      className="relative isolate w-full overflow-hidden bg-slate-950 text-white shadow-xl"
       style={
         bgImage
           ? {

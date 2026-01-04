@@ -73,6 +73,16 @@ export const metadata: Metadata = {
     telephone: false,
   },
   metadataBase: new URL("https://amsirartrip.com"),
+  alternates: {
+    canonical: "https://amsirartrip.com",
+    languages: {
+      "x-default": "https://amsirartrip.com",
+      en: "https://amsirartrip.com",
+      fr: "https://amsirartrip.com/fr",
+      es: "https://amsirartrip.com/es",
+      de: "https://amsirartrip.com/de",
+    },
+  },
   icons: {
     icon: "/horse-head.svg",
     apple: "/horse-head.svg",

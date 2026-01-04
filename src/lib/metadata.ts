@@ -77,6 +77,7 @@ export function generateSEOMetadata({
     alternates: {
       canonical: url,
       languages: {
+        "x-default": `${BASE_URL}${path}`,
         en: `${BASE_URL}${path}`,
         fr: `${BASE_URL}/fr${path}`,
         es: `${BASE_URL}/es${path}`,

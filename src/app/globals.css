@@ -681,7 +681,6 @@ header {
   box-sizing: border-box;
   flex-direction: column;
   padding-top: 7rem;
-  border-radius: 1rem;
   overflow: hidden;
   text-align: center;
   color: white;

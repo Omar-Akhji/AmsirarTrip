@@ -67,7 +67,7 @@ export default async function ExcursionPage({ params }: PageProps) {
               image: `https://amsirartrip.com${excursion.image}`,
               duration: excursion.duration,
               location: excursion.location,
-              url: `https://amsirartrip.com/en/excursions/${slug}`,
+              url: `https://amsirartrip.com/excursions/${slug}`,
             })
           ),
         }}

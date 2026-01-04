@@ -3,7 +3,6 @@ import { TOURS_DATA } from "@/features/tours";
 import { EXCURSIONS_DATA } from "@/features/excursions";
 
 const BASE_URL = "https://amsirartrip.com";
-const locales = ["en", "fr", "es", "de"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
@@ -15,41 +14,33 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
   ];
 
-  const sitemap: MetadataRoute.Sitemap = [];
-
-  // Generate entries for each locale
-  locales.forEach((locale) => {
-    routes.forEach((route) => {
-      const isDefaultLocale = locale === "en";
-      const localePath = isDefaultLocale ? route : `/${locale}${route}`;
-      const url = `${BASE_URL}${localePath}`;
-
-      sitemap.push({
-        url,
-        lastModified: new Date(),
-        changeFrequency:
-          route.includes("/tours/") || route.includes("/excursions/")
-            ? "weekly"
-            : route === ""
-              ? "daily"
-              : "monthly",
-        priority:
-          route === ""
-            ? 1.0
-            : route.includes("/tours/") || route.includes("/excursions/")
-              ? 0.8
-              : 0.7,
-        alternates: {
-          languages: Object.fromEntries(
-            locales.map((loc) => {
-              const locPath = loc === "en" ? route : `/${loc}${route}`;
-              return [loc, `${BASE_URL}${locPath}`];
-            })
-          ),
-        },
-      });
-    });
-  });
-
-  return sitemap;
+  // Generate ONE entry per route with all language alternates
+  // This prevents duplicate canonical issues in Google Search Console
+  return routes.map((route) => ({
+    // Canonical URL is always English (no locale prefix)
+    url: `${BASE_URL}${route}`,
+    lastModified: new Date(),
+    changeFrequency:
+      route.includes("/tours/") || route.includes("/excursions/")
+        ? "weekly"
+        : route === ""
+          ? "daily"
+          : "monthly",
+    priority:
+      route === ""
+        ? 1.0
+        : route.includes("/tours/") || route.includes("/excursions/")
+          ? 0.8
+          : 0.7,
+    alternates: {
+      languages: {
+        // x-default points to the canonical (English) version
+        "x-default": `${BASE_URL}${route}`,
+        en: `${BASE_URL}${route}`,
+        fr: `${BASE_URL}/fr${route}`,
+        es: `${BASE_URL}/es${route}`,
+        de: `${BASE_URL}/de${route}`,
+      },
+    },
+  }));
 }
