@@ -223,6 +223,15 @@ export default async function LocaleLayout({
             })(window,document,'script','dataLayer','GTM-K22ZHHN6');
           `}
         </Script>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-K22ZHHN6"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+          />
+        </noscript>
         <Script
           src="https://kit.fontawesome.com/b7031c5d36.js"
           crossOrigin="anonymous"
