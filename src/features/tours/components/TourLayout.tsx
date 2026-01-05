@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import { TOURS_DATA } from "../data";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import { PageHeader } from "@/shared/layout/PageHeader";
 

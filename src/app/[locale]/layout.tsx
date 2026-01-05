@@ -213,6 +213,19 @@ export default async function LocaleLayout({
         />
       </head>
       <body>
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-REZKQSSK7N"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-REZKQSSK7N');
+          `}
+        </Script>
         <Script
           src="https://kit.fontawesome.com/b7031c5d36.js"
           crossOrigin="anonymous"

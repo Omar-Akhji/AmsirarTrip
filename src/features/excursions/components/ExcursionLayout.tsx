@@ -5,7 +5,7 @@ import Image from "next/image";
 import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { useTranslation } from "@/lib/hooks/useTranslation";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 
 import { PageHeader } from "@/shared/layout/PageHeader";
 

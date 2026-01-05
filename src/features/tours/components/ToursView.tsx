@@ -5,7 +5,7 @@ import Image from "next/image";
 import { Link } from "@/i18n/routing";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { TOURS_DATA } from "../data";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { ArrowIcon, PhoneIcon, ClockIcon } from "@/shared/ui/icons";
 import { fadeInUp, fadeInScale } from "@/lib/constants/animations";
 import {

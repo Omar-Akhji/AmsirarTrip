@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { PageHeader } from "@/shared/layout/PageHeader";
 import { LegalPageConfig } from "../types";
 import { LegalSectionCard } from "./LegalSectionCard";

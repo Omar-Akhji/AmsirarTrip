@@ -2,7 +2,7 @@
 
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import {
   ArrowIcon,
   PhoneIcon,

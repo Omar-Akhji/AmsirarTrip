@@ -12,7 +12,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/shared/ui/popover";
 import { Button } from "@/shared/ui/button";
 import { CalendarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { validateBookingForm, sanitizeInput } from "@/lib/validation";
 import { submitBooking, ApiError } from "@/lib/api-client";
 import { LoadingSpinner } from "@/shared/ui/Loading";

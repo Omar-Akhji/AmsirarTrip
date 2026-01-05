@@ -3,7 +3,7 @@
 import React, { useState, useRef, useCallback } from "react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import ReCAPTCHA from "react-google-recaptcha";
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { validateContactForm, sanitizeInput } from "@/lib/validation";
 import { submitContact, ApiError } from "@/lib/api-client";
 import { LoadingSpinner } from "@/shared/ui/Loading";
