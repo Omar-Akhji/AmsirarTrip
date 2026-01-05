@@ -5,7 +5,7 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import { TOURS_DATA } from "../data";
-import { m, LazyMotion, domAnimation } from "motion/react";
+import { m } from "motion/react";
 
 import { PageHeader } from "@/shared/layout/PageHeader";
 
@@ -261,83 +261,76 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                     {t("tours.itinerary")}
                   </h2>
                   <div className="space-y-8">
-                    <LazyMotion features={domAnimation}>
-                      {days.map((day, idx) => (
-                        <m.div
-                          key={day.number}
-                          initial={{ opacity: 0, y: 30 }}
-                          whileInView={{ opacity: 1, y: 0 }}
-                          viewport={{
-                            once: true,
-                            amount: 0.2,
-                            margin: "-50px",
-                          }}
-                          transition={{ duration: 0.5, delay: idx * 0.1 }}
-                          className="group relative"
-                        >
-                          {/* Day Title with Modern Design */}
-                          <div className="mb-6">
-                            <div className="mb-4 flex items-center gap-4">
-                              <div className="shrink-0">
-                                <div className="flex size-12 items-center justify-center rounded-full bg-linear-to-br from-orange-500 to-amber-600 text-lg font-bold text-white shadow-lg transition-shadow duration-300 group-hover:shadow-xl">
-                                  {getOrdinalSuffix(day.number)}
-                                </div>
-                              </div>
-                              <div className="min-w-0 flex-1">
-                                <h3 className="text-lg leading-tight font-bold tracking-tight text-slate-900 sm:text-xl md:text-2xl">
-                                  {dayLabel} {day.number}
-                                </h3>
+                    {days.map((day, idx) => (
+                      <m.div
+                        key={day.number}
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{
+                          once: true,
+                          amount: 0.2,
+                          margin: "-50px",
+                        }}
+                        transition={{ duration: 0.5, delay: idx * 0.1 }}
+                        className="group relative"
+                      >
+                        {/* Day Title with Modern Design */}
+                        <div className="mb-6">
+                          <div className="mb-4 flex items-center gap-4">
+                            <div className="shrink-0">
+                              <div className="flex size-12 items-center justify-center rounded-full bg-linear-to-br from-orange-500 to-amber-600 text-lg font-bold text-white shadow-lg transition-shadow duration-300 group-hover:shadow-xl">
+                                {getOrdinalSuffix(day.number)}
                               </div>
                             </div>
-                            <div className="flex flex-wrap items-center gap-2">
-                              {day.title
-                                .split("➜")
-                                .map((location, idx, arr) => (
-                                  <React.Fragment key={idx}>
-                                    <span className="inline-flex items-center rounded-full border border-orange-200/50 bg-linear-to-r from-orange-50 to-amber-50 px-3 py-1 text-sm font-medium text-orange-700">
-                                      {location.trim()}
-                                    </span>
-                                    {idx < arr.length - 1 && (
-                                      <svg
-                                        className="size-4 shrink-0 text-orange-400"
-                                        fill="currentColor"
-                                        viewBox="0 0 20 20"
-                                      >
-                                        <path
-                                          fillRule="evenodd"
-                                          d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.409l-7-14z"
-                                          clipRule="evenodd"
-                                        />
-                                      </svg>
-                                    )}
-                                  </React.Fragment>
-                                ))}
+                            <div className="min-w-0 flex-1">
+                              <h3 className="text-lg leading-tight font-bold tracking-tight text-slate-900 sm:text-xl md:text-2xl">
+                                {dayLabel} {day.number}
+                              </h3>
                             </div>
                           </div>
+                          <div className="flex flex-wrap items-center gap-2">
+                            {day.title.split("➜").map((location, idx, arr) => (
+                              <React.Fragment key={idx}>
+                                <span className="inline-flex items-center rounded-full border border-orange-200/50 bg-linear-to-r from-orange-50 to-amber-50 px-3 py-1 text-sm font-medium text-orange-700">
+                                  {location.trim()}
+                                </span>
+                                {idx < arr.length - 1 && (
+                                  <svg
+                                    className="size-4 shrink-0 text-orange-400"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                  >
+                                    <path
+                                      fillRule="evenodd"
+                                      d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.409l-7-14z"
+                                      clipRule="evenodd"
+                                    />
+                                  </svg>
+                                )}
+                              </React.Fragment>
+                            ))}
+                          </div>
+                        </div>
 
-                          {/* Day Content */}
-                          {day.text.length > 0 && (
-                            <div className="border-orange space-y-3 border-l-0 pl-0 sm:ml-5.5 sm:border-l-4 sm:pl-6">
-                              {day.text.map((item, idx) => (
-                                <div
-                                  key={idx}
-                                  className="flex items-start gap-3"
-                                >
-                                  <div className="mt-1 shrink-0">
-                                    <div className="flex size-6 items-center justify-center rounded-full bg-linear-to-br from-green-500 to-emerald-600 text-white shadow-sm">
-                                      <CheckIcon />
-                                    </div>
+                        {/* Day Content */}
+                        {day.text.length > 0 && (
+                          <div className="border-orange space-y-3 border-l-0 pl-0 sm:ml-5.5 sm:border-l-4 sm:pl-6">
+                            {day.text.map((item, idx) => (
+                              <div key={idx} className="flex items-start gap-3">
+                                <div className="mt-1 shrink-0">
+                                  <div className="flex size-6 items-center justify-center rounded-full bg-linear-to-br from-green-500 to-emerald-600 text-white shadow-sm">
+                                    <CheckIcon />
                                   </div>
-                                  <p className="flex-1 text-sm leading-relaxed text-gray-700 sm:text-base">
-                                    {item}
-                                  </p>
                                 </div>
-                              ))}
-                            </div>
-                          )}
-                        </m.div>
-                      ))}
-                    </LazyMotion>
+                                <p className="flex-1 text-sm leading-relaxed text-gray-700 sm:text-base">
+                                  {item}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </m.div>
+                    ))}
                   </div>
                 </div>
 

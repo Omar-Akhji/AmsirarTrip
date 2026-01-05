@@ -39,12 +39,12 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  reactCompiler: true,
   experimental: {
     serverActions: {
       bodySizeLimit: "4mb",
     },
-    // React Compiler: disabled due to type error in Next.js 15.1+
-    // reactCompiler: process.env.NODE_ENV === "production",
+
     // Optimize package imports to reduce bundle size
     optimizePackageImports: [
       "framer-motion",

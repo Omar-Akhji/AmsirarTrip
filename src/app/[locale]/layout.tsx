@@ -1,5 +1,6 @@
 import { Navbar, Footer, Loader } from "@/shared/layout";
 import NavigationProgress from "@/shared/layout/NavigationProgress";
+import { AnimationProvider } from "@/shared/providers/AnimationProvider";
 import { ErrorBoundary } from "@/shared/utilities/ErrorBoundary";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
@@ -216,11 +217,13 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <ErrorBoundary>
-            <NavigationProgress />
-            <Loader />
-            <Navbar />
-            <main>{children}</main>
-            <Footer />
+            <AnimationProvider>
+              <NavigationProgress />
+              <Loader />
+              <Navbar />
+              <main>{children}</main>
+              <Footer />
+            </AnimationProvider>
           </ErrorBoundary>
         </NextIntlClientProvider>
       </body>

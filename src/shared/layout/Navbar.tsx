@@ -6,7 +6,7 @@ import { Link, usePathname, useRouter } from "@/i18n/routing";
 import useNavbar from "@/lib/hooks/useNavbar";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { cn } from "@/lib/utils";
-import { m, LazyMotion, domAnimation, AnimatePresence } from "motion/react";
+import { m, AnimatePresence } from "motion/react";
 
 interface NavLink {
   to: string;
@@ -427,131 +427,59 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className={navClassName} ref={navbarRef}>
-      <LazyMotion features={domAnimation}>
-        {isDesktop ? (
-          <>
-            {!scrolled && (
-              <div className="pb-2">
-                <div className="relative flex w-full px-0 py-3">
-                  <a
-                    href="tel:+212661173144"
-                    className="absolute left-4 flex gap-2.5 rounded-md text-white transition hover:opacity-90 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-white"
-                    aria-label={`${t("helplineTitle") || "Call us"}: ${
-                      t("helplineNumber") || "+212 661 173 144"
-                    }`}
+      {isDesktop ? (
+        <>
+          {!scrolled && (
+            <div className="pb-2">
+              <div className="relative flex w-full px-0 py-3">
+                <a
+                  href="tel:+212661173144"
+                  className="absolute left-4 flex gap-2.5 rounded-md text-white transition hover:opacity-90 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-white"
+                  aria-label={`${t("helplineTitle") || "Call us"}: ${
+                    t("helplineNumber") || "+212 661 173 144"
+                  }`}
+                >
+                  <div className={getSocialButtonClasses("md")}>
+                    <Image
+                      src="/images/icons/nav-phone.png"
+                      alt="Phone"
+                      width={20}
+                      height={20}
+                      className="size-5 object-contain sm:size-6"
+                    />
+                  </div>
+                  <div className="leading-tight">
+                    <p className="m-0 text-sm opacity-80">
+                      {t("helplineTitle")}
+                    </p>
+                    <p className="m-0 text-base font-semibold">
+                      {t("helplineNumber")}
+                    </p>
+                  </div>
+                </a>
+                <Link
+                  href="/"
+                  className="text-[1.5rem] font-semibold tracking-tight text-white"
+                  onClick={handleNavClick}
+                  aria-label="AmsirarTrip Home"
+                >
+                  Amsirar
+                  <span
+                    className={cn(
+                      "font-fancy font-light",
+                      scrolled ? "text-orange" : ""
+                    )}
                   >
-                    <div className={getSocialButtonClasses("md")}>
-                      <Image
-                        src="/images/icons/nav-phone.png"
-                        alt="Phone"
-                        width={20}
-                        height={20}
-                        className="size-5 object-contain sm:size-6"
-                      />
-                    </div>
-                    <div className="leading-tight">
-                      <p className="m-0 text-sm opacity-80">
-                        {t("helplineTitle")}
-                      </p>
-                      <p className="m-0 text-base font-semibold">
-                        {t("helplineNumber")}
-                      </p>
-                    </div>
-                  </a>
-                  <Link
-                    href="/"
-                    className="text-[1.5rem] font-semibold tracking-tight text-white"
-                    onClick={handleNavClick}
-                    aria-label="AmsirarTrip Home"
-                  >
-                    Amsirar
-                    <span
-                      className={cn(
-                        "font-fancy font-light",
-                        scrolled ? "text-orange" : ""
-                      )}
-                    >
-                      Trip
-                    </span>
-                  </Link>
-                </div>
+                    Trip
+                  </span>
+                </Link>
               </div>
-            )}
-            <div className="relative flex items-center gap-2.5 px-4 py-2">
-              <div className="mr-auto flex items-center gap-0.5">
-                {renderSocialLinks("mr-2")}
-                <LanguageSelector
-                  langOpen={langOpen}
-                  setLangOpen={setLangOpen}
-                  currentLanguage={currentLanguage}
-                  changeLanguage={changeLanguage}
-                  scrolled={scrolled}
-                  langRef={langRef}
-                />
-              </div>
-              <ul className="absolute left-1/2 z-10 flex -translate-x-1/2 items-center gap-3">
-                {NAV_LINKS.map((link) => {
-                  const isActive = pathname === link.to;
-                  return (
-                    <li key={link.to}>
-                      <Link
-                        href={link.to}
-                        className={getNavLinkClasses(isActive)}
-                        onClick={handleNavClick}
-                      >
-                        <span className="nav-label">{t(link.labelKey)}</span>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
             </div>
-          </>
-        ) : (
-          <div className="relative flex w-full items-center gap-3 px-2">
-            {isTablet && (
-              <div className="mr-auto flex items-center gap-2">
-                {renderSocialLinks("gap-2", true)}
-                <LanguageSelector
-                  size="sm"
-                  langOpen={langOpen}
-                  setLangOpen={setLangOpen}
-                  currentLanguage={currentLanguage}
-                  changeLanguage={changeLanguage}
-                  scrolled={scrolled}
-                  langRef={langRef}
-                />
-              </div>
-            )}
-
-            <Link
-              href="/"
-              className={cn(
-                "text-[1.4rem] font-semibold tracking-tight",
-                scrolled ? "text-slate-900" : "text-white",
-                isTablet || isMobile
-                  ? "absolute left-1/2 z-10 -translate-x-1/2"
-                  : ""
-              )}
-              onClick={handleNavClick}
-              aria-label="AmsirarTrip Home"
-            >
-              Amsirar
-              <span
-                className={cn(
-                  "font-fancy font-light",
-                  scrolled ? "text-orange" : ""
-                )}
-              >
-                Trip
-              </span>
-            </Link>
-
-            {isMobile && (
+          )}
+          <div className="relative flex items-center gap-2.5 px-4 py-2">
+            <div className="mr-auto flex items-center gap-0.5">
+              {renderSocialLinks("mr-2")}
               <LanguageSelector
-                size="sm"
-                className="mr-auto"
-                placement="left"
                 langOpen={langOpen}
                 setLangOpen={setLangOpen}
                 currentLanguage={currentLanguage}
@@ -559,69 +487,139 @@ const Navbar: React.FC = () => {
                 scrolled={scrolled}
                 langRef={langRef}
               />
-            )}
-
-            <button
-              type="button"
-              id="navbar-show-btn"
-              className={cn(
-                "focus-visible:outline-orange ml-2 flex size-10 items-center justify-center rounded-md text-lg transition-all duration-150 focus-visible:outline focus-visible:outline-offset-2",
-                scrolled
-                  ? "bg-white text-slate-900"
-                  : "bg-[rgba(0,0,0,0.35)] text-white shadow-[0_8px_20px_rgba(3,7,18,0.12)]"
-              )}
-              aria-expanded={asideOpen}
-              aria-controls="navbar-collapse"
-              onClick={() => setAsideOpen((s) => !s)}
-              ref={btnRef}
-            >
-              <AnimatedMenuIcon
-                isOpen={asideOpen}
-                className={cn(scrolled ? "text-slate-900" : "text-white")}
-              />
-            </button>
-
-            <div
-              id="navbar-collapse"
-              ref={collapseRef}
-              className={cn(
-                getCollapseClasses(),
-                isTablet &&
-                  "top-[calc(100%+0.75rem)] right-0.5 left-auto w-1/2 translate-x-0"
-              )}
-            >
-              {isMobile && (
-                <div
-                  className={cn(
-                    "flex items-center justify-center gap-4 px-4 py-4",
-                    scrolled
-                      ? "border-b border-slate-200/30"
-                      : "border-b border-white/20"
-                  )}
-                >
-                  {renderSocialLinks("gap-4", true)}
-                </div>
-              )}
-              <ul className="flex flex-col gap-3 px-4 py-4">
-                {NAV_LINKS.map((link) => {
-                  const isActive = pathname === link.to;
-                  return (
-                    <li key={link.to}>
-                      <Link
-                        href={link.to}
-                        className={getNavLinkClasses(isActive, true)}
-                        onClick={handleNavClick}
-                      >
-                        <span>{t(link.labelKey)}</span>
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
             </div>
+            <ul className="absolute left-1/2 z-10 flex -translate-x-1/2 items-center gap-3">
+              {NAV_LINKS.map((link) => {
+                const isActive = pathname === link.to;
+                return (
+                  <li key={link.to}>
+                    <Link
+                      href={link.to}
+                      className={getNavLinkClasses(isActive)}
+                      onClick={handleNavClick}
+                    >
+                      <span className="nav-label">{t(link.labelKey)}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
-        )}
-      </LazyMotion>
+        </>
+      ) : (
+        <div className="relative flex w-full items-center gap-3 px-2">
+          {isTablet && (
+            <div className="mr-auto flex items-center gap-2">
+              {renderSocialLinks("gap-2", true)}
+              <LanguageSelector
+                size="sm"
+                langOpen={langOpen}
+                setLangOpen={setLangOpen}
+                currentLanguage={currentLanguage}
+                changeLanguage={changeLanguage}
+                scrolled={scrolled}
+                langRef={langRef}
+              />
+            </div>
+          )}
+
+          <Link
+            href="/"
+            className={cn(
+              "text-[1.4rem] font-semibold tracking-tight",
+              scrolled ? "text-slate-900" : "text-white",
+              isTablet || isMobile
+                ? "absolute left-1/2 z-10 -translate-x-1/2"
+                : ""
+            )}
+            onClick={handleNavClick}
+            aria-label="AmsirarTrip Home"
+          >
+            Amsirar
+            <span
+              className={cn(
+                "font-fancy font-light",
+                scrolled ? "text-orange" : ""
+              )}
+            >
+              Trip
+            </span>
+          </Link>
+
+          {isMobile && (
+            <LanguageSelector
+              size="sm"
+              className="mr-auto"
+              placement="left"
+              langOpen={langOpen}
+              setLangOpen={setLangOpen}
+              currentLanguage={currentLanguage}
+              changeLanguage={changeLanguage}
+              scrolled={scrolled}
+              langRef={langRef}
+            />
+          )}
+
+          <button
+            type="button"
+            id="navbar-show-btn"
+            className={cn(
+              "focus-visible:outline-orange ml-2 flex size-10 items-center justify-center rounded-md text-lg transition-all duration-150 focus-visible:outline focus-visible:outline-offset-2",
+              scrolled
+                ? "bg-white text-slate-900"
+                : "bg-[rgba(0,0,0,0.35)] text-white shadow-[0_8px_20px_rgba(3,7,18,0.12)]"
+            )}
+            aria-expanded={asideOpen}
+            aria-controls="navbar-collapse"
+            onClick={() => setAsideOpen((s) => !s)}
+            ref={btnRef}
+          >
+            <AnimatedMenuIcon
+              isOpen={asideOpen}
+              className={cn(scrolled ? "text-slate-900" : "text-white")}
+            />
+          </button>
+
+          <div
+            id="navbar-collapse"
+            ref={collapseRef}
+            className={cn(
+              getCollapseClasses(),
+              isTablet &&
+                "top-[calc(100%+0.75rem)] right-0.5 left-auto w-1/2 translate-x-0"
+            )}
+          >
+            {isMobile && (
+              <div
+                className={cn(
+                  "flex items-center justify-center gap-4 px-4 py-4",
+                  scrolled
+                    ? "border-b border-slate-200/30"
+                    : "border-b border-white/20"
+                )}
+              >
+                {renderSocialLinks("gap-4", true)}
+              </div>
+            )}
+            <ul className="flex flex-col gap-3 px-4 py-4">
+              {NAV_LINKS.map((link) => {
+                const isActive = pathname === link.to;
+                return (
+                  <li key={link.to}>
+                    <Link
+                      href={link.to}
+                      className={getNavLinkClasses(isActive, true)}
+                      onClick={handleNavClick}
+                    >
+                      <span>{t(link.labelKey)}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </div>
+      )}
     </nav>
   );
 };
