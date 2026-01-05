@@ -14,7 +14,6 @@ import {
 } from "@/lib/structuredData";
 import { sanitizeJsonLd } from "@/lib/sanitize";
 import "../globals.css";
-import Script from "next/script";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -179,19 +178,13 @@ export default async function LocaleLayout({
       itemType="https://schema.org/WebPage"
     >
       <head>
-        <link
-          rel="preconnect"
-          href="https://kit.fontawesome.com"
-          crossOrigin="anonymous"
-        />
-        <link rel="dns-prefetch" href="https://kit.fontawesome.com" />
-
         {/* Preload LCP hero image for faster loading */}
         <link
           rel="preload"
           href="/images/Header/header-1.webp"
           as="image"
           type="image/webp"
+          fetchPriority="high"
         />
         <meta name="theme-color" content="#1a1a1a" />
         <meta name="mobile-web-app-capable" content="yes" />
@@ -213,24 +206,6 @@ export default async function LocaleLayout({
         />
       </head>
       <body>
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-REZKQSSK7N"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-REZKQSSK7N');
-          `}
-        </Script>
-        <Script
-          src="https://kit.fontawesome.com/b7031c5d36.js"
-          crossOrigin="anonymous"
-          strategy="lazyOnload"
-        />
         <NextIntlClientProvider messages={messages}>
           <ErrorBoundary>
             <NavigationProgress />

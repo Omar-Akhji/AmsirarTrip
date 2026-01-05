@@ -1,11 +1,11 @@
 export const getSecurityHeaders = () => {
   const cspHeader = `
     default-src 'self';
-    script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://www.google.com https://www.gstatic.com https://kit.fontawesome.com https://ka-f.fontawesome.com;
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://ka-f.fontawesome.com;
+    script-src 'self' https://www.google.com https://www.gstatic.com;
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
     img-src 'self' blob: data: https:;
-    font-src 'self' https://fonts.gstatic.com https://ka-f.fontawesome.com data:;
-    connect-src 'self' https://www.google-analytics.com https://www.googletagmanager.com https://www.google.com https://ka-f.fontawesome.com;
+    font-src 'self' https://fonts.gstatic.com data:;
+    connect-src 'self' https://www.google.com;
     frame-src 'self' https://www.google.com https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/;
     object-src 'none';
     base-uri 'self';

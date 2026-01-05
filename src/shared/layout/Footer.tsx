@@ -372,29 +372,54 @@ export default function FooterTailwind() {
                       aria-label={t("footer.social.facebook")}
                       className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
                     >
-                      <i className="fab fa-facebook-f text-dark-grey text-base sm:text-lg"></i>
+                      <svg
+                        className="size-5 fill-slate-700 sm:size-6"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                      </svg>
                     </a>
-                    {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                    <a
-                      href="#"
+                    <button
+                      type="button"
                       aria-label={t("footer.social.twitter")}
-                      className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
+                      className="inline-flex size-10 cursor-default items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
                     >
-                      <i className="fab fa-x-twitter text-dark-grey text-base sm:text-lg"></i>
-                    </a>
+                      <svg
+                        className="size-5 fill-slate-700 sm:size-6"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                      </svg>
+                    </button>
                     <a
                       href="https://www.instagram.com/amsirar.trip?igsh=ZDlxanNsbTA5M2Zi"
                       aria-label={t("footer.social.instagram")}
                       className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
                     >
-                      <i className="fab fa-instagram text-dark-grey text-base sm:text-lg"></i>
+                      <svg
+                        className="size-5 fill-slate-700 sm:size-6"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path d="M16 2H8C4.691 2 2 4.691 2 8v8c0 3.309 2.691 6 6 6h8c3.309 0 6-2.691 6-6V8c0-3.309-2.691-6-6-6zm4 14c0 2.206-1.794 4-4 4H8c-2.206 0-4-1.794-4-4V8c0-2.206 1.794-4 4-4h8c2.206 0 4 1.794 4 4v8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <circle cx="17" cy="7" r=".5"></circle>
+                      </svg>
                     </a>
                     <a
                       href="https://www.tiktok.com/@amsirartrip"
                       aria-label={t("footer.social.tiktok")}
                       className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
                     >
-                      <i className="fab fa-tiktok text-dark-grey text-base sm:text-lg"></i>
+                      <svg
+                        className="size-5 fill-slate-700 sm:size-6"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                      >
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"></path>
+                      </svg>
                     </a>
                   </div>
                 </nav>
