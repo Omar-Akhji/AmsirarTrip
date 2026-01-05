@@ -218,6 +218,19 @@ export default async function LocaleLayout({
           crossOrigin="anonymous"
           strategy="lazyOnload"
         />
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-REZKQSSK7N"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-REZKQSSK7N');
+          `}
+        </Script>
         <NextIntlClientProvider messages={messages}>
           <ErrorBoundary>
             <NavigationProgress />

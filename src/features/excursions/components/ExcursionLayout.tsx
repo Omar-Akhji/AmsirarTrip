@@ -88,8 +88,8 @@ const ExcursionLayout: React.FC<ExcursionLayoutProps> = ({
   return (
     <>
       <PageHeader
-        title={title}
-        subtitle="Stories, tips, and insights from our adventures"
+        title={t("excursion.detailsTitle")}
+        subtitle={t("excursion.detailsSubtitle")}
         smTitle={t("excursion.detailsTitle")}
         bgImage="/images/Header/header-1.webp"
         breadcrumbs={[

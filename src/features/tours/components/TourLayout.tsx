@@ -142,7 +142,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
   return (
     <>
       <PageHeader
-        title={title}
+        title={t("tours.detailsTitle")}
         subtitle={t("tours.detailsSubtitle")}
         smTitle={t("tours.detailsTitle")}
         bgImage="/images/Header/header-1.webp"
