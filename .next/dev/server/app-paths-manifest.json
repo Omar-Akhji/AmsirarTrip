@@ -1,1 +1,4 @@
-{}
+{
+  "/[locale]/tours/page": "app/[locale]/tours/page.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js"
+}

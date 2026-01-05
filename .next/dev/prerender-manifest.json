@@ -1,11 +1,1 @@
-{
-  "version": 4,
-  "routes": {},
-  "dynamicRoutes": {},
-  "notFoundRoutes": [],
-  "preview": {
-    "previewModeId": "a111ccb31a44b6201e2d8e2fd75d5efc",
-    "previewModeSigningKey": "b5f6340fbfbc2998ac053c8178f242afb933e535e0491658998e8f287fd678a8",
-    "previewModeEncryptionKey": "6293eb008ab73163a74e80dcfc9e9c8052fd176da041d4b3fe6d68c0d6f7bb1b"
-  }
-}
+{"version":4,"routes":{"/en/tours":{},"/fr/tours":{},"/de/tours":{},"/es/tours":{}},"dynamicRoutes":{"/[locale]/tours":{"dataRoute":null,"dataRouteRegex":null,"fallback":null,"fallbackRevalidate":false,"fallbackSourceRoute":"/[locale]/tours","routeRegex":"^\\/([^/]+?)\\/tours(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"3b24603350b1079d74597b0aa84ecac8","previewModeSigningKey":"bca1cc47b13623e444c02e3a62f8c194ef39f779615cab29849616744d3fbfd2","previewModeEncryptionKey":"7e40bef2e76bb8da721255908ed5585b165d1eab686b339b8d34604ed5189023"}}
