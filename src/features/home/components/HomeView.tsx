@@ -164,7 +164,7 @@ export default function HomeView() {
               </p>
               <h1
                 id="hero-heading"
-                className="text-4xl leading-tight font-semibold sm:text-5xl"
+                className="min-h-[3.3em] text-4xl leading-tight font-semibold sm:text-5xl"
               >
                 <span>{typed}</span>
                 <span
