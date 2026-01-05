@@ -441,7 +441,13 @@ const Navbar: React.FC = () => {
                     }`}
                   >
                     <div className={getSocialButtonClasses("md")}>
-                      <i className="fa-solid fa-phone text-dark-grey text-base sm:text-lg"></i>
+                      <Image
+                        src="/images/icons/nav-phone.png"
+                        alt="Phone"
+                        width={20}
+                        height={20}
+                        className="size-5 object-contain sm:size-6"
+                      />
                     </div>
                     <div className="leading-tight">
                       <p className="m-0 text-sm opacity-80">
