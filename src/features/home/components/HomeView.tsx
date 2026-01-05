@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState, useEffect, useRef } from "react";
-import { motion } from "motion/react";
+import { m, LazyMotion, domAnimation } from "motion/react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 
 // Extracted components
@@ -133,87 +133,89 @@ export default function HomeView() {
 
   return (
     <>
-      {/* Hero with background slider */}
-      <header
-        className="home-header relative isolate w-full overflow-hidden bg-slate-950 shadow-xl"
-        aria-labelledby="hero-heading"
-      >
-        {/* Background images with CSS crossfade animation */}
-        {headerImages.map((image, index) => (
+      <LazyMotion features={domAnimation}>
+        {/* Hero with background slider */}
+        <header
+          className="home-header relative isolate w-full overflow-hidden bg-slate-950 shadow-xl"
+          aria-labelledby="hero-heading"
+        >
+          {/* Background images with CSS crossfade animation */}
+          {headerImages.map((image, index) => (
+            <div
+              key={image}
+              className={`home-header-bg ${
+                index === currentImageIndex ? "active" : ""
+              }`}
+              style={{ backgroundImage: `url(${image})` }}
+            />
+          ))}
           <div
-            key={image}
-            className={`home-header-bg ${
-              index === currentImageIndex ? "active" : ""
-            }`}
-            style={{ backgroundImage: `url(${image})` }}
-          />
-        ))}
-        <div
-          className="absolute inset-0 z-10 bg-linear-to-br from-slate-900/80 via-slate-900/60 to-slate-900 opacity-80"
-          aria-hidden="true"
-        ></div>
-        <div
-          className="absolute inset-0 z-10 bg-linear-to-br from-black/60 via-black/20 to-transparent"
-          aria-hidden="true"
-        ></div>
-        <div className="relative z-20 mx-auto flex max-w-6xl flex-col gap-10 px-4 py-24 text-center text-white sm:py-32 lg:flex-row lg:text-left">
-          <div className="flex-1 space-y-6">
-            <p className="text-sm tracking-[0.4em] text-orange-300 uppercase">
-              {t("home.title")}
-            </p>
-            <h1
-              id="hero-heading"
-              className="text-4xl leading-tight font-semibold sm:text-5xl"
-            >
-              <span>{typed}</span>
-              <span
-                aria-hidden
-                className="ml-2 inline-block h-6 w-px animate-pulse bg-white/90"
-              />
-            </h1>
-            <p className="text-lg text-white/80 sm:text-xl">
-              {t("home.heroSubtitle")}
-            </p>
-          </div>
-          <div className="flex-1">
-            <div className="rounded-3xl border border-white/15 bg-white/5 p-6 backdrop-blur">
-              <p className="text-sm font-semibold tracking-[0.4em] text-orange-200 uppercase">
-                {t("excursion.detailsSubtitle")}
+            className="absolute inset-0 z-10 bg-linear-to-br from-slate-900/80 via-slate-900/60 to-slate-900 opacity-80"
+            aria-hidden="true"
+          ></div>
+          <div
+            className="absolute inset-0 z-10 bg-linear-to-br from-black/60 via-black/20 to-transparent"
+            aria-hidden="true"
+          ></div>
+          <div className="relative z-20 mx-auto flex max-w-6xl flex-col gap-10 px-4 py-24 text-center text-white sm:py-32 lg:flex-row lg:text-left">
+            <div className="flex-1 space-y-6">
+              <p className="text-sm tracking-[0.4em] text-orange-300 uppercase">
+                {t("home.title")}
               </p>
-              <div className="mt-6 grid gap-4 sm:grid-cols-3">
-                {statHighlights.map((stat, idx) => (
-                  <motion.div
-                    key={stat.id}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.4, delay: idx * 0.1 }}
-                    className="rounded-2xl border border-white/10 bg-white/5 px-4 py-5 text-left shadow-sm"
-                  >
-                    <p className="text-3xl font-bold text-white">
-                      {stat.value}
-                    </p>
-                    <p className="text-xs tracking-[0.3em] text-orange-200 uppercase">
-                      {stat.label}
-                    </p>
-                    <p className="mt-2 text-sm text-white/80">
-                      {stat.description}
-                    </p>
-                  </motion.div>
-                ))}
+              <h1
+                id="hero-heading"
+                className="text-4xl leading-tight font-semibold sm:text-5xl"
+              >
+                <span>{typed}</span>
+                <span
+                  aria-hidden
+                  className="ml-2 inline-block h-6 w-px animate-pulse bg-white/90"
+                />
+              </h1>
+              <p className="text-lg text-white/80 sm:text-xl">
+                {t("home.heroSubtitle")}
+              </p>
+            </div>
+            <div className="flex-1">
+              <div className="rounded-3xl border border-white/15 bg-white/5 p-6 backdrop-blur">
+                <p className="text-sm font-semibold tracking-[0.4em] text-orange-200 uppercase">
+                  {t("excursion.detailsSubtitle")}
+                </p>
+                <div className="mt-6 grid gap-4 sm:grid-cols-3">
+                  {statHighlights.map((stat, idx) => (
+                    <m.div
+                      key={stat.id}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{ once: true, amount: 0.2 }}
+                      transition={{ duration: 0.4, delay: idx * 0.1 }}
+                      className="rounded-2xl border border-white/10 bg-white/5 px-4 py-5 text-left shadow-sm"
+                    >
+                      <p className="text-3xl font-bold text-white">
+                        {stat.value}
+                      </p>
+                      <p className="text-xs tracking-[0.3em] text-orange-200 uppercase">
+                        {stat.label}
+                      </p>
+                      <p className="mt-2 text-sm text-white/80">
+                        {stat.description}
+                      </p>
+                    </m.div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </header>
+        </header>
 
-      {/* Main content area */}
-      <main>
-        <FeaturedTours />
-        <ServicesSection />
-        <TestimonialsSection />
-        <VideoSection />
-      </main>
+        {/* Main content area */}
+        <main>
+          <FeaturedTours />
+          <ServicesSection />
+          <TestimonialsSection />
+          <VideoSection />
+        </main>
+      </LazyMotion>
     </>
   );
 }

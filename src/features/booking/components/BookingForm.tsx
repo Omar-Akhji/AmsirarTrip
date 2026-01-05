@@ -12,7 +12,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/shared/ui/popover";
 import { Button } from "@/shared/ui/button";
 import { CalendarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { validateBookingForm, sanitizeInput } from "@/lib/validation";
 import { submitBooking, ApiError } from "@/lib/api-client";
 import { LoadingSpinner } from "@/shared/ui/Loading";
@@ -220,7 +220,7 @@ const BookingForm: React.FC<BookingFormProps> = ({
     <section id="booking" className={baseSectionClass}>
       <div className={innerWrapperClass}>
         <div className="grid gap-8 lg:grid-cols-5">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -266,7 +266,7 @@ const BookingForm: React.FC<BookingFormProps> = ({
 
               {tourTitle && tourId && (
                 <div className="mb-6">
-                  <motion.input
+                  <m.input
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -286,7 +286,7 @@ const BookingForm: React.FC<BookingFormProps> = ({
 
               {excursionTitle && excursionId && (
                 <div className="mb-6">
-                  <motion.input
+                  <m.input
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -305,7 +305,7 @@ const BookingForm: React.FC<BookingFormProps> = ({
               )}
 
               <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -346,9 +346,9 @@ const BookingForm: React.FC<BookingFormProps> = ({
                       {errors.fullName}
                     </p>
                   )}
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -384,10 +384,10 @@ const BookingForm: React.FC<BookingFormProps> = ({
                       {errors.phone}
                     </p>
                   )}
-                </motion.div>
+                </m.div>
               </div>
 
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -423,10 +423,10 @@ const BookingForm: React.FC<BookingFormProps> = ({
                     {errors.email}
                   </p>
                 )}
-              </motion.div>
+              </m.div>
 
               <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -474,9 +474,9 @@ const BookingForm: React.FC<BookingFormProps> = ({
                       {errors.numberOfPeople}
                     </p>
                   )}
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -548,14 +548,14 @@ const BookingForm: React.FC<BookingFormProps> = ({
                       {errors.reservationDate}
                     </p>
                   )}
-                </motion.div>
+                </m.div>
               </div>
 
               <div className="w-full">
                 <label htmlFor="message" className="sr-only">
                   {t("booking.message", "Your message")}
                 </label>
-                <motion.textarea
+                <m.textarea
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -588,7 +588,7 @@ const BookingForm: React.FC<BookingFormProps> = ({
                 )}
               </div>
 
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -654,11 +654,11 @@ const BookingForm: React.FC<BookingFormProps> = ({
                         : buttonText}
                   </button>
                 </div>
-              </motion.div>
+              </m.div>
             </form>
-          </motion.div>
+          </m.div>
 
-          <motion.aside
+          <m.aside
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -754,7 +754,7 @@ const BookingForm: React.FC<BookingFormProps> = ({
                 </a>
               </div>
             </div>
-          </motion.aside>
+          </m.aside>
         </div>
       </div>
     </section>

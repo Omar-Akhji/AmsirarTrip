@@ -1,7 +1,21 @@
 /**
  * Centralized Framer Motion animation variants for consistent animations.
- * Use with motion components: <motion.div {...fadeInUp}>
+ * Use with motion components: <m.div {...fadeInUp}>
  */
+
+/**
+ * Global Viewport Settings for Performance
+ *
+ * @property once - PERFORMANCE CRITICAL: Animations only trigger once.
+ *                  Prevents intersection observers from running on every scroll,
+ *                  significantly reducing CPU usage.
+ * @property amount - Element must be 20% visible to trigger.
+ * @property margin - Pre-load margin (optional customization).
+ */
+export const ANIMATION_VIEWPORT_SETTINGS = {
+  once: true,
+  amount: 0.2,
+};
 
 /**
  * Fade in while sliding up - good for cards and content blocks
@@ -9,7 +23,7 @@
 export const fadeInUp = {
   initial: { opacity: 0, y: 30 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.2 },
+  viewport: ANIMATION_VIEWPORT_SETTINGS,
   transition: { duration: 0.5 },
 };
 
@@ -19,7 +33,7 @@ export const fadeInUp = {
 export const fadeInUpSmall = {
   initial: { opacity: 0, y: 10 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
+  viewport: { ...ANIMATION_VIEWPORT_SETTINGS, amount: 0.1 },
   transition: { duration: 0.5 },
 };
 
@@ -29,7 +43,7 @@ export const fadeInUpSmall = {
 export const fadeInUpLarge = {
   initial: { opacity: 0, y: 50 },
   whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.2 },
+  viewport: ANIMATION_VIEWPORT_SETTINGS,
   transition: { duration: 0.6 },
 };
 
@@ -39,7 +53,7 @@ export const fadeInUpLarge = {
 export const fadeInScale = {
   initial: { opacity: 0, scale: 0.95 },
   whileInView: { opacity: 1, scale: 1 },
-  viewport: { once: true, amount: 0.2 },
+  viewport: ANIMATION_VIEWPORT_SETTINGS,
   transition: { duration: 0.5 },
 };
 
@@ -49,7 +63,7 @@ export const fadeInScale = {
 export const fadeInScaleLarge = {
   initial: { opacity: 0, scale: 0.9 },
   whileInView: { opacity: 1, scale: 1 },
-  viewport: { once: true, amount: 0.2 },
+  viewport: ANIMATION_VIEWPORT_SETTINGS,
   transition: { duration: 0.4 },
 };
 
@@ -59,7 +73,7 @@ export const fadeInScaleLarge = {
 export const slideInLeft = {
   initial: { opacity: 0, x: -20 },
   whileInView: { opacity: 1, x: 0 },
-  viewport: { once: true },
+  viewport: ANIMATION_VIEWPORT_SETTINGS,
   transition: { duration: 0.5 },
 };
 
@@ -69,7 +83,7 @@ export const slideInLeft = {
 export const slideInLeftLarge = {
   initial: { opacity: 0, x: -50 },
   whileInView: { opacity: 1, x: 0 },
-  viewport: { once: true, amount: 0.2 },
+  viewport: ANIMATION_VIEWPORT_SETTINGS,
   transition: { duration: 0.6 },
 };
 
@@ -79,7 +93,7 @@ export const slideInLeftLarge = {
 export const slideInRight = {
   initial: { opacity: 0, x: 20 },
   whileInView: { opacity: 1, x: 0 },
-  viewport: { once: true },
+  viewport: ANIMATION_VIEWPORT_SETTINGS,
   transition: { duration: 0.5 },
 };
 
@@ -89,7 +103,7 @@ export const slideInRight = {
 export const slideInRightLarge = {
   initial: { opacity: 0, x: 50 },
   whileInView: { opacity: 1, x: 0 },
-  viewport: { once: true, amount: 0.2 },
+  viewport: ANIMATION_VIEWPORT_SETTINGS,
   transition: { duration: 0.6 },
 };
 

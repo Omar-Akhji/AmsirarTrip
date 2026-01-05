@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 
 const ServicesSection = () => {
@@ -51,7 +51,7 @@ const ServicesSection = () => {
 
         <div className="mt-12 grid justify-items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, idx) => (
-            <motion.article
+            <m.article
               key={service.key}
               initial={{ opacity: 0, y: 80, scale: 0.85 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
@@ -86,7 +86,7 @@ const ServicesSection = () => {
                 className="pointer-events-none absolute inset-0 rounded-3xl border border-transparent transition group-hover:border-orange-200/60"
                 aria-hidden
               />
-            </motion.article>
+            </m.article>
           ))}
         </div>
       </div>

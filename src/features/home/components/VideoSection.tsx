@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState, useEffect, useRef } from "react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 
 const VideoSection = () => {
@@ -44,7 +44,7 @@ const VideoSection = () => {
     >
       <div className="container">
         <div className="relative mx-auto w-full">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -123,7 +123,7 @@ const VideoSection = () => {
                 )}
               </div>
             )}
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

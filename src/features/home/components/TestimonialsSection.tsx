@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 
 const TestimonialsSection = () => {
@@ -25,7 +25,7 @@ const TestimonialsSection = () => {
               {/* mobile: 1 column; tablet/md: 2 columns (3rd spans both); desktop/lg: 3 columns */}
               <div className="grid grid-cols-1 justify-items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
                 {testimonials.map((tst, idx) => (
-                  <motion.article
+                  <m.article
                     key={tst.key}
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -96,7 +96,7 @@ const TestimonialsSection = () => {
                         </svg>
                       ))}
                     </div>
-                  </motion.article>
+                  </m.article>
                 ))}
               </div>
             </div>

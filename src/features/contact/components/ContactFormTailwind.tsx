@@ -3,7 +3,7 @@
 import React, { useState, useRef, useCallback } from "react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import ReCAPTCHA from "react-google-recaptcha";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { validateContactForm, sanitizeInput } from "@/lib/validation";
 import { submitContact, ApiError } from "@/lib/api-client";
 import { LoadingSpinner } from "@/shared/ui/Loading";
@@ -169,7 +169,7 @@ const ContactFormTailwind = () => {
     <section id="contact-tailwind" className="bg-gray-50 py-12 md:py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-5">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -244,7 +244,7 @@ const ContactFormTailwind = () => {
               )}
 
               <div className="grid gap-5 md:grid-cols-2">
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -280,8 +280,8 @@ const ContactFormTailwind = () => {
                       {errors.name}
                     </p>
                   )}
-                </motion.div>
-                <motion.div
+                </m.div>
+                <m.div
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -317,11 +317,11 @@ const ContactFormTailwind = () => {
                       {errors.email}
                     </p>
                   )}
-                </motion.div>
+                </m.div>
               </div>
 
               <div className="grid gap-5 md:grid-cols-2">
-                <motion.div
+                <m.div
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -357,8 +357,8 @@ const ContactFormTailwind = () => {
                       {errors.phone}
                     </p>
                   )}
-                </motion.div>
-                <motion.div
+                </m.div>
+                <m.div
                   initial={{ opacity: 0, x: 20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -384,10 +384,10 @@ const ContactFormTailwind = () => {
                     onChange={updateField}
                     autoComplete="off"
                   />
-                </motion.div>
+                </m.div>
               </div>
 
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -430,9 +430,9 @@ const ContactFormTailwind = () => {
                     {errors.message}
                   </p>
                 )}
-              </motion.div>
+              </m.div>
 
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -489,11 +489,11 @@ const ContactFormTailwind = () => {
                     ? t("contact.form.sending", "Sending…")
                     : t("contact.form.cta", "Send message")}
                 </button>
-              </motion.div>
+              </m.div>
             </form>
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -576,7 +576,7 @@ const ContactFormTailwind = () => {
                 "Available every day from 09:00 to 21:00 GMT+1"
               )}
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

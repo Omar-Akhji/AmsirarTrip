@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 
 const FeaturedTours = () => {
@@ -72,7 +72,7 @@ const FeaturedTours = () => {
 
         <div className="featured-row">
           {cities.map((city, idx) => (
-            <motion.article
+            <m.article
               key={city.key}
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -91,7 +91,7 @@ const FeaturedTours = () => {
                 <h3 className="card-title">{t(city.titleKey)}</h3>
                 <p className="card-text">{t(city.descriptionKey)}</p>
               </div>
-            </motion.article>
+            </m.article>
           ))}
         </div>
       </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { LegalSection } from "../types";
 import { fadeInUp } from "@/lib/constants/animations";
 
@@ -18,7 +18,7 @@ export function LegalSectionCard({ section, index }: LegalSectionCardProps) {
   const t = useTranslations();
 
   return (
-    <motion.article
+    <m.article
       {...fadeInUp}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       id={`legal-${section.id}`}
@@ -37,6 +37,6 @@ export function LegalSectionCard({ section, index }: LegalSectionCardProps) {
       <div className="prose prose-slate prose-sm max-w-none">
         <p className="leading-relaxed text-gray-600">{t(section.contentKey)}</p>
       </div>
-    </motion.article>
+    </m.article>
   );
 }
