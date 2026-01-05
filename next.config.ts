@@ -39,6 +39,123 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      // Fix singular path
+      {
+        source: "/excursion",
+        destination: "/excursions",
+        permanent: true,
+      },
+      // Tours: ID to Slug mapping
+      {
+        source: "/tours/1",
+        destination: "/tours/merzouga-desert-adventure-3-days",
+        permanent: true,
+      },
+      {
+        source: "/tours/2",
+        destination: "/tours/coast-and-cities-explorer-6-days",
+        permanent: true,
+      },
+      {
+        source: "/tours/3",
+        destination: "/tours/caravan-and-kasbah-experience-3-days",
+        permanent: true,
+      },
+      {
+        source: "/tours/4",
+        destination: "/tours/imperial-cities-and-coastline-5-days",
+        permanent: true,
+      },
+      {
+        source: "/tours/5",
+        destination: "/tours/grand-moroccan-circuit-10-days",
+        permanent: true,
+      },
+      {
+        source: "/tours/6",
+        destination: "/tours/atlas-and-desert-escape-4-days",
+        permanent: true,
+      },
+      {
+        source: "/tours/7",
+        destination: "/tours/coastal-and-desert-odyssey-4-days",
+        permanent: true,
+      },
+      {
+        source: "/tours/8",
+        destination: "/tours/chegaga-wilderness-expedition-3-days",
+        permanent: true,
+      },
+      {
+        source: "/tours/9",
+        destination: "/tours/northern-heritage-trail-7-days",
+        permanent: true,
+      },
+      // Excursions: ID to Slug mapping
+      {
+        source: "/excursions/1",
+        destination: "/excursions/ouzoud-waterfalls-day-trip",
+        permanent: true,
+      },
+      {
+        source: "/excursion/1", // Handle both singular and plural for ID access just in case
+        destination: "/excursions/ouzoud-waterfalls-day-trip",
+        permanent: true,
+      },
+      {
+        source: "/excursions/2",
+        destination: "/excursions/essaouira-coastal-escape",
+        permanent: true,
+      },
+      {
+        source: "/excursion/2",
+        destination: "/excursions/essaouira-coastal-escape",
+        permanent: true,
+      },
+      {
+        source: "/excursions/3",
+        destination: "/excursions/imlil-toubkal-adventure",
+        permanent: true,
+      },
+      {
+        source: "/excursion/3",
+        destination: "/excursions/imlil-toubkal-adventure",
+        permanent: true,
+      },
+      {
+        source: "/excursions/4",
+        destination: "/excursions/ourika-valley-discovery",
+        permanent: true,
+      },
+      {
+        source: "/excursion/4",
+        destination: "/excursions/ourika-valley-discovery",
+        permanent: true,
+      },
+      {
+        source: "/excursions/5",
+        destination: "/excursions/agafay-desert-sunset",
+        permanent: true,
+      },
+      {
+        source: "/excursion/5",
+        destination: "/excursions/agafay-desert-sunset",
+        permanent: true,
+      },
+      {
+        source: "/excursions/6",
+        destination: "/excursions/sunrise-hot-air-balloon",
+        permanent: true,
+      },
+      {
+        source: "/excursion/6",
+        destination: "/excursions/sunrise-hot-air-balloon",
+        permanent: true,
+      },
+    ];
+  },
   experimental: {
     serverActions: {
       bodySizeLimit: "4mb",

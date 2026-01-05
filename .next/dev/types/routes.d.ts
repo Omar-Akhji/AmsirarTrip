@@ -5,7 +5,7 @@ type AppRoutes = "/[locale]" | "/[locale]/about" | "/[locale]/contact" | "/[loca
 type AppRouteHandlerRoutes = "/api/booking" | "/api/contact" | "/api/health" | "/api/newsletter"
 type PageRoutes = never
 type LayoutRoutes = "/[locale]"
-type RedirectRoutes = never
+type RedirectRoutes = "/excursion" | "/excursion/1" | "/excursion/2" | "/excursion/3" | "/excursion/4" | "/excursion/5" | "/excursion/6" | "/excursions/1" | "/excursions/2" | "/excursions/3" | "/excursions/4" | "/excursions/5" | "/excursions/6" | "/tours/1" | "/tours/2" | "/tours/3" | "/tours/4" | "/tours/5" | "/tours/6" | "/tours/7" | "/tours/8" | "/tours/9"
 type RewriteRoutes = never
 type Routes = AppRoutes | PageRoutes | LayoutRoutes | RedirectRoutes | RewriteRoutes | AppRouteHandlerRoutes
 
@@ -24,6 +24,28 @@ interface ParamMap {
   "/api/contact": {}
   "/api/health": {}
   "/api/newsletter": {}
+  "/excursion": {}
+  "/excursion/1": {}
+  "/excursion/2": {}
+  "/excursion/3": {}
+  "/excursion/4": {}
+  "/excursion/5": {}
+  "/excursion/6": {}
+  "/excursions/1": {}
+  "/excursions/2": {}
+  "/excursions/3": {}
+  "/excursions/4": {}
+  "/excursions/5": {}
+  "/excursions/6": {}
+  "/tours/1": {}
+  "/tours/2": {}
+  "/tours/3": {}
+  "/tours/4": {}
+  "/tours/5": {}
+  "/tours/6": {}
+  "/tours/7": {}
+  "/tours/8": {}
+  "/tours/9": {}
 }
 
 
