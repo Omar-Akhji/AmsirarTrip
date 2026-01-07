@@ -6,7 +6,7 @@ import { Link } from "@/i18n/routing";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { TOURS_DATA } from "../data";
 import { m } from "motion/react";
-import { ArrowIcon, PhoneIcon, ClockIcon } from "@/shared/ui/icons";
+import { ArrowIcon, ClockIcon } from "@/shared/ui/icons";
 import { fadeInUp, fadeInScale } from "@/lib/constants/animations";
 import {
   PageHeader,
@@ -65,9 +65,11 @@ export default function ToursView() {
           <span>{t("tours.detailsTitle")}</span>
           <ArrowIcon className="size-4" />
         </HeaderCTA>
-        <HeaderSecondaryCTA href="tel:+212661173144">
-          <PhoneIcon className="size-4" />
-          <span>{t("helplineTitle")}</span>
+        <HeaderSecondaryCTA
+          href="https://www.tripadvisor.de/Attraction_Review-g293734-d32584739-Reviews-Amsirar_Travel-Marrakech_Marrakech_Safi.html"
+          external
+        >
+          Offers on TripAdvisor
         </HeaderSecondaryCTA>
       </PageHeader>
 

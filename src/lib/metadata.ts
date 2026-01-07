@@ -24,6 +24,8 @@ export interface SEOConfig {
   publishedTime?: string;
   modifiedTime?: string;
   author?: string;
+  /** Set to true to prevent Google from indexing this page */
+  noIndex?: boolean;
 }
 
 export function generateSEOMetadata({
@@ -37,6 +39,7 @@ export function generateSEOMetadata({
   publishedTime,
   modifiedTime,
   author,
+  noIndex = false,
 }: SEOConfig): Metadata {
   const isDefaultLocale = locale === "en";
   const localePath = isDefaultLocale ? path : `/${locale}${path}`;
@@ -117,11 +120,11 @@ export function generateSEOMetadata({
       },
     },
     robots: {
-      index: true,
-      follow: true,
+      index: !noIndex,
+      follow: !noIndex,
       googleBot: {
-        index: true,
-        follow: true,
+        index: !noIndex,
+        follow: !noIndex,
         "max-video-preview": -1,
         "max-image-preview": "large",
         "max-snippet": -1,

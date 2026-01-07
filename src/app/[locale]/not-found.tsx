@@ -1,5 +1,19 @@
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Page Not Found | AmsirarTrip",
+  description: "The page you are looking for could not be found.",
+  robots: {
+    index: false,
+    follow: false,
+    googleBot: {
+      index: false,
+      follow: false,
+    },
+  },
+};
 
 export default function NotFound() {
   const t = useTranslations("notFound");

@@ -23,6 +23,7 @@ export async function generateMetadata({
     path: "/privacy-policy",
     locale,
     type: "website",
+    noIndex: true,
   });
 }
 

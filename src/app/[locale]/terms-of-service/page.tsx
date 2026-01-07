@@ -23,6 +23,7 @@ export async function generateMetadata({
     path: "/terms-of-service",
     locale,
     type: "website",
+    noIndex: true,
   });
 }
 
