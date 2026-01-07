@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { Link } from "@/i18n/routing";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { RECAPTCHA_V3_SITE_KEY } from "@/lib/client-env";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { byPrefixAndName } from "@/lib/fontawesome";
 
 // Type declaration for grecaptcha
 declare global {
@@ -372,7 +374,10 @@ export default function FooterTailwind() {
                       aria-label={t("footer.social.facebook")}
                       className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
                     >
-                      <i className="fab fa-facebook-f text-dark-grey text-base sm:text-lg"></i>
+                      <FontAwesomeIcon
+                        icon={byPrefixAndName.fab["facebook-f"]}
+                        className="text-dark-grey text-base sm:text-lg"
+                      />
                     </a>
                     {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                     <a
@@ -380,21 +385,30 @@ export default function FooterTailwind() {
                       aria-label={t("footer.social.twitter")}
                       className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
                     >
-                      <i className="fab fa-x-twitter text-dark-grey text-base sm:text-lg"></i>
+                      <FontAwesomeIcon
+                        icon={byPrefixAndName.fab["x-twitter"]}
+                        className="text-dark-grey text-base sm:text-lg"
+                      />
                     </a>
                     <a
                       href="https://www.instagram.com/amsirar.trip?igsh=ZDlxanNsbTA5M2Zi"
                       aria-label={t("footer.social.instagram")}
                       className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
                     >
-                      <i className="fab fa-instagram text-dark-grey text-base sm:text-lg"></i>
+                      <FontAwesomeIcon
+                        icon={byPrefixAndName.fab.instagram}
+                        className="text-dark-grey text-base sm:text-lg"
+                      />
                     </a>
                     <a
                       href="https://www.tiktok.com/@amsirartrip"
                       aria-label={t("footer.social.tiktok")}
                       className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
                     >
-                      <i className="fab fa-tiktok text-dark-grey text-base sm:text-lg"></i>
+                      <FontAwesomeIcon
+                        icon={byPrefixAndName.fab.tiktok}
+                        className="text-dark-grey text-base sm:text-lg"
+                      />
                     </a>
                   </div>
                 </nav>

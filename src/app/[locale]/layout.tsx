@@ -14,8 +14,11 @@ import {
   generateWebSiteJsonLd,
 } from "@/lib/structuredData";
 import { sanitizeJsonLd } from "@/lib/sanitize";
+import { config } from "@fortawesome/fontawesome-svg-core";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 import "../globals.css";
-import Script from "next/script";
+
+config.autoAddCss = false;
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -180,7 +183,6 @@ export default async function LocaleLayout({
       itemType="https://schema.org/WebPage"
     >
       <head>
-        {/* Preload LCP hero image for faster loading */}
         <link
           rel="preload"
           href="/images/Header/header-1.webp"
@@ -188,8 +190,6 @@ export default async function LocaleLayout({
           type="image/webp"
           fetchPriority="high"
         />
-        <link rel="preconnect" href="https://kit.fontawesome.com" />
-        <link rel="dns-prefetch" href="https://kit.fontawesome.com" />
         <meta name="theme-color" content="#1a1a1a" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta
@@ -207,11 +207,6 @@ export default async function LocaleLayout({
           dangerouslySetInnerHTML={{
             __html: sanitizeJsonLd(webSiteJsonLd),
           }}
-        />
-        <Script
-          src="https://kit.fontawesome.com/b7031c5d36.js"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
         />
       </head>
       <body>
