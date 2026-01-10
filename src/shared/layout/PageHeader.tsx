@@ -129,7 +129,9 @@ export function PageHeader({
             {title}
           </h1>
           {subtitle && (
-            <p className="text-lg text-slate-200 lg:text-xl">{subtitle}</p>
+            <p className="font-fancy text-lg text-slate-200 lg:text-xl">
+              {subtitle}
+            </p>
           )}
           {children && (
             <div className="flex flex-wrap items-center justify-center gap-4 pt-2">

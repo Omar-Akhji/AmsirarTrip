@@ -94,17 +94,11 @@ export default function AboutView() {
               >
                 {t("about.ourStory")}
               </h2>
-              <p className="mx-auto mt-4 max-w-2xl text-sm text-gray-600">
-                {t("about.headerSubtitle")}
-              </p>
             </div>
 
             <div className="grid items-center gap-12 lg:grid-cols-2">
               <m.div {...slideInLeftLarge} className="order-2 lg:order-1">
-                <article
-                  className="space-y-8"
-                  aria-labelledby="experience-heading"
-                >
+                <article className="space-y-8">
                   <div className="space-y-6">
                     <p className="text-sm leading-relaxed text-gray-700">
                       {t("about.experienceText1")}

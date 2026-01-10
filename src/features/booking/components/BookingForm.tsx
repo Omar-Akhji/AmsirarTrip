@@ -641,7 +641,7 @@ const BookingForm: React.FC<BookingFormProps> = ({
 
                 <div className="w-full flex-1">
                   <button
-                    className="flex w-full items-center justify-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-semibold tracking-wide text-white uppercase shadow-lg shadow-orange-500/25 transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+                    className="flex w-full transform items-center justify-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-semibold tracking-wide text-white uppercase shadow-lg shadow-orange-500/25 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-xl hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
                     type="submit"
                     disabled={submitting}
                     aria-busy={submitting}
@@ -675,12 +675,12 @@ const BookingForm: React.FC<BookingFormProps> = ({
             ></div>
 
             <div className="relative flex flex-col gap-6">
-              <div className="flex flex-col items-start gap-3">
+              <div className="flex flex-col items-center gap-3 text-center">
                 <div>
                   <p className="text-[11px] font-semibold tracking-[0.45em] text-amber-200 uppercase">
                     {t("booking.checkBadge", "Check us")}
                   </p>
-                  <h3 className="mt-1 text-xl font-semibold sm:text-2xl">
+                  <h3 className="mt-1 mb-4 text-xl font-semibold sm:text-2xl">
                     {t("booking.checkTitle", "Find us on TripAdvisor")}
                   </h3>
                 </div>
@@ -730,7 +730,7 @@ const BookingForm: React.FC<BookingFormProps> = ({
                   href="https://www.tripadvisor.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-amber-500 px-4 py-2 text-sm font-semibold text-slate-900 transition hover:bg-amber-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-200"
+                  className="inline-flex transform items-center justify-center gap-2 rounded-full bg-amber-500 px-4 py-2 text-sm font-semibold text-white transition duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-amber-400 hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-200"
                   aria-label={t(
                     "booking.tripadvisorCtaAria",
                     "Open TripAdvisor in new tab"

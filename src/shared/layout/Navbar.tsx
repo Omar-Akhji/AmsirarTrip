@@ -344,13 +344,13 @@ const Navbar: React.FC = () => {
         base,
         sizing,
         scrolled
-          ? "bg-orange !text-white shadow-[0_10px_26px_rgba(229,74,31,0.12)]"
+          ? "bg-orange text-white shadow-[0_10px_26px_rgba(229,74,31,0.12)]"
           : "bg-white/10 text-white backdrop-blur"
       );
     }
 
     // Inactive link styles
-    const textColor = scrolled && isMobile ? "text-slate-900" : "text-white";
+    const textColor = scrolled ? "text-slate-900" : "text-white";
     const bgColor = scrolled ? "bg-white/5" : "bg-white/5";
     const hover =
       "hover:-translate-y-0.5 hover:bg-white/20 hover:shadow-[0_8px_26px_rgba(3,7,18,0.12)]";

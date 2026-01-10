@@ -317,6 +317,7 @@ export function generateWebSiteJsonLd() {
     "@id": "https://amsirartrip.com/#website",
     url: "https://amsirartrip.com",
     name: "AmsirarTrip",
+    alternateName: "Amsirar Trip",
     description:
       "Authentic Morocco tours and desert adventures with local experts",
     publisher: {

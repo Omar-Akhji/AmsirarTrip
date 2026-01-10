@@ -29,6 +29,7 @@ const ServicesSection = () => {
     <section
       id="services"
       className="relative isolate overflow-hidden py-20 text-orange-200 sm:py-24"
+      aria-labelledby="services-heading"
     >
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-10">

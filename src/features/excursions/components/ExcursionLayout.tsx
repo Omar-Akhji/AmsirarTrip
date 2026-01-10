@@ -100,7 +100,11 @@ const ExcursionLayout: React.FC<ExcursionLayoutProps> = ({
       />
 
       <main>
-        <section id="excursion-single" className="py-14">
+        <section
+          id="excursion-single"
+          className="py-14"
+          aria-labelledby="excursion-title"
+        >
           <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[4fr_2fr]">
             <article className="rounded-3xl bg-white p-8 shadow-xl shadow-orange-100/50 sm:p-12">
               <figure className="relative mb-8 aspect-4/3 w-full overflow-hidden rounded-2xl">
@@ -120,7 +124,10 @@ const ExcursionLayout: React.FC<ExcursionLayoutProps> = ({
                     className="mb-3 hidden h-1 w-16 rounded-full bg-amber-300 sm:block"
                     aria-hidden="true"
                   ></span>
-                  <h2 className="text-orange mt-2 text-2xl leading-tight font-extrabold sm:text-3xl md:text-4xl">
+                  <h2
+                    id="excursion-title"
+                    className="text-orange mt-2 text-2xl leading-tight font-extrabold sm:text-3xl md:text-4xl"
+                  >
                     {title}
                   </h2>
                 </div>

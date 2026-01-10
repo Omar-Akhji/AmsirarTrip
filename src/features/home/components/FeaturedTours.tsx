@@ -55,6 +55,7 @@ const FeaturedTours = () => {
     <section
       id="featured"
       className="relative isolate overflow-hidden bg-gray-50 py-24 text-gray-900"
+      aria-labelledby="featured-heading"
     >
       <div
         className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(248,250,252,0.3),transparent_70%)]"
@@ -65,7 +66,10 @@ const FeaturedTours = () => {
           <p className="inline-flex items-center justify-center rounded-full border border-orange-400 bg-orange-500/10 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
             {t("featured.smTitle")}
           </p>
-          <h2 className="mt-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]">
+          <h2
+            id="featured-heading"
+            className="mt-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
+          >
             {t("featured.lgTitle")}
           </h2>
         </div>

@@ -15,6 +15,7 @@ import {
   faChevronLeft,
   faTimes,
   faBars,
+  faQuoteRight,
 } from "@fortawesome/free-solid-svg-icons";
 
 /**
@@ -41,6 +42,7 @@ export const byPrefixAndName = {
     "chevron-left": faChevronLeft,
     times: faTimes,
     bars: faBars,
+    "quote-right": faQuoteRight,
   },
 };
 
@@ -60,4 +62,5 @@ export {
   faChevronLeft,
   faTimes,
   faBars,
+  faQuoteRight,
 };

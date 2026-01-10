@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, useEffect, useRef } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { m } from "motion/react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { fadeInUp } from "@/lib/constants/animations";
@@ -29,74 +29,85 @@ export default function HomeView() {
 
   // Typing carousel: cycle through multiple hero texts, typing then deleting each
   const [typed, setTyped] = useState("");
-  const idxRef = useRef(0);
-  const charRef = useRef(0);
-  const deletingRef = useRef(false);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Background image rotation
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prev) => (prev + 1) % headerImages.length);
-    }, 5000); // Change image every 5 seconds
+    }, 5000);
 
     return () => clearInterval(interval);
   }, [headerImages.length]);
 
-  // Typing animation effect - resets to beginning each time component mounts
+  // Optimized typing animation using requestAnimationFrame for smooth, performant updates
   useEffect(() => {
-    // Reset all refs to initial state
-    idxRef.current = 0;
-    charRef.current = 0;
-    deletingRef.current = false;
-    setTyped("");
-
     const heroTexts = [
       t("home.heroTitle"),
       t("home.heroAlt1") || "Adventure Awaits Beyond the Dunes",
       t("home.heroAlt2") || "Pack your bags — Morocco calls",
     ];
 
-    // Start typing from the beginning
-    function step() {
-      const current = heroTexts[idxRef.current] || "";
+    let textIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let lastUpdate = 0;
+    let pauseUntil = 0;
+    let rafId: number;
 
-      if (!deletingRef.current) {
-        // typing
-        charRef.current = Math.min(current.length, charRef.current + 1);
-        setTyped(current.slice(0, charRef.current));
+    // Timing configuration (in ms)
+    const TYPING_SPEED = 80;
+    const DELETING_SPEED = 40;
+    const PAUSE_AFTER_TYPING = 2000;
+    const PAUSE_AFTER_DELETING = 300;
 
-        if (charRef.current >= current.length) {
-          // pause at full text then start deleting
-          timerRef.current = setTimeout(() => {
-            deletingRef.current = true;
-            step();
-          }, 2000);
+    function animate(timestamp: number) {
+      // Handle pause states
+      if (pauseUntil > 0) {
+        if (timestamp < pauseUntil) {
+          rafId = requestAnimationFrame(animate);
           return;
         }
-        timerRef.current = setTimeout(step, 80);
-      } else {
-        // deleting
-        charRef.current = Math.max(0, charRef.current - 1);
-        setTyped(current.slice(0, charRef.current));
-
-        if (charRef.current <= 0) {
-          // move to next text
-          deletingRef.current = false;
-          idxRef.current = (idxRef.current + 1) % heroTexts.length;
-          timerRef.current = setTimeout(step, 300);
-          return;
-        }
-        timerRef.current = setTimeout(step, 40);
+        pauseUntil = 0;
       }
+
+      const speed = isDeleting ? DELETING_SPEED : TYPING_SPEED;
+
+      // Only update when enough time has passed
+      if (timestamp - lastUpdate >= speed) {
+        lastUpdate = timestamp;
+        const current = heroTexts[textIndex] || "";
+
+        if (!isDeleting) {
+          // Typing
+          charIndex = Math.min(current.length, charIndex + 1);
+          setTyped(current.slice(0, charIndex));
+
+          if (charIndex >= current.length) {
+            // Pause at full text, then start deleting
+            isDeleting = true;
+            pauseUntil = timestamp + PAUSE_AFTER_TYPING;
+          }
+        } else {
+          // Deleting
+          charIndex = Math.max(0, charIndex - 1);
+          setTyped(current.slice(0, charIndex));
+
+          if (charIndex <= 0) {
+            // Move to next text
+            isDeleting = false;
+            textIndex = (textIndex + 1) % heroTexts.length;
+            pauseUntil = timestamp + PAUSE_AFTER_DELETING;
+          }
+        }
+      }
+
+      rafId = requestAnimationFrame(animate);
     }
 
-    // Start the animation after a brief delay
-    timerRef.current = setTimeout(step, 100);
+    // Start animation
+    rafId = requestAnimationFrame(animate);
 
-    return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-    };
+    return () => cancelAnimationFrame(rafId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -173,7 +184,7 @@ export default function HomeView() {
                 className="ml-2 inline-block h-6 w-px animate-pulse bg-white/90"
               />
             </h1>
-            <p className="text-lg text-white/80 sm:text-xl">
+            <p className="font-fancy text-lg text-white/80 sm:text-xl">
               {t("home.heroSubtitle")}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4 pt-4">

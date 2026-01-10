@@ -60,50 +60,50 @@ You have two main methods to deploy:
 
 1. **Clone your repository** on the VPS:
 
-    ```bash
-    git clone https://github.com/yourusername/amsirartrip.git
-    cd amsirartrip
-    ```
+   ```bash
+   git clone https://github.com/yourusername/amsirartrip.git
+   cd amsirartrip
+   ```
 
 2. **Create/Edit Environment Variables**:
-    Create a `.env.production` file (DO NOT COMMIT THIS TO GIT):
+   Create a `.env.production` file (DO NOT COMMIT THIS TO GIT):
 
-    ```bash
-    nano .env.production
-    ```
+   ```bash
+   nano .env.production
+   ```
 
-    Add your secrets:
+   Add your secrets:
 
-    ```env
-    NODE_ENV=production
-    GMAIL_USER=your-email@gmail.com
-    GMAIL_PASS=your-app-password
-    MAIL_TO=bookings@amsirartrip.com
-    NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your-key
-    RECAPTCHA_SECRET_KEY=your-secret
-    ```
+   ```env
+   NODE_ENV=production
+   GMAIL_USER=your-email@gmail.com
+   GMAIL_PASS=your-app-password
+   MAIL_TO=bookings@amsirartrip.com
+   NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your-key
+   RECAPTCHA_SECRET_KEY=your-secret
+   ```
 
 3. **Start with Docker Compose**:
 
-    ```bash
-    docker compose up -d --build
-    ```
+   ```bash
+   docker compose up -d --build
+   ```
 
 ### Method B: Generic Transfer (No Git on VPS)
 
 1. **Copy files to VPS** (Dockerfile, docker-compose.yml, public/, package.json, src/, etc.):
 
-    ```bash
-    scp -r . root@your-vps-ip:/app/amsirartrip
-    ```
+   ```bash
+   scp -r . root@your-vps-ip:/app/amsirartrip
+   ```
 
 2. **SSH and Build**:
 
-    ```bash
-    ssh root@your-vps-ip
-    cd /app/amsirartrip
-    docker compose up -d --build
-    ```
+   ```bash
+   ssh root@your-vps-ip
+   cd /app/amsirartrip
+   docker compose up -d --build
+   ```
 
 ---
 

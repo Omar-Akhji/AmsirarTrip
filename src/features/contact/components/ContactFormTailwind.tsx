@@ -480,7 +480,7 @@ const ContactFormTailwind = () => {
                 </div>
                 <button
                   type="submit"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-semibold tracking-wide text-white uppercase shadow-lg shadow-orange-500/25 transition hover:brightness-110 disabled:opacity-60"
+                  className="inline-flex transform items-center justify-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-semibold tracking-wide text-white uppercase shadow-lg shadow-orange-500/25 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-xl hover:brightness-110 disabled:opacity-60"
                   disabled={status.type === "submitting"}
                   aria-busy={status.type === "submitting"}
                 >

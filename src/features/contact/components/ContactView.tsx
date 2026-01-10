@@ -86,7 +86,7 @@ export default function ContactView() {
           <span>WhatsApp</span>
         </HeaderSecondaryCTA>
       </PageHeader>
-      <section className="relative isolate py-16">
+      <section className="relative isolate py-16" aria-label="Contact Methods">
         <div className="mx-auto max-w-7xl px-4">
           <div className="grid gap-6 md:grid-cols-3">
             {contactMethods.map((method, index) => (
@@ -114,13 +114,20 @@ export default function ContactView() {
         </div>
       </section>
 
-      <section id="contact-form-section" className="bg-gray-50">
+      <section
+        id="contact-form-section"
+        className="bg-gray-50"
+        aria-labelledby="contact-form-heading"
+      >
         <div className="mx-auto max-w-7xl px-4 pt-16">
           <div className="section-header text-center">
             <p className="inline-flex items-center justify-center rounded-full border border-orange-400 bg-orange-500/10 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
               {t("contact.form.badge", "Plan with locals")}
             </p>
-            <h2 className="mt-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]">
+            <h2
+              id="contact-form-heading"
+              className="mt-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
+            >
               {t("contact.lgTitle", "contact us")}
             </h2>
           </div>
@@ -129,13 +136,20 @@ export default function ContactView() {
 
       <ContactFormTailwind />
 
-      <section id="location" className="relative bg-slate-50 py-16">
+      <section
+        id="location"
+        className="relative bg-slate-50 py-16"
+        aria-labelledby="location-heading"
+      >
         <div className="mx-auto max-w-7xl px-4">
           <div className="title-wrap mb-12 text-center">
             <p className="inline-flex items-center justify-center rounded-full border border-orange-400 bg-orange-500/10 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
               {t("contact.location.smTitle")}
             </p>
-            <h2 className="mt-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]">
+            <h2
+              id="location-heading"
+              className="mt-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
+            >
               {t("contact.location.lgTitle")}
             </h2>
           </div>

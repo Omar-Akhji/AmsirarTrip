@@ -3,6 +3,8 @@
 import Image from "next/image";
 import { m } from "motion/react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuoteRight } from "@/lib/fontawesome";
 
 const TestimonialsSection = () => {
   const { t } = useTranslation();
@@ -35,20 +37,16 @@ const TestimonialsSection = () => {
                       idx === 2 ? "md:col-span-2 lg:col-span-1" : ""
                     }`}
                   >
-                    {/* Decorative Quote Icon (Version 1) */}
+                    {/* Decorative Quote Icon */}
                     <div
                       className="absolute top-2 right-4 -rotate-12 opacity-10 select-none"
                       aria-hidden="true"
                     >
-                      <svg
-                        width="80"
-                        height="80"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
+                      <FontAwesomeIcon
+                        icon={faQuoteRight}
                         className="text-white"
-                      >
-                        <path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C15.4647 8 15.017 8.44772 15.017 9V12C15.017 12.5523 14.5693 13 14.017 13H13.017C12.4647 13 12.017 12.5523 12.017 12V9C12.017 7.34315 13.3601 6 15.017 6H19.017C20.6738 6 22.017 7.34315 22.017 9V15C22.017 18.3137 19.3307 21 16.017 21H14.017ZM3.01697 21L3.01697 18C3.01697 16.8954 3.91241 16 5.01697 16H8.01697C8.56925 16 9.01697 15.5523 9.01697 15V9C9.01697 8.44772 8.56925 8 8.01697 8H5.01697C4.46469 8 4.01697 8.44772 4.01697 9V12C4.01697 12.5523 3.56925 13 3.01697 13H2.01697C1.46469 13 1.01697 12.5523 1.01697 12V9C1.01697 7.34315 2.36012 6 4.01697 6H8.01697C9.67383 6 11.017 7.34315 11.017 9V15C11.017 18.3137 8.33068 21 5.01697 21H3.01697Z" />
-                      </svg>
+                        style={{ width: "5rem", height: "5rem" }}
+                      />
                     </div>
                     <div className="mb-4 flex items-center gap-4 self-start">
                       <div className="mr-auto inline-flex size-25 items-center justify-center rounded-full bg-white/5 ring-1 ring-white/10">
@@ -72,11 +70,11 @@ const TestimonialsSection = () => {
                     </div>
                     {/* small horizontal divider to separate header (avatar/name) from quote */}
                     <div className="my-3 h-px w-full bg-white/10" aria-hidden />
-                    <article className="h-full">
+                    <div className="h-full">
                       <blockquote className="mb-4 text-sm leading-snug text-slate-300 italic sm:text-sm">
                         {t(`testimonials.items.${tst.key}.quote`)}
                       </blockquote>
-                    </article>
+                    </div>
 
                     <div
                       className="mt-4 flex items-center justify-start text-orange-400"

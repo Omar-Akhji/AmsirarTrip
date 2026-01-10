@@ -36,7 +36,7 @@ const yellowtail = Yellowtail({
 export const metadata: Metadata = {
   title: {
     default:
-      "AmsirarTrip (Amsirar) - Morocco Tours, Sahara Desert Adventures & Excursions",
+      "AmsirarTrip - Morocco Tours, Sahara Desert Adventures & Excursions",
     template: "%s | AmsirarTrip - Morocco Travel Experts",
   },
   description:
