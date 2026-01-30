@@ -1,0 +1,543 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   THEME CONFIGURATION - Global Design Tokens
+   Using Tailwind CSS 4's @theme directive for design system variables
+   ============================================================================ */
+@theme {
+  /* ==================== Breakpoints ==================== */
+  --breakpoint-tablet: 768px;
+  --breakpoint-desktop: 1090px;
+
+  /* ==================== Typography ==================== */
+  --font-sans: var(--font-montserrat), sans-serif;
+  --font-fancy: var(--font-fancy), cursive;
+  --font-brand: var(--font-yellowtail), cursive;
+
+  /* ==================== Color Palette ==================== */
+
+  /* Base Colors */
+  --color-white: #fff;
+  --color-black: #000;
+
+  /* Brand Colors */
+  --color-orange: #e54a1f;
+  --color-orange-dark: #d35400;
+
+  /* Neutral Colors */
+  --color-light-grey: #f7f7f7;
+  --color-light-grey-alt: #f5f5f5;
+  --color-light-grey-alt2: #e2e8f0;
+  --color-grey: #787878;
+  --color-grey-alt: #6b7280;
+  --color-grey-close: #777;
+  --color-dark: #0e1010;
+  --color-dark-grey: #111;
+
+  /* Accent Colors */
+  --color-whatsapp: #25d366;
+  --color-footer-start: #18191a;
+  --color-footer-end: #202124;
+
+  /* ==================== shadcn/ui Colors ==================== */
+  --color-background: 0 0% 100%;
+  --color-foreground: 222.2 84% 4.9%;
+  --color-card: 0 0% 100%;
+  --color-card-foreground: 222.2 84% 4.9%;
+  --color-popover: 0 0% 100%;
+  --color-popover-foreground: 222.2 84% 4.9%;
+  --color-primary: 13 80% 51%;
+  --color-primary-foreground: 0 0% 100%;
+  --color-secondary: 210 40% 96%;
+  --color-secondary-foreground: 222.2 84% 4.9%;
+  --color-muted: 210 40% 96%;
+  --color-muted-foreground: 215.4 16.3% 46.9%;
+  --color-accent: 210 40% 96%;
+  --color-accent-foreground: 222.2 84% 4.9%;
+  --color-destructive: 0 84.2% 60.2%;
+  --color-destructive-foreground: 210 40% 98%;
+  --color-border: 214.3 31.8% 91.4%;
+  --color-input: 214.3 31.8% 91.4%;
+  --color-ring: 13 80% 51%;
+  --radius: 0.5rem;
+
+  /* ==================== Layout Spacing ==================== */
+  --spacing-navbar: 4rem;
+
+  /* ==================== Animation Utilities ==================== */
+  --animate-show-data: show-data 1s forwards;
+  --animate-remove-overflow: remove-overflow 2s forwards;
+  --animate-show-overflow: show-overflow 2s forwards;
+  --animate-remove-data: remove-data 1s forwards;
+  --animate-loader-rotate: loader-rotate 2s linear infinite;
+  --animate-loader-dash: loader-dash 1.5s ease-in-out infinite;
+
+  /* ==================== Keyframe Animations ==================== */
+  @keyframes show-data {
+    50% {
+      transform: translateY(-10rem);
+    }
+
+    100% {
+      transform: translateY(-7rem);
+    }
+  }
+
+  @keyframes remove-overflow {
+    100% {
+      overflow: initial;
+    }
+  }
+
+  @keyframes show-overflow {
+    0% {
+      overflow: initial;
+      pointer-events: none;
+    }
+
+    50% {
+      overflow: hidden;
+    }
+  }
+
+  @keyframes remove-data {
+    0% {
+      transform: translateY(-7rem);
+    }
+
+    50% {
+      transform: translateY(-10rem);
+    }
+
+    100% {
+      transform: translateY(0.5rem);
+    }
+  }
+
+  @keyframes loader-rotate {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes loader-dash {
+    0% {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+    }
+
+    50% {
+      stroke-dasharray: 89, 200;
+      stroke-dashoffset: -35px;
+    }
+
+    100% {
+      stroke-dasharray: 89, 200;
+      stroke-dashoffset: -136px;
+    }
+  }
+}
+
+/* ============================================================================
+   BASE LAYER - Reset & Element Defaults
+   Using :is() and :where() for selector grouping
+   ============================================================================ */
+@layer base {
+  * {
+    box-sizing: border-box;
+    font-style: normal;
+  }
+
+  /* Global Custom Properties (Local Variables) */
+  html {
+    --c1: var(--color-light-grey);
+    --c2: #d1d1d1;
+    --gradient-pattern:
+      var(--c1) 0% 5%, var(--c2) 6% 15%, var(--c1) 16% 25%, var(--c2) 26% 35%,
+      var(--c1) 36% 45%, var(--c2) 46% 55%, var(--c1) 56% 65%,
+      var(--c2) 66% 75%, var(--c1) 76% 85%, var(--c2) 86% 95%, #0000 96%;
+    --s: 154px;
+
+    height: 100%;
+    overflow-x: hidden;
+    background:
+      radial-gradient(50% 50% at 100% 0, var(--gradient-pattern)),
+      radial-gradient(50% 50% at 0 100%, var(--gradient-pattern)),
+      radial-gradient(50% 50%, var(--gradient-pattern)),
+      radial-gradient(50% 50%, var(--gradient-pattern)) calc(var(--s) / 2)
+        calc(var(--s) / 2) var(--c1);
+    background-size: var(--s) var(--s);
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    overflow-x: hidden;
+    font-family: var(--font-sans);
+    font-size: 95%;
+    line-height: 1.15;
+    opacity: 100%;
+  }
+
+  main {
+    display: block;
+    flex: 1 0 auto;
+    width: 100%;
+  }
+
+  h1 {
+    margin: 0.67rem 0;
+  }
+
+  hr {
+    box-sizing: content-box;
+    height: 0;
+    overflow: visible;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  small {
+    font-size: 80%;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* ===== :is() Pseudo-Class - Group interactive elements ===== */
+  :is(button, input, textarea) {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: 100%;
+    line-height: 1.15;
+  }
+
+  :is(button, input) {
+    overflow: visible;
+  }
+
+  button {
+    text-transform: none;
+  }
+
+  /* ===== :where() Pseudo-Class - Low specificity reset ===== */
+  :where(button, [type="button"], [type="reset"], [type="submit"]) {
+    appearance: auto;
+    cursor: pointer;
+  }
+
+  :is(
+    button,
+    [type="button"],
+    [type="reset"],
+    [type="submit"]
+  )::-moz-focus-inner {
+    padding: 0;
+    border: none;
+  }
+
+  :is(button, [type="button"], [type="reset"], [type="submit"]):-moz-focusring {
+    outline: 1px dotted ButtonText;
+  }
+
+  progress {
+    vertical-align: baseline;
+  }
+
+  textarea {
+    overflow: auto;
+  }
+
+  [type="number"]::-webkit-inner-spin-button,
+  [type="number"]::-webkit-outer-spin-button {
+    height: auto;
+  }
+
+  ::-webkit-file-upload-button {
+    appearance: auto;
+    font: inherit;
+  }
+
+  [hidden] {
+    display: none;
+  }
+
+  /* ===== :is() - Group heading styles ===== */
+  :is(h1, h2, h3, h4) {
+    font-family: var(--font-sans);
+  }
+
+  input[type="submit"] {
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  img {
+    aspect-ratio: 4/3;
+    display: block;
+  }
+
+  header {
+    position: relative;
+    box-sizing: border-box;
+    flex-direction: column;
+    padding-top: 7rem;
+    overflow: hidden;
+    text-align: center;
+    color: white;
+    background: url("/images/Header/header-1.webp") center / cover no-repeat;
+  }
+
+  ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+}
+
+/* ============================================================================
+   COMPONENTS LAYER - Reusable UI Patterns
+   Using CSS Nesting, Container Queries, :has(), and Local Variables
+   ============================================================================ */
+@layer components {
+  /* ====== Responsive Header with :not() ====== */
+  @media (width >= 1024px) {
+    .home-header {
+      min-height: 80vh;
+    }
+  }
+
+  @media screen and (width < 768px) {
+    header:not(.home-header) {
+      min-height: 55vh;
+    }
+
+    #featured .card-article {
+      margin-bottom: 3rem;
+    }
+  }
+
+  @media screen and (width >= 768px) {
+    header:not(.home-header) {
+      min-height: 55vh;
+    }
+  }
+
+  @media screen and (width >= 1090px) {
+    header:not(.home-header) {
+      min-height: 60vh;
+    }
+  }
+
+  /* Container Query - Card responsiveness based on container size */
+  @container featured (min-width: 600px) {
+    .card-data {
+      padding: 2rem 2.5rem;
+    }
+
+    .card-title {
+      font-size: 1.5rem;
+    }
+  }
+
+  @container featured (min-width: 900px) {
+    .card-data {
+      bottom: -8rem;
+    }
+
+    .card-text {
+      font-size: 1rem;
+    }
+  }
+
+  /* ====== Featured Section with Container Queries ====== */
+  .featured-row {
+    /* Container Query Setup */
+    container-type: inline-size;
+    container-name: featured;
+
+    /* Responsive grid based on viewport (fallback) */
+    @media screen and (width >= 768px) {
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @media screen and (width >= 1200px) {
+      gap: 2rem;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  /* ====== Loader Styles with CSS Nesting ====== */
+  #ftco-loader {
+    /* Local Variables - scoped to this component */
+    --loader-size: 96px;
+    --loader-icon-size: 48px;
+    --loader-shadow: 0 24px 64px rgb(0 0 0 / 24%);
+
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--loader-size);
+    height: var(--loader-size);
+    border-radius: 16px;
+    box-shadow: var(--loader-shadow);
+    background-color: rgb(255 255 255 / 90%);
+    opacity: 100%;
+    visibility: visible;
+    transition: opacity 0.4s ease-out;
+    transform: translate(-50%, -50%);
+
+    /* Nested fullscreen variant */
+    &.fullscreen {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 0;
+      box-shadow: none;
+      background-color: var(--color-light-grey-alt2);
+      transform: none;
+    }
+
+    /* Nested child elements */
+    & .circular {
+      display: block;
+      width: var(--loader-icon-size);
+      height: var(--loader-icon-size);
+      animation: loader-rotate 2s linear infinite;
+      transform-origin: center center;
+    }
+
+    & .path {
+      animation: loader-dash 1.5s ease-in-out infinite;
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+      stroke-linecap: round;
+    }
+  }
+
+  /* ====== Home Header ====== */
+  .home-header {
+    position: relative;
+    min-height: 70vh;
+  }
+
+  /* ====== Card Component with CSS Nesting & Local Variables ====== */
+  .card-article {
+    /* Local Variables - scoped to card component */
+    --card-border-radius: 8px;
+    --card-shadow: 0 8px 24px hsl(0deg 0% 0% / 15%);
+    --card-data-width: 90%;
+    --card-data-padding: 1.5rem 2rem;
+
+    position: relative;
+    margin-bottom: 2rem;
+    overflow: hidden;
+
+    /* Nested hover state with child selectors */
+    &:hover {
+      animation: remove-overflow 2s forwards;
+
+      & .card-data {
+        opacity: 100%;
+        transition: opacity 0.3s;
+        animation: show-data 1s forwards;
+      }
+    }
+
+    /* Nested :not(:hover) state */
+    &:not(:hover) {
+      animation: show-overflow 2s forwards;
+
+      & .card-data {
+        animation: remove-data 1s forwards;
+      }
+    }
+  }
+
+  .card-img {
+    width: 100%;
+    height: auto;
+    border-radius: var(--card-border-radius, 8px);
+    cursor: pointer;
+    object-fit: cover;
+  }
+
+  .card-data {
+    position: absolute;
+    right: 0;
+    bottom: -9rem;
+    left: 0;
+    width: var(--card-data-width, 90%);
+    padding: var(--card-data-padding, 1.5rem 2rem);
+    border-radius: 1rem;
+    box-shadow: var(--card-shadow, 0 8px 24px hsl(0deg 0% 0% / 15%));
+    background-color: var(--color-white);
+    opacity: 0%;
+    cursor: pointer;
+    transition: opacity 1s 1s;
+    margin-inline: auto;
+  }
+
+  .card-title {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--color-black);
+  }
+
+  .card-text {
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-grey-close);
+  }
+
+  /* ====== :has() Pseudo-Class - Parent responds to child state ====== */
+
+  /* Form group highlights when input is focused */
+  .form-group:has(:is(input, textarea, select):focus) {
+    outline: 2px solid var(--color-orange);
+    outline-offset: 2px;
+    border-radius: 0.5rem;
+  }
+
+  /* Navigation with open dropdown gets backdrop */
+  nav:has([data-state="open"]) {
+    --nav-backdrop: blur(8px);
+
+    backdrop-filter: var(--nav-backdrop);
+  }
+
+  /* Section with error state */
+  .input-wrapper:has(input:invalid:not(:placeholder-shown)) {
+    --input-border-color: var(--color-destructive);
+
+    border-color: hsl(var(--input-border-color));
+  }
+
+  /* Card with loaded image - alternative hover trigger */
+  .card-article:has(img[loading="eager"]) {
+    --card-priority: high;
+  }
+}
