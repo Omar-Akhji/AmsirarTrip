@@ -198,10 +198,10 @@ export default function HomeView() {
           aria-hidden="true"
         ></div>
         <div className="relative z-20 mx-auto flex h-full min-h-screen max-w-6xl flex-col items-center justify-center gap-4 px-4 pt-20 pb-24 text-center text-white sm:pt-24 sm:pb-32 lg:py-32">
-          <p className="text-sm tracking-[0.4em] text-orange-300 uppercase">
+          <h1 className="text-sm tracking-[0.4em] text-orange-300 uppercase">
             {t("home.title")}
-          </p>
-          <h1
+          </h1>
+          <h2
             id="hero-heading"
             className="min-h-[4.5em] text-4xl leading-tight font-semibold sm:min-h-[2.5em] sm:text-5xl"
           >
@@ -210,7 +210,7 @@ export default function HomeView() {
               aria-hidden
               className="ml-2 inline-block h-6 w-px animate-pulse bg-white/90"
             />
-          </h1>
+          </h2>
           <p className="font-fancy text-lg text-white/80 sm:text-xl">
             {t("home.heroSubtitle")}
           </p>

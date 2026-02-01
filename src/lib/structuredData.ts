@@ -314,10 +314,9 @@ export function generateWebSiteJsonLd() {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "@id": "https://amsirartrip.com/#website",
-    url: "https://amsirartrip.com",
     name: "Amsirar Trip",
-    alternateName: ["AmsirarTrip", "Amsirar"],
+    alternateName: ["AmsirarTrip", "Amsirar", "Amsirar Tours"],
+    url: "https://amsirartrip.com",
     description:
       "Amsirar Trip offers authentic Morocco tours, Sahara desert adventures, and cultural experiences with local experts.",
     publisher: {
