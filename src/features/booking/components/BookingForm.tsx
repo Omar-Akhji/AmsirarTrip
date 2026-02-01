@@ -32,7 +32,7 @@ function SubmitButton({ buttonText }: { buttonText: string }) {
 
   return (
     <button
-      className="flex w-full transform items-center justify-center gap-2 rounded-full bg-orange-500 px-6 py-3 text-sm font-semibold tracking-wide text-white uppercase shadow-lg shadow-orange-500/25 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-orange-400 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60"
+      className="flex w-full transform items-center justify-center gap-2 rounded-full bg-orange-500 px-8 py-4 text-sm font-semibold tracking-wide whitespace-nowrap text-white uppercase shadow-lg shadow-orange-500/25 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-orange-400 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60"
       type="submit"
       disabled={pending}
       aria-busy={pending}
