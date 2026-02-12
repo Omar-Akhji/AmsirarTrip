@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { m, AnimatePresence } from "motion/react";
-import { useTranslation } from "@/lib/hooks/useTranslation";
+import { useTranslation, useMediaQuery } from "@/lib/hooks";
 import { fadeInUp } from "@/lib/constants/animations";
 import { Link } from "@/i18n/routing";
 
@@ -43,8 +43,19 @@ export default function HomeView() {
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+  // Responsive check: typing animation only on desktop (>1023px)
+  const isMobileOrTablet = useMediaQuery("(max-width: 1023px)");
+
   // Typing carousel: cycle through multiple hero texts, typing then deleting each
   const [typed, setTyped] = useState("");
+  // Index for mobile/tablet "showing" animation
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
+
+  const heroTexts = [
+    t("home.heroTitle"),
+    t("home.heroAlt1") || "Adventure Awaits Beyond the Dunes",
+    t("home.heroAlt2") || "Pack your bags — Morocco calls",
+  ];
 
   // Background image rotation
   useEffect(() => {
@@ -55,13 +66,9 @@ export default function HomeView() {
     return () => clearInterval(interval);
   }, [headerImages.length]);
 
-  // Optimized typing animation using requestAnimationFrame for smooth, performant updates
+  // Optimized typing animation (Desktop only)
   useEffect(() => {
-    const heroTexts = [
-      t("home.heroTitle"),
-      t("home.heroAlt1") || "Adventure Awaits Beyond the Dunes",
-      t("home.heroAlt2") || "Pack your bags — Morocco calls",
-    ];
+    if (isMobileOrTablet) return;
 
     let textIndex = 0;
     let charIndex = 0;
@@ -77,7 +84,6 @@ export default function HomeView() {
     const PAUSE_AFTER_DELETING = 300;
 
     function animate(timestamp: number) {
-      // Handle pause states
       if (pauseUntil > 0) {
         if (timestamp < pauseUntil) {
           rafId = requestAnimationFrame(animate);
@@ -88,28 +94,23 @@ export default function HomeView() {
 
       const speed = isDeleting ? DELETING_SPEED : TYPING_SPEED;
 
-      // Only update when enough time has passed
       if (timestamp - lastUpdate >= speed) {
         lastUpdate = timestamp;
         const current = heroTexts[textIndex] || "";
 
         if (!isDeleting) {
-          // Typing
           charIndex = Math.min(current.length, charIndex + 1);
           setTyped(current.slice(0, charIndex));
 
           if (charIndex >= current.length) {
-            // Pause at full text, then start deleting
             isDeleting = true;
             pauseUntil = timestamp + PAUSE_AFTER_TYPING;
           }
         } else {
-          // Deleting
           charIndex = Math.max(0, charIndex - 1);
           setTyped(current.slice(0, charIndex));
 
           if (charIndex <= 0) {
-            // Move to next text
             isDeleting = false;
             textIndex = (textIndex + 1) % heroTexts.length;
             pauseUntil = timestamp + PAUSE_AFTER_DELETING;
@@ -120,12 +121,20 @@ export default function HomeView() {
       rafId = requestAnimationFrame(animate);
     }
 
-    // Start animation
     rafId = requestAnimationFrame(animate);
-
     return () => cancelAnimationFrame(rafId);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isMobileOrTablet, heroTexts, t]);
+
+  // Simple rotation animation for Mobile/Tablet (Showing animation)
+  useEffect(() => {
+    if (!isMobileOrTablet) return;
+
+    const interval = setInterval(() => {
+      setCurrentTextIndex((prev) => (prev + 1) % heroTexts.length);
+    }, 4000); // 4 seconds per text for readability
+
+    return () => clearInterval(interval);
+  }, [isMobileOrTablet, heroTexts.length]);
 
   // React Compiler handles memoization automatically
   const statHighlights = [
@@ -197,19 +206,36 @@ export default function HomeView() {
           className="absolute inset-0 z-10 bg-linear-to-br from-black/60 via-black/20 to-transparent"
           aria-hidden="true"
         ></div>
-        <div className="relative z-20 mx-auto flex h-full min-h-screen max-w-6xl flex-col items-center justify-center gap-4 px-4 pt-20 pb-24 text-center text-white sm:pt-24 sm:pb-32 lg:py-32">
+        <div className="relative z-20 mx-auto flex h-full min-h-screen max-w-6xl flex-col items-center justify-center gap-2 px-4 pt-20 pb-24 text-center text-white sm:pt-24 sm:pb-32 lg:py-32">
           <h1 className="text-sm tracking-[0.4em] text-orange-300 uppercase">
             {t("home.title")}
           </h1>
           <h2
             id="hero-heading"
-            className="min-h-[4.5em] text-4xl leading-tight font-semibold sm:min-h-[2.5em] sm:text-5xl"
+            className="min-h-[3em] text-4xl leading-tight font-semibold sm:min-h-[2.2em] sm:text-5xl"
           >
-            <span>{typed}</span>
-            <span
-              aria-hidden
-              className="ml-2 inline-block h-6 w-px animate-pulse bg-white/90"
-            />
+            {isMobileOrTablet ? (
+              <AnimatePresence mode="wait">
+                <m.span
+                  key={currentTextIndex}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.8, ease: "easeInOut" }}
+                  className="inline-block"
+                >
+                  {heroTexts[currentTextIndex]}
+                </m.span>
+              </AnimatePresence>
+            ) : (
+              <>
+                <span>{typed}</span>
+                <span
+                  aria-hidden
+                  className="ml-2 inline-block h-6 w-px animate-pulse bg-white/90"
+                />
+              </>
+            )}
           </h2>
           <p className="font-fancy text-lg text-white/80 sm:text-xl">
             {t("home.heroSubtitle")}
