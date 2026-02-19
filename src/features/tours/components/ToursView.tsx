@@ -75,7 +75,7 @@ export default async function ToursView() {
               >
                 {t("tours.detailsTitle")}
               </h2>
-              <p className="mt-3 text-base text-slate-600">
+              <p className="mt-3 text-base text-taupe-600">
                 {t("tours.detailsSubtitle")}
               </p>
             </div>
@@ -100,7 +100,7 @@ export default async function ToursView() {
               >
                 {t("tours.tour.lgTitle")}
               </h2>
-              <p className="mt-3 text-base text-slate-600">
+              <p className="mt-3 text-base text-taupe-600">
                 {t("tours.sectionSubtitle") || t("tours.detailsSubtitle")}
               </p>
             </div>

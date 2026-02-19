@@ -28,7 +28,7 @@ export function StatHighlights({ stats }: StatHighlightsProps) {
           <h3 className="mt-3 text-lg font-semibold text-slate-900">
             {stat.label}
           </h3>
-          <p className="mt-2 text-sm text-slate-600">{stat.description}</p>
+          <p className="mt-2 text-sm text-taupe-600">{stat.description}</p>
         </m.article>
       ))}
     </div>

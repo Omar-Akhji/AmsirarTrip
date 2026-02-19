@@ -1,26 +1,30 @@
 import { defineConfig, globalIgnores } from "eslint/config";
 import nextVitals from "eslint-config-next/core-web-vitals";
 import nextTs from "eslint-config-next/typescript";
+import prettier from "eslint-config-prettier/flat";
 
 const eslintConfig = defineConfig([
   ...nextVitals,
   ...nextTs,
+  prettier,
   {
     rules: {
-      // React rules
       "react/no-unescaped-entities": "off",
-
-      // TypeScript rules
-      "@typescript-eslint/no-explicit-any": "warn",
-      "@typescript-eslint/no-unused-vars": "warn",
-      "@typescript-eslint/no-empty-object-type": "warn",
-
-      // Next.js rules
-      "@next/next/no-html-link-for-pages": "warn",
-      "@next/next/no-img-element": "warn",
+      "@next/next/no-page-custom-font": "off",
     },
   },
-  // Override default ignores of eslint-config-next
+  {
+    languageOptions: {
+      ecmaVersion: 2023,
+      sourceType: "module",
+    },
+    settings: {
+      react: {
+        version: "19.2.4",
+      },
+    },
+  },
+  // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:
     ".next/**",
@@ -28,8 +32,6 @@ const eslintConfig = defineConfig([
     "build/**",
     "dist/**",
     "next-env.d.ts",
-    // Custom ignores:
-    "lint-output.txt",
   ]),
 ]);
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
 import { m, AnimatePresence } from "motion/react";
 import { useTranslation, useMediaQuery } from "@/lib/hooks";
@@ -51,11 +51,14 @@ export default function HomeView() {
   // Index for mobile/tablet "showing" animation
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
-  const heroTexts = [
-    t("home.heroTitle"),
-    t("home.heroAlt1") || "Adventure Awaits Beyond the Dunes",
-    t("home.heroAlt2") || "Pack your bags — Morocco calls",
-  ];
+  const heroTexts = useMemo(
+    () => [
+      t("home.heroTitle"),
+      t("home.heroAlt1") || "Adventure Awaits Beyond the Dunes",
+      t("home.heroAlt2") || "Pack your bags — Morocco calls",
+    ],
+    [t]
+  );
 
   // Background image rotation
   useEffect(() => {
@@ -66,9 +69,12 @@ export default function HomeView() {
     return () => clearInterval(interval);
   }, [headerImages.length]);
 
+  // Reference to the header to observe visibility
+  const headerRef = useRef<HTMLElement>(null);
+
   // Optimized typing animation (Desktop only)
   useEffect(() => {
-    if (isMobileOrTablet) return;
+    if (isMobileOrTablet || !headerRef.current) return;
 
     let textIndex = 0;
     let charIndex = 0;
@@ -76,6 +82,7 @@ export default function HomeView() {
     let lastUpdate = 0;
     let pauseUntil = 0;
     let rafId: number;
+    let isVisible = false; // Tracks if the hero section is currently in viewport
 
     // Timing configuration (in ms)
     const TYPING_SPEED = 80;
@@ -84,6 +91,11 @@ export default function HomeView() {
     const PAUSE_AFTER_DELETING = 300;
 
     function animate(timestamp: number) {
+      if (!isVisible) {
+        // Stop the loop completely if not visible
+        return;
+      }
+
       if (pauseUntil > 0) {
         if (timestamp < pauseUntil) {
           rafId = requestAnimationFrame(animate);
@@ -121,8 +133,28 @@ export default function HomeView() {
       rafId = requestAnimationFrame(animate);
     }
 
-    rafId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafId);
+    // Use IntersectionObserver to start/stop the animation based on visibility
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          // Restart animation if it came back into view
+          lastUpdate = performance.now();
+          rafId = requestAnimationFrame(animate);
+        } else {
+          // Cancel pending frame request if it scrolled out of view
+          cancelAnimationFrame(rafId);
+        }
+      },
+      { threshold: 0 } // Trigger as soon as 1px is visible/hidden
+    );
+
+    observer.observe(headerRef.current);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      observer.disconnect();
+    };
   }, [isMobileOrTablet, heroTexts, t]);
 
   // Simple rotation animation for Mobile/Tablet (Showing animation)
@@ -171,6 +203,7 @@ export default function HomeView() {
     <>
       {/* Hero with background slider */}
       <header
+        ref={headerRef}
         className="home-header relative isolate min-h-screen w-full overflow-hidden bg-slate-950 shadow-xl"
         aria-labelledby="hero-heading"
       >
@@ -272,7 +305,7 @@ export default function HomeView() {
               >
                 {t("about.experienceTitle")}
               </h2>
-              <p className="mt-3 text-base text-slate-600">
+              <p className="mt-3 text-base text-taupe-600">
                 {t("tours.detailsSubtitle")}
               </p>
             </div>
@@ -291,7 +324,7 @@ export default function HomeView() {
                   <h3 className="mt-3 text-lg font-semibold text-slate-900">
                     {stat.label}
                   </h3>
-                  <p className="mt-2 text-sm text-slate-600">
+                  <p className="mt-2 text-sm text-taupe-600">
                     {stat.description}
                   </p>
                 </m.article>

@@ -54,6 +54,7 @@ export function PageHeader({
           className="-z-30 object-cover"
           sizes="100vw"
           quality={85}
+          priority={true}
         />
       )}
       {/* Gradient background */}

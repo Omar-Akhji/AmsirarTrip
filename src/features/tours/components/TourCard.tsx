@@ -66,13 +66,13 @@ export function TourCard({ tour, idx, translations }: TourCardProps) {
           {translations.title}
         </h3>
 
-        <p className="description max-h-0 overflow-hidden text-sm leading-[1.8em] text-slate-600 opacity-0 transition-[max-height,opacity] duration-500 ease-out group-hover:max-h-[12em] group-hover:opacity-100">
+        <p className="description max-h-0 overflow-hidden text-sm leading-[1.8em] text-taupe-600 opacity-0 transition-[max-height,opacity] duration-500 ease-out group-hover:max-h-[12em] group-hover:opacity-100">
           {translations.description}
         </p>
 
-        <div className="mt-2 mb-2 grid grid-cols-2 gap-4 text-center text-sm text-slate-600">
+        <div className="mt-2 mb-2 grid grid-cols-2 gap-4 text-center text-sm text-taupe-600">
           <div>
-            <p className="text-xs tracking-[0.35em] text-slate-400 uppercase">
+            <p className="text-xs tracking-[0.35em] text-taupe-400 uppercase">
               {translations.startLabelShort}
             </p>
             <p className="mt-1 font-semibold text-slate-800">
@@ -80,7 +80,7 @@ export function TourCard({ tour, idx, translations }: TourCardProps) {
             </p>
           </div>
           <div>
-            <p className="text-xs tracking-[0.35em] text-slate-400 uppercase">
+            <p className="text-xs tracking-[0.35em] text-taupe-400 uppercase">
               {translations.endLabelShort}
             </p>
             <p className="mt-1 font-semibold text-slate-800">
