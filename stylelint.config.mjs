@@ -20,11 +20,11 @@ const stylelintConfig = {
           "variant",
           "utility",
           "custom-variant",
+          "reference",
           // Legacy/common directives (still supported in v4)
           "tailwind",
           "apply",
           "layer",
-          "reference",
         ],
       },
     ],
@@ -142,3 +142,4 @@ const stylelintConfig = {
 };
 
 export default stylelintConfig;
+

@@ -4,6 +4,14 @@
    THEME CONFIGURATION - Global Design Tokens
    Using Tailwind CSS 4's @theme directive for design system variables
    ============================================================================ */
+
+/* Typography uses var() references — requires @theme inline to resolve correctly */
+@theme inline {
+  --font-sans: var(--font-montserrat), sans-serif;
+  --font-fancy: var(--font-fancy), cursive;
+  --font-brand: var(--font-yellowtail), cursive;
+}
+
 @theme {
   /* ==================== Breakpoints ==================== */
   --breakpoint-tablet: 768px;
@@ -147,10 +155,7 @@
    Using :is() and :where() for selector grouping
    ============================================================================ */
 @layer base {
-  * {
-    box-sizing: border-box;
-    font-style: normal;
-  }
+  /* Preflight handles box-sizing — only keep non-default resets */
 
   /* Global Custom Properties (Local Variables) */
   html {
@@ -178,13 +183,13 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    padding: 0;
-    margin: 0;
     overflow-x: hidden;
     font-family: var(--font-sans);
     font-size: 95%;
+    font-style: normal;
+    font-feature-settings: "kern" 1, "liga" 1;
     line-height: 1.15;
-    opacity: 100%;
+    opacity: 1;
   }
 
   main {
@@ -197,86 +202,23 @@
     margin: 0.67rem 0;
   }
 
-  hr {
-    box-sizing: content-box;
-    height: 0;
-    overflow: visible;
-  }
-
-  strong {
-    font-weight: 700;
-  }
-
-  small {
-    font-size: 80%;
-  }
-
+  /* Preflight handles hr, strong, small, a resets — keep only custom overrides */
   a {
-    text-decoration: none;
     color: inherit;
   }
 
-  /* ===== :is() Pseudo-Class - Group interactive elements ===== */
-  :is(button, input, textarea) {
-    margin: 0;
+  /* ===== :is() Pseudo-Class - Group elements using sans font ===== */
+  :is(button, input, textarea, h1, h2, h3, h4) {
     font-family: var(--font-sans);
-    font-size: 100%;
-    line-height: 1.15;
-  }
-
-  :is(button, input) {
-    overflow: visible;
-  }
-
-  button {
-    text-transform: none;
   }
 
   /* ===== :where() Pseudo-Class - Low specificity reset ===== */
   :where(button, [type="button"], [type="reset"], [type="submit"]) {
-    appearance: auto;
     cursor: pointer;
-  }
-
-  :is(
-    button,
-    [type="button"],
-    [type="reset"],
-    [type="submit"]
-  )::-moz-focus-inner {
-    padding: 0;
-    border: none;
-  }
-
-  :is(button, [type="button"], [type="reset"], [type="submit"]):-moz-focusring {
-    outline: 1px dotted ButtonText;
-  }
-
-  progress {
-    vertical-align: baseline;
   }
 
   textarea {
     overflow: auto;
-  }
-
-  [type="number"]::-webkit-inner-spin-button,
-  [type="number"]::-webkit-outer-spin-button {
-    height: auto;
-  }
-
-  ::-webkit-file-upload-button {
-    appearance: auto;
-    font: inherit;
-  }
-
-  [hidden] {
-    display: none;
-  }
-
-  /* ===== :is() - Group heading styles ===== */
-  :is(h1, h2, h3, h4) {
-    font-family: var(--font-sans);
   }
 
   input[type="submit"] {
@@ -288,7 +230,8 @@
     list-style: none;
   }
 
-  img {
+  /* Scoped aspect-ratio — only for content/tour images, not icons/logos */
+  :where(article, .card-article, .featured-row) img {
     aspect-ratio: 4/3;
     display: block;
   }
@@ -314,34 +257,16 @@
    Using CSS Nesting, Container Queries, :has(), and Local Variables
    ============================================================================ */
 @layer components {
-  /* ====== Responsive Header with :not() ====== */
-  @media (width >= 1024px) {
-    .home-header {
-      min-height: 80vh;
-    }
-  }
 
-  @media screen and (width < 768px) {
-    header:not(.home-header) {
-      min-height: 55vh;
-    }
+  /* Consolidated: <1090px = 55vh, >=1090px = 60vh (removed duplicate 768px rule) */
+  header:not(.home-header) {
+    min-height: 55vh;
 
-    #featured .card-article {
-      margin-bottom: 3rem;
-    }
-  }
-
-  @media screen and (width >= 768px) {
-    header:not(.home-header) {
-      min-height: 55vh;
-    }
-  }
-
-  @media screen and (width >= 1090px) {
-    header:not(.home-header) {
+    @media (width >= 1090px) {
       min-height: 60vh;
     }
   }
+
 
   /* Container Query - Card responsiveness based on container size */
   @container featured (min-width: 600px) {
@@ -371,13 +296,13 @@
     container-name: featured;
 
     /* Responsive grid based on viewport (fallback) */
-    @media screen and (width >= 768px) {
+    @media (width >= 768px) {
       display: grid;
       gap: 2rem;
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    @media screen and (width >= 1200px) {
+    @media (width >= 1200px) {
       gap: 2rem;
       grid-template-columns: repeat(3, minmax(0, 1fr));
     }
@@ -402,7 +327,7 @@
     border-radius: 16px;
     box-shadow: var(--loader-shadow);
     background-color: rgb(255 255 255 / 90%);
-    opacity: 100%;
+    opacity: 1;
     visibility: visible;
     transition: opacity 0.4s ease-out;
     transform: translate(-50%, -50%);
@@ -440,13 +365,17 @@
   .home-header {
     position: relative;
     min-height: 70vh;
+
+    @media (width >= 1024px) {
+      min-height: 80vh;
+    }
   }
 
   /* ====== Card Component with CSS Nesting & Local Variables ====== */
   .card-article {
     /* Local Variables - scoped to card component */
     --card-border-radius: 8px;
-    --card-shadow: 0 8px 24px hsl(0deg 0% 0% / 15%);
+    --card-shadow: 0 8px 24px oklch(0 0 0 / 15%);
     --card-data-width: 90%;
     --card-data-padding: 1.5rem 2rem;
 
@@ -454,12 +383,16 @@
     margin-bottom: 2rem;
     overflow: hidden;
 
+    @media (width < 768px) {
+      margin-bottom: 3rem;
+    }
+
     /* Nested hover state with child selectors */
     &:hover {
       animation: remove-overflow 2s forwards;
 
       & .card-data {
-        opacity: 100%;
+        opacity: 1;
         transition: opacity 0.3s;
         animation: show-data 1s forwards;
       }
@@ -491,9 +424,9 @@
     width: var(--card-data-width, 90%);
     padding: var(--card-data-padding, 1.5rem 2rem);
     border-radius: 1rem;
-    box-shadow: var(--card-shadow, 0 8px 24px hsl(0deg 0% 0% / 15%));
+    box-shadow: var(--card-shadow, 0 8px 24px oklch(0 0 0 / 15%));
     background-color: var(--color-white);
-    opacity: 0%;
+    opacity: 0;
     cursor: pointer;
     transition: opacity 1s 1s;
     margin-inline: auto;
@@ -529,11 +462,9 @@
     backdrop-filter: var(--nav-backdrop);
   }
 
-  /* Section with error state */
-  .input-wrapper:has(input:invalid:not(:placeholder-shown)) {
-    --input-border-color: var(--color-destructive);
-
-    border-color: hsl(var(--input-border-color));
+  /* Section with error state — user-invalid triggers only after interaction */
+  .input-wrapper:has(input:user-invalid) {
+    border-color: var(--color-destructive);
   }
 
   /* Card with loaded image - alternative hover trigger */

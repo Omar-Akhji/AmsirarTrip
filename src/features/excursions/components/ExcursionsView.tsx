@@ -75,7 +75,7 @@ export default async function ExcursionView() {
               >
                 {t("excursion.detailsTitle")}
               </h2>
-              <p className="mt-3 text-base text-slate-600">
+              <p className="mt-3 text-base text-taupe-600">
                 {t("excursion.detailsSubtitle")}
               </p>
             </div>
@@ -100,7 +100,7 @@ export default async function ExcursionView() {
               >
                 {t("excursion.blog.lgTitle")}
               </h2>
-              <p className="mt-3 text-base text-slate-600">
+              <p className="mt-3 text-base text-taupe-600">
                 {t("excursion.sectionSubtitle")}
               </p>
             </div>

@@ -173,7 +173,7 @@ All `dangerouslySetInnerHTML` usage is protected:
 
 ### Middleware-Level Protection
 
-`middleware.ts` implements origin/referer checks:
+`proxy.ts` implements origin/referer checks:
 
 ```typescript
 // Block cross-origin POST requests
@@ -282,7 +282,7 @@ frame-ancestors 'none';
 
 ### Key Points
 
-- ✅ **No `unsafe-eval`** (prevents arbitrary code execution)
+- ✅ **No `unsafe-eval` in production CSP** (development may allow it for tooling)
 - ⚠️ `unsafe-inline` for styles (Tailwind CSS requirement)
 - ✅ Whitelisted trusted domains only
 - ✅ `frame-ancestors 'none'` prevents clickjacking
@@ -333,7 +333,10 @@ npm run build  # Enable React Compiler for production
 #### 4. Health Check Setup
 
 ```bash
-# Test health endpoint with token
+# Preferred: health endpoint token via header
+curl -H "x-health-token: YOUR_TOKEN" https://amsirartrip.com/api/health
+
+# Backward compatible (still supported)
 curl https://amsirartrip.com/api/health?token=YOUR_TOKEN
 ```
 
@@ -434,6 +437,6 @@ Check logs for:
 
 ---
 
-**Last Updated**: 2024-01-XX  
+**Last Updated**: 2026-02-12  
 **Security Audit Status**: ✅ Passed  
-**Next Review**: 2024-XX-XX (6 months)
+**Next Review**: 2026-08-12 (6 months)

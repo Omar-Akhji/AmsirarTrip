@@ -1,0 +1,9 @@
+{
+  "ignore": {
+    "rules": [],
+    "files": ["src/generated/**", "**/*.test.tsx"]
+  },
+  "lint": true,
+  "deadCode": true,
+  "verbose": false
+}
