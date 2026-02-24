@@ -21,6 +21,10 @@ import {
   faHorseHead,
   faCheck,
   faArrowRight,
+  faArrowLeft,
+  faUser,
+  faCalendar,
+  faFolder,
 } from "@fortawesome/free-solid-svg-icons";
 
 /**
@@ -53,6 +57,10 @@ export const byPrefixAndName = {
     "horse-head": faHorseHead,
     check: faCheck,
     "arrow-right": faArrowRight,
+    "arrow-left": faArrowLeft,
+    user: faUser,
+    calendar: faCalendar,
+    folder: faFolder,
   },
 };
 
@@ -78,4 +86,8 @@ export {
   faHorseHead,
   faCheck,
   faArrowRight,
+  faArrowLeft,
+  faUser,
+  faCalendar,
+  faFolder,
 };

@@ -5,6 +5,7 @@
     "home": "Inicio",
     "tours": "Circuitos",
     "excursions": "Excursión",
+    "blog": "Blog",
     "about": "Acerca de",
     "contact": "Contacto"
   },
@@ -1156,11 +1157,6 @@
     "copyright": "Todos los derechos reservados.",
     "description": "En Amsirar Trip, somos apasionados por mostrar la cultura diversa y vibrante de Marruecos.\nNuestros recorridos cuidadosamente seleccionados ofrecen algo para cada viajero, desde los bulliciosos mercados de Marrakech hasta los serenos paisajes del desierto del Sahara."
   },
-  "blog": {
-    "title1": "Incluso el todopoderoso Pointing no tiene control sobre los textos ciegos",
-    "title2": "Incluso el todopoderoso Pointing no tiene control sobre los textos ciegos",
-    "title3": "Incluso el todopoderoso Pointing no tiene control sobre los textos ciegos"
-  },
   "button": "Botón",
   "locale": "Configuración regional",
   "script": "Guión",
@@ -1413,5 +1409,23 @@
     "title": "Página no encontrada",
     "description": "Lo sentimos, la página que buscas no existe o ha sido movida.",
     "backHome": "Volver al inicio"
+  },
+  "blog": {
+    "title": "Blog y Guía de Viaje de Marruecos",
+    "description": "Descubre consejos de viaje, itinerarios y recomendaciones de expertos para una aventura marroquí inolvidable.",
+    "backToBlog": "Volver al Blog",
+    "meta": {
+      "title": "Blog de Viajes y Guías de Marruecos | Amsirar Trip",
+      "description": "Consejos de expertos, itinerarios e historias para ayudarte a planificar tu viaje perfecto a Marruecos."
+    },
+    "sahara_guide_title": "La Guía Definitiva del Desierto del Sahara (2026): Qué Llevar, Qué Esperar y Consejos",
+    "sahara_guide_excerpt": "¿Planeando un viaje al Sahara? Descubre qué empacar, cómo elegir entre Merzouga y Zagora, y cómo es realmente una experiencia auténtica en un campamento en el desierto.",
+    "sahara_guide_content": "<p>Un viaje al Desierto del Sahara es lo más destacado de cualquier aventura marroquí. Ya sea que busques una noche romántica bajo las estrellas en un campamento de lujo o un emocionante paseo en quad por las dunas, el Sahara tiene algo para todos.</p><h2>Eligiendo Tu Experiencia en el Desierto</h2><p>Los dos destinos más populares del desierto en Marruecos son Merzouga (Erg Chebbi) y Zagora (Erg Chigaga). Merzouga cuenta con las icónicas e imponentes dunas de arena dorada que la mayoría de la gente imagina cuando piensa en el Sahara. Zagora ofrece una experiencia en el desierto más rocosa y plana, pero está más cerca de Marrakech, lo que la hace ideal para viajes más cortos.</p><h2>Qué Empacar</h2><ul><li><strong>Ropa ligera y transpirable:</strong> El sol es intenso, así que cúbrete con mangas largas holgadas.</li><li><strong>Una chaqueta abrigada o forro polar:</strong> Las noches en el desierto pueden ser sorprendentemente frías, especialmente en invierno.</li><li><strong>Protección solar:</strong> Un sombrero de ala ancha, protector solar de alto FPS y gafas de sol son esenciales.</li><li><strong>Zapatos cómodos para caminar:</strong> La arena puede calentarse mucho y querrás tener un buen apoyo.</li></ul><h2>Qué Esperar en un Campamento en el Desierto</h2><p>La mayoría de los tours al desierto incluyen un paseo en camello hasta el campamento justo antes del atardecer. A tu llegada, serás recibido con el tradicional té de menta. Las actividades nocturnas suelen incluir una abundante cena marroquí (tajín o cuscús) seguida de música bereber y tambores alrededor de una fogata bajo un cielo repleto de estrellas.</p>",
+    "marrakech_itinerary_title": "3 Días en Marrakech: El Itinerario Perfecto para Primerizos",
+    "marrakech_itinerary_excerpt": "Aprovecha al máximo un viaje corto a Marrakech con este itinerario definitivo de 3 días que cubre la Medina, los palacios y excursiones inolvidables.",
+    "marrakech_itinerary_content": "<p>Marrakech es una sobrecarga sensorial en el mejor sentido de la palabra. Para ayudarte a navegar por sus bulliciosos zocos y plazas vibrantes, hemos diseñado el itinerario perfecto de 3 días.</p><h2>Día 1: El Corazón de la Medina</h2><p>Comienza tu mañana en la Mezquita Koutoubia, admirando su impresionante minarete. Desde allí, sumérgete en la bulliciosa plaza Jemaa el-Fna. Pasa la tarde deambulando por los laberínticos zocos, regateando especias, artículos de cuero y cerámica. Termina tu día con una cena en un café en la azotea con vista a la plaza iluminada.</p><h2>Día 2: Palacios y Jardines</h2><p>Dedica tu segundo día a las maravillas arquitectónicas de Marrakech. Visita el impresionante Palacio de la Bahía con sus intrincados mosaicos y patios serenos. Por la tarde, toma un taxi hasta el Jardín Majorelle, un vibrante oasis botánico famoso por haber sido restaurado por Yves Saint Laurent.</p><h2>Día 3: Escapa de la Ciudad</h2><p>¡Para tu último día, haz una excursión de un día! El Valle de Ourika ofrece hermosos paisajes montañosos y cascadas a un corto viaje en coche. Alternativamente, dirígete al Desierto de Agafay para un emocionante paseo en quad o una cena al atardecer en un paisaje desértico rocoso.</p>",
+    "morocco_safety_title": "¿Es Seguro Marruecos para los Turistas? 10 Consejos Esenciales de Viaje que Debes Saber",
+    "morocco_safety_excerpt": "La seguridad es una preocupación principal para muchos viajeros. Aquí está nuestra guía honesta para mantenerte seguro, evitar estafas y viajar con confianza en Marruecos.",
+    "morocco_safety_content": "<p>Marruecos es, en general, un país muy seguro para los turistas, conocido por su cálida hospitalidad. Sin embargo, como en cualquier destino turístico importante, ayuda estar preparado. Aquí tienes nuestros mejores consejos para un viaje seguro y agradable.</p><h2>1. Viste de Manera Conservadora</h2><p>Marruecos es un país musulmán conservador. Aunque no se espera que los turistas sigan estrictamente los códigos de vestimenta locales, vestir modestamente (cubriendo hombros y rodillas) muestra respeto y a menudo resulta en menos atención no deseada, particularmente para las mujeres que viajan.</p><h2>2. Cuidado con los \"Guías Falsos\"</h2><p>En ciudades principales como Marrakech y Fez, es posible que se te acerquen guías no oficiales ofreciéndote mostrarte los alrededores. Rechaza cortés pero firmemente. Reserva siempre excursiones a través de agencias de confianza o pide a tu riad recomendaciones de guías autorizados.</p><h2>3. Acuerda las Tarifas de Taxi por Adelantado</h2><p>Pide siempre al taxista que encienda el taxímetro. Si se niegan (lo cual es común), negocia claramente y acuerda la tarifa *antes* de subir al vehículo.</p><h2>4. Mantente Hidratado con Agua Embotellada</h2><p>Para evitar problemas estomacales, limítate a beber agua embotellada o filtrada. Evita el hielo en tus bebidas en cafés pequeños y asegúrate de que la comida callejera esté recién cocinada y servida caliente.</p>"
   }
 }

@@ -204,7 +204,7 @@ export default function HomeView() {
       {/* Hero with background slider */}
       <header
         ref={headerRef}
-        className="home-header relative isolate min-h-screen w-full overflow-hidden bg-slate-950 shadow-xl"
+        className="home-header relative isolate min-h-dvh w-full overflow-hidden bg-slate-950 shadow-xl"
         aria-labelledby="hero-heading"
       >
         {/* Background images with Motion Ken Burns + Crossfade animation */}
@@ -239,13 +239,17 @@ export default function HomeView() {
           className="absolute inset-0 z-10 bg-linear-to-br from-black/60 via-black/20 to-transparent"
           aria-hidden="true"
         ></div>
-        <div className="relative z-20 mx-auto flex h-full min-h-screen max-w-6xl flex-col items-center justify-center gap-2 px-4 pt-20 pb-24 text-center text-white sm:pt-24 sm:pb-32 lg:py-32">
-          <h1 className="text-sm tracking-[0.4em] text-orange-300 uppercase">
-            {t("home.title")}
-          </h1>
+        <div className="relative z-20 mx-auto flex h-full min-h-dvh max-w-6xl flex-col items-center justify-center gap-2 px-4 pt-4 pb-4 text-center text-white sm:pt-24 sm:pb-32 lg:py-32">
+          <div className="mb-2 flex items-center justify-center gap-4">
+            <span className="h-px w-8 sm:w-12 bg-orange-400/60"></span>
+            <h1 className="text-xs font-bold tracking-[0.2em] sm:tracking-[0.3em] text-orange-300 uppercase">
+              {t("home.title")}
+            </h1>
+            <span className="h-px w-8 sm:w-12 bg-orange-400/60"></span>
+          </div>
           <h2
             id="hero-heading"
-            className="min-h-[3em] text-4xl leading-tight font-semibold sm:min-h-[2.2em] sm:text-5xl"
+            className="min-h-[3em] text-3xl leading-tight font-semibold sm:min-h-[2.2em] sm:text-4xl lg:text-5xl"
           >
             {isMobileOrTablet ? (
               <AnimatePresence mode="wait">
@@ -276,13 +280,13 @@ export default function HomeView() {
           <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
             <Link
               href="/tours"
-              className="inline-flex items-center gap-2 rounded-full border border-white/60 px-8 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 sm:px-8 text-sm font-semibold text-white/90 transition hover:bg-white/10"
             >
               {t("home.exploreOurTours")}
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-white/10 px-8 py-3 text-sm font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/20"
+              className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 sm:px-8 text-sm font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/20"
             >
               {t("home.contactForMore")}
             </Link>

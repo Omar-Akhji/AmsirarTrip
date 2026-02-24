@@ -84,6 +84,8 @@ export interface ExcursionStructuredData {
   description: string;
   provider: string;
   image: string;
+  price?: number;
+  currency?: string;
   duration: string;
   location: string;
   url: string;
@@ -92,7 +94,7 @@ export interface ExcursionStructuredData {
 export function generateExcursionJsonLd(data: ExcursionStructuredData) {
   return {
     "@context": "https://schema.org",
-    "@type": "TouristAttraction",
+    "@type": "TouristTrip",
     name: sanitizeForJsonLd(data.name),
     description: sanitizeForJsonLd(data.description),
     image: data.image.startsWith("http")
@@ -103,14 +105,25 @@ export function generateExcursionJsonLd(data: ExcursionStructuredData) {
       name: sanitizeForJsonLd(data.provider),
       url: "https://amsirartrip.com",
     },
-    touristType: ["Day Trip", "Cultural Experience"],
-    isAccessibleForFree: false,
-    publicAccess: true,
-    address: {
-      "@type": "PostalAddress",
-      addressCountry: "MA",
-      addressRegion: "Marrakech-Safi",
+    ...(data.price && {
+      offers: {
+        "@type": "Offer",
+        price: data.price,
+        priceCurrency: data.currency || "EUR",
+        availability: "https://schema.org/InStock",
+      },
+    }),
+    itinerary: {
+      "@type": "ItemList",
+      itemListElement: [
+        {
+          "@type": "TouristDestination",
+          name: data.location,
+        },
+      ],
     },
+    touristType: ["Day Trip", "Cultural Experience"],
+    duration: sanitizeForJsonLd(data.duration),
     url: data.url.startsWith("http")
       ? data.url
       : `https://amsirartrip.com${data.url}`,
@@ -167,7 +180,6 @@ export function generateOrganizationJsonLd() {
       "https://instagram.com/amsirartrip",
       "https://twitter.com/amsirartrip",
     ],
-    priceRange: "€€-€€€",
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "4.8",
@@ -175,6 +187,56 @@ export function generateOrganizationJsonLd() {
       bestRating: "5",
       worstRating: "1",
     },
+    review: [
+      {
+        "@type": "Review",
+        author: {
+          "@type": "Person",
+          name: "Kevin B.",
+        },
+        datePublished: "2023-11-15",
+        reviewBody:
+          "An unforgettable journey! From the bustling souks of Marrakech to the silent dunes of Merzouga. Amsirar Trip took care of everything.",
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: "5",
+          bestRating: "5",
+          worstRating: "1",
+        },
+      },
+      {
+        "@type": "Review",
+        author: {
+          "@type": "Person",
+          name: "Ben L.",
+        },
+        datePublished: "2024-02-10",
+        reviewBody:
+          "Professional, punctual, and passionate. Our driver was incredibly knowledgeable and made us feel safe throughout the entire Atlas Mountains trek.",
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: "5",
+          bestRating: "5",
+          worstRating: "1",
+        },
+      },
+      {
+        "@type": "Review",
+        author: {
+          "@type": "Person",
+          name: "Sara M.",
+        },
+        datePublished: "2024-03-22",
+        reviewBody:
+          "The luxury desert camp was beyond our expectations. Watching the sunrise over the Sahara while sipping traditional mint tea is a memory I'll cherish forever.",
+        reviewRating: {
+          "@type": "Rating",
+          ratingValue: "5",
+          bestRating: "5",
+          worstRating: "1",
+        },
+      },
+    ],
   };
 }
 
@@ -332,5 +394,37 @@ export function generateWebSiteJsonLd() {
       "query-input": "required name=search_term_string",
     },
     inLanguage: ["en", "fr", "de", "es"],
+  };
+}
+
+export interface ArticleStructuredData {
+  title: string;
+  description: string;
+  image: string;
+  datePublished: string;
+  authorName: string;
+  url: string;
+}
+
+export function generateArticleJsonLd(data: ArticleStructuredData) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: sanitizeForJsonLd(data.title),
+    description: sanitizeForJsonLd(data.description),
+    image: data.image.startsWith("http")
+      ? data.image
+      : `https://amsirartrip.com${data.image}`,
+    datePublished: data.datePublished,
+    author: {
+      "@type": "Person",
+      name: sanitizeForJsonLd(data.authorName),
+    },
+    publisher: {
+      "@id": "https://amsirartrip.com/#organization",
+    },
+    url: data.url.startsWith("http")
+      ? data.url
+      : `https://amsirartrip.com${data.url}`,
   };
 }

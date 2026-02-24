@@ -5,6 +5,7 @@
     "home": "Startseite",
     "tours": "Touren",
     "excursions": "Ausflug",
+    "blog": "Blog",
     "about": "Über uns",
     "contact": "Kontakt"
   },
@@ -1177,11 +1178,6 @@
     "copyright": "Alle Rechte vorbehalten.",
     "description": "Bei Amsirar Trip sind wir leidenschaftlich daran interessiert, die vielfältige und lebendige Kultur Marokkos zu präsentieren.\nUnsere sorgfältig zusammengestellten Touren bieten jedem Reisenden etwas, von den belebten Märkten Marrakeschs bis zu den ruhigen Landschaften der Sahara‑Wüste."
   },
-  "blog": {
-    "title1": "Selbst der allmächtige Pointing hat keine Kontrolle über die blinden Texte",
-    "title2": "Selbst der allmächtige Pointing hat keine Kontrolle über die blinden Texte",
-    "title3": "Selbst der allmächtige Pointing hat keine Kontrolle über die blinden Texte"
-  },
   "button": "Schaltfläche",
   "locale": "Gebietsschema",
   "script": "Skript",
@@ -1434,5 +1430,23 @@
     "title": "Seite nicht gefunden",
     "description": "Entschuldigung, die gesuchte Seite existiert nicht oder wurde verschoben.",
     "backHome": "Zurück zur Startseite"
+  },
+  "blog": {
+    "title": "Marokko Reiseführer & Blog",
+    "description": "Entdecken Sie Reisetipps, Reiserouten und Expertenempfehlungen für ein unvergessliches Marokko-Abenteuer.",
+    "backToBlog": "Zurück zum Blog",
+    "meta": {
+      "title": "Marokko Reiseblog & Guides | Amsirar Trip",
+      "description": "Experten-Reisetipps, Routen und Geschichten, die Ihnen helfen, Ihre perfekte Reise nach Marokko zu planen."
+    },
+    "sahara_guide_title": "Der ultimative Führer durch die Sahara (2026): Was man einpacken sollte, was einen erwartet und Tipps",
+    "sahara_guide_excerpt": "Planen Sie eine Reise in die Sahara? Erfahren Sie, was Sie einpacken sollten, wie Sie zwischen Merzouga und Zagora wählen und wie ein authentisches Wüstencamp-Erlebnis wirklich aussieht.",
+    "sahara_guide_content": "<p>Eine Reise in die Sahara ist der Höhepunkt eines jeden Marokko-Abenteuers. Egal, ob Sie eine romantische Nacht unter den Sternen in einem Luxuscamp oder eine aufregende Quad-Fahrt über die Dünen suchen, die Sahara hat für jeden etwas zu bieten.</p><h2>Auswahl Ihres Wüstenerlebnisses</h2><p>Die beiden beliebtesten Wüstenziele in Marokko sind Merzouga (Erg Chebbi) und Zagora (Erg Chigaga). Merzouga rühmt sich der ikonischen, hoch aufragenden goldenen Sanddünen, die sich die meisten Menschen vorstellen, wenn sie an die Sahara denken. Zagora bietet ein felsigeres, flacheres Wüstenerlebnis, liegt aber näher an Marrakesch, was es ideal für kürzere Reisen macht.</p><h2>Was man einpacken sollte</h2><ul><li><strong>Leichte, atmungsaktive Kleidung:</strong> Die Sonne ist intensiv, also bedecken Sie sich mit lockeren langen Ärmeln.</li><li><strong>Eine warme Jacke oder ein Fleece:</strong> Wüstennächte können überraschend kalt werden, besonders im Winter.</li><li><strong>Sonnenschutz:</strong> Ein breitkrempiger Hut, Sonnencreme mit hohem Lichtschutzfaktor und eine Sonnenbrille sind unerlässlich.</li><li><strong>Bequeme Wanderschuhe:</strong> Sand kann heiß werden, und Sie werden einen festen Stand wollen.</li></ul><h2>Was Sie in einem Wüstencamp erwartet</h2><p>Die meisten Wüstentouren beinhalten einen Kamelritt zum Camp kurz vor Sonnenuntergang. Bei Ihrer Ankunft werden Sie mit traditionellem Minztee begrüßt. Die Abendaktivitäten umfassen in der Regel ein herzhaftes marokkanisches Abendessen (Tajine oder Couscous), gefolgt von Berbermusik und Trommeln am Lagerfeuer unter einem sternenübersäten Himmel.</p>",
+    "marrakech_itinerary_title": "3 Tage in Marrakesch: Die perfekte Reiseroute für Erstbesucher",
+    "marrakech_itinerary_excerpt": "Machen Sie mit dieser definitiven 3-Tages-Route das Beste aus einem Kurztrip nach Marrakesch. Sie deckt die Medina, die Paläste und unvergessliche Tagesausflüge ab.",
+    "marrakech_itinerary_content": "<p>Marrakesch ist eine Reizüberflutung im bestmöglichen Sinne. Um Ihnen bei der Navigation durch die geschäftigen Souks und lebhaften Plätze zu helfen, haben wir die perfekte 3-Tage-Route zusammengestellt.</p><h2>Tag 1: Das Herz der Medina</h2><p>Beginnen Sie Ihren Morgen an der Koutoubia-Moschee und bewundern Sie ihr beeindruckendes Minarett. Tauchen Sie von dort in den geschäftigen Platz Jemaa el-Fnaa ein. Verbringen Sie den Nachmittag damit, durch die labyrinthartigen Souks zu schlendern und um Gewürze, Lederwaren und Keramik zu feilschen. Beenden Sie Ihren Tag mit einem Abendessen in einem Dachcafé mit Blick auf den beleuchteten Platz.</p><h2>Tag 2: Paläste und Gärten</h2><p>Widmen Sie Ihren zweiten Tag den architektonischen Wundern von Marrakesch. Besuchen Sie den atemberaubenden Bahia-Palast mit seinen komplizierten Kachelarbeiten und ruhigen Innenhöfen. Nehmen Sie am Nachmittag ein Taxi zum Majorelle-Garten, einer lebhaften botanischen Oase, die bekanntermaßen von Yves Saint Laurent restauriert wurde.</p><h2>Tag 3: Flucht aus der Stadt</h2><p>Machen Sie an Ihrem letzten Tag einen Tagesausflug! Das Ourika-Tal bietet wunderschöne Berglandschaften und Wasserfälle, die nur eine kurze Autofahrt entfernt sind. Alternativ können Sie in die Agafay-Wüste fahren, um eine aufregende Quad-Fahrt oder ein Abendessen bei Sonnenuntergang in einer felsigen Wüstenlandschaft zu genießen.</p>",
+    "morocco_safety_title": "Ist Marokko sicher für Touristen? 10 wichtige Reisetipps, die Sie kennen sollten",
+    "morocco_safety_excerpt": "Sicherheit ist für viele Reisende ein Hauptanliegen. Hier ist unser ehrlicher Leitfaden, um in Marokko sicher zu bleiben, Betrügereien zu vermeiden und selbstbewusst zu reisen.",
+    "morocco_safety_content": "<p>Marokko ist im Allgemeinen ein sehr sicheres Land für Touristen, bekannt für seine herzliche Gastfreundschaft. Wie bei jedem großen Reiseziel ist es jedoch hilfreich, vorbereitet zu sein. Hier sind unsere besten Tipps für eine sichere und angenehme Reise.</p><h2>1. Kleiden Sie sich konservativ</h2><p>Marokko ist ein konservativ muslimisches Land. Obwohl von Touristen nicht erwartet wird, dass sie sich streng an lokale Kleiderordnungen halten, zeigt bescheidene Kleidung (die Schultern und Knie bedeckt) Respekt und führt oft zu weniger ungewollter Aufmerksamkeit, insbesondere bei weiblichen Reisenden.</p><h2>2. Hüten Sie sich vor \"Faux Guides\"</h2><p>In großen Städten wie Marrakesch und Fès werden Sie möglicherweise von inoffiziellen Führern angesprochen, die Ihnen anbieten, Sie herumzuführen. Lehnen Sie höflich, aber bestimmt ab. Buchen Sie Touren immer über seriöse Agenturen oder fragen Sie Ihr Riad nach lizenzierten Führerempfehlungen.</p><h2>3. Vereinbaren Sie Taxipreise im Voraus</h2><p>Bitten Sie den Taxifahrer immer, das Taxameter einzuschalten. Wenn sie sich weigern (was häufig vorkommt), verhandeln Sie klar und vereinbaren Sie den Fahrpreis, *bevor* Sie in das Fahrzeug steigen.</p><h2>4. Bleiben Sie hydriert mit Wasser in Flaschen</h2><p>Um „Reisendendurchfall“ zu vermeiden, sollten Sie nur in Flaschen abgefülltes oder gefiltertes Wasser trinken. Vermeiden Sie Eis in Ihren Getränken in kleineren Cafés und stellen Sie sicher, dass Street Food frisch gekocht und heiß serviert wird.</p>"
   }
 }

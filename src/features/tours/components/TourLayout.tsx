@@ -188,8 +188,8 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
           aria-labelledby="tour-title"
         >
           <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[4fr_2fr]">
-            <article className="rounded-3xl bg-white p-8 shadow-xl shadow-orange-100/50 sm:p-12">
-              <figure className="relative mb-8 aspect-4/3 w-full overflow-hidden rounded-2xl">
+            <article className="rounded-[20px] bg-white p-4 sm:p-6 pb-8 sm:pb-12 shadow-sm ring-1 ring-slate-100">
+              <figure className="relative mb-8 aspect-4/3 w-full overflow-hidden rounded-[20px] shadow-md border border-slate-50">
                 <Image
                   className="object-cover"
                   src={imageSrc}

@@ -119,9 +119,13 @@ export function PageHeader({
           )}
 
           {smTitle && !breadcrumbs && (
-            <p className="text-xs font-semibold tracking-[0.45em] text-orange-200 uppercase">
-              {smTitle}
-            </p>
+            <div className="flex items-center justify-center gap-4">
+              <span className="h-px w-8 bg-orange-400/60"></span>
+              <p className="text-xs font-bold tracking-[0.2em] sm:tracking-[0.3em] text-orange-300 uppercase">
+                {smTitle}
+              </p>
+              <span className="h-px w-8 bg-orange-400/60"></span>
+            </div>
           )}
           <h1
             id={headingId}
