@@ -1,6 +1,5 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
@@ -58,7 +57,6 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
   const includes = t(`${tourKey}.includes`);
   const excludes = t(`${tourKey}.excludes`);
   const goodToKnow = t(`${tourKey}.goodToKnow`);
-  const dayLabel = t("tours.day");
 
   // Labels for day details
   const accommodationLabel = t("tours.accommodationLabel");
@@ -234,7 +232,6 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                   </h2>
                   <TourItinerary
                     days={days}
-                    dayLabel={dayLabel}
                     accommodationLabel={accommodationLabel}
                     mealsLabel={mealsLabel}
                     activitiesLabel={activitiesLabel}

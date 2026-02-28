@@ -116,9 +116,14 @@ export default function FooterTailwind() {
 
   return (
     <footer
-      className="border-orange from-footer-start to-footer-end relative z-10 mt-0 box-border w-full overflow-hidden border-t-4 bg-linear-to-b py-6 text-left leading-[1.6] text-white shadow-[0_-8px_24px_rgba(0,0,0,0.35)] sm:py-8"
+      className="border-orange relative z-10 mt-0 box-border w-full overflow-hidden border-t-4 bg-slate-950 py-6 text-left leading-[1.6] text-white shadow-[0_-8px_32px_rgba(0,0,0,0.5)] ring-1 ring-white/5 sm:py-8"
       role="contentinfo"
     >
+      {/* Subtle radial overlay for depth (same as TripAdvisor card) */}
+      <div
+        className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(15,23,42,0.8)_0%,rgba(15,23,42,0.4)_55%,transparent_90%)]"
+        aria-hidden="true"
+      ></div>
       {/* Decorative background elements */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="bg-orange/5 absolute -top-16 -right-16 size-72 rounded-full blur-3xl" />

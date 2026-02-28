@@ -2,7 +2,7 @@
 
 import React from "react";
 import { m } from "motion/react";
-import { ArrowRight, Check, Hotel, Utensils, Tent, Clock } from "lucide-react";
+import { Navigation2, Check, Hotel, Utensils, Tent, Clock } from "lucide-react";
 
 // Helper function to get ordinal suffix
 const getOrdinalSuffix = (num: number) => {
@@ -26,7 +26,6 @@ export interface DayData {
 
 interface TourItineraryProps {
   days: DayData[];
-  dayLabel: string;
   accommodationLabel: string;
   mealsLabel: string;
   activitiesLabel: string;
@@ -35,7 +34,6 @@ interface TourItineraryProps {
 
 export default function TourItinerary({
   days,
-  dayLabel,
   accommodationLabel,
   mealsLabel,
   activitiesLabel,
@@ -60,15 +58,11 @@ export default function TourItinerary({
           <div className="mb-6">
             <div className="mb-4 flex items-center gap-4">
               <div className="shrink-0">
-                <div className="flex size-12 items-center justify-center rounded-full bg-linear-to-br from-orange-500 to-amber-600 text-lg font-bold text-white shadow-lg transition-shadow duration-300 group-hover:shadow-xl">
-                  {getOrdinalSuffix(day.number)}
+                <div className="flex px-4 items-center justify-center rounded-full bg-linear-to-br from-orange-500 to-amber-600 text-lg font-bold text-white shadow-lg transition-shadow duration-300 group-hover:shadow-xl h-12">
+                  {getOrdinalSuffix(day.number)} Day
                 </div>
               </div>
-              <div className="min-w-0 flex-1">
-                <h3 className="text-lg leading-tight font-bold tracking-tight text-slate-900 sm:text-xl md:text-2xl">
-                  {dayLabel} {day.number}
-                </h3>
-              </div>
+
             </div>
           </div>
 
@@ -82,8 +76,8 @@ export default function TourItinerary({
                     {location.trim()}
                   </span>
                   {idx < arr.length - 1 && (
-                    <ArrowRight
-                      className="size-4 shrink-0 text-orange-400"
+                    <Navigation2
+                      className="size-3.5 shrink-0 text-orange-400 rotate-90"
                       aria-hidden
                     />
                   )}
