@@ -3,8 +3,7 @@
 import Image from "next/image";
 import { m } from "motion/react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faQuoteRight } from "@/lib/fontawesome";
+import { Quote } from "lucide-react";
 
 const TestimonialsSection = () => {
   const { t } = useTranslation();
@@ -48,8 +47,7 @@ const TestimonialsSection = () => {
                       className="absolute top-2 right-4 -rotate-12 opacity-10 select-none"
                       aria-hidden="true"
                     >
-                      <FontAwesomeIcon
-                        icon={faQuoteRight}
+                      <Quote
                         className="text-white"
                         style={{ width: "5rem", height: "5rem" }}
                       />

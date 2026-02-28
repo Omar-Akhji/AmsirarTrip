@@ -17,7 +17,7 @@ export function useMediaQuery(query: string): boolean {
         matchMedia.removeEventListener("change", callback);
       };
     },
-    [query],
+    [query]
   );
 
   const getSnapshot = useCallback(() => {

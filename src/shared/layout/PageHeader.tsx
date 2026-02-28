@@ -84,7 +84,7 @@ export function PageHeader({
             >
               <div className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-2 backdrop-blur-md">
                 {breadcrumbs.map((crumb, index) => (
-                  <React.Fragment key={index}>
+                  <React.Fragment key={crumb.href || crumb.label}>
                     {crumb.href ? (
                       <Link
                         href={crumb.href}
@@ -121,7 +121,7 @@ export function PageHeader({
           {smTitle && !breadcrumbs && (
             <div className="flex items-center justify-center gap-4">
               <span className="h-px w-8 bg-orange-400/60"></span>
-              <p className="text-xs font-bold tracking-[0.2em] sm:tracking-[0.3em] text-orange-300 uppercase">
+              <p className="text-xs font-bold tracking-[0.2em] text-orange-300 uppercase sm:tracking-[0.3em]">
                 {smTitle}
               </p>
               <span className="h-px w-8 bg-orange-400/60"></span>

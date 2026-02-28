@@ -105,8 +105,8 @@ function ExcursionLayout({
           aria-labelledby="excursion-title"
         >
           <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[4fr_2fr]">
-            <article className="rounded-[20px] bg-white p-4 sm:p-6 pb-8 sm:pb-12 shadow-sm ring-1 ring-slate-100">
-              <figure className="relative mb-8 aspect-4/3 w-full overflow-hidden rounded-[20px] shadow-md border border-slate-50">
+            <article className="rounded-[20px] bg-white p-4 pb-8 shadow-sm ring-1 ring-slate-100 sm:p-6 sm:pb-12">
+              <figure className="relative mb-8 aspect-4/3 w-full overflow-hidden rounded-[20px] border border-slate-50 shadow-md">
                 <Image
                   className="object-cover"
                   src={imageSrc}
@@ -190,7 +190,7 @@ function ExcursionLayout({
                   <ul className="mt-4 grid gap-3">
                     {highlights.map((item, idx) => (
                       <m.li
-                        key={idx}
+                        key={item}
                         initial={{ opacity: 0, x: -20 }}
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true, amount: 0.2 }}
@@ -249,7 +249,7 @@ function ExcursionLayout({
                   <ul className="mt-4 grid gap-3 text-sm text-slate-100">
                     {sidebarItems.map((item, idx) => (
                       <li
-                        key={idx}
+                        key={item}
                         className="grid grid-cols-[40px_1fr] items-center gap-3"
                       >
                         <span className="inline-flex size-5 items-center justify-center justify-self-end rounded-full bg-orange-500 text-xs font-semibold text-white">

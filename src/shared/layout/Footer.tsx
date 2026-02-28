@@ -116,9 +116,14 @@ export default function FooterTailwind() {
 
   return (
     <footer
-      className="border-orange from-footer-start to-footer-end relative z-10 mt-0 box-border w-full overflow-hidden border-t-4 bg-linear-to-b py-6 text-left leading-[1.6] text-white shadow-[0_-8px_24px_rgba(0,0,0,0.35)] sm:py-8"
+      className="border-orange relative z-10 mt-0 box-border w-full overflow-hidden border-t-4 bg-slate-950 pt-6 text-left leading-[1.6] text-white shadow-[0_-8px_32px_rgba(0,0,0,0.5)] ring-1 ring-white/5 sm:pt-8"
       role="contentinfo"
     >
+      {/* Subtle radial overlay for depth (same as TripAdvisor card) */}
+      <div
+        className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(15,23,42,0.8)_0%,rgba(15,23,42,0.4)_55%,transparent_90%)]"
+        aria-hidden="true"
+      ></div>
       {/* Decorative background elements */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="bg-orange/5 absolute -top-16 -right-16 size-72 rounded-full blur-3xl" />
@@ -425,34 +430,44 @@ export default function FooterTailwind() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10">
-          <div className="mx-auto max-w-7xl p-4 px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <p className="text-center text-xl text-slate-500">
-                <small>
+        <div className="border-t border-white/5 bg-black/20">
+          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+            <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+              {/* Copyright Notice */}
+              <div className="order-2 text-center sm:order-1 sm:text-left">
+                <p className="text-sm font-medium text-slate-500">
                   ©{" "}
                   <time dateTime={new Date().getFullYear().toString()}>
                     {new Date().getFullYear()}
                   </time>{" "}
-                  Amsirar Trip. Ltd. {t("footer.copyright")}
-                </small>
-              </p>
-
-              <div className="flex gap-4 text-xl text-slate-500">
-                <Link
-                  href="/privacy-policy"
-                  className="text-slate-500 transition-colors hover:text-white"
-                >
-                  <small>{t("legal.footer.privacyPolicy")}</small>
-                </Link>
-                <span className="text-white/20">|</span>
-                <Link
-                  href="/terms-of-service"
-                  className="text-slate-500 transition-colors hover:text-white"
-                >
-                  <small>{t("legal.footer.termsOfService")}</small>
-                </Link>
+                  <span className="text-slate-400">Amsirar Trip. Ltd.</span>{" "}
+                  <span className="hidden sm:inline-block mx-1.5 opacity-20">•</span>{" "}
+                  {t("footer.copyright")}
+                </p>
               </div>
+
+              {/* Legal Links */}
+              <nav aria-label="Privacy and Terms" className="order-1 sm:order-2">
+                <ul className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
+                  <li>
+                    <Link
+                      href="/privacy-policy"
+                      className="text-sm font-medium text-slate-500 transition-colors duration-200 hover:text-white"
+                    >
+                      {t("legal.footer.privacyPolicy")}
+                    </Link>
+                  </li>
+                  <li className="hidden sm:block h-3 w-px bg-white/10" aria-hidden="true" />
+                  <li>
+                    <Link
+                      href="/terms-of-service"
+                      className="text-sm font-medium text-slate-500 transition-colors duration-200 hover:text-white"
+                    >
+                      {t("legal.footer.termsOfService")}
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
         </div>
