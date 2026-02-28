@@ -116,7 +116,7 @@ export default function FooterTailwind() {
 
   return (
     <footer
-      className="border-orange relative z-10 mt-0 box-border w-full overflow-hidden border-t-4 bg-slate-950 py-6 text-left leading-[1.6] text-white shadow-[0_-8px_32px_rgba(0,0,0,0.5)] ring-1 ring-white/5 sm:py-8"
+      className="border-orange relative z-10 mt-0 box-border w-full overflow-hidden border-t-4 bg-slate-950 pt-6 text-left leading-[1.6] text-white shadow-[0_-8px_32px_rgba(0,0,0,0.5)] ring-1 ring-white/5 sm:pt-8"
       role="contentinfo"
     >
       {/* Subtle radial overlay for depth (same as TripAdvisor card) */}
@@ -431,7 +431,7 @@ export default function FooterTailwind() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/5 bg-black/20">
-          <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
             <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
               {/* Copyright Notice */}
               <div className="order-2 text-center sm:order-1 sm:text-left">
