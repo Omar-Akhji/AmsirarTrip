@@ -7,8 +7,6 @@
 export {
   PrivacyPolicyView,
   TermsOfServiceView,
-  LegalPageLayout,
-  LegalSectionCard,
 } from "./components";
 
 // Types

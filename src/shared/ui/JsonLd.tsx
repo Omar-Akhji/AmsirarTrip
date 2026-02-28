@@ -49,5 +49,3 @@ export function JsonLd({ data, id, isSync = false }: JsonLdProps) {
     />
   );
 }
-
-export default JsonLd;

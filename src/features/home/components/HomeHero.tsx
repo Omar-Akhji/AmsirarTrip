@@ -146,7 +146,7 @@ export default function HomeHero() {
   return (
     <header
       ref={headerRef}
-      className="home-header relative isolate min-h-dvh w-full overflow-hidden bg-slate-950 shadow-xl"
+      className="home-header relative isolate min-h-[70vh] w-full overflow-hidden bg-slate-950 shadow-xl sm:min-h-[80vh] lg:min-h-dvh"
       aria-labelledby="hero-heading"
     >
       {/* Background images with Motion Ken Burns + Crossfade animation */}
@@ -181,7 +181,7 @@ export default function HomeHero() {
         className="absolute inset-0 z-10 bg-linear-to-br from-black/60 via-black/20 to-transparent"
         aria-hidden="true"
       ></div>
-      <div className="relative z-20 mx-auto flex h-full min-h-dvh max-w-6xl flex-col items-center justify-center gap-2 px-4 pt-4 pb-4 text-center text-white sm:pt-24 sm:pb-32 lg:py-32">
+      <div className="relative z-20 mx-auto flex h-full min-h-[70vh] max-w-6xl flex-col items-center justify-center gap-2 px-4 pt-4 pb-4 text-center text-white sm:min-h-[80vh] sm:pt-24 sm:pb-32 lg:min-h-dvh lg:py-32">
         <div className="mb-2 flex items-center justify-center gap-4">
           <span className="h-px w-8 bg-orange-400/60 sm:w-12"></span>
           <h1 className="text-xs font-bold tracking-[0.2em] text-orange-300 uppercase sm:tracking-[0.3em]">
