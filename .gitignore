@@ -47,3 +47,18 @@ New Project Moha website/
 # Scripts (Manual tools ignored from git)
 scripts/
 
+# AI Tools
+.agents/
+.mcp.json
+
+# OS Files
+Thumbs.db
+desktop.ini
+
+# Temporary and Web Artifacts
+*.tmp
+*.bak
+*.swp
+knip_report.txt
+.vercel
+coverage/
