@@ -1,0 +1,73 @@
+Need to install the following packages:
+react-doctor@0.0.29
+Ok to proceed? (y) react-doctor v0.0.29
+
+[32m✔[39m Select projects to scan [2m›[22m amsirartrip-nextjs
+[?25l[2K[1G[36m?[39m [1mOn branch main (22 changed files vs master). Only scan this branch?[22m [90m»[39m [90m(Y/n)[39m[2K[1G[2K[1G[32m√[39m [1mOn branch main (22 changed files vs master). Only scan this branch?[22m [90m...[39m yes
+[?25hScanning changes: [36mmain[39m → [36mmaster[39m
+
+[2mScanning C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip Enhanced...[22m
+
+
+  [31m✗[39m React Compiler can't optimize this code
+[2m    Todo: Support value blocks (conditional, logical, optional chaining, etc) within a try/catch statement
+    
+    C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip[22m
+[2m    src/shared/layout/Navbar.tsx: 289[22m
+
+  [33m⚠[39m Component "HomeView" is 314 lines — consider breaking it into smaller focused components[33m (3)[39m
+[2m    Extract logical sections into focused components: `<UserHeader />`, `<UserActions />`, etc.[22m
+[2m    src/features/home/components/HomeView.tsx: 34[22m
+[2m    src/features/tours/components/TourLayout.tsx: 74[22m
+[2m    src/shared/layout/Navbar.tsx: 201[22m
+
+  [33m⚠[39m Array index "idx" used as key — causes bugs when list is reordered or filtered[33m (9)[39m
+[2m    Use a stable unique identifier: `key={item.id}` or `key={item.slug}` — index keys break on reorder/filter[22m
+[2m    src/features/excursions/components/ExcursionLayout.tsx: 193, 252[22m
+[2m    src/features/tours/components/TourLayout.tsx: 299, 313, 412, 437, 462, 506[22m
+[2m    src/shared/layout/PageHeader.tsx: 87[22m
+
+  [33m⚠[39m 3 setState calls in a single useEffect — consider using useReducer or deriving state
+[2m    Combine into useReducer: `const [state, dispatch] = useReducer(reducer, initialState)`[22m
+[2m    src/shared/layout/Navbar.tsx: 245[22m
+
+  [33m⚠[39m Inline render function "renderSocialLinks()" — extract to a separate component for proper reconciliation[33m (3)[39m
+[2m    Extract to a named component: `const ListItem = ({ item }) => <div>{item.name}</div>`[22m
+[2m    src/shared/layout/Navbar.tsx: 446, 478, 577[22m
+
+  [2m┌──────────────────────────────────────────────────────┐[22m
+  [2m│[22m [32m┌─────┐[39m                                              [2m│[22m
+  [2m│[22m [32m│ ◠ ◠ │[39m                                              [2m│[22m
+  [2m│[22m [32m│  ▽  │[39m                                              [2m│[22m
+  [2m│[22m [32m└─────┘[39m                                              [2m│[22m
+  [2m│[22m React Doctor [2m(www.react.doctor)[22m                      [2m│[22m
+  [2m│[22m                                                      [2m│[22m
+  [2m│[22m [32m96[39m / 100  [32mGreat[39m                                      [2m│[22m
+  [2m│[22m                                                      [2m│[22m
+  [2m│[22m [32m████████████████████████████████████████████████[39m[2m░░[22m   [2m│[22m
+  [2m│[22m                                                      [2m│[22m
+  [2m│[22m [31m✗ 1 error[39m  [33m⚠ 16 warnings[39m  [2macross 5/22 files[22m  [2min 7.6s[22m [2m│[22m
+  [2m└──────────────────────────────────────────────────────┘[22m
+
+[2m  Full diagnostics written to C:\Users\OMARAJ~1\AppData\Local\Temp\react-doctor-135fc734-31f1-4def-a04e-c4b471d12d03[22m
+
+[2m  Share your results: [36mhttps://www.react.doctor/share?p=amsirartrip-nextjs&s=96&e=1&w=16&f=5[39m[22m
+
+
+[?25l[36m?[39m [1mFix issues?[22m [90m»[39m [90m- Use arrow-keys. Return to submit.[39m
+[36m>[39m   [36m[4mUse Ami (recommended)[39m[24m[90m - Optimized coding agent for React Doctor[39m
+    Skip[90m[39m
+[2K[1G  [2m┌──────────────────────────────────────────────────────┐[22m
+  [2m│[22m Score: [32m96[39m [2m→[22m [32m~99[39m                                      [2m│[22m
+  [2m│[22m                                                      [2m│[22m
+  [2m│[22m [36mAmi[39m is a coding agent built for React. It reads      [2m│[22m
+  [2m│[22m your react-doctor report, understands your codebase, [2m│[22m
+  [2m│[22m and fixes [33m17[39m issues one by one — then re-runs the    [2m│[22m
+  [2m│[22m scan to verify the score improved.                   [2m│[22m
+  [2m│[22m                                                      [2m│[22m
+  [2m│[22m Free to use. [36mhttps://ami.dev[39m                         [2m│[22m
+  [2m└──────────────────────────────────────────────────────┘[22m
+
+[36m?[39m [1mFix issues?[22m [90m»[39m [90m- Use arrow-keys. Return to submit.[39m
+[36m>[39m   [36m[4mUse Ami (recommended)[39m[24m[90m - Optimized coding agent for React Doctor[39m
+    Skip[90m[39m

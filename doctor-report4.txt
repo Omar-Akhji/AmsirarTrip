@@ -1,0 +1,22 @@
+react-doctor v0.0.29
+
+[32m✔[39m Select projects to scan [2m›[22m amsirartrip-nextjs
+[?25l[2K[1G[36m?[39m [1mOn branch main (23 changed files vs master). Only scan this branch?[22m [90m»[39m [90m(Y/n)[39m[2K[1G[2K[1G[32m√[39m [1mOn branch main (23 changed files vs master). Only scan this branch?[22m [90m...[39m yes
+[?25hScanning changes: [36mmain[39m → [36mmaster[39m
+
+[2mScanning C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip Enhanced...[22m
+
+
+[32mNo issues found![39m
+
+[32m  ┌─────┐[39m
+[32m  │ ◠ ◠ │[39m
+[32m  │  ▽  │[39m
+[32m  └─────┘[39m
+  React Doctor [2m(www.react.doctor)[22m
+
+  [32m100[39m / 100  [32mGreat[39m
+
+  [32m██████████████████████████████████████████████████[39m[2m[22m
+
+

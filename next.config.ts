@@ -57,7 +57,6 @@ const nextConfig: NextConfig = {
       "next-intl",
       "@fortawesome/fontawesome-svg-core",
       "@fortawesome/free-brands-svg-icons",
-      "@fortawesome/free-solid-svg-icons",
       "@fortawesome/react-fontawesome",
     ],
     // Enable router caching for faster navigation

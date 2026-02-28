@@ -187,9 +187,11 @@
     font-family: var(--font-sans);
     font-size: 95%;
     font-style: normal;
-    font-feature-settings: "kern" 1, "liga" 1;
+    font-feature-settings:
+      "kern" 1,
+      "liga" 1;
     line-height: 1.15;
-    opacity: 1;
+    opacity: 100%;
   }
 
   main {
@@ -257,17 +259,6 @@
    Using CSS Nesting, Container Queries, :has(), and Local Variables
    ============================================================================ */
 @layer components {
-
-  /* Consolidated: <1090px = 55vh, >=1090px = 60vh (removed duplicate 768px rule) */
-  header:not(.home-header) {
-    min-height: 55vh;
-
-    @media (width >= 1090px) {
-      min-height: 60vh;
-    }
-  }
-
-
   /* Container Query - Card responsiveness based on container size */
   @container featured (min-width: 600px) {
     .card-data {
@@ -286,6 +277,15 @@
 
     .card-text {
       font-size: 1rem;
+    }
+  }
+
+  /* Consolidated: <1090px = 55vh, >=1090px = 60vh (removed duplicate 768px rule) */
+  header:not(.home-header) {
+    min-height: 55vh;
+
+    @media (width >= 1090px) {
+      min-height: 60vh;
     }
   }
 
@@ -327,7 +327,7 @@
     border-radius: 16px;
     box-shadow: var(--loader-shadow);
     background-color: rgb(255 255 255 / 90%);
-    opacity: 1;
+    opacity: 100%;
     visibility: visible;
     transition: opacity 0.4s ease-out;
     transform: translate(-50%, -50%);
@@ -375,7 +375,7 @@
   .card-article {
     /* Local Variables - scoped to card component */
     --card-border-radius: 8px;
-    --card-shadow: 0 8px 24px oklch(0 0 0 / 15%);
+    --card-shadow: 0 8px 24px oklch(0% 0 0deg / 15%);
     --card-data-width: 90%;
     --card-data-padding: 1.5rem 2rem;
 
@@ -392,7 +392,7 @@
       animation: remove-overflow 2s forwards;
 
       & .card-data {
-        opacity: 1;
+        opacity: 100%;
         transition: opacity 0.3s;
         animation: show-data 1s forwards;
       }
@@ -424,9 +424,9 @@
     width: var(--card-data-width, 90%);
     padding: var(--card-data-padding, 1.5rem 2rem);
     border-radius: 1rem;
-    box-shadow: var(--card-shadow, 0 8px 24px oklch(0 0 0 / 15%));
+    box-shadow: var(--card-shadow, 0 8px 24px oklch(0% 0 0deg / 15%));
     background-color: var(--color-white);
-    opacity: 0;
+    opacity: 0%;
     cursor: pointer;
     transition: opacity 1s 1s;
     margin-inline: auto;

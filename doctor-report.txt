@@ -1,0 +1,71 @@
+react-doctor v0.0.29
+
+[32m✔[39m Select projects to scan [2m›[22m amsirartrip-nextjs
+[?25l[2K[1G[36m?[39m [1mOn branch main (23 changed files vs master). Only scan this branch?[22m [90m»[39m [90m(Y/n)[39m[2K[1G[2K[1G[32m√[39m [1mOn branch main (23 changed files vs master). Only scan this branch?[22m [90m...[39m yes
+[?25hScanning changes: [36mmain[39m → [36mmaster[39m
+
+[2mScanning C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip Enhanced...[22m
+
+
+  [31m✗[39m React Compiler can't optimize this code
+[2m    Todo: Support value blocks (conditional, logical, optional chaining, etc) within a try/catch statement
+    
+    C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip[22m
+
+  [33m⚠[39m Array index "idx" used as key — causes bugs when list is reordered or filtered[33m (9)[39m
+[2m    Use a stable unique identifier: `key={item.id}` or `key={item.slug}` — index keys break on reorder/filter[22m
+
+  [33m⚠[39m Component "HomeView" is 314 lines — consider breaking it into smaller focused components[33m (3)[39m
+[2m    Extract logical sections into focused components: `<UserHeader />`, `<UserActions />`, etc.[22m
+
+  [33m⚠[39m 3 setState calls in a single useEffect — consider using useReducer or deriving state
+[2m    Combine into useReducer: `const [state, dispatch] = useReducer(reducer, initialState)`[22m
+
+  [33m⚠[39m Inline render function "renderSocialLinks()" — extract to a separate component for proper reconciliation[33m (3)[39m
+[2m    Extract to a named component: `const ListItem = ({ item }) => <div>{item.name}</div>`[22m
+
+  [33m⚠[39m Unknown property found
+[2m    Remove unknown property[22m
+
+  [2m┌──────────────────────────────────────────────────────┐[22m
+  [2m│[22m [32m┌─────┐[39m                                              [2m│[22m
+  [2m│[22m [32m│ ◠ ◠ │[39m                                              [2m│[22m
+  [2m│[22m [32m│  ▽  │[39m                                              [2m│[22m
+  [2m│[22m [32m└─────┘[39m                                              [2m│[22m
+  [2m│[22m React Doctor [2m(www.react.doctor)[22m                      [2m│[22m
+  [2m│[22m                                                      [2m│[22m
+  [2m│[22m [32m95[39m / 100  [32mGreat[39m                                      [2m│[22m
+  [2m│[22m                                                      [2m│[22m
+  [2m│[22m [32m████████████████████████████████████████████████[39m[2m░░[22m   [2m│[22m
+  [2m│[22m                                                      [2m│[22m
+  [2m│[22m [31m✗ 1 error[39m  [33m⚠ 17 warnings[39m  [2macross 6/23 files[22m  [2min 7.2s[22m [2m│[22m
+  [2m└──────────────────────────────────────────────────────┘[22m
+
+[2m  Full diagnostics written to C:\Users\OMARAJ~1\AppData\Local\Temp\react-doctor-4df8de98-735d-4e9f-b97b-f1dafd2646a3[22m
+
+[2m  Share your results: [36mhttps://www.react.doctor/share?p=amsirartrip-nextjs&s=95&e=1&w=17&f=6[39m[22m
+
+
+[?25l[36m?[39m [1mFix issues?[22m [90m»[39m [90m- Use arrow-keys. Return to submit.[39m
+[36m>[39m   [36m[4mUse Ami (recommended)[39m[24m[90m - Optimized coding agent for React Doctor[39m
+    Skip[90m[39m
+[2K[1G  [2m┌──────────────────────────────────────────────────────┐[22m
+  [2m│[22m Score: [32m95[39m [2m→[22m [32m~99[39m                                      [2m│[22m
+  [2m│[22m                                                      [2m│[22m
+  [2m│[22m [36mAmi[39m is a coding agent built for React. It reads      [2m│[22m
+  [2m│[22m your react-doctor report, understands your codebase, [2m│[22m
+  [2m│[22m and fixes [33m18[39m issues one by one — then re-runs the    [2m│[22m
+  [2m│[22m scan to verify the score improved.                   [2m│[22m
+  [2m│[22m                                                      [2m│[22m
+  [2m│[22m Free to use. [36mhttps://ami.dev[39m                         [2m│[22m
+  [2m└──────────────────────────────────────────────────────┘[22m
+
+[36m?[39m [1mFix issues?[22m [90m»[39m [90m- Use arrow-keys. Return to submit.[39m
+[36m>[39m   [36m[4mUse Ami (recommended)[39m[24m[90m - Optimized coding agent for React Doctor[39m
+    Skip[90m[39m
+[2K[1G[32m√[39m [1mFix issues?[22m [90m»[39m Use Ami (recommended)
+[?25h[31mAmi is not installed.[39m
+[2mDownload at [36mhttps://github.com/millionco/ami-releases/releases[39m[22m
+
+[2mOpen this link to start fixing:[22m
+[36mhttps://www.react.doctor/open?cwd=C%3A%5CUsers%5COmar+AJ%5CDesktop%5CMy+Projects%5CAmsirarTrip+Enhanced&prompt=%2F%7Bslash-command%3Aami%3Areact-doctor%7D&mode=agent&autoSubmit=true&source=react-doctor[39m

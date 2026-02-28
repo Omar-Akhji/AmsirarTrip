@@ -142,4 +142,3 @@ const stylelintConfig = {
 };
 
 export default stylelintConfig;
-

@@ -10,7 +10,6 @@ import {
 } from "@/lib/structuredData";
 
 // Lazy load below-fold components to reduce initial bundle size
-// Footer contains FontAwesome icons, WhatsApp button is non-critical
 const Footer = dynamic(() => import("@/shared/layout/Footer"));
 const WhatsAppButton = dynamic(() => import("@/shared/ui/WhatsAppButton"));
 import { NextIntlClientProvider } from "next-intl";
@@ -201,7 +200,6 @@ export default async function LocaleLayout({
           href="/images/Header/header-1.webp"
           as="image"
           type="image/webp"
-          fetchPriority="high"
         />
         <meta name="theme-color" content="#1a1a1a" />
         <meta name="mobile-web-app-capable" content="yes" />
