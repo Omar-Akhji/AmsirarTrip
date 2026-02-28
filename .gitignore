@@ -43,3 +43,7 @@ lint-output.txt
 lint-results.txt
 New Project Moha website/
 *.tsbuildinfo
+
+# Scripts (Manual tools ignored from git)
+scripts/
+
