@@ -146,7 +146,7 @@ export default function HomeHero() {
   return (
     <header
       ref={headerRef}
-      className="home-header relative isolate min-h-[70vh] w-full overflow-hidden bg-slate-950 shadow-xl sm:min-h-[80vh] lg:min-h-dvh"
+      className="home-header relative isolate min-h-[40vh] w-full overflow-hidden bg-slate-950 text-white shadow-xl sm:min-h-[45vh] lg:min-h-[50vh]"
       aria-labelledby="hero-heading"
     >
       {/* Background images with Motion Ken Burns + Crossfade animation */}
@@ -181,18 +181,19 @@ export default function HomeHero() {
         className="absolute inset-0 z-10 bg-linear-to-br from-black/60 via-black/20 to-transparent"
         aria-hidden="true"
       ></div>
-      <div className="relative z-20 mx-auto flex h-full min-h-[70vh] max-w-6xl flex-col items-center justify-center gap-2 px-4 pt-4 pb-4 text-center text-white sm:min-h-[80vh] sm:pt-24 sm:pb-32 lg:min-h-dvh lg:py-32">
-        <div className="mb-2 flex items-center justify-center gap-4">
-          <span className="h-px w-8 bg-orange-400/60 sm:w-12"></span>
-          <h1 className="text-xs font-bold tracking-[0.2em] text-orange-300 uppercase sm:tracking-[0.3em]">
-            {t("home.title")}
-          </h1>
-          <span className="h-px w-8 bg-orange-400/60 sm:w-12"></span>
-        </div>
-        <h2
-          id="hero-heading"
-          className="min-h-[3em] text-3xl leading-tight font-semibold sm:min-h-[2.2em] sm:text-4xl lg:text-5xl"
-        >
+      <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-col items-center justify-center gap-12 px-4 pt-8 pb-16 text-center lg:py-20">
+        <div className="flex-1 space-y-6 pt-0 text-center lg:pt-8">
+          <div className="flex items-center justify-center gap-4">
+            <span className="h-px w-8 bg-orange-400/60 sm:w-12"></span>
+            <h1 className="text-xs font-bold tracking-[0.2em] text-orange-300 uppercase sm:tracking-[0.3em]">
+              {t("home.title")}
+            </h1>
+            <span className="h-px w-8 bg-orange-400/60 sm:w-12"></span>
+          </div>
+          <h2
+            id="hero-heading"
+            className="text-3xl font-semibold leading-tight sm:text-4xl lg:text-5xl"
+          >
           {isMobileOrTablet ? (
             <AnimatePresence mode="wait">
               <m.span
@@ -216,10 +217,10 @@ export default function HomeHero() {
             </>
           )}
         </h2>
-        <p className="font-fancy text-lg text-white/80 sm:text-xl">
+        <p className="font-fancy text-lg text-slate-200 lg:text-xl">
           {t("home.heroSubtitle")}
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+        <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
           <Link
             href="/tours"
             className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10 sm:px-8"
@@ -232,6 +233,7 @@ export default function HomeHero() {
           >
             {t("home.contactForMore")}
           </Link>
+        </div>
         </div>
       </div>
     </header>
