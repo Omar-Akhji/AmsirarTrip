@@ -430,34 +430,44 @@ export default function FooterTailwind() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/10">
-          <div className="mx-auto max-w-7xl p-4 px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <p className="text-center text-xl text-slate-500">
-                <small>
+        <div className="border-t border-white/5 bg-black/20">
+          <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+            <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
+              {/* Copyright Notice */}
+              <div className="order-2 text-center sm:order-1 sm:text-left">
+                <p className="text-sm font-medium text-slate-500">
                   ©{" "}
                   <time dateTime={new Date().getFullYear().toString()}>
                     {new Date().getFullYear()}
                   </time>{" "}
-                  Amsirar Trip. Ltd. {t("footer.copyright")}
-                </small>
-              </p>
-
-              <div className="flex gap-4 text-xl text-slate-500">
-                <Link
-                  href="/privacy-policy"
-                  className="text-slate-500 transition-colors hover:text-white"
-                >
-                  <small>{t("legal.footer.privacyPolicy")}</small>
-                </Link>
-                <span className="text-white/20">|</span>
-                <Link
-                  href="/terms-of-service"
-                  className="text-slate-500 transition-colors hover:text-white"
-                >
-                  <small>{t("legal.footer.termsOfService")}</small>
-                </Link>
+                  <span className="text-slate-400">Amsirar Trip. Ltd.</span>{" "}
+                  <span className="hidden sm:inline-block mx-1.5 opacity-20">•</span>{" "}
+                  {t("footer.copyright")}
+                </p>
               </div>
+
+              {/* Legal Links */}
+              <nav aria-label="Privacy and Terms" className="order-1 sm:order-2">
+                <ul className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
+                  <li>
+                    <Link
+                      href="/privacy-policy"
+                      className="text-sm font-medium text-slate-500 transition-colors duration-200 hover:text-white"
+                    >
+                      {t("legal.footer.privacyPolicy")}
+                    </Link>
+                  </li>
+                  <li className="hidden sm:block h-3 w-px bg-white/10" aria-hidden="true" />
+                  <li>
+                    <Link
+                      href="/terms-of-service"
+                      className="text-sm font-medium text-slate-500 transition-colors duration-200 hover:text-white"
+                    >
+                      {t("legal.footer.termsOfService")}
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
             </div>
           </div>
         </div>
