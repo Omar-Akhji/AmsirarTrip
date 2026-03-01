@@ -89,9 +89,18 @@ function BookingForm({
 
   // React Compiler handles memoization automatically
   const perks = [
-    t("booking.perkLocalExperts", "Licensed local drivers & guides"),
-    t("booking.perkFlexible", "Flexible departures from Marrakech"),
-    t("booking.perkSupport", "Fast responses within 24 hours"),
+    {
+      id: "experts",
+      text: t("booking.perkLocalExperts", "Licensed local drivers & guides"),
+    },
+    {
+      id: "flexible",
+      text: t("booking.perkFlexible", "Flexible departures from Marrakech"),
+    },
+    {
+      id: "support",
+      text: t("booking.perkSupport", "Fast responses within 24 hours"),
+    },
   ];
 
   const baseSectionClass = `py-20 md:py-10 bg-gray-50 ${
@@ -597,11 +606,11 @@ function BookingForm({
 
               <ul className="grid gap-6 text-sm">
                 {perks.map((perk, idx) => (
-                  <li key={idx} className="inline-flex items-center gap-3">
+                  <li key={perk.id} className="inline-flex items-center gap-3">
                     <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/15 text-xs font-semibold">
                       {idx + 1}
                     </span>
-                    <span className="flex-1 text-slate-100">{perk}</span>
+                    <span className="flex-1 text-slate-100">{perk.text}</span>
                   </li>
                 ))}
               </ul>

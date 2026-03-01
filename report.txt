@@ -1,0 +1,4 @@
+react-doctor v0.0.29
+
+[32m✔[39m Select projects to scan [2m›[22m amsirartrip-nextjs
+[?25l[2K[1G[36m?[39m [1mOn branch main (9 changed files vs master). Only scan this branch?[22m [90m»[39m [90m(Y/n)[39m
