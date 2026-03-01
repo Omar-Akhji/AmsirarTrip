@@ -18,7 +18,7 @@ interface JsonLdProps {
  * Safe JSON-LD component that renders structured data using React 19's
  * native <script> children support — avoids dangerouslySetInnerHTML.
  */
-export function JsonLd({ data, id, isSync: _isSync }: JsonLdProps) {
+export function JsonLd({ data, id }: JsonLdProps) {
   // JSON.stringify with a replacer that escapes dangerous characters
   const safeJson = JSON.stringify(data)
     .replace(/</g, "\\u003c")
