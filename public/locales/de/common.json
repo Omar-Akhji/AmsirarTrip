@@ -1158,17 +1158,6 @@
     }
   },
   "footer": {
-    "newsletterAria": "Newsletter-Anmeldeformular",
-    "newsletterInputAria": "E-Mail-Adresse",
-    "newsletterButtonAria": "Für Newsletter anmelden",
-    "newsletterCloseAria": "Newsletter-Dialog schließen",
-    "socialAria": "Links zu sozialen Medien",
-    "social": {
-      "facebook": "Facebook",
-      "twitter": "Twitter",
-      "instagram": "Instagram",
-      "tiktok": "TikTok"
-    },
     "office": "Büro",
     "popularPlaces": "Beliebte Orte:",
     "newsletter": "Newsletter",
@@ -1183,7 +1172,17 @@
     "newsletterFailure": "Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut.",
     "newsletterNetwork": "Netzwerkfehler. Bitte überprüfen Sie Ihre Verbindung.",
     "copyright": "Alle Rechte vorbehalten.",
-    "description": "Bei Amsirar Trip sind wir leidenschaftlich daran interessiert, die vielfältige und lebendige Kultur Marokkos zu präsentieren.\nUnsere sorgfältig zusammengestellten Touren bieten jedem Reisenden etwas, von den belebten Märkten Marrakeschs bis zu den ruhigen Landschaften der Sahara‑Wüste."
+    "description": "Bei Amsirar Trip sind wir leidenschaftlich daran interessiert, die vielfältige und lebendige Kultur Marokkos zu präsentieren.\nUnsere sorgfältig zusammengestellten Touren bieten jedem Reisenden etwas, von den belebten Märkten Marrakeschs bis zu den ruhigen Landschaften der Sahara‑Wüste.",
+    "newsletterAria": "Newsletter-Anmeldeformular",
+    "newsletterInputAria": "E-Mail-Adresse",
+    "newsletterButtonAria": "Für Newsletter anmelden",
+    "socialAria": "Links zu sozialen Medien",
+    "social": {
+      "facebook": "Facebook",
+      "twitter": "Twitter",
+      "instagram": "Instagram",
+      "tiktok": "TikTok"
+    }
   },
   "button": "Schaltfläche",
   "locale": "Gebietsschema",
