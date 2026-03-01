@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useReducer } from "react";
 import { usePathname } from "@/i18n/routing";
 
 interface LoaderProps {
@@ -8,9 +8,15 @@ interface LoaderProps {
   duration?: number;
 }
 
+type LoaderAction = { type: "show" } | { type: "hide" };
+
+function loaderReducer(_state: boolean, action: LoaderAction): boolean {
+  return action.type === "show";
+}
+
 function Loader({ fullscreen = true, duration = 800 }: LoaderProps) {
   // Start with loader visible on initial mount to cover hydration shifts
-  const [show, setShow] = useState(true);
+  const [show, dispatch] = useReducer(loaderReducer, true);
   const pathname = usePathname();
 
   // Initial load auto-hide
@@ -19,7 +25,7 @@ function Loader({ fullscreen = true, duration = 800 }: LoaderProps) {
     document.body.style.overflow = "hidden";
 
     const timer = setTimeout(() => {
-      setShow(false);
+      dispatch({ type: "hide" });
       document.body.style.overflow = "";
     }, duration);
 
@@ -33,12 +39,12 @@ function Loader({ fullscreen = true, duration = 800 }: LoaderProps) {
   useEffect(() => {
     // Defer to avoid synchronous state update during render
     const showTimer = setTimeout(() => {
-      setShow(true);
+      dispatch({ type: "show" });
       document.body.style.overflow = "hidden";
     }, 0);
 
     const hideTimer = setTimeout(() => {
-      setShow(false);
+      dispatch({ type: "hide" });
       document.body.style.overflow = "";
     }, duration);
 

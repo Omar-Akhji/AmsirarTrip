@@ -13,7 +13,7 @@ const SITE_TAGLINES: Record<string, string> = {
   es: "Expertos en Viajes a Marruecos",
 };
 
-export interface SEOConfig {
+interface SEOConfig {
   title: string;
   description: string;
   keywords?: string[];

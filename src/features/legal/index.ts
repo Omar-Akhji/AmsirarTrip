@@ -4,16 +4,4 @@
  */
 
 // Components
-export {
-  PrivacyPolicyView,
-  TermsOfServiceView,
-} from "./components";
-
-// Types
-export type { LegalSection, LegalPageConfig } from "./types";
-
-// Data/Config
-export {
-  PRIVACY_POLICY_CONFIG,
-  TERMS_OF_SERVICE_CONFIG,
-} from "./data/legalConfig";
+export { PrivacyPolicyView, TermsOfServiceView } from "./components";

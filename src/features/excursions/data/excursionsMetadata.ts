@@ -1,4 +1,4 @@
-export interface ExcursionMetadata {
+interface ExcursionMetadata {
   slug: string;
   excursionKey: string;
   i18nKeyPrefix: string; // e.g., "ouzoud", "essaouira"
@@ -13,7 +13,7 @@ export interface ExcursionMetadata {
   };
 }
 
-export const EXCURSIONS_METADATA: Record<string, ExcursionMetadata> = {
+const EXCURSIONS_METADATA: Record<string, ExcursionMetadata> = {
   "ouzoud-waterfalls-day-trip": {
     slug: "ouzoud-waterfalls-day-trip",
     excursionKey: "excursion1",

@@ -1,4 +1,4 @@
-export interface TourMetadata {
+interface TourMetadata {
   slug: string;
   tourKey: string;
   bookingId: number;
@@ -16,7 +16,7 @@ export interface TourMetadata {
   };
 }
 
-export const TOURS_METADATA: Record<string, TourMetadata> = {
+const TOURS_METADATA: Record<string, TourMetadata> = {
   "merzouga-desert-adventure-3-days": {
     slug: "merzouga-desert-adventure-3-days",
     tourKey: "tour1",

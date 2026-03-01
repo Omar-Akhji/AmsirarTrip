@@ -14,7 +14,7 @@ const getOrdinalSuffix = (num: number) => {
   return num + "th";
 };
 
-export interface DayData {
+interface DayData {
   number: number;
   title: string;
   text: string[];
@@ -58,11 +58,10 @@ export default function TourItinerary({
           <div className="mb-6">
             <div className="mb-4 flex items-center gap-4">
               <div className="shrink-0">
-                <div className="flex px-4 items-center justify-center rounded-full bg-linear-to-br from-orange-500 to-amber-600 text-lg font-bold text-white shadow-lg transition-shadow duration-300 group-hover:shadow-xl h-12">
+                <div className="flex h-12 items-center justify-center rounded-full bg-linear-to-br from-orange-500 to-amber-600 px-4 text-lg font-bold text-white shadow-lg transition-shadow duration-300 group-hover:shadow-xl">
                   {getOrdinalSuffix(day.number)} Day
                 </div>
               </div>
-
             </div>
           </div>
 
@@ -77,7 +76,7 @@ export default function TourItinerary({
                   </span>
                   {idx < arr.length - 1 && (
                     <Navigation2
-                      className="size-3.5 shrink-0 text-orange-400 rotate-90"
+                      className="size-3.5 shrink-0 rotate-90 text-orange-400"
                       aria-hidden
                     />
                   )}
@@ -127,9 +126,7 @@ export default function TourItinerary({
                       <div className="text-xs font-semibold text-amber-700">
                         {mealsLabel}
                       </div>
-                      <div className="text-sm text-amber-900">
-                        {day.meals}
-                      </div>
+                      <div className="text-sm text-amber-900">{day.meals}</div>
                     </div>
                   </div>
                 )}
@@ -159,9 +156,7 @@ export default function TourItinerary({
                       <div className="text-xs font-semibold text-sky-700">
                         {arrivalLabel}
                       </div>
-                      <div className="text-sm text-sky-900">
-                        {day.arrival}
-                      </div>
+                      <div className="text-sm text-sky-900">{day.arrival}</div>
                     </div>
                   </div>
                 )}

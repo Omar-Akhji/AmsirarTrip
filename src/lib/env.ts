@@ -13,7 +13,7 @@ type OptionalEnv =
  * Get a required environment variable
  * Throws if not found
  */
-export function getEnv(key: RequiredEnv): string {
+function getEnv(key: RequiredEnv): string {
   const value = process.env[key];
   if (!value) {
     throw new Error(`Environment variable ${key} is required but not set`);
@@ -24,10 +24,7 @@ export function getEnv(key: RequiredEnv): string {
 /**
  * Get an optional environment variable with fallback
  */
-export function getOptionalEnv(
-  key: OptionalEnv,
-  fallback: string = ""
-): string {
+function getOptionalEnv(key: OptionalEnv, fallback: string = ""): string {
   return process.env[key] || fallback;
 }
 

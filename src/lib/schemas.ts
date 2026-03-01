@@ -10,7 +10,7 @@ const sanitize = (val: string) => DOMPurify.sanitize(val.trim());
 const phoneRegex =
   /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,9}$/;
 
-export const RecaptchaSchema = z.object({
+const RecaptchaSchema = z.object({
   recaptchaToken: z.string().min(1, "Recaptcha token is required"),
 });
 
@@ -36,8 +36,6 @@ export const ContactSchema = z
   })
   .merge(RecaptchaSchema);
 
-export type ContactRequest = z.infer<typeof ContactSchema>;
-
 // --- Newsletter Schema ---
 
 export const NewsletterSchema = z
@@ -45,8 +43,6 @@ export const NewsletterSchema = z
     email: z.string().email("Invalid email address").transform(sanitize),
   })
   .merge(RecaptchaSchema);
-
-export type NewsletterRequest = z.infer<typeof NewsletterSchema>;
 
 // --- Booking Schema ---
 
@@ -86,5 +82,3 @@ export const BookingSchema = z
     duration: z.coerce.number().int().min(1).max(30).optional(),
   })
   .merge(RecaptchaSchema);
-
-export type BookingRequest = z.infer<typeof BookingSchema>;

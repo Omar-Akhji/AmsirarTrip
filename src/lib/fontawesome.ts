@@ -19,6 +19,3 @@ export const byPrefixAndName = {
     tiktok: faTiktok,
   },
 };
-
-// Re-export common icons for direct use if preferred
-export { faFacebookF, faInstagram, faXTwitter, faTiktok };

@@ -1,22 +1,52 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useReducer } from "react";
 import { usePathname } from "@/i18n/routing";
+
+interface NavProgressState {
+  loading: boolean;
+  progress: number;
+}
+
+type NavProgressAction =
+  | { type: "start" }
+  | { type: "complete" }
+  | { type: "reset" }
+  | { type: "tick"; delta: number };
+
+function navProgressReducer(
+  state: NavProgressState,
+  action: NavProgressAction
+): NavProgressState {
+  switch (action.type) {
+    case "start":
+      return { loading: true, progress: 10 };
+    case "complete":
+      return { loading: false, progress: 100 };
+    case "reset":
+      return { loading: false, progress: 0 };
+    case "tick":
+      return state.progress >= 90
+        ? state
+        : { ...state, progress: state.progress + action.delta };
+  }
+}
 
 export default function NavigationProgress() {
   const pathname = usePathname();
-  const [loading, setLoading] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [state, dispatch] = useReducer(navProgressReducer, {
+    loading: false,
+    progress: 0,
+  });
 
   // Reset loading when pathname changes (navigation complete)
   useEffect(() => {
     // Use microtasks to defer setState calls and avoid synchronous state updates
     Promise.resolve().then(() => {
-      setLoading(false);
-      setProgress(100);
+      dispatch({ type: "complete" });
     });
     const timer = setTimeout(() => {
-      setProgress(0);
+      dispatch({ type: "reset" });
     }, 300);
     return () => clearTimeout(timer);
   }, [pathname]);
@@ -40,8 +70,7 @@ export default function NavigationProgress() {
 
         // Start loading for internal navigation links
         if (!isExternal && !isSpecial && !isSamePage) {
-          setLoading(true);
-          setProgress(10);
+          dispatch({ type: "start" });
         }
       }
     };
@@ -54,25 +83,22 @@ export default function NavigationProgress() {
 
   // Animate progress
   useEffect(() => {
-    if (!loading) return;
+    if (!state.loading) return;
 
     const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 90) return prev;
-        return prev + Math.random() * 10;
-      });
+      dispatch({ type: "tick", delta: Math.random() * 10 });
     }, 200);
 
     return () => clearInterval(interval);
-  }, [loading]);
+  }, [state.loading]);
 
-  if (!loading) return null;
+  if (!state.loading) return null;
 
   return (
     <div className="fixed top-0 right-0 left-0 z-50 h-1 bg-slate-200">
       <div
         className="bg-orange h-full transition-all duration-200 ease-out"
-        style={{ width: `${progress}%` }}
+        style={{ width: `${state.progress}%` }}
       />
     </div>
   );

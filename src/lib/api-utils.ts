@@ -1,23 +1,19 @@
-import DOMPurify from "isomorphic-dompurify";
-
 /**
  * API utilities for error handling, logging, and response formatting
  */
 
-export interface ApiError {
+interface ApiError {
   ok: false;
   error: string;
   code?: string;
   details?: unknown;
 }
 
-export interface ApiSuccess<T = unknown> {
+interface ApiSuccess<T = unknown> {
   ok: true;
   data?: T;
   message?: string;
 }
-
-export type ApiResponse<T = unknown> = ApiSuccess<T> | ApiError;
 
 /**
  * Create a standardized error response
@@ -167,13 +163,4 @@ export function logSuspiciousActivity(
     `[SECURITY] ${timestamp} IP: ${ip} Type: ${type} Details: ${details}`
   );
   // In production, send to Sentry or security monitoring service
-}
-
-/**
- * Sanitize string input to prevent XSS and injection attacks
- * Uses DOMPurify for robust sanitization
- */
-export function sanitizeString(input: unknown): string {
-  if (typeof input !== "string") return "";
-  return DOMPurify.sanitize(input.trim());
 }

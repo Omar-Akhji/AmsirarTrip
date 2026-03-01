@@ -2,13 +2,13 @@
  * API client with retry logic and better error handling
  */
 
-export interface ApiClientOptions {
+interface ApiClientOptions {
   retries?: number;
   retryDelay?: number;
   timeout?: number;
 }
 
-export class ApiError extends Error {
+class ApiError extends Error {
   constructor(
     message: string,
     public status: number,
@@ -61,7 +61,7 @@ async function fetchWithTimeout(
 /**
  * API client with automatic retry logic
  */
-export async function apiClient<T = unknown>(
+async function apiClient<T = unknown>(
   url: string,
   options: RequestInit & ApiClientOptions = {}
 ): Promise<T> {
@@ -142,7 +142,7 @@ export interface BookingPayload {
   recaptchaToken: string;
 }
 
-export interface BookingResponse {
+interface BookingResponse {
   ok: boolean;
   id?: string;
   error?: string;
@@ -169,7 +169,7 @@ export interface ContactPayload {
   recaptchaToken: string;
 }
 
-export interface ContactResponse {
+interface ContactResponse {
   ok: boolean;
   id?: string;
   error?: string;

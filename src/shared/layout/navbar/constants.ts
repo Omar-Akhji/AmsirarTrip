@@ -1,9 +1,9 @@
-export interface NavLink {
+interface NavLink {
   to: string;
   labelKey: string;
 }
 
-export interface SocialLink {
+interface SocialLink {
   href: string;
   icon: string;
   label: string;

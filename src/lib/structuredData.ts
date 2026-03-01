@@ -1,4 +1,4 @@
-export interface TourStructuredData {
+interface TourStructuredData {
   name: string;
   description: string;
   provider: string;
@@ -79,7 +79,7 @@ export function generateTourJsonLd(data: TourStructuredData) {
   };
 }
 
-export interface ExcursionStructuredData {
+interface ExcursionStructuredData {
   name: string;
   description: string;
   provider: string;
@@ -240,138 +240,6 @@ export function generateOrganizationJsonLd() {
   };
 }
 
-export function generateBreadcrumbJsonLd(
-  items: { name: string; url: string }[]
-) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: sanitizeForJsonLd(item.name),
-      item: item.url.startsWith("http")
-        ? item.url
-        : `https://amsirartrip.com${item.url}`,
-    })),
-  };
-}
-
-export interface FAQItem {
-  question: string;
-  answer: string;
-}
-
-export function generateFAQJsonLd(faqItems: FAQItem[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqItems.map((item) => ({
-      "@type": "Question",
-      name: sanitizeForJsonLd(item.question),
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: sanitizeForJsonLd(item.answer),
-      },
-    })),
-  };
-}
-
-export interface ReviewData {
-  author: string;
-  rating: number;
-  reviewBody: string;
-  datePublished: string;
-}
-
-export function generateReviewJsonLd(tourName: string, reviews: ReviewData[]) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    name: sanitizeForJsonLd(tourName),
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: (
-        reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
-      ).toFixed(1),
-      reviewCount: reviews.length,
-      bestRating: "5",
-      worstRating: "1",
-    },
-    review: reviews.map((review) => ({
-      "@type": "Review",
-      author: {
-        "@type": "Person",
-        name: sanitizeForJsonLd(review.author),
-      },
-      datePublished: review.datePublished,
-      reviewBody: sanitizeForJsonLd(review.reviewBody),
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: Math.max(1, Math.min(5, review.rating)), // Clamp rating between 1-5
-        bestRating: "5",
-        worstRating: "1",
-      },
-    })),
-  };
-}
-
-export function generateLocalBusinessJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "@id": "https://amsirartrip.com/#organization",
-    name: "Amsirar Trip",
-    image: "https://amsirartrip.com/images/Header/header-1.webp",
-    logo: "https://amsirartrip.com/horse-head.svg",
-    description:
-      "Professional Morocco travel agency specializing in authentic Sahara desert tours, imperial city excursions, and personalized adventure experiences across Morocco.",
-    url: "https://amsirartrip.com",
-    telephone: "+212-661-173-144",
-    email: "contact@amsirartrip.com",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Marrakech",
-      addressLocality: "Marrakech",
-      addressRegion: "Marrakech-Safi",
-      postalCode: "40000",
-      addressCountry: "MA",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: "31.6295",
-      longitude: "-7.9811",
-    },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-          "Sunday",
-        ],
-        opens: "08:00",
-        closes: "22:00",
-      },
-    ],
-    priceRange: "€€-€€€",
-    servesCuisine: "Moroccan",
-    sameAs: [
-      "https://facebook.com/amsirartrip",
-      "https://instagram.com/amsirartrip",
-      "https://twitter.com/amsirartrip",
-    ],
-    areaServed: {
-      "@type": "Country",
-      name: "Morocco",
-    },
-  };
-}
-
 export function generateWebSiteJsonLd() {
   return {
     "@context": "https://schema.org",
@@ -394,37 +262,5 @@ export function generateWebSiteJsonLd() {
       "query-input": "required name=search_term_string",
     },
     inLanguage: ["en", "fr", "de", "es"],
-  };
-}
-
-export interface ArticleStructuredData {
-  title: string;
-  description: string;
-  image: string;
-  datePublished: string;
-  authorName: string;
-  url: string;
-}
-
-export function generateArticleJsonLd(data: ArticleStructuredData) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: sanitizeForJsonLd(data.title),
-    description: sanitizeForJsonLd(data.description),
-    image: data.image.startsWith("http")
-      ? data.image
-      : `https://amsirartrip.com${data.image}`,
-    datePublished: data.datePublished,
-    author: {
-      "@type": "Person",
-      name: sanitizeForJsonLd(data.authorName),
-    },
-    publisher: {
-      "@id": "https://amsirartrip.com/#organization",
-    },
-    url: data.url.startsWith("http")
-      ? data.url
-      : `https://amsirartrip.com${data.url}`,
   };
 }

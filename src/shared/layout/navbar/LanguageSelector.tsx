@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { LANGUAGES, Language } from "./constants";
 
-export interface LanguageSelectorProps {
+interface LanguageSelectorProps {
   placement?: "left" | "right";
   size?: "sm" | "md";
   className?: string;
