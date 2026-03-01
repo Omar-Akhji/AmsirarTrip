@@ -30,6 +30,7 @@ export default function ContactView() {
 
   const contactMethods = [
     {
+      id: "phone",
       icon: <PhoneIcon className="size-6" />,
       title: t(
         "contact.card.phoneTitle",
@@ -41,6 +42,7 @@ export default function ContactView() {
       ),
     },
     {
+      id: "email",
       icon: <MailIcon className="size-6" />,
       title: t(
         "contact.card.emailTitle",
@@ -52,6 +54,7 @@ export default function ContactView() {
       ),
     },
     {
+      id: "location",
       icon: <LocationIcon className="size-6" />,
       title: t(
         "contact.card.visitTitle",
@@ -91,7 +94,7 @@ export default function ContactView() {
           <div className="grid gap-6 md:grid-cols-3">
             {contactMethods.map((method, index) => (
               <m.article
-                key={index}
+                key={method.id}
                 {...fadeInUp}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 aria-label={
