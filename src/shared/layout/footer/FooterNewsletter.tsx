@@ -1,87 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
-import { RECAPTCHA_V3_SITE_KEY } from "@/lib/client-env";
+import { RECAPTCHA_V2_SITE_KEY, hasRecaptchaV2 } from "@/lib/client-env";
+import ReCAPTCHA from "react-google-recaptcha";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { byPrefixAndName } from "@/lib/fontawesome";
-
-// Type declaration for grecaptcha
-declare global {
-  interface Window {
-    grecaptcha: {
-      ready: (callback: () => void) => void;
-      execute: (
-        siteKey: string,
-        options: { action: string }
-      ) => Promise<string>;
-    };
-  }
-}
-
-function loadRecaptchaV3(
-  siteKey: string | undefined
-): Promise<typeof window.grecaptcha | null> {
-  return new Promise((resolve) => {
-    if (!siteKey) {
-      resolve(null);
-      return;
-    }
-    if (typeof window.grecaptcha !== "undefined" && window.grecaptcha?.ready) {
-      window.grecaptcha.ready(() => resolve(window.grecaptcha));
-      return;
-    }
-    const existing = document.getElementById("recaptcha-v3");
-    if (existing) {
-      existing.addEventListener("load", () => {
-        if (window.grecaptcha) {
-          window.grecaptcha.ready(() => resolve(window.grecaptcha));
-        } else {
-          resolve(null);
-        }
-      });
-      existing.addEventListener("error", () => resolve(null));
-      return;
-    }
-    const script = document.createElement("script");
-    script.id = "recaptcha-v3";
-    script.src = `https://www.google.com/recaptcha/api.js?render=${encodeURIComponent(
-      siteKey
-    )}`;
-    script.async = true;
-    script.defer = true;
-    script.onload = () => {
-      if (window.grecaptcha) {
-        window.grecaptcha.ready(() => resolve(window.grecaptcha));
-      } else {
-        resolve(null);
-      }
-    };
-    script.onerror = () => resolve(null);
-    document.head.appendChild(script);
-  });
-}
+import { X, Mail, User, Loader2 } from "lucide-react";
 
 /**
- * Get reCAPTCHA token using promise chains (avoids try/catch with conditionals
- * which React Compiler cannot optimize).
- */
-async function getRecaptchaToken(siteKey: string | undefined): Promise<string> {
-  if (!siteKey) return "";
-  const grecaptcha = await loadRecaptchaV3(siteKey).catch(() => null);
-  if (!grecaptcha) return "";
-  return grecaptcha.execute(siteKey, { action: "newsletter" }).catch(() => "");
-}
-
-/**
- * Submit newsletter subscription using promise chains.
+ * Submit newsletter subscription with name, email, and reCAPTCHA v2 token.
  */
 async function submitNewsletter(
+  name: string,
   email: string,
   recaptchaToken: string
 ): Promise<{ ok: boolean; statusKey: string }> {
   const response = await fetch("/api/newsletter", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ email, recaptchaToken }),
+    body: JSON.stringify({ name, email, recaptchaToken }),
   }).catch(() => null);
 
   if (!response) return { ok: false, statusKey: "footer.newsletterNetwork" };
@@ -91,33 +27,218 @@ async function submitNewsletter(
   return { ok: false, statusKey: "footer.newsletterFailure" };
 }
 
-export function FooterNewsletter() {
+/* ─── Newsletter Modal Dialog ─── */
+
+function NewsletterModal({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) {
   const { t } = useTranslation();
-  const [newsletterEmail, setNewsletterEmail] = useState("");
-  const [newsletterStatusKey, setNewsletterStatusKey] = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [statusKey, setStatusKey] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const SITE_KEY = RECAPTCHA_V3_SITE_KEY;
+  // Sync native <dialog> open state
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    if (isOpen && !dialog.open) {
+      dialog.showModal();
+    } else if (!isOpen && dialog.open) {
+      dialog.close();
+    }
+  }, [isOpen]);
 
-  const handleNewsletterSubmit = async (
-    e: React.FormEvent<HTMLFormElement>
-  ) => {
+  // Close on backdrop click
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDialogElement>) => {
+    if (e.target === dialogRef.current) {
+      onClose();
+    }
+  };
+
+  // Close on Escape (native dialog handles this, but we need to sync state)
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    const handleCancel = () => onClose();
+    dialog.addEventListener("cancel", handleCancel);
+    return () => dialog.removeEventListener("cancel", handleCancel);
+  }, [onClose]);
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!newsletterEmail.trim() || isSubmitting) return;
+    if (!name.trim() || !email.trim() || isSubmitting) return;
+
+    const recaptchaToken = recaptchaRef.current?.getValue() || "";
+    if (!recaptchaToken) {
+      setStatusKey("footer.newsletterCaptchaError");
+      return;
+    }
 
     setIsSubmitting(true);
-
-    const recaptchaToken = await getRecaptchaToken(SITE_KEY);
-    const result = await submitNewsletter(newsletterEmail, recaptchaToken);
+    const result = await submitNewsletter(name, email, recaptchaToken);
 
     if (result.ok) {
-      setNewsletterEmail("");
+      setName("");
+      setEmail("");
+      recaptchaRef.current?.reset();
+      setTimeout(() => onClose(), 2000);
     }
-    setNewsletterStatusKey(result.statusKey);
-
+    setStatusKey(result.statusKey);
     setIsSubmitting(false);
-    setTimeout(() => setNewsletterStatusKey(""), 5000);
   };
+
+  if (!isOpen) return null;
+
+  return (
+    <dialog
+      ref={dialogRef}
+      onClick={handleBackdropClick}
+      onKeyDown={(e) => {
+        if (e.key === "Escape") onClose();
+      }}
+      className="fixed inset-0 z-50 m-auto w-[95vw] max-w-md overflow-visible rounded-3xl border border-gray-200 bg-white p-0 text-gray-900 shadow-2xl backdrop:bg-black/50 backdrop:backdrop-blur-sm open:flex open:flex-col"
+    >
+      <div className="p-6 sm:p-8">
+        {/* Header */}
+        <div className="mb-6 flex items-start justify-between">
+          <div>
+            <h2 className="text-xl font-bold text-gray-900">
+              {t("footer.newsletter")}
+            </h2>
+            <p className="mt-1.5 text-sm leading-relaxed text-gray-500">
+              {t("footer.newsletterDescription")}
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label={t("footer.newsletterCloseAria")}
+            className="-mt-1 -mr-1 flex size-9 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600"
+          >
+            <X className="size-5" />
+          </button>
+        </div>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} aria-label={t("footer.newsletterAria")}>
+          <div className="space-y-4">
+            {/* Name */}
+            <div>
+              <label
+                htmlFor="newsletter-name"
+                className="mb-1.5 block text-sm font-medium text-gray-700"
+              >
+                {t("footer.newsletterNameLabel")}
+              </label>
+              <div className="relative">
+                <User className="absolute top-1/2 left-3.5 size-4 -translate-y-1/2 text-gray-400" />
+                <input
+                  id="newsletter-name"
+                  type="text"
+                  name="name"
+                  placeholder={t("footer.newsletterNamePlaceholder")}
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
+                  minLength={2}
+                  autoComplete="name"
+                  className="h-11 w-full rounded-full border border-gray-200 bg-gray-50 pr-4 pl-10 text-sm text-gray-900 transition-all duration-200 placeholder:text-gray-400 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
+                />
+              </div>
+            </div>
+
+            {/* Email */}
+            <div>
+              <label
+                htmlFor="newsletter-email"
+                className="mb-1.5 block text-sm font-medium text-gray-700"
+              >
+                {t("footer.newsletterInputAria")}
+              </label>
+              <div className="relative">
+                <Mail className="absolute top-1/2 left-3.5 size-4 -translate-y-1/2 text-gray-400" />
+                <input
+                  id="newsletter-email"
+                  type="email"
+                  name="email"
+                  placeholder={t("footer.newsletterPlaceholder")}
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  autoComplete="email"
+                  className="h-11 w-full rounded-full border border-gray-200 bg-gray-50 pr-4 pl-10 text-sm text-gray-900 transition-all duration-200 placeholder:text-gray-400 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
+                />
+              </div>
+            </div>
+
+            {/* reCAPTCHA v2 — wrapped like BookingForm */}
+            <div className="flex justify-center pt-1">
+              <div
+                className={`origin-center scale-[0.85] rounded-2xl border border-dashed p-3 sm:scale-100 ${
+                  statusKey.includes("Captcha")
+                    ? "border-red-300"
+                    : "border-gray-200"
+                }`}
+              >
+                {hasRecaptchaV2 ? (
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={RECAPTCHA_V2_SITE_KEY}
+                    theme="light"
+                    size="normal"
+                  />
+                ) : (
+                  <div className="rounded-lg bg-amber-50 p-2 text-sm text-amber-600">
+                    reCAPTCHA not configured
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Status message */}
+          {statusKey && (
+            <p
+              className={`mt-4 text-center text-sm font-medium ${
+                statusKey.includes("Success")
+                  ? "text-emerald-600"
+                  : "text-red-500"
+              }`}
+            >
+              {t(statusKey)}
+            </p>
+          )}
+
+          {/* Submit */}
+          <button
+            type="submit"
+            disabled={isSubmitting}
+            className="from-orange mt-5 flex h-11 w-full items-center justify-center gap-2 rounded-full bg-linear-to-r to-amber-500 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-orange-500/30 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
+          >
+            {isSubmitting ? (
+              <Loader2 className="size-4 animate-spin" />
+            ) : (
+              t("footer.newsletterSubscribe")
+            )}
+          </button>
+        </form>
+      </div>
+    </dialog>
+  );
+}
+
+/* ─── Footer Newsletter Section ─── */
+
+export function FooterNewsletter() {
+  const { t } = useTranslation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <div className="md:col-span-2 lg:col-span-1">
@@ -127,84 +248,26 @@ export function FooterNewsletter() {
       <span className="bg-orange mb-6 block h-1 w-12 rounded" />
       <div className="rounded-2xl border border-white/10 bg-linear-to-br from-white/5 to-white/2 p-4 backdrop-blur-sm">
         <p className="mb-4 text-sm leading-relaxed text-slate-400">
-          Subscribe to get exclusive offers and travel tips
+          {t("footer.newsletterDescription")}
         </p>
-        <form
-          onSubmit={handleNewsletterSubmit}
-          aria-label={t("footer.newsletterAria")}
-          className="flex gap-2"
+        <button
+          type="button"
+          onClick={() => setIsModalOpen(true)}
+          aria-label={t("footer.newsletterButtonAria")}
+          className="from-orange flex h-10 w-full items-center justify-center gap-2 rounded-full bg-linear-to-r to-amber-500 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-orange-500/30 active:scale-[0.98]"
         >
-          <div className="relative flex-1">
-            <input
-              type="email"
-              name="email"
-              placeholder={t("footer.newsletterPlaceholder")}
-              value={newsletterEmail}
-              onChange={(e) => setNewsletterEmail(e.target.value)}
-              required
-              aria-label={t("footer.newsletterInputAria")}
-              autoComplete="email"
-              className="h-10 w-full rounded-xl border border-white/10 bg-white/5 px-3 text-sm text-white transition-all duration-300 placeholder:text-slate-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
-            />
-          </div>
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            aria-label={t("footer.newsletterButtonAria")}
-            className="from-orange hover:shadow-orange/30 flex size-10 shrink-0 items-center justify-center rounded-xl bg-linear-to-r to-amber-500 text-white transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-95 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
-          >
-            {isSubmitting ? (
-              <svg
-                className="size-4 animate-spin"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                />
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
-                />
-              </svg>
-            ) : (
-              <svg
-                className="size-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M14 5l7 7m0 0l-7 7m7-7H3"
-                />
-              </svg>
-            )}
-          </button>
-        </form>
-        {newsletterStatusKey && (
-          <p
-            className={`mt-3 text-xs font-medium ${
-              newsletterStatusKey.includes("Success")
-                ? "text-emerald-400"
-                : "text-orange"
-            }`}
-          >
-            {t(newsletterStatusKey)}
-          </p>
-        )}
+          <Mail className="size-4" />
+          {t("footer.newsletterSubscribe")}
+        </button>
 
         {/* Social icons under newsletter */}
         <FooterSocialLinks />
       </div>
+
+      <NewsletterModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 }
