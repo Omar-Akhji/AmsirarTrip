@@ -54,7 +54,7 @@ const VideoSection = () => {
           className="relative h-[55vh] w-full overflow-hidden rounded-[34px] bg-slate-900 p-3 shadow-2xl sm:h-[65vh] lg:h-[75vh] xl:h-[85vh]"
         >
           {videoError ? (
-            <div className="flex h-full items-center justify-center rounded-[26px] bg-[url(/images/header-1.webp)] bg-cover bg-center px-8 py-12 text-center">
+            <div className="flex h-full items-center justify-center rounded-[26px] bg-[url(/images/Header/header-1.webp)] bg-cover bg-center px-8 py-12 text-center">
               <div className="rounded-3xl bg-black/60 p-8">
                 <h3 className="text-2xl font-semibold">
                   {t("video.fallback.title")}

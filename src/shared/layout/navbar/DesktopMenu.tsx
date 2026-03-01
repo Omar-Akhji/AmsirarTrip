@@ -54,7 +54,7 @@ export function DesktopMenu({
           >
             <div className={getSocialButtonClasses("md")}>
               <Image
-                src="/images/icons/nav-phone.png"
+                src="/icons/nav-phone.png"
                 alt=""
                 width={20}
                 height={20}
