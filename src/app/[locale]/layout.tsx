@@ -51,6 +51,7 @@ export const metadata: Metadata = {
       "Amsirar Trip - Morocco Tours, Sahara Desert Adventures & Excursions",
     template: "%s | Amsirar Trip - Morocco Travel Experts",
   },
+  applicationName: "Amsirar Trip",
   description:
     "Explore Morocco with local experts. Authentic Sahara desert tours, imperial city excursions, Atlas Mountains treks, and private guided experiences. 20+ years serving travelers. Book your dream Morocco adventure today.",
   keywords: [
