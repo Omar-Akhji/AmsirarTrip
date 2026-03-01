@@ -66,9 +66,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { email, recaptchaToken } = validation.data;
+    const { name, email, recaptchaToken } = validation.data;
 
-    // Verify CAPTCHA
+    // Verify reCAPTCHA v2
     if (!(await verifyRecaptcha(recaptchaToken, request.nextUrl.hostname))) {
       logSuspiciousActivity(ip, "CAPTCHA_FAILED", "/api/newsletter");
       logApiRequest(
@@ -97,6 +97,7 @@ export async function POST(request: NextRequest) {
 
     const html = `
       <h2>New Newsletter Subscription</h2>
+      <p><strong>Name :</strong> ${escapeHtml(name)}</p>
       <p><strong>Email :</strong> ${escapeHtml(email)}</p>
     `;
 
@@ -104,8 +105,8 @@ export async function POST(request: NextRequest) {
       from: `Amsirar Trip Newsletter <${env.GMAIL_USER}>`,
       to: mailTo,
       replyTo: email,
-      subject: `Newsletter Subscription: ${email}`,
-      text: `New newsletter subscription: ${email}`,
+      subject: `Newsletter Subscription: ${escapeHtml(name)} (${email})`,
+      text: `New newsletter subscription:\nName: ${name}\nEmail: ${email}`,
       html,
     });
 
