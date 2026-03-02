@@ -596,6 +596,37 @@ Create custom reports for:
 
 ---
 
-**Version:** 1.0  
-**Last Updated:** 2025-01-XX  
-**Status:** Ready for implementation
+---
+
+## 13. Vercel Speed Insights & Analytics
+
+### Step 1: Install Packages
+
+```bash
+pnpm add @vercel/speed-insights @vercel/analytics
+```
+
+### Step 2: Add to Root Layout
+
+Add to `src/app/[locale]/layout.tsx`:
+
+```tsx
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
+
+// Inside <body>:
+<SpeedInsights />
+<Analytics />
+```
+
+### Step 3: View Results
+
+1. Deploy to Vercel.
+2. Open your project on Vercel.com.
+3. Check the **Speed Insights** and **Analytics** tabs.
+
+---
+
+**Version:** 1.1  
+**Last Updated:** 2026-03-02  
+**Status:** Completed
