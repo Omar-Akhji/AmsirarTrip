@@ -5,6 +5,12 @@ import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { m } from "motion/react";
+import {
+  fadeInUp,
+  fadeInScale,
+  fadeIn,
+  slideInUpSmall,
+} from "@/lib/constants/animations";
 
 import { PageHeader } from "@/shared/layout/PageHeader";
 
@@ -105,8 +111,14 @@ function ExcursionLayout({
           aria-labelledby="excursion-title"
         >
           <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[4fr_2fr]">
-            <article className="rounded-[20px] bg-white p-4 pb-8 shadow-sm ring-1 ring-slate-100 sm:p-6 sm:pb-12">
-              <figure className="relative mb-8 aspect-4/3 w-full overflow-hidden rounded-[20px] border border-slate-50 shadow-md">
+            <m.article
+              {...fadeIn}
+              className="rounded-[20px] bg-white p-4 pb-8 shadow-sm ring-1 ring-slate-100 sm:p-6 sm:pb-12"
+            >
+              <m.figure
+                {...fadeInScale}
+                className="relative mb-8 aspect-4/3 w-full overflow-hidden rounded-[20px] border border-slate-50 shadow-md"
+              >
                 <Image
                   className="object-cover"
                   src={imageSrc}
@@ -115,9 +127,9 @@ function ExcursionLayout({
                   priority
                   sizes="(max-width: 1024px) 100vw, 66vw"
                 />
-              </figure>
+              </m.figure>
 
-              <div className="mb-6 text-center">
+              <m.div {...fadeInUp} className="mb-6 text-center">
                 <div className="mx-auto inline-block">
                   <span
                     className="mb-3 hidden h-1 w-16 rounded-full bg-amber-300 sm:block"
@@ -130,7 +142,7 @@ function ExcursionLayout({
                     {title}
                   </h2>
                 </div>
-              </div>
+              </m.div>
 
               <div className="space-y-8">
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -217,10 +229,18 @@ function ExcursionLayout({
                   </p>
                 </div>
               </div>
-            </article>
+            </m.article>
 
-            <aside className="space-y-6 self-start lg:sticky lg:top-24">
-              <div className="overflow-hidden rounded-3xl bg-slate-900 text-white shadow-xl">
+            <m.aside
+              {...fadeInUp}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="space-y-6 self-start lg:sticky lg:top-24"
+            >
+              <m.div
+                {...slideInUpSmall}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="overflow-hidden rounded-3xl bg-slate-900 text-white shadow-xl"
+              >
                 <div className="p-8">
                   <p className="text-center text-xs tracking-[0.45em] text-orange-300 uppercase">
                     {t("excursion.sidebar.title")}
@@ -263,9 +283,13 @@ function ExcursionLayout({
                     {t("excursion.sidebar.conclusion")}
                   </p>
                 </div>
-              </div>
+              </m.div>
 
-              <div className="rounded-3xl border border-dashed border-slate-200 bg-white p-6 shadow-sm">
+              <m.div
+                {...slideInUpSmall}
+                transition={{ duration: 0.5, delay: 0.5 }}
+                className="rounded-3xl border border-dashed border-slate-200 bg-white p-6 shadow-sm"
+              >
                 <h4 className="text-lg font-semibold text-slate-900">
                   {t("excursion.sidebar.ctaTitle")}
                 </h4>
@@ -286,8 +310,8 @@ function ExcursionLayout({
                     <p className="">{t("excursion.sidebar.ctaPoint03")}</p>
                   </li>
                 </ul>
-              </div>
-            </aside>
+              </m.div>
+            </m.aside>
           </div>
         </section>
         <BookingForm

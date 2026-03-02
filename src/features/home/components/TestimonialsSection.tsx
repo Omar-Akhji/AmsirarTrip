@@ -19,7 +19,7 @@ const TestimonialsSection = () => {
     >
       <div className="mx-auto max-w-330 px-4">
         <div className="mx-auto mb-8 max-w-4xl text-center">
-          <p className="inline-flex items-center justify-center rounded-full border border-orange-400 bg-orange-500/10 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
+          <p className="inline-flex items-center justify-center rounded-full border-2 border-orange-400 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
             {t("testimonials.smTitle")}
           </p>
           <h2 className="mt-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]">

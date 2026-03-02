@@ -1,11 +1,17 @@
 import { Link } from "@/i18n/routing";
 import { useTranslation } from "@/lib/hooks/useTranslation";
+import { m } from "motion/react";
+import { fadeIn } from "@/lib/constants/animations";
 
 export function FooterBottomBar() {
   const { t } = useTranslation();
 
   return (
-    <div className="border-t border-white/5 bg-black/20">
+    <m.div
+      {...fadeIn}
+      transition={{ duration: 0.5, delay: 0.4 }}
+      className="border-t border-white/5 bg-black/20"
+    >
       <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           {/* Copyright Notice */}
@@ -50,6 +56,6 @@ export function FooterBottomBar() {
           </nav>
         </div>
       </div>
-    </div>
+    </m.div>
   );
 }

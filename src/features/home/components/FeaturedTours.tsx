@@ -66,7 +66,7 @@ const FeaturedTours = () => {
       ></div>
       <div className="relative z-10 mx-auto max-w-7xl px-4">
         <div className="mx-auto mb-16 max-w-4xl text-center">
-          <p className="inline-flex items-center justify-center rounded-full border border-orange-400 bg-orange-500/10 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
+          <p className="inline-flex items-center justify-center rounded-full border-2 border-orange-400 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
             {t("featured.smTitle")}
           </p>
           <h2

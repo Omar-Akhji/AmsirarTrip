@@ -5,6 +5,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { byPrefixAndName } from "@/lib/fontawesome";
 import { X, Mail, User, Loader2 } from "lucide-react";
+import { m } from "motion/react";
+import { fadeInUp } from "@/lib/constants/animations";
 
 /**
  * Submit newsletter subscription with name, email, and reCAPTCHA v2 token.
@@ -241,7 +243,11 @@ export function FooterNewsletter() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <div className="md:col-span-2 lg:col-span-1">
+    <m.div
+      {...fadeInUp}
+      transition={{ duration: 0.5, delay: 0.3 }}
+      className="md:col-span-2 lg:col-span-1"
+    >
       <h3 className="mb-2 text-sm font-semibold tracking-wider text-white uppercase">
         {t("footer.newsletter")}
       </h3>
@@ -268,7 +274,7 @@ export function FooterNewsletter() {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />
-    </div>
+    </m.div>
   );
 }
 

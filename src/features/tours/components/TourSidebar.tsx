@@ -2,6 +2,8 @@
 
 import React from "react";
 import { useTranslations } from "next-intl";
+import { m } from "motion/react";
+import { fadeInUp, slideInUpSmall } from "@/lib/constants/animations";
 
 interface TransProps {
   i18nKey: string;
@@ -18,12 +20,24 @@ const Trans = ({ i18nKey, components, children }: TransProps) => {
   return <>{children || t(i18nKey)}</>;
 };
 
-export default function TourSidebar({ sidebarItems }: { sidebarItems: string[] }) {
+export default function TourSidebar({
+  sidebarItems,
+}: {
+  sidebarItems: string[];
+}) {
   const t = useTranslations();
 
   return (
-    <aside className="space-y-6 self-start lg:sticky lg:top-24">
-      <div className="overflow-hidden rounded-3xl bg-slate-900 text-white shadow-xl">
+    <m.aside
+      {...fadeInUp}
+      transition={{ duration: 0.6, delay: 0.3 }}
+      className="space-y-6 self-start lg:sticky lg:top-24"
+    >
+      <m.div
+        {...slideInUpSmall}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="overflow-hidden rounded-3xl bg-slate-900 text-white shadow-xl"
+      >
         <div className="p-8">
           <p className="text-center text-xs tracking-[0.45em] text-orange-300 uppercase">
             {t("tours.sidebar.title")}
@@ -49,24 +63,32 @@ export default function TourSidebar({ sidebarItems }: { sidebarItems: string[] }
           </p>
           <ul className="mt-4 grid gap-3 text-sm text-slate-100">
             {sidebarItems.map((item, idx) => (
-              <li
+              <m.li
                 key={item}
+                initial={{ opacity: 0, x: -15 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.5 + idx * 0.08 }}
                 className="grid grid-cols-[40px_1fr] items-center gap-3"
               >
                 <span className="inline-flex size-5 items-center justify-center justify-self-end rounded-full bg-orange-500 text-xs font-semibold text-white">
                   {idx + 1}
                 </span>
                 <p className="text-sm leading-relaxed">{item}</p>
-              </li>
+              </m.li>
             ))}
           </ul>
           <p className="mt-4 text-sm text-slate-200">
             {t("tours.sidebar.conclusion")}
           </p>
         </div>
-      </div>
+      </m.div>
 
-      <div className="rounded-3xl border border-dashed border-slate-200 bg-white p-6 shadow-sm">
+      <m.div
+        {...slideInUpSmall}
+        transition={{ duration: 0.5, delay: 0.5 }}
+        className="rounded-3xl border border-dashed border-slate-200 bg-white p-6 shadow-sm"
+      >
         <h4 className="text-lg font-semibold text-slate-900">
           {t("tours.sidebar.ctaTitle")}
         </h4>
@@ -87,7 +109,7 @@ export default function TourSidebar({ sidebarItems }: { sidebarItems: string[] }
             <p className="">{t("tours.sidebar.ctaPoint03")}</p>
           </li>
         </ul>
-      </div>
-    </aside>
+      </m.div>
+    </m.aside>
   );
 }

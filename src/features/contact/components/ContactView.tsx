@@ -124,7 +124,7 @@ export default function ContactView() {
       >
         <div className="mx-auto max-w-7xl px-4 pt-16">
           <div className="section-header text-center">
-            <p className="inline-flex items-center justify-center rounded-full border border-orange-400 bg-orange-500/10 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
+            <p className="inline-flex items-center justify-center rounded-full border-2 border-orange-400 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
               {t("contact.form.badge", "Plan with locals")}
             </p>
             <h2
@@ -146,7 +146,7 @@ export default function ContactView() {
       >
         <div className="mx-auto max-w-7xl px-4">
           <div className="mb-12 p-7 text-center tracking-[0.025em] uppercase">
-            <p className="inline-flex items-center justify-center rounded-full border border-orange-400 bg-orange-500/10 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
+            <p className="inline-flex items-center justify-center rounded-full border-2 border-orange-400 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
               {t("contact.location.smTitle")}
             </p>
             <h2

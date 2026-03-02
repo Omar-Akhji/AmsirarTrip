@@ -56,3 +56,23 @@ export const slideInRightLarge = {
   viewport: ANIMATION_VIEWPORT_SETTINGS,
   transition: { duration: 0.6 },
 };
+
+/**
+ * Simple fade in - good for section wrappers and containers
+ */
+export const fadeIn = {
+  initial: { opacity: 0 },
+  whileInView: { opacity: 1 },
+  viewport: ANIMATION_VIEWPORT_SETTINGS,
+  transition: { duration: 0.5 },
+};
+
+/**
+ * Slide in from bottom (subtle) - good for sidebar cards and smaller blocks
+ */
+export const slideInUpSmall = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: ANIMATION_VIEWPORT_SETTINGS,
+  transition: { duration: 0.4 },
+};

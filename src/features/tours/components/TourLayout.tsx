@@ -3,8 +3,10 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
+import { m } from "motion/react";
 import { TOURS_DATA } from "../data";
 import { Clock, MapPin } from "lucide-react";
+import { fadeInUp, fadeInScale, fadeIn } from "@/lib/constants/animations";
 
 import { PageHeader } from "@/shared/layout/PageHeader";
 import TourSidebar from "./TourSidebar";
@@ -38,8 +40,6 @@ interface TourLayoutProps {
   bookingId: number;
   imageSrc: string;
 }
-
-
 
 const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
   const t = useTranslations();
@@ -156,8 +156,14 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
           aria-labelledby="tour-title"
         >
           <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[4fr_2fr]">
-            <article className="rounded-[20px] bg-white p-4 pb-8 shadow-sm ring-1 ring-slate-100 sm:p-6 sm:pb-12">
-              <figure className="relative mb-8 aspect-4/3 w-full overflow-hidden rounded-[20px] border border-slate-50 shadow-md">
+            <m.article
+              {...fadeIn}
+              className="rounded-[20px] bg-white p-4 pb-8 shadow-sm ring-1 ring-slate-100 sm:p-6 sm:pb-12"
+            >
+              <m.figure
+                {...fadeInScale}
+                className="relative mb-8 aspect-4/3 w-full overflow-hidden rounded-[20px] border border-slate-50 shadow-md"
+              >
                 <Image
                   className="object-cover"
                   src={imageSrc}
@@ -166,9 +172,9 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                   priority
                   sizes="(max-width: 1024px) 100vw, 66vw"
                 />
-              </figure>
+              </m.figure>
 
-              <div className="mb-6 text-center">
+              <m.div {...fadeInUp} className="mb-6 text-center">
                 <div className="mx-auto inline-block">
                   <span
                     className="mb-3 hidden h-1 w-16 rounded-full bg-amber-300 sm:block"
@@ -181,7 +187,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                     {title}
                   </h2>
                 </div>
-              </div>
+              </m.div>
 
               <div className="space-y-8">
                 <div className="grid gap-4 sm:grid-cols-2">
@@ -216,17 +222,17 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                   </div>
                 </div>
 
-                <>
+                <m.div {...fadeInUp} transition={{ duration: 0.5, delay: 0.1 }}>
                   <h2 className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
                     {t("tours.overview")}
                   </h2>
                   <p className="text-sm leading-relaxed whitespace-pre-line text-gray-700 sm:text-base">
                     {overview}
                   </p>
-                </>
+                </m.div>
 
                 {/* Itinerary */}
-                <>
+                <m.div {...fadeInUp} transition={{ duration: 0.5, delay: 0.2 }}>
                   <h2 className="mb-8 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
                     {t("tours.itinerary")}
                   </h2>
@@ -237,7 +243,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                     activitiesLabel={activitiesLabel}
                     arrivalLabel={arrivalLabel}
                   />
-                </>
+                </m.div>
 
                 {/* Info Sections */}
                 <TourInfo
@@ -249,7 +255,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                   goodToKnowTitle={t("tours.goodToKnow")}
                 />
               </div>
-            </article>
+            </m.article>
 
             <TourSidebar sidebarItems={sidebarItems} />
           </div>

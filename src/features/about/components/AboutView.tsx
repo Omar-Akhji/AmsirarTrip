@@ -82,7 +82,7 @@ export default function AboutView() {
           ></div>
           <div className="relative z-10 mx-auto max-w-7xl px-4">
             <div className="mx-auto mb-16 max-w-4xl text-center">
-              <p className="inline-flex items-center justify-center rounded-full border border-orange-400 bg-orange-500/10 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
+              <p className="inline-flex items-center justify-center rounded-full border-2 border-orange-400 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
                 {t("about.smTitle")}
               </p>
               <h2
@@ -172,7 +172,7 @@ export default function AboutView() {
 
           <div className="relative z-10 mx-auto w-full max-w-6xl px-4">
             <div className="mx-auto max-w-3xl text-center">
-              <p className="inline-flex items-center justify-center rounded-full border border-white/20 px-5 py-2 text-sm font-semibold tracking-[0.45em] text-orange-200 uppercase">
+              <p className="inline-flex items-center justify-center rounded-full border-2 border-white bg-orange-600 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-white uppercase sm:tracking-[0.3em]">
                 {t("about.facts.smTitle")}
               </p>
               <h2

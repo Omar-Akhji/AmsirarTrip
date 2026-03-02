@@ -41,7 +41,7 @@ export default function HomeStats() {
     <section className="py-12" aria-labelledby="home-highlights">
       <div className="mx-auto max-w-7xl px-4">
         <div className="mx-auto mb-10 max-w-3xl text-center">
-          <p className="text-sm font-semibold tracking-[0.45em] text-orange-500 uppercase">
+          <p className="inline-flex items-center justify-center rounded-full border-2 border-white bg-orange-600 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-white uppercase">
             {t("about.smTitle")}
           </p>
           <h2

@@ -1,6 +1,8 @@
 "use client";
 
 import { Check } from "lucide-react";
+import { m } from "motion/react";
+import { fadeInUp } from "@/lib/constants/animations";
 
 interface TourInfoProps {
   includes: string;
@@ -23,71 +25,92 @@ export default function TourInfo({
     <>
       {/* Includes */}
       {includes && (
-        <div>
+        <m.div {...fadeInUp}>
           <h2 className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
             {includedTitle}
           </h2>
           <div className="rounded-lg border border-green-200 bg-green-50 p-6">
             <ul className="space-y-2">
-              {includes.split("\n").map((item: string) => (
-                <li key={item} className="flex items-start gap-3">
+              {includes.split("\n").map((item: string, idx: number) => (
+                <m.li
+                  key={item}
+                  initial={{ opacity: 0, x: -15 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: idx * 0.05 }}
+                  className="flex items-start gap-3"
+                >
                   <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-green-500 text-xs text-white">
                     <Check className="size-3" aria-hidden />
                   </span>
                   <span className="flex-1 text-left text-sm text-gray-700 sm:text-base">
                     {item}
                   </span>
-                </li>
+                </m.li>
               ))}
             </ul>
           </div>
-        </div>
+        </m.div>
       )}
 
       {/* Excludes */}
       {excludes && (
-        <div>
+        <m.div {...fadeInUp} transition={{ duration: 0.5, delay: 0.1 }}>
           <h2 className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
             {excludedTitle}
           </h2>
           <div className="rounded-lg border border-red-200 bg-red-50 p-6">
             <ul className="space-y-2">
-              {excludes.split("\n").map((item: string) => (
-                <li key={item} className="flex items-start gap-3">
+              {excludes.split("\n").map((item: string, idx: number) => (
+                <m.li
+                  key={item}
+                  initial={{ opacity: 0, x: -15 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: idx * 0.05 }}
+                  className="flex items-start gap-3"
+                >
                   <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-red-500 text-xs text-white">
                     ✕
                   </span>
                   <span className="flex-1 text-left text-sm text-gray-700 sm:text-base">
                     {item}
                   </span>
-                </li>
+                </m.li>
               ))}
             </ul>
           </div>
-        </div>
+        </m.div>
       )}
 
       {/* Good to Know */}
       {goodToKnow && (
-        <div>
+        <m.div {...fadeInUp} transition={{ duration: 0.5, delay: 0.2 }}>
           <h2 className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
             {goodToKnowTitle}
           </h2>
           <div className="rounded-lg border border-blue-200 bg-blue-50 p-6">
             <ul className="space-y-2">
-              {goodToKnow.split("\n").map((item: string) => (
-                <li key={item} className="flex items-start gap-3">
+              {goodToKnow.split("\n").map((item: string, idx: number) => (
+                <m.li
+                  key={item}
+                  initial={{ opacity: 0, x: -15 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.3, delay: idx * 0.05 }}
+                  className="flex items-start gap-3"
+                >
                   <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-blue-500 text-xs font-bold text-white">
                     i
                   </span>
                   <span className="flex-1 text-left text-sm text-gray-700 sm:text-base">
                     {item}
                   </span>
-                </li>
+                </m.li>
               ))}
             </ul>
           </div>
-        </div>
+        </m.div>
       )}
     </>
   );
