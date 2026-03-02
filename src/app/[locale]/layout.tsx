@@ -20,8 +20,6 @@ import { ReactNode } from "react";
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
 import { config } from "@fortawesome/fontawesome-svg-core";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/react";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "../globals.css";
 
@@ -232,8 +230,6 @@ export default async function LocaleLayout({
               <main>{children}</main>
               <Footer />
               <WhatsAppButton />
-              <SpeedInsights />
-              <Analytics />
             </AnimationProvider>
           </ErrorBoundary>
         </NextIntlClientProvider>
