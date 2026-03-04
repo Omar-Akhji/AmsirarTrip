@@ -5,10 +5,9 @@
   "type": "module",
   "packageManager": "pnpm@10.30.3",
   "browserslist": [
-    "chrome >= 92",
-    "edge >= 92",
-    "firefox >= 90",
-    "safari >= 15.4"
+    ">0.3%",
+    "not dead",
+    "not op_mini all"
   ],
   "scripts": {
     "dev": "next dev",
