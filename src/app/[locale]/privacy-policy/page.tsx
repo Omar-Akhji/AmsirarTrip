@@ -1,7 +1,13 @@
+import dynamic from "next/dynamic";
 import { getTranslations } from "next-intl/server";
-import { PrivacyPolicyView } from "@/features/legal";
 import { generateSEOMetadata } from "@/lib/metadata";
 import { Metadata } from "next";
+
+const PrivacyPolicyView = dynamic(() =>
+  import("@/features/legal").then((mod) => ({
+    default: mod.PrivacyPolicyView,
+  }))
+);
 
 export async function generateMetadata({
   params,

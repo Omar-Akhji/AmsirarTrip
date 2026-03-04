@@ -9,16 +9,14 @@ import { Clock, MapPin } from "lucide-react";
 import { fadeInUp, fadeInScale, fadeIn } from "@/lib/constants/animations";
 
 import { PageHeader } from "@/shared/layout/PageHeader";
-import TourSidebar from "./TourSidebar";
-import TourItinerary from "./TourItinerary";
-import TourInfo from "./TourInfo";
+
+const TourSidebar = dynamic(() => import("./TourSidebar"));
+const TourItinerary = dynamic(() => import("./TourItinerary"));
+const TourInfo = dynamic(() => import("./TourInfo"));
 
 const BookingForm = dynamic(
   () => import("@/features/booking/components/BookingForm"),
-  {
-    ssr: false,
-    loading: () => <div>Loading booking form...</div>,
-  }
+  { ssr: false }
 );
 
 // Define interfaces

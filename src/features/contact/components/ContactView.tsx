@@ -19,10 +19,7 @@ import {
 
 const ContactForm = dynamic(
   () => import("@/features/contact/components/ContactForm"),
-  {
-    ssr: false,
-    loading: () => <div>Loading contact form...</div>,
-  }
+  { ssr: false }
 );
 
 export default function ContactView() {

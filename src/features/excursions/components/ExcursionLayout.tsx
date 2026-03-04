@@ -31,10 +31,7 @@ const Trans = ({ i18nKey, components, children }: TransProps) => {
 
 const BookingForm = dynamic(
   () => import("@/features/booking/components/BookingForm"),
-  {
-    ssr: false,
-    loading: () => <div>Loading booking form...</div>,
-  }
+  { ssr: false }
 );
 
 const CheckIcon = () => (

@@ -1,7 +1,9 @@
+import dynamic from "next/dynamic";
 import { getTranslations } from "next-intl/server";
-import AboutView from "@/features/about/components/AboutView";
 import { generateSEOMetadata } from "@/lib/metadata";
 import { Metadata } from "next";
+
+const AboutView = dynamic(() => import("@/features/about/components/AboutView"));
 
 export async function generateMetadata({
   params,
