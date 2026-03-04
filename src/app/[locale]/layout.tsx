@@ -30,6 +30,8 @@ const montserrat = localFont({
   src: "../../../public/fonts/Montserrat-VariableFont_wght.ttf",
   variable: "--font-montserrat",
   display: "swap",
+  fallback: ["Arial", "sans-serif"],
+  adjustFontFallback: "Arial",
   weight: "100 900", // Variable font supports all weights
 });
 
@@ -37,12 +39,16 @@ const storyScript = localFont({
   src: "../../../public/fonts/StoryScript-Regular.ttf",
   variable: "--font-fancy",
   display: "swap",
+  fallback: ["cursive"],
+  adjustFontFallback: "Times New Roman",
 });
 
 const yellowtail = localFont({
   src: "../../../public/fonts/Yellowtail-Regular.ttf",
   variable: "--font-yellowtail",
   display: "swap",
+  fallback: ["cursive"],
+  adjustFontFallback: "Times New Roman",
 });
 
 export const metadata: Metadata = {
