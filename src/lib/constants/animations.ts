@@ -14,7 +14,7 @@
  */
 const ANIMATION_VIEWPORT_SETTINGS = {
   once: true,
-  amount: 0.2,
+  amount: 0.05,
 };
 
 /**

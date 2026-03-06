@@ -70,7 +70,7 @@ const ContactForm = () => {
           <m.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.05 }}
             transition={{ duration: 0.6 }}
             className="overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-orange-100 lg:col-span-3"
           >
@@ -201,7 +201,7 @@ const ContactForm = () => {
           <m.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.05 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="flex flex-col justify-between rounded-3xl bg-slate-900 p-8 text-white lg:col-span-2"
           >

@@ -48,7 +48,7 @@ export default function TourItinerary({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{
             once: true,
-            amount: 0.2,
+            amount: 0.05,
             margin: "-50px",
           }}
           transition={{ duration: 0.5, delay: idx * 0.1 }}
