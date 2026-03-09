@@ -352,6 +352,7 @@
       "submit": "Nachricht senden",
       "cta": "Nachricht senden",
       "sending": "Wird gesendet…",
+      "captchaPlaceholder": "reCAPTCHA erscheint, wenn Sie mit dem Ausfüllen beginnen",
       "success": "Nachricht gesendet! Wir antworten innerhalb von 24 Stunden.",
       "errors": {
         "title": "Bitte füllen Sie diese Felder aus:",

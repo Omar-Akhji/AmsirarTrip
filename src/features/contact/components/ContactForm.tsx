@@ -170,7 +170,6 @@ const ContactForm = () => {
                             sitekey={RECAPTCHA_V2_SITE_KEY}
                             onChange={(token) => setCaptchaToken(token || "")}
                           />
-                          {/* Hidden input to pass token to FormData */}
                           <input
                             type="hidden"
                             name="recaptchaToken"

@@ -344,6 +344,7 @@
       "subtitle": "Share a few details and we will craft a bespoke itinerary for you.",
       "cta": "Send message",
       "sending": "Sending…",
+      "captchaPlaceholder": "reCAPTCHA will appear when you start filling the form",
       "success": "Message sent! We will reply within 24 hours.",
       "errors": {
         "title": "Please complete these fields:",

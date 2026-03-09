@@ -167,7 +167,7 @@ export default function ContactView() {
               referrerPolicy="no-referrer-when-downgrade"
               title="Amsirar Trip Agency Location - Marrakech, Morocco"
               aria-label="Interactive map showing Amsirar Trip agency location in Marrakech"
-            ></iframe>
+            />
           </m.div>
         </div>
       </section>
