@@ -1,242 +1,15 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import { useState } from "react";
+import dynamic from "next/dynamic";
 import { useTranslation } from "@/lib/hooks/useTranslation";
-import { RECAPTCHA_V2_SITE_KEY, hasRecaptchaV2 } from "@/lib/client-env";
-import ReCAPTCHA from "react-google-recaptcha";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { byPrefixAndName } from "@/lib/fontawesome";
-import { X, Mail, User, Loader2 } from "lucide-react";
+import { Mail } from "lucide-react";
 import { m } from "motion/react";
 import { fadeInUp } from "@/lib/constants/animations";
 
-/**
- * Submit newsletter subscription with name, email, and reCAPTCHA v2 token.
- */
-async function submitNewsletter(
-  name: string,
-  email: string,
-  recaptchaToken: string
-): Promise<{ ok: boolean; statusKey: string }> {
-  const response = await fetch("/api/newsletter", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, email, recaptchaToken }),
-  }).catch(() => null);
-
-  if (!response) return { ok: false, statusKey: "footer.newsletterNetwork" };
-
-  const data = await response.json().catch(() => ({ ok: false }));
-  if (data.ok) return { ok: true, statusKey: "footer.newsletterSuccess" };
-  return { ok: false, statusKey: "footer.newsletterFailure" };
-}
-
-/* ─── Newsletter Modal Dialog ─── */
-
-function NewsletterModal({
-  isOpen,
-  onClose,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-}) {
-  const { t } = useTranslation();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [statusKey, setStatusKey] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const dialogRef = useRef<HTMLDialogElement>(null);
-
-  // Sync native <dialog> open state
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-    if (isOpen && !dialog.open) {
-      dialog.showModal();
-    } else if (!isOpen && dialog.open) {
-      dialog.close();
-    }
-  }, [isOpen]);
-
-  // Close on backdrop click
-  const handleBackdropClick = (e: React.MouseEvent<HTMLDialogElement>) => {
-    if (e.target === dialogRef.current) {
-      onClose();
-    }
-  };
-
-  // Close on Escape (native dialog handles this, but we need to sync state)
-  useEffect(() => {
-    const dialog = dialogRef.current;
-    if (!dialog) return;
-    const handleCancel = () => onClose();
-    dialog.addEventListener("cancel", handleCancel);
-    return () => dialog.removeEventListener("cancel", handleCancel);
-  }, [onClose]);
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!name.trim() || !email.trim() || isSubmitting) return;
-
-    const recaptchaToken = recaptchaRef.current?.getValue() || "";
-    if (!recaptchaToken) {
-      setStatusKey("footer.newsletterCaptchaError");
-      return;
-    }
-
-    setIsSubmitting(true);
-    const result = await submitNewsletter(name, email, recaptchaToken);
-
-    if (result.ok) {
-      setName("");
-      setEmail("");
-      recaptchaRef.current?.reset();
-      setTimeout(() => onClose(), 2000);
-    }
-    setStatusKey(result.statusKey);
-    setIsSubmitting(false);
-  };
-
-  if (!isOpen) return null;
-
-  return (
-    <dialog
-      ref={dialogRef}
-      onClick={handleBackdropClick}
-      onKeyDown={(e) => {
-        if (e.key === "Escape") onClose();
-      }}
-      className="fixed inset-0 z-50 m-auto w-[95vw] max-w-md overflow-visible rounded-3xl border border-gray-200 bg-white p-0 text-gray-900 shadow-2xl backdrop:bg-black/50 backdrop:backdrop-blur-sm open:flex open:flex-col"
-    >
-      <div className="p-6 sm:p-8">
-        {/* Header */}
-        <div className="mb-6 flex items-start justify-between">
-          <div>
-            <h2 className="text-xl font-bold text-gray-900">
-              {t("footer.newsletter")}
-            </h2>
-            <p className="mt-1.5 text-sm leading-relaxed text-gray-500">
-              {t("footer.newsletterDescription")}
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label={t("footer.newsletterCloseAria")}
-            className="-mt-1 -mr-1 flex size-9 items-center justify-center rounded-full text-gray-400 transition-colors hover:bg-gray-100 hover:text-gray-600"
-          >
-            <X className="size-5" />
-          </button>
-        </div>
-
-        {/* Form */}
-        <form onSubmit={handleSubmit} aria-label={t("footer.newsletterAria")}>
-          <div className="space-y-4">
-            {/* Name */}
-            <div>
-              <label
-                htmlFor="newsletter-name"
-                className="mb-1.5 block text-sm font-medium text-gray-700"
-              >
-                {t("footer.newsletterNameLabel")}
-              </label>
-              <div className="relative">
-                <User className="absolute top-1/2 left-3.5 size-4 -translate-y-1/2 text-gray-400" />
-                <input
-                  id="newsletter-name"
-                  type="text"
-                  name="name"
-                  placeholder={t("footer.newsletterNamePlaceholder")}
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                  required
-                  minLength={2}
-                  autoComplete="name"
-                  className="h-11 w-full rounded-full border border-gray-200 bg-gray-50 pr-4 pl-10 text-sm text-gray-900 transition-all duration-200 placeholder:text-gray-400 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
-                />
-              </div>
-            </div>
-
-            {/* Email */}
-            <div>
-              <label
-                htmlFor="newsletter-email"
-                className="mb-1.5 block text-sm font-medium text-gray-700"
-              >
-                {t("footer.newsletterInputAria")}
-              </label>
-              <div className="relative">
-                <Mail className="absolute top-1/2 left-3.5 size-4 -translate-y-1/2 text-gray-400" />
-                <input
-                  id="newsletter-email"
-                  type="email"
-                  name="email"
-                  placeholder={t("footer.newsletterPlaceholder")}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  autoComplete="email"
-                  className="h-11 w-full rounded-full border border-gray-200 bg-gray-50 pr-4 pl-10 text-sm text-gray-900 transition-all duration-200 placeholder:text-gray-400 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
-                />
-              </div>
-            </div>
-
-            {/* reCAPTCHA v2 — wrapped like BookingForm */}
-            <div className="flex justify-center pt-1">
-              <div
-                className={`origin-center scale-[0.85] rounded-2xl border border-dashed p-3 sm:scale-100 ${
-                  statusKey.includes("Captcha")
-                    ? "border-red-300"
-                    : "border-gray-200"
-                }`}
-              >
-                {hasRecaptchaV2 ? (
-                  <ReCAPTCHA
-                    ref={recaptchaRef}
-                    sitekey={RECAPTCHA_V2_SITE_KEY}
-                    theme="light"
-                    size="normal"
-                  />
-                ) : (
-                  <div className="rounded-lg bg-amber-50 p-2 text-sm text-amber-600">
-                    reCAPTCHA not configured
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-
-          {/* Status message */}
-          {statusKey && (
-            <p
-              className={`mt-4 text-center text-sm font-medium ${
-                statusKey.includes("Success")
-                  ? "text-emerald-600"
-                  : "text-red-500"
-              }`}
-            >
-              {t(statusKey)}
-            </p>
-          )}
-
-          {/* Submit */}
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            className="from-orange mt-5 flex h-11 w-full items-center justify-center gap-2 rounded-full bg-linear-to-r to-amber-500 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-orange-500/30 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
-          >
-            {isSubmitting ? (
-              <Loader2 className="size-4 animate-spin" />
-            ) : (
-              t("footer.newsletterSubscribe")
-            )}
-          </button>
-        </form>
-      </div>
-    </dialog>
-  );
-}
+const NewsletterModal = dynamic(() => import("./NewsletterModal"), {
+  ssr: false,
+});
 
 /* ─── Footer Newsletter Section ─── */
 
@@ -291,11 +64,17 @@ function FooterSocialLinks() {
             href="https://www.facebook.com/profile.php?id=61571322141368"
             aria-label={t("footer.social.facebook")}
             className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <FontAwesomeIcon
-              icon={byPrefixAndName.fab["facebook-f"]}
-              className="text-dark-grey text-base sm:text-lg"
-            />
+            <svg
+              viewBox="0 0 320 512"
+              className="text-dark-grey size-4 sm:size-[1.125rem]"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M80 299.3V512H196V299.3h86.5l18-97.8H196V166.9c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4.4 37 1.2V7.9C291.4 4 256.4 0 236.2 0C129.3 0 80 50.5 80 159.4v42.1H14v97.8H80z" />
+            </svg>
           </a>
         </li>
         <li>
@@ -303,11 +82,17 @@ function FooterSocialLinks() {
             href="https://x.com/AmsirarTravel"
             aria-label={t("footer.social.twitter")}
             className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <FontAwesomeIcon
-              icon={byPrefixAndName.fab["x-twitter"]}
-              className="text-dark-grey text-base sm:text-lg"
-            />
+            <svg
+              viewBox="0 0 512 512"
+              className="text-dark-grey size-4 sm:size-[1.125rem]"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z" />
+            </svg>
           </a>
         </li>
         <li>
@@ -315,11 +100,17 @@ function FooterSocialLinks() {
             href="https://www.instagram.com/amsirar.trip?igsh=ZDlxanNsbTA5M2Zi"
             aria-label={t("footer.social.instagram")}
             className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <FontAwesomeIcon
-              icon={byPrefixAndName.fab.instagram}
-              className="text-dark-grey text-base sm:text-lg"
-            />
+            <svg
+              viewBox="0 0 448 512"
+              className="text-dark-grey size-4 sm:size-[1.125rem]"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z" />
+            </svg>
           </a>
         </li>
         <li>
@@ -327,11 +118,17 @@ function FooterSocialLinks() {
             href="https://www.tiktok.com/@amsirartrip"
             aria-label={t("footer.social.tiktok")}
             className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <FontAwesomeIcon
-              icon={byPrefixAndName.fab.tiktok}
-              className="text-dark-grey text-base sm:text-lg"
-            />
+            <svg
+              viewBox="0 0 448 512"
+              className="text-dark-grey size-4 sm:size-[1.125rem]"
+              fill="currentColor"
+              aria-hidden="true"
+            >
+              <path d="M448 209.9a210.1 210.1 0 0 1-122.8-39.3V349.4A162.6 162.6 0 1 1 185 188.3V278.2a74.6 74.6 0 1 0 52.2 71.2V0l88 0a121.2 121.2 0 0 0 1.9 22.2h0A122.2 122.2 0 0 0 381 102.4a121.4 121.4 0 0 0 67 20.1z" />
+            </svg>
           </a>
         </li>
       </ul>

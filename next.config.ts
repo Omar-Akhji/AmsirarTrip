@@ -60,9 +60,6 @@ const nextConfig: NextConfig = {
       "@radix-ui/react-slot",
       "motion",
       "next-intl",
-      "@fortawesome/fontawesome-svg-core",
-      "@fortawesome/free-brands-svg-icons",
-      "@fortawesome/react-fontawesome",
     ],
     // Enable router caching for faster navigation
     staleTimes: {

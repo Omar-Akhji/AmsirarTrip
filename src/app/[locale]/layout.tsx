@@ -21,11 +21,7 @@ import { routing } from "@/i18n/routing";
 import { ReactNode } from "react";
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import { config } from "@fortawesome/fontawesome-svg-core";
-import "@fortawesome/fontawesome-svg-core/styles.css";
 import "../globals.css";
-
-config.autoAddCss = false;
 
 // Local fonts for better performance (no external network requests)
 const montserrat = localFont({
