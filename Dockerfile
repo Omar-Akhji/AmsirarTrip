@@ -1,4 +1,4 @@
-FROM node:24.13.1-alpine AS base
+FROM node:24.14.0-alpine AS base
 
 # Install pnpm via corepack
 RUN corepack enable pnpm && corepack prepare pnpm@latest --activate
