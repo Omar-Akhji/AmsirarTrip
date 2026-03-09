@@ -1,5 +1,3 @@
-"use client";
-
 import { LegalPageLayout } from "./LegalPageLayout";
 import { TERMS_OF_SERVICE_CONFIG } from "../data/legalConfig";
 

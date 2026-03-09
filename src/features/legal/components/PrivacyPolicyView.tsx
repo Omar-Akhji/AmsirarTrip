@@ -1,5 +1,3 @@
-"use client";
-
 import { LegalPageLayout } from "./LegalPageLayout";
 import { PRIVACY_POLICY_CONFIG } from "../data/legalConfig";
 

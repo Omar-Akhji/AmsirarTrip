@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useRef, useEffect } from "react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { RECAPTCHA_V2_SITE_KEY, hasRecaptchaV2 } from "@/lib/client-env";

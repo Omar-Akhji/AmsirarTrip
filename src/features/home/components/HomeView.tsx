@@ -1,5 +1,3 @@
-"use client";
-
 import HomeHero from "./HomeHero";
 import HomeStats from "./HomeStats";
 

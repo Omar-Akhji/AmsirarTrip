@@ -1,6 +1,5 @@
 import dynamic from "next/dynamic";
 import { Navbar, Loader } from "@/shared/layout";
-import NavigationProgress from "@/shared/layout/NavigationProgress";
 import { AnimationProvider } from "@/shared/providers/AnimationProvider";
 import { ErrorBoundary } from "@/shared/utilities/ErrorBoundary";
 import { JsonLd } from "@/shared/ui/JsonLd";
@@ -9,7 +8,10 @@ import {
   generateWebSiteJsonLd,
 } from "@/lib/structuredData";
 
-// Lazy load below-fold components to reduce initial bundle size
+// Lazy load below-fold and non-critical components to reduce initial bundle size
+const NavigationProgress = dynamic(
+  () => import("@/shared/layout/NavigationProgress")
+);
 const Footer = dynamic(() => import("@/shared/layout/Footer"));
 const WhatsAppButton = dynamic(() => import("@/shared/ui/WhatsAppButton"));
 import { NextIntlClientProvider } from "next-intl";

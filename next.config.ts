@@ -1,6 +1,11 @@
 import type { NextConfig } from "next";
+import withBundleAnalyzer from "@next/bundle-analyzer";
 import createNextIntlPlugin from "next-intl/plugin";
 import { getSecurityHeaders } from "./src/lib/security-headers";
+
+const analyzeBuild = withBundleAnalyzer({
+  enabled: process.env.ANALYZE === "true",
+});
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
@@ -68,4 +73,4 @@ const nextConfig: NextConfig = {
   output: "standalone",
 };
 
-export default withNextIntl(nextConfig);
+export default analyzeBuild(withNextIntl(nextConfig));

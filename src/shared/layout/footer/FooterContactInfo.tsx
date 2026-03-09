@@ -1,3 +1,5 @@
+"use client";
+
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { MapPin, Mail, Smartphone, Phone } from "lucide-react";
 import { m } from "motion/react";

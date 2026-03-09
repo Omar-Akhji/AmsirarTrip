@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { SOCIAL_LINKS } from "./constants";
@@ -10,7 +8,11 @@ interface SocialLinksProps {
   scrolled?: boolean;
 }
 
-export function SocialLinks({ className = "", compact = false, scrolled = false }: SocialLinksProps) {
+export function SocialLinks({
+  className = "",
+  compact = false,
+  scrolled = false,
+}: SocialLinksProps) {
   const size = compact ? "sm" : "md";
   const iconSize = compact ? 20 : 25;
 

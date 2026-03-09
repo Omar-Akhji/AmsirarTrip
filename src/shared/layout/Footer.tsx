@@ -1,7 +1,4 @@
-"use client";
-
-import { m } from "motion/react";
-import { fadeIn } from "@/lib/constants/animations";
+import { MotionFooter } from "./footer/MotionFooter";
 import { FooterBrand } from "./footer/FooterBrand";
 import { FooterContactInfo } from "./footer/FooterContactInfo";
 import { FooterNewsletter } from "./footer/FooterNewsletter";
@@ -9,11 +6,7 @@ import { FooterBottomBar } from "./footer/FooterBottomBar";
 
 export default function FooterTailwind() {
   return (
-    <m.footer
-      {...fadeIn}
-      className="border-orange relative z-10 mt-0 box-border w-full overflow-hidden border-t-4 bg-slate-950 pt-6 text-left leading-[1.6] text-white shadow-[0_-8px_32px_rgba(0,0,0,0.5)] ring-1 ring-white/5 sm:pt-8"
-      role="contentinfo"
-    >
+    <MotionFooter>
       {/* Subtle radial overlay for depth */}
       <div
         className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top,rgba(15,23,42,0.8)_0%,rgba(15,23,42,0.4)_55%,transparent_90%)]"
@@ -38,6 +31,6 @@ export default function FooterTailwind() {
 
         <FooterBottomBar />
       </div>
-    </m.footer>
+    </MotionFooter>
   );
 }
