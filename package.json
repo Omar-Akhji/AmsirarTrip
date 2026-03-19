@@ -47,7 +47,7 @@
     "@babel/plugin-transform-private-methods": "^7.28.6",
     "@eslint/eslintrc": "^3.3.5",
     "@eslint/js": "^10.0.1",
-    "@next/bundle-analyzer": "^16.1.6",
+    "@next/bundle-analyzer": "^16.2.0",
     "@tailwindcss/postcss": "4.2.1",
     "@types/node": "^25.3.5",
     "@types/nodemailer": "^7.0.11",
