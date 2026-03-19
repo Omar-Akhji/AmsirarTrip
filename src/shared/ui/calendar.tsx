@@ -62,13 +62,13 @@ export function EnhancedCalendar({
           <button
             type="button"
             onClick={() => navigateMonth("prev")}
-            className="flex h-8 w-8 items-center justify-center rounded-full text-orange-600 transition-colors hover:bg-orange-50 focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-none"
+            className="flex size-8 items-center justify-center rounded-full text-orange-600 transition-colors hover:bg-orange-50 focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-none"
           >
-            <ChevronLeft className="h-4 w-4" />
+            <ChevronLeft className="size-4" />
           </button>
 
           <div className="flex items-center gap-2">
-            <CalendarIcon className="h-4 w-4 text-orange-600" />
+            <CalendarIcon className="size-4 text-orange-600" />
             <span className="text-sm font-semibold text-gray-900">
               {currentMonth.toLocaleDateString("en-US", {
                 month: "long",
@@ -80,9 +80,9 @@ export function EnhancedCalendar({
           <button
             type="button"
             onClick={() => navigateMonth("next")}
-            className="flex h-8 w-8 items-center justify-center rounded-full text-orange-600 transition-colors hover:bg-orange-50 focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-none"
+            className="flex size-8 items-center justify-center rounded-full text-orange-600 transition-colors hover:bg-orange-50 focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-none"
           >
-            <ChevronRight className="h-4 w-4" />
+            <ChevronRight className="size-4" />
           </button>
         </div>
 
@@ -107,14 +107,14 @@ export function EnhancedCalendar({
             week: "flex w-full mt-1",
             day: "relative p-0 text-center group/day aspect-square flex items-center justify-center",
             day_button: cn(
-              "h-9 w-9 p-0 font-normal rounded-full text-sm transition-all duration-200",
+              "size-9 p-0 font-normal rounded-full text-sm transition-all duration-200",
               "hover:bg-orange-100 hover:text-orange-900",
               "focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-1",
               "aria-selected:bg-orange-600 aria-selected:text-white aria-selected:font-semibold",
               "disabled:opacity-30 disabled:cursor-not-allowed"
             ),
             today:
-              "relative after:content-[''] after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:w-1 after:h-1 after:rounded-full after:bg-orange-600",
+              "relative after:content-[''] after:absolute after:bottom-1 after:left-1/2 after:-translate-x-1/2 after:size-1 after:rounded-full after:bg-orange-600",
             outside: "text-muted-foreground/40",
             disabled: "text-muted-foreground/30",
             hidden: "invisible",
@@ -126,7 +126,7 @@ export function EnhancedCalendar({
           <div className="mt-4 border-t border-orange-100 pt-3">
             <div className="flex items-center gap-3 rounded-xl border border-orange-200/40 bg-linear-to-r from-orange-50 to-orange-100/50 px-4 py-2.5">
               <div className="shrink-0">
-                <div className="h-2 w-2 animate-pulse rounded-full bg-orange-600" />
+                <div className="size-2 animate-pulse rounded-full bg-orange-600" />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-xs font-medium text-gray-500">

@@ -181,8 +181,8 @@ export default function HomeHero() {
         className="absolute inset-0 z-10 bg-linear-to-br from-black/60 via-black/20 to-transparent"
         aria-hidden="true"
       ></div>
-      <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-col items-center justify-center gap-12 px-4 pt-8 pb-16 text-center lg:py-20">
-        <div className="flex-1 space-y-6 pt-0 text-center lg:pt-8">
+      <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-col items-center justify-center gap-12 px-4 pbs-8 pbe-16 text-center lg:py-20">
+        <div className="flex-1 space-y-6 pbs-0 text-center lg:pbs-8">
           <div className="flex items-center justify-center gap-4">
             <span className="h-px w-8 bg-orange-400/60 sm:w-12"></span>
             <h1 className="text-xs font-bold tracking-[0.2em] text-orange-300 uppercase sm:tracking-[0.3em]">
@@ -212,7 +212,7 @@ export default function HomeHero() {
               <span>{typed}</span>
               <span
                 aria-hidden
-                className="ml-2 inline-block h-6 w-px animate-pulse bg-white/90"
+                className="ms-2 inline-block h-6 w-px animate-pulse bg-white/90"
               />
             </>
           )}
@@ -220,7 +220,7 @@ export default function HomeHero() {
         <p className="font-fancy text-lg text-slate-200 lg:text-xl">
           {t("home.heroSubtitle")}
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+        <div className="flex flex-wrap items-center justify-center gap-4 pbs-2">
           <Link
             href="/tours"
             className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10 sm:px-8"

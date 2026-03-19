@@ -25,7 +25,7 @@ export function BookingSidebar({ perks }: BookingSidebarProps) {
       className="relative overflow-hidden rounded-3xl bg-slate-950 p-6 text-white shadow-2xl ring-1 shadow-slate-900/40 ring-white/10 lg:col-span-2 lg:p-8"
     >
       <div
-        className="absolute -top-20 -right-10 h-48 w-48 rounded-full bg-orange-500/30 blur-3xl"
+        className="absolute -top-20 -right-10 size-48 rounded-full bg-orange-500/30 blur-3xl"
         aria-hidden="true"
       ></div>
       <div
@@ -43,13 +43,13 @@ export function BookingSidebar({ perks }: BookingSidebarProps) {
               {t("booking.checkTitle", "Find us on TripAdvisor")}
             </h3>
           </>
-          <div className="inline-flex h-32 w-32 items-center justify-center rounded-full border-2 border-white/20 bg-white/5 p-4 ring-1 ring-white/10">
+          <div className="inline-flex size-32 items-center justify-center rounded-full border-2 border-white/20 bg-white/5 p-4 ring-1 ring-white/10">
             <Image
               src="/icons/tripadvisor-nav_icon.svg"
               alt={t("booking.tripadvisorAlt", "TripAdvisor icon")}
               width={48}
               height={48}
-              className="h-20 w-20 object-contain"
+              className="size-20 object-contain"
             />
           </div>
         </div>
@@ -74,7 +74,7 @@ export function BookingSidebar({ perks }: BookingSidebarProps) {
         <ul className="grid gap-6 text-sm">
           {perks.map((perk, idx) => (
             <li key={perk.id} className="inline-flex items-center gap-3">
-              <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/15 text-xs font-semibold">
+              <span className="inline-flex size-6 items-center justify-center rounded-full bg-white/15 text-xs font-semibold">
                 {idx + 1}
               </span>
               <span className="flex-1 text-slate-100">{perk.text}</span>
@@ -94,7 +94,7 @@ export function BookingSidebar({ perks }: BookingSidebarProps) {
             )}
           >
             <svg
-              className="h-4 w-4"
+              className="size-4"
               viewBox="0 0 24 24"
               fill="none"
               aria-hidden

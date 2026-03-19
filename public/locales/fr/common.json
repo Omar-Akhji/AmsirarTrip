@@ -345,7 +345,6 @@
       "subtitle": "Partagez quelques détails et nous créerons un itinéraire sur mesure pour vous.",
       "cta": "Envoyer le message",
       "sending": "Envoi en cours…",
-      "captchaPlaceholder": "Le reCAPTCHA apparaîtra lorsque vous commencerez à remplir le formulaire",
       "success": "Message envoyé ! Nous répondrons dans les 24 heures.",
       "errors": {
         "title": "Veuillez compléter ces champs :",

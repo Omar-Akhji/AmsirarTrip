@@ -75,7 +75,7 @@ export function LegalPageLayout({ config, headingId }: LegalPageLayoutProps) {
                 className="inline-flex items-center gap-2 text-orange-600 transition-colors hover:text-orange-700"
               >
                 <svg
-                  className="h-4 w-4"
+                  className="size-4"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

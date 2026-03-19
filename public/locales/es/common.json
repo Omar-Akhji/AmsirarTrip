@@ -336,7 +336,6 @@
       "submit": "Enviar mensaje",
       "cta": "Enviar mensaje",
       "sending": "Enviando…",
-      "captchaPlaceholder": "El reCAPTCHA aparecerá cuando empieces a rellenar el formulario",
       "success": "¡Mensaje enviado! Responderemos en 24 horas.",
       "errors": {
         "title": "Por favor, completa estos campos:",

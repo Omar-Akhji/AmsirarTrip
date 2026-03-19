@@ -242,7 +242,7 @@
     position: relative;
     box-sizing: border-box;
     flex-direction: column;
-    padding-top: 7rem;
+    padding-block-start: 7rem;
     overflow: hidden;
     text-align: center;
     color: white;

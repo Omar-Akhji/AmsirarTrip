@@ -25,7 +25,7 @@ export function FormStatusMessages({
         >
           <div className="flex items-start gap-2">
             <svg
-              className="mt-0.5 h-5 w-5 shrink-0"
+              className="mt-0.5 size-5 shrink-0"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
