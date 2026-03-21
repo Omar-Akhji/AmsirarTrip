@@ -1,8 +1,10 @@
 "use server";
 
+import { headers } from "next/headers";
 import { ContactSchema } from "@/lib/schemas";
-import { submitContact } from "@/lib/api-client";
-import type { ContactPayload } from "@/lib/api-client";
+import { env } from "@/lib/env";
+import { checkRateLimit, logSuspiciousActivity } from "@/lib/api-utils";
+import { verifyRecaptcha, createMailer, escapeHtml } from "@/lib/server-utils";
 
 export interface ContactFormState {
   success: boolean;
@@ -12,14 +14,29 @@ export interface ContactFormState {
 
 /**
  * Server action for contact form submission using React 19's useActionState
- * @param prevState - Previous state from useActionState
- * @param formData - FormData from the form submission
  */
 export async function submitContactAction(
   _prevState: ContactFormState | null,
   formData: FormData
 ): Promise<ContactFormState> {
   try {
+    const headersList = await headers();
+    const ip =
+      headersList.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      headersList.get("x-real-ip") ||
+      "unknown";
+
+    const rateLimit = checkRateLimit(ip, 10, 60000);
+    if (!rateLimit.allowed) {
+      if (rateLimit.blocked) {
+        logSuspiciousActivity(ip, "BLOCKED_ACTION", "contact-action");
+      }
+      return {
+        success: false,
+        message: "Too many requests. Please try again later.",
+      };
+    }
+
     // Extract form data
     const rawData = {
       name: formData.get("name") as string,
@@ -33,7 +50,6 @@ export async function submitContactAction(
     const validationResult = ContactSchema.safeParse(rawData);
 
     if (!validationResult.success) {
-      // Convert Zod errors to record format
       const errors: Record<string, string> = {};
       validationResult.error.issues.forEach((err) => {
         const path = err.path[0] as string;
@@ -47,32 +63,49 @@ export async function submitContactAction(
       };
     }
 
-    // Prepare payload with topic handling
+    const data = validationResult.data;
     const topic = formData.get("topic") as string;
-    const payload: ContactPayload = {
-      name: validationResult.data.name,
-      email: validationResult.data.email,
-      phone: validationResult.data.phone,
-      message: topic
-        ? `${topic.trim()}\n\n${validationResult.data.message}`
-        : validationResult.data.message,
-      recaptchaToken: validationResult.data.recaptchaToken,
-    };
+    const messageContent = topic
+      ? `${topic.trim()}\n\n${data.message}`
+      : data.message;
 
-    // Submit to API
-    const result = await submitContact(payload);
-
-    if (result.ok) {
-      return {
-        success: true,
-        message: "Message sent! We will reply within 24 hours.",
-      };
-    } else {
+    // Verify CAPTCHA
+    const host = headersList.get("host")?.split(":")[0] || "";
+    if (!(await verifyRecaptcha(data.recaptchaToken, host))) {
+      logSuspiciousActivity(ip, "CAPTCHA_FAILED", "contact-action");
       return {
         success: false,
-        message: result.error || "Failed to send message. Please try again.",
+        message: "Security verification failed. Please try again.",
       };
     }
+
+    const transporter = createMailer();
+    const mailTo = env.MAIL_TO || env.GMAIL_USER;
+
+    const html = `
+      <h2>New Contact Message</h2>
+      <p><strong>Name :</strong> ${escapeHtml(data.name)}</p>
+      <p><strong>E-mail :</strong> ${escapeHtml(data.email)}</p>
+      <p><strong>Phone :</strong> ${escapeHtml(data.phone)}</p>
+      <p><strong>Message :</strong><br>${escapeHtml(messageContent).replace(
+        /\n/g,
+        "<br>"
+      )}</p>
+    `;
+
+    await transporter.sendMail({
+      from: `Amsirar Trip Contact <${env.GMAIL_USER}>`,
+      to: mailTo,
+      replyTo: data.email,
+      subject: `Contact from ${data.name}`,
+      text: `Name : ${data.name}\nE-mail : ${data.email}\nPhone : ${data.phone}\nMessage : \n${messageContent}`,
+      html,
+    });
+
+    return {
+      success: true,
+      message: "Message sent! We will reply within 24 hours.",
+    };
   } catch (error) {
     console.error("Contact form submission error:", error);
 

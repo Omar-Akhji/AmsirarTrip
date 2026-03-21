@@ -1,8 +1,10 @@
 "use server";
 
+import { headers } from "next/headers";
 import { BookingSchema } from "@/lib/schemas";
-import { submitBooking } from "@/lib/api-client";
-import type { BookingPayload } from "@/lib/api-client";
+import { env } from "@/lib/env";
+import { checkRateLimit, logSuspiciousActivity } from "@/lib/api-utils";
+import { verifyRecaptcha, createMailer, escapeHtml } from "@/lib/server-utils";
 
 export interface BookingFormState {
   success: boolean;
@@ -10,16 +12,45 @@ export interface BookingFormState {
   errors?: Record<string, string>;
 }
 
+function getLanguageName(code: string = ""): string {
+  const languages: Record<string, string> = {
+    en: "English",
+    fr: "Français",
+    de: "Deutsch",
+    es: "Español",
+  };
+  return languages[code] || code;
+}
+
+function cleanReservationType(type: string = ""): string {
+  return type.replace(/^Tour\d+\s/, "");
+}
+
 /**
  * Server action for booking form submission using React 19's useActionState
- * @param prevState - Previous state from useActionState
- * @param formData - FormData from the form submission
  */
 export async function submitBookingAction(
   _prevState: BookingFormState | null,
   formData: FormData
 ): Promise<BookingFormState> {
   try {
+    const headersList = await headers();
+    const ip =
+      headersList.get("x-forwarded-for")?.split(",")[0]?.trim() ||
+      headersList.get("x-real-ip") ||
+      "unknown";
+
+    const rateLimit = checkRateLimit(ip, 10, 60000);
+    if (!rateLimit.allowed) {
+      if (rateLimit.blocked) {
+        logSuspiciousActivity(ip, "BLOCKED_ACTION", "booking-action");
+      }
+      return {
+        success: false,
+        message: "Too many requests. Please try again later.",
+      };
+    }
+
     // Extract form data
     const rawData = {
       reservationType: formData.get("reservationType") as string,
@@ -38,7 +69,6 @@ export async function submitBookingAction(
     const validationResult = BookingSchema.safeParse(rawData);
 
     if (!validationResult.success) {
-      // Convert Zod errors to record format
       const errors: Record<string, string> = {};
       validationResult.error.issues.forEach((err) => {
         const path = err.path[0] as string;
@@ -52,44 +82,74 @@ export async function submitBookingAction(
       };
     }
 
-    // Prepare payload
-    const payload: BookingPayload = {
-      reservationType: validationResult.data.reservationType,
-      fullName: validationResult.data.fullName,
-      email: validationResult.data.email,
-      phone: validationResult.data.phone,
-      persons: validationResult.data.persons,
-      date: validationResult.data.date,
-      message: validationResult.data.message,
-      language: validationResult.data.language,
-      duration: validationResult.data.duration,
-      recaptchaToken: validationResult.data.recaptchaToken,
-    };
+    const data = validationResult.data;
 
-    // Submit to API
-    const result = await submitBooking(payload);
-
-    if (result.ok) {
-      return {
-        success: true,
-        message: "Your booking request has been sent successfully!",
-      };
-    } else {
+    // Verify CAPTCHA
+    const host = headersList.get("host")?.split(":")[0] || "";
+    if (!(await verifyRecaptcha(data.recaptchaToken, host))) {
+      logSuspiciousActivity(ip, "CAPTCHA_FAILED", "booking-action");
       return {
         success: false,
-        message: result.error || "Failed to submit booking. Please try again.",
+        message: "Security verification failed. Please try again.",
       };
     }
+
+    const transporter = createMailer();
+    const mailTo = env.MAIL_TO || env.GMAIL_USER;
+
+    const html = `
+      <h2>New Booking Request</h2>
+      <p><strong>Website display language :</strong> ${escapeHtml(
+        getLanguageName(data.language)
+      )}</p>
+      <p><strong>Type of reservation :</strong> ${escapeHtml(
+        cleanReservationType(data.reservationType)
+      )}</p>
+      <p><strong>Duration :</strong> ${escapeHtml(
+        data.duration ? `${data.duration} days` : "Not specified"
+      )}</p>
+      <p><strong>Full Name :</strong> ${escapeHtml(data.fullName)}</p>
+      <p><strong>Phone Number :</strong> ${escapeHtml(data.phone)}</p>
+      <p><strong>E-mail :</strong> ${escapeHtml(data.email)}</p>
+      <p><strong>Date of reservation :</strong> ${escapeHtml(data.date)}</p>
+      <p><strong>Number of people :</strong> ${escapeHtml(
+        String(data.persons)
+      )}</p>
+      ${
+        data.message
+          ? `<p><strong>Message :</strong><br>${escapeHtml(
+              data.message
+            ).replace(/\n/g, "<br>")}</p>`
+          : ""
+      }
+    `;
+
+    await transporter.sendMail({
+      from: `Amsirar Trip Bookings <${env.GMAIL_USER}>`,
+      to: mailTo,
+      replyTo: data.email,
+      subject: `Booking: ${data.fullName} (${cleanReservationType(
+        data.reservationType
+      )})`,
+      text: `Website display language : ${getLanguageName(data.language)}
+Type of reservation : ${cleanReservationType(data.reservationType)}
+Duration : ${data.duration ? `${data.duration} days` : "Not specified"}
+Full Name : ${data.fullName}
+Phone Number : ${data.phone}
+E-mail : ${data.email}
+Date of reservation : ${data.date}
+Number of people : ${data.persons}${
+        data.message ? `\nMessage : ${data.message}` : ""
+      }`,
+      html,
+    });
+
+    return {
+      success: true,
+      message: "Your booking request has been sent successfully!",
+    };
   } catch (error) {
     console.error("Booking form submission error:", error);
-
-    // Handle specific error types
-    if (error instanceof Error && error.message.includes("429")) {
-      return {
-        success: false,
-        message: "Too many requests. Please try again in a minute.",
-      };
-    }
 
     return {
       success: false,

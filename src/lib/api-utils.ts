@@ -1,63 +1,6 @@
 /**
- * API utilities for error handling, logging, and response formatting
+ * API utilities for error handling, logging, and rate limiting
  */
-
-interface ApiError {
-  ok: false;
-  error: string;
-  code?: string;
-  details?: unknown;
-}
-
-interface ApiSuccess<T = unknown> {
-  ok: true;
-  data?: T;
-  message?: string;
-}
-
-/**
- * Create a standardized error response
- */
-export function createErrorResponse(
-  error: string,
-  status: number = 500,
-  code?: string,
-  details?: unknown
-): Response {
-  const response: ApiError = { ok: false, error, code, details };
-  return Response.json(response, { status });
-}
-
-/**
- * Create a standardized success response
- */
-export function createSuccessResponse<T>(
-  data?: T,
-  message?: string,
-  status: number = 200
-): Response {
-  const response: ApiSuccess<T> = { ok: true, data, message };
-  return Response.json(response, { status });
-}
-
-/**
- * Safe async handler that catches errors
- */
-export function withErrorHandling(
-  handler: () => Promise<Response>
-): Promise<Response> {
-  return handler().catch((error) => {
-    console.error("API Error:", error);
-
-    // Don't expose internal error messages in production
-    const message =
-      process.env.NODE_ENV === "development"
-        ? error.message || "Internal server error"
-        : "Internal server error";
-
-    return createErrorResponse(message, 500, "INTERNAL_ERROR");
-  });
-}
 
 /**
  * Rate limiting helper (simple in-memory implementation)
@@ -128,26 +71,6 @@ if (typeof window === "undefined") {
       }
     }
   }, 60000); // Clean up every minute
-}
-
-/**
- * Log API request for monitoring
- */
-export function logApiRequest(
-  method: string,
-  path: string,
-  status: number,
-  duration: number,
-  error?: string
-) {
-  const timestamp = new Date().toISOString();
-  const logLevel = status >= 500 ? "ERROR" : status >= 400 ? "WARN" : "INFO";
-
-  console.log(
-    `[${logLevel}] ${timestamp} ${method} ${path} ${status} ${duration}ms${
-      error ? ` - ${error}` : ""
-    }`
-  );
 }
 
 /**

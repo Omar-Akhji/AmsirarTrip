@@ -6,26 +6,7 @@ import { RECAPTCHA_V2_SITE_KEY, hasRecaptchaV2 } from "@/lib/client-env";
 import ReCAPTCHA from "react-google-recaptcha";
 import { X, Mail, User, Loader2 } from "lucide-react";
 
-/**
- * Submit newsletter subscription with name, email, and reCAPTCHA v2 token.
- */
-async function submitNewsletter(
-  name: string,
-  email: string,
-  recaptchaToken: string
-): Promise<{ ok: boolean; statusKey: string }> {
-  const response = await fetch("/api/newsletter", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ name, email, recaptchaToken }),
-  }).catch(() => null);
-
-  if (!response) return { ok: false, statusKey: "footer.newsletterNetwork" };
-
-  const data = await response.json().catch(() => ({ ok: false }));
-  if (data.ok) return { ok: true, statusKey: "footer.newsletterSuccess" };
-  return { ok: false, statusKey: "footer.newsletterFailure" };
-}
+import { submitNewsletterAction } from "@/lib/actions/newsletter-action";
 
 export default function NewsletterModal({
   isOpen,
@@ -80,7 +61,7 @@ export default function NewsletterModal({
     }
 
     setIsSubmitting(true);
-    const result = await submitNewsletter(name, email, recaptchaToken);
+    const result = await submitNewsletterAction(name, email, recaptchaToken);
 
     if (result.ok) {
       setName("");

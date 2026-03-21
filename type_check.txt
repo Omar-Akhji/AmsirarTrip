@@ -1,0 +1,8 @@
+
+> amsirartrip-nextjs@1.0.0 type-check C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip Enhanced
+> tsc --noEmit
+
+.next/types/validator.ts(134,39): error TS2307: Cannot find module '../../src/app/api/booking/route.js' or its corresponding type declarations.
+.next/types/validator.ts(143,39): error TS2307: Cannot find module '../../src/app/api/contact/route.js' or its corresponding type declarations.
+.next/types/validator.ts(161,39): error TS2307: Cannot find module '../../src/app/api/newsletter/route.js' or its corresponding type declarations.
+ ELIFECYCLE  Command failed with exit code 1.
