@@ -1,4 +1,0 @@
-
-> amsirartrip-nextjs@1.0.0 type-check C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip Enhanced
-> tsc --noEmit
-
