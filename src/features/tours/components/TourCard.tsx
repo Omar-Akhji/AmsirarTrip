@@ -36,7 +36,7 @@ export function TourCard({ tour, idx, translations }: TourCardProps) {
     <m.article
       {...fadeInScale}
       transition={{ duration: 0.5, delay: idx * 0.1 }}
-      className="group relative flex flex-col overflow-hidden rounded-[20px] bg-white p-2.5 shadow-sm ring-1 ring-slate-100 transition-all duration-500 block-full pointer-fine:hover:-translate-y-2 pointer-fine:hover:shadow-2xl pointer-fine:hover:shadow-orange-900/5 perspective-1000 pointer-fine:hover:-rotate-x-10 pointer-fine:hover:rotate-y-10"
+      className="group perspective-1000 relative flex flex-col overflow-hidden rounded-[20px] bg-white p-2.5 shadow-sm ring-1 ring-slate-100 transition-all duration-500 block-full pointer-fine:hover:-translate-y-2 pointer-fine:hover:-rotate-x-10 pointer-fine:hover:rotate-y-10 pointer-fine:hover:shadow-2xl pointer-fine:hover:shadow-orange-900/5"
     >
       <Link href={tour.route} className="absolute inset-0 z-20">
         <span className="sr-only">

@@ -62,7 +62,7 @@ export function EnhancedCalendar({
           <button
             type="button"
             onClick={() => navigateMonth("prev")}
-            className="flex items-center justify-center rounded-full text-orange-600 transition-colors block-8 inline-8 pointer-fine:hover:bg-orange-50 focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-none"
+            className="flex items-center justify-center rounded-full text-orange-600 transition-colors block-8 inline-8 focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-none pointer-fine:hover:bg-orange-50"
           >
             <ChevronLeft className="block-4 inline-4" />
           </button>
@@ -80,7 +80,7 @@ export function EnhancedCalendar({
           <button
             type="button"
             onClick={() => navigateMonth("next")}
-            className="flex items-center justify-center rounded-full text-orange-600 transition-colors block-8 inline-8 pointer-fine:hover:bg-orange-50 focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-none"
+            className="flex items-center justify-center rounded-full text-orange-600 transition-colors block-8 inline-8 focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-none pointer-fine:hover:bg-orange-50"
           >
             <ChevronRight className="block-4 inline-4" />
           </button>
@@ -128,7 +128,7 @@ export function EnhancedCalendar({
               <div className="shrink-0">
                 <div className="animate-pulse rounded-full bg-orange-600 block-2 inline-2" />
               </div>
-              <div className="min-inline-0 flex-1">
+              <div className="flex-1 min-inline-0">
                 <p className="text-xs font-medium text-gray-500">
                   Selected Date
                 </p>
@@ -150,7 +150,7 @@ export function EnhancedCalendar({
           <button
             type="button"
             onClick={goToToday}
-            className="rounded-lg border border-orange-200 px-3 py-1.5 text-sm font-medium text-orange-600 transition-colors pointer-fine:hover:bg-orange-50 focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-none"
+            className="rounded-lg border border-orange-200 px-3 py-1.5 text-sm font-medium text-orange-600 transition-colors focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-none pointer-fine:hover:bg-orange-50"
           >
             Today
           </button>
@@ -159,7 +159,7 @@ export function EnhancedCalendar({
             <button
               onClick={onClose}
               type="button"
-              className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 pointer-fine:hover:border-gray-400 pointer-fine:hover:bg-gray-50 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-none"
+              className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-none pointer-fine:hover:border-gray-400 pointer-fine:hover:bg-gray-50"
             >
               Cancel
             </button>
@@ -172,7 +172,7 @@ export function EnhancedCalendar({
               }}
               disabled={!selectedDate}
               type="button"
-              className="rounded-lg bg-linear-to-r from-orange-500 to-orange-600 px-4 py-2 text-sm font-medium text-white shadow-md transition-all duration-200 pointer-fine:hover:from-orange-600 pointer-fine:hover:to-orange-700 pointer-fine:hover:shadow-lg focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 disabled:pointer-fine:hover:from-orange-500 disabled:pointer-fine:hover:to-orange-600"
+              className="rounded-lg bg-linear-to-r from-orange-500 to-orange-600 px-4 py-2 text-sm font-medium text-white shadow-md transition-all duration-200 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 pointer-fine:hover:from-orange-600 pointer-fine:hover:to-orange-700 pointer-fine:hover:shadow-lg disabled:pointer-fine:hover:from-orange-500 disabled:pointer-fine:hover:to-orange-600"
             >
               Apply
             </button>

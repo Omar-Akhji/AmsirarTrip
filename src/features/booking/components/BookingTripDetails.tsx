@@ -42,7 +42,7 @@ export function BookingTripDetails({
             {t("booking.numberOfPeople", "Number of People")}
           </label>
           <input
-            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
             type="number"
             id="numberOfPeople"
             name="numberOfPeople"
@@ -75,7 +75,7 @@ export function BookingTripDetails({
               <button
                 type="button"
                 className={cn(
-                  "flex items-center justify-start rounded-2xl border bg-white px-4 py-3 text-start text-sm font-normal transition-colors block-auto inline-full pointer-fine:hover:bg-gray-50 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none",
+                  "flex items-center justify-start rounded-2xl border bg-white px-4 py-3 text-start text-sm font-normal transition-colors block-auto inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none pointer-fine:hover:bg-gray-50",
                   !reservationDate && "text-gray-500",
                   state?.errors?.date ? "border-red-300" : "border-gray-200"
                 )}
@@ -123,7 +123,10 @@ export function BookingTripDetails({
             }
           />
           {state?.errors?.date && (
-            <p id="reservationDate-error" className="mbs-1 text-xs text-red-600">
+            <p
+              id="reservationDate-error"
+              className="mbs-1 text-xs text-red-600"
+            >
               {state.errors.date}
             </p>
           )}
@@ -140,7 +143,7 @@ export function BookingTripDetails({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.3, delay: 0.7 }}
-          className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
+          className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
           id="message"
           name="message"
           placeholder={t("booking.message", "Your message")}

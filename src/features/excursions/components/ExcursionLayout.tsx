@@ -114,7 +114,7 @@ function ExcursionLayout({
             >
               <m.figure
                 {...fadeInScale}
-                className="relative mbe-8 aspect-4/3 inline-full overflow-hidden rounded-[20px] border border-slate-50 shadow-md"
+                className="relative mbe-8 aspect-4/3 overflow-hidden rounded-[20px] border border-slate-50 shadow-md inline-full"
               >
                 <Image
                   className="object-cover"

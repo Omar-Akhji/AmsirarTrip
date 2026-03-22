@@ -54,7 +54,7 @@ export function BookingSidebar({ perks }: BookingSidebarProps) {
           </div>
         </div>
 
-        <div className="mx-auto flex inline-fit items-center gap-3 rounded-2xl bg-white/5 p-3">
+        <div className="mx-auto flex items-center gap-3 rounded-2xl bg-white/5 p-3 inline-fit">
           <div className="text-2xl leading-none font-extrabold">4.5</div>
           <div className="text-xs text-slate-200">
             {t("booking.ratingLabel", "Average guest rating")}
@@ -87,7 +87,7 @@ export function BookingSidebar({ perks }: BookingSidebarProps) {
             href="https://www.tripadvisor.de/Attraction_Review-g293734-d32584739-Reviews-Amsirar_Travel-Marrakech_Marrakech_Safi.html"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex transform items-center justify-center gap-2 rounded-full bg-[#34E0A1] px-4 py-2 text-sm font-semibold text-black transition duration-300 ease-in-out pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:bg-[#2bc48d] pointer-fine:hover:shadow-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#34E0A1]"
+            className="inline-flex transform items-center justify-center gap-2 rounded-full bg-[#34E0A1] px-4 py-2 text-sm font-semibold text-black transition duration-300 ease-in-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#34E0A1] pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:bg-[#2bc48d] pointer-fine:hover:shadow-lg"
             aria-label={t(
               "booking.tripadvisorCtaAria",
               "Open TripAdvisor in new tab"

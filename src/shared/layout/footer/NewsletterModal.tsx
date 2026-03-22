@@ -82,7 +82,7 @@ export default function NewsletterModal({
       onKeyDown={(e) => {
         if (e.key === "Escape") onClose();
       }}
-      className="fixed inset-0 z-50 m-auto overflow-visible rounded-3xl border border-gray-200 bg-white p-0 text-gray-900 shadow-2xl inline-[95vw] max-inline-md backdrop:bg-black/50 backdrop:backdrop-blur-sm open:flex open:flex-col transition-all duration-300 starting:open:opacity-0 starting:open:scale-95 starting:backdrop:bg-black/0 backdrop:transition-all backdrop:duration-300"
+      className="fixed inset-0 z-50 m-auto overflow-visible rounded-3xl border border-gray-200 bg-white p-0 text-gray-900 shadow-2xl transition-all duration-300 inline-[95vw] max-inline-md backdrop:bg-black/50 backdrop:backdrop-blur-sm backdrop:transition-all backdrop:duration-300 open:flex open:flex-col starting:backdrop:bg-black/0 starting:open:scale-95 starting:open:opacity-0"
     >
       <div className="p-6 sm:p-8">
         {/* Header */}
@@ -128,7 +128,7 @@ export default function NewsletterModal({
                   required
                   minLength={2}
                   autoComplete="name"
-                  className="rounded-full border border-gray-200 bg-gray-50 ps-10 pe-4 text-sm text-gray-900 transition-all duration-200 block-11 inline-full placeholder:text-gray-400 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
+                  className="rounded-full border border-gray-200 bg-gray-50 ps-10 pe-4 text-sm text-gray-900 transition-all duration-200 block-11 inline-full placeholder:text-gray-400 user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
                 />
               </div>
             </div>
@@ -152,7 +152,7 @@ export default function NewsletterModal({
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   autoComplete="email"
-                  className="rounded-full border border-gray-200 bg-gray-50 ps-10 pe-4 text-sm text-gray-900 transition-all duration-200 block-11 inline-full placeholder:text-gray-400 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
+                  className="rounded-full border border-gray-200 bg-gray-50 ps-10 pe-4 text-sm text-gray-900 transition-all duration-200 block-11 inline-full placeholder:text-gray-400 user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
                 />
               </div>
             </div>
@@ -199,7 +199,7 @@ export default function NewsletterModal({
           <button
             type="submit"
             disabled={isSubmitting}
-            className="from-orange mbs-5 flex items-center justify-center gap-2 rounded-full bg-linear-to-r to-amber-500 text-sm font-semibold text-white shadow-md transition-all duration-300 block-11 inline-full pointer-fine:hover:scale-[1.02] pointer-fine:hover:shadow-lg pointer-fine:hover:shadow-orange-500/30 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 disabled:pointer-fine:hover:scale-100"
+            className="from-orange mbs-5 flex items-center justify-center gap-2 rounded-full bg-linear-to-r to-amber-500 text-sm font-semibold text-white shadow-md transition-all duration-300 block-11 inline-full active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 pointer-fine:hover:scale-[1.02] pointer-fine:hover:shadow-lg pointer-fine:hover:shadow-orange-500/30 disabled:pointer-fine:hover:scale-100"
           >
             {isSubmitting ? (
               <Loader2 className="animate-spin block-4 inline-4" />

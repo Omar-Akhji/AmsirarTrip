@@ -161,7 +161,7 @@ export default function AboutView() {
           className="relative isolate overflow-hidden py-16"
           aria-labelledby="facts-heading"
         >
-          <div className="relative z-10 mx-auto inline-full px-4 max-inline-6xl">
+          <div className="relative z-10 mx-auto px-4 inline-full max-inline-6xl">
             <div className="mx-auto text-center max-inline-3xl">
               <p className="inline-flex items-center justify-center rounded-full border-2 border-white bg-orange-600 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-white uppercase sm:tracking-[0.3em]">
                 {t("about.facts.smTitle")}

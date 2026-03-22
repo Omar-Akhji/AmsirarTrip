@@ -73,7 +73,7 @@ function SubmitButton({ buttonText }: { buttonText: string }) {
 
   return (
     <button
-      className="flex inline-full transform items-center justify-center gap-2 rounded-full bg-orange-500 px-8 py-4 text-sm font-semibold tracking-wide whitespace-nowrap text-white uppercase shadow-lg shadow-orange-500/25 transition duration-300 ease-in-out pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:bg-orange-400 pointer-fine:hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60"
+      className="flex transform items-center justify-center gap-2 rounded-full bg-orange-500 px-8 py-4 text-sm font-semibold tracking-wide whitespace-nowrap text-white uppercase shadow-lg shadow-orange-500/25 transition duration-300 ease-in-out inline-full disabled:cursor-not-allowed disabled:opacity-60 pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:bg-orange-400 pointer-fine:hover:shadow-xl"
       type="submit"
       disabled={pending}
       aria-busy={pending}
@@ -220,7 +220,7 @@ function BookingForm({
                 }
               />
 
-              <div className="inline-full flex-1">
+              <div className="flex-1 inline-full">
                 <SubmitButton buttonText={uiState.buttonText} />
               </div>
             </form>

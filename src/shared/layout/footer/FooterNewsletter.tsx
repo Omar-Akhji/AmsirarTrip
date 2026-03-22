@@ -35,7 +35,7 @@ export function FooterNewsletter() {
           type="button"
           onClick={() => setIsModalOpen(true)}
           aria-label={t("footer.newsletterButtonAria")}
-          className="from-orange flex items-center justify-center gap-2 rounded-full bg-linear-to-r to-amber-500 text-sm font-semibold text-white shadow-md transition-all duration-300 block-10 inline-full pointer-fine:hover:scale-[1.02] pointer-fine:hover:shadow-lg pointer-fine:hover:shadow-orange-500/30 active:scale-[0.98]"
+          className="from-orange flex items-center justify-center gap-2 rounded-full bg-linear-to-r to-amber-500 text-sm font-semibold text-white shadow-md transition-all duration-300 block-10 inline-full active:scale-[0.98] pointer-fine:hover:scale-[1.02] pointer-fine:hover:shadow-lg pointer-fine:hover:shadow-orange-500/30"
         >
           <Mail className="size-4" />
           {t("footer.newsletterSubscribe")}
@@ -63,7 +63,7 @@ function FooterSocialLinks() {
           <a
             href="https://www.facebook.com/profile.php?id=61571322141368"
             aria-label={t("footer.social.facebook")}
-            className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
+            className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] sm:size-11 pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)]"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -81,7 +81,7 @@ function FooterSocialLinks() {
           <a
             href="https://x.com/AmsirarTravel"
             aria-label={t("footer.social.twitter")}
-            className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
+            className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] sm:size-11 pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)]"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -99,7 +99,7 @@ function FooterSocialLinks() {
           <a
             href="https://www.instagram.com/amsirar.trip?igsh=ZDlxanNsbTA5M2Zi"
             aria-label={t("footer.social.instagram")}
-            className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
+            className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] sm:size-11 pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)]"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -117,7 +117,7 @@ function FooterSocialLinks() {
           <a
             href="https://www.tiktok.com/@amsirartrip"
             aria-label={t("footer.social.tiktok")}
-            className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
+            className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] sm:size-11 pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)]"
             target="_blank"
             rel="noopener noreferrer"
           >

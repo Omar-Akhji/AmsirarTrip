@@ -181,14 +181,14 @@ export default function HomeHero() {
         <div className="flex-1 space-y-6 pbs-0 text-center lg:pbs-8">
           <div className="flex items-center justify-center gap-4">
             <span className="bg-orange-400/60 block-px inline-8 sm:inline-12"></span>
-            <h1 className="text-xs font-bold tracking-[0.2em] text-orange-300 uppercase text-shadow-lg sm:tracking-[0.3em]">
+            <h1 className="text-xs font-bold tracking-[0.2em] text-orange-300 uppercase drop-shadow-sm text-shadow-lg/50 sm:tracking-[0.3em]">
               {t("home.title")}
             </h1>
             <span className="bg-orange-400/60 block-px inline-8 sm:inline-12"></span>
           </div>
           <h2
             id="hero-heading"
-            className="text-3xl leading-tight font-semibold text-shadow-2xl sm:text-4xl lg:text-5xl"
+            className="text-shadow-2xl/50 text-3xl leading-tight font-semibold sm:text-4xl lg:text-5xl"
           >
             {isMobileOrTablet ? (
               <AnimatePresence mode="wait">
@@ -213,19 +213,19 @@ export default function HomeHero() {
               </>
             )}
           </h2>
-          <p className="font-fancy text-lg text-slate-200 text-shadow lg:text-xl">
+          <p className="font-fancy text-shadow/30 text-lg text-slate-200 lg:text-xl">
             {t("home.heroSubtitle")}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pbs-2">
             <Link
               href="/tours"
-              className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white/90 transition text-shadow-sm pointer-fine:hover:bg-white/10 sm:px-8"
+              className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white/90 transition text-shadow-sm sm:px-8 pointer-fine:hover:bg-white/10"
             >
               {t("home.exploreOurTours")}
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition text-shadow-sm pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:bg-white/20 sm:px-8"
+              className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition text-shadow-sm sm:px-8 pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:bg-white/20"
             >
               {t("home.contactForMore")}
             </Link>

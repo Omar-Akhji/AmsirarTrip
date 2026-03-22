@@ -25,7 +25,7 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
             {t("booking.fullName", "Full Name")}
           </label>
           <input
-            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
             type="text"
             id="fullName"
             name="fullName"
@@ -55,7 +55,7 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
             {t("booking.phone", "Phone Number")}
           </label>
           <input
-            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
             type="tel"
             id="phone"
             name="phone"
@@ -85,7 +85,7 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
           {t("booking.email", "Email")}
         </label>
         <input
-          className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
+          className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
           type="email"
           id="email"
           name="email"

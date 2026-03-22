@@ -45,7 +45,7 @@ export default function TourSidebar({
           <h3 className="mbs-2 text-center text-2xl font-semibold">
             {t("tours.sidebar.mainBrand")}
           </h3>
-          <span className="mx-auto mbs-1 block inline-max rounded-full border border-orange-300 px-3 py-0.5 text-sm text-orange-200">
+          <span className="mx-auto mbs-1 block rounded-full border border-orange-300 px-3 py-0.5 text-sm text-orange-200 inline-max">
             {t("tours.sidebar.subBrand")}
           </span>
           <div

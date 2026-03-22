@@ -25,7 +25,7 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
             id="contact-name"
             name="name"
             type="text"
-            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
             placeholder={t("contact.form.fields.name", "Full name")}
             aria-label={t("contact.form.fields.name", "Full name")}
             autoComplete="name"
@@ -52,7 +52,7 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
             id="contact-email"
             name="email"
             type="email"
-            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
             placeholder={t("contact.form.fields.email", "Email")}
             aria-label={t("contact.form.fields.email", "Email")}
             autoComplete="email"
@@ -82,7 +82,7 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
             id="contact-phone"
             name="phone"
             type="tel"
-            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
             placeholder={t("contact.form.fields.phone", "Phone number")}
             aria-label={t("contact.form.fields.phone", "Phone number")}
             autoComplete="tel"
@@ -132,7 +132,7 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
         <textarea
           id="contact-message"
           name="message"
-          className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full min-block-40 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
+          className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full min-block-40 user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
           placeholder={t(
             "contact.form.fields.message",
             "Tell us about your Morocco dream"

@@ -22,7 +22,7 @@ export function LegalSectionCard({ section, index }: LegalSectionCardProps) {
       {...fadeInUp}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       id={`legal-${section.id}`}
-      className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow pointer-fine:hover:shadow-md sm:p-8"
+      className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow sm:p-8 pointer-fine:hover:shadow-md"
       aria-labelledby={`legal-${section.id}-heading`}
     >
       <h2
