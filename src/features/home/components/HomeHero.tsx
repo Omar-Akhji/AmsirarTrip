@@ -174,25 +174,21 @@ export default function HomeHero() {
         </m.div>
       </AnimatePresence>
       <div
-        className="absolute inset-0 z-10 bg-radial-[at_center_top] from-slate-900/80 via-slate-900/60 to-slate-900 opacity-80"
-        aria-hidden="true"
-      ></div>
-      <div
-        className="absolute inset-0 z-10 bg-conic from-black/60 via-black/20 to-transparent"
+        className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/30 to-black/70"
         aria-hidden="true"
       ></div>
       <div className="relative z-20 mx-auto flex flex-col items-center justify-center gap-12 px-4 pbs-8 pbe-16 text-center inline-full max-inline-7xl lg:py-20">
         <div className="flex-1 space-y-6 pbs-0 text-center lg:pbs-8">
           <div className="flex items-center justify-center gap-4">
             <span className="bg-orange-400/60 block-px inline-8 sm:inline-12"></span>
-            <h1 className="text-xs font-bold tracking-[0.2em] text-orange-300 uppercase drop-shadow-md sm:tracking-[0.3em]">
+            <h1 className="text-xs font-bold tracking-[0.2em] text-orange-300 uppercase text-shadow-lg sm:tracking-[0.3em]">
               {t("home.title")}
             </h1>
             <span className="bg-orange-400/60 block-px inline-8 sm:inline-12"></span>
           </div>
           <h2
             id="hero-heading"
-            className="text-3xl leading-tight font-semibold drop-shadow-2xl sm:text-4xl lg:text-5xl"
+            className="text-3xl leading-tight font-semibold text-shadow-2xl sm:text-4xl lg:text-5xl"
           >
             {isMobileOrTablet ? (
               <AnimatePresence mode="wait">
@@ -217,7 +213,7 @@ export default function HomeHero() {
               </>
             )}
           </h2>
-          <p className="font-fancy text-lg text-slate-200 lg:text-xl">
+          <p className="font-fancy text-lg text-slate-200 text-shadow lg:text-xl">
             {t("home.heroSubtitle")}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pbs-2">
