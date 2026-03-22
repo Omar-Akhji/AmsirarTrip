@@ -14,10 +14,10 @@ export function FooterBottomBar() {
       transition={{ duration: 0.5, delay: 0.4 }}
       className="border-t border-white/5 bg-black/20"
     >
-      <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 py-6 max-inline-7xl sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           {/* Copyright Notice */}
-          <div className="order-2 text-center sm:order-1 sm:text-left">
+          <div className="order-2 text-center sm:order-1 sm:text-start">
             <p className="text-sm font-medium text-slate-500">
               ©{" "}
               <time dateTime={new Date().getFullYear().toString()}>
@@ -37,19 +37,19 @@ export function FooterBottomBar() {
               <li>
                 <Link
                   href="/privacy-policy"
-                  className="text-sm font-medium text-slate-500 transition-colors duration-200 hover:text-white"
+                  className="text-sm font-medium text-slate-500 transition-colors duration-200 pointer-fine:hover:text-white"
                 >
                   {t("legal.footer.privacyPolicy")}
                 </Link>
               </li>
               <li
-                className="hidden h-3 w-px bg-white/10 sm:block"
+                className="hidden bg-white/10 block-3 inline-px sm:block"
                 aria-hidden="true"
               />
               <li>
                 <Link
                   href="/terms-of-service"
-                  className="text-sm font-medium text-slate-500 transition-colors duration-200 hover:text-white"
+                  className="text-sm font-medium text-slate-500 transition-colors duration-200 pointer-fine:hover:text-white"
                 >
                   {t("legal.footer.termsOfService")}
                 </Link>

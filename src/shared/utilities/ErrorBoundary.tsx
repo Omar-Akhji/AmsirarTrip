@@ -47,11 +47,11 @@ export class ErrorBoundary extends Component<Props, State> {
 
       // Development mode: Show detailed error information
       return (
-        <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4">
-          <div className="w-full max-w-md rounded-lg bg-white p-6 text-center shadow-lg">
-            <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-amber-100">
+        <div className="flex items-center justify-center bg-gray-50 px-4 min-block-screen">
+          <div className="rounded-lg bg-white p-6 text-center shadow-lg inline-full max-inline-md">
+            <div className="mx-auto mbe-4 flex items-center justify-center rounded-full bg-amber-100 block-16 inline-16">
               <svg
-                className="h-8 w-8 text-amber-600"
+                className="text-amber-600 block-8 inline-8"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -64,29 +64,31 @@ export class ErrorBoundary extends Component<Props, State> {
                 />
               </svg>
             </div>
-            <h2 className="mb-2 text-xl font-semibold text-gray-900">
+            <h2 className="mbe-2 text-xl font-semibold text-gray-900">
               Development Error
             </h2>
-            <p className="mb-4 text-gray-600">
+            <p className="mbe-4 text-gray-600">
               A component error occurred during development. Check the console
               for details.
             </p>
             <button
               onClick={() => window.location.reload()}
-              className="rounded-lg bg-orange-500 px-6 py-2 font-medium text-white transition-colors hover:bg-orange-600"
+              className="rounded-lg bg-orange-500 px-6 py-2 font-medium text-white transition-colors pointer-fine:hover:bg-orange-600"
             >
               Reload Page
             </button>
             {this.state.error && (
-              <details className="mt-4 text-left" open>
-                <summary className="mb-2 cursor-pointer text-sm font-semibold text-gray-700">
+              <details className="group mbs-4 text-start" open>
+                <summary className="mbe-2 cursor-pointer text-sm font-semibold text-gray-700">
                   Error Details
                 </summary>
-                <pre className="mt-2 max-h-96 overflow-auto rounded bg-gray-100 p-3 text-xs">
-                  {this.state.error.message}
-                  {"\n\n"}
-                  {this.state.error.stack}
-                </pre>
+                <div className="details-content group-open:animate-in group-open:fade-in group-open:duration-300">
+                  <pre className="mbs-2 overflow-auto rounded bg-gray-100 p-3 text-xs max-block-96">
+                    {this.state.error.message}
+                    {"\n\n"}
+                    {this.state.error.stack}
+                  </pre>
+                </div>
               </details>
             )}
           </div>

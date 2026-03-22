@@ -64,18 +64,22 @@ export default async function ToursView() {
 
       <main className="text-slate-900">
         <section className="py-12" aria-labelledby="tour-highlights">
-          <div className="mx-auto max-w-7xl px-4">
-            <div className="mx-auto mb-10 max-w-3xl text-center">
+          <div className="mx-auto px-4 max-inline-7xl">
+            <div className="mx-auto mbe-10 text-center max-inline-3xl">
               <p className="inline-flex items-center justify-center rounded-full border-2 border-white bg-orange-600 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-white uppercase">
                 {t("tours.tour.smTitle")}
               </p>
               <h2
                 id="tour-highlights"
-                className="mt-4 text-2xl leading-tight font-bold sm:text-3xl md:text-4xl"
+                className="mbs-4 text-2xl leading-tight font-bold text-shadow-md sm:text-3xl md:text-4xl"
               >
                 {t("tours.detailsTitle")}
               </h2>
-              <p className="mt-3 text-base text-taupe-600">
+              <div
+                className="mx-auto mbs-4 rounded-full bg-orange-500 block-1 inline-20"
+                aria-hidden="true"
+              />
+              <p className="mbs-4 text-base text-taupe-600">
                 {t("tours.detailsSubtitle")}
               </p>
             </div>
@@ -89,15 +93,19 @@ export default async function ToursView() {
           className="border-t border-slate-200 bg-linear-to-b from-slate-50 to-white py-16"
           aria-labelledby="tours-grid-heading"
         >
-          <div className="mx-auto max-w-7xl px-4">
-            <div className="mb-12 text-center">
+          <div className="mx-auto px-4 max-inline-7xl">
+            <div className="mbe-12 text-center">
               <h2
                 id="tours-grid-heading"
-                className="mt-4 text-2xl leading-tight font-bold sm:text-3xl md:text-4xl"
+                className="mbs-4 text-2xl leading-tight font-bold text-shadow-md sm:text-3xl md:text-4xl"
               >
                 {t("tours.tour.lgTitle")}
               </h2>
-              <p className="mt-3 text-base text-taupe-600">
+              <div
+                className="mx-auto mbs-4 rounded-full bg-orange-500 block-1 inline-20"
+                aria-hidden="true"
+              />
+              <p className="mbs-4 text-base text-taupe-600">
                 {t("tours.sectionSubtitle") || t("tours.detailsSubtitle")}
               </p>
             </div>

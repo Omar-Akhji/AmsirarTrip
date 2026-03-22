@@ -107,14 +107,14 @@ function ExcursionLayout({
           className="py-14"
           aria-labelledby="excursion-title"
         >
-          <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[4fr_2fr]">
+          <div className="mx-auto grid gap-10 px-4 max-inline-7xl lg:grid-cols-[4fr_2fr]">
             <m.article
               {...fadeIn}
-              className="rounded-[20px] bg-white p-4 pb-8 shadow-sm ring-1 ring-slate-100 sm:p-6 sm:pb-12"
+              className="rounded-[20px] bg-white p-4 pbe-8 shadow-sm ring-1 ring-slate-100 sm:p-6 sm:pbe-12"
             >
               <m.figure
                 {...fadeInScale}
-                className="relative mb-8 aspect-4/3 w-full overflow-hidden rounded-[20px] border border-slate-50 shadow-md"
+                className="relative mbe-8 aspect-4/3 inline-full overflow-hidden rounded-[20px] border border-slate-50 shadow-md"
               >
                 <Image
                   className="object-cover"
@@ -126,15 +126,15 @@ function ExcursionLayout({
                 />
               </m.figure>
 
-              <m.div {...fadeInUp} className="mb-6 text-center">
+              <m.div {...fadeInUp} className="mbe-6 text-center">
                 <div className="mx-auto inline-block">
                   <span
-                    className="mb-3 hidden h-1 w-16 rounded-full bg-amber-300 sm:block"
+                    className="mbe-3 hidden rounded-full bg-amber-300 block-1 inline-16 sm:block"
                     aria-hidden="true"
                   ></span>
                   <h2
                     id="excursion-title"
-                    className="text-orange mt-2 text-2xl leading-tight font-extrabold sm:text-3xl md:text-4xl"
+                    className="text-orange mbs-2 text-2xl leading-tight font-extrabold sm:text-3xl md:text-4xl"
                   >
                     {title}
                   </h2>
@@ -157,7 +157,7 @@ function ExcursionLayout({
                         strokeLinecap="round"
                       />
                     </svg>
-                    <div className="text-left">
+                    <div className="text-start">
                       <div className="text-sm font-semibold text-orange-600">
                         {distanceLabel}
                       </div>
@@ -181,7 +181,7 @@ function ExcursionLayout({
                         strokeLinecap="round"
                       />
                     </svg>
-                    <div className="text-left">
+                    <div className="text-start">
                       <div className="text-sm font-semibold text-indigo-600">
                         {durationLabel}
                       </div>
@@ -196,7 +196,7 @@ function ExcursionLayout({
                   <h2 className="text-xl font-semibold text-slate-900 sm:text-2xl md:text-3xl">
                     {t("excursion.common.highlights")}
                   </h2>
-                  <ul className="mt-4 grid gap-3">
+                  <ul className="mbs-4 grid gap-3">
                     {highlights.map((item, idx) => (
                       <m.li
                         key={item}
@@ -206,10 +206,10 @@ function ExcursionLayout({
                         transition={{ duration: 0.4, delay: idx * 0.1 }}
                         className="grid grid-cols-[40px_1fr] items-center gap-4"
                       >
-                        <span className="inline-flex size-8 shrink-0 items-center justify-center justify-self-end rounded-full bg-orange-500 text-white">
+                        <span className="inline-flex shrink-0 items-center justify-center justify-self-end rounded-full bg-orange-500 text-white block-8 inline-8">
                           <CheckIcon />
                         </span>
-                        <p className="text-left text-sm leading-relaxed sm:text-base">
+                        <p className="text-start text-sm leading-relaxed sm:text-base">
                           {item}
                         </p>
                       </m.li>
@@ -242,17 +242,17 @@ function ExcursionLayout({
                   <p className="text-center text-xs tracking-[0.45em] text-orange-300 uppercase">
                     {t("excursion.sidebar.title")}
                   </p>
-                  <h3 className="mt-2 text-center text-2xl font-semibold">
+                  <h3 className="mbs-2 text-center text-2xl font-semibold">
                     {t("excursion.sidebar.mainBrand")}
                   </h3>
-                  <span className="mt-1 block text-center text-sm text-orange-200">
+                  <span className="mbs-1 block text-center text-sm text-orange-200">
                     {t("excursion.sidebar.subBrand")}
                   </span>
                   <div
                     className="my-4 hidden border-t border-slate-700 sm:block"
                     aria-hidden="true"
                   ></div>
-                  <p className="mt-2 text-sm text-slate-200">
+                  <p className="mbs-2 text-sm text-slate-200">
                     <Trans
                       i18nKey="excursion.sidebar.intro"
                       components={{
@@ -260,23 +260,23 @@ function ExcursionLayout({
                       }}
                     />
                   </p>
-                  <p className="mt-4 text-sm text-slate-200">
+                  <p className="mbs-4 text-sm text-slate-200">
                     {t("excursion.sidebar.details")}
                   </p>
-                  <ul className="mt-4 grid gap-3 text-sm text-slate-100">
+                  <ul className="mbs-4 grid gap-3 text-sm text-slate-100">
                     {sidebarItems.map((item, idx) => (
                       <li
                         key={item}
                         className="grid grid-cols-[40px_1fr] items-center gap-3"
                       >
-                        <span className="inline-flex size-5 items-center justify-center justify-self-end rounded-full bg-orange-500 text-xs font-semibold text-white">
+                        <span className="inline-flex items-center justify-center justify-self-end rounded-full bg-orange-500 text-xs font-semibold text-white block-5 inline-5">
                           {idx + 1}
                         </span>
                         <p className="text-sm leading-relaxed">{item}</p>
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-4 text-sm text-slate-200">
+                  <p className="mbs-4 text-sm text-slate-200">
                     {t("excursion.sidebar.conclusion")}
                   </p>
                 </div>
@@ -290,20 +290,20 @@ function ExcursionLayout({
                 <h4 className="text-lg font-semibold text-slate-900">
                   {t("excursion.sidebar.ctaTitle")}
                 </h4>
-                <p className="mt-2 text-sm text-slate-500">
+                <p className="mbs-2 text-sm text-slate-500">
                   {t("excursion.sidebar.ctaDescription")}
                 </p>
-                <ul className="m-0 mt-4 grid list-none gap-3 p-0 text-sm text-slate-600">
+                <ul className="m-0 mbs-4 grid list-none gap-3 p-0 text-sm text-slate-600">
                   <li className="grid grid-cols-[40px_1fr] items-center gap-3">
-                    <span className="size-2 justify-self-end rounded-full bg-orange-500"></span>
+                    <span className="justify-self-end rounded-full bg-orange-500 block-2 inline-2"></span>
                     <p className="">{t("excursion.sidebar.ctaPoint01")}</p>
                   </li>
                   <li className="grid grid-cols-[40px_1fr] items-center gap-3">
-                    <span className="size-2 justify-self-end rounded-full bg-orange-500"></span>
+                    <span className="justify-self-end rounded-full bg-orange-500 block-2 inline-2"></span>
                     <p className="">{t("excursion.sidebar.ctaPoint02")}</p>
                   </li>
                   <li className="grid grid-cols-[40px_1fr] items-center gap-3">
-                    <span className="size-2 justify-self-end rounded-full bg-orange-500"></span>
+                    <span className="justify-self-end rounded-full bg-orange-500 block-2 inline-2"></span>
                     <p className="">{t("excursion.sidebar.ctaPoint03")}</p>
                   </li>
                 </ul>

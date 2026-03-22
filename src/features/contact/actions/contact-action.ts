@@ -1,7 +1,8 @@
 "use server";
 
 import { headers } from "next/headers";
-import { ContactSchema } from "@/lib/schemas";
+import { getTranslations } from "next-intl/server";
+import { getContactSchema } from "@/lib/schemas";
 import { env } from "@/lib/env";
 import { checkRateLimit, logSuspiciousActivity } from "@/lib/api-utils";
 import { verifyRecaptcha, createMailer, escapeHtml } from "@/lib/server-utils";
@@ -47,7 +48,8 @@ export async function submitContactAction(
     };
 
     // Validate using Zod schema
-    const validationResult = ContactSchema.safeParse(rawData);
+    const t = await getTranslations("validations");
+    const validationResult = getContactSchema(t).safeParse(rawData);
 
     if (!validationResult.success) {
       const errors: Record<string, string> = {};

@@ -19,7 +19,7 @@ export function SocialLinks({
   const getSocialButtonClasses = (size: "sm" | "md" = "md"): string => {
     const sizeClass = size === "sm" ? "size-10" : "size-11";
     const baseClasses =
-      "flex items-center justify-center rounded-full border-2 transition-all duration-150 hover:-translate-y-0.5 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)]";
+      "flex items-center justify-center rounded-full border-2 transition-all duration-150 pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)]";
     const socialStyles = scrolled
       ? ""
       : "border-white/60 bg-white/10 text-white";

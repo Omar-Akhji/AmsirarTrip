@@ -55,10 +55,10 @@ export default function TourItinerary({
           className="group relative"
         >
           {/* Day Title with Modern Design */}
-          <div className="mb-6">
-            <div className="mb-4 flex items-center gap-4">
+          <div className="mbe-6">
+            <div className="mbe-4 flex items-center gap-4">
               <div className="shrink-0">
-                <div className="flex h-12 items-center justify-center rounded-full bg-linear-to-br from-orange-500 to-amber-600 px-4 text-lg font-bold text-white shadow-lg transition-shadow duration-300 group-hover:shadow-xl">
+                <div className="flex items-center justify-center rounded-full bg-linear-to-br from-orange-500 to-amber-600 px-4 text-lg font-bold text-white shadow-lg transition-shadow duration-300 block-12 group-hover:shadow-xl">
                   {getOrdinalSuffix(day.number)} Day
                 </div>
               </div>
@@ -66,9 +66,9 @@ export default function TourItinerary({
           </div>
 
           {/* Day Content */}
-          <div className="border-orange space-y-3 border-l-0 pl-0 sm:ml-5.5 sm:border-l-4 sm:pl-6">
+          <div className="border-orange space-y-3 border-s-0 ps-0 sm:ms-5.5 sm:border-s-4 sm:ps-6">
             {/* Cities Route */}
-            <div className="mb-4 flex flex-wrap items-center gap-2">
+            <div className="mbe-4 flex flex-wrap items-center gap-2">
               {day.title.split("➜").map((location, idx, arr) => (
                 <React.Fragment key={location.trim()}>
                   <span className="inline-flex items-center rounded-full border border-orange-200/50 bg-linear-to-r from-orange-50 to-amber-50 px-3 py-1 text-sm font-medium text-orange-700">
@@ -85,7 +85,7 @@ export default function TourItinerary({
             </div>
             {day.text.map((item) => (
               <div key={item} className="flex items-start gap-3">
-                <div className="mt-1 flex size-6 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-green-500 to-emerald-600 text-white shadow-sm">
+                <div className="mbs-1 flex size-6 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-green-500 to-emerald-600 text-white shadow-sm">
                   <Check className="size-3.5" aria-hidden />
                 </div>
                 <p className="flex-1 text-sm leading-relaxed text-gray-700 sm:text-base">
@@ -99,7 +99,7 @@ export default function TourItinerary({
               day.meals ||
               day.activities ||
               day.arrival) && (
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <div className="mbs-4 grid gap-3 sm:grid-cols-2">
                 {day.accommodation && (
                   <div className="flex items-center gap-2 rounded-lg border-[3px] border-indigo-200 bg-indigo-50 px-3 py-2">
                     <Hotel

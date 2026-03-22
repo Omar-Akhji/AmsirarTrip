@@ -45,26 +45,26 @@ const ServicesSection = () => {
       />
       {/* Dark Overlay */}
       <div className="absolute inset-0 -z-10 bg-black/40" aria-hidden="true" />
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="relative mx-auto px-4 max-inline-6xl sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-10">
-          <div className="mx-auto max-w-3xl space-y-4 text-center">
+          <div className="mx-auto space-y-4 text-center max-inline-3xl">
             <p className="inline-flex items-center justify-center rounded-full border-2 border-orange-100 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-white uppercase sm:tracking-[0.3em]">
               {t("services.smTitle")}
             </p>
             <h2
               id="services-heading"
-              className="mt-4 text-2xl leading-tight font-bold tracking-widest text-white uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
+              className="mbs-4 text-2xl leading-tight font-bold tracking-widest text-white uppercase text-shadow-md sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
             >
               {t("services.lgTitle")}
             </h2>
             <div
-              className="mx-auto mt-4 h-1 w-20 rounded-full bg-orange-200"
+              className="mx-auto mbs-4 rounded-full bg-orange-200 block-1 inline-20"
               aria-hidden="true"
             />
           </div>
         </div>
 
-        <div className="mt-12 grid justify-items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mbs-12 grid justify-items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service, idx) => (
             <m.article
               key={service.key}
@@ -72,11 +72,11 @@ const ServicesSection = () => {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: idx * 0.15 }}
-              className={`group relative flex flex-col items-center rounded-3xl border border-white/10 bg-white/5 p-8 text-center shadow-sm ring-1 ring-black/5 backdrop-blur-sm transition hover:-translate-y-1 hover:bg-white/10 hover:shadow-md ${
+              className={`group relative flex flex-col items-center rounded-3xl border border-white/10 bg-white/5 p-8 text-center shadow-sm ring-1 ring-black/5 backdrop-blur-sm transition pointer-fine:hover:-translate-y-1 pointer-fine:hover:bg-white/10 pointer-fine:hover:shadow-md ${
                 idx === 2 ? "md:col-span-2 lg:col-span-1" : ""
               }`}
             >
-              <div className="mb-6 inline-flex size-25 items-center justify-center rounded-full bg-white/5 ring-1 ring-white/10">
+              <div className="mbe-6 inline-flex size-25 items-center justify-center rounded-full bg-white/5 ring-1 ring-white/10">
                 <Image
                   src={service.icon}
                   alt={t(service.altKey)}
@@ -88,7 +88,7 @@ const ServicesSection = () => {
               <h3 className="text-xl font-semibold text-white">
                 {t(`services.cards.${service.key}.title`)}
               </h3>
-              <p className="mt-3 text-sm text-white">
+              <p className="mbs-3 text-sm text-white">
                 {t(`services.cards.${service.key}.text`)}
               </p>
               <div

@@ -95,9 +95,9 @@ export default function NavigationProgress() {
   if (!state.loading) return null;
 
   return (
-    <div className="fixed top-0 right-0 left-0 z-50 h-1 bg-slate-200">
+    <div className="fixed start-0 end-0 top-0 z-50 bg-slate-200 block-1">
       <div
-        className="bg-orange h-full transition-all duration-200 ease-out"
+        className="bg-orange transition-all duration-200 ease-out block-full"
         style={{ width: `${state.progress}%` }}
       />
     </div>

@@ -1,6 +1,5 @@
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { m } from "motion/react";
-import { cn } from "@/lib/utils";
 import type { ContactFormState } from "../actions/contact-action";
 
 interface ContactFormFieldsProps {
@@ -26,21 +25,16 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
             id="contact-name"
             name="name"
             type="text"
-            className={cn(
-              "w-full rounded-2xl border px-4 py-3 text-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none",
-              state?.errors?.name ? "border-red-300" : "border-gray-200"
-            )}
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
             placeholder={t("contact.form.fields.name", "Full name")}
             aria-label={t("contact.form.fields.name", "Full name")}
             autoComplete="name"
             required
             aria-invalid={state?.errors?.name ? "true" : "false"}
-            aria-describedby={
-              state?.errors?.name ? "name-error" : undefined
-            }
+            aria-describedby={state?.errors?.name ? "name-error" : undefined}
           />
           {state?.errors?.name && (
-            <p id="name-error" className="mt-1 text-xs text-red-600">
+            <p id="name-error" className="mbs-1 text-xs text-red-600">
               {state.errors.name}
             </p>
           )}
@@ -58,21 +52,16 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
             id="contact-email"
             name="email"
             type="email"
-            className={cn(
-              "w-full rounded-2xl border px-4 py-3 text-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none",
-              state?.errors?.email ? "border-red-300" : "border-gray-200"
-            )}
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
             placeholder={t("contact.form.fields.email", "Email")}
             aria-label={t("contact.form.fields.email", "Email")}
             autoComplete="email"
             required
             aria-invalid={state?.errors?.email ? "true" : "false"}
-            aria-describedby={
-              state?.errors?.email ? "email-error" : undefined
-            }
+            aria-describedby={state?.errors?.email ? "email-error" : undefined}
           />
           {state?.errors?.email && (
-            <p id="email-error" className="mt-1 text-xs text-red-600">
+            <p id="email-error" className="mbs-1 text-xs text-red-600">
               {state.errors.email}
             </p>
           )}
@@ -93,21 +82,16 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
             id="contact-phone"
             name="phone"
             type="tel"
-            className={cn(
-              "w-full rounded-2xl border px-4 py-3 text-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none",
-              state?.errors?.phone ? "border-red-300" : "border-gray-200"
-            )}
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
             placeholder={t("contact.form.fields.phone", "Phone number")}
             aria-label={t("contact.form.fields.phone", "Phone number")}
             autoComplete="tel"
             required
             aria-invalid={state?.errors?.phone ? "true" : "false"}
-            aria-describedby={
-              state?.errors?.phone ? "phone-error" : undefined
-            }
+            aria-describedby={state?.errors?.phone ? "phone-error" : undefined}
           />
           {state?.errors?.phone && (
-            <p id="phone-error" className="mt-1 text-xs text-red-600">
+            <p id="phone-error" className="mbs-1 text-xs text-red-600">
               {state.errors.phone}
             </p>
           )}
@@ -125,15 +109,12 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
             id="contact-topic"
             name="topic"
             type="text"
-            className="w-full rounded-2xl border border-gray-200 px-4 py-3 text-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
             placeholder={t(
               "contact.form.fields.topic",
               "Trip focus (optional)"
             )}
-            aria-label={t(
-              "contact.form.fields.topic",
-              "Trip focus (optional)"
-            )}
+            aria-label={t("contact.form.fields.topic", "Trip focus (optional)")}
             autoComplete="off"
           />
         </m.div>
@@ -151,10 +132,7 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
         <textarea
           id="contact-message"
           name="message"
-          className={cn(
-            "min-h-40 w-full rounded-2xl border px-4 py-3 text-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none",
-            state?.errors?.message ? "border-red-300" : "border-gray-200"
-          )}
+          className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full min-block-40 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
           placeholder={t(
             "contact.form.fields.message",
             "Tell us about your Morocco dream"
@@ -171,7 +149,7 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
           }
         />
         {state?.errors?.message && (
-          <p id="message-error" className="mt-1 text-xs text-red-600">
+          <p id="message-error" className="mbs-1 text-xs text-red-600">
             {state.errors.message}
           </p>
         )}

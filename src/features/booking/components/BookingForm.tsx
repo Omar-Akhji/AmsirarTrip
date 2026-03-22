@@ -73,7 +73,7 @@ function SubmitButton({ buttonText }: { buttonText: string }) {
 
   return (
     <button
-      className="flex w-full transform items-center justify-center gap-2 rounded-full bg-orange-500 px-8 py-4 text-sm font-semibold tracking-wide whitespace-nowrap text-white uppercase shadow-lg shadow-orange-500/25 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:bg-orange-400 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60"
+      className="flex inline-full transform items-center justify-center gap-2 rounded-full bg-orange-500 px-8 py-4 text-sm font-semibold tracking-wide whitespace-nowrap text-white uppercase shadow-lg shadow-orange-500/25 transition duration-300 ease-in-out pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:bg-orange-400 pointer-fine:hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60"
       type="submit"
       disabled={pending}
       aria-busy={pending}
@@ -148,7 +148,7 @@ function BookingForm({
   const baseSectionClass = `py-20 md:py-10 bg-gray-50 ${
     fullWidth ? "booking-form-fullwidth" : ""
   }`;
-  const innerWrapperClass = `booking-form-inner mx-auto w-full max-w-6xl ${
+  const innerWrapperClass = `booking-form-inner mx-auto inline-full max-inline-6xl ${
     fullWidth ? "px-4 sm:px-6 lg:px-10" : "px-4 sm:px-6 lg:px-8"
   }`;
 
@@ -178,7 +178,7 @@ function BookingForm({
               <h2 className="text-xl font-bold sm:text-2xl md:text-3xl">
                 {t("booking.makeReservation", "Make your reservation")}
               </h2>
-              <p className="mt-3 text-sm text-orange-50/90 md:text-base">
+              <p className="mbs-3 text-sm text-orange-50/90 md:text-base">
                 {t(
                   "booking.description",
                   "Book your perfect Morocco adventure with us"
@@ -220,7 +220,7 @@ function BookingForm({
                 }
               />
 
-              <div className="w-full flex-1">
+              <div className="inline-full flex-1">
                 <SubmitButton buttonText={uiState.buttonText} />
               </div>
             </form>

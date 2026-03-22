@@ -39,18 +39,22 @@ export default function HomeStats() {
 
   return (
     <section className="py-12" aria-labelledby="home-highlights">
-      <div className="mx-auto max-w-7xl px-4">
-        <div className="mx-auto mb-10 max-w-3xl text-center">
+      <div className="mx-auto px-4 max-inline-7xl">
+        <div className="mx-auto mbe-10 text-center max-inline-3xl">
           <p className="inline-flex items-center justify-center rounded-full border-2 border-white bg-orange-600 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-white uppercase">
             {t("about.smTitle")}
           </p>
           <h2
             id="home-highlights"
-            className="mt-4 text-2xl leading-tight font-bold sm:text-3xl md:text-4xl"
+            className="mbs-4 text-2xl leading-tight font-bold text-shadow-md sm:text-3xl md:text-4xl"
           >
             {t("about.experienceTitle")}
           </h2>
-          <p className="mt-3 text-base text-taupe-600">
+          <div
+            className="mx-auto mbs-4 rounded-full bg-orange-500 block-1 inline-20"
+            aria-hidden="true"
+          />
+          <p className="mbs-4 text-base text-taupe-600">
             {t("tours.detailsSubtitle")}
           </p>
         </div>
@@ -63,15 +67,11 @@ export default function HomeStats() {
               transition={{ duration: 0.5, delay: idx * 0.1 }}
               className="rounded-3xl border border-orange-100 bg-white px-6 py-6 shadow-lg shadow-orange-100/70"
             >
-              <p className="text-4xl font-bold text-orange-600">
-                {stat.value}
-              </p>
-              <h3 className="mt-3 text-lg font-semibold text-slate-900">
+              <p className="text-4xl font-bold text-orange-600">{stat.value}</p>
+              <h3 className="mbs-3 text-lg font-semibold text-slate-900">
                 {stat.label}
               </h3>
-              <p className="mt-2 text-sm text-taupe-600">
-                {stat.description}
-              </p>
+              <p className="mbs-2 text-sm text-taupe-600">{stat.description}</p>
             </m.article>
           ))}
         </div>

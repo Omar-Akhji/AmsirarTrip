@@ -41,11 +41,11 @@ export function LegalPageLayout({ config, headingId }: LegalPageLayoutProps) {
             className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(248,250,252,0.3),transparent_70%)]"
             aria-hidden="true"
           />
-          <div className="relative z-10 mx-auto max-w-7xl px-4">
+          <div className="relative z-10 mx-auto px-4 max-inline-7xl">
             {/* Last Updated Notice */}
             <m.div
               {...fadeInUp}
-              className="mb-8 text-center text-sm text-gray-500"
+              className="mbe-8 text-center text-sm text-gray-500"
             >
               {t(config.lastUpdatedKey)}
             </m.div>
@@ -68,11 +68,11 @@ export function LegalPageLayout({ config, headingId }: LegalPageLayoutProps) {
                 duration: 0.5,
                 delay: config.sections.length * 0.1,
               }}
-              className="mt-12 text-center"
+              className="mbs-12 text-center"
             >
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 text-orange-600 transition-colors hover:text-orange-700"
+                className="inline-flex items-center gap-2 text-orange-600 transition-colors pointer-fine:hover:text-orange-700"
               >
                 <svg
                   className="size-4"

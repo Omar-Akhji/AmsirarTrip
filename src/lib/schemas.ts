@@ -10,73 +10,73 @@ const sanitize = (val: string) => DOMPurify.sanitize(val.trim());
 const phoneRegex =
   /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,9}$/;
 
-const RecaptchaSchema = z.object({
-  recaptchaToken: z.string().min(1, "Recaptcha token is required"),
+const RecaptchaSchema = (t: (key: string) => string) => z.object({
+  recaptchaToken: z.string().min(1, t("recaptchaRequired")),
 });
 
 // --- Contact Schema ---
 
-export const ContactSchema = z
+export const getContactSchema = (t: (key: string) => string) => z
   .object({
     name: z
       .string()
-      .min(2, "Name must be at least 2 characters")
+      .min(2, t("nameMin"))
       .transform(sanitize),
-    email: z.string().email("Invalid email address").transform(sanitize),
+    email: z.string().email(t("emailInvalid")).transform(sanitize),
     phone: z
       .string()
-      .regex(phoneRegex, "Invalid phone number")
-      .max(20, "Phone number too long")
+      .regex(phoneRegex, t("phoneInvalid"))
+      .max(20, t("phoneTooLong"))
       .transform(sanitize),
     message: z
       .string()
-      .min(10, "Message must be at least 10 characters")
-      .max(1000, "Message too long")
+      .min(10, t("messageMin"))
+      .max(1000, t("messageTooLong"))
       .transform(sanitize),
   })
-  .merge(RecaptchaSchema);
+  .merge(RecaptchaSchema(t));
 
 // --- Newsletter Schema ---
 
-export const NewsletterSchema = z
+export const getNewsletterSchema = (t: (key: string) => string) => z
   .object({
     name: z
       .string()
-      .min(2, "Name must be at least 2 characters")
+      .min(2, t("nameMin"))
       .transform(sanitize),
-    email: z.string().email("Invalid email address").transform(sanitize),
+    email: z.string().email(t("emailInvalid")).transform(sanitize),
   })
-  .merge(RecaptchaSchema);
+  .merge(RecaptchaSchema(t));
 
 // --- Booking Schema ---
 
-export const BookingSchema = z
+export const getBookingSchema = (t: (key: string) => string) => z
   .object({
     reservationType: z
       .string()
-      .min(1, "Reservation type is required")
+      .min(1, t("reservationRequired"))
       .transform(sanitize),
     fullName: z
       .string()
-      .min(2, "Name must be at least 2 characters")
+      .min(2, t("nameMin"))
       .transform(sanitize),
-    email: z.string().email("Invalid email address").transform(sanitize),
+    email: z.string().email(t("emailInvalid")).transform(sanitize),
     phone: z
       .string()
-      .regex(phoneRegex, "Invalid phone number")
-      .max(20, "Phone number too long")
+      .regex(phoneRegex, t("phoneInvalid"))
+      .max(20, t("phoneTooLong"))
       .transform(sanitize),
     persons: z.coerce
       .number()
       .int()
-      .min(1, "At least 1 person required")
-      .max(50, "Max 50 persons"),
+      .min(1, t("personsMin"))
+      .max(50, t("personsMax")),
     date: z.string().refine((val) => !isNaN(Date.parse(val)), {
-      message: "Invalid date format",
+      message: t("invalidDate"),
     }),
     message: z
       .string()
-      .max(1000, "Message too long")
+      .max(1000, t("messageTooLong"))
       .optional()
       .transform((val) => (val ? sanitize(val) : undefined)),
     language: z
@@ -85,4 +85,4 @@ export const BookingSchema = z
       .transform((val) => (val ? sanitize(val) : undefined)),
     duration: z.coerce.number().int().min(1).max(30).optional(),
   })
-  .merge(RecaptchaSchema);
+  .merge(RecaptchaSchema(t));

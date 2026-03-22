@@ -448,25 +448,6 @@
 
   /* ====== :has() Pseudo-Class - Parent responds to child state ====== */
 
-  /* Form group highlights when input is focused */
-  .form-group:has(:is(input, textarea, select):focus) {
-    outline: 2px solid var(--color-orange);
-    outline-offset: 2px;
-    border-radius: 0.5rem;
-  }
-
-  /* Navigation with open dropdown gets backdrop */
-  nav:has([data-state="open"]) {
-    --nav-backdrop: blur(8px);
-
-    backdrop-filter: var(--nav-backdrop);
-  }
-
-  /* Section with error state — user-invalid triggers only after interaction */
-  .input-wrapper:has(input:user-invalid) {
-    border-color: var(--color-destructive);
-  }
-
   /* Card with loaded image - alternative hover trigger */
   .card-article:has(img[loading="eager"]) {
     --card-priority: high;

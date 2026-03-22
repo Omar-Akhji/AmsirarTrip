@@ -14,14 +14,14 @@ export default function FooterTailwind() {
       />
       {/* Decorative background elements */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="bg-orange/5 absolute -top-16 -right-16 size-72 rounded-full blur-3xl" />
-        <div className="bg-orange/3 absolute -bottom-20 -left-20 size-87.5 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 left-1/2 h-125 w-125 -translate-x-1/2 -translate-y-1/2 rounded-full bg-radial from-white/2 to-transparent" />
+        <div className="bg-orange/5 absolute -end-16 -top-16 size-72 rounded-full blur-3xl" />
+        <div className="bg-orange/3 absolute -start-20 -bottom-20 size-87.5 rounded-full blur-3xl" />
+        <div className="absolute start-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-radial from-white/2 to-transparent block-125 inline-125" />
       </div>
 
       <div className="relative z-10">
         {/* Main footer content */}
-        <div className="mx-auto max-w-7xl p-8">
+        <div className="mx-auto p-8 max-inline-7xl">
           <div className="grid grid-cols-1 items-baseline gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-4">
             <FooterBrand />
             <FooterContactInfo />

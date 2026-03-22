@@ -1,7 +1,8 @@
 "use server";
 
 import { headers } from "next/headers";
-import { BookingSchema } from "@/lib/schemas";
+import { getTranslations } from "next-intl/server";
+import { getBookingSchema } from "@/lib/schemas";
 import { env } from "@/lib/env";
 import { checkRateLimit, logSuspiciousActivity } from "@/lib/api-utils";
 import { verifyRecaptcha, createMailer, escapeHtml } from "@/lib/server-utils";
@@ -66,7 +67,8 @@ export async function submitBookingAction(
     };
 
     // Validate using Zod schema
-    const validationResult = BookingSchema.safeParse(rawData);
+    const t = await getTranslations("validations");
+    const validationResult = getBookingSchema(t).safeParse(rawData);
 
     if (!validationResult.success) {
       const errors: Record<string, string> = {};

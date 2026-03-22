@@ -1,6 +1,19 @@
 {
   "helplineTitle": "For Further Inquires :",
   "helplineNumber": "+212 (0) 6 61 17 31 44",
+  "validations": {
+    "recaptchaRequired": "Recaptcha verification is required",
+    "nameMin": "Name must be at least 2 characters",
+    "emailInvalid": "Invalid email address",
+    "phoneInvalid": "Invalid phone number",
+    "phoneTooLong": "Phone number too long",
+    "messageMin": "Message must be at least 10 characters",
+    "messageTooLong": "Message too long",
+    "reservationRequired": "Reservation type is required",
+    "personsMin": "At least 1 person required",
+    "personsMax": "Max 50 persons",
+    "invalidDate": "Invalid date format"
+  },
   "nav": {
     "home": "Home",
     "tours": "Tours",
@@ -40,7 +53,6 @@
       "description": "Explore our curated multi-day tours across Morocco. From the Sahara Desert to the Imperial Cities, find your perfect adventure."
     },
     "title": "Our Tours",
-
     "day": "Day",
     "accommodationLabel": "Accommodation",
     "mealsLabel": "Meals",
@@ -468,7 +480,6 @@
     "overview": "Lift off before dawn for a sunrise hot air balloon ride above Marrakech. Watch the landscape glow beneath you, celebrate with mint tea, and savor a Berber breakfast after landing.",
     "bookingTitle": "Reserve Your Sunrise Balloon Flight"
   },
-
   "tour1": {
     "title": "Merzouga Desert Adventure",
     "day1": {
@@ -1219,7 +1230,6 @@
     "reviewCount": "Based on 180+ travellers",
     "checkCopy": "Read honest reviews and, if you prefer, request your booking directly through our TripAdvisor listing.",
     "tripadvisorCtaAria": "Open TripAdvisor in new tab",
-
     "tour2": {
       "day1": {
         "accommodation": "Riad/Hotel in Chefchaouen",
@@ -1338,7 +1348,8 @@
         "meals": "Breakfast included",
         "arrival": "Around 5:00–6:00 PM"
       }
-    }
+    },
+    "sending": "Sending..."
   },
   "legal": {
     "backToHome": "Back to Home",

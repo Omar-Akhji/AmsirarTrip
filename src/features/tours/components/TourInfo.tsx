@@ -26,7 +26,7 @@ export default function TourInfo({
       {/* Includes */}
       {includes && (
         <m.div {...fadeInUp}>
-          <h2 className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
+          <h2 className="mbe-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
             {includedTitle}
           </h2>
           <div className="rounded-lg border border-green-200 bg-green-50 p-6">
@@ -40,10 +40,10 @@ export default function TourInfo({
                   transition={{ duration: 0.3, delay: idx * 0.05 }}
                   className="flex items-start gap-3"
                 >
-                  <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-green-500 text-xs text-white">
+                  <span className="mbs-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-green-500 text-xs text-white">
                     <Check className="size-3" aria-hidden />
                   </span>
-                  <span className="flex-1 text-left text-sm text-gray-700 sm:text-base">
+                  <span className="flex-1 text-start text-sm text-gray-700 sm:text-base">
                     {item}
                   </span>
                 </m.li>
@@ -56,7 +56,7 @@ export default function TourInfo({
       {/* Excludes */}
       {excludes && (
         <m.div {...fadeInUp} transition={{ duration: 0.5, delay: 0.1 }}>
-          <h2 className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
+          <h2 className="mbe-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
             {excludedTitle}
           </h2>
           <div className="rounded-lg border border-red-200 bg-red-50 p-6">
@@ -70,10 +70,10 @@ export default function TourInfo({
                   transition={{ duration: 0.3, delay: idx * 0.05 }}
                   className="flex items-start gap-3"
                 >
-                  <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-red-500 text-xs text-white">
+                  <span className="mbs-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-red-500 text-xs text-white">
                     ✕
                   </span>
-                  <span className="flex-1 text-left text-sm text-gray-700 sm:text-base">
+                  <span className="flex-1 text-start text-sm text-gray-700 sm:text-base">
                     {item}
                   </span>
                 </m.li>
@@ -86,7 +86,7 @@ export default function TourInfo({
       {/* Good to Know */}
       {goodToKnow && (
         <m.div {...fadeInUp} transition={{ duration: 0.5, delay: 0.2 }}>
-          <h2 className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
+          <h2 className="mbe-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
             {goodToKnowTitle}
           </h2>
           <div className="rounded-lg border border-blue-200 bg-blue-50 p-6">
@@ -100,10 +100,10 @@ export default function TourInfo({
                   transition={{ duration: 0.3, delay: idx * 0.05 }}
                   className="flex items-start gap-3"
                 >
-                  <span className="mt-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-blue-500 text-xs font-bold text-white">
+                  <span className="mbs-0.5 inline-flex size-5 shrink-0 items-center justify-center rounded-full bg-blue-500 text-xs font-bold text-white">
                     i
                   </span>
-                  <span className="flex-1 text-left text-sm text-gray-700 sm:text-base">
+                  <span className="flex-1 text-start text-sm text-gray-700 sm:text-base">
                     {item}
                   </span>
                 </m.li>

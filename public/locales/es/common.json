@@ -1,6 +1,19 @@
 {
   "helplineTitle": "Para más consultas :",
   "helplineNumber": "+212 (0) 6 61 17 31 44",
+  "validations": {
+    "recaptchaRequired": "Se requiere verificación Recaptcha",
+    "nameMin": "El nombre debe tener al menos 2 caracteres",
+    "emailInvalid": "Dirección de correo electrónico no válida",
+    "phoneInvalid": "Número de teléfono no válido",
+    "phoneTooLong": "Número de teléfono demasiado largo",
+    "messageMin": "El mensaje debe tener al menos 10 caracteres",
+    "messageTooLong": "Mensaje demasiado largo",
+    "reservationRequired": "El tipo de reserva es obligatorio",
+    "personsMin": "Se requiere al menos 1 persona",
+    "personsMax": "Máximo 50 personas",
+    "invalidDate": "Formato de fecha no válido"
+  },
   "nav": {
     "home": "Inicio",
     "tours": "Circuitos",
@@ -40,7 +53,6 @@
       "description": "Explora nuestros tours multi-día cuidadosamente elaborados a través de Marruecos. Desde el desierto del Sahara hasta las ciudades imperiales, encuentra tu aventura perfecta."
     },
     "title": "Nuestros tours",
-
     "day": "Día",
     "accommodationLabel": "Alojamiento",
     "mealsLabel": "Comidas",
@@ -460,7 +472,6 @@
     "overview": "Despega antes del alba para un paseo en globo al amanecer sobre Marrakech. Observa cómo despierta el paisaje, brinda con té de menta y saborea un desayuno bereber después del aterrizaje.",
     "bookingTitle": "Reserva tu vuelo en globo al amanecer"
   },
-
   "tour1": {
     "title": "Aventura en el desierto de Merzouga",
     "day1": {
@@ -1201,7 +1212,6 @@
     "reviewCount": "Basado en 180+ viajeros",
     "checkCopy": "Lee opiniones honestas y, si lo prefieres, solicita tu reserva directamente a través de nuestra página de TripAdvisor.",
     "tripadvisorCtaAria": "Abrir TripAdvisor en una nueva pestaña",
-
     "tour2": {
       "day1": {
         "accommodation": "Riad/Hotel en Chefchaouen",
@@ -1320,7 +1330,8 @@
         "meals": "Desayuno incluido",
         "arrival": "Alrededor de las 17:00–18:00"
       }
-    }
+    },
+    "sending": "Enviando..."
   },
   "legal": {
     "backToHome": "Volver al inicio",

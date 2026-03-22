@@ -153,14 +153,14 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
           className="py-14"
           aria-labelledby="tour-title"
         >
-          <div className="mx-auto grid max-w-7xl gap-10 px-4 lg:grid-cols-[4fr_2fr]">
+          <div className="mx-auto grid gap-10 px-4 max-inline-7xl lg:grid-cols-[4fr_2fr]">
             <m.article
               {...fadeIn}
-              className="rounded-[20px] bg-white p-4 pb-8 shadow-sm ring-1 ring-slate-100 sm:p-6 sm:pb-12"
+              className="rounded-[20px] bg-white p-4 pbe-8 shadow-sm ring-1 ring-slate-100 sm:p-6 sm:pbe-12"
             >
               <m.figure
                 {...fadeInScale}
-                className="relative mb-8 aspect-4/3 w-full overflow-hidden rounded-[20px] border border-slate-50 shadow-md"
+                className="relative mbe-8 aspect-4/3 inline-full overflow-hidden rounded-[20px] border border-slate-50 shadow-md"
               >
                 <Image
                   className="object-cover"
@@ -172,15 +172,15 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                 />
               </m.figure>
 
-              <m.div {...fadeInUp} className="mb-6 text-center">
+              <m.div {...fadeInUp} className="mbe-6 text-center">
                 <div className="mx-auto inline-block">
                   <span
-                    className="mb-3 hidden h-1 w-16 rounded-full bg-amber-300 sm:block"
+                    className="mbe-3 hidden rounded-full bg-amber-300 block-1 inline-16 sm:block"
                     aria-hidden="true"
                   ></span>
                   <h2
                     id="tour-title"
-                    className="mt-2 text-2xl leading-tight font-extrabold text-amber-600 sm:text-3xl md:text-4xl"
+                    className="mbs-2 text-2xl leading-tight font-extrabold text-amber-600 sm:text-3xl md:text-4xl"
                   >
                     {title}
                   </h2>
@@ -194,7 +194,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                       className="size-5 shrink-0 text-orange-500"
                       aria-hidden
                     />
-                    <div className="text-left">
+                    <div className="text-start">
                       <div className="text-sm font-semibold text-orange-600">
                         {tourData.duration} {t("tours.days")}
                       </div>
@@ -209,7 +209,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                       className="size-5 shrink-0 text-indigo-500"
                       aria-hidden
                     />
-                    <div className="text-left">
+                    <div className="text-start">
                       <div className="text-sm font-semibold text-indigo-600">
                         {t(tourData.start || "tours.cities.marrakech")}
                       </div>
@@ -221,7 +221,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                 </div>
 
                 <m.div {...fadeInUp} transition={{ duration: 0.5, delay: 0.1 }}>
-                  <h2 className="mb-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
+                  <h2 className="mbe-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
                     {t("tours.overview")}
                   </h2>
                   <p className="text-sm leading-relaxed whitespace-pre-line text-gray-700 sm:text-base">
@@ -231,7 +231,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
 
                 {/* Itinerary */}
                 <m.div {...fadeInUp} transition={{ duration: 0.5, delay: 0.2 }}>
-                  <h2 className="mb-8 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
+                  <h2 className="mbe-8 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
                     {t("tours.itinerary")}
                   </h2>
                   <TourItinerary

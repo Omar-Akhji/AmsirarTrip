@@ -42,12 +42,7 @@ export function BookingTripDetails({
             {t("booking.numberOfPeople", "Number of People")}
           </label>
           <input
-            className={cn(
-              "w-full rounded-2xl border px-4 py-3 text-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none",
-              state?.errors?.persons
-                ? "border-red-300 focus:ring-red-200"
-                : "border-gray-200"
-            )}
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
             type="number"
             id="numberOfPeople"
             name="numberOfPeople"
@@ -63,7 +58,7 @@ export function BookingTripDetails({
             required
           />
           {state?.errors?.persons && (
-            <p id="numberOfPeople-error" className="mt-1 text-xs text-red-600">
+            <p id="numberOfPeople-error" className="mbs-1 text-xs text-red-600">
               {state.errors.persons}
             </p>
           )}
@@ -80,7 +75,7 @@ export function BookingTripDetails({
               <button
                 type="button"
                 className={cn(
-                  "flex h-auto w-full items-center justify-start rounded-2xl border bg-white px-4 py-3 text-left text-sm font-normal transition-colors hover:bg-gray-50 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none",
+                  "flex items-center justify-start rounded-2xl border bg-white px-4 py-3 text-start text-sm font-normal transition-colors block-auto inline-full pointer-fine:hover:bg-gray-50 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none",
                   !reservationDate && "text-gray-500",
                   state?.errors?.date ? "border-red-300" : "border-gray-200"
                 )}
@@ -88,7 +83,7 @@ export function BookingTripDetails({
                   state?.errors?.date ? "reservationDate-error" : undefined
                 }
               >
-                <CalendarIcon className="mr-2 size-4" />
+                <CalendarIcon className="me-2 size-4" />
                 {reservationDate ? (
                   reservationDate.toLocaleDateString(locale || "en", {
                     day: "numeric",
@@ -102,7 +97,7 @@ export function BookingTripDetails({
             </Popover.Trigger>
             <Popover.Portal>
               <Popover.Content
-                className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 z-50 w-auto overflow-hidden rounded-2xl border border-gray-100 bg-white p-0 shadow-2xl ring-1 ring-black/5 outline-none"
+                className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-end-2 data-[side=right]:slide-in-from-start-2 data-[side=top]:slide-in-from-bottom-2 z-50 overflow-hidden rounded-2xl border border-gray-100 bg-white p-0 shadow-2xl ring-1 ring-black/5 outline-none inline-auto"
                 align="start"
                 sideOffset={8}
               >
@@ -128,7 +123,7 @@ export function BookingTripDetails({
             }
           />
           {state?.errors?.date && (
-            <p id="reservationDate-error" className="mt-1 text-xs text-red-600">
+            <p id="reservationDate-error" className="mbs-1 text-xs text-red-600">
               {state.errors.date}
             </p>
           )}
@@ -136,7 +131,7 @@ export function BookingTripDetails({
       </div>
 
       {/* Message textarea */}
-      <div className="w-full">
+      <div className="inline-full">
         <label htmlFor="message" className="sr-only">
           {t("booking.message", "Your message")}
         </label>
@@ -145,10 +140,7 @@ export function BookingTripDetails({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.3, delay: 0.7 }}
-          className={cn(
-            "w-full rounded-2xl border px-4 py-3 text-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none",
-            state?.errors?.message ? "border-red-300" : "border-gray-200"
-          )}
+          className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
           id="message"
           name="message"
           placeholder={t("booking.message", "Your message")}
@@ -160,7 +152,7 @@ export function BookingTripDetails({
           }
         />
         {state?.errors?.message && (
-          <p id="message-error" className="mt-1 text-xs text-red-600">
+          <p id="message-error" className="mbs-1 text-xs text-red-600">
             {state.errors.message}
           </p>
         )}

@@ -56,7 +56,8 @@ function Navbar() {
   useEffect(() => {
     const evaluateViewport = () => {
       const width = window.innerWidth;
-      const newViewport = width < 768 ? "mobile" : width < 1090 ? "tablet" : "desktop";
+      const newViewport =
+        width < 768 ? "mobile" : width < 1090 ? "tablet" : "desktop";
       setViewport(newViewport);
     };
 
@@ -107,7 +108,7 @@ function Navbar() {
   };
 
   const navClassName = cn(
-    "navbar fixed left-1/2 top-2 z-50 w-[min(1100px,calc(100%-2rem))] rounded-2xl border border-white/10 px-4 py-2 shadow-[0_10px_30px_rgba(3,7,18,0.12)] backdrop-blur-xl transition-colors duration-200",
+    "navbar fixed start-1/2 top-2 z-50 inline-[min(1100px,calc(100%-2rem))] rounded-2xl border border-white/10 px-4 py-2 shadow-[0_10px_30px_rgba(3,7,18,0.12)] backdrop-blur-xl has-data-[state=open]:backdrop-blur-[8px] transition-colors duration-200",
     "translate-x-[-50%] will-change-auto",
     scrolled
       ? "bg-white text-slate-900 shadow-[0_12px_30px_rgba(3,7,18,0.08)]"
@@ -121,7 +122,7 @@ function Navbar() {
     const base =
       "inline-flex items-center gap-2 rounded-full font-medium transition-all duration-200";
     const sizing = isMobile
-      ? "mx-auto w-fit min-w-40 justify-center px-8 py-2.5 text-base"
+      ? "mx-auto inline-fit min-inline-40 justify-center px-8 py-2.5 text-base"
       : "px-3 py-2 text-[0.98rem] tracking-tight";
 
     // Active link styles
@@ -139,16 +140,14 @@ function Navbar() {
     const textColor = scrolled ? "text-slate-900" : "text-white";
     const bgColor = "bg-transparent";
     const hover =
-      "hover:-translate-y-0.5 hover:bg-white/10 hover:shadow-[0_8px_26px_rgba(3,7,18,0.12)]";
+      "pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:bg-white/10 pointer-fine:hover:shadow-[0_8px_26px_rgba(3,7,18,0.12)]";
 
     return cn(base, sizing, textColor, bgColor, hover);
   };
 
-
-
   const getCollapseClasses = () => {
     const baseClasses =
-      "fixed left-1/2 top-[calc(100%+0.75rem)] z-40 w-full -translate-x-1/2 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-all duration-300";
+      "fixed start-1/2 top-[calc(100%+0.75rem)] z-40 inline-full -translate-x-1/2 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-all duration-300";
     const colorClasses = scrolled
       ? "border border-white/10 bg-white text-slate-900"
       : "border border-white/20 bg-slate-900 text-white";

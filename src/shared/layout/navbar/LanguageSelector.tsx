@@ -34,7 +34,7 @@ export function LanguageSelector({
   const getButtonClasses = (size: "sm" | "md", scrolled: boolean): string => {
     const sizeClass = size === "sm" ? "size-10" : "size-11";
     const baseClasses =
-      "flex items-center justify-center rounded-full border-2 transition-all duration-150 hover:-translate-y-0.5 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)]";
+      "flex items-center justify-center rounded-full border-2 transition-all duration-150 pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)]";
     const textSize = size === "sm" ? "text-sm" : "text-base font-semibold";
     const colorStyles = scrolled
       ? "border-orange bg-orange text-white shadow-[0_10px_24px_rgba(229,74,31,0.35)]"
@@ -45,7 +45,7 @@ export function LanguageSelector({
 
   const badgeClasses = (size: "sm" | "md"): string => {
     const baseClasses =
-      "absolute -right-1.5 -bottom-1 font-bold tracking-[0.04em] text-white rounded-full border-2 border-white bg-orange";
+      "absolute -end-1.5 -bottom-1 font-bold tracking-[0.04em] text-white rounded-full border-2 border-white bg-orange";
     const sizeClasses =
       size === "sm"
         ? "px-1 py-[1px] text-[0.6rem]"
@@ -93,8 +93,8 @@ export function LanguageSelector({
       {langOpen && (
         <div
           className={cn(
-            "absolute z-50 mt-2 w-48 overflow-hidden rounded-xl border shadow-xl backdrop-blur-xl",
-            placement === "left" ? "left-0" : "right-0",
+            "absolute z-50 mbs-2 overflow-hidden rounded-xl border shadow-xl backdrop-blur-xl inline-48",
+            placement === "left" ? "start-0" : "end-0",
             scrolled
               ? "border-slate-200/60 bg-white/90"
               : "border-white/10 bg-slate-900/90 text-white"
@@ -113,14 +113,14 @@ export function LanguageSelector({
                   aria-checked={selected}
                   onClick={() => changeLanguage(lang.code)}
                   className={cn(
-                    "flex w-full items-center justify-between rounded-lg px-3 py-2 text-sm",
+                    "flex items-center justify-between rounded-lg px-3 py-2 text-sm inline-full",
                     selected
                       ? scrolled
                         ? "bg-orange/10 text-orange-600"
                         : "bg-white/10 text-white"
                       : scrolled
-                        ? "text-slate-600 hover:bg-slate-100 hover:text-slate-900"
-                        : "text-slate-300 hover:bg-white/10 hover:text-white"
+                        ? "text-slate-600 pointer-fine:hover:bg-slate-100 pointer-fine:hover:text-slate-900"
+                        : "text-slate-300 pointer-fine:hover:bg-white/10 pointer-fine:hover:text-white"
                   )}
                 >
                   <span className="flex items-center gap-3">
@@ -129,7 +129,7 @@ export function LanguageSelector({
                   {selected && (
                     <div
                       className={cn(
-                        "mr-1 size-2 rounded-full",
+                        "me-1 size-2 rounded-full",
                         scrolled ? "bg-orange" : "bg-white"
                       )}
                     />

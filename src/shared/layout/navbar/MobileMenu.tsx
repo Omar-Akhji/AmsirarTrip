@@ -46,9 +46,9 @@ export function MobileMenu({
   const pathname = usePathname();
 
   return (
-    <div className="relative flex w-full items-center gap-3 px-2">
+    <div className="relative flex items-center gap-3 px-2 inline-full">
       {isTablet && (
-        <div className="mr-auto flex items-center gap-2">
+        <div className="me-auto flex items-center gap-2">
           <SocialLinks className="gap-2" compact={true} scrolled={scrolled} />
           <LanguageSelector
             size="sm"
@@ -67,9 +67,7 @@ export function MobileMenu({
         className={cn(
           "text-[1.4rem] font-semibold tracking-tight",
           scrolled ? "text-slate-900" : "text-white",
-          isTablet || isMobile
-            ? "absolute left-1/2 z-10 -translate-x-1/2"
-            : ""
+          isTablet || isMobile ? "absolute start-1/2 z-10 -translate-x-1/2" : ""
         )}
         onClick={handleNavClick}
         aria-label="Amsirar Trip Home"
@@ -77,7 +75,7 @@ export function MobileMenu({
         Amsirar
         <span
           className={cn(
-            "font-brand ml-1 font-light",
+            "font-brand ms-1 font-light",
             scrolled ? "text-orange" : "text-white"
           )}
         >
@@ -88,7 +86,7 @@ export function MobileMenu({
       {isMobile && (
         <LanguageSelector
           size="sm"
-          className="mr-auto"
+          className="me-auto"
           placement="left"
           langOpen={langOpen}
           setLangOpen={setLangOpen}
@@ -103,7 +101,7 @@ export function MobileMenu({
         type="button"
         id="navbar-show-btn"
         className={cn(
-          "focus-visible:outline-orange ml-2 flex size-10 items-center justify-center rounded-md text-lg transition-all duration-150 focus-visible:outline focus-visible:outline-offset-2",
+          "focus-visible:outline-orange ms-2 flex size-10 items-center justify-center rounded-md text-lg transition-all duration-150 focus-visible:outline focus-visible:outline-offset-2",
           scrolled
             ? "bg-white text-slate-900"
             : "bg-[rgba(0,0,0,0.35)] text-white shadow-[0_8px_20px_rgba(3,7,18,0.12)]"
@@ -115,17 +113,11 @@ export function MobileMenu({
       >
         {asideOpen ? (
           <X
-            className={cn(
-              "size-5",
-              scrolled ? "text-slate-900" : "text-white"
-            )}
+            className={cn("size-5", scrolled ? "text-slate-900" : "text-white")}
           />
         ) : (
           <Menu
-            className={cn(
-              "size-5",
-              scrolled ? "text-slate-900" : "text-white"
-            )}
+            className={cn("size-5", scrolled ? "text-slate-900" : "text-white")}
           />
         )}
       </button>
@@ -136,7 +128,7 @@ export function MobileMenu({
         className={cn(
           getCollapseClasses(),
           isTablet &&
-            "top-[calc(100%+0.75rem)] right-0.5 left-auto w-1/2 translate-x-0"
+            "start-auto end-0.5 top-[calc(100%+0.75rem)] translate-x-0 inline-1/2"
         )}
       >
         {isMobile && (

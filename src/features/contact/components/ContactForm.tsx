@@ -21,7 +21,7 @@ function SubmitButton() {
   return (
     <button
       type="submit"
-      className="inline-flex w-full transform items-center justify-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-semibold tracking-wide text-white uppercase shadow-lg shadow-orange-500/25 transition duration-300 ease-in-out hover:-translate-y-0.5 hover:shadow-xl hover:brightness-110 disabled:opacity-60 md:w-auto md:min-w-50"
+      className="inline-flex transform items-center justify-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-semibold tracking-wide text-white uppercase shadow-lg shadow-orange-500/25 transition duration-300 ease-in-out inline-full pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:shadow-xl pointer-fine:hover:brightness-110 disabled:opacity-60 md:inline-auto md:min-inline-50"
       disabled={pending}
       aria-busy={pending}
     >
@@ -65,7 +65,7 @@ const ContactForm = () => {
 
   return (
     <section id="contact-tailwind" className="bg-gray-50 py-12 md:py-16">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto px-4 max-inline-6xl sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-5">
           <m.div
             initial={{ opacity: 0, y: 30 }}
@@ -78,13 +78,13 @@ const ContactForm = () => {
               <p className="text-xs font-semibold tracking-[0.35em] text-orange-100 uppercase">
                 {t("contact.form.badge", "Plan with locals")}
               </p>
-              <h2 className="mt-2 text-2xl font-bold md:text-3xl">
+              <h2 className="mbs-2 text-2xl font-bold md:text-3xl">
                 {t(
                   "contact.form.title",
                   "Design Your Custom Morocco Tour & Private Itinerary"
                 )}
               </h2>
-              <p className="mt-3 text-sm text-orange-50/90 md:text-base">
+              <p className="mbs-3 text-sm text-orange-50/90 md:text-base">
                 {t(
                   "contact.form.subtitle",
                   "Share a few details and we will craft a bespoke itinerary for you."
@@ -117,7 +117,7 @@ const ContactForm = () => {
                   className="rounded-2xl border border-orange-200 bg-orange-50 px-4 py-3"
                   role="alert"
                 >
-                  <p className="mb-2 text-sm font-semibold text-orange-900">
+                  <p className="mbe-2 text-sm font-semibold text-orange-900">
                     {t(
                       "contact.form.errors.title",
                       "Please complete these fields:"
@@ -127,7 +127,7 @@ const ContactForm = () => {
                     {Object.entries(state.errors).map(([field, error]) => (
                       <li key={field} className="flex items-start gap-2">
                         <svg
-                          className="mt-0.5 size-4 shrink-0"
+                          className="mbs-0.5 size-4 shrink-0"
                           fill="currentColor"
                           viewBox="0 0 20 20"
                         >
@@ -154,7 +154,7 @@ const ContactForm = () => {
                 className="flex flex-col gap-4 lg:flex-row lg:items-center"
               >
                 <>
-                  <div className="flex w-full justify-center overflow-hidden lg:justify-start">
+                  <div className="flex justify-center overflow-hidden inline-full lg:justify-start">
                     <div
                       className={cn(
                         "origin-center scale-85 rounded-2xl border border-dashed p-3 sm:scale-100 lg:origin-left",
@@ -187,7 +187,7 @@ const ContactForm = () => {
                   {state?.errors?.recaptchaToken && (
                     <p
                       id="recaptchaToken-error"
-                      className="mt-1 text-xs text-red-600"
+                      className="mbs-1 text-xs text-red-600"
                     >
                       {state.errors.recaptchaToken}
                     </p>

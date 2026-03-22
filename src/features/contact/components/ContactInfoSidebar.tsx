@@ -11,10 +11,10 @@ export function ContactInfoSidebar() {
         <p className="text-xs font-semibold tracking-[0.45em] text-orange-200 uppercase">
           {t("contact.form.infoBadge", "Need details?")}
         </p>
-        <h3 className="mt-3 text-2xl font-bold sm:text-3xl">
+        <h3 className="mbs-3 text-2xl font-bold sm:text-3xl">
           {t("contact.form.infoTitle", "Plan handcrafted experiences")}
         </h3>
-        <p className="mt-4 text-sm text-slate-200">
+        <p className="mbs-4 text-sm text-slate-200">
           {t(
             "contact.form.infoCopy",
             "Our Marrakech team answers every message personally and can help with custom itineraries, desert camps, or last-minute transfers."
@@ -22,7 +22,7 @@ export function ContactInfoSidebar() {
         </p>
       </m.div>
 
-      <ul className="mt-8 space-y-6 text-sm">
+      <ul className="mbs-8 space-y-6 text-sm">
         {(
           [
             {
@@ -30,7 +30,7 @@ export function ContactInfoSidebar() {
               num: "01",
               label: t("contact.form.info.address", "Visit"),
               content: (
-                <p className="mt-1 text-base text-white">
+                <p className="mbs-1 text-base text-white">
                   Imm. J appt N° 5, Résidence La Perle de l&apos;Atlas, angle
                   Rue aboubakr, Marrakech
                 </p>
@@ -43,13 +43,13 @@ export function ContactInfoSidebar() {
               content: (
                 <>
                   <a
-                    className="mt-1 block text-base text-white hover:text-orange-300"
+                    className="mbs-1 block text-base text-white pointer-fine:hover:text-orange-300"
                     href="tel:+21266173144"
                   >
                     +212 (0) 6 61 17 31 44
                   </a>
                   <a
-                    className="mt-1 block text-base text-white/80 hover:text-orange-300"
+                    className="mbs-1 block text-base text-white/80 pointer-fine:hover:text-orange-300"
                     href="tel:+212566173144"
                   >
                     +212 (0) 5 6 61 73 14 44
@@ -63,7 +63,7 @@ export function ContactInfoSidebar() {
               label: t("contact.form.info.email", "Email"),
               content: (
                 <a
-                  className="mt-1 block text-base text-white hover:text-orange-300"
+                  className="break-anywhere mbs-1 block text-base text-white pointer-fine:hover:text-orange-300"
                   href="mailto:amsirare@gmail.com"
                 >
                   amsirare@gmail.com
@@ -93,7 +93,7 @@ export function ContactInfoSidebar() {
         ))}
       </ul>
 
-      <p className="mt-8 text-xs text-slate-400">
+      <p className="mbs-8 text-xs text-slate-400">
         {t(
           "contact.form.infoFooter",
           "Available every day from 09:00 to 21:00 GMT+1"

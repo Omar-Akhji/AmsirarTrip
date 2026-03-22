@@ -1,6 +1,19 @@
 {
   "helplineTitle": "Für weitere Anfragen :",
   "helplineNumber": "+212 (0) 6 61 17 31 44",
+  "validations": {
+    "recaptchaRequired": "Recaptcha-Überprüfung ist erforderlich",
+    "nameMin": "Der Name muss mindestens 2 Zeichen lang sein",
+    "emailInvalid": "Ungültige E-Mail-Adresse",
+    "phoneInvalid": "Ungültige Telefonnummer",
+    "phoneTooLong": "Telefonnummer zu lang",
+    "messageMin": "Die Nachricht muss mindestens 10 Zeichen lang sein",
+    "messageTooLong": "Nachricht zu lang",
+    "reservationRequired": "Reservierungstyp ist erforderlich",
+    "personsMin": "Mindestens 1 Person erforderlich",
+    "personsMax": "Maximal 50 Personen",
+    "invalidDate": "Ungültiges Datumsformat"
+  },
   "nav": {
     "home": "Startseite",
     "tours": "Touren",
@@ -40,7 +53,6 @@
       "description": "Entdecken Sie unsere sorgfältig zusammengestellten mehrtägigen Touren durch Marokko. Von der Sahara-Wüste zu den Königsstädten, finden Sie Ihr perfektes Abenteuer."
     },
     "title": "Unsere Touren",
-
     "day": "Tag",
     "accommodationLabel": "Unterkunft",
     "mealsLabel": "Mahlzeiten",
@@ -476,7 +488,6 @@
     "overview": "Starten Sie vor Tagesanbruch zu einer Sonnenaufgangs-Ballonfahrt über Marrakesch. Sehen Sie, wie die Landschaft erwacht, stoßen Sie mit Minztee an und lassen Sie sich ein Berberfrühstück schmecken.",
     "bookingTitle": "Reservieren Sie Ihren Sonnenaufgangs-Ballonflug"
   },
-
   "tour1": {
     "title": "Merzouga Wüstenabenteuer",
     "day1": {
@@ -1222,7 +1233,6 @@
     "reviewCount": "Basierend auf 180+ Reisenden",
     "checkCopy": "Lesen Sie ehrliche Bewertungen und fordern Sie Ihre Buchung bei Bedarf direkt über unser TripAdvisor-Profil an.",
     "tripadvisorCtaAria": "TripAdvisor in neuem Tab öffnen",
-
     "tour2": {
       "day1": {
         "accommodation": "Riad/Hotel in Chefchaouen",
@@ -1341,7 +1351,8 @@
         "meals": "Frühstück inbegriffen",
         "arrival": "Um ca. 17:00–18:00 Uhr"
       }
-    }
+    },
+    "sending": "Wird gesendet..."
   },
   "legal": {
     "backToHome": "Zurück zur Startseite",

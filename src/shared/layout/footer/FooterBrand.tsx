@@ -13,7 +13,7 @@ export function FooterBrand() {
       <Link
         href="/"
         prefetch={true}
-        className="group mb-2 inline-flex items-center gap-1"
+        className="group mbe-2 inline-flex items-center gap-1"
         aria-label="Amsirar Trip homepage"
       >
         <span className="text-3xl font-bold tracking-tight text-white transition-transform duration-300 group-hover:scale-105">
@@ -23,8 +23,8 @@ export function FooterBrand() {
           Trip
         </span>
       </Link>
-      <span className="bg-orange mb-6 block h-1 w-12 rounded" />
-      <p className="font-fancy text-xl leading-relaxed text-slate-400 lg:max-w-sm">
+      <span className="bg-orange mbe-6 block rounded block-1 inline-12" />
+      <p className="font-fancy text-xl leading-relaxed text-slate-400 lg:max-inline-sm">
         {t("footer.description")}
       </p>
     </m.div>

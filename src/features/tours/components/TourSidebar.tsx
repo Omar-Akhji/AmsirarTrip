@@ -42,26 +42,26 @@ export default function TourSidebar({
           <p className="text-center text-xs tracking-[0.45em] text-orange-300 uppercase">
             {t("tours.sidebar.title")}
           </p>
-          <h3 className="mt-2 text-center text-2xl font-semibold">
+          <h3 className="mbs-2 text-center text-2xl font-semibold">
             {t("tours.sidebar.mainBrand")}
           </h3>
-          <span className="mx-auto mt-1 block w-max rounded-full border border-orange-300 px-3 py-0.5 text-sm text-orange-200">
+          <span className="mx-auto mbs-1 block inline-max rounded-full border border-orange-300 px-3 py-0.5 text-sm text-orange-200">
             {t("tours.sidebar.subBrand")}
           </span>
           <div
             className="my-4 border-t border-slate-700"
             aria-hidden="true"
           ></div>
-          <p className="mt-2 text-sm text-slate-200">
+          <p className="mbs-2 text-sm text-slate-200">
             <Trans
               i18nKey="tours.sidebar.intro"
               components={{ strong: <strong className="text-white" /> }}
             />
           </p>
-          <p className="mt-4 text-sm text-slate-200">
+          <p className="mbs-4 text-sm text-slate-200">
             {t("tours.sidebar.details")}
           </p>
-          <ul className="mt-4 grid gap-3 text-sm text-slate-100">
+          <ul className="mbs-4 grid gap-3 text-sm text-slate-100">
             {sidebarItems.map((item, idx) => (
               <m.li
                 key={item}
@@ -71,14 +71,14 @@ export default function TourSidebar({
                 transition={{ duration: 0.3, delay: 0.5 + idx * 0.08 }}
                 className="grid grid-cols-[40px_1fr] items-center gap-3"
               >
-                <span className="inline-flex size-5 items-center justify-center justify-self-end rounded-full bg-orange-500 text-xs font-semibold text-white">
+                <span className="inline-flex items-center justify-center justify-self-end rounded-full bg-orange-500 text-xs font-semibold text-white block-5 inline-5">
                   {idx + 1}
                 </span>
                 <p className="text-sm leading-relaxed">{item}</p>
               </m.li>
             ))}
           </ul>
-          <p className="mt-4 text-sm text-slate-200">
+          <p className="mbs-4 text-sm text-slate-200">
             {t("tours.sidebar.conclusion")}
           </p>
         </div>
@@ -92,20 +92,20 @@ export default function TourSidebar({
         <h4 className="text-lg font-semibold text-slate-900">
           {t("tours.sidebar.ctaTitle")}
         </h4>
-        <p className="mt-2 text-sm text-slate-500">
+        <p className="mbs-2 text-sm text-slate-500">
           {t("tours.sidebar.ctaDescription")}
         </p>
-        <ul className="m-0 mt-4 grid list-none gap-3 p-0 text-sm text-slate-600">
+        <ul className="m-0 mbs-4 grid list-none gap-3 p-0 text-sm text-slate-600">
           <li className="grid grid-cols-[40px_1fr] items-center gap-3">
-            <span className="size-2 justify-self-end rounded-full bg-orange-500"></span>
+            <span className="justify-self-end rounded-full bg-orange-500 block-2 inline-2"></span>
             <p className="">{t("tours.sidebar.ctaPoint01")}</p>
           </li>
           <li className="grid grid-cols-[40px_1fr] items-center gap-3">
-            <span className="size-2 justify-self-end rounded-full bg-orange-500"></span>
+            <span className="justify-self-end rounded-full bg-orange-500 block-2 inline-2"></span>
             <p className="">{t("tours.sidebar.ctaPoint02")}</p>
           </li>
           <li className="grid grid-cols-[40px_1fr] items-center gap-3">
-            <span className="size-2 justify-self-end rounded-full bg-orange-500"></span>
+            <span className="justify-self-end rounded-full bg-orange-500 block-2 inline-2"></span>
             <p className="">{t("tours.sidebar.ctaPoint03")}</p>
           </li>
         </ul>

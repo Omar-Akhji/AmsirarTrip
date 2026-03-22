@@ -1,7 +1,6 @@
 "use client";
 
 import { useTranslation } from "@/lib/hooks/useTranslation";
-import { cn } from "@/lib/utils";
 import { m } from "motion/react";
 import type { BookingFormState } from "../actions/booking-action";
 
@@ -26,12 +25,7 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
             {t("booking.fullName", "Full Name")}
           </label>
           <input
-            className={cn(
-              "w-full rounded-2xl border px-4 py-3 text-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none",
-              state?.errors?.fullName
-                ? "border-red-300 focus:ring-red-200"
-                : "border-gray-200"
-            )}
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
             type="text"
             id="fullName"
             name="fullName"
@@ -45,7 +39,7 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
             required
           />
           {state?.errors?.fullName && (
-            <p id="fullName-error" className="mt-1 text-xs text-red-600">
+            <p id="fullName-error" className="mbs-1 text-xs text-red-600">
               {state.errors.fullName}
             </p>
           )}
@@ -61,12 +55,7 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
             {t("booking.phone", "Phone Number")}
           </label>
           <input
-            className={cn(
-              "w-full rounded-2xl border px-4 py-3 text-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none",
-              state?.errors?.phone
-                ? "border-red-300 focus:ring-red-200"
-                : "border-gray-200"
-            )}
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
             type="tel"
             id="phone"
             name="phone"
@@ -78,7 +67,7 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
             required
           />
           {state?.errors?.phone && (
-            <p id="phone-error" className="mt-1 text-xs text-red-600">
+            <p id="phone-error" className="mbs-1 text-xs text-red-600">
               {state.errors.phone}
             </p>
           )}
@@ -96,12 +85,7 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
           {t("booking.email", "Email")}
         </label>
         <input
-          className={cn(
-            "w-full rounded-2xl border px-4 py-3 text-sm focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none",
-            state?.errors?.email
-              ? "border-red-300 focus:ring-red-200"
-              : "border-gray-200"
-          )}
+          className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none user-valid:border-green-500 user-invalid:border-red-500"
           type="email"
           id="email"
           name="email"
@@ -113,7 +97,7 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
           required
         />
         {state?.errors?.email && (
-          <p id="email-error" className="mt-1 text-xs text-red-600">
+          <p id="email-error" className="mbs-1 text-xs text-red-600">
             {state.errors.email}
           </p>
         )}

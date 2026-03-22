@@ -14,13 +14,13 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100">
-      <h2 className="mb-4 text-2xl font-bold text-gray-800">
+    <div className="flex min-block-screen flex-col items-center justify-center bg-gray-100">
+      <h2 className="mbe-4 text-2xl font-bold text-gray-800">
         Something went wrong!
       </h2>
       <button
         onClick={() => reset()}
-        className="rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+        className="rounded bg-blue-500 px-4 py-2 text-white pointer-fine:hover:bg-blue-600"
       >
         Try again
       </button>

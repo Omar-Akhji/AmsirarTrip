@@ -1,6 +1,19 @@
 {
   "helplineTitle": "Pour plus d'informations :",
   "helplineNumber": "+212 (0) 6 61 17 31 44",
+  "validations": {
+    "recaptchaRequired": "La vérification Recaptcha est requise",
+    "nameMin": "Le nom doit comporter au moins 2 caractères",
+    "emailInvalid": "Adresse e-mail invalide",
+    "phoneInvalid": "Numéro de téléphone invalide",
+    "phoneTooLong": "Numéro de téléphone trop long",
+    "messageMin": "Le message doit comporter au moins 10 caractères",
+    "messageTooLong": "Message trop long",
+    "reservationRequired": "Le type de réservation est requis",
+    "personsMin": "Au moins 1 personne est requise",
+    "personsMax": "Maximum 50 personnes",
+    "invalidDate": "Format de date invalide"
+  },
   "nav": {
     "home": "Accueil",
     "tours": "Circuits",
@@ -40,7 +53,6 @@
       "description": "Explorez nos circuits multi-jours soigneusement élaborés à travers le Maroc. Du désert du Sahara aux villes impériales, trouvez votre aventure parfaite."
     },
     "title": "Nos excursions",
-
     "day": "Jour",
     "accommodationLabel": "Hébergement",
     "mealsLabel": "Repas",
@@ -469,7 +481,6 @@
     "overview": "Envolez-vous avant l'aube pour un vol en montgolfière au lever du soleil au-dessus de Marrakech. Admirez le paysage qui s'illumine, partagez un thé à la menthe et dégustez un petit-déjeuner berbère après l'atterrissage.",
     "bookingTitle": "Réservez votre vol en montgolfière au lever du soleil"
   },
-
   "tour1": {
     "title": "Aventure dans le désert de Merzouga",
     "day1": {
@@ -1213,7 +1224,6 @@
     "reviewCount": "Basé sur 180+ voyageurs",
     "checkCopy": "Lisez des avis authentiques et, si vous préférez, demandez votre réservation directement via notre page TripAdvisor.",
     "tripadvisorCtaAria": "Ouvrir TripAdvisor dans un nouvel onglet",
-
     "tour2": {
       "day1": {
         "accommodation": "Riad/Hôtel à Chefchaouen",
@@ -1332,7 +1342,8 @@
         "meals": "Petit-déjeuner inclus",
         "arrival": "Vers 17h00–18h00"
       }
-    }
+    },
+    "sending": "Envoi en cours..."
   },
   "legal": {
     "backToHome": "Retour à l'accueil",

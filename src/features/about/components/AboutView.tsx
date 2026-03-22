@@ -80,14 +80,14 @@ export default function AboutView() {
             className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(248,250,252,0.3),transparent_70%)]"
             aria-hidden="true"
           ></div>
-          <div className="relative z-10 mx-auto max-w-7xl px-4">
-            <div className="mx-auto mb-16 max-w-4xl text-center">
+          <div className="relative z-10 mx-auto px-4 max-inline-7xl">
+            <div className="mx-auto mbe-16 text-center max-inline-4xl">
               <p className="inline-flex items-center justify-center rounded-full border-2 border-orange-400 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
                 {t("about.smTitle")}
               </p>
               <h2
                 id="our-story-heading"
-                className="mt-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
+                className="mbs-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
               >
                 {t("about.ourStory")}
               </h2>
@@ -108,14 +108,14 @@ export default function AboutView() {
                     </p>
                   </div>
 
-                  <div className="border-t border-slate-700 pt-8">
-                    <h3 className="mb-6 text-xl font-bold text-orange-600">
+                  <div className="border-t border-slate-700 pbs-8">
+                    <h3 className="mbe-6 text-xl font-bold text-orange-600">
                       {t("about.whyTrustTitle")}
                     </h3>
                     <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                       {[1, 2, 3, 4].map((num) => (
                         <div key={num} className="flex items-start gap-3">
-                          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-orange-500 text-sm font-bold text-white">
+                          <div className="flex shrink-0 items-center justify-center rounded-full bg-orange-500 text-sm font-bold text-white block-8 inline-8">
                             {num}
                           </div>
                           <p className="flex-1 text-sm leading-relaxed text-gray-700">
@@ -126,7 +126,7 @@ export default function AboutView() {
                     </div>
                   </div>
 
-                  <blockquote className="border-l-4 border-orange-400 pl-6 text-gray-600 italic">
+                  <blockquote className="border-s-4 border-orange-400 ps-6 text-gray-600 italic">
                     <p className="text-sm">{t("about.conclusionText")}</p>
                   </blockquote>
                 </article>
@@ -135,7 +135,7 @@ export default function AboutView() {
               <m.div {...slideInRightLarge} className="order-1 lg:order-2">
                 <figure className="relative">
                   <div className="absolute inset-0 rotate-3 transform rounded-3xl bg-linear-to-br from-orange-500/20 to-amber-500/20"></div>
-                  <div className="relative aspect-4/3 overflow-hidden rounded-3xl bg-white shadow-2xl">
+                  <div className="mask-linear-to-b relative aspect-4/3 overflow-hidden rounded-3xl bg-white from-black via-black to-transparent shadow-2xl">
                     <Image
                       src="/images/about-img.webp"
                       alt="Amsirar landscape showcasing traditional Moroccan architecture and culture"
@@ -143,7 +143,7 @@ export default function AboutView() {
                       sizes="(max-width: 1024px) 100vw, 50vw"
                       className="object-cover"
                     />
-                    <div className="absolute right-0 bottom-0 left-0 bg-linear-to-t from-gray-900/40 to-transparent p-6">
+                    <div className="absolute start-0 end-0 bottom-0 bg-linear-to-t from-gray-900/60 to-transparent p-6">
                       <p className="text-sm font-medium text-gray-100">
                         {t("about.imageCaption") ||
                           "Discover Morocco with Amsirar"}
@@ -158,32 +158,27 @@ export default function AboutView() {
 
         <section
           id="facts"
-          className="bg-navy relative isolate overflow-hidden py-16 text-white"
+          className="relative isolate overflow-hidden py-16"
           aria-labelledby="facts-heading"
         >
-          <div
-            className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(248,250,252,0.06),transparent_60%)]"
-            aria-hidden="true"
-          ></div>
-          <div
-            className="absolute inset-0 bg-black/40"
-            aria-hidden="true"
-          ></div>
-
-          <div className="relative z-10 mx-auto w-full max-w-6xl px-4">
-            <div className="mx-auto max-w-3xl text-center">
+          <div className="relative z-10 mx-auto inline-full px-4 max-inline-6xl">
+            <div className="mx-auto text-center max-inline-3xl">
               <p className="inline-flex items-center justify-center rounded-full border-2 border-white bg-orange-600 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-white uppercase sm:tracking-[0.3em]">
                 {t("about.facts.smTitle")}
               </p>
               <h2
                 id="facts-heading"
-                className="mt-4 text-2xl leading-tight font-bold tracking-widest text-white uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
+                className="mbs-4 text-2xl leading-tight font-bold tracking-widest text-slate-900 uppercase text-shadow-md sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
               >
                 {t("about.facts.lgTitle")}
               </h2>
+              <div
+                className="mx-auto mbs-4 rounded-full bg-orange-500 block-1 inline-20"
+                aria-hidden="true"
+              />
             </div>
 
-            <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <ul className="mbs-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
               {factStats.map((fact, idx) => (
                 <m.li
                   key={fact.id}
@@ -192,27 +187,27 @@ export default function AboutView() {
                 >
                   <article
                     aria-labelledby={`fact-${fact.id}-label`}
-                    className="group relative overflow-hidden rounded-3xl border border-white/15 bg-white/5 px-8 py-10 text-center shadow-[0_25px_60px_rgba(15,23,42,0.55)] backdrop-blur"
+                    className="group relative flex transform flex-col justify-between overflow-hidden rounded-2xl bg-slate-900 px-8 py-10 text-center text-orange-200 shadow-xl ring-1 ring-white/10 transition-transform block-full pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-2xl"
                   >
                     <div
-                      className="pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                      className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                       aria-hidden="true"
                     >
-                      <div className="absolute inset-0 bg-linear-to-br from-orange-500/20 via-amber-400/10 to-transparent"></div>
+                      <div className="absolute inset-0 bg-linear-to-br from-orange-500/10 via-amber-400/5 to-transparent"></div>
                     </div>
                     <div className="relative flex flex-col items-center space-y-6">
-                      <figure className="inline-flex h-24 w-24 items-center justify-center overflow-hidden rounded-full border-2 border-white bg-transparent p-3 text-orange-50 shadow-lg ring-2 shadow-orange-600/25 ring-white/10">
+                      <figure className="inline-flex items-center justify-center overflow-hidden rounded-full border-2 border-white/20 bg-white/5 p-3 text-orange-50 shadow-lg ring-2 shadow-orange-600/25 ring-white/10 block-24 inline-24">
                         <Image
                           src={fact.icon}
                           alt=""
                           width={96}
                           height={96}
-                          className="block h-full w-full object-contain"
+                          className="block object-contain brightness-0 invert block-full inline-full"
                           aria-hidden="true"
                         />
                       </figure>
                       <div
-                        className="text-4xl font-bold text-amber-200"
+                        className="text-4xl font-bold text-orange-200 text-shadow-md"
                         aria-hidden="true"
                       >
                         <CountUp
@@ -223,7 +218,7 @@ export default function AboutView() {
                       </div>
                       <h3
                         id={`fact-${fact.id}-label`}
-                        className="text-sm text-orange-100"
+                        className="text-sm font-medium tracking-wide text-white/80 uppercase"
                       >
                         {fact.label}
                       </h3>

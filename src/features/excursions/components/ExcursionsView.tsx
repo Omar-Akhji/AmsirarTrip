@@ -64,18 +64,22 @@ export default async function ExcursionView() {
 
       <main className="text-slate-900">
         <section className="py-12" aria-labelledby="excursion-highlights">
-          <div className="mx-auto max-w-7xl px-4">
-            <div className="mx-auto mb-10 max-w-3xl text-center">
+          <div className="mx-auto px-4 max-inline-7xl">
+            <div className="mx-auto mbe-10 text-center max-inline-3xl">
               <p className="inline-flex items-center justify-center rounded-full border-2 border-white bg-orange-600 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-white uppercase">
                 {t("excursion.blog.smTitle")}
               </p>
               <h2
                 id="excursion-highlights"
-                className="mt-4 text-2xl leading-tight font-bold sm:text-3xl md:text-4xl"
+                className="mbs-4 text-2xl leading-tight font-bold sm:text-3xl md:text-4xl"
               >
                 {t("excursion.detailsTitle")}
               </h2>
-              <p className="mt-3 text-base text-taupe-600">
+              <div
+                className="mx-auto mbs-4 rounded-full bg-orange-500 block-1 inline-20"
+                aria-hidden="true"
+              />
+              <p className="mbs-4 text-base text-taupe-600">
                 {t("excursion.detailsSubtitle")}
               </p>
             </div>
@@ -89,15 +93,19 @@ export default async function ExcursionView() {
           className="border-t border-slate-200 bg-linear-to-b from-slate-50 to-white py-16"
           aria-labelledby="excursion-grid-heading"
         >
-          <div className="mx-auto max-w-7xl px-4">
-            <div className="mb-12 text-center">
+          <div className="mx-auto px-4 max-inline-7xl">
+            <div className="mbe-12 text-center">
               <h2
                 id="excursion-grid-heading"
-                className="mt-4 text-2xl leading-tight font-bold sm:text-3xl md:text-4xl"
+                className="mbs-4 text-2xl leading-tight font-bold sm:text-3xl md:text-4xl"
               >
                 {t("excursion.blog.lgTitle")}
               </h2>
-              <p className="mt-3 text-base text-taupe-600">
+              <div
+                className="mx-auto mbs-4 rounded-full bg-orange-500 block-1 inline-20"
+                aria-hidden="true"
+              />
+              <p className="mbs-4 text-base text-taupe-600">
                 {t("excursion.sectionSubtitle")}
               </p>
             </div>

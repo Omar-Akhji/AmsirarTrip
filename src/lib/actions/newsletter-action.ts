@@ -1,7 +1,8 @@
 "use server";
 
 import { headers } from "next/headers";
-import { NewsletterSchema } from "@/lib/schemas";
+import { getTranslations } from "next-intl/server";
+import { getNewsletterSchema } from "@/lib/schemas";
 import { env } from "@/lib/env";
 import { checkRateLimit, logSuspiciousActivity } from "@/lib/api-utils";
 import { verifyRecaptcha, createMailer, escapeHtml } from "@/lib/server-utils";
@@ -26,7 +27,8 @@ export async function submitNewsletterAction(
       return { ok: false, statusKey: "footer.newsletterNetwork" };
     }
 
-    const validationResult = NewsletterSchema.safeParse({
+    const t = await getTranslations("validations");
+    const validationResult = getNewsletterSchema(t).safeParse({
       name,
       email,
       recaptchaToken,

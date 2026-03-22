@@ -60,13 +60,13 @@ export function BookingFormFields({
       )}
 
       {tourTitle && tourId && (
-        <div className="mb-6">
+        <div className="mbe-6">
           <m.input
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.3, delay: 0.1 }}
-            className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700"
+            className="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700 inline-full"
             type="text"
             value={selectedTour}
             readOnly
@@ -76,13 +76,13 @@ export function BookingFormFields({
       )}
 
       {excursionTitle && excursionId && (
-        <div className="mb-6">
+        <div className="mbe-6">
           <m.input
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.3, delay: 0.1 }}
-            className="w-full rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700"
+            className="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700 inline-full"
             type="text"
             value={excursionTitle}
             readOnly
@@ -111,7 +111,7 @@ export function BookingFormFields({
         className="flex flex-col gap-4 lg:flex-row lg:items-center"
       >
         <>
-          <div className="flex w-full justify-center overflow-hidden lg:justify-start">
+          <div className="flex justify-center overflow-hidden inline-full lg:justify-start">
             <div
               className={cn(
                 "origin-center scale-85 rounded-2xl border border-dashed p-3 sm:scale-100 lg:origin-left",
@@ -141,7 +141,7 @@ export function BookingFormFields({
             </div>
           </div>
           {state?.errors?.recaptchaToken && (
-            <p id="recaptchaToken-error" className="mt-1 text-xs text-red-600">
+            <p id="recaptchaToken-error" className="mbs-1 text-xs text-red-600">
               {state.errors.recaptchaToken}
             </p>
           )}

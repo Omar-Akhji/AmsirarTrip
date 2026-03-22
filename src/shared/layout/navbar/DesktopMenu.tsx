@@ -34,7 +34,7 @@ export function DesktopMenu({
   const getSocialButtonClasses = (size: "sm" | "md" = "md"): string => {
     const sizeClass = size === "sm" ? "size-10" : "size-11";
     const baseClasses =
-      "flex items-center justify-center rounded-full border-2 transition-all duration-150 hover:-translate-y-0.5 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)]";
+      "flex items-center justify-center rounded-full border-2 transition-all duration-150 pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)]";
     const socialStyles = scrolled
       ? ""
       : "border-white/60 bg-white/10 text-white";
@@ -44,10 +44,10 @@ export function DesktopMenu({
   return (
     <>
       {!scrolled && (
-        <div className="relative flex w-full items-center justify-center px-0 py-3 pb-5">
+        <div className="relative flex items-center justify-center px-0 py-3 pbe-5 inline-full">
           <a
             href="tel:+212661173144"
-            className="absolute left-4 flex gap-2.5 rounded-md text-white transition hover:opacity-90 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-white"
+            className="absolute start-4 flex gap-2.5 rounded-md text-white transition pointer-fine:hover:opacity-90 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-white"
             aria-label={`${t("helplineTitle") || "Call us"}: ${
               t("helplineNumber") || "+212 661 173 144"
             }`}
@@ -75,13 +75,13 @@ export function DesktopMenu({
             aria-label="Amsirar Trip Home"
           >
             Amsirar
-            <span className="font-brand ml-1 font-light">Trip</span>
+            <span className="font-brand ms-1 font-light">Trip</span>
           </Link>
         </div>
       )}
       <div className="relative flex items-center gap-2.5 px-4 py-2">
-        <div className="mr-auto flex items-center gap-0.5">
-          <SocialLinks className="mr-2" scrolled={scrolled} />
+        <div className="me-auto flex items-center gap-0.5">
+          <SocialLinks className="me-2" scrolled={scrolled} />
           <LanguageSelector
             langOpen={langOpen}
             setLangOpen={setLangOpen}
@@ -91,7 +91,7 @@ export function DesktopMenu({
             langRef={langRef}
           />
         </div>
-        <ul className="absolute left-1/2 z-10 flex -translate-x-1/2 items-center gap-3">
+        <ul className="absolute start-1/2 z-10 flex -translate-x-1/2 items-center gap-3">
           {NAV_LINKS.map((link) => {
             const isActive = pathname === link.to;
             return (

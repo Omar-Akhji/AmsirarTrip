@@ -44,7 +44,7 @@ export function PageHeader({
   };
 
   return (
-    <header className="relative isolate min-h-[40vh] w-full overflow-hidden bg-slate-950 text-white shadow-xl sm:min-h-[45vh] lg:min-h-[50vh]">
+    <header className="relative isolate overflow-hidden bg-slate-950 text-white shadow-xl inline-full min-block-[40vh] sm:min-block-[45vh] lg:min-block-[50vh]">
       {/* Optimized Background Image */}
       {bgImage && (
         <Image
@@ -74,13 +74,13 @@ export function PageHeader({
       />
 
       {/* Content */}
-      <div className="relative z-20 mx-auto flex w-full max-w-7xl flex-col items-center justify-center gap-12 px-4 pt-8 pb-16 text-center lg:py-20">
-        <div className="flex-1 space-y-6 pt-0 text-center lg:pt-8">
+      <div className="relative z-20 mx-auto flex flex-col items-center justify-center gap-12 px-4 pbs-8 pbe-16 text-center inline-full max-inline-7xl lg:py-20">
+        <div className="flex-1 space-y-6 pbs-0 text-center lg:pbs-8">
           {/* Breadcrumbs */}
           {breadcrumbs && breadcrumbs.length > 0 && (
             <nav
               aria-label="Breadcrumb"
-              className="mb-8 flex items-center justify-center gap-3"
+              className="mbe-8 flex items-center justify-center gap-3"
             >
               <div className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-2 backdrop-blur-md">
                 {breadcrumbs.map((crumb, index) => (
@@ -88,7 +88,7 @@ export function PageHeader({
                     {crumb.href ? (
                       <Link
                         href={crumb.href}
-                        className="text-sm font-medium text-white/80 transition-colors hover:text-white"
+                        className="text-sm font-medium text-white/80 transition-colors pointer-fine:hover:text-white"
                       >
                         {crumb.label}
                       </Link>
@@ -120,16 +120,16 @@ export function PageHeader({
 
           {smTitle && !breadcrumbs && (
             <div className="flex items-center justify-center gap-4">
-              <span className="h-px w-8 bg-orange-400/60"></span>
+              <span className="bg-orange-400/60 block-px inline-8"></span>
               <p className="text-xs font-bold tracking-[0.2em] text-orange-300 uppercase sm:tracking-[0.3em]">
                 {smTitle}
               </p>
-              <span className="h-px w-8 bg-orange-400/60"></span>
+              <span className="bg-orange-400/60 block-px inline-8"></span>
             </div>
           )}
           <h1
             id={headingId}
-            className="text-3xl font-semibold tracking-widest text-orange-200 uppercase sm:text-4xl sm:tracking-[0.15em] lg:text-5xl lg:tracking-[0.2em]"
+            className="lg:text-shadow-xl text-3xl font-semibold tracking-widest text-orange-200 uppercase text-shadow-lg text-shadow-orange-500/30 sm:text-4xl sm:tracking-[0.15em] lg:text-5xl lg:tracking-[0.2em] lg:text-shadow-orange-500/30"
           >
             {title}
           </h1>
@@ -139,7 +139,7 @@ export function PageHeader({
             </p>
           )}
           {children && (
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-2">
+            <div className="flex flex-wrap items-center justify-center gap-4 pbs-2">
               {children}
             </div>
           )}
@@ -162,7 +162,7 @@ export function HeaderCTA({
   return (
     <a
       href={href}
-      className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white/90 transition hover:bg-white/10"
+      className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white/90 transition text-shadow-sm pointer-fine:hover:bg-white/10"
     >
       {children}
     </a>
@@ -186,7 +186,7 @@ export function HeaderSecondaryCTA({
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition hover:-translate-y-0.5 hover:bg-white/20"
+      className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition text-shadow-sm pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:bg-white/20"
     >
       {children}
     </a>

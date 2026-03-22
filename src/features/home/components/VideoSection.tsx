@@ -43,32 +43,32 @@ const VideoSection = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="relative w-full overflow-hidden py-4 text-white sm:py-6 lg:py-8"
+      className="relative overflow-hidden py-4 text-white inline-full sm:py-6 lg:py-8"
     >
-      <div className="mx-auto max-w-330 px-4">
+      <div className="mx-auto px-4 max-inline-330">
         <m.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.7 }}
-          className="relative h-[55vh] w-full overflow-hidden rounded-[34px] bg-slate-900 p-3 shadow-2xl sm:h-[65vh] lg:h-[75vh] xl:h-[85vh]"
+          className="relative overflow-hidden rounded-[34px] bg-slate-900 p-3 shadow-2xl block-[55vh] inline-full sm:block-[65vh] lg:block-[75vh] xl:block-[85vh]"
         >
           {videoError ? (
-            <div className="flex h-full items-center justify-center rounded-[26px] bg-[url(/images/Header/header-1.webp)] bg-cover bg-center px-8 py-12 text-center">
+            <div className="flex items-center justify-center rounded-[26px] bg-[url(/images/Header/header-1.webp)] bg-cover bg-center px-8 py-12 text-center block-full">
               <div className="rounded-3xl bg-black/60 p-8">
                 <h3 className="text-2xl font-semibold">
                   {t("video.fallback.title")}
                 </h3>
-                <p className="mt-3 text-sm text-white/80">
+                <p className="mbs-3 text-sm text-white/80">
                   {t("video.fallback.subtitle")}
                 </p>
-                <p className="mt-4 text-xs tracking-[0.35em] text-orange-300 uppercase">
+                <p className="mbs-4 text-xs tracking-[0.35em] text-orange-300 uppercase">
                   {t("video.fallback.cta")}
                 </p>
               </div>
             </div>
           ) : (
-            <div className="relative h-full w-full">
+            <div className="relative block-full inline-full">
               {isLoading && !videoLoaded && (
                 <div className="absolute inset-0 z-10 flex items-center justify-center rounded-[26px] bg-slate-950/60">
                   <div className="space-y-3 text-center">
@@ -99,7 +99,7 @@ const VideoSection = () => {
                   }
                 }}
                 preload="metadata"
-                className={`h-full w-full cursor-pointer rounded-[26px] object-cover ${
+                className={`cursor-pointer rounded-[26px] object-cover block-full inline-full ${
                   videoLoaded ? "opacity-100" : "opacity-0"
                 }`}
               >
@@ -109,7 +109,7 @@ const VideoSection = () => {
               {videoLoaded && !isPlaying && (
                 <button
                   type="button"
-                  className="absolute inset-0 z-10 flex items-center justify-center rounded-[26px] bg-black/40 text-white transition hover:bg-black/50"
+                  className="absolute inset-0 z-10 flex items-center justify-center rounded-[26px] bg-black/40 text-white transition pointer-fine:hover:bg-black/50"
                   onClick={handlePlay}
                 >
                   <span className="inline-flex size-20 items-center justify-center rounded-full border border-white/60 bg-white/90 text-slate-900 shadow-lg">

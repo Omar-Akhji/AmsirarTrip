@@ -23,19 +23,19 @@ export function FooterNewsletter() {
       transition={{ duration: 0.5, delay: 0.3 }}
       className="md:col-span-2 lg:col-span-1"
     >
-      <h3 className="mb-2 text-sm font-semibold tracking-wider text-white uppercase">
+      <h3 className="mbe-2 text-sm font-semibold tracking-wider text-white uppercase">
         {t("footer.newsletter")}
       </h3>
-      <span className="bg-orange mb-6 block h-1 w-12 rounded" />
+      <span className="bg-orange mbe-6 block rounded block-1 inline-12" />
       <div className="rounded-2xl border border-white/10 bg-linear-to-br from-white/5 to-white/2 p-4 backdrop-blur-sm">
-        <p className="mb-4 text-sm leading-relaxed text-slate-400">
+        <p className="mbe-4 text-sm leading-relaxed text-slate-400">
           {t("footer.newsletterDescription")}
         </p>
         <button
           type="button"
           onClick={() => setIsModalOpen(true)}
           aria-label={t("footer.newsletterButtonAria")}
-          className="from-orange flex h-10 w-full items-center justify-center gap-2 rounded-full bg-linear-to-r to-amber-500 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-orange-500/30 active:scale-[0.98]"
+          className="from-orange flex items-center justify-center gap-2 rounded-full bg-linear-to-r to-amber-500 text-sm font-semibold text-white shadow-md transition-all duration-300 block-10 inline-full pointer-fine:hover:scale-[1.02] pointer-fine:hover:shadow-lg pointer-fine:hover:shadow-orange-500/30 active:scale-[0.98]"
         >
           <Mail className="size-4" />
           {t("footer.newsletterSubscribe")}
@@ -57,13 +57,13 @@ function FooterSocialLinks() {
   const { t } = useTranslation();
 
   return (
-    <nav aria-label={t("footer.socialAria")} className="mt-4">
+    <nav aria-label={t("footer.socialAria")} className="mbs-4">
       <ul className="flex flex-wrap items-center justify-center gap-3">
         <li>
           <a
             href="https://www.facebook.com/profile.php?id=61571322141368"
             aria-label={t("footer.social.facebook")}
-            className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
+            className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -81,7 +81,7 @@ function FooterSocialLinks() {
           <a
             href="https://x.com/AmsirarTravel"
             aria-label={t("footer.social.twitter")}
-            className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
+            className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -99,7 +99,7 @@ function FooterSocialLinks() {
           <a
             href="https://www.instagram.com/amsirar.trip?igsh=ZDlxanNsbTA5M2Zi"
             aria-label={t("footer.social.instagram")}
-            className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
+            className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -117,7 +117,7 @@ function FooterSocialLinks() {
           <a
             href="https://www.tiktok.com/@amsirartrip"
             aria-label={t("footer.social.tiktok")}
-            className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] hover:-translate-y-1 hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
+            className="inline-flex size-10 items-center justify-center rounded-full bg-white text-center transition-[transform_0.12s_ease,box-shadow_0.12s_ease] pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)] sm:size-11"
             target="_blank"
             rel="noopener noreferrer"
           >

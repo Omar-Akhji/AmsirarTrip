@@ -17,14 +17,18 @@ const TestimonialsSection = () => {
       transition={{ duration: 0.8 }}
       className="bg-slate-50 py-12"
     >
-      <div className="mx-auto max-w-330 px-4">
-        <div className="mx-auto mb-8 max-w-4xl text-center">
+      <div className="mx-auto px-4 max-inline-330">
+        <div className="mx-auto mbe-10 text-center max-inline-4xl">
           <p className="inline-flex items-center justify-center rounded-full border-2 border-orange-400 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
             {t("testimonials.smTitle")}
           </p>
-          <h2 className="mt-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]">
+          <h2 className="mbs-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase text-shadow-md sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]">
             {t("testimonials.lgTitle")}
           </h2>
+          <div
+            className="mx-auto mbs-4 rounded-full bg-orange-500 block-1 inline-20"
+            aria-hidden="true"
+          />
         </div>
         <div className="relative">
           <>
@@ -38,13 +42,13 @@ const TestimonialsSection = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ duration: 0.5, delay: idx * 0.15 }}
-                    className={`relative flex h-full w-full transform flex-col justify-between overflow-hidden rounded-2xl bg-slate-900 p-6 text-left text-orange-200 shadow-lg ring-1 ring-white/10 transition-transform hover:-translate-y-1 hover:shadow-xl ${
+                    className={`relative flex transform flex-col justify-between overflow-hidden rounded-2xl bg-slate-900 p-6 text-start text-orange-200 shadow-lg ring-1 ring-white/10 transition-transform block-full inline-full pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-xl ${
                       idx === 2 ? "md:col-span-2 lg:col-span-1" : ""
                     }`}
                   >
                     {/* Decorative Quote Icon */}
                     <div
-                      className="absolute top-2 right-4 -rotate-12 opacity-10 select-none"
+                      className="absolute end-4 top-2 -rotate-12 opacity-10 select-none"
                       aria-hidden="true"
                     >
                       <Quote
@@ -52,36 +56,42 @@ const TestimonialsSection = () => {
                         style={{ width: "5rem", height: "5rem" }}
                       />
                     </div>
-                    <div className="mb-4 flex items-center gap-4 self-start">
-                      <div className="inline-flex size-25 items-center justify-center rounded-full bg-white/5 ring-1 ring-white/10">
+                    <div className="mbe-4 flex items-center gap-4 self-start">
+                      <div className="inline-flex items-center justify-center rounded-full bg-white/5 ring-1 ring-white/10 block-25 inline-25">
                         <Image
                           src="/icons/face-img.svg"
                           alt="User Avatar"
                           width={60}
                           height={60}
-                          className="size-15 object-contain"
+                          className="object-contain block-15 inline-15"
                         />
                       </div>
-                      <div className="mx-2 h-8 w-px bg-white/10" aria-hidden />
+                      <div
+                        className="mx-2 bg-white/10 block-8 inline-px"
+                        aria-hidden
+                      />
                       <>
                         <cite className="text-sm font-semibold text-white not-italic">
                           {t(`testimonials.items.${tst.key}.name`)}
                         </cite>
-                        <p className="mt-0.5 text-xs text-slate-300">
+                        <p className="mbs-0.5 text-xs text-slate-300">
                           {t(`testimonials.items.${tst.key}.country`)}
                         </p>
                       </>
                     </div>
                     {/* small horizontal divider to separate header (avatar/name) from quote */}
-                    <div className="my-3 h-px w-full bg-white/10" aria-hidden />
-                    <div className="h-full">
-                      <blockquote className="mb-4 text-sm leading-snug text-slate-300 italic sm:text-sm">
+                    <div
+                      className="my-3 bg-white/10 block-px inline-full"
+                      aria-hidden
+                    />
+                    <div className="block-full">
+                      <blockquote className="mbe-4 text-sm leading-snug text-slate-300 italic sm:text-sm">
                         {t(`testimonials.items.${tst.key}.quote`)}
                       </blockquote>
                     </div>
 
                     <div
-                      className="mt-4 flex items-center justify-start text-orange-400"
+                      className="mbs-4 flex items-center justify-start text-orange-400"
                       aria-hidden
                     >
                       {Array.from({ length: 5 }).map((_, k) => (
