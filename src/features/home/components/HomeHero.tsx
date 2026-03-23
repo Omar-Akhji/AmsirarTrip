@@ -181,14 +181,14 @@ export default function HomeHero() {
         <div className="flex-1 space-y-6 pbs-0 text-center lg:pbs-8">
           <div className="flex items-center justify-center gap-4">
             <span className="bg-orange-400/60 block-px inline-8 sm:inline-12"></span>
-            <h1 className="text-xs font-bold tracking-[0.2em] text-orange-300 uppercase drop-shadow-sm text-shadow-lg/50 sm:tracking-[0.3em]">
+            <h1 className="text-xs font-bold tracking-[0.2em] text-orange-300 uppercase sm:tracking-[0.3em]">
               {t("home.title")}
             </h1>
             <span className="bg-orange-400/60 block-px inline-8 sm:inline-12"></span>
           </div>
           <h2
             id="hero-heading"
-            className="text-shadow-2xl/50 text-3xl leading-tight font-semibold sm:text-4xl lg:text-5xl"
+            className="lg:text-shadow-xl text-3xl leading-tight font-semibold text-shadow-black/60 text-shadow-lg sm:text-4xl lg:text-5xl lg:text-shadow-black/60"
           >
             {isMobileOrTablet ? (
               <AnimatePresence mode="wait">
@@ -213,7 +213,7 @@ export default function HomeHero() {
               </>
             )}
           </h2>
-          <p className="font-fancy text-shadow/30 text-lg text-slate-200 lg:text-xl">
+          <p className="font-fancy text-lg text-slate-200 lg:text-xl">
             {t("home.heroSubtitle")}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pbs-2">

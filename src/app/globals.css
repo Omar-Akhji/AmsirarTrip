@@ -80,13 +80,6 @@
   --animate-loader-rotate: loader-rotate 2s linear infinite;
   --animate-loader-dash: loader-dash 1.5s ease-in-out infinite;
 
-  /* ==================== Text Shadows ==================== */
-  --text-shadow-sm: 0 1px 2px var(--color-black);
-  --text-shadow-md: 0 2px 4px var(--color-black);
-  --text-shadow-lg: 0 4px 8px var(--color-black);
-  --text-shadow-2xl: 0 10px 20px var(--color-black);
-  --text-shadow-none: none;
-
   /* ==================== Keyframe Animations ==================== */
   @keyframes show-data {
     50% {

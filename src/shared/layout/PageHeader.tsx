@@ -129,7 +129,7 @@ export function PageHeader({
           )}
           <h1
             id={headingId}
-            className="lg:text-shadow-xl text-3xl font-semibold tracking-widest text-orange-200 uppercase text-shadow-lg text-shadow-orange-500/30 sm:text-4xl sm:tracking-[0.15em] lg:text-5xl lg:tracking-[0.2em] lg:text-shadow-orange-500/30"
+            className="lg:text-shadow-xl text-3xl font-semibold tracking-widest text-orange-200 uppercase text-shadow-black/60 text-shadow-lg sm:text-4xl sm:tracking-[0.15em] lg:text-5xl lg:tracking-[0.2em] lg:text-shadow-black/60"
           >
             {title}
           </h1>
