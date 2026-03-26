@@ -18,8 +18,8 @@ importers:
         specifier: ^4.1.0
         version: 4.1.0
       isomorphic-dompurify:
-        specifier: 3.6.0
-        version: 3.6.0
+        specifier: 3.7.1
+        version: 3.7.1
       lucide-react:
         specifier: 0.577.0
         version: 0.577.0(react@19.2.4)
@@ -2517,8 +2517,8 @@ packages:
   isexe@2.0.0:
     resolution: {integrity: sha512-RHxMLp9lnKHGHRng9QFhRCMbYAcVpn69smSGcq3f36xjgVVWThj4qqLbTLlq7Ssj8B+fIQ1EuCEGI2lKsyQeIw==}
 
-  isomorphic-dompurify@3.6.0:
-    resolution: {integrity: sha512-0dF93ZF/7SgzdnCjXTsqSteJmhlR5PNhq/mJXRMQtnFdaGdG94ul6mYF80hSKfh6VfmLsaGKBd0Eye4eUHyeWA==}
+  isomorphic-dompurify@3.7.1:
+    resolution: {integrity: sha512-ChhzwwCm7k8h8ANiq1Vc7geCWeHGaAPusgXU5N4mu7Y2wChgn2JHvbUe6aH/XQOUG3+KV+GmqSq95MntW/V1ng==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24.0.0}
 
   iterator.prototype@1.1.5:
@@ -3438,8 +3438,8 @@ packages:
   undici-types@7.18.2:
     resolution: {integrity: sha512-AsuCzffGHJybSaRrmr5eHr81mwJU3kjw6M+uprWvCXiNeN9SOGwQ3Jn8jb8m3Z6izVgknn1R0FTCEAP2QrLY/w==}
 
-  undici@7.24.5:
-    resolution: {integrity: sha512-3IWdCpjgxp15CbJnsi/Y9TCDE7HWVN19j1hmzVhoAkY/+CJx449tVxT5wZc1Gwg8J+P0LWvzlBzxYRnHJ+1i7Q==}
+  undici@7.24.6:
+    resolution: {integrity: sha512-Xi4agocCbRzt0yYMZGMA6ApD7gvtUFaxm4ZmeacWI4cZxaF6C+8I8QfofC20NAePiB/IcvZmzkJ7XPa471AEtA==}
     engines: {node: '>=20.18.1'}
 
   unicorn-magic@0.4.0:
@@ -5902,7 +5902,7 @@ snapshots:
 
   isexe@2.0.0: {}
 
-  isomorphic-dompurify@3.6.0:
+  isomorphic-dompurify@3.7.1:
     dependencies:
       dompurify: 3.3.3
       jsdom: 29.0.1
@@ -5944,7 +5944,7 @@ snapshots:
       saxes: 6.0.0
       symbol-tree: 3.2.4
       tough-cookie: 6.0.1
-      undici: 7.24.5
+      undici: 7.24.6
       w3c-xmlserializer: 5.0.0
       webidl-conversions: 8.0.1
       whatwg-mimetype: 5.0.0
@@ -6879,7 +6879,7 @@ snapshots:
 
   undici-types@7.18.2: {}
 
-  undici@7.24.5: {}
+  undici@7.24.6: {}
 
   unicorn-magic@0.4.0: {}
 
