@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight, CalendarIcon } from "lucide-react";
 
 interface EnhancedCalendarProps {
-  selected?: Date;
+  selected?: Date | undefined;
   onSelect?: (date: Date | undefined) => void;
   disabled?: (date: Date) => boolean;
   className?: string;

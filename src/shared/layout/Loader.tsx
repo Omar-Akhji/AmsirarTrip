@@ -58,7 +58,7 @@ function Loader({ fullscreen = true, duration = 800 }: LoaderProps) {
   if (!show) return null;
 
   return (
-    <div id="ftco-loader" className={`show ${fullscreen ? "fullscreen" : ""}`}>
+    <div className={`ftco-loader show ${fullscreen ? "fullscreen" : ""}`}>
       <svg className="circular" width="48px" height="48px">
         <circle
           className="path-bg"

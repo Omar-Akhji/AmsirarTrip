@@ -4,7 +4,7 @@ import createNextIntlPlugin from "next-intl/plugin";
 import { getSecurityHeaders } from "./src/lib/security-headers";
 
 const analyzeBuild = withBundleAnalyzer({
-  enabled: process.env.ANALYZE === "true",
+  enabled: process.env["ANALYZE"] === "true",
 });
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");

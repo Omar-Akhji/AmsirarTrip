@@ -193,7 +193,7 @@ function BookingForm({
               noValidate
             >
               <FormStatusMessages
-                submitError={state?.errors?.submit}
+                submitError={state?.errors?.["submit"]}
                 success={state?.success}
                 successMessage={state?.message}
               />

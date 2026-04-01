@@ -111,7 +111,7 @@ export default function HomeHero() {
     // Use IntersectionObserver to start/stop the animation based on visibility
     const observer = new IntersectionObserver(
       ([entry]) => {
-        isVisible = entry.isIntersecting;
+        isVisible = entry?.isIntersecting ?? false;
         if (isVisible) {
           // Restart animation if it came back into view
           lastUpdate = performance.now();
@@ -152,7 +152,7 @@ export default function HomeHero() {
       {/* Background images with Motion Ken Burns + Crossfade animation */}
       <AnimatePresence mode="popLayout">
         <m.div
-          key={headerImages[currentImageIndex]}
+          key={headerImages[currentImageIndex] ?? currentImageIndex}
           initial={{ opacity: 0, scale: 1.15 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
@@ -163,7 +163,7 @@ export default function HomeHero() {
           className="absolute inset-0 z-0"
         >
           <Image
-            src={headerImages[currentImageIndex]}
+            src={headerImages[currentImageIndex] ?? ""}
             alt=""
             fill
             className="object-cover"
@@ -200,7 +200,7 @@ export default function HomeHero() {
                   transition={{ duration: 0.8, ease: "easeInOut" }}
                   className="inline-block"
                 >
-                  {heroTexts[currentTextIndex]}
+                  {heroTexts[currentTextIndex] ?? ""}
                 </m.span>
               </AnimatePresence>
             ) : (

@@ -10,7 +10,13 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+out/
+build/
 *.local
+.npm
+.eslintcache
+.stylelintcache
+.turbo
 
 # Editor directories and files
 .vscode/*
@@ -18,10 +24,10 @@ dist-ssr
 .idea
 .DS_Store
 *.suo
-*.ntvs*
-*.njsproj
 *.sln
 *.sw?
+.history/
+.pnpm-store/
 
 # Environment files with secrets - DO NOT COMMIT
 .env
@@ -38,14 +44,16 @@ dist-ssr
 .next/cache/
 .next/static/
 .next/trace
+
 # Miscellaneous
 lint-output.txt
 lint-results.txt
+stylelint_errors*.log
+typescript_errors*.log
+stylelint_final_check.log
+# Temporary Moha website
 New Project Moha website/
 *.tsbuildinfo
-
-# Scripts (Manual tools ignored from git)
-scripts/
 
 # AI Tools
 .agents/

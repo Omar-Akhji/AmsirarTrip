@@ -1,144 +1,220 @@
-/** @type {import("stylelint").Config} */
-const stylelintConfig = {
+/** @type {import('stylelint').Config} */
+const config = {
   extends: [
     "stylelint-config-standard",
-    "stylelint-config-tailwindcss", // Must come after standard for Tailwind v4 support
+    "@dreamsicle.io/stylelint-config-tailwindcss",
   ],
   plugins: ["stylelint-order"],
   rules: {
-    // === Tailwind v4 CSS-first configuration ===
-    // Tailwind v4 uses @theme, @source, @plugin, @variant, @utility, @custom-variant
-    "at-rule-no-unknown": [
+    /* ─── Tailwind v4 compatibility ──────────────────────────────────────── */
+    "no-descending-specificity": null,
+    "at-rule-no-unknown": null,
+    "property-no-unknown": null,
+    "import-notation": null,
+
+    /* ─── Error prevention ───────────────────────────────────────────────── */
+    "declaration-block-no-duplicate-properties": [
       true,
-      {
-        ignoreAtRules: [
-          // Tailwind v4 directives
-          "theme",
-          "source",
-          "plugin",
-          "config",
-          "variant",
-          "utility",
-          "custom-variant",
-          "reference",
-          // Legacy/common directives (still supported in v4)
-          "tailwind",
-          "apply",
-          "layer",
-        ],
-      },
+      { ignore: ["consecutive-duplicates-with-different-values"] },
     ],
-    "function-no-unknown": [
-      true,
-      {
-        ignoreFunctions: [
-          "theme", // Tailwind theme() function
-          "alpha", // Color alpha function
-          "color-mix", // Modern CSS color mixing
-        ],
-      },
-    ],
+    "declaration-block-no-shorthand-property-overrides": true,
+    "function-calc-no-unspaced-operator": true,
+    "no-duplicate-selectors": true,
+    "no-unknown-animations": true,
+    "custom-property-no-missing-var-function": true,
 
-    // === Project preferences ===
-    "selector-class-pattern": null, // Allow utility-first classnames (e.g., text-xl, bg-orange-500)
-    "no-descending-specificity": null, // Relaxed for utility CSS
-    "import-notation": null, // Allow string notation for @import
+    /* ─── Unit & value enforcement ───────────────────────────────────────── */
+    "unit-allowed-list": ["%", "deg", "px", "rem", "ms"],
+    "declaration-property-unit-allowed-list": {
+      "/^border/": ["px"],
+      "/^padding|^gap/": ["rem"],
+    },
+    "length-zero-no-unit": [true, { ignore: ["custom-properties"] }],
+    "color-hex-length": "short",
+    "color-function-notation": "modern",
+    "alpha-value-notation": "percentage",
+    "font-weight-notation": "named-where-possible",
+    "shorthand-property-no-redundant-values": true,
 
-    // === Modern CSS conventions (Stylelint 17) ===
-    "color-function-notation": "modern", // rgb() instead of rgba()
-    "alpha-value-notation": "percentage", // 50% instead of 0.5
-    "hue-degree-notation": "angle", // 180deg instead of 180
-    "length-zero-no-unit": true, // 0 instead of 0px
-    "font-weight-notation": "numeric", // 400 instead of normal
-    "keyframe-selector-notation": "percentage", // 100% instead of to
+    /* ─── Selector conventions ───────────────────────────────────────────── */
+    "selector-pseudo-element-colon-notation": "double",
+    "selector-not-notation": "complex",
+    "selector-max-id": 0,
+    "selector-max-compound-selectors": 4,
+    "selector-no-vendor-prefix": true,
 
-    // === Vendor prefix detection ===
-    "value-no-vendor-prefix": true,
-    "property-no-vendor-prefix": true,
-    "media-feature-name-no-vendor-prefix": true,
-    "at-rule-no-vendor-prefix": true,
+    /* ─── Code quality ───────────────────────────────────────────────────── */
+    "declaration-no-important": [true, { severity: "warning" }],
+    "media-feature-range-notation": "context",
+    "keyframe-selector-notation": "percentage-unless-within-keyword-only-block",
 
-    // === Property ordering ===
-    "order/order": [
-      "dollar-variables",
-      "custom-properties",
-      "at-variables",
-      "declarations",
-      "at-rules",
-      "rules",
-    ],
+    /* ─── Property ordering (logical groups) ─────────────────────────────── */
     "order/properties-order": [
-      // Positioning
-      "position",
-      "top",
-      "right",
-      "bottom",
-      "left",
-      "z-index",
-      // Display & Box Model
-      "display",
-      "flex",
-      "flex-direction",
-      "flex-wrap",
-      "justify-content",
-      "align-items",
-      "align-content",
-      "gap",
-      "grid",
-      "grid-template-columns",
-      "grid-template-rows",
-      "grid-column",
-      "grid-row",
-      "width",
-      "height",
-      "max-width",
-      "max-height",
-      "min-width",
-      "min-height",
-      "padding",
-      "padding-top",
-      "padding-right",
-      "padding-bottom",
-      "padding-left",
-      "margin",
-      "margin-top",
-      "margin-right",
-      "margin-bottom",
-      "margin-left",
-      "border",
-      "border-top",
-      "border-right",
-      "border-bottom",
-      "border-left",
-      "border-radius",
-      "box-shadow",
-      "overflow",
-      "overflow-x",
-      "overflow-y",
-      // Typography
-      "font",
-      "font-family",
-      "font-size",
-      "font-weight",
-      "line-height",
-      "text-align",
-      "text-decoration",
-      "color",
-      // Background
-      "background",
-      "background-color",
-      "background-image",
-      "background-position",
-      "background-size",
-      "background-repeat",
-      // Other
-      "opacity",
-      "visibility",
-      "cursor",
-      "transition",
-      "animation",
+      [
+        /* Position & layout */
+        "content",
+        "position",
+        "inset",
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "z-index",
+        "display",
+        "flex",
+        "flex-direction",
+        "flex-wrap",
+        "flex-flow",
+        "flex-grow",
+        "flex-shrink",
+        "flex-basis",
+        "align-items",
+        "align-self",
+        "align-content",
+        "justify-content",
+        "justify-items",
+        "justify-self",
+        "place-content",
+        "place-items",
+        "place-self",
+        "grid",
+        "grid-template",
+        "grid-template-columns",
+        "grid-template-rows",
+        "grid-template-areas",
+        "grid-area",
+        "grid-column",
+        "grid-row",
+        "grid-auto-flow",
+        "grid-auto-columns",
+        "grid-auto-rows",
+        "gap",
+        "row-gap",
+        "column-gap",
+        "order",
+        "float",
+        "clear",
+
+        /* Box model */
+        "box-sizing",
+        "width",
+        "min-width",
+        "max-width",
+        "height",
+        "min-height",
+        "max-height",
+        "aspect-ratio",
+        "margin",
+        "margin-top",
+        "margin-right",
+        "margin-bottom",
+        "margin-left",
+        "margin-inline",
+        "margin-block",
+        "padding",
+        "padding-top",
+        "padding-right",
+        "padding-bottom",
+        "padding-left",
+        "padding-inline",
+        "padding-block",
+        "border",
+        "border-width",
+        "border-style",
+        "border-color",
+        "border-radius",
+        "border-top",
+        "border-right",
+        "border-bottom",
+        "border-left",
+        "border-inline",
+        "border-block",
+        "overflow",
+        "overflow-x",
+        "overflow-y",
+
+        /* Typography */
+        "font",
+        "font-family",
+        "font-size",
+        "font-weight",
+        "font-style",
+        "font-variant",
+        "font-display",
+        "line-height",
+        "letter-spacing",
+        "text-align",
+        "text-decoration",
+        "text-transform",
+        "text-overflow",
+        "text-shadow",
+        "text-wrap",
+        "white-space",
+        "word-break",
+        "word-spacing",
+        "color",
+
+        /* Visual */
+        "background",
+        "background-color",
+        "background-image",
+        "background-position",
+        "background-size",
+        "background-repeat",
+        "background-clip",
+        "box-shadow",
+        "opacity",
+        "visibility",
+        "outline",
+        "filter",
+        "backdrop-filter",
+        "mix-blend-mode",
+        "clip-path",
+        "mask",
+
+        /* Scroll */
+        "scroll-behavior",
+        "scroll-snap-type",
+        "scroll-snap-align",
+        "scrollbar-width",
+        "scrollbar-color",
+
+        /* Animation & transition */
+        "transition",
+        "transition-property",
+        "transition-duration",
+        "transition-timing-function",
+        "transition-delay",
+        "animation",
+        "animation-name",
+        "animation-duration",
+        "animation-timing-function",
+        "animation-delay",
+        "animation-iteration-count",
+        "animation-direction",
+        "animation-fill-mode",
+        "animation-play-state",
+        "transform",
+        "transform-origin",
+        "will-change",
+
+        /* Misc */
+        "cursor",
+        "pointer-events",
+        "user-select",
+        "resize",
+        "appearance",
+        "contain",
+        "container-type",
+        "container-name",
+      ],
+      {
+        unspecified: "bottomAlphabetical",
+        emptyLineBeforeUnspecified: "threshold",
+        emptyLineMinimumPropertyThreshold: 5,
+      },
     ],
   },
 };
 
-export default stylelintConfig;
+export default config;

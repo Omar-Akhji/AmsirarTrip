@@ -102,7 +102,7 @@ const ContactForm = () => {
               {state?.message && (
                 <output
                   className={`rounded-2xl px-4 py-3 text-sm font-medium ${
-                    state.success ? alertClasses.success : alertClasses.error
+                    state.success ? alertClasses["success"] : alertClasses["error"]
                   }`}
                   role={state.success ? undefined : "alert"}
                   aria-live="polite"
@@ -158,7 +158,7 @@ const ContactForm = () => {
                     <div
                       className={cn(
                         "origin-center scale-85 rounded-2xl border border-dashed p-3 sm:scale-100 lg:origin-left",
-                        state?.errors?.recaptchaToken
+                        state?.errors?.["recaptchaToken"]
                           ? "border-red-300"
                           : "border-gray-200"
                       )}
@@ -184,14 +184,14 @@ const ContactForm = () => {
                       )}
                     </div>
                   </div>
-                  {state?.errors?.recaptchaToken && (
-                    <p
-                      id="recaptchaToken-error"
-                      className="mbs-1 text-xs text-red-600"
-                    >
-                      {state.errors.recaptchaToken}
-                    </p>
-                  )}
+                    {state?.errors?.["recaptchaToken"] && (
+                      <p
+                        id="recaptchaToken-error"
+                        className="mbs-1 text-xs text-red-600"
+                      >
+                        {state.errors["recaptchaToken"]}
+                      </p>
+                    )}
                 </>
                 <SubmitButton />
               </m.div>

@@ -51,15 +51,15 @@ export function BookingTripDetails({
             autoComplete="off"
             min="1"
             max="50"
-            aria-invalid={state?.errors?.persons ? "true" : "false"}
+            aria-invalid={state?.errors?.["persons"] ? "true" : "false"}
             aria-describedby={
-              state?.errors?.persons ? "numberOfPeople-error" : undefined
+              state?.errors?.["persons"] ? "numberOfPeople-error" : undefined
             }
             required
           />
-          {state?.errors?.persons && (
+          {state?.errors?.["persons"] && (
             <p id="numberOfPeople-error" className="mbs-1 text-xs text-red-600">
-              {state.errors.persons}
+              {state.errors["persons"]}
             </p>
           )}
         </m.div>
@@ -77,10 +77,10 @@ export function BookingTripDetails({
                 className={cn(
                   "flex items-center justify-start rounded-2xl border bg-white px-4 py-3 text-start text-sm font-normal transition-colors block-auto inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none pointer-fine:hover:bg-gray-50",
                   !reservationDate && "text-gray-500",
-                  state?.errors?.date ? "border-red-300" : "border-gray-200"
+                  state?.errors?.["date"] ? "border-red-300" : "border-gray-200"
                 )}
                 aria-describedby={
-                  state?.errors?.date ? "reservationDate-error" : undefined
+                  state?.errors?.["date"] ? "reservationDate-error" : undefined
                 }
               >
                 <CalendarIcon className="me-2 size-4" />
@@ -122,12 +122,12 @@ export function BookingTripDetails({
               reservationDate ? formatDate(reservationDate, "yyyy-MM-dd") : ""
             }
           />
-          {state?.errors?.date && (
+          {state?.errors?.["date"] && (
             <p
               id="reservationDate-error"
               className="mbs-1 text-xs text-red-600"
             >
-              {state.errors.date}
+              {state.errors["date"]}
             </p>
           )}
         </m.div>
@@ -149,14 +149,14 @@ export function BookingTripDetails({
           placeholder={t("booking.message", "Your message")}
           autoComplete="off"
           rows={4}
-          aria-invalid={state?.errors?.message ? "true" : "false"}
+          aria-invalid={state?.errors?.["message"] ? "true" : "false"}
           aria-describedby={
-            state?.errors?.message ? "message-error" : undefined
+            state?.errors?.["message"] ? "message-error" : undefined
           }
         />
-        {state?.errors?.message && (
+        {state?.errors?.["message"] && (
           <p id="message-error" className="mbs-1 text-xs text-red-600">
-            {state.errors.message}
+            {state.errors["message"]}
           </p>
         )}
       </div>

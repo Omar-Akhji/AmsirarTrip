@@ -73,7 +73,7 @@ function Navbar() {
   };
 
   const currentLanguage =
-    LANGUAGES.find((l) => l.code === i18n.language) || LANGUAGES[0];
+    LANGUAGES.find((l) => l.code === i18n.language) || LANGUAGES[0]!;
 
   // React Compiler handles function memoization automatically
   const changeLanguage = (code: string) => {

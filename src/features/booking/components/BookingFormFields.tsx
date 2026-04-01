@@ -12,11 +12,11 @@ import { BookingTripDetails } from "./BookingTripDetails";
 interface BookingFormFieldsProps {
   state: BookingFormState | null;
   selectedTour: string;
-  tourTitle?: string;
-  tourId?: string;
+  tourTitle?: string | undefined;
+  tourId?: string | undefined;
   tourDuration: number | null;
-  excursionTitle?: string;
-  excursionId?: string;
+  excursionTitle?: string | undefined;
+  excursionId?: string | undefined;
   locale: string;
   calendarOpen: boolean;
   reservationDate: Date | null;
@@ -115,7 +115,7 @@ export function BookingFormFields({
             <div
               className={cn(
                 "origin-center scale-85 rounded-2xl border border-dashed p-3 sm:scale-100 lg:origin-left",
-                state?.errors?.recaptchaToken
+                state?.errors?.["recaptchaToken"]
                   ? "border-red-300"
                   : "border-gray-200"
               )}
@@ -140,9 +140,9 @@ export function BookingFormFields({
               )}
             </div>
           </div>
-          {state?.errors?.recaptchaToken && (
+          {state?.errors?.["recaptchaToken"] && (
             <p id="recaptchaToken-error" className="mbs-1 text-xs text-red-600">
-              {state.errors.recaptchaToken}
+              {state.errors["recaptchaToken"]}
             </p>
           )}
         </>

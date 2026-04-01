@@ -177,8 +177,8 @@ async function parseSitemap(sitemapUrl: string): Promise<string[]> {
   const locRegex = /<loc>([^<]+)<\/loc>/g;
   let match: RegExpExecArray | null;
   while ((match = locRegex.exec(xml)) !== null) {
-    const url = match[1].trim();
-    if (!url.endsWith(".xml")) {
+    const url = match[1]?.trim();
+    if (url && !url.endsWith(".xml")) {
       urls.push(url);
     }
   }
@@ -197,7 +197,7 @@ function extractCanonical(html: string): string | null {
     html.match(
       /<link[^>]*href=["']([^"']+)["'][^>]*rel=["']canonical["'][^>]*\/?>/i
     );
-  return match ? match[1] : null;
+  return match ? (match[1] ?? null) : null;
 }
 
 /**
@@ -219,10 +219,14 @@ function extractHreflangTags(html: string): Record<string, string> {
     let match: RegExpExecArray | null;
     while ((match = pattern.exec(html)) !== null) {
       // Determine which group is hreflang and which is href based on pattern
-      if (match[1].startsWith("http") || match[1].startsWith("/")) {
-        hreflangs[match[2]] = match[1];
-      } else {
-        hreflangs[match[1]] = match[2];
+      const val1 = match[1];
+      const val2 = match[2];
+      if (val1 && val2) {
+        if (val1.startsWith("http") || val1.startsWith("/")) {
+          hreflangs[val2] = val1;
+        } else {
+          hreflangs[val1] = val2;
+        }
       }
     }
   }
@@ -237,14 +241,14 @@ function hasNoindex(html: string): boolean {
   const metaMatch = html.match(
     /<meta[^>]*name=["']robots["'][^>]*content=["']([^"']+)["'][^>]*\/?>/i
   );
-  if (metaMatch && metaMatch[1].toLowerCase().includes("noindex")) {
+  if (metaMatch && metaMatch[1]?.toLowerCase().includes("noindex")) {
     return true;
   }
 
   const googleBotMatch = html.match(
     /<meta[^>]*name=["']googlebot["'][^>]*content=["']([^"']+)["'][^>]*\/?>/i
   );
-  if (googleBotMatch && googleBotMatch[1].toLowerCase().includes("noindex")) {
+  if (googleBotMatch && googleBotMatch[1]?.toLowerCase().includes("noindex")) {
     return true;
   }
 

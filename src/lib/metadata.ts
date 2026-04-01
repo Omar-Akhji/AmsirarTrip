@@ -44,7 +44,7 @@ export function generateSEOMetadata({
   const isDefaultLocale = locale === "en";
   const localePath = isDefaultLocale ? path : `/${locale}${path}`;
   const url = `${BASE_URL}${localePath}`;
-  const tagline = SITE_TAGLINES[locale] || SITE_TAGLINES.en;
+  const tagline = SITE_TAGLINES[locale] || SITE_TAGLINES["en"];
   const fullTitle = title.includes(SITE_NAME)
     ? title
     : `${title} | ${SITE_NAME} - ${tagline}`;

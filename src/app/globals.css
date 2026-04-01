@@ -73,12 +73,12 @@
   --spacing-navbar: 4rem;
 
   /* ==================== Animation Utilities ==================== */
-  --animate-show-data: show-data 1s forwards;
-  --animate-remove-overflow: remove-overflow 2s forwards;
-  --animate-show-overflow: show-overflow 2s forwards;
-  --animate-remove-data: remove-data 1s forwards;
-  --animate-loader-rotate: loader-rotate 2s linear infinite;
-  --animate-loader-dash: loader-dash 1.5s ease-in-out infinite;
+  --animate-show-data: show-data 1000ms forwards;
+  --animate-remove-overflow: remove-overflow 2000ms forwards;
+  --animate-show-overflow: show-overflow 2000ms forwards;
+  --animate-remove-data: remove-data 1000ms forwards;
+  --animate-loader-rotate: loader-rotate 2000ms linear infinite;
+  --animate-loader-dash: loader-dash 1500ms ease-in-out infinite;
 
   /* ==================== Keyframe Animations ==================== */
   @keyframes show-data {
@@ -154,19 +154,20 @@
    BASE LAYER - Reset & Element Defaults
    Using :is() and :where() for selector grouping
    ============================================================================ */
+:root {
+  --c1: var(--color-light-grey);
+  --c2: #d1d1d1;
+  --gradient-pattern:
+    var(--c1) 0% 5%, var(--c2) 6% 15%, var(--c1) 16% 25%, var(--c2) 26% 35%,
+    var(--c1) 36% 45%, var(--c2) 46% 55%, var(--c1) 56% 65%,
+    var(--c2) 66% 75%, var(--c1) 76% 85%, var(--c2) 86% 95%, #0000 96%;
+  --s: 154px;
+}
+
 @layer base {
   /* Preflight handles box-sizing — only keep non-default resets */
 
-  /* Global Custom Properties (Local Variables) */
   html {
-    --c1: var(--color-light-grey);
-    --c2: #d1d1d1;
-    --gradient-pattern:
-      var(--c1) 0% 5%, var(--c2) 6% 15%, var(--c1) 16% 25%, var(--c2) 26% 35%,
-      var(--c1) 36% 45%, var(--c2) 46% 55%, var(--c1) 56% 65%,
-      var(--c2) 66% 75%, var(--c1) 76% 85%, var(--c2) 86% 95%, #0000 96%;
-    --s: 154px;
-
     height: 100%;
     overflow-x: hidden;
     background:
@@ -182,16 +183,16 @@
   body {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100%;
     overflow-x: hidden;
     font-family: var(--font-sans);
     font-size: 95%;
     font-style: normal;
+    line-height: 1.15;
+    opacity: 100%;
     font-feature-settings:
       "kern" 1,
       "liga" 1;
-    line-height: 1.15;
-    opacity: 100%;
   }
 
   main {
@@ -234,19 +235,19 @@
 
   /* Scoped aspect-ratio — only for content/tour images, not icons/logos */
   :where(article, .card-article, .featured-row) img {
-    aspect-ratio: 4/3;
     display: block;
+    aspect-ratio: 4/3;
   }
 
   header {
     position: relative;
-    box-sizing: border-box;
     flex-direction: column;
-    padding-block-start: 7rem;
+    box-sizing: border-box;
     overflow: hidden;
     text-align: center;
     color: white;
     background: url("/images/Header/header-1.webp") center / cover no-repeat;
+    padding-block-start: 7rem;
   }
 
   ::-webkit-calendar-picker-indicator {
@@ -282,10 +283,10 @@
 
   /* Consolidated: <1090px = 55vh, >=1090px = 60vh (removed duplicate 768px rule) */
   header:not(.home-header) {
-    min-height: 55vh;
+    min-height: 55rem;
 
     @media (width >= 1090px) {
-      min-height: 60vh;
+      min-height: 60rem;
     }
   }
 
@@ -298,18 +299,18 @@
     /* Responsive grid based on viewport (fallback) */
     @media (width >= 768px) {
       display: grid;
+      grid-template-columns: repeat(2, minmax(0, 50%));
       gap: 2rem;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     @media (width >= 1200px) {
+      grid-template-columns: repeat(3, minmax(0, 33.33%));
       gap: 2rem;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
   }
 
   /* ====== Loader Styles with CSS Nesting ====== */
-  #ftco-loader {
+  .ftco-loader {
     /* Local Variables - scoped to this component */
     --loader-size: 96px;
     --loader-icon-size: 48px;
@@ -320,16 +321,16 @@
     left: 50%;
     z-index: 999999;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     width: var(--loader-size);
     height: var(--loader-size);
     border-radius: 16px;
-    box-shadow: var(--loader-shadow);
     background-color: rgb(255 255 255 / 90%);
+    box-shadow: var(--loader-shadow);
     opacity: 100%;
     visibility: visible;
-    transition: opacity 0.4s ease-out;
+    transition: opacity 400ms ease-out;
     transform: translate(-50%, -50%);
 
     /* Nested fullscreen variant */
@@ -339,8 +340,8 @@
       width: 100%;
       height: 100%;
       border-radius: 0;
-      box-shadow: none;
       background-color: var(--color-light-grey-alt2);
+      box-shadow: none;
       transform: none;
     }
 
@@ -349,12 +350,12 @@
       display: block;
       width: var(--loader-icon-size);
       height: var(--loader-icon-size);
-      animation: loader-rotate 2s linear infinite;
+      animation: loader-rotate 2000ms linear infinite;
       transform-origin: center center;
     }
 
     & .path {
-      animation: loader-dash 1.5s ease-in-out infinite;
+      animation: loader-dash 1500ms ease-in-out infinite;
       stroke-dasharray: 1, 200;
       stroke-dashoffset: 0;
       stroke-linecap: round;
@@ -364,10 +365,10 @@
   /* ====== Home Header ====== */
   .home-header {
     position: relative;
-    min-height: 70vh;
+    min-height: 70rem;
 
     @media (width >= 1024px) {
-      min-height: 80vh;
+      min-height: 80rem;
     }
   }
 
@@ -389,28 +390,26 @@
 
     /* Nested hover state with child selectors */
     &:hover {
-      animation: remove-overflow 2s forwards;
+      animation: remove-overflow 2000ms forwards;
 
       & .card-data {
         opacity: 100%;
-        transition: opacity 0.3s;
-        animation: show-data 1s forwards;
+        transition: opacity 300ms;
+        animation: show-data 1000ms forwards;
       }
     }
 
     /* Nested :not(:hover) state */
     &:not(:hover) {
-      animation: show-overflow 2s forwards;
+      animation: show-overflow 2000ms forwards;
 
       & .card-data {
-        animation: remove-data 1s forwards;
+        animation: remove-data 1000ms forwards;
       }
     }
   }
 
   .card-img {
-    width: 100%;
-    height: auto;
     border-radius: var(--card-border-radius, 8px);
     cursor: pointer;
     object-fit: cover;
@@ -422,14 +421,14 @@
     bottom: -9rem;
     left: 0;
     width: var(--card-data-width, 90%);
-    padding: var(--card-data-padding, 1.5rem 2rem);
-    border-radius: 1rem;
-    box-shadow: var(--card-shadow, 0 8px 24px oklch(0% 0 0deg / 15%));
-    background-color: var(--color-white);
-    opacity: 0%;
-    cursor: pointer;
-    transition: opacity 1s 1s;
     margin-inline: auto;
+    padding: var(--card-data-padding, 1.5rem 2rem);
+    border-radius: 16px;
+    background-color: var(--color-white);
+    box-shadow: var(--card-shadow, 0 8px 24px oklch(0% 0 0deg / 15%));
+    opacity: 0%;
+    transition: opacity 1000ms 1000ms;
+    cursor: pointer;
   }
 
   .card-title {
@@ -463,9 +462,9 @@
   *,
   *::before,
   *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
 }

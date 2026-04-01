@@ -3,8 +3,8 @@ interface TourStructuredData {
   description: string;
   provider: string;
   image: string;
-  price?: number;
-  currency?: string;
+  price?: number | undefined;
+  currency?: string | undefined;
   duration: string;
   startLocation: string;
   endLocation: string;
@@ -84,8 +84,8 @@ interface ExcursionStructuredData {
   description: string;
   provider: string;
   image: string;
-  price?: number;
-  currency?: string;
+  price?: number | undefined;
+  currency?: string | undefined;
   duration: string;
   location: string;
   url: string;

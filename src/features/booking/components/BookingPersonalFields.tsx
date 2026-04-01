@@ -32,15 +32,15 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
             placeholder={t("booking.fullName", "Full Name")}
             aria-label={t("booking.fullName", "Full Name")}
             autoComplete="name"
-            aria-invalid={state?.errors?.fullName ? "true" : "false"}
+            aria-invalid={state?.errors?.["fullName"] ? "true" : "false"}
             aria-describedby={
-              state?.errors?.fullName ? "fullName-error" : undefined
+              state?.errors?.["fullName"] ? "fullName-error" : undefined
             }
             required
           />
-          {state?.errors?.fullName && (
+          {state?.errors?.["fullName"] && (
             <p id="fullName-error" className="mbs-1 text-xs text-red-600">
-              {state.errors.fullName}
+              {state.errors["fullName"]}
             </p>
           )}
         </m.div>
@@ -62,13 +62,13 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
             placeholder={t("booking.phone", "Phone Number")}
             aria-label={t("booking.phone", "Phone Number")}
             autoComplete="tel"
-            aria-invalid={state?.errors?.phone ? "true" : "false"}
-            aria-describedby={state?.errors?.phone ? "phone-error" : undefined}
+            aria-invalid={state?.errors?.["phone"] ? "true" : "false"}
+            aria-describedby={state?.errors?.["phone"] ? "phone-error" : undefined}
             required
           />
-          {state?.errors?.phone && (
+          {state?.errors?.["phone"] && (
             <p id="phone-error" className="mbs-1 text-xs text-red-600">
-              {state.errors.phone}
+              {state.errors["phone"]}
             </p>
           )}
         </m.div>
@@ -92,13 +92,13 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
           placeholder={t("booking.email", "Email")}
           aria-label={t("booking.email", "Email")}
           autoComplete="email"
-          aria-invalid={state?.errors?.email ? "true" : "false"}
-          aria-describedby={state?.errors?.email ? "email-error" : undefined}
+          aria-invalid={state?.errors?.["email"] ? "true" : "false"}
+          aria-describedby={state?.errors?.["email"] ? "email-error" : undefined}
           required
         />
-        {state?.errors?.email && (
+        {state?.errors?.["email"] && (
           <p id="email-error" className="mbs-1 text-xs text-red-600">
-            {state.errors.email}
+            {state.errors["email"]}
           </p>
         )}
       </m.div>

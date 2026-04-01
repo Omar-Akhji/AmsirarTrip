@@ -1,9 +1,9 @@
 import { m, AnimatePresence } from "motion/react";
 
 interface FormStatusMessagesProps {
-  submitError?: string;
-  success?: boolean;
-  successMessage?: string;
+  submitError?: string | undefined;
+  success?: boolean | undefined;
+  successMessage?: string | undefined;
 }
 
 export function FormStatusMessages({
