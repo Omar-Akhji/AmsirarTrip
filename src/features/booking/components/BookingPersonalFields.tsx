@@ -63,7 +63,9 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
             aria-label={t("booking.phone", "Phone Number")}
             autoComplete="tel"
             aria-invalid={state?.errors?.["phone"] ? "true" : "false"}
-            aria-describedby={state?.errors?.["phone"] ? "phone-error" : undefined}
+            aria-describedby={
+              state?.errors?.["phone"] ? "phone-error" : undefined
+            }
             required
           />
           {state?.errors?.["phone"] && (
@@ -93,7 +95,9 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
           aria-label={t("booking.email", "Email")}
           autoComplete="email"
           aria-invalid={state?.errors?.["email"] ? "true" : "false"}
-          aria-describedby={state?.errors?.["email"] ? "email-error" : undefined}
+          aria-describedby={
+            state?.errors?.["email"] ? "email-error" : undefined
+          }
           required
         />
         {state?.errors?.["email"] && (

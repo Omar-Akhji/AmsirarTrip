@@ -1,78 +1,89 @@
 @import "tailwindcss";
 
 /* ============================================================================
-   THEME CONFIGURATION - Global Design Tokens
-   Using Tailwind CSS 4's @theme directive for design system variables
+   @property — Type-safe CSS custom properties
+   Enables smooth transitions on custom properties (e.g. colors, sizes)
    ============================================================================ */
 
-/* Typography uses var() references — requires @theme inline to resolve correctly */
+@property --card-data-y {
+  inherits: false;
+  initial-value: -9rem;
+  syntax: "<length>";
+}
+
+@property --loader-opacity {
+  inherits: false;
+  initial-value: 1;
+  syntax: "<number>";
+}
+
+/* ============================================================================
+   @theme inline — Font tokens that reference Next.js CSS variable injections.
+   Must be "inline" so Tailwind resolves var() at build time, not statically.
+   ============================================================================ */
+
 @theme inline {
   --font-sans: var(--font-montserrat), sans-serif;
   --font-fancy: var(--font-fancy), cursive;
   --font-brand: var(--font-yellowtail), cursive;
 }
 
+/* ============================================================================
+   @theme — Static design tokens (no var() references here)
+   ============================================================================ */
+
 @theme {
-  /* ==================== Breakpoints ==================== */
+  /* ── Breakpoints ─────────────────────────────────────────────────────── */
   --breakpoint-tablet: 768px;
   --breakpoint-desktop: 1090px;
 
-  /* ==================== Typography ==================== */
-  --font-sans: var(--font-montserrat), sans-serif;
-  --font-fancy: var(--font-fancy), cursive;
-  --font-brand: var(--font-yellowtail), cursive;
+  /* ── Brand Palette (oklch for wide-gamut displays) ───────────────────── */
+  --color-orange: oklch(56% 0.19 33deg);
+  --color-orange-dark: oklch(51% 0.18 36deg);
+  --color-whatsapp: oklch(76% 0.18 153deg);
 
-  /* ==================== Color Palette ==================== */
+  /* ── Neutrals ────────────────────────────────────────────────────────── */
+  --color-white: oklch(100% 0 0deg);
+  --color-black: oklch(0% 0 0deg);
+  --color-light-grey: oklch(97% 0 0deg); /* #f7f7f7 */
+  --color-light-grey-alt: oklch(96.5% 0 0deg); /* #f5f5f5 */
+  --color-light-grey-alt2: oklch(91% 0.01 248deg); /* #e2e8f0 */
+  --color-grey: oklch(51% 0 0deg); /* #787878 */
+  --color-grey-alt: oklch(48% 0.01 255deg); /* #6b7280 */
+  --color-grey-close: oklch(50% 0 0deg); /* #777 */
+  --color-dark: oklch(10% 0.004 200deg); /* #0e1010 */
+  --color-dark-grey: oklch(8% 0 0deg); /* #111 */
 
-  /* Base Colors */
-  --color-white: #fff;
-  --color-black: #000;
+  /* ── Footer gradient stops ───────────────────────────────────────────── */
+  --color-footer-start: oklch(11% 0 0deg); /* #18191a */
+  --color-footer-end: oklch(13% 0 0deg); /* #202124 */
 
-  /* Brand Colors */
-  --color-orange: #e54a1f;
-  --color-orange-dark: #d35400;
-
-  /* Neutral Colors */
-  --color-light-grey: #f7f7f7;
-  --color-light-grey-alt: #f5f5f5;
-  --color-light-grey-alt2: #e2e8f0;
-  --color-grey: #787878;
-  --color-grey-alt: #6b7280;
-  --color-grey-close: #777;
-  --color-dark: #0e1010;
-  --color-dark-grey: #111;
-
-  /* Accent Colors */
-  --color-whatsapp: #25d366;
-  --color-footer-start: #18191a;
-  --color-footer-end: #202124;
-
-  /* ==================== shadcn/ui Colors ==================== */
-  --color-background: 0 0% 100%;
-  --color-foreground: 222.2 84% 4.9%;
-  --color-card: 0 0% 100%;
-  --color-card-foreground: 222.2 84% 4.9%;
-  --color-popover: 0 0% 100%;
-  --color-popover-foreground: 222.2 84% 4.9%;
-  --color-primary: 13 80% 51%;
-  --color-primary-foreground: 0 0% 100%;
-  --color-secondary: 210 40% 96%;
-  --color-secondary-foreground: 222.2 84% 4.9%;
-  --color-muted: 210 40% 96%;
-  --color-muted-foreground: 215.4 16.3% 46.9%;
-  --color-accent: 210 40% 96%;
-  --color-accent-foreground: 222.2 84% 4.9%;
-  --color-destructive: 0 84.2% 60.2%;
-  --color-destructive-foreground: 210 40% 98%;
-  --color-border: 214.3 31.8% 91.4%;
-  --color-input: 214.3 31.8% 91.4%;
-  --color-ring: 13 80% 51%;
+  /* ── shadcn/ui semantic tokens (hsl kept for shadcn component compat) ── */
+  --color-background: hsl(0deg 0% 100%);
+  --color-foreground: hsl(222.2deg 84% 4.9%);
+  --color-card: hsl(0deg 0% 100%);
+  --color-card-foreground: hsl(222.2deg 84% 4.9%);
+  --color-popover: hsl(0deg 0% 100%);
+  --color-popover-foreground: hsl(222.2deg 84% 4.9%);
+  --color-primary: hsl(13deg 80% 51%);
+  --color-primary-foreground: hsl(0deg 0% 100%);
+  --color-secondary: hsl(210deg 40% 96%);
+  --color-secondary-foreground: hsl(222.2deg 84% 4.9%);
+  --color-muted: hsl(210deg 40% 96%);
+  --color-muted-foreground: hsl(215.4deg 16.3% 46.9%);
+  --color-accent: hsl(210deg 40% 96%);
+  --color-accent-foreground: hsl(222.2deg 84% 4.9%);
+  --color-destructive: hsl(0deg 84.2% 60.2%);
+  --color-destructive-foreground: hsl(210deg 40% 98%);
+  --color-border: hsl(214.3deg 31.8% 91.4%);
+  --color-input: hsl(214.3deg 31.8% 91.4%);
+  --color-ring: hsl(13deg 80% 51%);
   --radius: 0.5rem;
 
-  /* ==================== Layout Spacing ==================== */
+  /* ── Spacing ─────────────────────────────────────────────────────────── */
   --spacing-navbar: 4rem;
 
-  /* ==================== Animation Utilities ==================== */
+  /* ── Named Animations ────────────────────────────────────────────────── */
   --animate-show-data: show-data 1000ms forwards;
   --animate-remove-overflow: remove-overflow 2000ms forwards;
   --animate-show-overflow: show-overflow 2000ms forwards;
@@ -80,19 +91,33 @@
   --animate-loader-rotate: loader-rotate 2000ms linear infinite;
   --animate-loader-dash: loader-dash 1500ms ease-in-out infinite;
 
-  /* ==================== Keyframe Animations ==================== */
+  /* ── Keyframes ───────────────────────────────────────────────────────── */
   @keyframes show-data {
     50% {
-      transform: translateY(-10rem);
+      translate: 0 -10rem;
     }
 
     100% {
-      transform: translateY(-7rem);
+      translate: 0 -7rem;
+    }
+  }
+
+  @keyframes remove-data {
+    0% {
+      translate: 0 -7rem;
+    }
+
+    50% {
+      translate: 0 -10rem;
+    }
+
+    100% {
+      translate: 0 0.5rem;
     }
   }
 
   @keyframes remove-overflow {
-    100% {
+    to {
       overflow: initial;
     }
   }
@@ -108,68 +133,55 @@
     }
   }
 
-  @keyframes remove-data {
-    0% {
-      transform: translateY(-7rem);
-    }
-
-    50% {
-      transform: translateY(-10rem);
-    }
-
-    100% {
-      transform: translateY(0.5rem);
-    }
-  }
-
   @keyframes loader-rotate {
-    0% {
-      transform: rotate(0deg);
-    }
-
-    100% {
-      transform: rotate(360deg);
+    to {
+      rotate: 360deg;
     }
   }
 
   @keyframes loader-dash {
     0% {
-      stroke-dasharray: 1, 200;
+      stroke-dasharray: 1 200;
       stroke-dashoffset: 0;
     }
 
     50% {
-      stroke-dasharray: 89, 200;
+      stroke-dasharray: 89 200;
       stroke-dashoffset: -35px;
     }
 
     100% {
-      stroke-dasharray: 89, 200;
+      stroke-dasharray: 89 200;
       stroke-dashoffset: -136px;
     }
   }
 }
 
 /* ============================================================================
-   BASE LAYER - Reset & Element Defaults
-   Using :is() and :where() for selector grouping
+   :root — Non-theme CSS custom properties (not Tailwind utilities)
    ============================================================================ */
+
 :root {
+  /* Diagonal checkerboard background pattern */
   --c1: var(--color-light-grey);
-  --c2: #d1d1d1;
+  --c2: oklch(83% 0 0deg); /* #d1d1d1 */
+  --s: 154px;
   --gradient-pattern:
     var(--c1) 0% 5%, var(--c2) 6% 15%, var(--c1) 16% 25%, var(--c2) 26% 35%,
-    var(--c1) 36% 45%, var(--c2) 46% 55%, var(--c1) 56% 65%,
-    var(--c2) 66% 75%, var(--c1) 76% 85%, var(--c2) 86% 95%, #0000 96%;
-  --s: 154px;
+    var(--c1) 36% 45%, var(--c2) 46% 55%, var(--c1) 56% 65%, var(--c2) 66% 75%,
+    var(--c1) 76% 85%, var(--c2) 86% 95%, #0000 96%;
 }
 
-@layer base {
-  /* Preflight handles box-sizing — only keep non-default resets */
+/* ============================================================================
+   BASE LAYER
+   ============================================================================ */
 
+@layer base {
   html {
-    height: 100%;
+    block-size: 100%;
     overflow-x: hidden;
+
+    /* Tiled radial-gradient checkerboard — defined once via custom props */
     background:
       radial-gradient(50% 50% at 100% 0, var(--gradient-pattern)),
       radial-gradient(50% 50% at 0 100%, var(--gradient-pattern)),
@@ -183,13 +195,11 @@
   body {
     display: flex;
     flex-direction: column;
-    min-height: 100%;
+    min-block-size: 100%;
     overflow-x: hidden;
     font-family: var(--font-sans);
     font-size: 95%;
-    font-style: normal;
     line-height: 1.15;
-    opacity: 100%;
     font-feature-settings:
       "kern" 1,
       "liga" 1;
@@ -198,30 +208,25 @@
   main {
     display: block;
     flex: 1 0 auto;
-    width: 100%;
+    inline-size: 100%;
   }
 
-  h1 {
-    margin: 0.67rem 0;
-  }
-
-  /* Preflight handles hr, strong, small, a resets — keep only custom overrides */
+  /* Inherit color so links don't hard-code blue */
   a {
     color: inherit;
   }
 
-  /* ===== :is() Pseudo-Class - Group elements using sans font ===== */
-  :is(button, input, textarea, h1, h2, h3, h4) {
-    font-family: var(--font-sans);
-  }
-
-  /* ===== :where() Pseudo-Class - Low specificity reset ===== */
-  :where(button, [type="button"], [type="reset"], [type="submit"]) {
-    cursor: pointer;
+  ul {
+    list-style: none;
   }
 
   textarea {
     overflow: auto;
+  }
+
+  /* Cursor helpers — zero specificity via :where() */
+  :where(button, [type="button"], [type="reset"], [type="submit"]) {
+    cursor: pointer;
   }
 
   input[type="submit"] {
@@ -229,39 +234,77 @@
     cursor: pointer;
   }
 
-  ul {
-    list-style: none;
+  /* Group font-family assignment — single rule via :is() */
+  :is(button, input, textarea, h1, h2, h3, h4) {
+    font-family: var(--font-sans);
   }
 
-  /* Scoped aspect-ratio — only for content/tour images, not icons/logos */
+  /* Dark calendar icon on date inputs */
+  ::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
+
+  /* Aspect ratio only for content images, not icons/logos */
   :where(article, .card-article, .featured-row) img {
     display: block;
-    aspect-ratio: 4/3;
+    aspect-ratio: 4 / 3;
   }
 
+  /* Page-level header defaults */
   header {
     position: relative;
     flex-direction: column;
     box-sizing: border-box;
+    padding-block-start: 7rem;
     overflow: hidden;
     text-align: center;
-    color: white;
+    color: var(--color-white);
     background: url("/images/Header/header-1.webp") center / cover no-repeat;
-    padding-block-start: 7rem;
-  }
-
-  ::-webkit-calendar-picker-indicator {
-    filter: invert(1);
   }
 }
 
 /* ============================================================================
-   COMPONENTS LAYER - Reusable UI Patterns
-   Using CSS Nesting, Container Queries, :has(), and Local Variables
+   COMPONENTS LAYER
    ============================================================================ */
+
 @layer components {
-  /* Container Query - Card responsiveness based on container size */
-  @container featured (min-width: 600px) {
+  /* ── Non-home header heights ──────────────────────────────────────────── */
+  header:not(.home-header) {
+    min-block-size: 55rem;
+
+    @media (width >= 1090px) {
+      min-block-size: 60rem;
+    }
+  }
+
+  /* ── Home hero header ─────────────────────────────────────────────────── */
+  .home-header {
+    position: relative;
+    min-block-size: 70rem;
+
+    @media (width >= 1024px) {
+      min-block-size: 80rem;
+    }
+  }
+
+  /* ── Featured grid with Container Queries ─────────────────────────────── */
+  .featured-row {
+    container-type: inline-size;
+    container-name: featured;
+
+    @media (width >= 768px) {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+    }
+
+    @media (width >= 1200px) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  /* Container-query overrides for cards inside .featured-row */
+  @container featured (width >= 600px) {
     .card-data {
       padding: 2rem 2.5rem;
     }
@@ -271,7 +314,7 @@
     }
   }
 
-  @container featured (min-width: 900px) {
+  @container featured (width >= 900px) {
     .card-data {
       bottom: -8rem;
     }
@@ -281,130 +324,37 @@
     }
   }
 
-  /* Consolidated: <1090px = 55vh, >=1090px = 60vh (removed duplicate 768px rule) */
-  header:not(.home-header) {
-    min-height: 55rem;
-
-    @media (width >= 1090px) {
-      min-height: 60rem;
-    }
-  }
-
-  /* ====== Featured Section with Container Queries ====== */
-  .featured-row {
-    /* Container Query Setup */
-    container-type: inline-size;
-    container-name: featured;
-
-    /* Responsive grid based on viewport (fallback) */
-    @media (width >= 768px) {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 50%));
-      gap: 2rem;
-    }
-
-    @media (width >= 1200px) {
-      grid-template-columns: repeat(3, minmax(0, 33.33%));
-      gap: 2rem;
-    }
-  }
-
-  /* ====== Loader Styles with CSS Nesting ====== */
-  .ftco-loader {
-    /* Local Variables - scoped to this component */
-    --loader-size: 96px;
-    --loader-icon-size: 48px;
-    --loader-shadow: 0 24px 64px rgb(0 0 0 / 24%);
-
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    z-index: 999999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: var(--loader-size);
-    height: var(--loader-size);
-    border-radius: 16px;
-    background-color: rgb(255 255 255 / 90%);
-    box-shadow: var(--loader-shadow);
-    opacity: 100%;
-    visibility: visible;
-    transition: opacity 400ms ease-out;
-    transform: translate(-50%, -50%);
-
-    /* Nested fullscreen variant */
-    &.fullscreen {
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 0;
-      background-color: var(--color-light-grey-alt2);
-      box-shadow: none;
-      transform: none;
-    }
-
-    /* Nested child elements */
-    & .circular {
-      display: block;
-      width: var(--loader-icon-size);
-      height: var(--loader-icon-size);
-      animation: loader-rotate 2000ms linear infinite;
-      transform-origin: center center;
-    }
-
-    & .path {
-      animation: loader-dash 1500ms ease-in-out infinite;
-      stroke-dasharray: 1, 200;
-      stroke-dashoffset: 0;
-      stroke-linecap: round;
-    }
-  }
-
-  /* ====== Home Header ====== */
-  .home-header {
-    position: relative;
-    min-height: 70rem;
-
-    @media (width >= 1024px) {
-      min-height: 80rem;
-    }
-  }
-
-  /* ====== Card Component with CSS Nesting & Local Variables ====== */
+  /* ── Card component ───────────────────────────────────────────────────── */
   .card-article {
-    /* Local Variables - scoped to card component */
+    /* Component-scoped tokens */
     --card-border-radius: 8px;
     --card-shadow: 0 8px 24px oklch(0% 0 0deg / 15%);
     --card-data-width: 90%;
     --card-data-padding: 1.5rem 2rem;
 
     position: relative;
-    margin-bottom: 2rem;
     overflow: hidden;
+    margin-block-end: 2rem;
 
     @media (width < 768px) {
-      margin-bottom: 3rem;
+      margin-block-end: 3rem;
     }
 
-    /* Nested hover state with child selectors */
     &:hover {
-      animation: remove-overflow 2000ms forwards;
+      animation: var(--animate-remove-overflow);
 
       & .card-data {
         opacity: 100%;
         transition: opacity 300ms;
-        animation: show-data 1000ms forwards;
+        animation: var(--animate-show-data);
       }
     }
 
-    /* Nested :not(:hover) state */
     &:not(:hover) {
-      animation: show-overflow 2000ms forwards;
+      animation: var(--animate-show-overflow);
 
       & .card-data {
-        animation: remove-data 1000ms forwards;
+        animation: var(--animate-remove-data);
       }
     }
   }
@@ -417,45 +367,93 @@
 
   .card-data {
     position: absolute;
-    right: 0;
+    inset-inline: 0;
     bottom: -9rem;
-    left: 0;
-    width: var(--card-data-width, 90%);
+    inline-size: var(--card-data-width, 90%);
     margin-inline: auto;
     padding: var(--card-data-padding, 1.5rem 2rem);
-    border-radius: 16px;
+    border-radius: 1rem;
     background-color: var(--color-white);
-    box-shadow: var(--card-shadow, 0 8px 24px oklch(0% 0 0deg / 15%));
+    box-shadow: var(--card-shadow);
     opacity: 0%;
     transition: opacity 1000ms 1000ms;
     cursor: pointer;
   }
 
   .card-title {
-    margin-bottom: 0.5rem;
     font-size: 1.25rem;
     font-weight: 500;
     color: var(--color-black);
+    margin-block-end: 0.5rem;
   }
 
   .card-text {
-    margin-bottom: 1rem;
     font-size: 0.875rem;
     line-height: 1.5;
     color: var(--color-grey-close);
+    margin-block-end: 1rem;
   }
 
-  /* ====== :has() Pseudo-Class - Parent responds to child state ====== */
-
-  /* Card with loaded image - alternative hover trigger */
+  /* :has() — parent aware of child priority flag */
   .card-article:has(img[loading="eager"]) {
     --card-priority: high;
+  }
+
+  /* ── Loader component ─────────────────────────────────────────────────── */
+  .ftco-loader {
+    /* Component-scoped tokens */
+    --loader-size: 96px;
+    --loader-icon-size: 48px;
+    --loader-shadow: 0 24px 64px oklch(0% 0 0deg / 24%);
+
+    position: fixed;
+    inset-block-start: 50%;
+    inset-inline-start: 50%;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    inline-size: var(--loader-size);
+    block-size: var(--loader-size);
+    border-radius: 1rem;
+    background-color: oklch(100% 0 0deg / 90%);
+    box-shadow: var(--loader-shadow);
+    opacity: 100%;
+    visibility: visible;
+    transition: opacity 400ms ease-out;
+    translate: -50% -50%;
+
+    &.fullscreen {
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      inline-size: 100%;
+      block-size: 100%;
+      border-radius: 0;
+      background-color: var(--color-light-grey-alt2);
+      box-shadow: none;
+      translate: none;
+    }
+
+    & .circular {
+      display: block;
+      inline-size: var(--loader-icon-size);
+      block-size: var(--loader-icon-size);
+      animation: var(--animate-loader-rotate);
+      transform-origin: center center;
+    }
+
+    & .path {
+      animation: var(--animate-loader-dash);
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+      stroke-linecap: round;
+    }
   }
 }
 
 /* ============================================================================
-   ACCESSIBILITY - Reduced Motion Preferences (WCAG 2.3.3)
-   Disables animations and transitions for users who prefer reduced motion
+   REDUCED MOTION — WCAG 2.3.3
+   Single rule covers all layers. !important is correct and intentional here.
    ============================================================================ */
 
 @media (prefers-reduced-motion: reduce) {

@@ -31,7 +31,9 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
             autoComplete="name"
             required
             aria-invalid={state?.errors?.["name"] ? "true" : "false"}
-            aria-describedby={state?.errors?.["name"] ? "name-error" : undefined}
+            aria-describedby={
+              state?.errors?.["name"] ? "name-error" : undefined
+            }
           />
           {state?.errors?.["name"] && (
             <p id="name-error" className="mbs-1 text-xs text-red-600">
@@ -58,7 +60,9 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
             autoComplete="email"
             required
             aria-invalid={state?.errors?.["email"] ? "true" : "false"}
-            aria-describedby={state?.errors?.["email"] ? "email-error" : undefined}
+            aria-describedby={
+              state?.errors?.["email"] ? "email-error" : undefined
+            }
           />
           {state?.errors?.["email"] && (
             <p id="email-error" className="mbs-1 text-xs text-red-600">
@@ -88,7 +92,9 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
             autoComplete="tel"
             required
             aria-invalid={state?.errors?.["phone"] ? "true" : "false"}
-            aria-describedby={state?.errors?.["phone"] ? "phone-error" : undefined}
+            aria-describedby={
+              state?.errors?.["phone"] ? "phone-error" : undefined
+            }
           />
           {state?.errors?.["phone"] && (
             <p id="phone-error" className="mbs-1 text-xs text-red-600">

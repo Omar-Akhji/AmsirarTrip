@@ -1,0 +1,34 @@
+
+> amsirartrip-nextjs@1.0.0 lint:css C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip Enhanced
+> stylelint "src/app/**/*.css"
+
+
+src/app/globals.css
+   99:5   ✖  Expected empty line before rule                                 rule-empty-line-before
+  108:5   ✖  Expected empty line before rule                                 rule-empty-line-before
+  111:5   ✖  Expected empty line before rule                                 rule-empty-line-before
+  127:5   ✖  Expected empty line before rule                                 rule-empty-line-before
+  143:5   ✖  Expected empty line before rule                                 rule-empty-line-before
+  147:5   ✖  Expected empty line before rule                                 rule-empty-line-before
+  185:5   ✖  Expected an empty line before property "block-size"             order/properties-order
+  196:5   ✖  Expected an empty line before property "font-feature-settings"  order/properties-order
+  256:5   ✖  Expected an empty line before property "padding-block-start"    order/properties-order
+  291:51  ✖  Unexpected unit "fr"                                            unit-allowed-list
+  296:51  ✖  Unexpected unit "fr"                                            unit-allowed-list
+  305:5   ✖  Expected empty line before rule                                 rule-empty-line-before
+  314:5   ✖  Expected empty line before rule                                 rule-empty-line-before
+  365:20  ✖  Unexpected unit "rem" for property "border-radius"              declaration-property-unit-allowed-list
+  371:5   ✖  Expected an empty line before property "inline-size"            order/properties-order
+  406:20  ✖  Unexpected unit "rem" for property "border-radius"              declaration-property-unit-allowed-list
+  412:5   ✖  Expected an empty line before property "block-size"             order/properties-order
+  422:7   ✖  Expected an empty line before property "block-size"             order/properties-order
+  433:7   ✖  Expected an empty line before property "block-size"             order/properties-order
+  455:27  ⚠  Unexpected !important                                           declaration-no-important
+  456:33  ⚠  Unexpected !important                                           declaration-no-important
+  457:32  ⚠  Unexpected !important                                           declaration-no-important
+  458:34  ⚠  Unexpected !important                                           declaration-no-important
+
+✖ 23 problems (19 errors, 4 warnings)
+  15 errors potentially fixable with the "--fix" option.
+
+ ELIFECYCLE  Command failed with exit code 2.
