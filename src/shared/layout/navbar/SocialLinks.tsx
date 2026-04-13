@@ -32,7 +32,7 @@ export function SocialLinks({
         const isExternal = link.href.startsWith("http");
         const buttonClasses = cn(
           getSocialButtonClasses(size),
-          scrolled && link.accent
+          scrolled && link.accent,
         );
 
         return (
@@ -53,7 +53,7 @@ export function SocialLinks({
                 height={iconSize}
                 className={cn(
                   compact ? "size-5" : "size-6.25",
-                  "object-contain"
+                  "object-contain",
                 )}
               />
             </a>

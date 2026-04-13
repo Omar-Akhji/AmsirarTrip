@@ -10,7 +10,7 @@ import { verifyRecaptcha, createMailer, escapeHtml } from "@/lib/server-utils";
 export async function submitNewsletterAction(
   name: string,
   email: string,
-  recaptchaToken: string
+  recaptchaToken: string,
 ): Promise<{ ok: boolean; statusKey: string }> {
   try {
     const headersList = await headers();

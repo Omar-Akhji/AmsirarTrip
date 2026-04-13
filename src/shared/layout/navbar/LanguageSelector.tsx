@@ -82,7 +82,7 @@ export function LanguageSelector({
             height={25}
             className={cn(
               size === "sm" ? "size-5" : "size-6.25",
-              "object-contain"
+              "object-contain",
             )}
           />
         </div>
@@ -97,7 +97,7 @@ export function LanguageSelector({
             placement === "left" ? "start-0" : "end-0",
             scrolled
               ? "border-slate-200/60 bg-white/90"
-              : "border-white/10 bg-slate-900/90 text-white"
+              : "border-white/10 bg-slate-900/90 text-white",
           )}
           role="menu"
           aria-orientation="vertical"
@@ -120,7 +120,7 @@ export function LanguageSelector({
                         : "bg-white/10 text-white"
                       : scrolled
                         ? "text-slate-600 pointer-fine:hover:bg-slate-100 pointer-fine:hover:text-slate-900"
-                        : "text-slate-300 pointer-fine:hover:bg-white/10 pointer-fine:hover:text-white"
+                        : "text-slate-300 pointer-fine:hover:bg-white/10 pointer-fine:hover:text-white",
                   )}
                 >
                   <span className="flex items-center gap-3">
@@ -130,7 +130,7 @@ export function LanguageSelector({
                     <div
                       className={cn(
                         "me-1 size-2 rounded-full",
-                        scrolled ? "bg-orange" : "bg-white"
+                        scrolled ? "bg-orange" : "bg-white",
                       )}
                     />
                   )}

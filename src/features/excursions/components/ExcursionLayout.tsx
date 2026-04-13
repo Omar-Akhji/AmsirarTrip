@@ -31,7 +31,7 @@ const Trans = ({ i18nKey, components, children }: TransProps) => {
 
 const BookingForm = dynamic(
   () => import("@/features/booking/components/BookingForm"),
-  { ssr: false }
+  { ssr: false },
 );
 
 const CheckIcon = () => (
@@ -79,11 +79,11 @@ function ExcursionLayout({
   // Dynamic labels from translations
   const distanceLabel = t(
     `${excursionKey}.distanceValue`,
-    "~191 km from Marrakech"
+    "~191 km from Marrakech",
   );
   const durationLabel = t(
     `${excursionKey}.durationLabel`,
-    "Full-day excursion"
+    "Full-day excursion",
   );
   const altText = t(`${excursionKey}.alt`);
 

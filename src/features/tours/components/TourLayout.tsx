@@ -16,7 +16,7 @@ const TourInfo = dynamic(() => import("./TourInfo"));
 
 const BookingForm = dynamic(
   () => import("@/features/booking/components/BookingForm"),
-  { ssr: false }
+  { ssr: false },
 );
 
 // Define interfaces

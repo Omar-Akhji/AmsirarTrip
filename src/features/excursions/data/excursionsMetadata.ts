@@ -161,7 +161,7 @@ export function getExcursionSlugs(): string[] {
 
 // Helper to get excursion metadata by slug
 export function getExcursionBySlug(
-  slug: string
+  slug: string,
 ): ExcursionMetadata | undefined {
   return EXCURSIONS_METADATA[slug];
 }

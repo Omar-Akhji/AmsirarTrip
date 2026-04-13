@@ -17,7 +17,7 @@ export function ContactInfoSidebar() {
         <p className="mbs-4 text-sm text-slate-200">
           {t(
             "contact.form.infoCopy",
-            "Our Marrakech team answers every message personally and can help with custom itineraries, desert camps, or last-minute transfers."
+            "Our Marrakech team answers every message personally and can help with custom itineraries, desert camps, or last-minute transfers.",
           )}
         </p>
       </m.div>
@@ -96,7 +96,7 @@ export function ContactInfoSidebar() {
       <p className="mbs-8 text-xs text-slate-400">
         {t(
           "contact.form.infoFooter",
-          "Available every day from 09:00 to 21:00 GMT+1"
+          "Available every day from 09:00 to 21:00 GMT+1",
         )}
       </p>
     </>

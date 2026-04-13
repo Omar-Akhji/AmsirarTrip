@@ -14,7 +14,7 @@ export default function HomeStats() {
       label: t("about.experienceTitle"),
       description: t(
         "home.stats.experience",
-        "Years perfecting Sahara crossings and Atlas escapades."
+        "Years perfecting Sahara crossings and Atlas escapades.",
       ),
     },
     {
@@ -23,7 +23,7 @@ export default function HomeStats() {
       label: t("excursion.stats.routes", "Signature excursions"),
       description: t(
         "home.stats.routes",
-        "Handpicked story-driven routes from dunes to oceans."
+        "Handpicked story-driven routes from dunes to oceans.",
       ),
     },
     {
@@ -32,7 +32,7 @@ export default function HomeStats() {
       label: t("excursion.stats.support", "On-trip support"),
       description: t(
         "home.stats.care",
-        "Dedicated coordinators for every mile of your journey."
+        "Dedicated coordinators for every mile of your journey.",
       ),
     },
   ];

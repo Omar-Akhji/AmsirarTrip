@@ -99,7 +99,7 @@ async function optimizeImage(config) {
   console.log(`✅ ${path.basename(src)}`);
   console.log(`   ${metadata.width}x${metadata.height} → ${maxWidth}px max`);
   console.log(
-    `   ${Math.round(originalSize / 1024)}KB → ${Math.round(newSize / 1024)}KB (saved ${Math.round(savings / 1024)}KB, ${savingsPercent}%)`
+    `   ${Math.round(originalSize / 1024)}KB → ${Math.round(newSize / 1024)}KB (saved ${Math.round(savings / 1024)}KB, ${savingsPercent}%)`,
   );
 
   return { saved: savings };
@@ -127,11 +127,11 @@ async function main() {
 
   console.log(`\n${"═".repeat(50)}`);
   console.log(
-    `📊 Total potential savings: ${Math.round(totalSaved / 1024)}KB (${(totalSaved / 1024 / 1024).toFixed(2)}MB)`
+    `📊 Total potential savings: ${Math.round(totalSaved / 1024)}KB (${(totalSaved / 1024 / 1024).toFixed(2)}MB)`,
   );
   console.log(`\n📁 Optimized images saved to: ${OUTPUT_DIR}`);
   console.log(
-    `\n⚠️  To apply changes, manually copy from ${OUTPUT_DIR} to public/images/`
+    `\n⚠️  To apply changes, manually copy from ${OUTPUT_DIR} to public/images/`,
   );
 }
 

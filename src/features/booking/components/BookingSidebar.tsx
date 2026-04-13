@@ -67,7 +67,7 @@ export function BookingSidebar({ perks }: BookingSidebarProps) {
         <p className="text-sm text-slate-100">
           {t(
             "booking.checkCopy",
-            "Read honest reviews and, if you prefer, request your booking directly through our TripAdvisor listing."
+            "Read honest reviews and, if you prefer, request your booking directly through our TripAdvisor listing.",
           )}
         </p>
 
@@ -90,7 +90,7 @@ export function BookingSidebar({ perks }: BookingSidebarProps) {
             className="inline-flex transform items-center justify-center gap-2 rounded-full bg-[#34E0A1] px-4 py-2 text-sm font-semibold text-black transition duration-300 ease-in-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#34E0A1] pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:bg-[#2bc48d] pointer-fine:hover:shadow-lg"
             aria-label={t(
               "booking.tripadvisorCtaAria",
-              "Open TripAdvisor in new tab"
+              "Open TripAdvisor in new tab",
             )}
           >
             <svg className="size-4" viewBox="0 0 24 24" fill="none" aria-hidden>

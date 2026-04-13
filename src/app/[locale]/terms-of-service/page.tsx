@@ -6,7 +6,7 @@ import { Metadata } from "next";
 const TermsOfServiceView = dynamic(() =>
   import("@/features/legal").then((mod) => ({
     default: mod.TermsOfServiceView,
-  }))
+  })),
 );
 
 export async function generateMetadata({

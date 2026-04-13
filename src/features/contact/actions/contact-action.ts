@@ -18,7 +18,7 @@ export interface ContactFormState {
  */
 export async function submitContactAction(
   _prevState: ContactFormState | null,
-  formData: FormData
+  formData: FormData,
 ): Promise<ContactFormState> {
   try {
     const headersList = await headers();
@@ -91,7 +91,7 @@ export async function submitContactAction(
       <p><strong>Phone :</strong> ${escapeHtml(data.phone)}</p>
       <p><strong>Message :</strong><br>${escapeHtml(messageContent).replace(
         /\n/g,
-        "<br>"
+        "<br>",
       )}</p>
     `;
 

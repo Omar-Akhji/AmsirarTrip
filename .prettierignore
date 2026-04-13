@@ -38,10 +38,8 @@ Thumbs.db
 next-env.d.ts
 
 # Public assets
-public/fonts
-public/images
-public/videos
-public/icons
+public/
+*.min.js
 
 # Lock files
 package-lock.json

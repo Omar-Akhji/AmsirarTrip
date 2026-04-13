@@ -105,7 +105,7 @@ function BookingForm({
   // React 19's useActionState for form state management
   const [state, formAction] = useActionState<BookingFormState | null, FormData>(
     submitBookingAction,
-    null
+    null,
   );
 
   // Handle successful submission — single dispatch replaces multiple setState calls
@@ -119,7 +119,7 @@ function BookingForm({
               type: "SET_BUTTON_TEXT",
               text: "booking.checkAvailability",
             }),
-          4000
+          4000,
         );
       });
 
@@ -181,7 +181,7 @@ function BookingForm({
               <p className="mbs-3 text-sm text-orange-50/90 md:text-base">
                 {t(
                   "booking.description",
-                  "Book your perfect Morocco adventure with us"
+                  "Book your perfect Morocco adventure with us",
                 )}
               </p>
             </div>

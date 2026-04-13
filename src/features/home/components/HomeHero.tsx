@@ -32,7 +32,7 @@ export default function HomeHero() {
       t("home.heroAlt1") || "Adventure Awaits Beyond the Dunes",
       t("home.heroAlt2") || "Pack your bags — Morocco calls",
     ],
-    [t]
+    [t],
   );
 
   // Background image rotation
@@ -121,7 +121,7 @@ export default function HomeHero() {
           cancelAnimationFrame(rafId);
         }
       },
-      { threshold: 0 } // Trigger as soon as 1px is visible/hidden
+      { threshold: 0 }, // Trigger as soon as 1px is visible/hidden
     );
 
     observer.observe(headerRef.current);

@@ -157,7 +157,7 @@ All `dangerouslySetInnerHTML` usage is protected:
     __html: sanitizeJsonLd(
       generateTourJsonLd({
         /* static data only */
-      })
+      }),
     ),
   }}
 />

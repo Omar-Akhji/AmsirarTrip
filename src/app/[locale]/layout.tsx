@@ -10,7 +10,7 @@ import {
 
 // Lazy load below-fold and non-critical components to reduce initial bundle size
 const NavigationProgress = dynamic(
-  () => import("@/shared/layout/NavigationProgress")
+  () => import("@/shared/layout/NavigationProgress"),
 );
 const Footer = dynamic(() => import("@/shared/layout/Footer"));
 const WhatsAppButton = dynamic(() => import("@/shared/ui/WhatsAppButton"));

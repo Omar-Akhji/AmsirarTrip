@@ -19,7 +19,7 @@ import {
 
 const ContactForm = dynamic(
   () => import("@/features/contact/components/ContactForm"),
-  { ssr: false }
+  { ssr: false },
 );
 
 export default function ContactView() {
@@ -31,11 +31,11 @@ export default function ContactView() {
       icon: <PhoneIcon className="size-6" />,
       title: t(
         "contact.card.phoneTitle",
-        "Feel free to contact us — we're here to help"
+        "Feel free to contact us — we're here to help",
       ),
       description: t(
         "contact.card.phoneSeo",
-        "Have a quick question or want to book now? Our local team answers calls and messages promptly — reach out and we'll help plan the perfect Morocco trip."
+        "Have a quick question or want to book now? Our local team answers calls and messages promptly — reach out and we'll help plan the perfect Morocco trip.",
       ),
     },
     {
@@ -43,11 +43,11 @@ export default function ContactView() {
       icon: <MailIcon className="size-6" />,
       title: t(
         "contact.card.emailTitle",
-        "Send a message — we'll reply with a tailored plan"
+        "Send a message — we'll reply with a tailored plan",
       ),
       description: t(
         "contact.card.emailSeo",
-        "Prefer to write? Send us your plans, dates and priorities — we'll prepare a personalised itinerary and respond quickly with options and clear next steps."
+        "Prefer to write? Send us your plans, dates and priorities — we'll prepare a personalised itinerary and respond quickly with options and clear next steps.",
       ),
     },
     {
@@ -55,11 +55,11 @@ export default function ContactView() {
       icon: <LocationIcon className="size-6" />,
       title: t(
         "contact.card.visitTitle",
-        "Visit our Marrakech office — friendly, local support"
+        "Visit our Marrakech office — friendly, local support",
       ),
       description: t(
         "contact.card.visitSeo",
-        "Drop by for an in-person chat, help with bookings, or to learn more about our desert excursions and private tours — our team is ready to welcome you."
+        "Drop by for an in-person chat, help with bookings, or to learn more about our desert excursions and private tours — our team is ready to welcome you.",
       ),
     },
   ];

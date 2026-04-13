@@ -68,10 +68,10 @@ async function run() {
     fs.writeFileSync(reportFile, JSON.stringify(report, null, 2), "utf8");
 
     console.log(
-      `✓ Purged CSS written to ${path.relative(projectRoot, outPurged)}`
+      `✓ Purged CSS written to ${path.relative(projectRoot, outPurged)}`,
     );
     console.log(
-      `✓ Report written to ${path.relative(projectRoot, reportFile)}`
+      `✓ Report written to ${path.relative(projectRoot, reportFile)}`,
     );
     console.log(`  Original size: ${report.originalSize} bytes`);
     console.log(`  Purged size: ${report.purgedSize} bytes`);
@@ -82,13 +82,13 @@ async function run() {
       fs.copyFileSync(cssFile, backup);
       fs.copyFileSync(outPurged, cssFile);
       console.log(
-        `Applied purged css — original backed up to ${path.relative(projectRoot, backup)}`
+        `Applied purged css — original backed up to ${path.relative(projectRoot, backup)}`,
       );
     }
   } catch (err) {
     console.error(
       "Error while running PurgeCSS:",
-      err && err.stack ? err.stack : err
+      err && err.stack ? err.stack : err,
     );
     process.exit(1);
   }

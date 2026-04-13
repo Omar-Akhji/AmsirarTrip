@@ -59,12 +59,12 @@ async function main() {
     totalSaved += saved;
 
     console.log(
-      `✅ ${path.basename(src)}: ${Math.round(original / 1024)}KB → ${Math.round(newSize / 1024)}KB (saved ${Math.round(saved / 1024)}KB)`
+      `✅ ${path.basename(src)}: ${Math.round(original / 1024)}KB → ${Math.round(newSize / 1024)}KB (saved ${Math.round(saved / 1024)}KB)`,
     );
   }
 
   console.log(
-    `\n📊 Total: ${Math.round(totalSaved / 1024)}KB (${(totalSaved / 1024 / 1024).toFixed(2)}MB)`
+    `\n📊 Total: ${Math.round(totalSaved / 1024)}KB (${(totalSaved / 1024 / 1024).toFixed(2)}MB)`,
   );
 }
 

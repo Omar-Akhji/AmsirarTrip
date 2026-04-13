@@ -14,7 +14,7 @@ export function useTranslation() {
   // The second parameter can be either a default value (ignored) or values object
   const t = (
     key: string,
-    defaultValueOrValues?: string | Record<string, string | number | Date>
+    defaultValueOrValues?: string | Record<string, string | number | Date>,
   ) => {
     // If second param is an object, it's values for ICU messages
     if (typeof defaultValueOrValues === "object") {

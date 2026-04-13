@@ -77,7 +77,9 @@ export function BookingTripDetails({
                 className={cn(
                   "flex items-center justify-start rounded-2xl border bg-white px-4 py-3 text-start text-sm font-normal transition-colors block-auto inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none pointer-fine:hover:bg-gray-50",
                   !reservationDate && "text-gray-500",
-                  state?.errors?.["date"] ? "border-red-300" : "border-gray-200"
+                  state?.errors?.["date"]
+                    ? "border-red-300"
+                    : "border-gray-200",
                 )}
                 aria-describedby={
                   state?.errors?.["date"] ? "reservationDate-error" : undefined

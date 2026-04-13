@@ -21,10 +21,10 @@ export function EnhancedCalendar({
   onClose,
 }: EnhancedCalendarProps) {
   const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(
-    selected
+    selected,
   );
   const [currentMonth, setCurrentMonth] = React.useState<Date>(
-    selected || new Date()
+    selected || new Date(),
   );
 
   // Sync with parent
@@ -111,7 +111,7 @@ export function EnhancedCalendar({
               "pointer-fine:hover:bg-orange-100 pointer-fine:hover:text-orange-900",
               "focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-1",
               "aria-selected:bg-orange-600 aria-selected:text-white aria-selected:font-semibold",
-              "disabled:opacity-30 disabled:cursor-not-allowed"
+              "disabled:opacity-30 disabled:cursor-not-allowed",
             ),
             today:
               "relative after:content-[''] after:absolute after:bottom-1 after:start-1/2 after:-translate-x-1/2 after:block-1 after:inline-1 after:rounded-full after:bg-orange-600",

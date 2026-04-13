@@ -6,7 +6,7 @@ import { Metadata } from "next";
 const PrivacyPolicyView = dynamic(() =>
   import("@/features/legal").then((mod) => ({
     default: mod.PrivacyPolicyView,
-  }))
+  })),
 );
 
 export async function generateMetadata({

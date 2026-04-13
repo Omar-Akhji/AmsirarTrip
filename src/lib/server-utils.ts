@@ -3,7 +3,7 @@ import nodemailer from "nodemailer";
 
 export async function verifyRecaptcha(
   token: string,
-  expectedHostname?: string
+  expectedHostname?: string,
 ): Promise<boolean> {
   try {
     if (!token || typeof token !== "string" || !env.RECAPTCHA_SECRET_KEY) {
@@ -22,7 +22,7 @@ export async function verifyRecaptcha(
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: body.toString(),
         cache: "no-store",
-      }
+      },
     );
 
     if (!response.ok) {
@@ -54,7 +54,7 @@ export async function verifyRecaptcha(
 
       if (!allowedHostnames.has(data.hostname)) {
         console.warn(
-          `CAPTCHA hostname mismatch: expected ${expectedHostname}, got ${data.hostname}`
+          `CAPTCHA hostname mismatch: expected ${expectedHostname}, got ${data.hostname}`,
         );
         return false;
       }

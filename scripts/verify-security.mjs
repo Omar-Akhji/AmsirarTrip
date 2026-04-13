@@ -55,7 +55,7 @@ function request(path, options = {}) {
 
 async function runTests() {
   console.log(
-    `${colors.yellow}Starting Security Verification Tests...${colors.reset}\n`
+    `${colors.yellow}Starting Security Verification Tests...${colors.reset}\n`,
   );
   let passed = 0;
   let failed = 0;
@@ -73,42 +73,42 @@ async function runTests() {
   try {
     // 1. Test Security Headers
     console.log(
-      `\n${colors.blue}--- Testing Security Headers ---${colors.reset}`
+      `\n${colors.blue}--- Testing Security Headers ---${colors.reset}`,
     );
     const homeRes = await request("/");
 
     await assert(
       "CSP",
       !!homeRes.headers["content-security-policy"],
-      "Content-Security-Policy header should exist"
+      "Content-Security-Policy header should exist",
     );
     await assert(
       "CSP Map Allowed",
       homeRes.headers["content-security-policy"].includes(
-        "https://www.google.com"
+        "https://www.google.com",
       ),
-      "CSP should allow google.com"
+      "CSP should allow google.com",
     );
     await assert(
       "X-Frame-Options",
       homeRes.headers["x-frame-options"] === "DENY" ||
         homeRes.headers["x-frame-options"] === "SAMEORIGIN",
-      "X-Frame-Options should be DENY or SAMEORIGIN"
+      "X-Frame-Options should be DENY or SAMEORIGIN",
     );
     await assert(
       "X-Content-Type-Options",
       homeRes.headers["x-content-type-options"] === "nosniff",
-      "X-Content-Type-Options should be nosniff"
+      "X-Content-Type-Options should be nosniff",
     );
     await assert(
       "HSTS",
       !!homeRes.headers["strict-transport-security"],
-      "Strict-Transport-Security should be present"
+      "Strict-Transport-Security should be present",
     );
 
     // 2. Test Bot Protection
     console.log(
-      `\n${colors.blue}--- Testing Bot Protection ---${colors.reset}`
+      `\n${colors.blue}--- Testing Bot Protection ---${colors.reset}`,
     );
     const botRes = await request("/", {
       headers: { "User-Agent": "curl/7.64.1" },
@@ -116,7 +116,7 @@ async function runTests() {
     await assert(
       "Block Bad Bot",
       botRes.statusCode === 403,
-      `Should block 'curl' user agent (Got ${botRes.statusCode})`
+      `Should block 'curl' user agent (Got ${botRes.statusCode})`,
     );
 
     const goodBotRes = await request("/", {
@@ -128,12 +128,12 @@ async function runTests() {
     await assert(
       "Allow Normal User",
       goodBotRes.statusCode === 200,
-      `Should allow normal user agent (Got ${goodBotRes.statusCode})`
+      `Should allow normal user agent (Got ${goodBotRes.statusCode})`,
     );
 
     // 3. Test CSRF / Origin
     console.log(
-      `\n${colors.blue}--- Testing CSRF Protection ---${colors.reset}`
+      `\n${colors.blue}--- Testing CSRF Protection ---${colors.reset}`,
     );
 
     // Note: We need a valid API route to test. Using /api/booking as per context, assuming it exists.
@@ -151,7 +151,7 @@ async function runTests() {
     await assert(
       "Block Invalid Origin",
       evilOriginRes.statusCode === 403,
-      `Should block POST with invalid Origin (Got ${evilOriginRes.statusCode})`
+      `Should block POST with invalid Origin (Got ${evilOriginRes.statusCode})`,
     );
 
     // const noOriginRes = await request("/api/booking", {
@@ -181,22 +181,22 @@ async function runTests() {
     await assert(
       "Allow Valid Origin",
       validOriginRes.statusCode !== 403,
-      `Should allow POST with valid Origin (Got ${validOriginRes.statusCode})`
+      `Should allow POST with valid Origin (Got ${validOriginRes.statusCode})`,
     );
   } catch (error) {
     console.error(
       `${colors.red}Fatal Error running tests:${colors.reset}`,
-      error.message
+      error.message,
     );
     if (error.code === "ECONNREFUSED") {
       console.error(
-        `${colors.yellow}Is the server running on port 3000?${colors.reset}`
+        `${colors.yellow}Is the server running on port 3000?${colors.reset}`,
       );
     }
   }
 
   console.log(
-    `\n${colors.yellow}Summary: ${passed} Passed, ${failed} Failed${colors.reset}`
+    `\n${colors.yellow}Summary: ${passed} Passed, ${failed} Failed${colors.reset}`,
   );
 }
 

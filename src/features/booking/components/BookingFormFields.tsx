@@ -117,7 +117,7 @@ export function BookingFormFields({
                 "origin-center scale-85 rounded-2xl border border-dashed p-3 sm:scale-100 lg:origin-left",
                 state?.errors?.["recaptchaToken"]
                   ? "border-red-300"
-                  : "border-gray-200"
+                  : "border-gray-200",
               )}
             >
               {RECAPTCHA_V2_SITE_KEY ? (

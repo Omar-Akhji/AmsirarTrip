@@ -180,6 +180,7 @@
   html {
     block-size: 100%;
     overflow-x: hidden;
+    scrollbar-gutter: stable;
 
     /* Tiled radial-gradient checkerboard — defined once via custom props */
     background:
@@ -189,7 +190,6 @@
       radial-gradient(50% 50%, var(--gradient-pattern)) calc(var(--s) / 2)
         calc(var(--s) / 2) var(--c1);
     background-size: var(--s) var(--s);
-    scrollbar-gutter: stable;
   }
 
   body {
@@ -199,10 +199,10 @@
     overflow-x: hidden;
     font-family: var(--font-sans);
     font-size: 95%;
-    line-height: 1.15;
     font-feature-settings:
       "kern" 1,
       "liga" 1;
+    line-height: 1.15;
   }
 
   main {
@@ -253,12 +253,12 @@
   /* Page-level header defaults */
   header {
     position: relative;
-    flex-direction: column;
     box-sizing: border-box;
+    flex-direction: column;
     padding-block-start: 7rem;
     overflow: hidden;
-    text-align: center;
     color: var(--color-white);
+    text-align: center;
     background: url("/images/Header/header-1.webp") center / cover no-repeat;
   }
 }
@@ -289,8 +289,8 @@
 
   /* ── Featured grid with Container Queries ─────────────────────────────── */
   .featured-row {
-    container-type: inline-size;
     container-name: featured;
+    container-type: inline-size;
 
     @media (width >= 768px) {
       display: grid;
@@ -333,8 +333,8 @@
     --card-data-padding: 1.5rem 2rem;
 
     position: relative;
-    overflow: hidden;
     margin-block-end: 2rem;
+    overflow: hidden;
 
     @media (width < 768px) {
       margin-block-end: 3rem;
@@ -360,9 +360,9 @@
   }
 
   .card-img {
-    border-radius: var(--card-border-radius, 8px);
     cursor: pointer;
     object-fit: cover;
+    border-radius: var(--card-border-radius, 8px);
   }
 
   .card-data {
@@ -370,28 +370,28 @@
     inset-inline: 0;
     bottom: -9rem;
     inline-size: var(--card-data-width, 90%);
-    margin-inline: auto;
     padding: var(--card-data-padding, 1.5rem 2rem);
-    border-radius: 1rem;
+    margin-inline: auto;
+    cursor: pointer;
     background-color: var(--color-white);
+    border-radius: 16px;
     box-shadow: var(--card-shadow);
     opacity: 0%;
     transition: opacity 1000ms 1000ms;
-    cursor: pointer;
   }
 
   .card-title {
+    margin-block-end: 0.5rem;
     font-size: 1.25rem;
     font-weight: 500;
     color: var(--color-black);
-    margin-block-end: 0.5rem;
   }
 
   .card-text {
+    margin-block-end: 1rem;
     font-size: 0.875rem;
     line-height: 1.5;
     color: var(--color-grey-close);
-    margin-block-end: 1rem;
   }
 
   /* :has() — parent aware of child priority flag */
@@ -411,25 +411,25 @@
     inset-inline-start: 50%;
     z-index: 999999;
     display: flex;
+    visibility: visible;
     align-items: center;
     justify-content: center;
     inline-size: var(--loader-size);
     block-size: var(--loader-size);
-    border-radius: 1rem;
     background-color: oklch(100% 0 0deg / 90%);
+    border-radius: 16px;
     box-shadow: var(--loader-shadow);
     opacity: 100%;
-    visibility: visible;
-    transition: opacity 400ms ease-out;
     translate: -50% -50%;
+    transition: opacity 400ms ease-out;
 
     &.fullscreen {
       inset-block-start: 0;
       inset-inline-start: 0;
       inline-size: 100%;
       block-size: 100%;
-      border-radius: 0;
       background-color: var(--color-light-grey-alt2);
+      border-radius: 0;
       box-shadow: none;
       translate: none;
     }
@@ -438,15 +438,15 @@
       display: block;
       inline-size: var(--loader-icon-size);
       block-size: var(--loader-icon-size);
-      animation: var(--animate-loader-rotate);
       transform-origin: center center;
+      animation: var(--animate-loader-rotate);
     }
 
     & .path {
-      animation: var(--animate-loader-dash);
+      stroke-linecap: round;
       stroke-dasharray: 1, 200;
       stroke-dashoffset: 0;
-      stroke-linecap: round;
+      animation: var(--animate-loader-dash);
     }
   }
 }
@@ -460,9 +460,11 @@
   *,
   *::before,
   *::after {
+    /* stylelint-disable declaration-no-important */
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+    /* stylelint-enable declaration-no-important */
   }
 }

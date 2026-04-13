@@ -118,7 +118,7 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
             className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
             placeholder={t(
               "contact.form.fields.topic",
-              "Trip focus (optional)"
+              "Trip focus (optional)",
             )}
             aria-label={t("contact.form.fields.topic", "Trip focus (optional)")}
             autoComplete="off"
@@ -141,11 +141,11 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
           className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full min-block-40 user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
           placeholder={t(
             "contact.form.fields.message",
-            "Tell us about your Morocco dream"
+            "Tell us about your Morocco dream",
           )}
           aria-label={t(
             "contact.form.fields.message",
-            "Tell us about your Morocco dream"
+            "Tell us about your Morocco dream",
           )}
           autoComplete="off"
           required

@@ -32,7 +32,7 @@ function cleanReservationType(type: string = ""): string {
  */
 export async function submitBookingAction(
   _prevState: BookingFormState | null,
-  formData: FormData
+  formData: FormData,
 ): Promise<BookingFormState> {
   try {
     const headersList = await headers();
@@ -102,25 +102,25 @@ export async function submitBookingAction(
     const html = `
       <h2>New Booking Request</h2>
       <p><strong>Website display language :</strong> ${escapeHtml(
-        getLanguageName(data.language)
+        getLanguageName(data.language),
       )}</p>
       <p><strong>Type of reservation :</strong> ${escapeHtml(
-        cleanReservationType(data.reservationType)
+        cleanReservationType(data.reservationType),
       )}</p>
       <p><strong>Duration :</strong> ${escapeHtml(
-        data.duration ? `${data.duration} days` : "Not specified"
+        data.duration ? `${data.duration} days` : "Not specified",
       )}</p>
       <p><strong>Full Name :</strong> ${escapeHtml(data.fullName)}</p>
       <p><strong>Phone Number :</strong> ${escapeHtml(data.phone)}</p>
       <p><strong>E-mail :</strong> ${escapeHtml(data.email)}</p>
       <p><strong>Date of reservation :</strong> ${escapeHtml(data.date)}</p>
       <p><strong>Number of people :</strong> ${escapeHtml(
-        String(data.persons)
+        String(data.persons),
       )}</p>
       ${
         data.message
           ? `<p><strong>Message :</strong><br>${escapeHtml(
-              data.message
+              data.message,
             ).replace(/\n/g, "<br>")}</p>`
           : ""
       }
@@ -131,7 +131,7 @@ export async function submitBookingAction(
       to: mailTo,
       replyTo: data.email,
       subject: `Booking: ${data.fullName} (${cleanReservationType(
-        data.reservationType
+        data.reservationType,
       )})`,
       text: `Website display language : ${getLanguageName(data.language)}
 Type of reservation : ${cleanReservationType(data.reservationType)}

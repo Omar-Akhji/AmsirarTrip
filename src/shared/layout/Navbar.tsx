@@ -18,7 +18,7 @@ function Navbar() {
   const [asideOpen, setAsideOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [viewport, setViewport] = useState<"mobile" | "tablet" | "desktop">(
-    "desktop"
+    "desktop",
   );
 
   const collapseRef = useRef<HTMLDivElement>(null);
@@ -112,12 +112,12 @@ function Navbar() {
     "translate-x-[-50%] will-change-auto",
     scrolled
       ? "bg-white text-slate-900 shadow-[0_12px_30px_rgba(3,7,18,0.08)]"
-      : "bg-white/10 text-white"
+      : "bg-white/10 text-white",
   );
 
   const getNavLinkClasses = (
     isActive: boolean,
-    isMobile: boolean = false
+    isMobile: boolean = false,
   ): string => {
     const base =
       "inline-flex items-center gap-2 rounded-full font-medium transition-all duration-200";
@@ -132,7 +132,7 @@ function Navbar() {
         sizing,
         scrolled
           ? "bg-orange text-white shadow-[0_10px_26px_rgba(229,74,31,0.12)]"
-          : "bg-white/10 text-white shadow-sm backdrop-blur"
+          : "bg-white/10 text-white shadow-sm backdrop-blur",
       );
     }
 

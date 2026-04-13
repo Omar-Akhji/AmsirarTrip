@@ -88,7 +88,7 @@ React Compiler is enabled project-wide (`reactCompiler: true` in next.config.ts)
 "use server";
 export async function bookingAction(
   prevState: FormState | null,
-  formData: FormData
+  formData: FormData,
 ): Promise<FormState> {
   // Validate with Zod → call apiClient → return { success, message, errors? }
 }

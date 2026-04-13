@@ -97,7 +97,7 @@ async function optimizeImage(filePath, relativePath) {
 
       console.log(`✅ Optimized: ${relativePath}`);
       console.log(
-        `   ${sizeBefore.toFixed(1)}KB → ${sizeAfter.toFixed(1)}KB (saved ${savingsPercent}%)`
+        `   ${sizeBefore.toFixed(1)}KB → ${sizeAfter.toFixed(1)}KB (saved ${savingsPercent}%)`,
       );
       return {
         file: relativePath,

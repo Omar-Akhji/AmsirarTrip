@@ -16,7 +16,7 @@ type NavProgressAction =
 
 function navProgressReducer(
   state: NavProgressState,
-  action: NavProgressAction
+  action: NavProgressAction,
 ): NavProgressState {
   switch (action.type) {
     case "start":

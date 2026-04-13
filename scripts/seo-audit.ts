@@ -71,7 +71,7 @@ const args = process.argv.slice(2).filter((arg) => !arg.startsWith("--"));
 const SITEMAP_URL: string = args[0] || "https://amsirartrip.com/sitemap.xml";
 const ROBOTS_URL: string = new URL(
   "/robots.txt",
-  SITEMAP_URL.replace("/sitemap.xml", "")
+  SITEMAP_URL.replace("/sitemap.xml", ""),
 ).href;
 const EXPECTED_LANGUAGES: string[] = ["en", "fr", "es", "de"];
 const BASE_URL = "https://amsirartrip.com";
@@ -167,7 +167,7 @@ async function parseSitemap(sitemapUrl: string): Promise<string[]> {
   const response = await fetch(sitemapUrl);
   if (!response.ok) {
     throw new Error(
-      `Failed to fetch sitemap: ${response.status} ${response.statusText}`
+      `Failed to fetch sitemap: ${response.status} ${response.statusText}`,
     );
   }
 
@@ -192,10 +192,10 @@ async function parseSitemap(sitemapUrl: string): Promise<string[]> {
 function extractCanonical(html: string): string | null {
   const match =
     html.match(
-      /<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["'][^>]*\/?>/i
+      /<link[^>]*rel=["']canonical["'][^>]*href=["']([^"']+)["'][^>]*\/?>/i,
     ) ||
     html.match(
-      /<link[^>]*href=["']([^"']+)["'][^>]*rel=["']canonical["'][^>]*\/?>/i
+      /<link[^>]*href=["']([^"']+)["'][^>]*rel=["']canonical["'][^>]*\/?>/i,
     );
   return match ? (match[1] ?? null) : null;
 }
@@ -239,14 +239,14 @@ function extractHreflangTags(html: string): Record<string, string> {
  */
 function hasNoindex(html: string): boolean {
   const metaMatch = html.match(
-    /<meta[^>]*name=["']robots["'][^>]*content=["']([^"']+)["'][^>]*\/?>/i
+    /<meta[^>]*name=["']robots["'][^>]*content=["']([^"']+)["'][^>]*\/?>/i,
   );
   if (metaMatch && metaMatch[1]?.toLowerCase().includes("noindex")) {
     return true;
   }
 
   const googleBotMatch = html.match(
-    /<meta[^>]*name=["']googlebot["'][^>]*content=["']([^"']+)["'][^>]*\/?>/i
+    /<meta[^>]*name=["']googlebot["'][^>]*content=["']([^"']+)["'][^>]*\/?>/i,
   );
   if (googleBotMatch && googleBotMatch[1]?.toLowerCase().includes("noindex")) {
     return true;
@@ -309,7 +309,7 @@ async function checkPage(url: string): Promise<void> {
     if (response.status !== 200) {
       issues.status.push({ url, status: response.status });
       console.log(
-        `${progress} ${colors.red}X${colors.reset} ${url} (HTTP ${response.status})`
+        `${progress} ${colors.red}X${colors.reset} ${url} (HTTP ${response.status})`,
       );
       return;
     }
@@ -359,7 +359,7 @@ async function checkPage(url: string): Promise<void> {
     } else {
       // Check for missing languages
       const missingLangs = EXPECTED_LANGUAGES.filter(
-        (lang) => !hreflangs[lang]
+        (lang) => !hreflangs[lang],
       );
       if (missingLangs.length > 0) {
         issues.hreflang.push({
@@ -402,7 +402,7 @@ async function checkPage(url: string): Promise<void> {
 
     // === X-DEFAULT CHECKS ===
     const xDefaultCount = Object.keys(hreflangs).filter(
-      (k) => k === "x-default"
+      (k) => k === "x-default",
     ).length;
     if (!hreflangs["x-default"]) {
       issues.xDefault.push({ url, issue: "Missing x-default" });
@@ -460,7 +460,7 @@ async function checkPage(url: string): Promise<void> {
     const errorMessage = error instanceof Error ? error.message : String(error);
     issues.status.push({ url, status: `Error: ${errorMessage}` });
     console.log(
-      `${progress} ${colors.red}X${colors.reset} ${url} (${errorMessage})`
+      `${progress} ${colors.red}X${colors.reset} ${url} (${errorMessage})`,
     );
   }
 }
@@ -470,7 +470,7 @@ async function checkPage(url: string): Promise<void> {
  */
 function checkReciprocalHreflangs(): void {
   console.log(
-    `\n${colors.cyan}Checking reciprocal hreflang links...${colors.reset}\n`
+    `\n${colors.cyan}Checking reciprocal hreflang links...${colors.reset}\n`,
   );
 
   for (const [url, pageData] of allPages) {
@@ -534,7 +534,7 @@ function printReport(): void {
   // Status Errors
   if (issues.status.length > 0) {
     console.log(
-      `${colors.red}${colors.bold}[HTTP ERRORS] (${issues.status.length}):${colors.reset}`
+      `${colors.red}${colors.bold}[HTTP ERRORS] (${issues.status.length}):${colors.reset}`,
     );
     issues.status.forEach(({ url, status }) => {
       console.log(`  - ${url}`);
@@ -546,7 +546,7 @@ function printReport(): void {
   // WWW URLs
   if (issues.www.length > 0) {
     console.log(
-      `${colors.red}${colors.bold}[WWW URLS IN SITEMAP] (${issues.www.length}):${colors.reset}`
+      `${colors.red}${colors.bold}[WWW URLS IN SITEMAP] (${issues.www.length}):${colors.reset}`,
     );
     issues.www.forEach((url) => console.log(`  - ${url}`));
     console.log();
@@ -555,7 +555,7 @@ function printReport(): void {
   // Canonical Issues
   if (issues.canonical.length > 0) {
     console.log(
-      `${colors.yellow}${colors.bold}[CANONICAL ISSUES] (${issues.canonical.length}):${colors.reset}`
+      `${colors.yellow}${colors.bold}[CANONICAL ISSUES] (${issues.canonical.length}):${colors.reset}`,
     );
     issues.canonical.forEach(({ url, issue, canonical }) => {
       console.log(`  - ${url}`);
@@ -568,7 +568,7 @@ function printReport(): void {
   // Hreflang Issues
   if (issues.hreflang.length > 0) {
     console.log(
-      `${colors.yellow}${colors.bold}[HREFLANG ISSUES] (${issues.hreflang.length}):${colors.reset}`
+      `${colors.yellow}${colors.bold}[HREFLANG ISSUES] (${issues.hreflang.length}):${colors.reset}`,
     );
     issues.hreflang.forEach(({ url, issue, details }) => {
       console.log(`  - ${url}`);
@@ -581,7 +581,7 @@ function printReport(): void {
   // x-default Issues
   if (issues.xDefault.length > 0) {
     console.log(
-      `${colors.yellow}${colors.bold}[X-DEFAULT ISSUES] (${issues.xDefault.length}):${colors.reset}`
+      `${colors.yellow}${colors.bold}[X-DEFAULT ISSUES] (${issues.xDefault.length}):${colors.reset}`,
     );
     issues.xDefault.forEach(({ url, issue, details }) => {
       console.log(`  - ${url}`);
@@ -594,7 +594,7 @@ function printReport(): void {
   // Noindex Issues
   if (issues.noindex.length > 0) {
     console.log(
-      `${colors.yellow}${colors.bold}[NOINDEX ISSUES] (${issues.noindex.length}):${colors.reset}`
+      `${colors.yellow}${colors.bold}[NOINDEX ISSUES] (${issues.noindex.length}):${colors.reset}`,
     );
     issues.noindex.forEach(({ url, issue }) => {
       console.log(`  - ${url}`);
@@ -607,11 +607,11 @@ function printReport(): void {
   console.log("=".repeat(80));
   if (totalIssues === 0) {
     console.log(
-      `${colors.green}${colors.bold}[PASS] All SEO checks passed! No issues found.${colors.reset}`
+      `${colors.green}${colors.bold}[PASS] All SEO checks passed! No issues found.${colors.reset}`,
     );
   } else {
     console.log(
-      `${colors.yellow}${colors.bold}[ATTENTION] Found ${totalIssues} issue(s) that need attention.${colors.reset}`
+      `${colors.yellow}${colors.bold}[ATTENTION] Found ${totalIssues} issue(s) that need attention.${colors.reset}`,
     );
   }
   console.log("=".repeat(80) + "\n");
@@ -623,7 +623,7 @@ function printReport(): void {
 async function main(): Promise<void> {
   console.log("\n" + "=".repeat(80));
   console.log(
-    `${colors.bold}${colors.cyan}SEO AUDIT TOOL - Multilingual Website Validator${colors.reset}`
+    `${colors.bold}${colors.cyan}SEO AUDIT TOOL - Multilingual Website Validator${colors.reset}`,
   );
   console.log("=".repeat(80) + "\n");
 

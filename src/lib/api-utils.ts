@@ -15,7 +15,7 @@ const blockedIPs = new Map<string, number>(); // IP -> unblock timestamp
 export function checkRateLimit(
   identifier: string,
   maxRequests: number = 5,
-  windowMs: number = 60000
+  windowMs: number = 60000,
 ): { allowed: boolean; remaining: number; blocked?: boolean } {
   const now = Date.now();
 
@@ -47,7 +47,7 @@ export function checkRateLimit(
       logSuspiciousActivity(
         identifier,
         "BLOCKED",
-        `Blocked after ${record.violations} rate limit violations`
+        `Blocked after ${record.violations} rate limit violations`,
       );
       return { allowed: false, remaining: 0, blocked: true };
     }
@@ -79,11 +79,11 @@ if (typeof window === "undefined") {
 export function logSuspiciousActivity(
   ip: string,
   type: string,
-  details: string
+  details: string,
 ) {
   const timestamp = new Date().toISOString();
   console.warn(
-    `[SECURITY] ${timestamp} IP: ${ip} Type: ${type} Details: ${details}`
+    `[SECURITY] ${timestamp} IP: ${ip} Type: ${type} Details: ${details}`,
   );
   // In production, send to Sentry or security monitoring service
 }

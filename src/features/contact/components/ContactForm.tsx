@@ -42,7 +42,7 @@ const ContactForm = () => {
   // React 19's useActionState for form state management
   const [state, formAction] = useActionState<ContactFormState | null, FormData>(
     submitContactAction,
-    null
+    null,
   );
 
   // Handle successful submission - reset form in useEffect
@@ -81,13 +81,13 @@ const ContactForm = () => {
               <h2 className="mbs-2 text-2xl font-bold md:text-3xl">
                 {t(
                   "contact.form.title",
-                  "Design Your Custom Morocco Tour & Private Itinerary"
+                  "Design Your Custom Morocco Tour & Private Itinerary",
                 )}
               </h2>
               <p className="mbs-3 text-sm text-orange-50/90 md:text-base">
                 {t(
                   "contact.form.subtitle",
-                  "Share a few details and we will craft a bespoke itinerary for you."
+                  "Share a few details and we will craft a bespoke itinerary for you.",
                 )}
               </p>
             </div>
@@ -122,7 +122,7 @@ const ContactForm = () => {
                   <p className="mbe-2 text-sm font-semibold text-orange-900">
                     {t(
                       "contact.form.errors.title",
-                      "Please complete these fields:"
+                      "Please complete these fields:",
                     )}
                   </p>
                   <ul className="space-y-1 text-xs text-orange-800">
@@ -162,7 +162,7 @@ const ContactForm = () => {
                         "origin-center scale-85 rounded-2xl border border-dashed p-3 sm:scale-100 lg:origin-left",
                         state?.errors?.["recaptchaToken"]
                           ? "border-red-300"
-                          : "border-gray-200"
+                          : "border-gray-200",
                       )}
                     >
                       {hasRecaptchaV2 ? (

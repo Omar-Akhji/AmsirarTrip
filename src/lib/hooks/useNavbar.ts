@@ -33,7 +33,7 @@ export default function useNavbar() {
         const h = navbar.getBoundingClientRect().height;
         document.documentElement.style.setProperty(
           "--spacing-navbar",
-          h + "px"
+          h + "px",
         );
       } catch {
         /* ignore errors reading element size */
