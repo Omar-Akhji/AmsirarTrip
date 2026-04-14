@@ -47,7 +47,7 @@ export function DesktopMenu({
         <div className="relative flex items-center justify-center px-0 py-3 pbe-5 inline-full">
           <a
             href="tel:+212661173144"
-            className="absolute start-4 flex gap-2.5 rounded-md text-white transition focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-white pointer-fine:hover:opacity-90"
+            className="absolute inset-s-4 flex gap-2.5 rounded-md text-white transition focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-white pointer-fine:hover:opacity-90"
             aria-label={`${t("helplineTitle") || "Call us"}: ${
               t("helplineNumber") || "+212 661 173 144"
             }`}

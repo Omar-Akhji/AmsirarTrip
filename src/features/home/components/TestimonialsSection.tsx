@@ -48,7 +48,7 @@ const TestimonialsSection = () => {
                   >
                     {/* Decorative Quote Icon */}
                     <div
-                      className="absolute end-4 top-2 -rotate-12 opacity-10 select-none"
+                      className="absolute inset-e-4 top-2 -rotate-12 opacity-10 select-none"
                       aria-hidden="true"
                     >
                       <Quote
