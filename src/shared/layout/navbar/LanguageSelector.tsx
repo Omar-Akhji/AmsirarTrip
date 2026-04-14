@@ -94,7 +94,7 @@ export function LanguageSelector({
         <div
           className={cn(
             "absolute z-50 mbs-2 overflow-hidden rounded-xl border shadow-xl backdrop-blur-xl inline-48",
-            placement === "left" ? "start-0" : "end-0",
+            placement === "left" ? "inset-s-0" : "inset-e-0",
             scrolled
               ? "border-slate-200/60 bg-white/90"
               : "border-white/10 bg-slate-900/90 text-white",
