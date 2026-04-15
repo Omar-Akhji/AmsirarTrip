@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useRef, useEffect, useReducer } from "react";
+import { useActionState, useRef, useEffect, useReducer, useState } from "react";
 import { useFormStatus } from "react-dom";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -13,7 +13,7 @@ import { BookingSidebar } from "./BookingSidebar";
 import { FormStatusMessages } from "./FormStatusMessages";
 import { BookingFormFields } from "./BookingFormFields";
 
-// ── Local state reducer (replaces 5 individual useState calls) ──────────────
+// ── Local state reducer (UI behavioral states) ──────────────
 
 interface FormUIState {
   calendarOpen: boolean;
@@ -27,7 +27,7 @@ type FormUIAction =
   | { type: "SET_DATE"; date: Date | null }
   | { type: "SET_CAPTCHA"; token: string }
   | { type: "SET_BUTTON_TEXT"; text: string }
-  | { type: "RESET_AFTER_SUCCESS" };
+  | { type: "RESET_UI_ONLY" };
 
 const initialUIState: FormUIState = {
   calendarOpen: false,
@@ -46,7 +46,7 @@ function formUIReducer(state: FormUIState, action: FormUIAction): FormUIState {
       return { ...state, captchaToken: action.token };
     case "SET_BUTTON_TEXT":
       return { ...state, buttonText: action.text };
-    case "RESET_AFTER_SUCCESS":
+    case "RESET_UI_ONLY":
       return {
         ...state,
         reservationDate: null,
@@ -97,9 +97,11 @@ function BookingForm({
 }: BookingFormProps) {
   const { t, i18n } = useTranslation();
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const formRef = useRef<HTMLFormElement>(null);
+  
+  // Use unique key to force remount on success (video best practice)
+  const [formKey, setFormKey] = useState(0);
 
-  // Single reducer replaces all independent useState calls
+  // Single reducer for UI behavioral states
   const [uiState, dispatch] = useReducer(formUIReducer, initialUIState);
 
   // React 19's useActionState for form state management
@@ -108,28 +110,24 @@ function BookingForm({
     null,
   );
 
-  // Handle successful submission — single dispatch replaces multiple setState calls
+  // Handle successful submission via component remount
   useEffect(() => {
-    if (state?.success) {
+    if (state?.["success"]) {
+      // Defer state updates to avoid synchronous cascading renders warning
       queueMicrotask(() => {
-        dispatch({ type: "RESET_AFTER_SUCCESS" });
-        setTimeout(
-          () =>
-            dispatch({
-              type: "SET_BUTTON_TEXT",
-              text: "booking.checkAvailability",
-            }),
-          4000,
-        );
+        dispatch({ type: "RESET_UI_ONLY" });
+        
+        // Delay the remount slightly if we want to show the specific success text first
+        const timer = setTimeout(() => {
+          setFormKey((prev) => prev + 1);
+          dispatch({ type: "SET_BUTTON_TEXT", text: "booking.checkAvailability" });
+        }, 4000);
+
+        return () => clearTimeout(timer);
       });
-
-      // Reset form (DOM operations, not state updates)
-      formRef.current?.reset();
-      recaptchaRef.current?.reset();
     }
-  }, [state?.success]);
+  }, [state]);
 
-  // React Compiler handles memoization automatically
   const perks = [
     {
       id: "experts",
@@ -145,13 +143,6 @@ function BookingForm({
     },
   ];
 
-  const baseSectionClass = `py-20 md:py-10 bg-gray-50 ${
-    fullWidth ? "booking-form-fullwidth" : ""
-  }`;
-  const innerWrapperClass = `booking-form-inner mx-auto inline-full max-inline-6xl ${
-    fullWidth ? "px-4 sm:px-6 lg:px-10" : "px-4 sm:px-6 lg:px-8"
-  }`;
-
   const selectedTour =
     tourTitle && tourId
       ? `${tourTitle} - Duration: ${
@@ -164,8 +155,8 @@ function BookingForm({
     : null;
 
   return (
-    <section id="booking" className={baseSectionClass}>
-      <div className={innerWrapperClass}>
+    <section id="booking" className={`py-20 md:py-10 bg-gray-50 ${fullWidth ? "booking-form-fullwidth" : ""}`}>
+      <div className={`booking-form-inner mx-auto inline-full max-inline-6xl ${fullWidth ? "px-4 sm:px-6 lg:px-10" : "px-4 sm:px-6 lg:px-8"}`}>
         <div className="grid gap-8 lg:grid-cols-5">
           <m.div
             initial={{ opacity: 0, y: 30 }}
@@ -187,15 +178,15 @@ function BookingForm({
             </div>
 
             <form
-              ref={formRef}
+              key={formKey}
               action={formAction}
               className="space-y-5 p-6 md:p-8"
               noValidate
             >
               <FormStatusMessages
-                submitError={state?.errors?.["submit"]}
-                success={state?.success}
-                successMessage={state?.message}
+                submitError={state?.["errors"]?.["submit"]}
+                success={state?.["success"]}
+                successMessage={state?.["message"]}
               />
 
               <BookingFormFields

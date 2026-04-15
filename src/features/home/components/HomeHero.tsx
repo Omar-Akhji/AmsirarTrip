@@ -1,31 +1,32 @@
 "use client";
 
-import { useState, useEffect, useMemo, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import Image from "next/image";
 import { m, AnimatePresence } from "motion/react";
 import { Link } from "@/i18n/routing";
 import { useTranslation, useMediaQuery } from "@/lib/hooks";
 
+// Static assets outside component to ensure reference stability
+const HEADER_IMAGES = [
+  "/images/Header/header-1.webp",
+  "/images/Header/header-2.webp",
+  "/images/Header/header-3.webp",
+];
+
 export default function HomeHero() {
   const { t } = useTranslation();
-
-  // Header background images (React Compiler handles memoization)
-  const headerImages = [
-    "/images/Header/header-1.webp",
-    "/images/Header/header-2.webp",
-    "/images/Header/header-3.webp",
-  ];
-
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Responsive check: typing animation only on desktop (>1023px)
   const isMobileOrTablet = useMediaQuery("(max-width: 1023px)");
 
-  // Typing carousel: cycle through multiple hero texts, typing then deleting each
+  // Typing state
   const [typed, setTyped] = useState("");
-  // Index for mobile/tablet "showing" animation
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
+  // useMemo restored to satisfy linter and enable React Compiler optimization.
+  // Although the compiler would handle this, the presence of eslint-disable-next-line
+  // for hook dependencies causes the compiler to skip optimization for safety.
   const heroTexts = useMemo(
     () => [
       t("home.heroTitle"),
@@ -35,19 +36,18 @@ export default function HomeHero() {
     [t],
   );
 
-  // Background image rotation
+  // 1. Background image rotation
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentImageIndex((prev) => (prev + 1) % headerImages.length);
+      setCurrentImageIndex((prev) => (prev + 1) % HEADER_IMAGES.length);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [headerImages.length]);
+  }, []);
 
-  // Reference to the header to observe visibility
   const headerRef = useRef<HTMLElement>(null);
 
-  // Optimized typing animation (Desktop only)
+  // 2. Typing animation logic (Desktop only)
   useEffect(() => {
     if (isMobileOrTablet || !headerRef.current) return;
 
@@ -57,19 +57,15 @@ export default function HomeHero() {
     let lastUpdate = 0;
     let pauseUntil = 0;
     let rafId: number;
-    let isVisible = false; // Tracks if the hero section is currently in viewport
+    let isVisible = false;
 
-    // Timing configuration (in ms)
     const TYPING_SPEED = 80;
     const DELETING_SPEED = 40;
     const PAUSE_AFTER_TYPING = 2000;
     const PAUSE_AFTER_DELETING = 300;
 
     function animate(timestamp: number) {
-      if (!isVisible) {
-        // Stop the loop completely if not visible
-        return;
-      }
+      if (!isVisible) return;
 
       if (pauseUntil > 0) {
         if (timestamp < pauseUntil) {
@@ -108,20 +104,17 @@ export default function HomeHero() {
       rafId = requestAnimationFrame(animate);
     }
 
-    // Use IntersectionObserver to start/stop the animation based on visibility
     const observer = new IntersectionObserver(
       ([entry]) => {
         isVisible = entry?.isIntersecting ?? false;
         if (isVisible) {
-          // Restart animation if it came back into view
           lastUpdate = performance.now();
           rafId = requestAnimationFrame(animate);
         } else {
-          // Cancel pending frame request if it scrolled out of view
           cancelAnimationFrame(rafId);
         }
       },
-      { threshold: 0 }, // Trigger as soon as 1px is visible/hidden
+      { threshold: 0 },
     );
 
     observer.observe(headerRef.current);
@@ -130,15 +123,15 @@ export default function HomeHero() {
       cancelAnimationFrame(rafId);
       observer.disconnect();
     };
-  }, [isMobileOrTablet, heroTexts, t]);
+  }, [isMobileOrTablet, heroTexts]);
 
-  // Simple rotation animation for Mobile/Tablet (Showing animation)
+  // 3. Simple rotation for Mobile (Showing animation)
   useEffect(() => {
     if (!isMobileOrTablet) return;
 
     const interval = setInterval(() => {
       setCurrentTextIndex((prev) => (prev + 1) % heroTexts.length);
-    }, 4000); // 4 seconds per text for readability
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [isMobileOrTablet, heroTexts.length]);
@@ -149,10 +142,9 @@ export default function HomeHero() {
       className="home-header relative isolate overflow-hidden bg-slate-950 text-white shadow-xl inline-full min-block-[40vh] sm:min-block-[45vh] lg:min-block-[50vh]"
       aria-labelledby="hero-heading"
     >
-      {/* Background images with Motion Ken Burns + Crossfade animation */}
       <AnimatePresence mode="popLayout">
         <m.div
-          key={headerImages[currentImageIndex] ?? currentImageIndex}
+          key={HEADER_IMAGES[currentImageIndex]}
           initial={{ opacity: 0, scale: 1.15 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0 }}
@@ -163,32 +155,28 @@ export default function HomeHero() {
           className="absolute inset-0 z-0"
         >
           <Image
-            src={headerImages[currentImageIndex] ?? ""}
+            src={HEADER_IMAGES[currentImageIndex] || ""}
             alt=""
             fill
             className="object-cover"
             sizes="100vw"
             priority={currentImageIndex === 0}
-            quality={currentImageIndex === 0 ? 85 : 70}
           />
         </m.div>
       </AnimatePresence>
-      <div
-        className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/30 to-black/70"
-        aria-hidden="true"
-      ></div>
+      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
       <div className="relative z-20 mx-auto flex flex-col items-center justify-center gap-12 px-4 pbs-8 pbe-16 text-center inline-full max-inline-7xl lg:py-20">
         <div className="flex-1 space-y-6 pbs-0 text-center lg:pbs-8">
           <div className="flex items-center justify-center gap-4">
-            <span className="bg-orange-400/60 block-px inline-8 sm:inline-12"></span>
+            <span className="bg-orange-400/60 block-px inline-8 sm:inline-12" />
             <h1 className="text-xs font-bold tracking-[0.2em] text-orange-300 uppercase sm:tracking-[0.3em]">
               {t("home.title")}
             </h1>
-            <span className="bg-orange-400/60 block-px inline-8 sm:inline-12"></span>
+            <span className="bg-orange-400/60 block-px inline-8 sm:inline-12" />
           </div>
           <h2
             id="hero-heading"
-            className="lg:text-shadow-xl text-3xl leading-tight font-semibold text-shadow-black/60 text-shadow-lg sm:text-4xl lg:text-5xl lg:text-shadow-black/60"
+            className="text-3xl leading-tight font-semibold text-shadow-black/60 text-shadow-lg sm:text-4xl lg:text-5xl lg:text-shadow-xl"
           >
             {isMobileOrTablet ? (
               <AnimatePresence mode="wait">
@@ -200,7 +188,7 @@ export default function HomeHero() {
                   transition={{ duration: 0.8, ease: "easeInOut" }}
                   className="inline-block"
                 >
-                  {heroTexts[currentTextIndex] ?? ""}
+                  {heroTexts[currentTextIndex]}
                 </m.span>
               </AnimatePresence>
             ) : (

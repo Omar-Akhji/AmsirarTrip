@@ -1,14 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-declare global {
-  interface Window {
-    __resizeTimer?: number;
-  }
-}
-
 export default function useNavbar() {
   const navbarRef = useRef<HTMLElement>(null);
   const [scrolled, setScrolled] = useState(false);
+  const resizeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const navbar = navbarRef.current;
@@ -16,7 +11,8 @@ export default function useNavbar() {
 
     let ticking = false;
 
-    function onScroll() {
+    // 1. Handle scroll state (toggling background/styles)
+    const onScroll = () => {
       if (!ticking) {
         requestAnimationFrame(() => {
           const scrollY = window.scrollY || window.pageYOffset;
@@ -25,49 +21,58 @@ export default function useNavbar() {
         });
         ticking = true;
       }
-    }
+    };
 
-    function setNavbarHeightVar() {
+    // 2. Sync navbar height with CSS variable
+    const syncNavbarHeight = () => {
       if (!navbar) return;
       try {
-        const h = navbar.getBoundingClientRect().height;
+        const height = navbar.getBoundingClientRect().height;
         document.documentElement.style.setProperty(
           "--spacing-navbar",
-          h + "px",
+          `${height}px`,
         );
       } catch {
         /* ignore errors reading element size */
       }
-    }
+    };
 
-    function onResize() {
+    // 3. Handle resize with animation suppression
+    const onResize = () => {
+      syncNavbarHeight();
+      
       document.body.classList.add("resize-animation-stopper");
-      clearTimeout(window.__resizeTimer);
-      window.__resizeTimer = window.setTimeout(() => {
+      
+      if (resizeTimerRef.current) {
+        clearTimeout(resizeTimerRef.current);
+      }
+      
+      resizeTimerRef.current = setTimeout(() => {
         document.body.classList.remove("resize-animation-stopper");
       }, 400);
-      try {
-        // keep resize debounce logic; no aside toggle here (component handles it)
-        window.matchMedia("(min-width: 992px)");
-      } catch {
-        /* ignore media query errors */
-      }
-    }
+    };
 
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("DOMContentLoaded", setNavbarHeightVar);
-    window.addEventListener("resize", setNavbarHeightVar);
-    window.addEventListener("scroll", setNavbarHeightVar);
-    window.addEventListener("resize", onResize);
-
+    // Initial sync
     onScroll();
+    syncNavbarHeight();
+
+    // Event listeners
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("scroll", syncNavbarHeight, { passive: true });
+    window.addEventListener("resize", onResize, { passive: true });
+    
+    // Fallback for initial layout shifts
+    window.addEventListener("load", syncNavbarHeight);
 
     return () => {
       window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("DOMContentLoaded", setNavbarHeightVar);
-      window.removeEventListener("resize", setNavbarHeightVar);
-      window.removeEventListener("scroll", setNavbarHeightVar);
+      window.removeEventListener("scroll", syncNavbarHeight);
       window.removeEventListener("resize", onResize);
+      window.removeEventListener("load", syncNavbarHeight);
+      
+      if (resizeTimerRef.current) {
+        clearTimeout(resizeTimerRef.current);
+      }
     };
   }, []);
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useReducer } from "react";
+import { useEffect, useReducer, useRef } from "react";
 import { usePathname } from "@/i18n/routing";
 
 interface LoaderProps {
@@ -15,42 +15,43 @@ function loaderReducer(_state: boolean, action: LoaderAction): boolean {
 }
 
 function Loader({ fullscreen = true, duration = 800 }: LoaderProps) {
-  // Start with loader visible on initial mount to cover hydration shifts
+  // Start with loader visible on initial mount
   const [show, dispatch] = useReducer(loaderReducer, true);
   const pathname = usePathname();
+  const showTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Initial load auto-hide
   useEffect(() => {
-    // Prevent scrolling while loader is visible
-    document.body.style.overflow = "hidden";
+    // Copy ref values to local variables to ensure stable cleanup (ESLint best practice)
+    const currentShowTimer = showTimerRef.current;
+    const currentHideTimer = hideTimerRef.current;
 
-    const timer = setTimeout(() => {
-      dispatch({ type: "hide" });
-      document.body.style.overflow = "";
-    }, duration);
+    // 1. Clear any existing timers
+    if (currentShowTimer) clearTimeout(currentShowTimer);
+    if (currentHideTimer) clearTimeout(currentHideTimer);
 
-    return () => {
-      clearTimeout(timer);
-      document.body.style.overflow = "";
-    };
-  }, [duration]);
-
-  // Show loader when pathname changes (navigation)
-  useEffect(() => {
-    // Defer to avoid synchronous state update during render
-    const showTimer = setTimeout(() => {
+    // 2. Logic to show/hide loader on pathname change or mount
+    const handleTransition = () => {
+      // Ensure loader is visible
       dispatch({ type: "show" });
       document.body.style.overflow = "hidden";
-    }, 0);
 
-    const hideTimer = setTimeout(() => {
-      dispatch({ type: "hide" });
-      document.body.style.overflow = "";
-    }, duration);
+      // Set timer to hide it
+      hideTimerRef.current = setTimeout(() => {
+        dispatch({ type: "hide" });
+        document.body.style.overflow = "";
+      }, duration);
+    };
+
+    // We use a tiny delay for subsequent navigations if needed, 
+    // but here we just trigger it immediately.
+    handleTransition();
 
     return () => {
-      clearTimeout(showTimer);
-      clearTimeout(hideTimer);
+      // Use local variables for cleanup to satisfy exhaustive-deps
+      if (currentShowTimer) clearTimeout(currentShowTimer);
+      if (currentHideTimer) clearTimeout(currentHideTimer);
+      // Ensure scroll is restored on unmount
       document.body.style.overflow = "";
     };
   }, [pathname, duration]);

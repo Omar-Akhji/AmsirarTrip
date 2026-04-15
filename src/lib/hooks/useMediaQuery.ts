@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useSyncExternalStore } from "react";
+import { useSyncExternalStore } from "react";
 
 /**
  * Custom hook to detect media query matches using React 18's useSyncExternalStore
@@ -8,26 +8,24 @@ import { useCallback, useSyncExternalStore } from "react";
  * @returns boolean - True if the media query matches, false otherwise.
  */
 export function useMediaQuery(query: string): boolean {
-  const subscribe = useCallback(
-    (callback: () => void) => {
-      if (typeof window === "undefined") return () => {};
-      const matchMedia = window.matchMedia(query);
-      matchMedia.addEventListener("change", callback);
-      return () => {
-        matchMedia.removeEventListener("change", callback);
-      };
-    },
-    [query],
-  );
+  // Manual useCallback removed - React Compiler handles this automatically
+  const subscribe = (callback: () => void) => {
+    if (typeof window === "undefined") return () => {};
+    const matchMedia = window.matchMedia(query);
+    matchMedia.addEventListener("change", callback);
+    return () => {
+      matchMedia.removeEventListener("change", callback);
+    };
+  };
 
-  const getSnapshot = useCallback(() => {
+  const getSnapshot = () => {
     if (typeof window === "undefined") return false;
     return window.matchMedia(query).matches;
-  }, [query]);
+  };
 
-  const getServerSnapshot = useCallback(() => {
+  const getServerSnapshot = () => {
     return false;
-  }, []);
+  };
 
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 }

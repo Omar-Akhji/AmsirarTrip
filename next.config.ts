@@ -53,11 +53,9 @@ const nextConfig: NextConfig = {
 
     // Optimize package imports to reduce bundle size
     optimizePackageImports: [
-      "framer-motion",
       "lucide-react",
       "date-fns",
       "@radix-ui/react-popover",
-      "@radix-ui/react-slot",
       "motion",
       "next-intl",
     ],

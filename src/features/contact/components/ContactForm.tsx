@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useRef, useEffect, useState } from "react";
+import { useActionState, useRef, useState, useEffect } from "react";
 import { useFormStatus } from "react-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useTranslation } from "@/lib/hooks/useTranslation";
@@ -36,8 +36,9 @@ function SubmitButton() {
 const ContactForm = () => {
   const { t } = useTranslation();
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const formRef = useRef<HTMLFormElement>(null);
   const [captchaToken, setCaptchaToken] = useState("");
+  // Key state to force form reset on success (video best practice)
+  const [formKey, setFormKey] = useState(0);
 
   // React 19's useActionState for form state management
   const [state, formAction] = useActionState<ContactFormState | null, FormData>(
@@ -45,18 +46,17 @@ const ContactForm = () => {
     null,
   );
 
-  // Handle successful submission - reset form in useEffect
+  // Synchronize reset when state.success is true
   useEffect(() => {
-    if (state?.success) {
-      // Reset form fields (DOM operations)
-      formRef.current?.reset();
-      recaptchaRef.current?.reset();
-      // Use queueMicrotask to defer state update from synchronous effect execution
+    // Access property via bracket notation to satisfy noPropertyAccessFromIndexSignature
+    if (state?.["success"]) {
+      // Defer state updates to avoid synchronous cascading renders warning
       queueMicrotask(() => {
+        setFormKey((prev) => prev + 1);
         setCaptchaToken("");
       });
     }
-  }, [state?.success]);
+  }, [state]);
 
   const alertClasses: Record<string, string> = {
     success: "bg-green-50 text-green-800 border border-green-100",
@@ -93,28 +93,27 @@ const ContactForm = () => {
             </div>
 
             <form
-              ref={formRef}
+              key={formKey}
               action={formAction}
               noValidate
               className="space-y-5 p-6 md:p-8"
             >
               {/* Success/Error Message */}
-              {state?.message && (
+              {state?.["message"] && (
                 <output
-                  className={`rounded-2xl px-4 py-3 text-sm font-medium ${
-                    state.success
-                      ? alertClasses["success"]
-                      : alertClasses["error"]
-                  }`}
-                  role={state.success ? undefined : "alert"}
+                  className={cn(
+                    "rounded-2xl px-4 py-3 text-sm font-medium",
+                    state?.["success"] ? alertClasses["success"] : alertClasses["error"]
+                  )}
+                  role={state?.["success"] ? undefined : "alert"}
                   aria-live="polite"
                 >
-                  {state.message}
+                  {state?.["message"]}
                 </output>
               )}
 
               {/* Field Errors Summary */}
-              {state?.errors && Object.keys(state.errors).length > 0 && (
+              {state?.["errors"] && Object.keys(state["errors"]).length > 0 && (
                 <div
                   className="rounded-2xl border border-orange-200 bg-orange-50 px-4 py-3"
                   role="alert"
@@ -126,7 +125,7 @@ const ContactForm = () => {
                     )}
                   </p>
                   <ul className="space-y-1 text-xs text-orange-800">
-                    {Object.entries(state.errors).map(([field, error]) => (
+                    {Object.entries(state["errors"]).map(([field, error]) => (
                       <li key={field} className="flex items-start gap-2">
                         <svg
                           className="mbs-0.5 size-4 shrink-0"
@@ -139,7 +138,7 @@ const ContactForm = () => {
                             clipRule="evenodd"
                           />
                         </svg>
-                        <span>{error}</span>
+                        <span>{error as string}</span>
                       </li>
                     ))}
                   </ul>
@@ -160,19 +159,18 @@ const ContactForm = () => {
                     <div
                       className={cn(
                         "origin-center scale-85 rounded-2xl border border-dashed p-3 sm:scale-100 lg:origin-left",
-                        state?.errors?.["recaptchaToken"]
+                        state?.["errors"]?.["recaptchaToken"]
                           ? "border-red-300"
                           : "border-gray-200",
                       )}
                     >
                       {hasRecaptchaV2 ? (
                         <>
-                          <ReCAPTCHA
+                           <ReCAPTCHA
                             ref={recaptchaRef}
                             sitekey={RECAPTCHA_V2_SITE_KEY}
                             onChange={(token) => setCaptchaToken(token || "")}
                           />
-                          {/* Hidden input to pass token to FormData */}
                           <input
                             type="hidden"
                             name="recaptchaToken"
@@ -186,12 +184,12 @@ const ContactForm = () => {
                       )}
                     </div>
                   </div>
-                  {state?.errors?.["recaptchaToken"] && (
+                  {state?.["errors"]?.["recaptchaToken"] && (
                     <p
                       id="recaptchaToken-error"
                       className="mbs-1 text-xs text-red-600"
                     >
-                      {state.errors["recaptchaToken"]}
+                      {state["errors"]["recaptchaToken"] as string}
                     </p>
                   )}
                 </>
