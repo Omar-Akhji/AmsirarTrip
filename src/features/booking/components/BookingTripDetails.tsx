@@ -104,7 +104,8 @@ export function BookingTripDetails({
                 sideOffset={8}
               >
                 <EnhancedCalendar
-                  selected={reservationDate ?? undefined}
+                  key={`${reservationDate?.getTime()}-${calendarOpen}`}
+                  initialDate={reservationDate ?? undefined}
                   onSelect={(date: Date | undefined) => {
                     onDateSelect(date ?? null);
                   }}

@@ -6,35 +6,43 @@ import { cn } from "@/lib/utils";
 import { ChevronLeft, ChevronRight, CalendarIcon } from "lucide-react";
 
 interface EnhancedCalendarProps {
-  selected?: Date | undefined;
+  initialDate?: Date | undefined;
   onSelect?: (date: Date | undefined) => void;
   disabled?: (date: Date) => boolean;
   className?: string;
   onClose?: () => void;
 }
 
+
 export function EnhancedCalendar({
-  selected,
+  initialDate,
   onSelect,
   disabled,
   className,
   onClose,
 }: EnhancedCalendarProps) {
-  const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(
-    selected,
-  );
-  const [currentMonth, setCurrentMonth] = React.useState<Date>(
-    selected || new Date(),
-  );
+  // Draft state for current selection in the calendar UI
+  const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(undefined);
+  
+  // Track the previous prop to handle synchronization during render
+  const [prevInitialDate, setPrevInitialDate] = React.useState<Date | undefined>(undefined);
+  if (initialDate?.getTime() !== prevInitialDate?.getTime()) {
+    setPrevInitialDate(initialDate);
+    setSelectedDate(initialDate);
+  }
 
-  // Sync with parent
-  React.useEffect(() => {
-    setSelectedDate(selected);
-  }, [selected]);
+  // Navigation state for the visible month
+  const [currentMonth, setCurrentMonth] = React.useState<Date>(new Date());
+  const [prevMonthDate, setPrevMonthDate] = React.useState<Date | undefined>(undefined);
+  
+  if (initialDate?.getTime() !== prevMonthDate?.getTime()) {
+    setPrevMonthDate(initialDate);
+    setCurrentMonth(initialDate || new Date());
+  }
 
-  const handleSelect = (date: Date | undefined) => {
+  const handleDayClick = (date: Date | undefined) => {
     setSelectedDate(date);
-    onSelect?.(date);
+    // Note: We don't call onSelect here to treat it as a draft
   };
 
   const navigateMonth = (direction: "prev" | "next") => {
@@ -51,7 +59,16 @@ export function EnhancedCalendar({
     const today = new Date();
     setCurrentMonth(today);
     setSelectedDate(today);
+    // For "Today", we commit immediately as it's a specific action
     onSelect?.(today);
+    onClose?.();
+  };
+
+  const handleApply = () => {
+    if (selectedDate) {
+      onSelect?.(selectedDate);
+      onClose?.();
+    }
   };
 
   return (
@@ -63,6 +80,7 @@ export function EnhancedCalendar({
             type="button"
             onClick={() => navigateMonth("prev")}
             className="flex items-center justify-center rounded-full text-orange-600 transition-colors block-8 inline-8 focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-none pointer-fine:hover:bg-orange-50"
+            aria-label="Previous month"
           >
             <ChevronLeft className="block-4 inline-4" />
           </button>
@@ -81,6 +99,7 @@ export function EnhancedCalendar({
             type="button"
             onClick={() => navigateMonth("next")}
             className="flex items-center justify-center rounded-full text-orange-600 transition-colors block-8 inline-8 focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-none pointer-fine:hover:bg-orange-50"
+            aria-label="Next month"
           >
             <ChevronRight className="block-4 inline-4" />
           </button>
@@ -90,7 +109,7 @@ export function EnhancedCalendar({
         <DayPicker
           mode="single"
           selected={selectedDate}
-          onSelect={handleSelect}
+          onSelect={handleDayClick}
           month={currentMonth}
           onMonthChange={setCurrentMonth}
           disabled={disabled}
@@ -130,7 +149,7 @@ export function EnhancedCalendar({
               </div>
               <div className="flex-1 min-inline-0">
                 <p className="text-xs font-medium text-gray-500">
-                  Selected Date
+                  {selectedDate.getTime() === initialDate?.getTime() ? "Current Date" : "New Selection"}
                 </p>
                 <p className="truncate text-sm font-semibold text-gray-900">
                   {selectedDate.toLocaleDateString("en-US", {
@@ -164,13 +183,8 @@ export function EnhancedCalendar({
               Cancel
             </button>
             <button
-              onClick={() => {
-                if (selectedDate) {
-                  onSelect?.(selectedDate);
-                  onClose?.();
-                }
-              }}
-              disabled={!selectedDate}
+              onClick={handleApply}
+              disabled={!selectedDate || selectedDate.getTime() === initialDate?.getTime()}
               type="button"
               className="rounded-lg bg-linear-to-r from-orange-500 to-orange-600 px-4 py-2 text-sm font-medium text-white shadow-md transition-all duration-200 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 pointer-fine:hover:from-orange-600 pointer-fine:hover:to-orange-700 pointer-fine:hover:shadow-lg disabled:pointer-fine:hover:from-orange-500 disabled:pointer-fine:hover:to-orange-600"
             >
