@@ -24,7 +24,8 @@ export function NativePopover({
   className,
   id: preferredId,
 }: NativePopoverProps) {
-  const popoverId = preferredId || useId().replace(/:/g, "");
+  const generatedId = useId().replace(/:/g, "");
+  const popoverId = preferredId || generatedId;
   const popoverRef = useRef<HTMLDivElement>(null);
 
   // Sync React state with Native Popover state
@@ -46,7 +47,7 @@ export function NativePopover({
         if (popover.matches(":popover-open")) {
           popover.hidePopover();
         }
-      } catch (e) {
+      } catch {
         // Silently fail if already hidden
       }
     }
