@@ -14,20 +14,35 @@ interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
 }
 
-// Generate static params for all excursions
+// Generate static params for all excursions and locales
 export async function generateStaticParams() {
-  return getExcursionSlugs().map((slug) => ({ slug }));
+  const locales = ["en", "fr", "de", "es"];
+  const slugs = getExcursionSlugs();
+
+  return locales.flatMap((locale) =>
+    slugs.map((slug) => ({
+      locale,
+      slug,
+    })),
+  );
 }
 
 // Generate metadata for SEO
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const { locale, slug } = await params;
-  const excursion = getExcursionBySlug(slug);
+  const awaitedParams = await params;
+  const { locale, slug } = awaitedParams;
+  
+  // Find excursion with case-insensitive matching for robustness
+  const slugs = getExcursionSlugs();
+  const matchedSlug = slugs.find(s => s.toLowerCase() === slug.toLowerCase());
+  const excursion = matchedSlug ? getExcursionBySlug(matchedSlug) : undefined;
 
   if (!excursion) {
-    return {};
+    return {
+      title: "Excursion Not Found",
+    };
   }
 
   const t = await getTranslations({ locale });
@@ -38,7 +53,7 @@ export async function generateMetadata({
     description:
       t(`${keyPrefix}.description`) + " " + t(`${keyPrefix}.tagline`),
     keywords: excursion.keywords,
-    path: `/excursions/${slug}`,
+    path: `/excursions/${excursion.slug}`,
     locale,
     image: excursion.image,
     type: "article",
@@ -49,8 +64,13 @@ export async function generateMetadata({
 export const revalidate = 3600; // Revalidate every hour
 
 export default async function ExcursionPage({ params }: PageProps) {
-  const { slug } = await params;
-  const excursion = getExcursionBySlug(slug);
+  const awaitedParams = await params;
+  const { slug } = awaitedParams;
+  
+  // Find excursion with case-insensitive matching
+  const slugs = getExcursionSlugs();
+  const matchedSlug = slugs.find(s => s.toLowerCase() === slug.toLowerCase());
+  const excursion = matchedSlug ? getExcursionBySlug(matchedSlug) : undefined;
 
   if (!excursion) {
     notFound();
@@ -64,7 +84,7 @@ export default async function ExcursionPage({ params }: PageProps) {
     image: `https://amsirartrip.com${excursion.image}`,
     duration: excursion.duration,
     location: excursion.location,
-    url: `https://amsirartrip.com/excursions/${slug}`,
+    url: `https://amsirartrip.com/excursions/${excursion.slug}`,
   });
 
   return (

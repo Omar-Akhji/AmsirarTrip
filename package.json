@@ -26,7 +26,6 @@
     "react-doctor:verbose": "pnpm dlx react-doctor@latest . --verbose"
   },
   "dependencies": {
-    "@radix-ui/react-popover": "1.1.15",
     "clsx": "2.1.1",
     "date-fns": "^4.1.0",
     "isomorphic-dompurify": "3.9.0",

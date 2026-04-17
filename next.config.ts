@@ -55,7 +55,6 @@ const nextConfig: NextConfig = {
     optimizePackageImports: [
       "lucide-react",
       "date-fns",
-      "@radix-ui/react-popover",
       "motion",
       "next-intl",
     ],

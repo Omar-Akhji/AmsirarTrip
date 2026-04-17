@@ -3,7 +3,7 @@
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { format as formatDate } from "date-fns";
 import { EnhancedCalendar } from "@/shared/ui/calendar";
-import * as Popover from "@radix-ui/react-popover";
+import { NativePopover } from "@/shared/ui/NativePopover";
 import { CalendarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { m } from "motion/react";
@@ -70,8 +70,10 @@ export function BookingTripDetails({
           viewport={{ once: true }}
           transition={{ duration: 0.3, delay: 0.6 }}
         >
-          <Popover.Root open={calendarOpen} onOpenChange={onCalendarOpenChange}>
-            <Popover.Trigger asChild>
+          <NativePopover
+            isOpen={calendarOpen}
+            onOpenChange={onCalendarOpenChange}
+            trigger={
               <button
                 type="button"
                 className={cn(
@@ -96,27 +98,22 @@ export function BookingTripDetails({
                   <span>{t("booking.reservationDate")}</span>
                 )}
               </button>
-            </Popover.Trigger>
-            <Popover.Portal>
-              <Popover.Content
-                className="data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-end-2 data-[side=right]:slide-in-from-start-2 data-[side=top]:slide-in-from-bottom-2 z-50 overflow-hidden rounded-2xl border border-gray-100 bg-white p-0 shadow-2xl ring-1 ring-black/5 outline-none inline-auto"
-                align="start"
-                sideOffset={8}
-              >
-                <EnhancedCalendar
-                  key={`${reservationDate?.getTime()}-${calendarOpen}`}
-                  initialDate={reservationDate ?? undefined}
-                  onSelect={(date: Date | undefined) => {
-                    onDateSelect(date ?? null);
-                  }}
-                  onClose={() => onCalendarOpenChange(false)}
-                  disabled={(date: Date) =>
-                    date < new Date(new Date().setHours(0, 0, 0, 0))
-                  }
-                />
-              </Popover.Content>
-            </Popover.Portal>
-          </Popover.Root>
+            }
+          >
+            <div className="z-50 overflow-hidden rounded-2xl border border-gray-100 bg-white p-0 shadow-2xl ring-1 ring-black/5 outline-none inline-auto">
+              <EnhancedCalendar
+                key={`${reservationDate?.getTime()}-${calendarOpen}`}
+                initialDate={reservationDate ?? undefined}
+                onSelect={(date: Date | undefined) => {
+                  onDateSelect(date ?? null);
+                }}
+                onClose={() => onCalendarOpenChange(false)}
+                disabled={(date: Date) =>
+                  date < new Date(new Date().setHours(0, 0, 0, 0))
+                }
+              />
+            </div>
+          </NativePopover>
           {/* Hidden input for form submission */}
           <input
             type="hidden"
