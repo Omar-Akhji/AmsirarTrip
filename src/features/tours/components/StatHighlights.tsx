@@ -15,7 +15,7 @@ export function StatHighlights({ stats }: StatHighlightsProps) {
       {stats.map((stat) => (
         <article
           key={stat.id}
-          className="rounded-3xl border border-orange-100 bg-white px-6 py-6 shadow-lg shadow-orange-100/70"
+          className="rounded-3xl border border-orange-100 bg-white p-6 shadow-lg shadow-orange-100/70"
         >
           <p className="text-4xl font-bold text-orange-600">{stat.value}</p>
           <h3 className="mbs-3 text-lg font-semibold text-slate-900">

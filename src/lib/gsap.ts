@@ -15,4 +15,4 @@ if (typeof window !== "undefined") {
 }
 
 export * from "gsap";
-export default gsap;
+export { gsap };

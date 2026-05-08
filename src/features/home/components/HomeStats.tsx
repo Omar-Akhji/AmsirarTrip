@@ -67,7 +67,7 @@ export default function HomeStats() {
               delay={idx * 150}
               className="flex block-full inline-full"
             >
-              <article className="inline-full rounded-3xl border border-orange-100 bg-white px-6 py-6 shadow-xs shadow-orange-100/70">
+              <article className="inline-full rounded-3xl border border-orange-100 bg-white p-6 shadow-xs shadow-orange-100/70">
                 <p className="text-4xl font-bold text-orange-600">
                   {stat.value}
                 </p>

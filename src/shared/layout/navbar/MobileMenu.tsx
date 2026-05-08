@@ -143,7 +143,7 @@ export function MobileMenu({
             <SocialLinks className="gap-4" compact={true} scrolled={scrolled} />
           </div>
         )}
-        <ul className="flex flex-col items-center gap-3 px-4 py-4">
+        <ul className="flex flex-col items-center gap-3 p-4">
           {NAV_LINKS.map((link) => {
             const isActive = pathname === link.to;
             return (

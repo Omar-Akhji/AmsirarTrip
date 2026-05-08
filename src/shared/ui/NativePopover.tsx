@@ -29,6 +29,8 @@ export function NativePopover({
   const popoverId = preferredId || generatedId;
   const popoverRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
+  const onOpenChangeRef = useRef(onOpenChange);
+  onOpenChangeRef.current = onOpenChange;
 
   const positionPopover = useCallback(() => {
     const popover = popoverRef.current;
@@ -105,13 +107,13 @@ export function NativePopover({
       const toggleEvent = event as ToggleEvent;
       const newState = toggleEvent.newState === "open";
       if (newState !== isOpen) {
-        onOpenChange(newState);
+        onOpenChangeRef.current(newState);
       }
     };
 
     popover.addEventListener("toggle", handleToggle);
     return () => popover.removeEventListener("toggle", handleToggle);
-  }, [isOpen, onOpenChange]);
+  }, [isOpen]);
 
   // Keep anchored on resize or scroll
   useEffect(() => {

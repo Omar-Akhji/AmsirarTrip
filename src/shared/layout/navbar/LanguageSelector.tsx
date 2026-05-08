@@ -102,7 +102,7 @@ export function LanguageSelector({
           role="menu"
           aria-orientation="vertical"
         >
-          <div className="flex flex-col gap-1 px-1 py-1">
+          <div className="flex flex-col gap-1 p-1">
             {LANGUAGES.map((lang) => {
               const selected = lang.code === currentLanguage.code;
               return (

@@ -97,11 +97,9 @@ export function BookingTripDetails({
                   onDateSelect(date ?? null);
                 }}
                 onClose={() => onCalendarOpenChange(false)}
-                disabled={(date: Date) => {
-                  const today = new Date();
-                  today.setHours(0, 0, 0, 0);
-                  return date < today;
-                }}
+                disabled={(date: Date) =>
+                  date < new Date(new Date().toDateString())
+                }
               />
             </div>
           </NativePopover>

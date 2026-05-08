@@ -14,7 +14,7 @@ export function LoadingSpinner({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
       className={`${sizeClasses[size]} animate-spin rounded-full border-orange-500 border-t-transparent`}
       aria-label="Loading"
     >
-      <span className="sr-only">Loading...</span>
+      <span className="sr-only">Loading…</span>
     </output>
   );
 }

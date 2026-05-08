@@ -85,7 +85,7 @@ export function TourCard({ tour, translations }: TourCardProps) {
           <span className="font-bold tracking-wide text-orange-600">
             {translations.exploreLink}
           </span>
-          <div className="flex items-center justify-center rounded-full bg-slate-50 text-slate-500 transition-all duration-300 block-10 inline-10 group-hover:bg-orange-500 group-hover:text-white">
+          <div className="flex items-center justify-center rounded-full bg-slate-50 text-slate-400 transition-all duration-300 block-10 inline-10 group-hover:bg-orange-500 group-hover:text-white">
             <ArrowRight className="size-4 -rotate-45 transition-transform duration-300 group-hover:rotate-0" />
           </div>
         </div>

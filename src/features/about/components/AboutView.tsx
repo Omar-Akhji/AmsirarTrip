@@ -199,7 +199,7 @@ export default function AboutView() {
                     >
                       <div className="absolute inset-0 bg-linear-to-br from-orange-500/10 via-amber-400/5 to-transparent"></div>
                     </div>
-                    <div className="relative flex flex-col items-center space-y-6">
+                    <div className="relative flex flex-col items-center gap-y-6">
                       <figure className="inline-flex items-center justify-center overflow-hidden rounded-full border-2 border-white/20 bg-white/5 p-3 text-orange-50 shadow-lg ring-2 shadow-orange-600/25 ring-white/10 block-24 inline-24">
                         <Image
                           src={fact.icon}
