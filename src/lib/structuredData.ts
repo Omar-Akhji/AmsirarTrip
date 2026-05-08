@@ -2,6 +2,12 @@
  * Generic base for all trip-type structured data.
  * TLocation discriminates between tour routes and excursion points.
  */
+interface TripItineraryItem {
+  position: number;
+  name: string;
+  description?: string;
+}
+
 interface TripStructuredData<TLocation> {
   name: string;
   description: string;
@@ -12,6 +18,7 @@ interface TripStructuredData<TLocation> {
   duration: string;
   location: TLocation;
   url: string;
+  itinerary?: TripItineraryItem[];
 }
 
 interface TourLocation {
@@ -51,10 +58,25 @@ function resolveUrl(raw: string): string {
  */
 function buildTripJsonLd<TLocation>(
   data: TripStructuredData<TLocation>,
-  itinerary: Record<string, unknown>[],
+  fallbackItinerary: Record<string, unknown>[],
   touristType: string[],
   providerExtras?: Record<string, unknown>,
 ) {
+  const itinerary =
+    data.itinerary && data.itinerary.length > 0
+      ? data.itinerary.map((item) => ({
+          "@type": "ListItem",
+          position: item.position,
+          item: {
+            "@type": "TouristDestination",
+            name: sanitizeForJsonLd(item.name),
+            ...(item.description && {
+              description: sanitizeForJsonLd(item.description),
+            }),
+          },
+        }))
+      : fallbackItinerary;
+
   return {
     "@context": "https://schema.org",
     "@type": "TouristTrip",
@@ -108,6 +130,23 @@ export function generateTourJsonLd(data: TourStructuredData) {
       },
     },
   );
+}
+
+export function generateFaqJsonLd(
+  faqs: { question: string; answer: string }[],
+) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+      "@type": "Question",
+      name: sanitizeForJsonLd(faq.question),
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: sanitizeForJsonLd(faq.answer),
+      },
+    })),
+  };
 }
 
 export function generateExcursionJsonLd(data: ExcursionStructuredData) {

@@ -1,10 +1,16 @@
 "use client";
 
 import Image from "next/image";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
 import { TOURS_DATA } from "../data";
-import { Clock, MapPin } from "lucide-react";
+import type { TourSeoContent } from "../data/toursMetadata";
+import {
+  TourFaqs,
+  TourHighlights,
+  TourPricing,
+  TourQuickFacts,
+} from "./TourSeoSections";
 import { PageHeader } from "@/shared/layout/PageHeader";
 import { AnimateOnScroll } from "@/shared/ui";
 
@@ -37,10 +43,12 @@ interface TourLayoutProps {
   tourKey: string;
   bookingId: number;
   imageSrc: string;
+  seo: TourSeoContent;
 }
 
-const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
+const TourLayout = ({ tourKey, bookingId, imageSrc, seo }: TourLayoutProps) => {
   const t = useTranslations();
+  const locale = useLocale();
 
   // Get tour data from TOURS_DATA
   const tourData = (TOURS_DATA.find((tour) => tour.id === bookingId) ||
@@ -55,6 +63,26 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
   const includes = t(`${tourKey}.includes`);
   const excludes = t(`${tourKey}.excludes`);
   const goodToKnow = t(`${tourKey}.goodToKnow`);
+  const endCity = t(tourData.end || "tours.cities.marrakech");
+  const startCity = t(tourData.start || "tours.cities.marrakech");
+
+  const highlightsTitle = t.has("tours.highlightsTitle")
+    ? t("tours.highlightsTitle")
+    : "Tour Highlights";
+  const pricingTitle = t.has("tours.pricingTitle")
+    ? t("tours.pricingTitle")
+    : "Pricing & Booking";
+  const priceLabel = t.has("tours.priceLabel")
+    ? t("tours.priceLabel")
+    : "Starting price";
+  const faqTitle = t.has("tours.faqTitle")
+    ? t("tours.faqTitle")
+    : "Frequently Asked Questions";
+  const reserveNow = t.has("booking.checkAvailability")
+    ? t("booking.checkAvailability")
+    : "Reserve Now";
+  const pageTitle = locale === "en" ? seo.title : title;
+  const pageSubtitle = locale === "en" ? seo.lead : overview;
 
   // Labels for day details
   const accommodationLabel = t("tours.accommodationLabel");
@@ -136,14 +164,14 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
   return (
     <>
       <PageHeader
-        title={t("tours.detailsTitle")}
-        subtitle={t("tours.detailsSubtitle")}
+        title={pageTitle}
+        subtitle={pageSubtitle}
         smTitle={t("tours.detailsTitle")}
         bgImage="/images/Header/header-1.webp"
         breadcrumbs={[
           { label: t("nav.home"), href: "/" },
           { label: t("nav.tours"), href: "/tours" },
-          { label: t("tours.detailsTitle") },
+          { label: title },
         ]}
       />
 
@@ -160,7 +188,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                   <Image
                     className="object-cover"
                     src={imageSrc}
-                    alt={`${title} - Tour image showcasing Morocco travel experience`}
+                    alt={seo.imageAlt}
                     fill
                     priority
                     sizes="(max-width: 1024px) 100vw, 66vw"
@@ -186,39 +214,19 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
               </AnimateOnScroll>
 
               <div className="space-y-8">
-                <AnimateOnScroll animation="fade-up" delay={150}>
-                  <div className="grid gap-4 sm:grid-cols-2">
-                    <div className="inline-flex items-center gap-3 rounded-full border border-orange-100 bg-orange-50 px-5 py-3">
-                      <Clock
-                        className="size-5 shrink-0 text-orange-500"
-                        aria-hidden
-                      />
-                      <div className="text-start">
-                        <div className="text-sm font-semibold text-orange-600">
-                          {tourData.duration} {t("tours.days")}
-                        </div>
-                        <div className="text-xs font-semibold text-amber-600">
-                          {t("tours.duration")}
-                        </div>
-                      </div>
-                    </div>
+                <TourQuickFacts
+                  duration={tourData.duration}
+                  durationLabel={t("tours.duration")}
+                  daysLabel={t("tours.days")}
+                  startLabel={t("tours.start")}
+                  startCity={startCity}
+                  endLabel={t("tours.end")}
+                  endCity={endCity}
+                  priceLabel={priceLabel}
+                  price={seo.price}
+                />
 
-                    <div className="inline-flex items-center gap-3 rounded-full border border-amber-100 bg-amber-50 px-5 py-3">
-                      <MapPin
-                        className="size-5 shrink-0 text-amber-500"
-                        aria-hidden
-                      />
-                      <div className="text-start">
-                        <div className="text-sm font-semibold text-amber-600">
-                          {t(tourData.start || "tours.cities.marrakech")}
-                        </div>
-                        <div className="text-xs font-semibold text-amber-600">
-                          {t("tours.start")}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </AnimateOnScroll>
+                <TourHighlights seo={seo} title={highlightsTitle} />
 
                 <AnimateOnScroll animation="fade-up" delay={300}>
                   <div>
@@ -230,6 +238,11 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                     </p>
                   </div>
                 </AnimateOnScroll>
+
+                <TourPricing
+                  seo={seo}
+                  labels={{ pricingTitle, reserveNow }}
+                />
 
                 <AnimateOnScroll animation="fade-up" delay={450}>
                   <div>
@@ -255,6 +268,8 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                   excludedTitle={t("tours.excluded")}
                   goodToKnowTitle={t("tours.goodToKnow")}
                 />
+
+                <TourFaqs seo={seo} title={faqTitle} />
               </div>
             </article>
 
@@ -265,8 +280,8 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
           </div>
         </section>
         <BookingForm
-          excursionId={bookingId.toString()}
-          excursionTitle={title}
+          tourId={bookingId.toString()}
+          tourTitle={title}
           fullWidth
         />
       </main>

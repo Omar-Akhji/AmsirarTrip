@@ -10,7 +10,7 @@ const LOCALES = ["en", "fr", "es", "de"] as const;
  * Update this when real content changes — never use `new Date()` per build,
  * as Google penalises spoofed lastmod signals with slower crawl rates.
  */
-const CONTENT_LAST_MODIFIED = "2026-05-01";
+const CONTENT_LAST_MODIFIED = "2026-05-08";
 
 /**
  * Build hreflang alternates for a given path.

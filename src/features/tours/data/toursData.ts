@@ -47,7 +47,7 @@ export const TOURS_DATA: Tour[] = [
     duration: 5,
     start: "tours.cities.casablanca",
     route: "/tours/imperial-cities-and-coastline-5-days",
-    end: "tours.cities.marrakech",
+    end: "tours.cities.fes",
   },
   {
     id: 5,
@@ -59,7 +59,7 @@ export const TOURS_DATA: Tour[] = [
     duration: 10,
     start: "tours.cities.marrakech",
     route: "/tours/grand-moroccan-circuit-10-days",
-    end: "tours.cities.marrakech",
+    end: "tours.cities.casablanca",
   },
   {
     id: 6,
