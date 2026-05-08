@@ -81,7 +81,7 @@ export default function TourItinerary({
                   <div className="mbs-1 flex size-6 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-green-500 to-emerald-600 text-white shadow-xs">
                     <Check className="size-3.5" aria-hidden />
                   </div>
-                  <p className="flex-1 text-sm leading-relaxed text-gray-700 sm:text-base">
+                  <p className="flex-1 text-sm leading-relaxed text-neutral-700 sm:text-base">
                     {item}
                   </p>
                 </div>
@@ -94,16 +94,16 @@ export default function TourItinerary({
                 day.arrival) && (
                 <div className="mbs-4 grid gap-3 sm:grid-cols-2">
                   {day.accommodation && (
-                    <div className="flex items-center gap-2 rounded-lg border-[3px] border-indigo-200 bg-indigo-50 px-3 py-2">
+                    <div className="flex items-center gap-2 rounded-lg border-[3px] border-amber-200 bg-amber-50 px-3 py-2">
                       <Hotel
-                        className="size-5 shrink-0 text-indigo-600"
+                        className="size-5 shrink-0 text-amber-600"
                         aria-hidden
                       />
                       <div>
-                        <div className="text-xs font-semibold text-indigo-700">
+                        <div className="text-xs font-semibold text-amber-700">
                           {accommodationLabel}
                         </div>
-                        <div className="text-sm text-indigo-900">
+                        <div className="text-sm text-amber-900">
                           {day.accommodation}
                         </div>
                       </div>

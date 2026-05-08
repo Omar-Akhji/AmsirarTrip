@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { format as formatDate } from "date-fns";
 import { EnhancedCalendar } from "@/shared/ui/calendar";
@@ -15,6 +16,12 @@ interface BookingTripDetailsProps {
   onDateSelect: (date: Date | null) => void;
 }
 
+function getStartOfToday() {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  return today;
+}
+
 export function BookingTripDetails({
   state,
   locale,
@@ -24,6 +31,22 @@ export function BookingTripDetails({
   onDateSelect,
 }: BookingTripDetailsProps) {
   const { t } = useTranslation();
+  const [minimumReservationDate, setMinimumReservationDate] =
+    useState<Date | null>(null);
+
+  useEffect(() => {
+    let mounted = true;
+
+    queueMicrotask(() => {
+      if (mounted) {
+        setMinimumReservationDate(getStartOfToday());
+      }
+    });
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
 
   return (
     <>
@@ -34,7 +57,7 @@ export function BookingTripDetails({
             {t("booking.numberOfPeople", "Number of People")}
           </label>
           <input
-            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
+            className="rounded-2xl border border-neutral-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
             type="number"
             id="numberOfPeople"
             name="numberOfPeople"
@@ -64,11 +87,11 @@ export function BookingTripDetails({
               <button
                 type="button"
                 className={cn(
-                  "flex items-center justify-start rounded-2xl border bg-white px-4 py-3 text-start text-sm font-normal transition-colors block-auto inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden pointer-fine:hover:bg-gray-50",
-                  !reservationDate && "text-gray-500",
+                  "flex items-center justify-start rounded-2xl border bg-white px-4 py-3 text-start text-sm font-normal transition-colors block-auto inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden pointer-fine:hover:bg-neutral-50",
+                  !reservationDate && "text-neutral-500",
                   state?.errors?.["date"]
                     ? "border-red-300"
-                    : "border-gray-200",
+                    : "border-neutral-200",
                 )}
                 aria-describedby={
                   state?.errors?.["date"] ? "reservationDate-error" : undefined
@@ -89,7 +112,7 @@ export function BookingTripDetails({
               </button>
             }
           >
-            <div className="z-50 overflow-hidden rounded-2xl border border-gray-100 bg-white p-0 shadow-2xl ring-1 ring-black/5 outline-hidden inline-auto">
+            <div className="z-50 overflow-hidden rounded-2xl border border-neutral-100 bg-white p-0 shadow-2xl ring-1 ring-black/5 outline-hidden inline-auto">
               <EnhancedCalendar
                 key={`${reservationDate?.getTime()}-${calendarOpen}`}
                 initialDate={reservationDate ?? undefined}
@@ -98,7 +121,7 @@ export function BookingTripDetails({
                 }}
                 onClose={() => onCalendarOpenChange(false)}
                 disabled={(date: Date) =>
-                  date < new Date(new Date().toDateString())
+                  minimumReservationDate ? date < minimumReservationDate : false
                 }
               />
             </div>
@@ -128,7 +151,7 @@ export function BookingTripDetails({
           {t("booking.message", "Your message")}
         </label>
         <textarea
-          className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
+          className="rounded-2xl border border-neutral-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
           maxLength={1000}
           id="message"
           name="message"

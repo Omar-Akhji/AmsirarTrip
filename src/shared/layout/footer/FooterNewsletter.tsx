@@ -22,7 +22,7 @@ export function FooterNewsletter() {
       </h3>
       <span className="bg-orange mbe-6 block rounded block-1 inline-12" />
       <div className="rounded-2xl border border-white/10 bg-linear-to-br from-white/5 to-white/2 p-4 backdrop-blur-sm">
-        <p className="mbe-4 text-sm leading-relaxed text-slate-400">
+        <p className="mbe-4 text-sm leading-relaxed text-zinc-400">
           {t("footer.newsletterDescription")}
         </p>
         <button

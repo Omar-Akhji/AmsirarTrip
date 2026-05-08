@@ -47,7 +47,7 @@ export class ErrorBoundary extends Component<Props, State> {
 
       // Development mode: Show detailed error information
       return (
-        <div className="flex items-center justify-center bg-gray-50 px-4 min-block-screen">
+        <div className="flex items-center justify-center bg-neutral-50 px-4 min-block-screen">
           <div className="rounded-lg bg-white p-6 text-center shadow-lg inline-full max-inline-md">
             <div className="mx-auto mbe-4 flex items-center justify-center rounded-full bg-amber-100 block-16 inline-16">
               <svg
@@ -64,10 +64,10 @@ export class ErrorBoundary extends Component<Props, State> {
                 />
               </svg>
             </div>
-            <h2 className="mbe-2 text-xl font-semibold text-gray-900">
+            <h2 className="mbe-2 text-xl font-semibold text-neutral-900">
               Development Error
             </h2>
-            <p className="mbe-4 text-gray-600">
+            <p className="mbe-4 text-neutral-600">
               A component error occurred during development. Check the console
               for details.
             </p>
@@ -79,11 +79,11 @@ export class ErrorBoundary extends Component<Props, State> {
             </button>
             {this.state.error && (
               <details className="group mbs-4 text-start" open>
-                <summary className="mbe-2 cursor-pointer text-sm font-semibold text-gray-700">
+                <summary className="mbe-2 cursor-pointer text-sm font-semibold text-neutral-700">
                   Error Details
                 </summary>
                 <div className="details-content group-open:animate-in group-open:fade-in group-open:duration-300">
-                  <pre className="mbs-2 overflow-auto rounded bg-gray-100 p-3 text-xs max-block-96">
+                  <pre className="mbs-2 overflow-auto rounded bg-neutral-100 p-3 text-xs max-block-96">
                     {this.state.error.message}
                     {"\n\n"}
                     {this.state.error.stack}

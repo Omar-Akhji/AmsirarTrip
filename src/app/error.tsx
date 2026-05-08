@@ -14,8 +14,8 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-100 min-block-screen">
-      <h2 className="mbe-4 text-2xl font-bold text-gray-800">
+    <div className="flex flex-col items-center justify-center bg-neutral-100 min-block-screen">
+      <h2 className="mbe-4 text-2xl font-semibold text-neutral-800">
         Something went wrong!
       </h2>
       <button

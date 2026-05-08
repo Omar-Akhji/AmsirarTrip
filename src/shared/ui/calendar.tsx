@@ -13,6 +13,47 @@ interface EnhancedCalendarProps {
   onClose?: () => void;
 }
 
+interface CalendarState {
+  selectedDate: Date | undefined;
+  currentMonth: Date;
+}
+
+type CalendarAction =
+  | { type: "SELECT_DATE"; date: Date | undefined }
+  | { type: "SET_MONTH"; month: Date }
+  | { type: "MOVE_MONTH"; direction: "prev" | "next" }
+  | { type: "GO_TO_TODAY"; today: Date };
+
+function createCalendarState(initialDate: Date | undefined): CalendarState {
+  return {
+    selectedDate: initialDate,
+    currentMonth: initialDate ?? new Date(),
+  };
+}
+
+function calendarReducer(
+  state: CalendarState,
+  action: CalendarAction,
+): CalendarState {
+  switch (action.type) {
+    case "SELECT_DATE":
+      return { ...state, selectedDate: action.date };
+    case "SET_MONTH":
+      return { ...state, currentMonth: action.month };
+    case "MOVE_MONTH": {
+      const currentMonth = new Date(state.currentMonth);
+      currentMonth.setMonth(
+        currentMonth.getMonth() + (action.direction === "prev" ? -1 : 1),
+      );
+      return { ...state, currentMonth };
+    }
+    case "GO_TO_TODAY":
+      return { selectedDate: action.today, currentMonth: action.today };
+    default:
+      return state;
+  }
+}
+
 export function EnhancedCalendar({
   initialDate,
   onSelect,
@@ -20,35 +61,25 @@ export function EnhancedCalendar({
   className,
   onClose,
 }: EnhancedCalendarProps) {
-  // Draft state for current selection in the calendar UI
-  const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(
+  const [calendarState, dispatch] = React.useReducer(
+    calendarReducer,
     initialDate,
+    createCalendarState,
   );
-
-  // Navigation state for the visible month
-  const [currentMonth, setCurrentMonth] = React.useState<Date>(
-    initialDate || new Date(),
-  );
+  const { currentMonth, selectedDate } = calendarState;
 
   const handleDayClick = (date: Date | undefined) => {
-    setSelectedDate(date);
+    dispatch({ type: "SELECT_DATE", date });
     // Note: We don't call onSelect here to treat it as a draft
   };
 
   const navigateMonth = (direction: "prev" | "next") => {
-    const newMonth = new Date(currentMonth);
-    if (direction === "prev") {
-      newMonth.setMonth(newMonth.getMonth() - 1);
-    } else {
-      newMonth.setMonth(newMonth.getMonth() + 1);
-    }
-    setCurrentMonth(newMonth);
+    dispatch({ type: "MOVE_MONTH", direction });
   };
 
   const goToToday = () => {
     const today = new Date();
-    setCurrentMonth(today);
-    setSelectedDate(today);
+    dispatch({ type: "GO_TO_TODAY", today });
     // For "Today", we commit immediately as it's a specific action
     onSelect?.(today);
     onClose?.();
@@ -78,7 +109,7 @@ export function EnhancedCalendar({
           <div className="flex items-center gap-2">
             <CalendarIcon className="text-orange-600 block-4 inline-4" />
             <span
-              className="text-sm font-semibold text-gray-900"
+              className="text-sm font-semibold text-neutral-900"
               suppressHydrationWarning
             >
               {currentMonth.toLocaleDateString("en-US", {
@@ -104,7 +135,7 @@ export function EnhancedCalendar({
           selected={selectedDate}
           onSelect={handleDayClick}
           month={currentMonth}
-          onMonthChange={setCurrentMonth}
+          onMonthChange={(month) => dispatch({ type: "SET_MONTH", month })}
           disabled={disabled}
           showOutsideDays
           classNames={{
@@ -142,7 +173,7 @@ export function EnhancedCalendar({
               </div>
               <div className="flex-1 min-inline-0">
                 <p
-                  className="text-xs font-medium text-gray-500"
+                  className="text-xs font-medium text-neutral-500"
                   suppressHydrationWarning
                 >
                   {selectedDate.getTime() === initialDate?.getTime()
@@ -150,7 +181,7 @@ export function EnhancedCalendar({
                     : "New Selection"}
                 </p>
                 <p
-                  className="truncate text-sm font-semibold text-gray-900"
+                  className="truncate text-sm font-semibold text-neutral-900"
                   suppressHydrationWarning
                 >
                   {selectedDate.toLocaleDateString("en-US", {
@@ -179,7 +210,7 @@ export function EnhancedCalendar({
             <button
               onClick={onClose}
               type="button"
-              className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-hidden pointer-fine:hover:border-gray-400 pointer-fine:hover:bg-gray-50"
+              className="rounded-lg border border-neutral-300 bg-white px-4 py-2 text-sm font-medium text-neutral-700 transition-colors duration-200 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-hidden pointer-fine:hover:border-neutral-400 pointer-fine:hover:bg-neutral-50"
             >
               Cancel
             </button>

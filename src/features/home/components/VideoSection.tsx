@@ -44,7 +44,7 @@ const VideoSection = () => {
     >
       <div className="mx-auto px-4 max-inline-330">
         <AnimateOnScroll animation="fade-up">
-          <div className="relative overflow-hidden rounded-[34px] bg-slate-900 p-3 shadow-2xl block-[55vh] inline-full sm:block-[65vh] lg:block-[75vh] xl:block-[85vh]">
+          <div className="relative overflow-hidden rounded-[34px] bg-zinc-900 p-3 shadow-2xl block-[55vh] inline-full sm:block-[65vh] lg:block-[75vh] xl:block-[85vh]">
             {videoError ? (
               <div className="flex items-center justify-center rounded-[26px] bg-[url(/images/Header/header-1.webp)] bg-cover bg-center px-8 py-12 text-center block-full">
                 <div className="rounded-3xl bg-black/60 p-8">
@@ -62,7 +62,7 @@ const VideoSection = () => {
             ) : (
               <div className="relative block-full inline-full">
                 {isLoading && !videoLoaded && (
-                  <div className="absolute inset-0 z-10 flex items-center justify-center rounded-[26px] bg-slate-950/60">
+                  <div className="absolute inset-0 z-10 flex items-center justify-center rounded-[26px] bg-zinc-950/60">
                     <div className="space-y-3 text-center">
                       <p className="text-sm tracking-[0.4em] text-orange-200 uppercase">
                         {t("video.loading")}
@@ -104,7 +104,7 @@ const VideoSection = () => {
                     className="absolute inset-0 z-10 flex items-center justify-center rounded-[26px] bg-black/40 text-white transition pointer-fine:hover:bg-black/50"
                     onClick={handlePlay}
                   >
-                    <span className="inline-flex size-20 items-center justify-center rounded-full border border-white/60 bg-white/90 text-slate-900 shadow-lg">
+                    <span className="inline-flex size-20 items-center justify-center rounded-full border border-white/60 bg-white/90 text-zinc-900 shadow-lg">
                       <Image
                         src="/icons/play-video_icon.svg"
                         alt="Play Video"

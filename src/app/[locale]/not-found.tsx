@@ -19,7 +19,7 @@ export default function NotFound() {
   const t = useTranslations("notFound");
 
   return (
-    <main className="flex flex-col items-center justify-center bg-slate-950 px-4 text-center min-block-screen">
+    <main className="flex flex-col items-center justify-center bg-zinc-950 px-4 text-center min-block-screen">
       {/* Gradient background */}
       <div
         className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(249,115,22,0.25),transparent_65%)]"
@@ -28,7 +28,7 @@ export default function NotFound() {
 
       <div className="relative z-10 space-y-6 max-inline-lg">
         {/* 404 Number */}
-        <h1 className="text-shadow-xl text-8xl font-bold text-orange-500 text-shadow-orange-600/40 sm:text-9xl">
+        <h1 className="text-shadow-xl text-8xl font-semibold text-orange-500 text-shadow-orange-600/40 sm:text-9xl">
           404
         </h1>
 
@@ -38,7 +38,7 @@ export default function NotFound() {
         </h2>
 
         {/* Description */}
-        <p className="text-lg text-slate-300">{t("description")}</p>
+        <p className="text-lg text-zinc-300">{t("description")}</p>
 
         {/* Back to Home Button */}
         <Link

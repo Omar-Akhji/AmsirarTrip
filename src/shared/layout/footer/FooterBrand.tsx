@@ -22,7 +22,7 @@ export function FooterBrand() {
         </span>
       </Link>
       <span className="bg-orange mbe-6 block rounded block-1 inline-12" />
-      <p className="font-fancy text-xl leading-relaxed text-slate-400 lg:max-inline-sm">
+      <p className="font-fancy text-xl leading-relaxed text-zinc-400 lg:max-inline-sm">
         {t("footer.description")}
       </p>
     </div>

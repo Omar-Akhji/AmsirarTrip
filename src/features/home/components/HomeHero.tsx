@@ -135,7 +135,7 @@ export default function HomeHero() {
   return (
     <header
       ref={headerRef}
-      className="page-hero home-header relative isolate overflow-hidden bg-slate-950 text-white shadow-xl inline-full min-block-[40vh] sm:min-block-[45vh] lg:min-block-[50vh]"
+      className="page-hero home-header relative isolate overflow-hidden bg-zinc-950 text-white shadow-xl inline-full min-block-[40vh] sm:min-block-[45vh] lg:min-block-[50vh]"
       aria-labelledby="hero-heading"
     >
       <div className="absolute inset-0 z-0">
@@ -162,7 +162,7 @@ export default function HomeHero() {
         <div className="flex-1 space-y-6 pbs-0 text-center lg:pbs-8">
           <div className="flex items-center justify-center gap-4">
             <span className="bg-orange-400/60 block-px inline-8 sm:inline-12" />
-            <h1 className="text-xs font-bold tracking-[0.2em] text-orange-300 uppercase sm:tracking-[0.3em]">
+            <h1 className="text-xs font-semibold tracking-[0.2em] text-orange-300 uppercase sm:tracking-[0.3em]">
               {t("home.title")}
             </h1>
             <span className="bg-orange-400/60 block-px inline-8 sm:inline-12" />
@@ -185,7 +185,7 @@ export default function HomeHero() {
               </>
             )}
           </h2>
-          <p className="font-fancy text-lg text-slate-200 lg:text-xl">
+          <p className="font-fancy text-lg text-zinc-200 lg:text-xl">
             {t("home.heroSubtitle")}
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 pbs-2">

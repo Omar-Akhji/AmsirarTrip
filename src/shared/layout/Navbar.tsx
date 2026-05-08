@@ -107,7 +107,7 @@ function Navbar() {
     "navbar fixed start-1/2 top-2 z-50 inline-[min(1100px,calc(100%-2rem))] rounded-2xl border border-white/10 px-4 py-2 shadow-[0_10px_30px_rgba(3,7,18,0.12)] backdrop-blur-xl has-data-[state=open]:backdrop-blur-[8px] transition-colors duration-200",
     "translate-x-[-50%] will-change-auto",
     scrolled
-      ? "bg-white text-slate-900 shadow-[0_12px_30px_rgba(3,7,18,0.08)]"
+      ? "bg-white text-zinc-900 shadow-[0_12px_30px_rgba(3,7,18,0.08)]"
       : "bg-white/10 text-white",
   );
 
@@ -133,7 +133,7 @@ function Navbar() {
     }
 
     // Inactive link styles
-    const textColor = scrolled ? "text-slate-900" : "text-white";
+    const textColor = scrolled ? "text-zinc-900" : "text-white";
     const bgColor = "bg-transparent";
     const hover =
       "pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:bg-white/10 pointer-fine:hover:shadow-[0_8px_26px_rgba(3,7,18,0.12)]";
@@ -145,8 +145,8 @@ function Navbar() {
     const baseClasses =
       "fixed start-1/2 top-[calc(100%+0.75rem)] z-40 inline-full -translate-x-1/2 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-all duration-300";
     const colorClasses = scrolled
-      ? "border border-white/10 bg-white text-slate-900"
-      : "border border-white/20 bg-slate-900 text-white";
+      ? "border border-white/10 bg-white text-zinc-900"
+      : "border border-white/20 bg-zinc-900 text-white";
     const visibilityClasses = asideOpen
       ? "pointer-events-auto opacity-100 translate-y-0"
       : "pointer-events-none opacity-0 -translate-y-4";

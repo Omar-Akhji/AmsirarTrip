@@ -10,14 +10,14 @@ const TestimonialsSection = () => {
   const testimonials = [{ key: "kevin" }, { key: "ben" }, { key: "sara" }];
 
   return (
-    <section id="testimonials" className="bg-slate-50 py-12">
+    <section id="testimonials" className="bg-zinc-50 py-12">
       <div className="mx-auto px-4 max-inline-330">
         <AnimateOnScroll animation="fade-up">
           <div className="mx-auto mbe-10 space-y-4 text-center max-inline-4xl">
             <p className="inline-flex items-center justify-center rounded-full border-2 border-orange-400 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
               {t("testimonials.smTitle")}
             </p>
-            <h2 className="mbs-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase text-shadow-md sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]">
+            <h2 className="mbs-6 text-2xl leading-tight font-semibold tracking-widest text-neutral-900 uppercase text-shadow-md sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]">
               {t("testimonials.lgTitle")}
             </h2>
             <div
@@ -37,7 +37,7 @@ const TestimonialsSection = () => {
                   delay={idx * 150}
                   className={`flex block-full inline-full ${idx === 2 ? "md:col-span-2 lg:col-span-1" : ""}`}
                 >
-                  <article className="relative flex inline-full transform flex-col justify-between overflow-hidden rounded-2xl bg-slate-900 p-6 text-start text-orange-200 shadow-lg ring-1 ring-white/10 transition-transform block-full inline-full pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-xl">
+                  <article className="relative flex inline-full transform flex-col justify-between overflow-hidden rounded-2xl bg-zinc-900 p-6 text-start text-orange-200 shadow-lg ring-1 ring-white/10 transition-transform block-full inline-full pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-xl">
                     {/* Decorative Quote Icon */}
                     <div
                       className="absolute inset-e-4 top-2 -rotate-12 opacity-10 select-none"
@@ -66,7 +66,7 @@ const TestimonialsSection = () => {
                         <cite className="text-sm font-semibold text-white not-italic">
                           {t(`testimonials.items.${tst.key}.name`)}
                         </cite>
-                        <p className="mbs-0.5 text-xs text-slate-300">
+                        <p className="mbs-0.5 text-xs text-zinc-300">
                           {t(`testimonials.items.${tst.key}.country`)}
                         </p>
                       </div>
@@ -77,7 +77,7 @@ const TestimonialsSection = () => {
                       aria-hidden
                     />
                     <div className="block-full">
-                      <blockquote className="mbe-4 text-sm leading-snug text-slate-300 italic sm:text-sm">
+                      <blockquote className="mbe-4 text-sm leading-snug text-zinc-300 italic sm:text-sm">
                         {t(`testimonials.items.${tst.key}.quote`)}
                       </blockquote>
                     </div>

@@ -63,7 +63,7 @@ export default async function ToursView() {
         </HeaderSecondaryCTA>
       </PageHeader>
 
-      <main className="text-slate-900">
+      <main className="text-zinc-900">
         <section className="py-12" aria-labelledby="tour-highlights">
           <div className="mx-auto px-4 max-inline-7xl">
             <div className="mx-auto mbe-10 text-center max-inline-3xl">
@@ -72,7 +72,7 @@ export default async function ToursView() {
               </p>
               <h2
                 id="tour-highlights"
-                className="mbs-4 text-2xl leading-tight font-bold text-shadow-md sm:text-3xl md:text-4xl"
+                className="mbs-4 text-2xl leading-tight font-semibold text-shadow-md sm:text-3xl md:text-4xl"
               >
                 {t("tours.detailsTitle")}
               </h2>
@@ -93,14 +93,14 @@ export default async function ToursView() {
 
         <section
           id="tours-grid"
-          className="border-t border-slate-200 bg-linear-to-b from-slate-50 to-white py-16"
+          className="border-t border-zinc-200 bg-linear-to-b from-zinc-50 to-white py-16"
           aria-labelledby="tours-grid-heading"
         >
           <div className="mx-auto px-4 max-inline-7xl">
             <div className="mbe-12 text-center">
               <h2
                 id="tours-grid-heading"
-                className="mbs-4 text-2xl leading-tight font-bold text-shadow-md sm:text-3xl md:text-4xl"
+                className="mbs-4 text-2xl leading-tight font-semibold text-shadow-md sm:text-3xl md:text-4xl"
               >
                 {t("tours.tour.lgTitle")}
               </h2>

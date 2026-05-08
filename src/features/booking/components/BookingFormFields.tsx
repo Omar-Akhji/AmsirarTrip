@@ -50,7 +50,7 @@ export function BookingFormFields({
       {tourTitle && tourId && (
         <div className="mbe-6">
           <input
-            className="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700 inline-full"
+            className="rounded-2xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-700 inline-full"
             type="text"
             value={selectedTour}
             readOnly
@@ -62,7 +62,7 @@ export function BookingFormFields({
       {excursionTitle && excursionId && (
         <div className="mbe-6">
           <input
-            className="rounded-2xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700 inline-full"
+            className="rounded-2xl border border-neutral-200 bg-neutral-50 px-4 py-3 text-sm text-neutral-700 inline-full"
             type="text"
             value={excursionTitle}
             readOnly

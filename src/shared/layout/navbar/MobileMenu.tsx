@@ -64,7 +64,7 @@ export function MobileMenu({
         href="/"
         className={cn(
           "text-[1.4rem] font-semibold tracking-tight",
-          scrolled ? "text-slate-900" : "text-white",
+          scrolled ? "text-zinc-900" : "text-white",
           viewport === "tablet" || viewport === "mobile"
             ? "absolute start-1/2 z-10 -translate-x-1/2"
             : "",
@@ -103,7 +103,7 @@ export function MobileMenu({
         className={cn(
           "focus-visible:outline-orange ms-2 flex size-10 items-center justify-center rounded-md text-lg transition-all duration-150 focus-visible:outline focus-visible:outline-offset-2",
           scrolled
-            ? "bg-white text-slate-900"
+            ? "bg-white text-zinc-900"
             : "bg-[rgba(0,0,0,0.35)] text-white shadow-[0_8px_20px_rgba(3,7,18,0.12)]",
         )}
         aria-expanded={asideOpen}
@@ -113,11 +113,11 @@ export function MobileMenu({
       >
         {asideOpen ? (
           <X
-            className={cn("size-5", scrolled ? "text-slate-900" : "text-white")}
+            className={cn("size-5", scrolled ? "text-zinc-900" : "text-white")}
           />
         ) : (
           <Menu
-            className={cn("size-5", scrolled ? "text-slate-900" : "text-white")}
+            className={cn("size-5", scrolled ? "text-zinc-900" : "text-white")}
           />
         )}
       </button>
@@ -136,7 +136,7 @@ export function MobileMenu({
             className={cn(
               "flex items-center justify-center gap-4 px-4 py-4",
               scrolled
-                ? "border-b border-slate-200/30"
+                ? "border-b border-zinc-200/30"
                 : "border-b border-white/20",
             )}
           >

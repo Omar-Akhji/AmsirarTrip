@@ -71,9 +71,9 @@ function ExcursionLayout({
           aria-labelledby="excursion-title"
         >
           <div className="mx-auto grid gap-10 px-4 max-inline-7xl lg:grid-cols-[4fr_2fr]">
-            <article className="rounded-[20px] bg-white p-4 pbe-8 shadow-xs ring-1 ring-slate-100 sm:p-6 sm:pbe-12">
+            <article className="rounded-[20px] bg-white p-4 pbe-8 shadow-xs ring-1 ring-zinc-100 sm:p-6 sm:pbe-12">
               <AnimateOnScroll animation="zoom-in">
-                <figure className="relative mbe-8 aspect-4/3 overflow-hidden rounded-[20px] border border-slate-50 shadow-md inline-full">
+                <figure className="relative mbe-8 aspect-4/3 overflow-hidden rounded-[20px] border border-zinc-50 shadow-md inline-full">
                   <Image
                     className="object-cover"
                     src={imageSrc}
@@ -94,7 +94,7 @@ function ExcursionLayout({
                     ></span>
                     <h2
                       id="excursion-title"
-                      className="text-orange mbs-2 text-2xl leading-tight font-extrabold sm:text-3xl md:text-4xl"
+                      className="text-orange mbs-2 text-2xl leading-tight font-semibold sm:text-3xl md:text-4xl"
                     >
                       {title}
                     </h2>
@@ -129,9 +129,9 @@ function ExcursionLayout({
                       </div>
                     </div>
 
-                    <div className="inline-flex items-center gap-3 rounded-full border border-indigo-100 bg-indigo-50 px-5 py-3">
+                    <div className="inline-flex items-center gap-3 rounded-full border border-amber-100 bg-amber-50 px-5 py-3">
                       <svg
-                        className="size-5 text-indigo-500"
+                        className="size-5 text-amber-500"
                         viewBox="0 0 24 24"
                         fill="none"
                         aria-hidden
@@ -144,7 +144,7 @@ function ExcursionLayout({
                         />
                       </svg>
                       <div className="text-start">
-                        <div className="text-sm font-semibold text-indigo-600">
+                        <div className="text-sm font-semibold text-amber-600">
                           {durationLabel}
                         </div>
                         <div className="text-xs font-semibold text-amber-300">

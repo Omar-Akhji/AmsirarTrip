@@ -31,7 +31,7 @@ export function DetailsSidebar({
   return (
     <aside className="space-y-6 self-start lg:sticky lg:top-24">
       <AnimateOnScroll animation="fade-left" delay={150}>
-        <div className="overflow-hidden rounded-3xl bg-slate-900 text-white shadow-xl">
+        <div className="overflow-hidden rounded-3xl bg-zinc-900 text-white shadow-xl">
           <div className="p-8">
             <p className="text-center text-xs tracking-[0.45em] text-orange-300 uppercase">
               {t(`${translationPrefix}.sidebar.title`)}
@@ -43,19 +43,19 @@ export function DetailsSidebar({
               {t(`${translationPrefix}.sidebar.subBrand`)}
             </span>
             <div
-              className="my-4 border-t border-slate-700"
+              className="my-4 border-t border-zinc-700"
               aria-hidden="true"
             />
-            <p className="mbs-2 text-sm text-slate-200">
+            <p className="mbs-2 text-sm text-zinc-200">
               <Trans
                 i18nKey={`${translationPrefix}.sidebar.intro`}
                 components={{ strong: <strong className="text-white" /> }}
               />
             </p>
-            <p className="mbs-4 text-sm text-slate-200">
+            <p className="mbs-4 text-sm text-zinc-200">
               {t(`${translationPrefix}.sidebar.details`)}
             </p>
-            <ul className="mbs-4 grid gap-3 text-sm text-slate-100">
+            <ul className="mbs-4 grid gap-3 text-sm text-zinc-100">
               {sidebarItems.map((item) => (
                 <li
                   key={item}
@@ -68,7 +68,7 @@ export function DetailsSidebar({
                 </li>
               ))}
             </ul>
-            <p className="mbs-4 text-sm text-slate-200">
+            <p className="mbs-4 text-sm text-zinc-200">
               {t(`${translationPrefix}.sidebar.conclusion`)}
             </p>
           </div>
@@ -76,14 +76,14 @@ export function DetailsSidebar({
       </AnimateOnScroll>
 
       <AnimateOnScroll animation="fade-left" delay={300}>
-        <div className="rounded-3xl border border-dashed border-slate-200 bg-white p-6 shadow-xs">
-          <h4 className="text-lg font-semibold text-slate-900">
+        <div className="rounded-3xl border border-dashed border-zinc-200 bg-white p-6 shadow-xs">
+          <h4 className="text-lg font-semibold text-zinc-900">
             {t(`${translationPrefix}.sidebar.ctaTitle`)}
           </h4>
-          <p className="mbs-2 text-sm text-slate-500">
+          <p className="mbs-2 text-sm text-zinc-500">
             {t(`${translationPrefix}.sidebar.ctaDescription`)}
           </p>
-          <ul className="m-0 mbs-4 grid list-none gap-3 p-0 text-sm text-slate-600">
+          <ul className="m-0 mbs-4 grid list-none gap-3 p-0 text-sm text-zinc-600">
             <li className="grid grid-cols-[40px_1fr] items-center gap-3">
               <span className="justify-self-end rounded-full bg-orange-500 block-2 inline-2"></span>
               <p className="">{t(`${translationPrefix}.sidebar.ctaPoint01`)}</p>

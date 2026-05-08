@@ -30,7 +30,7 @@ export function LegalPageLayout({ config, headingId }: LegalPageLayoutProps) {
 
       <main>
         <section
-          className="relative isolate overflow-hidden bg-gray-50 py-16 text-gray-900 sm:py-24"
+          className="relative isolate overflow-hidden bg-neutral-50 py-16 text-neutral-900 sm:py-24"
           aria-labelledby={headingId}
         >
           <div
@@ -39,7 +39,7 @@ export function LegalPageLayout({ config, headingId }: LegalPageLayoutProps) {
           />
           <div className="relative z-10 mx-auto px-4 max-inline-7xl">
             {/* Last Updated Notice */}
-            <div className="mbe-8 text-center text-sm text-gray-500">
+            <div className="mbe-8 text-center text-sm text-neutral-500">
               {t(config.lastUpdatedKey)}
             </div>
 

@@ -44,7 +44,7 @@ export function PageHeader({
   };
 
   return (
-    <header className="page-hero relative isolate overflow-hidden bg-slate-950 text-white shadow-xl inline-full min-block-[40vh] sm:min-block-[45vh] lg:min-block-[50vh]">
+    <header className="page-hero relative isolate overflow-hidden bg-zinc-950 text-white shadow-xl inline-full min-block-[40vh] sm:min-block-[45vh] lg:min-block-[50vh]">
       {/* Optimized Background Image */}
       {bgImage && (
         <Image
@@ -64,7 +64,7 @@ export function PageHeader({
       />
       {/* Dark overlay 1 */}
       <div
-        className="absolute inset-0 z-10 bg-linear-to-br from-slate-900/80 via-slate-900/60 to-slate-900 opacity-80"
+        className="absolute inset-0 z-10 bg-linear-to-br from-zinc-900/80 via-zinc-900/60 to-zinc-900 opacity-80"
         aria-hidden="true"
       />
       {/* Dark overlay 2 */}
@@ -134,7 +134,7 @@ export function PageHeader({
             {title}
           </h1>
           {subtitle && (
-            <p className="font-fancy text-lg text-slate-200 lg:text-xl">
+            <p className="font-fancy text-lg text-zinc-200 lg:text-xl">
               {subtitle}
             </p>
           )}

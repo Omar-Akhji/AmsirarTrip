@@ -99,10 +99,10 @@ export default function ContactView() {
                   <div className="mbe-4 inline-flex items-center justify-center rounded-full bg-orange-50 text-orange-600 transition block-14 inline-14 group-hover:bg-orange-600 group-hover:text-white">
                     {method.icon}
                   </div>
-                  <h3 className="text-xl font-semibold text-slate-900">
+                  <h3 className="text-xl font-semibold text-zinc-900">
                     {method.title}
                   </h3>
-                  <p className="mbs-3 text-base leading-relaxed text-slate-700">
+                  <p className="mbs-3 text-base leading-relaxed text-zinc-700">
                     {method.description}
                   </p>
                 </article>
@@ -114,7 +114,7 @@ export default function ContactView() {
 
       <section
         id="contact-form-section"
-        className="bg-gray-50"
+        className="bg-neutral-50"
         aria-labelledby="contact-form-heading"
       >
         <div className="mx-auto px-4 pbs-16 max-inline-7xl">
@@ -124,7 +124,7 @@ export default function ContactView() {
             </p>
             <h2
               id="contact-form-heading"
-              className="mbs-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
+              className="mbs-6 text-2xl leading-tight font-semibold tracking-widest text-neutral-900 uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
             >
               {t("contact.lgTitle", "contact us")}
             </h2>
@@ -140,7 +140,7 @@ export default function ContactView() {
 
       <section
         id="location"
-        className="relative bg-slate-50 py-16"
+        className="relative bg-zinc-50 py-16"
         aria-labelledby="location-heading"
       >
         <div className="mx-auto px-4 max-inline-7xl">
@@ -150,7 +150,7 @@ export default function ContactView() {
             </p>
             <h2
               id="location-heading"
-              className="mbs-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
+              className="mbs-6 text-2xl leading-tight font-semibold tracking-widest text-neutral-900 uppercase sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
             >
               {t("contact.location.lgTitle")}
             </h2>
@@ -159,7 +159,7 @@ export default function ContactView() {
               aria-hidden="true"
             />
           </div>
-          <div className="overflow-hidden rounded-3xl shadow-2xl ring-1 ring-slate-200">
+          <div className="overflow-hidden rounded-3xl shadow-2xl ring-1 ring-zinc-200">
             <AnimateOnScroll animation="zoom-in">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3399.999!2d-8.0257651!3d31.6259758!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xdafef007a3f58d3%3A0xa6485d9ed7022b4c!2sAmsirar+Travel!5e0!3m2!1sen!2sma!4v1699999999999!5m2!1sen!2sma"

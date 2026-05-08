@@ -175,7 +175,7 @@ function BookingForm({
   return (
     <section
       id="booking"
-      className={`bg-gray-50 py-20 md:py-10 ${fullWidth ? "booking-form-fullwidth" : ""}`}
+      className={`bg-neutral-50 py-20 md:py-10 ${fullWidth ? "booking-form-fullwidth" : ""}`}
     >
       <div
         className={`booking-form-inner mx-auto inline-full max-inline-6xl ${fullWidth ? "px-4 sm:px-6 lg:px-10" : "px-4 sm:px-6 lg:px-8"}`}
@@ -184,7 +184,7 @@ function BookingForm({
           <AnimateOnScroll animation="fade-up" className="lg:col-span-3">
             <div className="block-full overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-orange-100">
               <div className="bg-linear-to-r from-orange-500 to-orange-600 px-6 py-8 text-white">
-                <h2 className="text-xl font-bold sm:text-2xl md:text-3xl">
+                <h2 className="text-xl font-semibold sm:text-2xl md:text-3xl">
                   {t("booking.makeReservation", "Make your reservation")}
                 </h2>
                 <p className="mbs-3 text-sm text-orange-50/90 md:text-base">
@@ -246,7 +246,7 @@ function BookingForm({
                           "origin-center scale-85 rounded-2xl border border-dashed p-3 sm:scale-100 lg:origin-left",
                           state?.["errors"]?.["recaptchaToken"]
                             ? "border-red-300"
-                            : "border-gray-200",
+                            : "border-neutral-200",
                         )}
                       >
                         {hasRecaptchaV2 ? (

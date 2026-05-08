@@ -9,10 +9,10 @@ export function ContactInfoSidebar() {
         <p className="text-xs font-semibold tracking-[0.45em] text-orange-200 uppercase">
           {t("contact.form.infoBadge", "Need details?")}
         </p>
-        <h3 className="mbs-3 text-2xl font-bold sm:text-3xl">
+        <h3 className="mbs-3 text-2xl font-semibold sm:text-3xl">
           {t("contact.form.infoTitle", "Plan handcrafted experiences")}
         </h3>
-        <p className="mbs-4 text-sm text-slate-200">
+        <p className="mbs-4 text-sm text-zinc-200">
           {t(
             "contact.form.infoCopy",
             "Our Marrakech team answers every message personally and can help with custom itineraries, desert camps, or last-minute transfers.",
@@ -78,7 +78,7 @@ export function ContactInfoSidebar() {
               {item.num}
             </span>
             <div className="self-start">
-              <p className="text-xs tracking-wide text-slate-300 uppercase">
+              <p className="text-xs tracking-wide text-zinc-300 uppercase">
                 {item.label}
               </p>
               {item.content}
@@ -87,7 +87,7 @@ export function ContactInfoSidebar() {
         ))}
       </ul>
 
-      <p className="mbs-8 text-xs text-slate-400">
+      <p className="mbs-8 text-xs text-zinc-400">
         {t(
           "contact.form.infoFooter",
           "Available every day from 09:00 to 21:00 GMT+1",

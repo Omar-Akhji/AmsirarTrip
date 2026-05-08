@@ -45,7 +45,7 @@ export default function HomeStats() {
             </p>
             <h2
               id="home-highlights"
-              className="mbs-4 text-2xl leading-tight font-bold text-shadow-md sm:text-3xl md:text-4xl"
+              className="mbs-4 text-2xl leading-tight font-semibold text-shadow-md sm:text-3xl md:text-4xl"
             >
               {t("about.experienceTitle")}
             </h2>
@@ -71,7 +71,7 @@ export default function HomeStats() {
                 <p className="text-4xl font-bold text-orange-600">
                   {stat.value}
                 </p>
-                <h3 className="mbs-3 text-lg font-semibold text-slate-900">
+                <h3 className="mbs-3 text-lg font-semibold text-zinc-900">
                   {stat.label}
                 </h3>
                 <p className="mbs-2 text-sm text-taupe-600">

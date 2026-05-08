@@ -16,7 +16,7 @@ export default function HomeView() {
       <HomeHero />
 
       {/* Main content area */}
-      <main className="text-slate-900">
+      <main className="text-zinc-900">
         {/* Stats Section - Below Hero (like tours/excursions pages) */}
         <HomeStats />
 

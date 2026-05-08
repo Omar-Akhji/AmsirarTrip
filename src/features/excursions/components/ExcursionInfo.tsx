@@ -17,7 +17,7 @@ export default function ExcursionInfo({
     <>
       <AnimateOnScroll animation="fade-up" delay={300}>
         <div>
-          <h2 className="text-xl font-semibold text-slate-900 sm:text-2xl md:text-3xl">
+          <h2 className="text-xl font-semibold text-zinc-900 sm:text-2xl md:text-3xl">
             {t("common.highlights")}
           </h2>
           <ul className="mbs-4 grid gap-3">
@@ -40,10 +40,10 @@ export default function ExcursionInfo({
 
       <AnimateOnScroll animation="fade-up" delay={450}>
         <div className="space-y-4">
-          <h2 className="text-xl font-semibold text-slate-900 sm:text-2xl md:text-3xl">
+          <h2 className="text-xl font-semibold text-zinc-900 sm:text-2xl md:text-3xl">
             {t("common.overview")}
           </h2>
-          <p className="text-sm leading-relaxed whitespace-pre-line text-slate-600 sm:text-base">
+          <p className="text-sm leading-relaxed whitespace-pre-line text-zinc-600 sm:text-base">
             {overview}
           </p>
         </div>

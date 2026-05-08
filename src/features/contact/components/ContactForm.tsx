@@ -1,6 +1,6 @@
 "use client";
 
-import { useActionState, useRef, useState, useEffect } from "react";
+import { useActionState, useRef, useEffect, useReducer } from "react";
 import { useFormStatus } from "react-dom";
 import Form from "next/form";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -34,12 +34,47 @@ function SubmitButton() {
   );
 }
 
+interface ContactFormUIState {
+  captchaToken: string;
+  formKey: number;
+}
+
+type ContactFormUIAction =
+  | { type: "SET_CAPTCHA"; token: string }
+  | { type: "RESET_CAPTCHA" }
+  | { type: "RESET_AFTER_SUCCESS" };
+
+const initialContactFormUIState: ContactFormUIState = {
+  captchaToken: "",
+  formKey: 0,
+};
+
+function contactFormUIReducer(
+  state: ContactFormUIState,
+  action: ContactFormUIAction,
+): ContactFormUIState {
+  switch (action.type) {
+    case "SET_CAPTCHA":
+      return { ...state, captchaToken: action.token };
+    case "RESET_CAPTCHA":
+      return { ...state, captchaToken: "" };
+    case "RESET_AFTER_SUCCESS":
+      return {
+        captchaToken: "",
+        formKey: state.formKey + 1,
+      };
+    default:
+      return state;
+  }
+}
+
 const ContactForm = () => {
   const { t } = useTranslation();
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const [captchaToken, setCaptchaToken] = useState("");
-  // Key state to force form reset on success (video best practice)
-  const [formKey, setFormKey] = useState(0);
+  const [uiState, dispatch] = useReducer(
+    contactFormUIReducer,
+    initialContactFormUIState,
+  );
 
   // React 19's useActionState for form state management
   const [state, formAction] = useActionState<FormState | null, FormData>(
@@ -53,14 +88,11 @@ const ContactForm = () => {
 
     if (state["success"]) {
       // Defer state updates to avoid synchronous cascading renders
-      queueMicrotask(() => {
-        setFormKey((prev) => prev + 1);
-        setCaptchaToken("");
-      });
+      queueMicrotask(() => dispatch({ type: "RESET_AFTER_SUCCESS" }));
     } else if (state["errors"]) {
       // Reset reCAPTCHA and scroll to first error on validation failure
       recaptchaRef.current?.reset();
-      queueMicrotask(() => setCaptchaToken(""));
+      queueMicrotask(() => dispatch({ type: "RESET_CAPTCHA" }));
       const firstError = document.querySelector('[aria-invalid="true"]');
       firstError?.scrollIntoView({ behavior: "smooth", block: "center" });
     }
@@ -72,7 +104,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact-tailwind" className="bg-gray-50 py-12 md:py-16">
+    <section id="contact-tailwind" className="bg-neutral-50 py-12 md:py-16">
       <div className="mx-auto px-4 max-inline-6xl sm:px-6 lg:px-8">
         <div className="grid gap-8 lg:grid-cols-5">
           <AnimateOnScroll animation="fade-up" className="lg:col-span-3">
@@ -81,7 +113,7 @@ const ContactForm = () => {
                 <p className="text-xs font-semibold tracking-[0.35em] text-orange-100 uppercase">
                   {t("contact.form.badge", "Plan with locals")}
                 </p>
-                <h2 className="mbs-2 text-2xl font-bold md:text-3xl">
+                <h2 className="mbs-2 text-2xl font-semibold md:text-3xl">
                   {t(
                     "contact.form.title",
                     "Design Your Custom Morocco Tour & Private Itinerary",
@@ -96,7 +128,7 @@ const ContactForm = () => {
               </div>
 
               <Form
-                key={formKey}
+                key={uiState.formKey}
                 action={formAction}
                 noValidate
                 className="space-y-5 p-6 md:p-8"
@@ -177,7 +209,7 @@ const ContactForm = () => {
                           "origin-center scale-85 rounded-2xl border border-dashed p-3 sm:scale-100 lg:origin-left",
                           state?.["errors"]?.["recaptchaToken"]
                             ? "border-red-300"
-                            : "border-gray-200",
+                            : "border-neutral-200",
                         )}
                       >
                         {hasRecaptchaV2 ? (
@@ -185,12 +217,17 @@ const ContactForm = () => {
                             <ReCAPTCHA
                               ref={recaptchaRef}
                               sitekey={RECAPTCHA_V2_SITE_KEY}
-                              onChange={(token) => setCaptchaToken(token || "")}
+                              onChange={(token) =>
+                                dispatch({
+                                  type: "SET_CAPTCHA",
+                                  token: token || "",
+                                })
+                              }
                             />
                             <input
                               type="hidden"
                               name="recaptchaToken"
-                              value={captchaToken}
+                              value={uiState.captchaToken}
                             />
                           </>
                         ) : (
@@ -220,7 +257,7 @@ const ContactForm = () => {
             delay={300}
             className="block-full lg:col-span-2"
           >
-            <div className="flex block-full flex-col justify-between rounded-3xl bg-slate-900 p-8 text-white">
+            <div className="flex block-full flex-col justify-between rounded-3xl bg-zinc-900 p-8 text-white">
               <ContactInfoSidebar />
             </div>
           </AnimateOnScroll>

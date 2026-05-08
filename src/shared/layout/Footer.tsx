@@ -7,7 +7,7 @@ import { AnimateOnScroll } from "@/shared/ui";
 export default function FooterTailwind() {
   return (
     <footer
-      className="border-orange relative z-10 mbs-0 box-border overflow-hidden border-t-4 bg-slate-950 pbs-6 text-start leading-[1.6] text-white shadow-[0_-8px_32px_rgba(0,0,0,0.5)] ring-1 ring-white/5 inline-full sm:pbs-8"
+      className="border-orange relative z-10 mbs-0 box-border overflow-hidden border-t-4 bg-zinc-950 pbs-6 text-start leading-[1.6] text-white shadow-[0_-8px_32px_rgba(0,0,0,0.5)] ring-1 ring-white/5 inline-full sm:pbs-8"
       role="contentinfo"
     >
       {/* Subtle radial overlay for depth */}

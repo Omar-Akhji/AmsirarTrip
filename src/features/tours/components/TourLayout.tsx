@@ -154,9 +154,9 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
           aria-labelledby="tour-title"
         >
           <div className="mx-auto grid gap-10 px-4 max-inline-7xl lg:grid-cols-[4fr_2fr]">
-            <article className="rounded-[20px] bg-white p-4 pbe-8 shadow-xs ring-1 ring-slate-100 sm:p-6 sm:pbe-12">
+            <article className="rounded-[20px] bg-white p-4 pbe-8 shadow-xs ring-1 ring-zinc-100 sm:p-6 sm:pbe-12">
               <AnimateOnScroll animation="zoom-in">
-                <figure className="relative mbe-8 aspect-4/3 overflow-hidden rounded-[20px] border border-slate-50 shadow-md inline-full">
+                <figure className="relative mbe-8 aspect-4/3 overflow-hidden rounded-[20px] border border-zinc-50 shadow-md inline-full">
                   <Image
                     className="object-cover"
                     src={imageSrc}
@@ -177,7 +177,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                     ></span>
                     <h2
                       id="tour-title"
-                      className="mbs-2 text-2xl leading-tight font-extrabold text-amber-600 sm:text-3xl md:text-4xl"
+                      className="mbs-2 text-2xl leading-tight font-semibold text-amber-600 sm:text-3xl md:text-4xl"
                     >
                       {title}
                     </h2>
@@ -203,16 +203,16 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                       </div>
                     </div>
 
-                    <div className="inline-flex items-center gap-3 rounded-full border border-indigo-100 bg-indigo-50 px-5 py-3">
+                    <div className="inline-flex items-center gap-3 rounded-full border border-amber-100 bg-amber-50 px-5 py-3">
                       <MapPin
-                        className="size-5 shrink-0 text-indigo-500"
+                        className="size-5 shrink-0 text-amber-500"
                         aria-hidden
                       />
                       <div className="text-start">
-                        <div className="text-sm font-semibold text-indigo-600">
+                        <div className="text-sm font-semibold text-amber-600">
                           {t(tourData.start || "tours.cities.marrakech")}
                         </div>
-                        <div className="text-xs font-semibold text-indigo-600">
+                        <div className="text-xs font-semibold text-amber-600">
                           {t("tours.start")}
                         </div>
                       </div>
@@ -222,10 +222,10 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
 
                 <AnimateOnScroll animation="fade-up" delay={300}>
                   <div>
-                    <h2 className="mbe-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
+                    <h2 className="mbe-4 text-xl font-semibold text-zinc-900 sm:text-2xl md:text-3xl">
                       {t("tours.overview")}
                     </h2>
-                    <p className="text-sm leading-relaxed whitespace-pre-line text-gray-700 sm:text-base">
+                    <p className="text-sm leading-relaxed whitespace-pre-line text-neutral-700 sm:text-base">
                       {overview}
                     </p>
                   </div>
@@ -233,7 +233,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
 
                 <AnimateOnScroll animation="fade-up" delay={450}>
                   <div>
-                    <h2 className="mbe-8 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
+                    <h2 className="mbe-8 text-xl font-semibold text-zinc-900 sm:text-2xl md:text-3xl">
                       {t("tours.itinerary")}
                     </h2>
                     <TourItinerary

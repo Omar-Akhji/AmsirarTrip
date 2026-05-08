@@ -82,16 +82,16 @@ export default function NewsletterModal({
       onKeyDown={(e) => {
         if (e.key === "Escape") onCloseAction();
       }}
-      className="fixed inset-0 z-50 m-auto overflow-visible rounded-3xl border border-gray-200 bg-white p-0 text-gray-900 shadow-2xl transition-all duration-300 inline-[95vw] max-inline-md backdrop:bg-black/50 backdrop:backdrop-blur-sm backdrop:transition-all backdrop:duration-300 open:flex open:flex-col starting:backdrop:bg-black/0 starting:open:scale-95 starting:open:opacity-0"
+      className="fixed inset-0 z-50 m-auto overflow-visible rounded-3xl border border-neutral-200 bg-white p-0 text-neutral-900 shadow-2xl transition-all duration-300 inline-[95vw] max-inline-md backdrop:bg-black/50 backdrop:backdrop-blur-sm backdrop:transition-all backdrop:duration-300 open:flex open:flex-col starting:backdrop:bg-black/0 starting:open:scale-95 starting:open:opacity-0"
     >
       <div className="p-6 sm:p-8">
         {/* Header */}
         <div className="mbe-6 flex items-start justify-between">
           <div>
-            <h2 className="text-xl font-bold text-gray-900">
+            <h2 className="text-xl font-semibold text-neutral-900">
               {t("footer.newsletter")}
             </h2>
-            <p className="mbs-1.5 text-sm leading-relaxed text-gray-500">
+            <p className="mbs-1.5 text-sm leading-relaxed text-neutral-500">
               {t("footer.newsletterDescription")}
             </p>
           </div>
@@ -99,7 +99,7 @@ export default function NewsletterModal({
             type="button"
             onClick={onCloseAction}
             aria-label={t("footer.newsletterCloseAria")}
-            className="-me-1 -mbs-1 flex items-center justify-center rounded-full text-gray-400 transition-colors block-9 inline-9 pointer-fine:hover:bg-gray-100 pointer-fine:hover:text-gray-600"
+            className="-me-1 -mbs-1 flex items-center justify-center rounded-full text-neutral-400 transition-colors block-9 inline-9 pointer-fine:hover:bg-neutral-100 pointer-fine:hover:text-neutral-600"
           >
             <X className="block-5 inline-5" />
           </button>
@@ -112,12 +112,12 @@ export default function NewsletterModal({
             <div>
               <label
                 htmlFor="newsletter-name"
-                className="mbe-1.5 block text-sm font-medium text-gray-700"
+                className="mbe-1.5 block text-sm font-medium text-neutral-700"
               >
                 {t("footer.newsletterNameLabel")}
               </label>
               <div className="relative">
-                <User className="absolute start-3.5 top-1/2 -translate-y-1/2 text-gray-400 block-4 inline-4" />
+                <User className="absolute start-3.5 top-1/2 -translate-y-1/2 text-neutral-400 block-4 inline-4" />
                 <input
                   id="newsletter-name"
                   type="text"
@@ -128,7 +128,7 @@ export default function NewsletterModal({
                   required
                   minLength={2}
                   autoComplete="name"
-                  className="rounded-full border border-gray-200 bg-gray-50 ps-10 pe-4 text-sm text-gray-900 transition-all duration-200 block-11 inline-full placeholder:text-gray-400 user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
+                  className="rounded-full border border-neutral-200 bg-neutral-50 ps-10 pe-4 text-sm text-neutral-900 transition-all duration-200 block-11 inline-full placeholder:text-neutral-400 user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
                 />
               </div>
             </div>
@@ -137,12 +137,12 @@ export default function NewsletterModal({
             <div>
               <label
                 htmlFor="newsletter-email"
-                className="mbe-1.5 block text-sm font-medium text-gray-700"
+                className="mbe-1.5 block text-sm font-medium text-neutral-700"
               >
                 {t("footer.newsletterInputAria")}
               </label>
               <div className="relative">
-                <Mail className="absolute start-3.5 top-1/2 -translate-y-1/2 text-gray-400 block-4 inline-4" />
+                <Mail className="absolute start-3.5 top-1/2 -translate-y-1/2 text-neutral-400 block-4 inline-4" />
                 <input
                   id="newsletter-email"
                   type="email"
@@ -152,7 +152,7 @@ export default function NewsletterModal({
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   autoComplete="email"
-                  className="rounded-full border border-gray-200 bg-gray-50 ps-10 pe-4 text-sm text-gray-900 transition-all duration-200 block-11 inline-full placeholder:text-gray-400 user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
+                  className="rounded-full border border-neutral-200 bg-neutral-50 ps-10 pe-4 text-sm text-neutral-900 transition-all duration-200 block-11 inline-full placeholder:text-neutral-400 user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
                 />
               </div>
             </div>
@@ -163,7 +163,7 @@ export default function NewsletterModal({
                 className={`origin-center scale-[0.85] rounded-2xl border border-dashed p-3 sm:scale-100 ${
                   statusKey.includes("Captcha")
                     ? "border-red-300"
-                    : "border-gray-200"
+                    : "border-neutral-200"
                 }`}
               >
                 {hasRecaptchaV2 ? (

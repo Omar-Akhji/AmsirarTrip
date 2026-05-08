@@ -13,7 +13,7 @@ export function FooterBottomBar() {
           {/* Copyright Notice */}
           <div className="order-2 text-center sm:order-1 sm:text-start">
             <p
-              className="text-sm font-medium text-slate-500"
+              className="text-sm font-medium text-zinc-500"
               suppressHydrationWarning
             >
               ©{" "}
@@ -23,7 +23,7 @@ export function FooterBottomBar() {
               >
                 {new Date().getFullYear()}
               </time>{" "}
-              <span className="text-slate-400">Amsirar Trip. Ltd.</span>{" "}
+              <span className="text-zinc-400">Amsirar Trip. Ltd.</span>{" "}
               <span className="mx-1.5 hidden opacity-20 sm:inline-block">
                 •
               </span>{" "}
@@ -37,7 +37,7 @@ export function FooterBottomBar() {
               <li>
                 <Link
                   href="/privacy-policy"
-                  className="text-sm font-medium text-slate-500 transition-colors duration-200 pointer-fine:hover:text-white"
+                  className="text-sm font-medium text-zinc-500 transition-colors duration-200 pointer-fine:hover:text-white"
                 >
                   {t("legal.footer.privacyPolicy")}
                 </Link>
@@ -49,7 +49,7 @@ export function FooterBottomBar() {
               <li>
                 <Link
                   href="/terms-of-service"
-                  className="text-sm font-medium text-slate-500 transition-colors duration-200 pointer-fine:hover:text-white"
+                  className="text-sm font-medium text-zinc-500 transition-colors duration-200 pointer-fine:hover:text-white"
                 >
                   {t("legal.footer.termsOfService")}
                 </Link>

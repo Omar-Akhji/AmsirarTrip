@@ -30,7 +30,10 @@ export function NativePopover({
   const popoverRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
   const onOpenChangeRef = useRef(onOpenChange);
-  onOpenChangeRef.current = onOpenChange;
+
+  useEffect(() => {
+    onOpenChangeRef.current = onOpenChange;
+  }, [onOpenChange]);
 
   const positionPopover = useCallback(() => {
     const popover = popoverRef.current;

@@ -52,7 +52,7 @@ const FeaturedTours = async () => {
   return (
     <section
       id="featured"
-      className="relative isolate overflow-hidden bg-gray-50 py-24 text-gray-900"
+      className="relative isolate overflow-hidden bg-neutral-50 py-24 text-neutral-900"
       aria-labelledby="featured-heading"
     >
       <div
@@ -66,7 +66,7 @@ const FeaturedTours = async () => {
           </p>
           <h2
             id="featured-heading"
-            className="mt-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase text-shadow-md sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
+            className="mt-6 text-2xl leading-tight font-semibold tracking-widest text-neutral-900 uppercase text-shadow-md sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
           >
             {t("featured.lgTitle")}
           </h2>

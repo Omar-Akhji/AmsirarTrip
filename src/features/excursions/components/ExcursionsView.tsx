@@ -63,7 +63,7 @@ export default async function ExcursionView() {
         </HeaderCTA>
       </PageHeader>
 
-      <main className="text-slate-900">
+      <main className="text-zinc-900">
         <section className="py-12" aria-labelledby="excursion-highlights">
           <div className="mx-auto px-4 max-inline-7xl">
             <div className="mx-auto mbe-10 text-center max-inline-3xl">
@@ -72,7 +72,7 @@ export default async function ExcursionView() {
               </p>
               <h2
                 id="excursion-highlights"
-                className="mbs-4 text-2xl leading-tight font-bold sm:text-3xl md:text-4xl"
+                className="mbs-4 text-2xl leading-tight font-semibold sm:text-3xl md:text-4xl"
               >
                 {t("excursion.detailsTitle")}
               </h2>
@@ -93,14 +93,14 @@ export default async function ExcursionView() {
 
         <section
           id="excursions-grid"
-          className="border-t border-slate-200 bg-linear-to-b from-slate-50 to-white py-16"
+          className="border-t border-zinc-200 bg-linear-to-b from-zinc-50 to-white py-16"
           aria-labelledby="excursion-grid-heading"
         >
           <div className="mx-auto px-4 max-inline-7xl">
             <div className="mbe-12 text-center">
               <h2
                 id="excursion-grid-heading"
-                className="mbs-4 text-2xl leading-tight font-bold sm:text-3xl md:text-4xl"
+                className="mbs-4 text-2xl leading-tight font-semibold sm:text-3xl md:text-4xl"
               >
                 {t("excursion.blog.lgTitle")}
               </h2>
