@@ -40,13 +40,13 @@ export default function useNavbar() {
     // 3. Handle resize with animation suppression
     const onResize = () => {
       syncNavbarHeight();
-      
+
       document.body.classList.add("resize-animation-stopper");
-      
+
       if (resizeTimerRef.current) {
         clearTimeout(resizeTimerRef.current);
       }
-      
+
       resizeTimerRef.current = setTimeout(() => {
         document.body.classList.remove("resize-animation-stopper");
       }, 400);
@@ -60,7 +60,7 @@ export default function useNavbar() {
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("scroll", syncNavbarHeight, { passive: true });
     window.addEventListener("resize", onResize, { passive: true });
-    
+
     // Fallback for initial layout shifts
     window.addEventListener("load", syncNavbarHeight);
 
@@ -69,7 +69,7 @@ export default function useNavbar() {
       window.removeEventListener("scroll", syncNavbarHeight);
       window.removeEventListener("resize", onResize);
       window.removeEventListener("load", syncNavbarHeight);
-      
+
       if (resizeTimerRef.current) {
         clearTimeout(resizeTimerRef.current);
       }

@@ -20,7 +20,11 @@ const RecaptchaSchema = (t: (key: string) => string) =>
 export const getContactSchema = (t: (key: string) => string) =>
   z
     .object({
-      name: z.string().min(2, t("nameMin")).transform(sanitize),
+      name: z
+        .string()
+        .min(2, t("nameMin"))
+        .max(100, t("nameTooLong"))
+        .transform(sanitize),
       email: z.string().email(t("emailInvalid")).transform(sanitize),
       phone: z
         .string()
@@ -40,7 +44,11 @@ export const getContactSchema = (t: (key: string) => string) =>
 export const getNewsletterSchema = (t: (key: string) => string) =>
   z
     .object({
-      name: z.string().min(2, t("nameMin")).transform(sanitize),
+      name: z
+        .string()
+        .min(2, t("nameMin"))
+        .max(100, t("nameTooLong"))
+        .transform(sanitize),
       email: z.string().email(t("emailInvalid")).transform(sanitize),
     })
     .merge(RecaptchaSchema(t));
@@ -54,7 +62,11 @@ export const getBookingSchema = (t: (key: string) => string) =>
         .string()
         .min(1, t("reservationRequired"))
         .transform(sanitize),
-      fullName: z.string().min(2, t("nameMin")).transform(sanitize),
+      fullName: z
+        .string()
+        .min(2, t("nameMin"))
+        .max(100, t("nameTooLong"))
+        .transform(sanitize),
       email: z.string().email(t("emailInvalid")).transform(sanitize),
       phone: z
         .string()
@@ -66,9 +78,20 @@ export const getBookingSchema = (t: (key: string) => string) =>
         .int()
         .min(1, t("personsMin"))
         .max(50, t("personsMax")),
-      date: z.string().refine((val) => !isNaN(Date.parse(val)), {
-        message: t("invalidDate"),
-      }),
+      date: z
+        .string()
+        .refine((val) => !isNaN(Date.parse(val)), {
+          message: t("invalidDate"),
+        })
+        .refine(
+          (val) => {
+            const parsed = new Date(val);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            return parsed >= today;
+          },
+          { message: t("datePast") },
+        ),
       message: z
         .string()
         .max(1000, t("messageTooLong"))

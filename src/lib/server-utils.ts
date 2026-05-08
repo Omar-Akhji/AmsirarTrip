@@ -73,14 +73,22 @@ export async function verifyRecaptcha(
   }
 }
 
-export function createMailer() {
-  return nodemailer.createTransport({
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+let _transporter: nodemailer.Transporter<any> | null = null;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export function createMailer(): nodemailer.Transporter<any> {
+  if (_transporter) return _transporter;
+  _transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: env.GMAIL_USER,
       pass: env.GMAIL_PASS,
     },
+    pool: true,
+    maxConnections: 3,
   });
+  return _transporter;
 }
 
 export function escapeHtml(str: string = ""): string {
@@ -90,4 +98,18 @@ export function escapeHtml(str: string = ""): string {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#039;");
+}
+
+/**
+ * Log suspicious activity for security monitoring
+ */
+export function logSuspiciousActivity(
+  ip: string,
+  type: string,
+  details: string,
+) {
+  const timestamp = new Date().toISOString();
+  console.warn(
+    `[SECURITY] ${timestamp} IP: ${ip} Type: ${type} Details: ${details}`,
+  );
 }

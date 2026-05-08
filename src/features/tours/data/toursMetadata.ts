@@ -1,13 +1,10 @@
-interface TourMetadata {
-  slug: string;
+import type { BaseTripMetadata } from "@/lib/types";
+
+interface TourSpecific {
   tourKey: string;
-  bookingId: number;
-  image: string;
-  duration: string; // ISO 8601 format (e.g., "P3D")
   durationDays: number;
   startLocation: string;
   endLocation: string;
-  keywords: string[];
   jsonLd: {
     name: string;
     description: string;
@@ -15,6 +12,8 @@ interface TourMetadata {
     currency?: string;
   };
 }
+
+type TourMetadata = BaseTripMetadata & TourSpecific;
 
 const TOURS_METADATA: Record<string, TourMetadata> = {
   "merzouga-desert-adventure-3-days": {

@@ -1,0 +1,130 @@
+﻿
+> amsirartrip-nextjs@1.0.0 lint C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip Enhanced
+> eslint .
+
+
+C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip Enhanced\src\shared\ui\calendar.tsx
+  30:34  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip Enhanced\src\shared\ui\calendar.tsx:30:34
+  28 |   // Track the previous prop to handle synchronization during render
+  29 |   const prevInitialDateRef = React.useRef<Date | undefined>(initialDate);
+> 30 |   if (initialDate?.getTime() !== prevInitialDateRef.current?.getTime()) {
+     |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  31 |     prevInitialDateRef.current = initialDate;
+  32 |     setSelectedDate(initialDate);
+  33 |   }                                  react-hooks/refs
+  30:34  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip Enhanced\src\shared\ui\calendar.tsx:30:34
+  28 |   // Track the previous prop to handle synchronization during render
+  29 |   const prevInitialDateRef = React.useRef<Date | undefined>(initialDate);
+> 30 |   if (initialDate?.getTime() !== prevInitialDateRef.current?.getTime()) {
+     |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  31 |     prevInitialDateRef.current = initialDate;
+  32 |     setSelectedDate(initialDate);
+  33 |   }                         react-hooks/refs
+  30:34  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip Enhanced\src\shared\ui\calendar.tsx:30:34
+  28 |   // Track the previous prop to handle synchronization during render
+  29 |   const prevInitialDateRef = React.useRef<Date | undefined>(initialDate);
+> 30 |   if (initialDate?.getTime() !== prevInitialDateRef.current?.getTime()) {
+     |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^ Passing a ref to a function may read its value during render
+  31 |     prevInitialDateRef.current = initialDate;
+  32 |     setSelectedDate(initialDate);
+  33 |   }           react-hooks/refs
+  30:34  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip Enhanced\src\shared\ui\calendar.tsx:30:34
+  28 |   // Track the previous prop to handle synchronization during render
+  29 |   const prevInitialDateRef = React.useRef<Date | undefined>(initialDate);
+> 30 |   if (initialDate?.getTime() !== prevInitialDateRef.current?.getTime()) {
+     |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Passing a ref to a function may read its value during render
+  31 |     prevInitialDateRef.current = initialDate;
+  32 |     setSelectedDate(initialDate);
+  33 |   }  react-hooks/refs
+  31:5   error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip Enhanced\src\shared\ui\calendar.tsx:31:5
+  29 |   const prevInitialDateRef = React.useRef<Date | undefined>(initialDate);
+  30 |   if (initialDate?.getTime() !== prevInitialDateRef.current?.getTime()) {
+> 31 |     prevInitialDateRef.current = initialDate;
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot update ref during render
+  32 |     setSelectedDate(initialDate);
+  33 |   }
+  34 |                                                                                                                                           react-hooks/refs
+  41:34  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip Enhanced\src\shared\ui\calendar.tsx:41:34
+  39 |   const prevMonthDateRef = React.useRef<Date | undefined>(initialDate);
+  40 |
+> 41 |   if (initialDate?.getTime() !== prevMonthDateRef.current?.getTime()) {
+     |                                  ^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  42 |     prevMonthDateRef.current = initialDate;
+  43 |     setCurrentMonth(initialDate || new Date());
+  44 |   }                                                                                                 react-hooks/refs
+  41:34  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip Enhanced\src\shared\ui\calendar.tsx:41:34
+  39 |   const prevMonthDateRef = React.useRef<Date | undefined>(initialDate);
+  40 |
+> 41 |   if (initialDate?.getTime() !== prevMonthDateRef.current?.getTime()) {
+     |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Cannot access ref value during render
+  42 |     prevMonthDateRef.current = initialDate;
+  43 |     setCurrentMonth(initialDate || new Date());
+  44 |   }                                                                                        react-hooks/refs
+  41:34  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip Enhanced\src\shared\ui\calendar.tsx:41:34
+  39 |   const prevMonthDateRef = React.useRef<Date | undefined>(initialDate);
+  40 |
+> 41 |   if (initialDate?.getTime() !== prevMonthDateRef.current?.getTime()) {
+     |                                  ^^^^^^^^^^^^^^^^^^^^^^^^ Passing a ref to a function may read its value during render
+  42 |     prevMonthDateRef.current = initialDate;
+  43 |     setCurrentMonth(initialDate || new Date());
+  44 |   }                                                                          react-hooks/refs
+  41:34  error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip Enhanced\src\shared\ui\calendar.tsx:41:34
+  39 |   const prevMonthDateRef = React.useRef<Date | undefined>(initialDate);
+  40 |
+> 41 |   if (initialDate?.getTime() !== prevMonthDateRef.current?.getTime()) {
+     |                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Passing a ref to a function may read its value during render
+  42 |     prevMonthDateRef.current = initialDate;
+  43 |     setCurrentMonth(initialDate || new Date());
+  44 |   }                                                                 react-hooks/refs
+  42:5   error  Error: Cannot access refs during render
+
+React refs are values that are not needed for rendering. Refs should only be accessed outside of render, such as in event handlers or effects. Accessing a ref value (the `current` property) during render can cause your component not to update as expected (https://react.dev/reference/react/useRef).
+
+C:\Users\Omar AJ\Desktop\My Projects\AmsirarTrip Enhanced\src\shared\ui\calendar.tsx:42:5
+  40 |
+  41 |   if (initialDate?.getTime() !== prevMonthDateRef.current?.getTime()) {
+> 42 |     prevMonthDateRef.current = initialDate;
+     |     ^^^^^^^^^^^^^^^^^^^^^^^^ Cannot update ref during render
+  43 |     setCurrentMonth(initialDate || new Date());
+  44 |   }
+  45 |                                                                                                                                                                                                             react-hooks/refs
+
+✖ 10 problems (10 errors, 0 warnings)
+
+ ELIFECYCLE  Command failed with exit code 1.

@@ -2,14 +2,12 @@
 
 import { Link } from "@/i18n/routing";
 import { useTranslation } from "@/lib/hooks/useTranslation";
-import { m } from "motion/react";
-import { fadeInUp } from "@/lib/constants/animations";
 
 export function FooterBrand() {
   const { t } = useTranslation();
 
   return (
-    <m.div {...fadeInUp} className="lg:col-span-1">
+    <div className="lg:col-span-1">
       <Link
         href="/"
         prefetch={true}
@@ -27,6 +25,6 @@ export function FooterBrand() {
       <p className="font-fancy text-xl leading-relaxed text-slate-400 lg:max-inline-sm">
         {t("footer.description")}
       </p>
-    </m.div>
+    </div>
   );
 }

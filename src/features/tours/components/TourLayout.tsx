@@ -3,14 +3,14 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import dynamic from "next/dynamic";
-import { m } from "motion/react";
 import { TOURS_DATA } from "../data";
 import { Clock, MapPin } from "lucide-react";
-import { fadeInUp, fadeInScale, fadeIn } from "@/lib/constants/animations";
-
 import { PageHeader } from "@/shared/layout/PageHeader";
+import { AnimateOnScroll } from "@/shared/ui";
 
-const TourSidebar = dynamic(() => import("./TourSidebar"));
+const DetailsSidebar = dynamic(() =>
+  import("@/shared/layout/DetailsSidebar").then((mod) => mod.DetailsSidebar),
+);
 const TourItinerary = dynamic(() => import("./TourItinerary"));
 const TourInfo = dynamic(() => import("./TourInfo"));
 
@@ -154,94 +154,97 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
           aria-labelledby="tour-title"
         >
           <div className="mx-auto grid gap-10 px-4 max-inline-7xl lg:grid-cols-[4fr_2fr]">
-            <m.article
-              {...fadeIn}
-              className="rounded-[20px] bg-white p-4 pbe-8 shadow-sm ring-1 ring-slate-100 sm:p-6 sm:pbe-12"
-            >
-              <m.figure
-                {...fadeInScale}
-                className="relative mbe-8 aspect-4/3 overflow-hidden rounded-[20px] border border-slate-50 shadow-md inline-full"
-              >
-                <Image
-                  className="object-cover"
-                  src={imageSrc}
-                  alt={`${title} - Tour image showcasing Morocco travel experience`}
-                  fill
-                  priority
-                  sizes="(max-width: 1024px) 100vw, 66vw"
-                />
-              </m.figure>
+            <article className="rounded-[20px] bg-white p-4 pbe-8 shadow-xs ring-1 ring-slate-100 sm:p-6 sm:pbe-12">
+              <AnimateOnScroll animation="zoom-in">
+                <figure className="relative mbe-8 aspect-4/3 overflow-hidden rounded-[20px] border border-slate-50 shadow-md inline-full">
+                  <Image
+                    className="object-cover"
+                    src={imageSrc}
+                    alt={`${title} - Tour image showcasing Morocco travel experience`}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 66vw"
+                  />
+                </figure>
+              </AnimateOnScroll>
 
-              <m.div {...fadeInUp} className="mbe-6 text-center">
-                <div className="mx-auto inline-block">
-                  <span
-                    className="mbe-3 hidden rounded-full bg-amber-300 block-1 inline-16 sm:block"
-                    aria-hidden="true"
-                  ></span>
-                  <h2
-                    id="tour-title"
-                    className="mbs-2 text-2xl leading-tight font-extrabold text-amber-600 sm:text-3xl md:text-4xl"
-                  >
-                    {title}
-                  </h2>
+              <AnimateOnScroll animation="fade-up" delay={150}>
+                <div className="mbe-6 text-center">
+                  <div className="mx-auto inline-block">
+                    <span
+                      className="mbe-3 hidden rounded-full bg-amber-300 block-1 inline-16 sm:block"
+                      aria-hidden="true"
+                    ></span>
+                    <h2
+                      id="tour-title"
+                      className="mbs-2 text-2xl leading-tight font-extrabold text-amber-600 sm:text-3xl md:text-4xl"
+                    >
+                      {title}
+                    </h2>
+                  </div>
                 </div>
-              </m.div>
+              </AnimateOnScroll>
 
               <div className="space-y-8">
-                <div className="grid gap-4 sm:grid-cols-2">
-                  <div className="inline-flex items-center gap-3 rounded-full border border-orange-100 bg-orange-50 px-5 py-3">
-                    <Clock
-                      className="size-5 shrink-0 text-orange-500"
-                      aria-hidden
-                    />
-                    <div className="text-start">
-                      <div className="text-sm font-semibold text-orange-600">
-                        {tourData.duration} {t("tours.days")}
+                <AnimateOnScroll animation="fade-up" delay={150}>
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div className="inline-flex items-center gap-3 rounded-full border border-orange-100 bg-orange-50 px-5 py-3">
+                      <Clock
+                        className="size-5 shrink-0 text-orange-500"
+                        aria-hidden
+                      />
+                      <div className="text-start">
+                        <div className="text-sm font-semibold text-orange-600">
+                          {tourData.duration} {t("tours.days")}
+                        </div>
+                        <div className="text-xs font-semibold text-amber-600">
+                          {t("tours.duration")}
+                        </div>
                       </div>
-                      <div className="text-xs font-semibold text-amber-600">
-                        {t("tours.duration")}
+                    </div>
+
+                    <div className="inline-flex items-center gap-3 rounded-full border border-indigo-100 bg-indigo-50 px-5 py-3">
+                      <MapPin
+                        className="size-5 shrink-0 text-indigo-500"
+                        aria-hidden
+                      />
+                      <div className="text-start">
+                        <div className="text-sm font-semibold text-indigo-600">
+                          {t(tourData.start || "tours.cities.marrakech")}
+                        </div>
+                        <div className="text-xs font-semibold text-indigo-600">
+                          {t("tours.start")}
+                        </div>
                       </div>
                     </div>
                   </div>
+                </AnimateOnScroll>
 
-                  <div className="inline-flex items-center gap-3 rounded-full border border-indigo-100 bg-indigo-50 px-5 py-3">
-                    <MapPin
-                      className="size-5 shrink-0 text-indigo-500"
-                      aria-hidden
-                    />
-                    <div className="text-start">
-                      <div className="text-sm font-semibold text-indigo-600">
-                        {t(tourData.start || "tours.cities.marrakech")}
-                      </div>
-                      <div className="text-xs font-semibold text-indigo-600">
-                        {t("tours.start")}
-                      </div>
-                    </div>
+                <AnimateOnScroll animation="fade-up" delay={300}>
+                  <div>
+                    <h2 className="mbe-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
+                      {t("tours.overview")}
+                    </h2>
+                    <p className="text-sm leading-relaxed whitespace-pre-line text-gray-700 sm:text-base">
+                      {overview}
+                    </p>
                   </div>
-                </div>
+                </AnimateOnScroll>
 
-                <m.div {...fadeInUp} transition={{ duration: 0.5, delay: 0.1 }}>
-                  <h2 className="mbe-4 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
-                    {t("tours.overview")}
-                  </h2>
-                  <p className="text-sm leading-relaxed whitespace-pre-line text-gray-700 sm:text-base">
-                    {overview}
-                  </p>
-                </m.div>
-
-                {/* Itinerary */}
-                <m.div {...fadeInUp} transition={{ duration: 0.5, delay: 0.2 }}>
-                  <h2 className="mbe-8 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
-                    {t("tours.itinerary")}
-                  </h2>
-                  <TourItinerary
-                    days={days}
-                    accommodationLabel={accommodationLabel}
-                    mealsLabel={mealsLabel}
-                    activitiesLabel={activitiesLabel}
-                    arrivalLabel={arrivalLabel}
-                  />
-                </m.div>
+                <AnimateOnScroll animation="fade-up" delay={450}>
+                  <div>
+                    <h2 className="mbe-8 text-xl font-bold text-slate-900 sm:text-2xl md:text-3xl">
+                      {t("tours.itinerary")}
+                    </h2>
+                    <TourItinerary
+                      days={days}
+                      accommodationLabel={accommodationLabel}
+                      mealsLabel={mealsLabel}
+                      activitiesLabel={activitiesLabel}
+                      arrivalLabel={arrivalLabel}
+                    />
+                  </div>
+                </AnimateOnScroll>
 
                 {/* Info Sections */}
                 <TourInfo
@@ -253,9 +256,12 @@ const TourLayout = ({ tourKey, bookingId, imageSrc }: TourLayoutProps) => {
                   goodToKnowTitle={t("tours.goodToKnow")}
                 />
               </div>
-            </m.article>
+            </article>
 
-            <TourSidebar sidebarItems={sidebarItems} />
+            <DetailsSidebar
+              sidebarItems={sidebarItems}
+              translationPrefix="tours"
+            />
           </div>
         </section>
         <BookingForm

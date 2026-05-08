@@ -1,12 +1,8 @@
-"use client";
-
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
-import { m } from "motion/react";
 import { PageHeader } from "@/shared/layout/PageHeader";
-import { LegalPageConfig } from "../types";
 import { LegalSectionCard } from "./LegalSectionCard";
-import { fadeInUp } from "@/lib/constants/animations";
+import { LegalPageConfig } from "../types";
 
 interface LegalPageLayoutProps {
   config: LegalPageConfig;
@@ -43,12 +39,9 @@ export function LegalPageLayout({ config, headingId }: LegalPageLayoutProps) {
           />
           <div className="relative z-10 mx-auto px-4 max-inline-7xl">
             {/* Last Updated Notice */}
-            <m.div
-              {...fadeInUp}
-              className="mbe-8 text-center text-sm text-gray-500"
-            >
+            <div className="mbe-8 text-center text-sm text-gray-500">
               {t(config.lastUpdatedKey)}
-            </m.div>
+            </div>
 
             {/* Legal Sections Grid */}
             <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
@@ -62,14 +55,7 @@ export function LegalPageLayout({ config, headingId }: LegalPageLayoutProps) {
             </div>
 
             {/* Back to Home Link */}
-            <m.div
-              {...fadeInUp}
-              transition={{
-                duration: 0.5,
-                delay: config.sections.length * 0.1,
-              }}
-              className="mbs-12 text-center"
-            >
+            <div className="mbs-12 text-center">
               <Link
                 href="/"
                 className="inline-flex items-center gap-2 text-orange-600 transition-colors pointer-fine:hover:text-orange-700"
@@ -89,7 +75,7 @@ export function LegalPageLayout({ config, headingId }: LegalPageLayoutProps) {
                 </svg>
                 {t("legal.backToHome")}
               </Link>
-            </m.div>
+            </div>
           </div>
         </section>
       </main>

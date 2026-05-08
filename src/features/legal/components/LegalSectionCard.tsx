@@ -1,9 +1,5 @@
-"use client";
-
 import { useTranslations } from "next-intl";
-import { m } from "motion/react";
 import { LegalSection } from "../types";
-import { fadeInUp } from "@/lib/constants/animations";
 
 interface LegalSectionCardProps {
   section: LegalSection;
@@ -12,17 +8,15 @@ interface LegalSectionCardProps {
 
 /**
  * LegalSectionCard Component
- * @description Renders a single section of a legal document with animation
+ * @description Renders a single section of a legal document
  */
 export function LegalSectionCard({ section, index }: LegalSectionCardProps) {
   const t = useTranslations();
 
   return (
-    <m.article
-      {...fadeInUp}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+    <article
       id={`legal-${section.id}`}
-      className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-shadow sm:p-8 pointer-fine:hover:shadow-md"
+      className="rounded-2xl border border-slate-200 bg-white p-6 shadow-xs transition-shadow sm:p-8 pointer-fine:hover:shadow-md"
       aria-labelledby={`legal-${section.id}-heading`}
     >
       <h2
@@ -37,6 +31,6 @@ export function LegalSectionCard({ section, index }: LegalSectionCardProps) {
       <div className="prose prose-slate prose-sm max-inline-none">
         <p className="leading-relaxed text-gray-600">{t(section.contentKey)}</p>
       </div>
-    </m.article>
+    </article>
   );
 }

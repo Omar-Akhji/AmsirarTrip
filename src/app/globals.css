@@ -92,6 +92,7 @@
   --animate-loader-dash: loader-dash 1500ms ease-in-out infinite;
 
   /* ── Keyframes ───────────────────────────────────────────────────────── */
+
   @keyframes show-data {
     50% {
       translate: 0 -10rem;
@@ -244,22 +245,15 @@
     filter: invert(1);
   }
 
-  /* Aspect ratio only for content images, not icons/logos */
-  :where(article, .card-article, .featured-row) img {
-    display: block;
-    aspect-ratio: 4 / 3;
-  }
-
-  /* Page-level header defaults */
-  header {
+  .page-hero {
     position: relative;
     box-sizing: border-box;
+    display: flex;
     flex-direction: column;
-    padding-block-start: 7rem;
+    padding-block-start: 4rem;
     overflow: hidden;
     color: var(--color-white);
     text-align: center;
-    background: url("/images/Header/header-1.webp") center / cover no-repeat;
   }
 }
 
@@ -268,42 +262,15 @@
    ============================================================================ */
 
 @layer components {
-  /* ── Non-home header heights ──────────────────────────────────────────── */
-  header:not(.home-header) {
-    min-block-size: 55rem;
-
-    @media (width >= 1090px) {
-      min-block-size: 60rem;
-    }
-  }
-
-  /* ── Home hero header ─────────────────────────────────────────────────── */
   .home-header {
     position: relative;
-    min-block-size: 70rem;
-
-    @media (width >= 1024px) {
-      min-block-size: 80rem;
-    }
   }
 
-  /* ── Featured grid with Container Queries ─────────────────────────────── */
   .featured-row {
     container-name: featured;
     container-type: inline-size;
-
-    @media (width >= 768px) {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 2rem;
-    }
-
-    @media (width >= 1200px) {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
   }
 
-  /* Container-query overrides for cards inside .featured-row */
   @container featured (width >= 600px) {
     .card-data {
       padding: 2rem 2.5rem;
@@ -333,12 +300,7 @@
     --card-data-padding: 1.5rem 2rem;
 
     position: relative;
-    margin-block-end: 2rem;
     overflow: hidden;
-
-    @media (width < 768px) {
-      margin-block-end: 3rem;
-    }
 
     &:hover {
       animation: var(--animate-remove-overflow);
@@ -397,57 +359,6 @@
   /* :has() — parent aware of child priority flag */
   .card-article:has(img[loading="eager"]) {
     --card-priority: high;
-  }
-
-  /* ── Loader component ─────────────────────────────────────────────────── */
-  .ftco-loader {
-    /* Component-scoped tokens */
-    --loader-size: 96px;
-    --loader-icon-size: 48px;
-    --loader-shadow: 0 24px 64px oklch(0% 0 0deg / 24%);
-
-    position: fixed;
-    inset-block-start: 50%;
-    inset-inline-start: 50%;
-    z-index: 999999;
-    display: flex;
-    visibility: visible;
-    align-items: center;
-    justify-content: center;
-    inline-size: var(--loader-size);
-    block-size: var(--loader-size);
-    background-color: oklch(100% 0 0deg / 90%);
-    border-radius: 16px;
-    box-shadow: var(--loader-shadow);
-    opacity: 100%;
-    translate: -50% -50%;
-    transition: opacity 400ms ease-out;
-
-    &.fullscreen {
-      inset-block-start: 0;
-      inset-inline-start: 0;
-      inline-size: 100%;
-      block-size: 100%;
-      background-color: var(--color-light-grey-alt2);
-      border-radius: 0;
-      box-shadow: none;
-      translate: none;
-    }
-
-    & .circular {
-      display: block;
-      inline-size: var(--loader-icon-size);
-      block-size: var(--loader-icon-size);
-      transform-origin: center center;
-      animation: var(--animate-loader-rotate);
-    }
-
-    & .path {
-      stroke-linecap: round;
-      stroke-dasharray: 1, 200;
-      stroke-dashoffset: 0;
-      animation: var(--animate-loader-dash);
-    }
   }
 }
 

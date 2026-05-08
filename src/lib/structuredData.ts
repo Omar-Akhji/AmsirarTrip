@@ -1,4 +1,8 @@
-interface TourStructuredData {
+/**
+ * Generic base for all trip-type structured data.
+ * TLocation discriminates between tour routes and excursion points.
+ */
+interface TripStructuredData<TLocation> {
   name: string;
   description: string;
   provider: string;
@@ -6,10 +10,21 @@ interface TourStructuredData {
   price?: number | undefined;
   currency?: string | undefined;
   duration: string;
-  startLocation: string;
-  endLocation: string;
+  location: TLocation;
   url: string;
 }
+
+interface TourLocation {
+  start: string;
+  end: string;
+}
+
+interface ExcursionLocation {
+  point: string;
+}
+
+type TourStructuredData = TripStructuredData<TourLocation>;
+type ExcursionStructuredData = TripStructuredData<ExcursionLocation>;
 
 /**
  * Sanitize string for JSON-LD to prevent XSS
@@ -24,17 +39,62 @@ function sanitizeForJsonLd(value: string | undefined): string {
     .trim();
 }
 
-export function generateTourJsonLd(data: TourStructuredData) {
+const BASE_URL = "https://amsirartrip.com";
+
+function resolveUrl(raw: string): string {
+  return raw.startsWith("http") ? raw : `${BASE_URL}${raw}`;
+}
+
+/**
+ * Shared JSON-LD builder — single source of truth for all trip types.
+ * Itinerary and touristType are injected per-variant.
+ */
+function buildTripJsonLd<TLocation>(
+  data: TripStructuredData<TLocation>,
+  itinerary: Record<string, unknown>[],
+  touristType: string[],
+  providerExtras?: Record<string, unknown>,
+) {
   return {
     "@context": "https://schema.org",
     "@type": "TouristTrip",
     name: sanitizeForJsonLd(data.name),
     description: sanitizeForJsonLd(data.description),
+    image: resolveUrl(data.image),
     provider: {
       "@type": "TravelAgency",
       name: sanitizeForJsonLd(data.provider),
-      url: "https://amsirartrip.com",
-      logo: "https://amsirartrip.com/horse-head.svg",
+      url: BASE_URL,
+      ...providerExtras,
+    },
+    ...(data.price && {
+      offers: {
+        "@type": "Offer",
+        price: data.price,
+        priceCurrency: data.currency || "EUR",
+        availability: "https://schema.org/InStock",
+      },
+    }),
+    itinerary: {
+      "@type": "ItemList",
+      itemListElement: itinerary,
+    },
+    touristType,
+    duration: sanitizeForJsonLd(data.duration),
+    url: resolveUrl(data.url),
+  };
+}
+
+export function generateTourJsonLd(data: TourStructuredData) {
+  return buildTripJsonLd(
+    data,
+    [
+      { "@type": "TouristDestination", name: data.location.start },
+      { "@type": "TouristDestination", name: data.location.end },
+    ],
+    ["Adventure", "Cultural", "Nature"],
+    {
+      logo: `${BASE_URL}/horse-head.svg`,
       address: {
         "@type": "PostalAddress",
         addressCountry: "MA",
@@ -47,87 +107,15 @@ export function generateTourJsonLd(data: TourStructuredData) {
         availableLanguage: ["English", "French", "Spanish", "German"],
       },
     },
-    image: data.image.startsWith("http")
-      ? data.image
-      : `https://amsirartrip.com${data.image}`,
-    ...(data.price && {
-      offers: {
-        "@type": "Offer",
-        price: data.price,
-        priceCurrency: data.currency || "EUR",
-        availability: "https://schema.org/InStock",
-      },
-    }),
-    itinerary: {
-      "@type": "ItemList",
-      itemListElement: [
-        {
-          "@type": "TouristDestination",
-          name: data.startLocation,
-        },
-        {
-          "@type": "TouristDestination",
-          name: data.endLocation,
-        },
-      ],
-    },
-    touristType: ["Adventure", "Cultural", "Nature"],
-    duration: sanitizeForJsonLd(data.duration),
-    url: data.url.startsWith("http")
-      ? data.url
-      : `https://amsirartrip.com${data.url}`,
-  };
-}
-
-interface ExcursionStructuredData {
-  name: string;
-  description: string;
-  provider: string;
-  image: string;
-  price?: number | undefined;
-  currency?: string | undefined;
-  duration: string;
-  location: string;
-  url: string;
+  );
 }
 
 export function generateExcursionJsonLd(data: ExcursionStructuredData) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "TouristTrip",
-    name: sanitizeForJsonLd(data.name),
-    description: sanitizeForJsonLd(data.description),
-    image: data.image.startsWith("http")
-      ? data.image
-      : `https://amsirartrip.com${data.image}`,
-    provider: {
-      "@type": "TravelAgency",
-      name: sanitizeForJsonLd(data.provider),
-      url: "https://amsirartrip.com",
-    },
-    ...(data.price && {
-      offers: {
-        "@type": "Offer",
-        price: data.price,
-        priceCurrency: data.currency || "EUR",
-        availability: "https://schema.org/InStock",
-      },
-    }),
-    itinerary: {
-      "@type": "ItemList",
-      itemListElement: [
-        {
-          "@type": "TouristDestination",
-          name: data.location,
-        },
-      ],
-    },
-    touristType: ["Day Trip", "Cultural Experience"],
-    duration: sanitizeForJsonLd(data.duration),
-    url: data.url.startsWith("http")
-      ? data.url
-      : `https://amsirartrip.com${data.url}`,
-  };
+  return buildTripJsonLd(
+    data,
+    [{ "@type": "TouristDestination", name: data.location.point }],
+    ["Day Trip", "Cultural Experience"],
+  );
 }
 
 export function generateOrganizationJsonLd() {

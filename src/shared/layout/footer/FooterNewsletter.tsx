@@ -4,8 +4,6 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { Mail } from "lucide-react";
-import { m } from "motion/react";
-import { fadeInUp } from "@/lib/constants/animations";
 
 const NewsletterModal = dynamic(() => import("./NewsletterModal"), {
   ssr: false,
@@ -18,11 +16,7 @@ export function FooterNewsletter() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
-    <m.div
-      {...fadeInUp}
-      transition={{ duration: 0.5, delay: 0.3 }}
-      className="md:col-span-2 lg:col-span-1"
-    >
+    <div className="md:col-span-2 lg:col-span-1">
       <h3 className="mbe-2 text-sm font-semibold tracking-wider text-white uppercase">
         {t("footer.newsletter")}
       </h3>
@@ -47,9 +41,9 @@ export function FooterNewsletter() {
 
       <NewsletterModal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onCloseAction={() => setIsModalOpen(false)}
       />
-    </m.div>
+    </div>
   );
 }
 

@@ -1,9 +1,8 @@
 import { useTranslation } from "@/lib/hooks/useTranslation";
-import { m } from "motion/react";
-import type { ContactFormState } from "../actions/contact-action";
+import type { FormState } from "@/lib/form-types";
 
 interface ContactFormFieldsProps {
-  state: ContactFormState | null;
+  state: FormState | null;
 }
 
 export function ContactFormFields({ state }: ContactFormFieldsProps) {
@@ -12,12 +11,7 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
   return (
     <>
       <div className="grid gap-5 md:grid-cols-2">
-        <m.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-        >
+        <div>
           <label htmlFor="contact-name" className="sr-only">
             {t("contact.form.fields.name", "Full name")}
           </label>
@@ -25,7 +19,8 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
             id="contact-name"
             name="name"
             type="text"
-            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
+            maxLength={100}
             placeholder={t("contact.form.fields.name", "Full name")}
             aria-label={t("contact.form.fields.name", "Full name")}
             autoComplete="name"
@@ -40,13 +35,8 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
               {state.errors["name"]}
             </p>
           )}
-        </m.div>
-        <m.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.2 }}
-        >
+        </div>
+        <div>
           <label htmlFor="contact-email" className="sr-only">
             {t("contact.form.fields.email", "Email")}
           </label>
@@ -54,7 +44,7 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
             id="contact-email"
             name="email"
             type="email"
-            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
             placeholder={t("contact.form.fields.email", "Email")}
             aria-label={t("contact.form.fields.email", "Email")}
             autoComplete="email"
@@ -69,16 +59,11 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
               {state.errors["email"]}
             </p>
           )}
-        </m.div>
+        </div>
       </div>
 
       <div className="grid gap-5 md:grid-cols-2">
-        <m.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.3 }}
-        >
+        <div>
           <label htmlFor="contact-phone" className="sr-only">
             {t("contact.form.fields.phone", "Phone number")}
           </label>
@@ -86,7 +71,8 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
             id="contact-phone"
             name="phone"
             type="tel"
-            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
+            maxLength={20}
             placeholder={t("contact.form.fields.phone", "Phone number")}
             aria-label={t("contact.form.fields.phone", "Phone number")}
             autoComplete="tel"
@@ -101,13 +87,8 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
               {state.errors["phone"]}
             </p>
           )}
-        </m.div>
-        <m.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.4 }}
-        >
+        </div>
+        <div>
           <label htmlFor="contact-topic" className="sr-only">
             {t("contact.form.fields.topic", "Trip focus (optional)")}
           </label>
@@ -115,7 +96,7 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
             id="contact-topic"
             name="topic"
             type="text"
-            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
             placeholder={t(
               "contact.form.fields.topic",
               "Trip focus (optional)",
@@ -123,22 +104,18 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
             aria-label={t("contact.form.fields.topic", "Trip focus (optional)")}
             autoComplete="off"
           />
-        </m.div>
+        </div>
       </div>
 
-      <m.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.4, delay: 0.5 }}
-      >
+      <div>
         <label htmlFor="contact-message" className="sr-only">
           {t("contact.form.fields.message", "Message")}
         </label>
         <textarea
           id="contact-message"
           name="message"
-          className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full min-block-40 user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
+          className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full min-block-40 user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
+          maxLength={1000}
           placeholder={t(
             "contact.form.fields.message",
             "Tell us about your Morocco dream",
@@ -159,7 +136,7 @@ export function ContactFormFields({ state }: ContactFormFieldsProps) {
             {state.errors["message"]}
           </p>
         )}
-      </m.div>
+      </div>
     </>
   );
 }

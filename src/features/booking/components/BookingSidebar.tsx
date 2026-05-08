@@ -1,8 +1,5 @@
-"use client";
-
 import Image from "next/image";
 import { useTranslation } from "@/lib/hooks/useTranslation";
-import { m } from "motion/react";
 
 interface Perk {
   id: string;
@@ -17,13 +14,7 @@ export function BookingSidebar({ perks }: BookingSidebarProps) {
   const { t } = useTranslation();
 
   return (
-    <m.aside
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.05 }}
-      transition={{ duration: 0.6, delay: 0.2 }}
-      className="relative overflow-hidden rounded-3xl bg-slate-950 p-6 text-white shadow-2xl ring-1 shadow-slate-900/40 ring-white/10 lg:col-span-2 lg:p-8"
-    >
+    <aside className="relative overflow-hidden rounded-3xl bg-slate-950 p-6 text-white shadow-2xl ring-1 shadow-slate-900/40 ring-white/10 lg:col-span-2 lg:p-8">
       <div
         className="absolute -end-10 -top-20 rounded-full bg-orange-500/30 blur-3xl block-48 inline-48"
         aria-hidden="true"
@@ -106,6 +97,6 @@ export function BookingSidebar({ perks }: BookingSidebarProps) {
           </a>
         </div>
       </div>
-    </m.aside>
+    </aside>
   );
 }

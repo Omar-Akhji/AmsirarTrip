@@ -4,8 +4,13 @@ import { headers } from "next/headers";
 import { getTranslations } from "next-intl/server";
 import { getNewsletterSchema } from "@/lib/schemas";
 import { env } from "@/lib/env";
-import { checkRateLimit, logSuspiciousActivity } from "@/lib/api-utils";
-import { verifyRecaptcha, createMailer, escapeHtml } from "@/lib/server-utils";
+import { checkRateLimit } from "@/lib/api-utils";
+import {
+  verifyRecaptcha,
+  createMailer,
+  escapeHtml,
+  logSuspiciousActivity,
+} from "@/lib/server-utils";
 
 export async function submitNewsletterAction(
   name: string,
@@ -49,6 +54,9 @@ export async function submitNewsletterAction(
     const transporter = createMailer();
     const mailTo = env.MAIL_TO || env.GMAIL_USER;
 
+    // Sanitize name for subject line to prevent email header injection
+    const safeName = data.name.replace(/[^\p{L}\p{N}\s]/gu, "");
+
     const html = `
       <h2>New Newsletter Subscription</h2>
       <p><strong>Name :</strong> ${escapeHtml(data.name)}</p>
@@ -59,7 +67,7 @@ export async function submitNewsletterAction(
       from: `Amsirar Trip Newsletter <${env.GMAIL_USER}>`,
       to: mailTo,
       replyTo: data.email,
-      subject: `Newsletter Subscription: ${escapeHtml(data.name)} (${data.email})`,
+      subject: `Newsletter Subscription: ${safeName} (${data.email})`,
       text: `New newsletter subscription:\nName: ${data.name}\nEmail: ${data.email}`,
       html,
     });

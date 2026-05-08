@@ -12,8 +12,8 @@ import { MobileMenu } from "./navbar/MobileMenu";
 function Navbar() {
   const { navbarRef, scrolled } = useNavbar();
   const { i18n } = useTranslation();
+  const { replace } = useRouter();
   const pathname = usePathname();
-  const router = useRouter();
 
   const [asideOpen, setAsideOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
@@ -24,10 +24,6 @@ function Navbar() {
   const collapseRef = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
   const langRef = useRef<HTMLDivElement>(null);
-
-  const isMobile = viewport === "mobile";
-  const isTablet = viewport === "tablet";
-  const isDesktop = viewport === "desktop";
 
   // Close menus on outside click
   useEffect(() => {
@@ -98,7 +94,7 @@ function Navbar() {
     // router.replace will keep the current path and just change the locale
     const targetPath = pathname || "/";
     try {
-      router.replace(targetPath, {
+      replace(targetPath, {
         locale: code as "en" | "fr" | "de" | "es",
       });
       setLangOpen(false);
@@ -132,7 +128,7 @@ function Navbar() {
         sizing,
         scrolled
           ? "bg-orange text-white shadow-[0_10px_26px_rgba(229,74,31,0.12)]"
-          : "bg-white/10 text-white shadow-sm backdrop-blur",
+          : "bg-white/10 text-white shadow-xs backdrop-blur",
       );
     }
 
@@ -160,7 +156,7 @@ function Navbar() {
 
   return (
     <nav className={navClassName} ref={navbarRef}>
-      {isDesktop ? (
+      {viewport === "desktop" ? (
         <DesktopMenu
           scrolled={scrolled}
           langOpen={langOpen}
@@ -186,8 +182,7 @@ function Navbar() {
           handleNavClick={handleNavClick}
           getNavLinkClasses={getNavLinkClasses}
           getCollapseClasses={getCollapseClasses}
-          isTablet={isTablet}
-          isMobile={isMobile}
+          viewport={viewport}
         />
       )}
     </nav>

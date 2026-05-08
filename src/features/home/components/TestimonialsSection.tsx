@@ -1,51 +1,43 @@
 "use client";
 
 import Image from "next/image";
-import { m } from "motion/react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { Quote } from "lucide-react";
+import { AnimateOnScroll } from "@/shared/ui";
 
 const TestimonialsSection = () => {
   const { t } = useTranslation();
   const testimonials = [{ key: "kevin" }, { key: "ben" }, { key: "sara" }];
 
   return (
-    <m.section
-      id="testimonials"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
-      className="bg-slate-50 py-12"
-    >
+    <section id="testimonials" className="bg-slate-50 py-12">
       <div className="mx-auto px-4 max-inline-330">
-        <div className="mx-auto mbe-10 text-center max-inline-4xl">
-          <p className="inline-flex items-center justify-center rounded-full border-2 border-orange-400 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
-            {t("testimonials.smTitle")}
-          </p>
-          <h2 className="mbs-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase text-shadow-md sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]">
-            {t("testimonials.lgTitle")}
-          </h2>
-          <div
-            className="mx-auto mbs-4 rounded-full bg-orange-500 block-1 inline-20"
-            aria-hidden="true"
-          />
-        </div>
+        <AnimateOnScroll animation="fade-up">
+          <div className="mx-auto mbe-10 space-y-4 text-center max-inline-4xl">
+            <p className="inline-flex items-center justify-center rounded-full border-2 border-orange-400 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
+              {t("testimonials.smTitle")}
+            </p>
+            <h2 className="mbs-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase text-shadow-md sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]">
+              {t("testimonials.lgTitle")}
+            </h2>
+            <div
+              className="mx-auto mbs-4 rounded-full bg-orange-500 block-1 inline-20"
+              aria-hidden="true"
+            />
+          </div>
+        </AnimateOnScroll>
         <div className="relative">
-          <>
-            <div className="relative">
-              {/* mobile: 1 column; tablet/md: 2 columns (3rd spans both); desktop/lg: 3 columns */}
-              <div className="grid grid-cols-1 justify-items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
-                {testimonials.map((tst, idx) => (
-                  <m.article
-                    key={tst.key}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.5, delay: idx * 0.15 }}
-                    className={`relative flex transform flex-col justify-between overflow-hidden rounded-2xl bg-slate-900 p-6 text-start text-orange-200 shadow-lg ring-1 ring-white/10 transition-transform block-full inline-full pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-xl ${
-                      idx === 2 ? "md:col-span-2 lg:col-span-1" : ""
-                    }`}
-                  >
+          <div className="relative">
+            {/* mobile: 1 column; tablet/md: 2 columns (3rd spans both); desktop/lg: 3 columns */}
+            <div className="grid grid-cols-1 justify-items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
+              {testimonials.map((tst, idx) => (
+                <AnimateOnScroll
+                  key={tst.key}
+                  animation="fade-up"
+                  delay={idx * 150}
+                  className={`flex block-full inline-full ${idx === 2 ? "md:col-span-2 lg:col-span-1" : ""}`}
+                >
+                  <article className="relative flex inline-full transform flex-col justify-between overflow-hidden rounded-2xl bg-slate-900 p-6 text-start text-orange-200 shadow-lg ring-1 ring-white/10 transition-transform block-full inline-full pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-xl">
                     {/* Decorative Quote Icon */}
                     <div
                       className="absolute inset-e-4 top-2 -rotate-12 opacity-10 select-none"
@@ -70,14 +62,14 @@ const TestimonialsSection = () => {
                         className="mx-2 bg-white/10 block-8 inline-px"
                         aria-hidden
                       />
-                      <>
+                      <div>
                         <cite className="text-sm font-semibold text-white not-italic">
                           {t(`testimonials.items.${tst.key}.name`)}
                         </cite>
                         <p className="mbs-0.5 text-xs text-slate-300">
                           {t(`testimonials.items.${tst.key}.country`)}
                         </p>
-                      </>
+                      </div>
                     </div>
                     {/* small horizontal divider to separate header (avatar/name) from quote */}
                     <div
@@ -108,14 +100,14 @@ const TestimonialsSection = () => {
                         </svg>
                       ))}
                     </div>
-                  </m.article>
-                ))}
-              </div>
+                  </article>
+                </AnimateOnScroll>
+              ))}
             </div>
-          </>
+          </div>
         </div>
       </div>
-    </m.section>
+    </section>
   );
 };
 

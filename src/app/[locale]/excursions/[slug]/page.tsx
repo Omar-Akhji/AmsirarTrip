@@ -33,10 +33,10 @@ export async function generateMetadata({
 }: PageProps): Promise<Metadata> {
   const awaitedParams = await params;
   const { locale, slug } = awaitedParams;
-  
+
   // Find excursion with case-insensitive matching for robustness
   const slugs = getExcursionSlugs();
-  const matchedSlug = slugs.find(s => s.toLowerCase() === slug.toLowerCase());
+  const matchedSlug = slugs.find((s) => s.toLowerCase() === slug.toLowerCase());
   const excursion = matchedSlug ? getExcursionBySlug(matchedSlug) : undefined;
 
   if (!excursion) {
@@ -66,10 +66,10 @@ export const revalidate = 3600; // Revalidate every hour
 export default async function ExcursionPage({ params }: PageProps) {
   const awaitedParams = await params;
   const { slug } = awaitedParams;
-  
+
   // Find excursion with case-insensitive matching
   const slugs = getExcursionSlugs();
-  const matchedSlug = slugs.find(s => s.toLowerCase() === slug.toLowerCase());
+  const matchedSlug = slugs.find((s) => s.toLowerCase() === slug.toLowerCase());
   const excursion = matchedSlug ? getExcursionBySlug(matchedSlug) : undefined;
 
   if (!excursion) {
@@ -83,7 +83,7 @@ export default async function ExcursionPage({ params }: PageProps) {
     provider: "Amsirar Trip",
     image: `https://amsirartrip.com${excursion.image}`,
     duration: excursion.duration,
-    location: excursion.location,
+    location: { point: excursion.location },
     url: `https://amsirartrip.com/excursions/${excursion.slug}`,
   });
 

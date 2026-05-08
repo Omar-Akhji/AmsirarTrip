@@ -4,6 +4,7 @@
   "validations": {
     "recaptchaRequired": "Recaptcha verification is required",
     "nameMin": "Name must be at least 2 characters",
+    "nameTooLong": "Name must be at most 100 characters",
     "emailInvalid": "Invalid email address",
     "phoneInvalid": "Invalid phone number",
     "phoneTooLong": "Phone number too long",
@@ -12,7 +13,8 @@
     "reservationRequired": "Reservation type is required",
     "personsMin": "At least 1 person required",
     "personsMax": "Max 50 persons",
-    "invalidDate": "Invalid date format"
+    "invalidDate": "Invalid date format",
+    "datePast": "Date cannot be in the past"
   },
   "nav": {
     "home": "Home",

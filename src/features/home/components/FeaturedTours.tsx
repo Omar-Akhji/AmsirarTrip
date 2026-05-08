@@ -1,11 +1,9 @@
-"use client";
-
 import Image from "next/image";
-import { m } from "motion/react";
-import { useTranslation } from "@/lib/hooks/useTranslation";
+import { getTranslations } from "next-intl/server";
+import { AnimateOnScroll } from "@/shared/ui";
 
-const FeaturedTours = () => {
-  const { t } = useTranslation();
+const FeaturedTours = async () => {
+  const t = await getTranslations();
   const cities = [
     {
       key: "marrakech",
@@ -52,11 +50,8 @@ const FeaturedTours = () => {
   ];
 
   return (
-    <m.section
+    <section
       id="featured"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8 }}
       className="relative isolate overflow-hidden bg-gray-50 py-24 text-gray-900"
       aria-labelledby="featured-heading"
     >
@@ -64,51 +59,51 @@ const FeaturedTours = () => {
         className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(248,250,252,0.3),transparent_70%)]"
         aria-hidden="true"
       ></div>
-      <div className="relative z-10 mx-auto px-4 max-inline-7xl">
-        <div className="mx-auto mbe-16 text-center max-inline-4xl">
+      <div className="relative z-10 mx-auto max-inline-7xl px-4">
+        <div className="mx-auto mbe-16 space-y-4 text-center max-inline-4xl">
           <p className="inline-flex items-center justify-center rounded-full border-2 border-orange-400 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
             {t("featured.smTitle")}
           </p>
           <h2
             id="featured-heading"
-            className="mbs-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase text-shadow-md sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
+            className="mt-6 text-2xl leading-tight font-extrabold tracking-widest text-gray-900 uppercase text-shadow-md sm:text-3xl sm:tracking-[0.15em] md:text-4xl md:tracking-[0.2em]"
           >
             {t("featured.lgTitle")}
           </h2>
           <div
-            className="mx-auto mbs-4 rounded-full bg-orange-500 block-1 inline-20"
+            className="mx-auto mbs-4 block-1 inline-20 rounded-full bg-orange-500"
             aria-hidden="true"
           />
         </div>
 
-        <div className="featured-row">
-          {cities.map((city, idx) => (
-            <m.article
+        <div className="featured-row grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
+          {cities.map((city, index) => (
+            <AnimateOnScroll
               key={city.key}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: idx * 0.1 }}
-              className="card-article relative overflow-hidden rounded-xl block-75 inline-full"
+              animation="fade-up"
+              delay={index * 150} // Staggered entry animation across cards
+              className="block-[18.75rem] inline-full"
             >
-              <Image
-                src={city.image}
-                alt={t(city.altKey)}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1090px) 50vw, 33vw"
-                className="card-img object-cover"
-              />
-              <div className="card-data">
-                <h3 className="card-title text-shadow-md">
-                  {t(city.titleKey)}
-                </h3>
-                <p className="card-text">{t(city.descriptionKey)}</p>
-              </div>
-            </m.article>
+              <article className="card-article relative block block-full inline-full overflow-hidden rounded-xl">
+                <Image
+                  src={city.image}
+                  alt={t(city.altKey)}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1090px) 50vw, 33vw"
+                  className="card-img object-cover"
+                />
+                <div className="card-data">
+                  <h3 className="card-title text-shadow-md">
+                    {t(city.titleKey)}
+                  </h3>
+                  <p className="card-text">{t(city.descriptionKey)}</p>
+                </div>
+              </article>
+            </AnimateOnScroll>
           ))}
         </div>
       </div>
-    </m.section>
+    </section>
   );
 };
 

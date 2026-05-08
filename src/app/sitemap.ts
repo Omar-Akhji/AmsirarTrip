@@ -1,46 +1,65 @@
-import { MetadataRoute } from "next";
-import { TOURS_DATA } from "@/features/tours";
-import { EXCURSIONS_DATA } from "@/features/excursions";
+import type { MetadataRoute } from "next";
+import { getTourSlugs } from "@/features/tours/data/toursMetadata";
+import { getExcursionSlugs } from "@/features/excursions/data/excursionsMetadata";
 
 const BASE_URL = "https://amsirartrip.com";
+const LOCALES = ["en", "fr", "es", "de"] as const;
 
+/**
+ * Last meaningful content update date.
+ * Update this when real content changes — never use `new Date()` per build,
+ * as Google penalises spoofed lastmod signals with slower crawl rates.
+ */
+const CONTENT_LAST_MODIFIED = "2026-05-01";
+
+/**
+ * Build hreflang alternates for a given path.
+ * Includes x-default (English canonical) and all supported locales.
+ */
+function buildAlternates(path: string) {
+  return {
+    languages: Object.fromEntries([
+      ["x-default", `${BASE_URL}${path}`],
+      ...LOCALES.map((locale) => [
+        locale,
+        locale === "en" ? `${BASE_URL}${path}` : `${BASE_URL}/${locale}${path}`,
+      ]),
+    ]),
+  };
+}
+
+/**
+ * XML Sitemap — Google Search Console optimised.
+ *
+ * Rules applied:
+ * - Only canonical, indexable URLs (no noIndex pages like legal)
+ * - Stable lastModified (real content date, not build time)
+ * - No changeFrequency / priority (Google ignores both since 2024)
+ * - hreflang alternates for all 4 locales
+ * - Uses metadata registries instead of display data imports
+ */
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
-    "",
+  const tourSlugs = getTourSlugs();
+  const excursionSlugs = getExcursionSlugs();
+
+  const staticRoutes = [
+    "", // Home
     "/tours",
-    ...TOURS_DATA.map((tour) => tour.route),
-    ...EXCURSIONS_DATA.map((excursion) => excursion.route),
+    "/excursions",
     "/about",
     "/contact",
   ];
 
-  // Generate ONE entry per route with all language alternates
-  // This prevents duplicate canonical issues in Google Search Console
-  return routes.map((route) => ({
-    // Canonical URL is always English (no locale prefix)
+  const dynamicRoutes = [
+    ...tourSlugs.map((slug) => `/tours/${slug}`),
+    ...excursionSlugs.map((slug) => `/excursions/${slug}`),
+  ];
+
+  const allRoutes = [...staticRoutes, ...dynamicRoutes];
+
+  return allRoutes.map((route) => ({
     url: `${BASE_URL}${route}`,
-    lastModified: new Date(),
-    changeFrequency:
-      route.includes("/tours/") || route.includes("/excursions/")
-        ? "weekly"
-        : route === ""
-          ? "daily"
-          : "monthly",
-    priority:
-      route === ""
-        ? 1.0
-        : route.includes("/tours/") || route.includes("/excursions/")
-          ? 0.8
-          : 0.7,
-    alternates: {
-      languages: {
-        // x-default points to the canonical (English) version
-        "x-default": `${BASE_URL}${route}`,
-        en: `${BASE_URL}${route}`,
-        fr: `${BASE_URL}/fr${route}`,
-        es: `${BASE_URL}/es${route}`,
-        de: `${BASE_URL}/de${route}`,
-      },
-    },
+    lastModified: CONTENT_LAST_MODIFIED,
+    alternates: buildAlternates(route),
   }));
 }

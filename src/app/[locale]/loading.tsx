@@ -1,5 +1,5 @@
-import { Loader } from "@/shared/layout";
+import { PageTransitionLoader } from "@/shared/ui";
 
 export default function Loading() {
-  return <Loader />;
+  return <PageTransitionLoader />;
 }

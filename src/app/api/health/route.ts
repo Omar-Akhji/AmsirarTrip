@@ -11,9 +11,14 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  return NextResponse.json({
-    ok: true,
-    timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || "production",
-  });
+  return NextResponse.json(
+    {
+      ok: true,
+      timestamp: new Date().toISOString(),
+      environment: process.env.NODE_ENV || "production",
+    },
+    {
+      headers: { "Cache-Control": "no-store, max-age=0" },
+    },
+  );
 }

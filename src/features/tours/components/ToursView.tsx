@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { TOURS_DATA } from "../data";
-import { ArrowIcon } from "@/shared/ui/icons";
+import { ArrowRight } from "lucide-react";
 import {
   PageHeader,
   HeaderCTA,
@@ -8,6 +8,7 @@ import {
 } from "@/shared/layout/PageHeader";
 import { StatHighlights } from "./StatHighlights";
 import { TourCard } from "./TourCard";
+import { AnimateOnScroll } from "@/shared/ui";
 
 export default async function ToursView() {
   const t = await getTranslations();
@@ -52,7 +53,7 @@ export default async function ToursView() {
       >
         <HeaderCTA href="#tours-grid">
           <span>{t("tours.detailsTitle")}</span>
-          <ArrowIcon className="size-4" />
+          <ArrowRight className="size-4" />
         </HeaderCTA>
         <HeaderSecondaryCTA
           href="https://www.tripadvisor.de/Attraction_Review-g293734-d32584739-Reviews-Amsirar_Travel-Marrakech_Marrakech_Safi.html"
@@ -84,7 +85,9 @@ export default async function ToursView() {
               </p>
             </div>
 
-            <StatHighlights stats={tourStats} />
+            <AnimateOnScroll animation="fade-up">
+              <StatHighlights stats={tourStats} />
+            </AnimateOnScroll>
           </div>
         </section>
 
@@ -112,24 +115,30 @@ export default async function ToursView() {
 
             <div className="grid grid-cols-1 gap-8 min-[901px]:grid-cols-2 min-[1150px]:grid-cols-3">
               {TOURS_DATA.map((tour, idx) => (
-                <TourCard
+                <AnimateOnScroll
                   key={tour.id}
-                  tour={tour}
-                  idx={idx}
-                  translations={{
-                    title: t(tour.title),
-                    description: t(tour.description),
-                    durationLabel: t("tours.durationLabel", {
-                      count: tour.duration,
-                    }).toUpperCase(),
-                    featured: t("tours.featured"),
-                    startLabelShort: t("tours.startLabelShort") || "Start",
-                    endLabelShort: t("tours.endLabelShort") || "End",
-                    start: t(tour.start),
-                    end: t(tour.end),
-                    exploreLink: t("tours.exploreLink"),
-                  }}
-                />
+                  animation="fade-up"
+                  delay={idx * 150}
+                  className="flex block-full inline-full"
+                >
+                  <TourCard
+                    tour={tour}
+                    idx={idx}
+                    translations={{
+                      title: t(tour.title),
+                      description: t(tour.description),
+                      durationLabel: t("tours.durationLabel", {
+                        count: tour.duration,
+                      }).toUpperCase(),
+                      featured: t("tours.featured"),
+                      startLabelShort: t("tours.startLabelShort") || "Start",
+                      endLabelShort: t("tours.endLabelShort") || "End",
+                      start: t(tour.start),
+                      end: t(tour.end),
+                      exploreLink: t("tours.exploreLink"),
+                    }}
+                  />
+                </AnimateOnScroll>
               ))}
             </div>
           </div>

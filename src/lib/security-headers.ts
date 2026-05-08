@@ -28,6 +28,10 @@ export const getSecurityHeaders = () => {
       key: "Permissions-Policy",
       value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
     },
+    {
+      key: "X-Permitted-Cross-Domain-Policies",
+      value: "none",
+    },
     // CSP is handled by proxy.ts with dynamic nonces for XSS protection
   ];
 };

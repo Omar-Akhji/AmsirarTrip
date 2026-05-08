@@ -1,16 +1,13 @@
-"use client";
-
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { format as formatDate } from "date-fns";
 import { EnhancedCalendar } from "@/shared/ui/calendar";
 import { NativePopover } from "@/shared/ui/NativePopover";
 import { CalendarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { m } from "motion/react";
-import type { BookingFormState } from "../actions/booking-action";
+import type { FormState } from "@/lib/form-types";
 
 interface BookingTripDetailsProps {
-  state: BookingFormState | null;
+  state: FormState | null;
   locale: string;
   calendarOpen: boolean;
   reservationDate: Date | null;
@@ -32,17 +29,12 @@ export function BookingTripDetails({
     <>
       {/* People count + Date picker row */}
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-        <m.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.3, delay: 0.5 }}
-        >
+        <div>
           <label htmlFor="numberOfPeople" className="sr-only">
             {t("booking.numberOfPeople", "Number of People")}
           </label>
           <input
-            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
             type="number"
             id="numberOfPeople"
             name="numberOfPeople"
@@ -62,14 +54,9 @@ export function BookingTripDetails({
               {state.errors["persons"]}
             </p>
           )}
-        </m.div>
+        </div>
 
-        <m.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.3, delay: 0.6 }}
-        >
+        <div>
           <NativePopover
             isOpen={calendarOpen}
             onOpenChange={onCalendarOpenChange}
@@ -77,7 +64,7 @@ export function BookingTripDetails({
               <button
                 type="button"
                 className={cn(
-                  "flex items-center justify-start rounded-2xl border bg-white px-4 py-3 text-start text-sm font-normal transition-colors block-auto inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none pointer-fine:hover:bg-gray-50",
+                  "flex items-center justify-start rounded-2xl border bg-white px-4 py-3 text-start text-sm font-normal transition-colors block-auto inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden pointer-fine:hover:bg-gray-50",
                   !reservationDate && "text-gray-500",
                   state?.errors?.["date"]
                     ? "border-red-300"
@@ -89,18 +76,20 @@ export function BookingTripDetails({
               >
                 <CalendarIcon className="me-2 size-4" />
                 {reservationDate ? (
-                  reservationDate.toLocaleDateString(locale || "en", {
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric",
-                  })
+                  <span suppressHydrationWarning>
+                    {reservationDate.toLocaleDateString(locale || "en", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </span>
                 ) : (
                   <span>{t("booking.reservationDate")}</span>
                 )}
               </button>
             }
           >
-            <div className="z-50 overflow-hidden rounded-2xl border border-gray-100 bg-white p-0 shadow-2xl ring-1 ring-black/5 outline-none inline-auto">
+            <div className="z-50 overflow-hidden rounded-2xl border border-gray-100 bg-white p-0 shadow-2xl ring-1 ring-black/5 outline-hidden inline-auto">
               <EnhancedCalendar
                 key={`${reservationDate?.getTime()}-${calendarOpen}`}
                 initialDate={reservationDate ?? undefined}
@@ -108,9 +97,11 @@ export function BookingTripDetails({
                   onDateSelect(date ?? null);
                 }}
                 onClose={() => onCalendarOpenChange(false)}
-                disabled={(date: Date) =>
-                  date < new Date(new Date().setHours(0, 0, 0, 0))
-                }
+                disabled={(date: Date) => {
+                  const today = new Date();
+                  today.setHours(0, 0, 0, 0);
+                  return date < today;
+                }}
               />
             </div>
           </NativePopover>
@@ -130,7 +121,7 @@ export function BookingTripDetails({
               {state.errors["date"]}
             </p>
           )}
-        </m.div>
+        </div>
       </div>
 
       {/* Message textarea */}
@@ -138,12 +129,9 @@ export function BookingTripDetails({
         <label htmlFor="message" className="sr-only">
           {t("booking.message", "Your message")}
         </label>
-        <m.textarea
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.3, delay: 0.7 }}
-          className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
+        <textarea
+          className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
+          maxLength={1000}
           id="message"
           name="message"
           placeholder={t("booking.message", "Your message")}

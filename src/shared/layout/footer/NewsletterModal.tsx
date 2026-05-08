@@ -10,10 +10,10 @@ import { submitNewsletterAction } from "@/lib/actions/newsletter-action";
 
 export default function NewsletterModal({
   isOpen,
-  onClose,
+  onCloseAction,
 }: {
   isOpen: boolean;
-  onClose: () => void;
+  onCloseAction: () => void;
 }) {
   const { t } = useTranslation();
   const [name, setName] = useState("");
@@ -37,7 +37,7 @@ export default function NewsletterModal({
   // Close on backdrop click
   const handleBackdropClick = (e: React.MouseEvent<HTMLDialogElement>) => {
     if (e.target === dialogRef.current) {
-      onClose();
+      onCloseAction();
     }
   };
 
@@ -45,10 +45,10 @@ export default function NewsletterModal({
   useEffect(() => {
     const dialog = dialogRef.current;
     if (!dialog) return;
-    const handleCancel = () => onClose();
+    const handleCancel = () => onCloseAction();
     dialog.addEventListener("cancel", handleCancel);
     return () => dialog.removeEventListener("cancel", handleCancel);
-  }, [onClose]);
+  }, [onCloseAction]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -67,7 +67,7 @@ export default function NewsletterModal({
       setName("");
       setEmail("");
       recaptchaRef.current?.reset();
-      setTimeout(() => onClose(), 2000);
+      setTimeout(() => onCloseAction(), 2000);
     }
     setStatusKey(result.statusKey);
     setIsSubmitting(false);
@@ -80,7 +80,7 @@ export default function NewsletterModal({
       ref={dialogRef}
       onClick={handleBackdropClick}
       onKeyDown={(e) => {
-        if (e.key === "Escape") onClose();
+        if (e.key === "Escape") onCloseAction();
       }}
       className="fixed inset-0 z-50 m-auto overflow-visible rounded-3xl border border-gray-200 bg-white p-0 text-gray-900 shadow-2xl transition-all duration-300 inline-[95vw] max-inline-md backdrop:bg-black/50 backdrop:backdrop-blur-sm backdrop:transition-all backdrop:duration-300 open:flex open:flex-col starting:backdrop:bg-black/0 starting:open:scale-95 starting:open:opacity-0"
     >
@@ -97,7 +97,7 @@ export default function NewsletterModal({
           </div>
           <button
             type="button"
-            onClick={onClose}
+            onClick={onCloseAction}
             aria-label={t("footer.newsletterCloseAria")}
             className="-me-1 -mbs-1 flex items-center justify-center rounded-full text-gray-400 transition-colors block-9 inline-9 pointer-fine:hover:bg-gray-100 pointer-fine:hover:text-gray-600"
           >
@@ -128,7 +128,7 @@ export default function NewsletterModal({
                   required
                   minLength={2}
                   autoComplete="name"
-                  className="rounded-full border border-gray-200 bg-gray-50 ps-10 pe-4 text-sm text-gray-900 transition-all duration-200 block-11 inline-full placeholder:text-gray-400 user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
+                  className="rounded-full border border-gray-200 bg-gray-50 ps-10 pe-4 text-sm text-gray-900 transition-all duration-200 block-11 inline-full placeholder:text-gray-400 user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
                 />
               </div>
             </div>
@@ -152,7 +152,7 @@ export default function NewsletterModal({
                   onChange={(e) => setEmail(e.target.value)}
                   required
                   autoComplete="email"
-                  className="rounded-full border border-gray-200 bg-gray-50 ps-10 pe-4 text-sm text-gray-900 transition-all duration-200 block-11 inline-full placeholder:text-gray-400 user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
+                  className="rounded-full border border-gray-200 bg-gray-50 ps-10 pe-4 text-sm text-gray-900 transition-all duration-200 block-11 inline-full placeholder:text-gray-400 user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:bg-white focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
                 />
               </div>
             </div>

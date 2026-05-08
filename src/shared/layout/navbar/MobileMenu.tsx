@@ -21,8 +21,7 @@ interface MobileMenuProps {
   handleNavClick: () => void;
   getNavLinkClasses: (isActive: boolean, isMobile?: boolean) => string;
   getCollapseClasses: () => string;
-  isTablet: boolean;
-  isMobile: boolean;
+  viewport: "mobile" | "tablet" | "desktop";
 }
 
 export function MobileMenu({
@@ -39,15 +38,14 @@ export function MobileMenu({
   handleNavClick,
   getNavLinkClasses,
   getCollapseClasses,
-  isTablet,
-  isMobile,
+  viewport,
 }: MobileMenuProps) {
   const { t } = useTranslation();
   const pathname = usePathname();
 
   return (
     <div className="relative flex items-center gap-3 px-2 inline-full">
-      {isTablet && (
+      {viewport === "tablet" && (
         <div className="me-auto flex items-center gap-2">
           <SocialLinks className="gap-2" compact={true} scrolled={scrolled} />
           <LanguageSelector
@@ -67,7 +65,7 @@ export function MobileMenu({
         className={cn(
           "text-[1.4rem] font-semibold tracking-tight",
           scrolled ? "text-slate-900" : "text-white",
-          isTablet || isMobile
+          viewport === "tablet" || viewport === "mobile"
             ? "absolute start-1/2 z-10 -translate-x-1/2"
             : "",
         )}
@@ -85,7 +83,7 @@ export function MobileMenu({
         </span>
       </Link>
 
-      {isMobile && (
+      {viewport === "mobile" && (
         <LanguageSelector
           size="sm"
           className="me-auto"
@@ -129,11 +127,11 @@ export function MobileMenu({
         ref={collapseRef}
         className={cn(
           getCollapseClasses(),
-          isTablet &&
+          viewport === "tablet" &&
             "start-auto end-0.5 top-[calc(100%+0.75rem)] translate-x-0 inline-1/2",
         )}
       >
-        {isMobile && (
+        {viewport === "mobile" && (
           <div
             className={cn(
               "flex items-center justify-center gap-4 px-4 py-4",

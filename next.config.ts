@@ -45,18 +45,23 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  transpilePackages: ["gsap", "@gsap/react"],
   reactCompiler: true,
   experimental: {
     serverActions: {
-      bodySizeLimit: "4mb",
+      bodySizeLimit: "1mb",
     },
+
+    // Native browser View Transitions API for zero-JS routing animations
+    viewTransition: true,
 
     // Optimize package imports to reduce bundle size
     optimizePackageImports: [
       "lucide-react",
       "date-fns",
-      "motion",
       "next-intl",
+      "gsap",
+      "@gsap/react",
     ],
     // Enable router caching for faster navigation
     staleTimes: {

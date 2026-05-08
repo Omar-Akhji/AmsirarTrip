@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic";
-import { Navbar, Loader } from "@/shared/layout";
-import { AnimationProvider } from "@/shared/providers/AnimationProvider";
+import { Navbar } from "@/shared/layout";
+import { PageTransitionLoader } from "@/shared/ui";
 import { ErrorBoundary } from "@/shared/utilities/ErrorBoundary";
 import { JsonLd } from "@/shared/ui/JsonLd";
 import {
@@ -51,38 +51,28 @@ const yellowtail = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default:
-      "Amsirar Trip - Morocco Tours, Sahara Desert Adventures & Excursions",
-    template: "%s | Amsirar Trip - Morocco Travel Experts",
+    default: "Amsirar Trip — Morocco Tours & Desert Adventures",
+    template: "%s | Amsirar Trip",
   },
   applicationName: "Amsirar Trip",
   description:
     "Explore Morocco with local experts. Authentic Sahara desert tours, imperial city excursions, Atlas Mountains treks, and private guided experiences. 20+ years serving travelers. Book your dream Morocco adventure today.",
   keywords: [
     "Amsirar Trip",
-    "AmsirarTrip",
-    "Amsirartrip",
-    "amsirartrip",
-    "Amsirar",
-    "amsirar",
-    "Amsirar Tours",
-    "Amsirar Morocco",
     "Morocco tours",
-    "Sahara desert trips",
+    "Sahara desert tours",
     "Marrakech excursions",
     "Morocco travel agency",
     "Atlas Mountains tours",
     "Imperial cities Morocco",
     "Merzouga desert tours",
     "Morocco adventure travel",
-    "Fes day trips",
-    "Chefchaouen tours",
-    "Morocco guided tours",
     "private Morocco tours",
-    "Morocco desert camping",
     "camel trekking Morocco",
-    "Morocco cultural tours",
+    "Morocco desert camping",
     "authentic Morocco experiences",
+    "Morocco guided tours",
+    "Morocco day trips",
   ],
   authors: [{ name: "Amsirar Trip", url: "https://amsirartrip.com" }],
   creator: "Amsirar Trip",
@@ -174,6 +164,7 @@ export function generateStaticParams() {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  themeColor: "#1a1a1a",
 };
 
 export default async function LocaleLayout({
@@ -206,7 +197,6 @@ export default async function LocaleLayout({
           as="image"
           type="image/webp"
         />
-        <meta name="theme-color" content="#1a1a1a" />
         <meta name="mobile-web-app-capable" content="yes" />
         <meta
           name="apple-mobile-web-app-status-bar-style"
@@ -227,14 +217,12 @@ export default async function LocaleLayout({
       <body>
         <NextIntlClientProvider messages={messages}>
           <ErrorBoundary>
-            <AnimationProvider>
-              <NavigationProgress />
-              <Loader />
-              <Navbar />
-              <main>{children}</main>
-              <Footer />
-              <WhatsAppButton />
-            </AnimationProvider>
+            <NavigationProgress />
+            <PageTransitionLoader />
+            <Navbar />
+            <main>{children}</main>
+            <Footer />
+            <WhatsAppButton />
           </ErrorBoundary>
         </NextIntlClientProvider>
       </body>

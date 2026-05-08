@@ -1,5 +1,3 @@
-import { m, AnimatePresence } from "motion/react";
-
 interface FormStatusMessagesProps {
   submitError?: string | undefined;
   success?: boolean | undefined;
@@ -12,16 +10,13 @@ export function FormStatusMessages({
   successMessage,
 }: FormStatusMessagesProps) {
   return (
-    <AnimatePresence mode="wait">
+    <>
       {/* Error Summary */}
       {submitError && (
-        <m.div
-          key="error"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.3 }}
+        <div
           className="rounded-2xl border border-orange-200 bg-orange-50 px-4 py-3 text-sm text-orange-900"
+          role="alert"
+          aria-live="assertive"
         >
           <div className="flex items-start gap-2">
             <svg
@@ -37,22 +32,19 @@ export function FormStatusMessages({
             </svg>
             <span>{submitError}</span>
           </div>
-        </m.div>
+        </div>
       )}
 
       {/* Success Message */}
       {success && successMessage && (
-        <m.div
-          key="success"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.3 }}
+        <div
           className="rounded-2xl border border-green-200 bg-green-50 px-4 py-3 text-sm text-green-800"
+          role="status"
+          aria-live="polite"
         >
           {successMessage}
-        </m.div>
+        </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

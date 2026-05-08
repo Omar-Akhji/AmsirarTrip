@@ -33,7 +33,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale });
 
   return generateSEOMetadata({
-    title: `${t(tour.tourKey + ".title")} - ${tour.durationDays} Day Morocco Tour`,
+    title: `${t(tour.tourKey + ".title")} (${tour.durationDays} Days)`,
     description:
       t("tours." + tour.tourKey + ".description") +
       " " +
@@ -69,8 +69,7 @@ export default async function TourPage({ params }: PageProps) {
     price: tour.jsonLd.price,
     currency: tour.jsonLd.currency,
     duration: tour.duration,
-    startLocation: tour.startLocation,
-    endLocation: tour.endLocation,
+    location: { start: tour.startLocation, end: tour.endLocation },
     url: `https://amsirartrip.com/tours/${slug}`,
   });
 

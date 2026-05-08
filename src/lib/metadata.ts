@@ -1,16 +1,19 @@
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 const SITE_NAME = "Amsirar Trip";
 const BASE_URL = "https://amsirartrip.com";
 const COMPANY_PHONE = "+212 (0) 6 61 17 31 44";
 const COMPANY_EMAIL = "contact@amsirartrip.com";
 
-// Localized taglines for SEO metadata
-const SITE_TAGLINES: Record<string, string> = {
-  en: "Morocco Travel Experts",
-  fr: "Experts du Voyage au Maroc",
-  de: "Marokko Reise-Experten",
-  es: "Expertos en Viajes a Marruecos",
+/**
+ * OpenGraph expects locale in `language_TERRITORY` format.
+ * Maps our short locale codes to proper OG locale strings.
+ */
+const OG_LOCALES: Record<string, string> = {
+  en: "en_US",
+  fr: "fr_FR",
+  de: "de_DE",
+  es: "es_ES",
 };
 
 interface SEOConfig {
@@ -44,10 +47,9 @@ export function generateSEOMetadata({
   const isDefaultLocale = locale === "en";
   const localePath = isDefaultLocale ? path : `/${locale}${path}`;
   const url = `${BASE_URL}${localePath}`;
-  const tagline = SITE_TAGLINES[locale] || SITE_TAGLINES["en"];
   const fullTitle = title.includes(SITE_NAME)
     ? title
-    : `${title} | ${SITE_NAME} - ${tagline}`;
+    : `${title} | ${SITE_NAME}`;
 
   // Ensure description is optimal length (150-160 chars)
   const truncatedDescription =
@@ -92,7 +94,7 @@ export function generateSEOMetadata({
       description: truncatedDescription,
       url,
       siteName: SITE_NAME,
-      locale,
+      locale: OG_LOCALES[locale] || "en_US",
       type,
       publishedTime,
       modifiedTime,
@@ -130,42 +132,24 @@ export function generateSEOMetadata({
         "max-snippet": -1,
       },
     },
-    verification: {
-      // google: "YOUR_ACTUAL_GOOGLE_VERIFICATION_CODE", // Get from Google Search Console
-      // yandex: "your-yandex-verification-code",
-      // bing: "your-bing-verification-code",
-    },
   };
 }
 
+/** Focused keyword set — 15 terms max to avoid keyword dilution */
 export const defaultKeywords = [
   "Amsirar Trip",
-  "AmsirarTrip",
-  "Amsirartrip",
-  "amsirartrip",
-  "Amsirar",
-  "amsirar",
-  "Amsirar Trip",
-  "Amsirar Tours",
-  "Amsirar Travel",
-  "Amsirar Morocco",
   "Morocco tours",
-  "Sahara desert trips",
+  "Sahara desert tours",
   "Marrakech excursions",
   "Morocco travel agency",
   "Atlas Mountains tours",
   "Imperial cities Morocco",
-  "Morocco desert camping",
-  "camel trekking Morocco",
-  "Fes cultural tours",
-  "Chefchaouen day trips",
-  "private Morocco tours",
+  "Merzouga desert tours",
   "Morocco adventure travel",
+  "private Morocco tours",
+  "camel trekking Morocco",
+  "Morocco desert camping",
   "authentic Morocco experiences",
-  "Morocco tour packages",
-  "guided tours Morocco",
-  "Morocco holiday packages",
-  "Moroccan adventure",
-  "Merzouga tours",
+  "Morocco guided tours",
   "Morocco day trips",
 ];

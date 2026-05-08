@@ -2,18 +2,12 @@
 
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { MapPin, Mail, Smartphone, Phone } from "lucide-react";
-import { m } from "motion/react";
-import { fadeInUp } from "@/lib/constants/animations";
 
 export function FooterContactInfo() {
   const { t } = useTranslation();
 
   return (
-    <m.div
-      {...fadeInUp}
-      transition={{ duration: 0.5, delay: 0.15 }}
-      className="space-y-6 lg:col-span-1"
-    >
+    <div className="space-y-6 lg:col-span-1">
       <h3 className="mbe-2 text-sm font-semibold tracking-wider text-white uppercase">
         {t("footer.office")}
       </h3>
@@ -67,6 +61,6 @@ export function FooterContactInfo() {
           </li>
         </ul>
       </address>
-    </m.div>
+    </div>
   );
 }

@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useRef, useMemo } from "react";
 import Image from "next/image";
-import { m, AnimatePresence } from "motion/react";
 import { Link } from "@/i18n/routing";
 import { useTranslation, useMediaQuery } from "@/lib/hooks";
 
@@ -24,9 +23,6 @@ export default function HomeHero() {
   const [typed, setTyped] = useState("");
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
-  // useMemo restored to satisfy linter and enable React Compiler optimization.
-  // Although the compiler would handle this, the presence of eslint-disable-next-line
-  // for hook dependencies causes the compiler to skip optimization for safety.
   const heroTexts = useMemo(
     () => [
       t("home.heroTitle"),
@@ -139,32 +135,29 @@ export default function HomeHero() {
   return (
     <header
       ref={headerRef}
-      className="home-header relative isolate overflow-hidden bg-slate-950 text-white shadow-xl inline-full min-block-[40vh] sm:min-block-[45vh] lg:min-block-[50vh]"
+      className="page-hero home-header relative isolate overflow-hidden bg-slate-950 text-white shadow-xl inline-full min-block-[40vh] sm:min-block-[45vh] lg:min-block-[50vh]"
       aria-labelledby="hero-heading"
     >
-      <AnimatePresence mode="popLayout">
-        <m.div
-          key={HEADER_IMAGES[currentImageIndex]}
-          initial={{ opacity: 0, scale: 1.15 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{
-            opacity: { duration: 1.2, ease: "easeOut" },
-            scale: { duration: 8, ease: "easeOut" },
-          }}
-          className="absolute inset-0 z-0"
-        >
-          <Image
-            src={HEADER_IMAGES[currentImageIndex] || ""}
-            alt=""
-            fill
-            className="object-cover"
-            sizes="100vw"
-            priority={currentImageIndex === 0}
-          />
-        </m.div>
-      </AnimatePresence>
-      <div className="absolute inset-0 z-10 bg-gradient-to-b from-black/60 via-black/30 to-black/70" />
+      <div className="absolute inset-0 z-0">
+        {HEADER_IMAGES.map((src, index) => (
+          <div
+            key={src}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentImageIndex ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <Image
+              src={src}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority={index === 0}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="absolute inset-0 z-10 bg-linear-to-b from-black/60 via-black/30 to-black/70" />
       <div className="relative z-20 mx-auto flex flex-col items-center justify-center gap-12 px-4 pbs-8 pbe-16 text-center inline-full max-inline-7xl lg:py-20">
         <div className="flex-1 space-y-6 pbs-0 text-center lg:pbs-8">
           <div className="flex items-center justify-center gap-4">
@@ -176,21 +169,12 @@ export default function HomeHero() {
           </div>
           <h2
             id="hero-heading"
-            className="text-3xl leading-tight font-semibold text-shadow-black/60 text-shadow-lg sm:text-4xl lg:text-5xl lg:text-shadow-xl"
+            className="lg:text-shadow-xl text-3xl leading-tight font-semibold text-shadow-black/60 text-shadow-lg sm:text-4xl lg:text-5xl"
           >
             {isMobileOrTablet ? (
-              <AnimatePresence mode="wait">
-                <m.span
-                  key={currentTextIndex}
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.98 }}
-                  transition={{ duration: 0.8, ease: "easeInOut" }}
-                  className="inline-block"
-                >
-                  {heroTexts[currentTextIndex]}
-                </m.span>
-              </AnimatePresence>
+              <span className="inline-block transition-opacity duration-500">
+                {heroTexts[currentTextIndex]}
+              </span>
             ) : (
               <>
                 <span>{typed}</span>
@@ -207,13 +191,13 @@ export default function HomeHero() {
           <div className="flex flex-wrap items-center justify-center gap-4 pbs-2">
             <Link
               href="/tours"
-              className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white/90 transition text-shadow-sm sm:px-8 pointer-fine:hover:bg-white/10"
+              className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white/90 transition text-shadow-xs sm:px-8 pointer-fine:hover:bg-white/10"
             >
               {t("home.exploreOurTours")}
             </Link>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition text-shadow-sm sm:px-8 pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:bg-white/20"
+              className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition text-shadow-xs sm:px-8 pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:bg-white/20"
             >
               {t("home.contactForMore")}
             </Link>

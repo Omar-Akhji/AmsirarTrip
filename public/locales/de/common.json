@@ -4,6 +4,7 @@
   "validations": {
     "recaptchaRequired": "Recaptcha-Überprüfung ist erforderlich",
     "nameMin": "Der Name muss mindestens 2 Zeichen lang sein",
+    "nameTooLong": "Der Name darf höchstens 100 Zeichen lang sein",
     "emailInvalid": "Ungültige E-Mail-Adresse",
     "phoneInvalid": "Ungültige Telefonnummer",
     "phoneTooLong": "Telefonnummer zu lang",
@@ -12,7 +13,8 @@
     "reservationRequired": "Reservierungstyp ist erforderlich",
     "personsMin": "Mindestens 1 Person erforderlich",
     "personsMax": "Maximal 50 Personen",
-    "invalidDate": "Ungültiges Datumsformat"
+    "invalidDate": "Ungültiges Datumsformat",
+    "datePast": "Das Datum darf nicht in der Vergangenheit liegen"
   },
   "nav": {
     "home": "Startseite",

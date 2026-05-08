@@ -44,7 +44,7 @@ export function PageHeader({
   };
 
   return (
-    <header className="relative isolate overflow-hidden bg-slate-950 text-white shadow-xl inline-full min-block-[40vh] sm:min-block-[45vh] lg:min-block-[50vh]">
+    <header className="page-hero relative isolate overflow-hidden bg-slate-950 text-white shadow-xl inline-full min-block-[40vh] sm:min-block-[45vh] lg:min-block-[50vh]">
       {/* Optimized Background Image */}
       {bgImage && (
         <Image
@@ -162,7 +162,7 @@ export function HeaderCTA({
   return (
     <a
       href={href}
-      className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white/90 transition text-shadow-sm pointer-fine:hover:bg-white/10"
+      className="inline-flex items-center gap-2 rounded-full border border-white/60 px-6 py-3 text-sm font-semibold text-white/90 transition text-shadow-xs pointer-fine:hover:bg-white/10"
     >
       {children}
     </a>
@@ -186,7 +186,7 @@ export function HeaderSecondaryCTA({
       href={href}
       target={external ? "_blank" : undefined}
       rel={external ? "noopener noreferrer" : undefined}
-      className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition text-shadow-sm pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:bg-white/20"
+      className="inline-flex items-center gap-2 rounded-full bg-white/10 px-6 py-3 text-sm font-semibold text-white backdrop-blur transition text-shadow-xs pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:bg-white/20"
     >
       {children}
     </a>

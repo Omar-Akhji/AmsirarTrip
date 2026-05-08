@@ -1,11 +1,5 @@
-/**
- * API utilities for error handling, logging, and rate limiting
- */
+import { logSuspiciousActivity } from "./server-utils";
 
-/**
- * Rate limiting helper (simple in-memory implementation)
- * For production, use Redis or a proper rate limiting service
- */
 const rateLimitMap = new Map<
   string,
   { count: number; resetAt: number; violations: number }
@@ -60,7 +54,7 @@ export function checkRateLimit(
 }
 
 /**
- * Clean up old rate limit entries periodically
+ * Clean up old rate limit entries and expired blocked IPs periodically
  */
 if (typeof window === "undefined") {
   setInterval(() => {
@@ -70,20 +64,10 @@ if (typeof window === "undefined") {
         rateLimitMap.delete(key);
       }
     }
+    for (const [key, expiry] of blockedIPs.entries()) {
+      if (now > expiry) {
+        blockedIPs.delete(key);
+      }
+    }
   }, 60000); // Clean up every minute
-}
-
-/**
- * Log suspicious activity for security monitoring
- */
-export function logSuspiciousActivity(
-  ip: string,
-  type: string,
-  details: string,
-) {
-  const timestamp = new Date().toISOString();
-  console.warn(
-    `[SECURITY] ${timestamp} IP: ${ip} Type: ${type} Details: ${details}`,
-  );
-  // In production, send to Sentry or security monitoring service
 }

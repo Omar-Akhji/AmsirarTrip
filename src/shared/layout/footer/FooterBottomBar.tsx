@@ -2,25 +2,25 @@
 
 import { Link } from "@/i18n/routing";
 import { useTranslation } from "@/lib/hooks/useTranslation";
-import { m } from "motion/react";
-import { fadeIn } from "@/lib/constants/animations";
 
 export function FooterBottomBar() {
   const { t } = useTranslation();
 
   return (
-    <m.div
-      {...fadeIn}
-      transition={{ duration: 0.5, delay: 0.4 }}
-      className="border-t border-white/5 bg-black/20"
-    >
+    <div className="border-t border-white/5 bg-black/20">
       <div className="mx-auto px-4 py-6 max-inline-7xl sm:px-6 lg:px-8">
         <div className="flex flex-col items-center justify-between gap-6 sm:flex-row">
           {/* Copyright Notice */}
           <div className="order-2 text-center sm:order-1 sm:text-start">
-            <p className="text-sm font-medium text-slate-500">
+            <p
+              className="text-sm font-medium text-slate-500"
+              suppressHydrationWarning
+            >
               ©{" "}
-              <time dateTime={new Date().getFullYear().toString()}>
+              <time
+                dateTime={new Date().getFullYear().toString()}
+                suppressHydrationWarning
+              >
                 {new Date().getFullYear()}
               </time>{" "}
               <span className="text-slate-400">Amsirar Trip. Ltd.</span>{" "}
@@ -58,6 +58,6 @@ export function FooterBottomBar() {
           </nav>
         </div>
       </div>
-    </m.div>
+    </div>
   );
 }

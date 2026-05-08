@@ -4,28 +4,36 @@ import { headers } from "next/headers";
 import { getTranslations } from "next-intl/server";
 import { getContactSchema } from "@/lib/schemas";
 import { env } from "@/lib/env";
-import { checkRateLimit, logSuspiciousActivity } from "@/lib/api-utils";
-import { verifyRecaptcha, createMailer, escapeHtml } from "@/lib/server-utils";
-
-export interface ContactFormState {
-  success: boolean;
-  message: string;
-  errors?: Record<string, string>;
-}
+import { checkRateLimit } from "@/lib/api-utils";
+import { createErrorResponse } from "@/lib/form-types";
+import type { FormState } from "@/lib/form-types";
+import {
+  verifyRecaptcha,
+  createMailer,
+  escapeHtml,
+  logSuspiciousActivity,
+} from "@/lib/server-utils";
 
 /**
  * Server action for contact form submission using React 19's useActionState
  */
 export async function submitContactAction(
-  _prevState: ContactFormState | null,
+  _prevState: FormState | null,
   formData: FormData,
-): Promise<ContactFormState> {
+): Promise<FormState> {
   try {
     const headersList = await headers();
     const ip =
       headersList.get("x-forwarded-for")?.split(",")[0]?.trim() ||
       headersList.get("x-real-ip") ||
       "unknown";
+
+    // Honeypot check — hidden field filled only by bots
+    const honeypot = formData.get("website") as string;
+    if (honeypot) {
+      logSuspiciousActivity(ip, "HONEYPOT_TRIGGERED", "contact-action");
+      return { success: true, message: "Message sent!" };
+    }
 
     const rateLimit = checkRateLimit(ip, 10, 60000);
     if (!rateLimit.allowed) {
@@ -109,14 +117,6 @@ export async function submitContactAction(
       message: "Message sent! We will reply within 24 hours.",
     };
   } catch (error) {
-    console.error("Contact form submission error:", error);
-
-    return {
-      success: false,
-      message:
-        error instanceof Error
-          ? error.message
-          : "An unexpected error occurred. Please try again.",
-    };
+    return createErrorResponse(error, "Contact form submission");
   }
 }

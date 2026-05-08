@@ -1,17 +1,16 @@
-interface ExcursionMetadata {
-  slug: string;
+import type { BaseTripMetadata } from "@/lib/types";
+
+interface ExcursionSpecific {
   excursionKey: string;
-  i18nKeyPrefix: string; // e.g., "ouzoud", "essaouira"
-  bookingId: number;
-  image: string;
-  duration: string; // ISO 8601 format
+  i18nKeyPrefix: string;
   location: string;
-  keywords: string[];
   jsonLd: {
     name: string;
     description: string;
   };
 }
+
+type ExcursionMetadata = BaseTripMetadata & ExcursionSpecific;
 
 const EXCURSIONS_METADATA: Record<string, ExcursionMetadata> = {
   "ouzoud-waterfalls-day-trip": {

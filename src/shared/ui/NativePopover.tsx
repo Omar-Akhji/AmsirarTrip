@@ -43,26 +43,33 @@ export function NativePopover({
     let top = triggerRect.bottom + 8;
     let left = triggerRect.left;
 
-    // Wait for the next frame to measure popover dimensions if needed
-    // But for most calendars, we can assume a standard size or use a more robust check
-    const popoverWidth = 340; // Approximate width of the calendar
-    const popoverHeight = 400; // Approximate height
+    const popoverWidth = 340;
+    const popoverHeight = 400;
 
-    // Horizontal overflow check
     if (left + popoverWidth > viewportWidth) {
       left = Math.max(8, viewportWidth - popoverWidth - 16);
     }
 
-    // Vertical overflow check (show above if no space below)
-    if (top + popoverHeight > viewportHeight && triggerRect.top > popoverHeight) {
+    if (
+      top + popoverHeight > viewportHeight &&
+      triggerRect.top > popoverHeight
+    ) {
       top = triggerRect.top - popoverHeight - 8;
     }
 
-    popover.style.position = "fixed";
-    popover.style.margin = "0";
-    popover.style.top = `${top}px`;
-    popover.style.left = `${left}px`;
+    Object.assign(popover.style, {
+      position: "fixed",
+      margin: "0",
+      top: `${top}px`,
+      left: `${left}px`,
+    });
   }, [isOpen]);
+
+  const positionPopoverHandlerRef = useRef(positionPopover);
+
+  useEffect(() => {
+    positionPopoverHandlerRef.current = positionPopover;
+  }, [positionPopover]);
 
   // Sync React state with Native Popover state and position it
   useEffect(() => {
@@ -73,7 +80,6 @@ export function NativePopover({
       try {
         if (!popover.matches(":popover-open")) {
           popover.showPopover();
-          // Position immediately after showing
           positionPopover();
         }
       } catch (e) {
@@ -111,22 +117,35 @@ export function NativePopover({
   useEffect(() => {
     if (!isOpen) return;
 
-    window.addEventListener("resize", positionPopover);
-    window.addEventListener("scroll", positionPopover, { capture: true });
+    const handler = () => positionPopoverHandlerRef.current();
+
+    window.addEventListener("resize", handler, { passive: true });
+    window.addEventListener("scroll", handler, {
+      capture: true,
+      passive: true,
+    });
 
     return () => {
-      window.removeEventListener("resize", positionPopover);
-      window.removeEventListener("scroll", positionPopover, { capture: true });
+      window.removeEventListener("resize", handler);
+      window.removeEventListener("scroll", handler, { capture: true });
     };
-  }, [isOpen, positionPopover]);
+  }, [isOpen]);
 
   return (
-    <div className="relative inline-block w-full">
+    <div className="relative inline-block inline-full">
       {/* Trigger Container */}
-      <div 
-        ref={triggerRef} 
-        className="w-full"
+      <div
+        ref={triggerRef}
+        className="inline-full cursor-pointer"
+        role="button"
+        tabIndex={0}
         onClick={() => onOpenChange(!isOpen)}
+        onKeyDown={(e) => {
+          if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            onOpenChange(!isOpen);
+          }
+        }}
       >
         {trigger}
       </div>
@@ -137,10 +156,10 @@ export function NativePopover({
         id={popoverId}
         popover="auto"
         className={cn(
-          "m-0 border-none bg-transparent p-0 outline-none backdrop:bg-black/20",
+          "m-0 border-none bg-transparent p-0 outline-hidden backdrop:bg-black/20",
           /* inset-auto is critical for manual positioning in top layer */
-          "fixed inset-auto", 
-          className
+          "fixed inset-auto",
+          className,
         )}
       >
         {isOpen && (

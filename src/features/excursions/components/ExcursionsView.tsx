@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { EXCURSIONS_DATA } from "@/features/excursions/data/excursionsData";
-import { ArrowIcon } from "@/shared/ui/icons";
+import { ArrowRight } from "lucide-react";
 import {
   PageHeader,
   HeaderCTA,
@@ -8,6 +8,7 @@ import {
 } from "@/shared/layout/PageHeader";
 import { StatHighlights } from "@/features/tours/components/StatHighlights";
 import { ExcursionCard } from "./ExcursionCard";
+import { AnimateOnScroll } from "@/shared/ui";
 
 export default async function ExcursionView() {
   const t = await getTranslations();
@@ -58,7 +59,7 @@ export default async function ExcursionView() {
         </HeaderSecondaryCTA>
         <HeaderCTA href="#excursions-grid">
           <span>{t("excursion.detailsTitle")}</span>
-          <ArrowIcon className="size-4" />
+          <ArrowRight className="size-4" />
         </HeaderCTA>
       </PageHeader>
 
@@ -84,7 +85,9 @@ export default async function ExcursionView() {
               </p>
             </div>
 
-            <StatHighlights stats={highlightStats} />
+            <AnimateOnScroll animation="fade-up">
+              <StatHighlights stats={highlightStats} />
+            </AnimateOnScroll>
           </div>
         </section>
 
@@ -112,19 +115,25 @@ export default async function ExcursionView() {
 
             <div className="grid grid-cols-1 gap-8 min-[901px]:grid-cols-2 min-[1150px]:grid-cols-3">
               {EXCURSIONS_DATA.map((excursion, idx) => (
-                <ExcursionCard
+                <AnimateOnScroll
                   key={excursion.id}
-                  excursion={excursion}
-                  idx={idx}
-                  translations={{
-                    alt: t(excursion.alt),
-                    title: t(excursion.title),
-                    tagline: t(excursion.tagline),
-                    description: t(excursion.description),
-                    category: t("excursion.card.category"),
-                    exploreLink: t("excursion.exploreLink"),
-                  }}
-                />
+                  animation="fade-up"
+                  delay={idx * 150}
+                  className="flex block-full inline-full"
+                >
+                  <ExcursionCard
+                    excursion={excursion}
+                    idx={idx}
+                    translations={{
+                      alt: t(excursion.alt),
+                      title: t(excursion.title),
+                      tagline: t(excursion.tagline),
+                      description: t(excursion.description),
+                      category: t("excursion.card.category"),
+                      exploreLink: t("excursion.exploreLink"),
+                    }}
+                  />
+                </AnimateOnScroll>
               ))}
             </div>
           </div>

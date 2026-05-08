@@ -13,7 +13,6 @@ interface EnhancedCalendarProps {
   onClose?: () => void;
 }
 
-
 export function EnhancedCalendar({
   initialDate,
   onSelect,
@@ -22,23 +21,14 @@ export function EnhancedCalendar({
   onClose,
 }: EnhancedCalendarProps) {
   // Draft state for current selection in the calendar UI
-  const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(undefined);
-  
-  // Track the previous prop to handle synchronization during render
-  const [prevInitialDate, setPrevInitialDate] = React.useState<Date | undefined>(undefined);
-  if (initialDate?.getTime() !== prevInitialDate?.getTime()) {
-    setPrevInitialDate(initialDate);
-    setSelectedDate(initialDate);
-  }
+  const [selectedDate, setSelectedDate] = React.useState<Date | undefined>(
+    initialDate,
+  );
 
   // Navigation state for the visible month
-  const [currentMonth, setCurrentMonth] = React.useState<Date>(new Date());
-  const [prevMonthDate, setPrevMonthDate] = React.useState<Date | undefined>(undefined);
-  
-  if (initialDate?.getTime() !== prevMonthDate?.getTime()) {
-    setPrevMonthDate(initialDate);
-    setCurrentMonth(initialDate || new Date());
-  }
+  const [currentMonth, setCurrentMonth] = React.useState<Date>(
+    initialDate || new Date(),
+  );
 
   const handleDayClick = (date: Date | undefined) => {
     setSelectedDate(date);
@@ -73,13 +63,13 @@ export function EnhancedCalendar({
 
   return (
     <div className={cn("relative", className)}>
-      <div className="overflow-hidden rounded-2xl border-4 border-orange-600 bg-linear-to-br from-white to-orange-50/30 p-5 shadow-xl shadow-orange-900/5 backdrop-blur-sm">
+      <div className="overflow-hidden rounded-2xl bg-linear-to-br from-white to-orange-50/30 p-5 shadow-2xl ring-1 shadow-orange-900/10 ring-orange-500/20 backdrop-blur-sm">
         {/* Month Navigation Header */}
         <div className="mbe-4 flex items-center justify-center gap-4 border-b border-orange-100 pbe-3">
           <button
             type="button"
             onClick={() => navigateMonth("prev")}
-            className="flex items-center justify-center rounded-full text-orange-600 transition-colors block-8 inline-8 focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-none pointer-fine:hover:bg-orange-50"
+            className="flex items-center justify-center rounded-full text-orange-600 transition-colors block-8 inline-8 focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-hidden pointer-fine:hover:bg-orange-50"
             aria-label="Previous month"
           >
             <ChevronLeft className="block-4 inline-4" />
@@ -87,7 +77,10 @@ export function EnhancedCalendar({
 
           <div className="flex items-center gap-2">
             <CalendarIcon className="text-orange-600 block-4 inline-4" />
-            <span className="text-sm font-semibold text-gray-900">
+            <span
+              className="text-sm font-semibold text-gray-900"
+              suppressHydrationWarning
+            >
               {currentMonth.toLocaleDateString("en-US", {
                 month: "long",
                 year: "numeric",
@@ -98,7 +91,7 @@ export function EnhancedCalendar({
           <button
             type="button"
             onClick={() => navigateMonth("next")}
-            className="flex items-center justify-center rounded-full text-orange-600 transition-colors block-8 inline-8 focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-none pointer-fine:hover:bg-orange-50"
+            className="flex items-center justify-center rounded-full text-orange-600 transition-colors block-8 inline-8 focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-hidden pointer-fine:hover:bg-orange-50"
             aria-label="Next month"
           >
             <ChevronRight className="block-4 inline-4" />
@@ -128,7 +121,7 @@ export function EnhancedCalendar({
             day_button: cn(
               "block-9 inline-9 p-0 font-normal rounded-full text-sm transition-all duration-200",
               "pointer-fine:hover:bg-orange-100 pointer-fine:hover:text-orange-900",
-              "focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-1",
+              "focus:outline-hidden focus:ring-2 focus:ring-orange-500 focus:ring-offset-1",
               "aria-selected:bg-orange-600 aria-selected:text-white aria-selected:font-semibold",
               "disabled:opacity-30 disabled:cursor-not-allowed",
             ),
@@ -148,10 +141,18 @@ export function EnhancedCalendar({
                 <div className="animate-pulse rounded-full bg-orange-600 block-2 inline-2" />
               </div>
               <div className="flex-1 min-inline-0">
-                <p className="text-xs font-medium text-gray-500">
-                  {selectedDate.getTime() === initialDate?.getTime() ? "Current Date" : "New Selection"}
+                <p
+                  className="text-xs font-medium text-gray-500"
+                  suppressHydrationWarning
+                >
+                  {selectedDate.getTime() === initialDate?.getTime()
+                    ? "Current Date"
+                    : "New Selection"}
                 </p>
-                <p className="truncate text-sm font-semibold text-gray-900">
+                <p
+                  className="truncate text-sm font-semibold text-gray-900"
+                  suppressHydrationWarning
+                >
                   {selectedDate.toLocaleDateString("en-US", {
                     weekday: "long",
                     month: "long",
@@ -169,7 +170,7 @@ export function EnhancedCalendar({
           <button
             type="button"
             onClick={goToToday}
-            className="rounded-lg border border-orange-200 px-3 py-1.5 text-sm font-medium text-orange-600 transition-colors focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-none pointer-fine:hover:bg-orange-50"
+            className="rounded-lg border border-orange-200 px-3 py-1.5 text-sm font-medium text-orange-600 transition-colors focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-hidden pointer-fine:hover:bg-orange-50"
           >
             Today
           </button>
@@ -178,15 +179,18 @@ export function EnhancedCalendar({
             <button
               onClick={onClose}
               type="button"
-              className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-none pointer-fine:hover:border-gray-400 pointer-fine:hover:bg-gray-50"
+              className="rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-hidden pointer-fine:hover:border-gray-400 pointer-fine:hover:bg-gray-50"
             >
               Cancel
             </button>
             <button
               onClick={handleApply}
-              disabled={!selectedDate || selectedDate.getTime() === initialDate?.getTime()}
+              disabled={
+                !selectedDate ||
+                selectedDate.getTime() === initialDate?.getTime()
+              }
               type="button"
-              className="rounded-lg bg-linear-to-r from-orange-500 to-orange-600 px-4 py-2 text-sm font-medium text-white shadow-md transition-all duration-200 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:opacity-50 pointer-fine:hover:from-orange-600 pointer-fine:hover:to-orange-700 pointer-fine:hover:shadow-lg disabled:pointer-fine:hover:from-orange-500 disabled:pointer-fine:hover:to-orange-600"
+              className="rounded-lg bg-linear-to-r from-orange-500 to-orange-600 px-4 py-2 text-sm font-medium text-white shadow-md transition-all duration-200 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-hidden disabled:cursor-not-allowed disabled:opacity-50 pointer-fine:hover:from-orange-600 pointer-fine:hover:to-orange-700 pointer-fine:hover:shadow-lg disabled:pointer-fine:hover:from-orange-500 disabled:pointer-fine:hover:to-orange-600"
             >
               Apply
             </button>

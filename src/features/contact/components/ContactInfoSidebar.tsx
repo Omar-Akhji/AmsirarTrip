@@ -1,13 +1,11 @@
 import { useTranslation } from "@/lib/hooks/useTranslation";
-import { m } from "motion/react";
-import { fadeInUp } from "@/lib/constants/animations";
 
 export function ContactInfoSidebar() {
   const { t } = useTranslation();
 
   return (
     <>
-      <m.div {...fadeInUp}>
+      <div>
         <p className="text-xs font-semibold tracking-[0.45em] text-orange-200 uppercase">
           {t("contact.form.infoBadge", "Need details?")}
         </p>
@@ -20,7 +18,7 @@ export function ContactInfoSidebar() {
             "Our Marrakech team answers every message personally and can help with custom itineraries, desert camps, or last-minute transfers.",
           )}
         </p>
-      </m.div>
+      </div>
 
       <ul className="mbs-8 space-y-6 text-sm">
         {(
@@ -71,13 +69,9 @@ export function ContactInfoSidebar() {
               ),
             },
           ] as const
-        ).map((item, idx) => (
-          <m.li
+        ).map((item) => (
+          <li
             key={item.id}
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: idx * 0.1 }}
             className="grid grid-cols-[48px_1fr] items-start gap-4"
           >
             <span className="inline-flex size-12 shrink-0 items-center justify-center overflow-hidden rounded-full bg-white/15 text-sm leading-none font-semibold text-orange-300">
@@ -89,7 +83,7 @@ export function ContactInfoSidebar() {
               </p>
               {item.content}
             </div>
-          </m.li>
+          </li>
         ))}
       </ul>
 

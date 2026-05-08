@@ -1,7 +1,8 @@
-// PostCSS pipeline for Next.js with Tailwind CSS v4
-module.exports = {
+const config = {
   plugins: {
     "@tailwindcss/postcss": {},
     autoprefixer: {},
   },
 };
+
+export default config;

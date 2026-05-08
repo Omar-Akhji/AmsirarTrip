@@ -1,11 +1,8 @@
-"use client";
-
 import { useTranslation } from "@/lib/hooks/useTranslation";
-import { m } from "motion/react";
-import type { BookingFormState } from "../actions/booking-action";
+import type { FormState } from "@/lib/form-types";
 
 interface BookingPersonalFieldsProps {
-  state: BookingFormState | null;
+  state: FormState | null;
 }
 
 export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
@@ -15,17 +12,13 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
     <>
       {/* Name + Phone row */}
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-        <m.div
-          initial={{ opacity: 0, x: -20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.3, delay: 0.2 }}
-        >
+        <div>
           <label htmlFor="fullName" className="sr-only">
             {t("booking.fullName", "Full Name")}
           </label>
           <input
-            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
+            maxLength={100}
             type="text"
             id="fullName"
             name="fullName"
@@ -43,19 +36,15 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
               {state.errors["fullName"]}
             </p>
           )}
-        </m.div>
+        </div>
 
-        <m.div
-          initial={{ opacity: 0, x: 20 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.3, delay: 0.3 }}
-        >
+        <div>
           <label htmlFor="phone" className="sr-only">
             {t("booking.phone", "Phone Number")}
           </label>
           <input
-            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
+            className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
+            maxLength={20}
             type="tel"
             id="phone"
             name="phone"
@@ -73,21 +62,16 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
               {state.errors["phone"]}
             </p>
           )}
-        </m.div>
+        </div>
       </div>
 
       {/* Email row */}
-      <m.div
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.3, delay: 0.4 }}
-      >
+      <div>
         <label htmlFor="email" className="sr-only">
           {t("booking.email", "Email")}
         </label>
         <input
-          className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-none"
+          className="rounded-2xl border border-gray-200 px-4 py-3 text-sm inline-full user-valid:border-green-500 user-invalid:border-red-500 focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden"
           type="email"
           id="email"
           name="email"
@@ -105,7 +89,7 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
             {state.errors["email"]}
           </p>
         )}
-      </m.div>
+      </div>
     </>
   );
 }

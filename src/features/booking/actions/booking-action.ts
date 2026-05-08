@@ -4,14 +4,15 @@ import { headers } from "next/headers";
 import { getTranslations } from "next-intl/server";
 import { getBookingSchema } from "@/lib/schemas";
 import { env } from "@/lib/env";
-import { checkRateLimit, logSuspiciousActivity } from "@/lib/api-utils";
-import { verifyRecaptcha, createMailer, escapeHtml } from "@/lib/server-utils";
-
-export interface BookingFormState {
-  success: boolean;
-  message: string;
-  errors?: Record<string, string>;
-}
+import { checkRateLimit } from "@/lib/api-utils";
+import { createErrorResponse } from "@/lib/form-types";
+import type { FormState } from "@/lib/form-types";
+import {
+  verifyRecaptcha,
+  createMailer,
+  escapeHtml,
+  logSuspiciousActivity,
+} from "@/lib/server-utils";
 
 function getLanguageName(code: string = ""): string {
   const languages: Record<string, string> = {
@@ -31,15 +32,22 @@ function cleanReservationType(type: string = ""): string {
  * Server action for booking form submission using React 19's useActionState
  */
 export async function submitBookingAction(
-  _prevState: BookingFormState | null,
+  _prevState: FormState | null,
   formData: FormData,
-): Promise<BookingFormState> {
+): Promise<FormState> {
   try {
     const headersList = await headers();
     const ip =
       headersList.get("x-forwarded-for")?.split(",")[0]?.trim() ||
       headersList.get("x-real-ip") ||
       "unknown";
+
+    // Honeypot check — hidden field filled only by bots
+    const honeypot = formData.get("website") as string;
+    if (honeypot) {
+      logSuspiciousActivity(ip, "HONEYPOT_TRIGGERED", "booking-action");
+      return { success: true, message: "Booking request sent!" };
+    }
 
     const rateLimit = checkRateLimit(ip, 10, 60000);
     if (!rateLimit.allowed) {
@@ -151,14 +159,6 @@ Number of people : ${data.persons}${
       message: "Your booking request has been sent successfully!",
     };
   } catch (error) {
-    console.error("Booking form submission error:", error);
-
-    return {
-      success: false,
-      message:
-        error instanceof Error
-          ? error.message
-          : "An unexpected error occurred. Please try again.",
-    };
+    return createErrorResponse(error, "Booking form submission");
   }
 }
