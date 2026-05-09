@@ -14,7 +14,7 @@ export function BookingSidebar({ perks }: BookingSidebarProps) {
   const { t } = useTranslation();
 
   return (
-    <aside className="relative overflow-hidden rounded-3xl bg-slate-950 p-6 text-white shadow-2xl ring-1 shadow-slate-900/40 ring-white/10 lg:p-8">
+    <aside className="relative overflow-hidden rounded-3xl bg-slate-950 p-6 text-white lg:p-8 block-full">
       <div
         className="absolute -end-10 -top-20 rounded-full bg-orange-500/30 blur-3xl block-48 inline-48"
         aria-hidden="true"

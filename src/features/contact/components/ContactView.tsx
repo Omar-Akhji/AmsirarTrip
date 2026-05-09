@@ -140,7 +140,7 @@ export default function ContactView() {
 
       <section
         id="location"
-        className="relative bg-zinc-50 py-16"
+        className="relative bg-zinc-50 pbe-16"
         aria-labelledby="location-heading"
       >
         <div className="mx-auto px-4 max-inline-7xl">

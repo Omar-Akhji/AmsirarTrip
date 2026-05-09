@@ -77,7 +77,7 @@ function SubmitButton({ buttonText }: { buttonText: string }) {
   return (
     <button
       type="submit"
-      className="inline-flex transform items-center justify-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-semibold tracking-wide whitespace-nowrap text-white uppercase shadow-lg shadow-orange-500/25 transition duration-300 ease-in-out inline-full disabled:cursor-not-allowed disabled:opacity-60 md:inline-auto md:min-inline-50 pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:shadow-xl pointer-fine:hover:brightness-110"
+      className="inline-flex transform items-center justify-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-semibold tracking-wide whitespace-nowrap text-white uppercase border border-orange-400 transition duration-300 ease-in-out inline-full disabled:cursor-not-allowed disabled:opacity-60 md:inline-auto md:min-inline-50 pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:brightness-110"
       disabled={pending}
       aria-busy={pending}
     >
@@ -182,10 +182,10 @@ function BookingForm({
       >
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
           <AnimateOnScroll
-            animation="fade-up"
+            animation="fade-in"
             className="inline-full lg:col-span-3"
           >
-            <div className="overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-orange-100 block-full">
+            <div className="overflow-hidden rounded-3xl bg-white block-full">
               <div className="bg-linear-to-r from-orange-500 to-orange-600 px-6 py-8 text-white">
                 <h2 className="text-xl font-semibold sm:text-2xl md:text-3xl">
                   {t("booking.makeReservation", "Make your reservation")}
@@ -246,10 +246,10 @@ function BookingForm({
                     <div className="flex justify-center inline-full lg:justify-start">
                       <div
                         className={cn(
-                          "relative overflow-hidden rounded-2xl border border-dashed p-2 transition-all duration-300 sm:p-3 w-fit mx-auto lg:mx-0",
+                          "w-fit rounded-2xl border transition-all duration-500",
                           state?.["errors"]?.["recaptchaToken"]
                             ? "border-red-300"
-                            : "border-neutral-200",
+                            : "border-neutral-100",
                         )}
                       >
                         <div className="origin-top-left scale-85 sm:scale-100 inline-[258px] block-[66px] sm:inline-auto sm:block-auto">
@@ -295,7 +295,7 @@ function BookingForm({
           </AnimateOnScroll>
 
           <AnimateOnScroll
-            animation="fade-left"
+            animation="fade-in"
             delay={300}
             className="inline-full lg:col-span-2 lg:block-full"
           >

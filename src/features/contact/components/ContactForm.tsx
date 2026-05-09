@@ -108,10 +108,10 @@ const ContactForm = () => {
       <div className="mx-auto px-4 max-inline-6xl sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
           <AnimateOnScroll
-            animation="fade-up"
+            animation="fade-in"
             className="inline-full lg:col-span-3"
           >
-            <div className="overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-orange-100 block-full">
+            <div className="overflow-hidden rounded-3xl bg-white block-full">
               <div className="bg-linear-to-r from-orange-500 to-orange-600 px-6 py-8 text-white">
                 <p className="text-xs font-semibold tracking-[0.35em] text-orange-100 uppercase">
                   {t("contact.form.badge", "Plan with locals")}
@@ -209,10 +209,10 @@ const ContactForm = () => {
                     <div className="flex justify-center inline-full lg:justify-start">
                       <div
                         className={cn(
-                          "relative overflow-hidden rounded-2xl border border-dashed p-2 transition-all duration-300 sm:p-3 w-fit mx-auto lg:mx-0",
+                          "w-fit rounded-2xl border transition-all duration-500",
                           state?.["errors"]?.["recaptchaToken"]
                             ? "border-red-300"
-                            : "border-neutral-200",
+                            : "border-neutral-100",
                         )}
                       >
                         <div className="origin-top-left scale-85 sm:scale-100 inline-[258px] block-[66px] sm:inline-auto sm:block-auto">
@@ -258,7 +258,7 @@ const ContactForm = () => {
           </AnimateOnScroll>
 
           <AnimateOnScroll
-            animation="fade-left"
+            animation="fade-in"
             delay={300}
             className="inline-full lg:col-span-2 lg:block-full"
           >
