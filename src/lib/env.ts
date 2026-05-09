@@ -45,6 +45,9 @@ export const env = {
     return getEnv("GMAIL_PASS");
   },
   get RECAPTCHA_SECRET_KEY() {
+    if (process.env.NODE_ENV === "development") {
+      return "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe";
+    }
     // Return empty string if missing to prevent build/runtime crash
     // real validation happens when actually trying to verify
     return getOptionalEnv("RECAPTCHA_SECRET_KEY");

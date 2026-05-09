@@ -14,13 +14,13 @@ export function BookingSidebar({ perks }: BookingSidebarProps) {
   const { t } = useTranslation();
 
   return (
-    <aside className="relative overflow-hidden rounded-3xl bg-zinc-950 p-6 text-white shadow-2xl ring-1 shadow-zinc-900/40 ring-white/10 lg:col-span-2 lg:p-8">
+    <aside className="relative overflow-hidden rounded-3xl bg-slate-950 p-6 text-white shadow-2xl ring-1 shadow-slate-900/40 ring-white/10 lg:p-8">
       <div
         className="absolute -end-10 -top-20 rounded-full bg-orange-500/30 blur-3xl block-48 inline-48"
         aria-hidden="true"
       ></div>
       <div
-        className="absolute inset-0 bg-[radial-gradient(circle_at_top,var(--color-zinc-900)_0%,rgba(15,23,42,0.6)_55%,transparent_90%)] opacity-90"
+        className="absolute inset-0 bg-[radial-gradient(circle_at_top,var(--color-slate-900)_0%,rgba(15,23,42,0.6)_55%,transparent_90%)] opacity-90"
         aria-hidden="true"
       ></div>
 
@@ -47,7 +47,7 @@ export function BookingSidebar({ perks }: BookingSidebarProps) {
 
         <div className="mx-auto flex items-center gap-3 rounded-2xl bg-white/5 p-3 inline-fit">
           <div className="text-2xl leading-none font-extrabold">4.5</div>
-          <div className="text-xs text-zinc-200">
+          <div className="text-xs text-slate-200">
             {t("booking.ratingLabel", "Average guest rating")}
             <span className="block text-[10px] text-amber-200">
               {t("booking.reviewCount", "Based on 180+ travellers")}
@@ -55,7 +55,7 @@ export function BookingSidebar({ perks }: BookingSidebarProps) {
           </div>
         </div>
 
-        <p className="text-sm text-zinc-100">
+        <p className="text-sm text-slate-100">
           {t(
             "booking.checkCopy",
             "Read honest reviews and, if you prefer, request your booking directly through our TripAdvisor listing.",
@@ -68,7 +68,7 @@ export function BookingSidebar({ perks }: BookingSidebarProps) {
               <span className="inline-flex items-center justify-center rounded-full bg-white/15 text-xs font-semibold block-6 inline-6">
                 {idx + 1}
               </span>
-              <span className="flex-1 text-zinc-100">{perk.text}</span>
+              <span className="flex-1 text-slate-100">{perk.text}</span>
             </li>
           ))}
         </ul>

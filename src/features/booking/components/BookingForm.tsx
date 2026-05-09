@@ -178,11 +178,14 @@ function BookingForm({
       className={`bg-neutral-50 py-20 md:py-10 ${fullWidth ? "booking-form-fullwidth" : ""}`}
     >
       <div
-        className={`booking-form-inner mx-auto inline-full max-inline-6xl ${fullWidth ? "px-4 sm:px-6 lg:px-10" : "px-4 sm:px-6 lg:px-8"}`}
+        className={`booking-form-inner mx-auto overflow-x-hidden inline-full max-inline-6xl ${fullWidth ? "px-4 sm:px-6 lg:px-10" : "px-4 sm:px-6 lg:px-8"}`}
       >
-        <div className="grid gap-8 lg:grid-cols-5">
-          <AnimateOnScroll animation="fade-up" className="lg:col-span-3">
-            <div className="block-full overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-orange-100">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
+          <AnimateOnScroll
+            animation="fade-up"
+            className="inline-full lg:col-span-3"
+          >
+            <div className="overflow-hidden rounded-3xl bg-white shadow-xl ring-1 ring-orange-100 block-full">
               <div className="bg-linear-to-r from-orange-500 to-orange-600 px-6 py-8 text-white">
                 <h2 className="text-xl font-semibold sm:text-2xl md:text-3xl">
                   {t("booking.makeReservation", "Make your reservation")}
@@ -240,38 +243,40 @@ function BookingForm({
 
                 <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
                   <>
-                    <div className="flex justify-center overflow-hidden inline-full lg:justify-start">
+                    <div className="flex justify-center inline-full lg:justify-start">
                       <div
                         className={cn(
-                          "origin-center scale-85 rounded-2xl border border-dashed p-3 sm:scale-100 lg:origin-left",
+                          "relative overflow-hidden rounded-2xl border border-dashed p-2 transition-all duration-300 sm:p-3 w-fit mx-auto lg:mx-0",
                           state?.["errors"]?.["recaptchaToken"]
                             ? "border-red-300"
                             : "border-neutral-200",
                         )}
                       >
-                        {hasRecaptchaV2 ? (
-                          <>
-                            <ReCAPTCHA
-                              ref={recaptchaRef}
-                              sitekey={RECAPTCHA_V2_SITE_KEY}
-                              onChange={(token) =>
-                                dispatch({
-                                  type: "SET_CAPTCHA",
-                                  token: token || "",
-                                })
-                              }
-                            />
-                            <input
-                              type="hidden"
-                              name="recaptchaToken"
-                              value={uiState.captchaToken}
-                            />
-                          </>
-                        ) : (
-                          <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-600">
-                            ReCAPTCHA not configured (Site Key missing)
-                          </div>
-                        )}
+                        <div className="origin-top-left scale-85 sm:scale-100 inline-[258px] block-[66px] sm:inline-auto sm:block-auto">
+                          {hasRecaptchaV2 ? (
+                            <>
+                              <ReCAPTCHA
+                                ref={recaptchaRef}
+                                sitekey={RECAPTCHA_V2_SITE_KEY}
+                                onChange={(token) =>
+                                  dispatch({
+                                    type: "SET_CAPTCHA",
+                                    token: token || "",
+                                  })
+                                }
+                              />
+                              <input
+                                type="hidden"
+                                name="recaptchaToken"
+                                value={uiState.captchaToken}
+                              />
+                            </>
+                          ) : (
+                            <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-600">
+                              ReCAPTCHA not configured (Site Key missing)
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
                     {state?.["errors"]?.["recaptchaToken"] && (
@@ -292,7 +297,7 @@ function BookingForm({
           <AnimateOnScroll
             animation="fade-left"
             delay={300}
-            className="block-full lg:col-span-2"
+            className="inline-full lg:col-span-2 lg:block-full"
           >
             <BookingSidebar perks={perks} />
           </AnimateOnScroll>

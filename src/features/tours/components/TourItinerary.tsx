@@ -55,11 +55,6 @@ export default function TourItinerary({
 
             {/* Day Content */}
             <div className="relative space-y-3 border-s-0 ps-0 sm:ms-5.5 sm:border-s-2 sm:border-orange-200/50 sm:ps-8">
-              {/* Timeline Connector Dot */}
-              <div
-                className="absolute -start-[9px] top-0 hidden size-4 rounded-full border-2 border-orange-500 bg-white sm:block"
-                aria-hidden="true"
-              />
               {/* Cities Route */}
               <div className="mbe-4 flex flex-wrap items-center gap-2">
                 {day.title.split("➜").map((location, idx, arr) => (
