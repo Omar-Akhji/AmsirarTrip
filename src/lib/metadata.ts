@@ -75,6 +75,11 @@ export function generateSEOMetadata({
       telephone: false,
     },
     metadataBase: new URL(BASE_URL),
+    appleWebApp: {
+      title: SITE_NAME,
+      statusBarStyle: "black-translucent",
+      capable: true,
+    },
     other: {
       "contact:phone_number": COMPANY_PHONE,
       "contact:email": COMPANY_EMAIL,

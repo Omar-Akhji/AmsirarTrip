@@ -102,6 +102,11 @@ export const metadata: Metadata = {
     apple: [{ url: "/icons/icon-512.png", type: "image/png" }],
     shortcut: ["/favicon.png"],
   },
+  appleWebApp: {
+    title: "Amsirar Trip",
+    statusBarStyle: "black-translucent",
+    capable: true,
+  },
   manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
@@ -196,11 +201,6 @@ export default async function LocaleLayout({
           href="/images/Header/header-1.webp"
           as="image"
           type="image/webp"
-        />
-        <meta name="mobile-web-app-capable" content="yes" />
-        <meta
-          name="apple-mobile-web-app-status-bar-style"
-          content="black-translucent"
         />
         {/* JSON-LD structured data for SEO - rendered synchronously in head */}
         <JsonLd
