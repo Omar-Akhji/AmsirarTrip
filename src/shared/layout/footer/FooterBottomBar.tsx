@@ -24,15 +24,16 @@ export function FooterBottomBar() {
                 {new Date().getFullYear()}
               </time>{" "}
               <span className="text-zinc-400">Amsirar Trip. Ltd.</span>{" "}
-              <span className="mx-1.5 hidden opacity-20 sm:inline-block">
-                •
-              </span>{" "}
+              <span className="mx-1.5 hidden opacity-20 sm:inline-block">•</span>{" "}
               {t("footer.copyright")}
             </p>
           </div>
 
           {/* Legal Links */}
-          <nav aria-label="Privacy and Terms" className="order-1 sm:order-2">
+          <nav
+            aria-label="Privacy and Terms"
+            className="order-1 sm:order-2"
+          >
             <ul className="flex flex-wrap items-center justify-center gap-6 sm:gap-8">
               <li>
                 <Link

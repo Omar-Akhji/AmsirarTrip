@@ -1,30 +1,22 @@
-import { z } from "zod";
-
 // Helper for sanitization (we'll use this in the transform)
 import DOMPurify from "isomorphic-dompurify";
+import { z } from "zod";
 
 const sanitize = (val: string) => DOMPurify.sanitize(val.trim());
 
 // --- Shared Schemas ---
 
-const phoneRegex =
-  /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,9}$/;
+const phoneRegex = /^[+]?[(]?[0-9]{1,4}[)]?[-\s.]?[(]?[0-9]{1,4}[)]?[-\s.]?[0-9]{1,9}$/;
 
 const RecaptchaSchema = (t: (key: string) => string) =>
-  z.object({
-    recaptchaToken: z.string().min(1, t("recaptchaRequired")),
-  });
+  z.object({ recaptchaToken: z.string().min(1, t("recaptchaRequired")) });
 
 // --- Contact Schema ---
 
 export const getContactSchema = (t: (key: string) => string) =>
   z
     .object({
-      name: z
-        .string()
-        .min(2, t("nameMin"))
-        .max(100, t("nameTooLong"))
-        .transform(sanitize),
+      name: z.string().min(2, t("nameMin")).max(100, t("nameTooLong")).transform(sanitize),
       email: z.string().email(t("emailInvalid")).transform(sanitize),
       phone: z
         .string()
@@ -44,11 +36,7 @@ export const getContactSchema = (t: (key: string) => string) =>
 export const getNewsletterSchema = (t: (key: string) => string) =>
   z
     .object({
-      name: z
-        .string()
-        .min(2, t("nameMin"))
-        .max(100, t("nameTooLong"))
-        .transform(sanitize),
+      name: z.string().min(2, t("nameMin")).max(100, t("nameTooLong")).transform(sanitize),
       email: z.string().email(t("emailInvalid")).transform(sanitize),
     })
     .merge(RecaptchaSchema(t));
@@ -58,31 +46,18 @@ export const getNewsletterSchema = (t: (key: string) => string) =>
 export const getBookingSchema = (t: (key: string) => string) =>
   z
     .object({
-      reservationType: z
-        .string()
-        .min(1, t("reservationRequired"))
-        .transform(sanitize),
-      fullName: z
-        .string()
-        .min(2, t("nameMin"))
-        .max(100, t("nameTooLong"))
-        .transform(sanitize),
+      reservationType: z.string().min(1, t("reservationRequired")).transform(sanitize),
+      fullName: z.string().min(2, t("nameMin")).max(100, t("nameTooLong")).transform(sanitize),
       email: z.string().email(t("emailInvalid")).transform(sanitize),
       phone: z
         .string()
         .regex(phoneRegex, t("phoneInvalid"))
         .max(20, t("phoneTooLong"))
         .transform(sanitize),
-      persons: z.coerce
-        .number()
-        .int()
-        .min(1, t("personsMin"))
-        .max(50, t("personsMax")),
+      persons: z.coerce.number().int().min(1, t("personsMin")).max(50, t("personsMax")),
       date: z
         .string()
-        .refine((val) => !isNaN(Date.parse(val)), {
-          message: t("invalidDate"),
-        })
+        .refine((val) => !isNaN(Date.parse(val)), { message: t("invalidDate") })
         .refine(
           (val) => {
             const parsed = new Date(val);

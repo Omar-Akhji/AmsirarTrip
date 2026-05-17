@@ -1,18 +1,13 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
-import dynamic from "next/dynamic";
-import { TOURS_DATA } from "../data";
-import type { TourSeoContent } from "../data/toursMetadata";
-import {
-  TourFaqs,
-  TourHighlights,
-  TourPricing,
-  TourQuickFacts,
-} from "./TourSeoSections";
 import { PageHeader } from "@/shared/layout/PageHeader";
 import { AnimateOnScroll } from "@/shared/ui";
+import { TOURS_DATA } from "../data";
+import type { TourSeoContent } from "../data/toursMetadata";
+import { TourFaqs, TourHighlights, TourPricing, TourQuickFacts } from "./TourSeoSections";
 
 const DetailsSidebar = dynamic(() =>
   import("@/shared/layout/DetailsSidebar").then((mod) => mod.DetailsSidebar),
@@ -20,10 +15,9 @@ const DetailsSidebar = dynamic(() =>
 const TourItinerary = dynamic(() => import("./TourItinerary"));
 const TourInfo = dynamic(() => import("./TourInfo"));
 
-const BookingForm = dynamic(
-  () => import("@/features/booking/components/BookingForm"),
-  { ssr: false },
-);
+const BookingForm = dynamic(() => import("@/features/booking/components/BookingForm"), {
+  ssr: false,
+});
 
 // Define interfaces
 interface TourData {
@@ -51,8 +45,7 @@ const TourLayout = ({ tourKey, bookingId, imageSrc, seo }: TourLayoutProps) => {
   const locale = useLocale();
 
   // Get tour data from TOURS_DATA
-  const tourData = (TOURS_DATA.find((tour) => tour.id === bookingId) ||
-    {}) as Partial<TourData>;
+  const tourData = (TOURS_DATA.find((tour) => tour.id === bookingId) || {}) as Partial<TourData>;
 
   // Use type assertion for array return
   const sidebarItems = (t.raw("tours.sidebar.items") as string[]) || [];
@@ -66,21 +59,13 @@ const TourLayout = ({ tourKey, bookingId, imageSrc, seo }: TourLayoutProps) => {
   const endCity = t(tourData.end || "tours.cities.marrakech");
   const startCity = t(tourData.start || "tours.cities.marrakech");
 
-  const highlightsTitle = t.has("tours.highlightsTitle")
-    ? t("tours.highlightsTitle")
-    : "Tour Highlights";
-  const pricingTitle = t.has("tours.pricingTitle")
-    ? t("tours.pricingTitle")
-    : "Pricing & Booking";
-  const priceLabel = t.has("tours.priceLabel")
-    ? t("tours.priceLabel")
-    : "Starting price";
-  const faqTitle = t.has("tours.faqTitle")
-    ? t("tours.faqTitle")
-    : "Frequently Asked Questions";
-  const reserveNow = t.has("booking.checkAvailability")
-    ? t("booking.checkAvailability")
-    : "Reserve Now";
+  const highlightsTitle =
+    t.has("tours.highlightsTitle") ? t("tours.highlightsTitle") : "Tour Highlights";
+  const pricingTitle = t.has("tours.pricingTitle") ? t("tours.pricingTitle") : "Pricing & Booking";
+  const priceLabel = t.has("tours.priceLabel") ? t("tours.priceLabel") : "Starting price";
+  const faqTitle = t.has("tours.faqTitle") ? t("tours.faqTitle") : "Frequently Asked Questions";
+  const reserveNow =
+    t.has("booking.checkAvailability") ? t("booking.checkAvailability") : "Reserve Now";
   const pageTitle = locale === "en" ? seo.title : title;
   const pageSubtitle = locale === "en" ? seo.lead : overview;
 
@@ -196,7 +181,10 @@ const TourLayout = ({ tourKey, bookingId, imageSrc, seo }: TourLayoutProps) => {
                 </figure>
               </AnimateOnScroll>
 
-              <AnimateOnScroll animation="fade-up" delay={150}>
+              <AnimateOnScroll
+                animation="fade-up"
+                delay={150}
+              >
                 <div className="mbe-6 text-center">
                   <div className="mx-auto inline-block">
                     <span
@@ -226,9 +214,15 @@ const TourLayout = ({ tourKey, bookingId, imageSrc, seo }: TourLayoutProps) => {
                   price={seo.price}
                 />
 
-                <TourHighlights seo={seo} title={highlightsTitle} />
+                <TourHighlights
+                  seo={seo}
+                  title={highlightsTitle}
+                />
 
-                <AnimateOnScroll animation="fade-up" delay={300}>
+                <AnimateOnScroll
+                  animation="fade-up"
+                  delay={300}
+                >
                   <div>
                     <h2 className="mbe-4 text-xl font-semibold text-zinc-900 sm:text-2xl md:text-3xl">
                       {t("tours.overview")}
@@ -244,7 +238,10 @@ const TourLayout = ({ tourKey, bookingId, imageSrc, seo }: TourLayoutProps) => {
                   labels={{ pricingTitle, reserveNow }}
                 />
 
-                <AnimateOnScroll animation="fade-up" delay={450}>
+                <AnimateOnScroll
+                  animation="fade-up"
+                  delay={450}
+                >
                   <div>
                     <h2 className="mbe-8 text-xl font-semibold text-zinc-900 sm:text-2xl md:text-3xl">
                       {t("tours.itinerary")}
@@ -269,7 +266,10 @@ const TourLayout = ({ tourKey, bookingId, imageSrc, seo }: TourLayoutProps) => {
                   goodToKnowTitle={t("tours.goodToKnow")}
                 />
 
-                <TourFaqs seo={seo} title={faqTitle} />
+                <TourFaqs
+                  seo={seo}
+                  title={faqTitle}
+                />
               </div>
             </article>
 

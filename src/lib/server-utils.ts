@@ -1,29 +1,20 @@
-import { env } from "@/lib/env";
 import nodemailer from "nodemailer";
+import { env } from "@/lib/env";
 
-export async function verifyRecaptcha(
-  token: string,
-  expectedHostname?: string,
-): Promise<boolean> {
+export async function verifyRecaptcha(token: string, expectedHostname?: string): Promise<boolean> {
   try {
     if (!token || typeof token !== "string" || !env.RECAPTCHA_SECRET_KEY) {
       return false;
     }
 
-    const body = new URLSearchParams({
-      secret: env.RECAPTCHA_SECRET_KEY,
-      response: token,
-    });
+    const body = new URLSearchParams({ secret: env.RECAPTCHA_SECRET_KEY, response: token });
 
-    const response = await fetch(
-      "https://www.google.com/recaptcha/api/siteverify",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: body.toString(),
-        cache: "no-store",
-      },
-    );
+    const response = await fetch("https://www.google.com/recaptcha/api/siteverify", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: body.toString(),
+      cache: "no-store",
+    });
 
     if (!response.ok) {
       console.error("CAPTCHA API returned non-OK status:", response.status);
@@ -81,10 +72,7 @@ export function createMailer(): nodemailer.Transporter<any> {
   if (_transporter) return _transporter;
   _transporter = nodemailer.createTransport({
     service: "gmail",
-    auth: {
-      user: env.GMAIL_USER,
-      pass: env.GMAIL_PASS,
-    },
+    auth: { user: env.GMAIL_USER, pass: env.GMAIL_PASS },
     pool: true,
     maxConnections: 3,
   });
@@ -103,13 +91,7 @@ export function escapeHtml(str: string = ""): string {
 /**
  * Log suspicious activity for security monitoring
  */
-export function logSuspiciousActivity(
-  ip: string,
-  type: string,
-  details: string,
-) {
+export function logSuspiciousActivity(ip: string, type: string, details: string) {
   const timestamp = new Date().toISOString();
-  console.warn(
-    `[SECURITY] ${timestamp} IP: ${ip} Type: ${type} Details: ${details}`,
-  );
+  console.warn(`[SECURITY] ${timestamp} IP: ${ip} Type: ${type} Details: ${details}`);
 }

@@ -28,14 +28,8 @@
     "noErrorTruncation": true,
     "exactOptionalPropertyTypes": true,
     "checkJs": true,
-    "plugins": [
-      {
-        "name": "next"
-      }
-    ],
-    "paths": {
-      "@/*": ["./src/*"]
-    },
+    "plugins": [{ "name": "next" }],
+    "paths": { "@/*": ["./src/*"] },
     "types": ["node"],
     "typeRoots": ["./types", "./node_modules/@types"]
   },

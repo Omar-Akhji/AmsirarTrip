@@ -3,11 +3,7 @@
  */
 
 export function LoadingSpinner({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
-  const sizeClasses = {
-    sm: "size-4 border-2",
-    md: "size-8 border-3",
-    lg: "size-12 border-4",
-  };
+  const sizeClasses = { sm: "size-4 border-2", md: "size-8 border-3", lg: "size-12 border-4" };
 
   return (
     <output

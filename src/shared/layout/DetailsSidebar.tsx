@@ -22,15 +22,16 @@ interface DetailsSidebarProps {
   translationPrefix: "tours" | "excursion";
 }
 
-export function DetailsSidebar({
-  sidebarItems,
-  translationPrefix,
-}: DetailsSidebarProps) {
+export function DetailsSidebar({ sidebarItems, translationPrefix }: DetailsSidebarProps) {
   const t = useTranslations();
 
   return (
     <aside className="space-y-6 self-start lg:sticky lg:top-24">
-      <AnimateOnScroll animation="fade-left" delay={150} className="inline-full">
+      <AnimateOnScroll
+        animation="fade-left"
+        delay={150}
+        className="inline-full"
+      >
         <div className="overflow-hidden rounded-3xl bg-slate-950 text-white shadow-xl">
           <div className="p-8">
             <p className="text-center text-xs tracking-[0.45em] text-orange-300 uppercase">
@@ -72,7 +73,11 @@ export function DetailsSidebar({
         </div>
       </AnimateOnScroll>
 
-      <AnimateOnScroll animation="fade-left" delay={300} className="inline-full">
+      <AnimateOnScroll
+        animation="fade-left"
+        delay={300}
+        className="inline-full"
+      >
         <div className="rounded-3xl border border-dashed border-slate-200 bg-white p-6 shadow-xs">
           <h4 className="text-lg font-semibold text-slate-900">
             {t(`${translationPrefix}.sidebar.ctaTitle`)}

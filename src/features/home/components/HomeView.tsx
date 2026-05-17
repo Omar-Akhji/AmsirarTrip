@@ -1,8 +1,7 @@
-import HomeHero from "./HomeHero";
-import HomeStats from "./HomeStats";
-
 // Dynamically imported below-the-fold components for reduced initial JS bundle
 import dynamic from "next/dynamic";
+import HomeHero from "./HomeHero";
+import HomeStats from "./HomeStats";
 
 const FeaturedTours = dynamic(() => import("./FeaturedTours"));
 const ServicesSection = dynamic(() => import("./ServicesSection"));

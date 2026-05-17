@@ -37,10 +37,8 @@ export function PageHeader({
 }: PageHeaderProps) {
   const gradientClass = {
     top: "bg-[radial-gradient(circle_at_top,rgba(249,115,22,0.35),transparent_65%)]",
-    "top-right":
-      "bg-[radial-gradient(circle_at_top_right,rgba(249,115,22,0.35),transparent_65%)]",
-    center:
-      "bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.35),transparent_65%)]",
+    "top-right": "bg-[radial-gradient(circle_at_top_right,rgba(249,115,22,0.35),transparent_65%)]",
+    center: "bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.35),transparent_65%)]",
   };
 
   return (
@@ -85,18 +83,14 @@ export function PageHeader({
               <div className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-6 py-2 backdrop-blur-md">
                 {breadcrumbs.map((crumb, index) => (
                   <React.Fragment key={crumb.href || crumb.label}>
-                    {crumb.href ? (
+                    {crumb.href ?
                       <Link
                         href={crumb.href}
                         className="text-sm font-medium text-white/80 transition-colors pointer-fine:hover:text-white"
                       >
                         {crumb.label}
                       </Link>
-                    ) : (
-                      <span className="text-sm font-semibold text-orange-300">
-                        {crumb.label}
-                      </span>
-                    )}
+                    : <span className="text-sm font-semibold text-orange-300">{crumb.label}</span>}
                     {index < breadcrumbs.length - 1 && (
                       <svg
                         className="size-3 text-white/40"
@@ -133,15 +127,9 @@ export function PageHeader({
           >
             {title}
           </h1>
-          {subtitle && (
-            <p className="font-fancy text-lg text-zinc-200 lg:text-xl">
-              {subtitle}
-            </p>
-          )}
+          {subtitle && <p className="font-fancy text-lg text-zinc-200 lg:text-xl">{subtitle}</p>}
           {children && (
-            <div className="flex flex-wrap items-center justify-center gap-4 pbs-2">
-              {children}
-            </div>
+            <div className="flex flex-wrap items-center justify-center gap-4 pbs-2">{children}</div>
           )}
         </div>
       </div>
@@ -152,13 +140,7 @@ export function PageHeader({
 /**
  * Primary CTA button for page headers (bordered style)
  */
-export function HeaderCTA({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
+export function HeaderCTA({ href, children }: { href: string; children: React.ReactNode }) {
   return (
     <a
       href={href}

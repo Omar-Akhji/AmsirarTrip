@@ -26,7 +26,10 @@ export function JsonLd({ data, id }: JsonLdProps) {
     .replace(/&/g, "\\u0026");
 
   return (
-    <script id={id} type="application/ld+json">
+    <script
+      id={id}
+      type="application/ld+json"
+    >
       {safeJson}
     </script>
   );

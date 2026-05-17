@@ -1,6 +1,5 @@
 "use client";
 
-import type { TourSeoContent } from "../data/toursMetadata";
 import {
   ArrowRight,
   BadgeCheck,
@@ -12,6 +11,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { AnimateOnScroll } from "@/shared/ui";
+import type { TourSeoContent } from "../data/toursMetadata";
 
 interface TourQuickFactsProps {
   duration: number | undefined;
@@ -80,7 +80,10 @@ export function TourQuickFacts({
   ];
 
   return (
-    <AnimateOnScroll animation="fade-up" delay={150}>
+    <AnimateOnScroll
+      animation="fade-up"
+      delay={150}
+    >
       <div className="grid gap-4 sm:grid-cols-2">
         {facts.map((fact) => {
           const Icon = fact.icon;
@@ -88,7 +91,7 @@ export function TourQuickFacts({
           return (
             <div
               key={fact.id}
-              className={`inline-flex min-block-20 items-center gap-3 rounded-2xl border px-5 py-3 ${fact.className}`}
+              className={`inline-flex items-center gap-3 rounded-2xl border px-5 py-3 min-block-20 ${fact.className}`}
             >
               <Icon
                 className={`size-5 shrink-0 ${fact.iconClassName}`}
@@ -106,15 +109,12 @@ export function TourQuickFacts({
   );
 }
 
-export function TourHighlights({
-  seo,
-  title,
-}: {
-  seo: TourSeoContent;
-  title: string;
-}) {
+export function TourHighlights({ seo, title }: { seo: TourSeoContent; title: string }) {
   return (
-    <AnimateOnScroll animation="fade-up" delay={225}>
+    <AnimateOnScroll
+      animation="fade-up"
+      delay={225}
+    >
       <section aria-labelledby="tour-highlights-title">
         <h2
           id="tour-highlights-title"
@@ -132,9 +132,7 @@ export function TourHighlights({
                 className="mbs-0.5 size-5 shrink-0 text-orange-500"
                 aria-hidden
               />
-              <p className="text-sm leading-relaxed text-neutral-700 sm:text-base">
-                {highlight}
-              </p>
+              <p className="text-sm leading-relaxed text-neutral-700 sm:text-base">{highlight}</p>
             </div>
           ))}
         </div>
@@ -151,7 +149,10 @@ export function TourPricing({
   labels: Pick<TourSeoSectionLabels, "pricingTitle" | "reserveNow">;
 }) {
   return (
-    <AnimateOnScroll animation="fade-up" delay={375}>
+    <AnimateOnScroll
+      animation="fade-up"
+      delay={375}
+    >
       <section
         aria-labelledby="tour-pricing-title"
         className="rounded-2xl border border-orange-100 bg-linear-to-br from-orange-50 to-amber-50 p-5 sm:p-6"
@@ -164,19 +165,20 @@ export function TourPricing({
             >
               {labels.pricingTitle}
             </h2>
-            <p className="mbs-2 text-2xl font-semibold text-orange-600">
-              {seo.price.label}
-            </p>
-            <p className="max-inline-2xl text-sm leading-relaxed text-neutral-700 sm:text-base">
+            <p className="mbs-2 text-2xl font-semibold text-orange-600">{seo.price.label}</p>
+            <p className="text-sm leading-relaxed text-neutral-700 max-inline-2xl sm:text-base">
               {seo.price.note}
             </p>
           </div>
           <a
             href="#booking"
-            className="inline-flex min-inline-40 items-center justify-center gap-2 rounded-full bg-orange-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-600/20 transition pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:bg-orange-700"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-orange-600 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-orange-600/20 transition min-inline-40 pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:bg-orange-700"
           >
             {labels.reserveNow}
-            <ArrowRight className="size-4" aria-hidden />
+            <ArrowRight
+              className="size-4"
+              aria-hidden
+            />
           </a>
         </div>
       </section>
@@ -184,13 +186,7 @@ export function TourPricing({
   );
 }
 
-export function TourFaqs({
-  seo,
-  title,
-}: {
-  seo: TourSeoContent;
-  title: string;
-}) {
+export function TourFaqs({ seo, title }: { seo: TourSeoContent; title: string }) {
   return (
     <AnimateOnScroll animation="fade-up">
       <section aria-labelledby="tour-faq-title">

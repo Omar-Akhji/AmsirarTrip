@@ -9,12 +9,7 @@ interface CountUpProps {
   className?: string;
 }
 
-function CountUp({
-  end = 0,
-  duration = 1500,
-  separator = true,
-  className = "",
-}: CountUpProps) {
+function CountUp({ end = 0, duration = 1500, separator = true, className = "" }: CountUpProps) {
   const [value, setValue] = useState(0);
   const rafRef = useRef<number | null>(null);
 
@@ -40,7 +35,10 @@ function CountUp({
   const formatted = separator ? value.toLocaleString() : String(value);
 
   return (
-    <span className={className} aria-live="polite">
+    <span
+      className={className}
+      aria-live="polite"
+    >
       {formatted}
     </span>
   );

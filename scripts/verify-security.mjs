@@ -1,8 +1,7 @@
 import http from "http";
 import https from "https";
 
-const BASE_URL =
-  process.argv[2] || process.env.BASE_URL || "http://localhost:3000";
+const BASE_URL = process.argv[2] || process.env.BASE_URL || "http://localhost:3000";
 
 const colors = {
   reset: "\x1b[0m",
@@ -14,21 +13,16 @@ const colors = {
 
 function log(type, message) {
   const color =
-    type === "success"
-      ? colors.green
-      : type === "error"
-        ? colors.red
-        : colors.blue;
+    type === "success" ? colors.green
+    : type === "error" ? colors.red
+    : colors.blue;
   console.log(`${color}[${type.toUpperCase()}]${colors.reset} ${message}`);
 }
 
 function request(path, options = {}) {
   return new Promise((resolve, reject) => {
     const url = new URL(path, BASE_URL);
-    const reqOptions = {
-      method: options.method || "GET",
-      headers: options.headers || {},
-    };
+    const reqOptions = { method: options.method || "GET", headers: options.headers || {} };
 
     const client = url.protocol === "https:" ? https : http;
 
@@ -36,11 +30,7 @@ function request(path, options = {}) {
       let data = "";
       res.on("data", (chunk) => (data += chunk));
       res.on("end", () => {
-        resolve({
-          statusCode: res.statusCode,
-          headers: res.headers,
-          body: data,
-        });
+        resolve({ statusCode: res.statusCode, headers: res.headers, body: data });
       });
     });
 
@@ -54,9 +44,7 @@ function request(path, options = {}) {
 }
 
 async function runTests() {
-  console.log(
-    `${colors.yellow}Starting Security Verification Tests...${colors.reset}\n`,
-  );
+  console.log(`${colors.yellow}Starting Security Verification Tests...${colors.reset}\n`);
   let passed = 0;
   let failed = 0;
 
@@ -72,9 +60,7 @@ async function runTests() {
 
   try {
     // 1. Test Security Headers
-    console.log(
-      `\n${colors.blue}--- Testing Security Headers ---${colors.reset}`,
-    );
+    console.log(`\n${colors.blue}--- Testing Security Headers ---${colors.reset}`);
     const homeRes = await request("/");
 
     await assert(
@@ -84,15 +70,13 @@ async function runTests() {
     );
     await assert(
       "CSP Map Allowed",
-      homeRes.headers["content-security-policy"].includes(
-        "https://www.google.com",
-      ),
+      homeRes.headers["content-security-policy"].includes("https://www.google.com"),
       "CSP should allow google.com",
     );
     await assert(
       "X-Frame-Options",
-      homeRes.headers["x-frame-options"] === "DENY" ||
-        homeRes.headers["x-frame-options"] === "SAMEORIGIN",
+      homeRes.headers["x-frame-options"] === "DENY"
+        || homeRes.headers["x-frame-options"] === "SAMEORIGIN",
       "X-Frame-Options should be DENY or SAMEORIGIN",
     );
     await assert(
@@ -107,12 +91,8 @@ async function runTests() {
     );
 
     // 2. Test Bot Protection
-    console.log(
-      `\n${colors.blue}--- Testing Bot Protection ---${colors.reset}`,
-    );
-    const botRes = await request("/", {
-      headers: { "User-Agent": "curl/7.64.1" },
-    });
+    console.log(`\n${colors.blue}--- Testing Bot Protection ---${colors.reset}`);
+    const botRes = await request("/", { headers: { "User-Agent": "curl/7.64.1" } });
     await assert(
       "Block Bad Bot",
       botRes.statusCode === 403,
@@ -132,9 +112,7 @@ async function runTests() {
     );
 
     // 3. Test CSRF / Origin
-    console.log(
-      `\n${colors.blue}--- Testing CSRF Protection ---${colors.reset}`,
-    );
+    console.log(`\n${colors.blue}--- Testing CSRF Protection ---${colors.reset}`);
 
     // Note: We need a valid API route to test. Using /api/booking as per context, assuming it exists.
     // If it doesn't, we might get 404, which is fine as long as it's not 403 for the wrong reason,
@@ -143,10 +121,7 @@ async function runTests() {
 
     const evilOriginRes = await request("/api/booking", {
       method: "POST",
-      headers: {
-        Origin: "https://evil.com",
-        Host: "localhost:3000",
-      },
+      headers: { Origin: "https://evil.com", Host: "localhost:3000" },
     });
     await assert(
       "Block Invalid Origin",
@@ -172,10 +147,7 @@ async function runTests() {
 
     const validOriginRes = await request("/api/booking", {
       method: "POST",
-      headers: {
-        Origin: "http://localhost:3000",
-        Host: "localhost:3000",
-      },
+      headers: { Origin: "http://localhost:3000", Host: "localhost:3000" },
     });
     // It might return 400 or 404 or 500 or 200, but NOT 403 from the middleware.
     await assert(
@@ -184,20 +156,13 @@ async function runTests() {
       `Should allow POST with valid Origin (Got ${validOriginRes.statusCode})`,
     );
   } catch (error) {
-    console.error(
-      `${colors.red}Fatal Error running tests:${colors.reset}`,
-      error.message,
-    );
+    console.error(`${colors.red}Fatal Error running tests:${colors.reset}`, error.message);
     if (error.code === "ECONNREFUSED") {
-      console.error(
-        `${colors.yellow}Is the server running on port 3000?${colors.reset}`,
-      );
+      console.error(`${colors.yellow}Is the server running on port 3000?${colors.reset}`);
     }
   }
 
-  console.log(
-    `\n${colors.yellow}Summary: ${passed} Passed, ${failed} Failed${colors.reset}`,
-  );
+  console.log(`\n${colors.yellow}Summary: ${passed} Passed, ${failed} Failed${colors.reset}`);
 }
 
 runTests();

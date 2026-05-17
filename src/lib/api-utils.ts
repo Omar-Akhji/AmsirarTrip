@@ -1,9 +1,6 @@
 import { logSuspiciousActivity } from "./server-utils";
 
-const rateLimitMap = new Map<
-  string,
-  { count: number; resetAt: number; violations: number }
->();
+const rateLimitMap = new Map<string, { count: number; resetAt: number; violations: number }>();
 const blockedIPs = new Map<string, number>(); // IP -> unblock timestamp
 
 export function checkRateLimit(

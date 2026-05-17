@@ -59,7 +59,7 @@ const FeaturedTours = async () => {
         className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(248,250,252,0.3),transparent_70%)]"
         aria-hidden="true"
       ></div>
-      <div className="relative z-10 mx-auto max-inline-7xl px-4">
+      <div className="relative z-10 mx-auto px-4 max-inline-7xl">
         <div className="mx-auto mbe-16 space-y-4 text-center max-inline-4xl">
           <p className="inline-flex items-center justify-center rounded-full border-2 border-orange-400 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-orange-600 uppercase">
             {t("featured.smTitle")}
@@ -71,7 +71,7 @@ const FeaturedTours = async () => {
             {t("featured.lgTitle")}
           </h2>
           <div
-            className="mx-auto mbs-4 block-1 inline-20 rounded-full bg-orange-500"
+            className="mx-auto mbs-4 rounded-full bg-orange-500 block-1 inline-20"
             aria-hidden="true"
           />
         </div>
@@ -84,7 +84,7 @@ const FeaturedTours = async () => {
               delay={index * 150} // Staggered entry animation across cards
               className="block-[18.75rem] inline-full"
             >
-              <article className="card-article relative block block-full inline-full overflow-hidden rounded-xl">
+              <article className="card-article relative block overflow-hidden rounded-xl block-full inline-full">
                 <Image
                   src={city.image}
                   alt={t(city.altKey)}
@@ -93,9 +93,7 @@ const FeaturedTours = async () => {
                   className="card-img object-cover"
                 />
                 <div className="card-data">
-                  <h3 className="card-title text-shadow-md">
-                    {t(city.titleKey)}
-                  </h3>
+                  <h3 className="card-title text-shadow-md">{t(city.titleKey)}</h3>
                   <p className="card-text">{t(city.descriptionKey)}</p>
                 </div>
               </article>

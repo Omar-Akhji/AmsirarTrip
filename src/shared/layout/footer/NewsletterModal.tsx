@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
-import { useTranslation } from "@/lib/hooks/useTranslation";
-import { RECAPTCHA_V2_SITE_KEY, hasRecaptchaV2 } from "@/lib/client-env";
+import React, { useEffect, useRef, useState } from "react";
+import { Loader2, Mail, User, X } from "lucide-react";
 import ReCAPTCHA from "react-google-recaptcha";
-import { X, Mail, User, Loader2 } from "lucide-react";
-
 import { submitNewsletterAction } from "@/lib/actions/newsletter-action";
+import { hasRecaptchaV2, RECAPTCHA_V2_SITE_KEY } from "@/lib/client-env";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 
 export default function NewsletterModal({
   isOpen,
@@ -88,9 +87,7 @@ export default function NewsletterModal({
         {/* Header */}
         <div className="mbe-6 flex items-start justify-between">
           <div>
-            <h2 className="text-xl font-semibold text-neutral-900">
-              {t("footer.newsletter")}
-            </h2>
+            <h2 className="text-xl font-semibold text-neutral-900">{t("footer.newsletter")}</h2>
             <p className="mbs-1.5 text-sm leading-relaxed text-neutral-500">
               {t("footer.newsletterDescription")}
             </p>
@@ -106,7 +103,10 @@ export default function NewsletterModal({
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} aria-label={t("footer.newsletterAria")}>
+        <form
+          onSubmit={handleSubmit}
+          aria-label={t("footer.newsletterAria")}
+        >
           <div className="space-y-4">
             {/* Name */}
             <div>
@@ -161,23 +161,20 @@ export default function NewsletterModal({
             <div className="flex justify-center pbs-1">
               <div
                 className={`origin-center scale-[0.85] rounded-2xl border border-dashed p-3 sm:scale-100 ${
-                  statusKey.includes("Captcha")
-                    ? "border-red-300"
-                    : "border-neutral-200"
+                  statusKey.includes("Captcha") ? "border-red-300" : "border-neutral-200"
                 }`}
               >
-                {hasRecaptchaV2 ? (
+                {hasRecaptchaV2 ?
                   <ReCAPTCHA
                     ref={recaptchaRef}
                     sitekey={RECAPTCHA_V2_SITE_KEY}
                     theme="light"
                     size="normal"
                   />
-                ) : (
-                  <div className="rounded-lg bg-amber-50 p-2 text-sm text-amber-600">
+                : <div className="rounded-lg bg-amber-50 p-2 text-sm text-amber-600">
                     reCAPTCHA not configured
                   </div>
-                )}
+                }
               </div>
             </div>
           </div>
@@ -186,9 +183,7 @@ export default function NewsletterModal({
           {statusKey && (
             <p
               className={`mbs-4 text-center text-sm font-medium ${
-                statusKey.includes("Success")
-                  ? "text-emerald-600"
-                  : "text-red-500"
+                statusKey.includes("Success") ? "text-emerald-600" : "text-red-500"
               }`}
             >
               {t(statusKey)}
@@ -199,13 +194,11 @@ export default function NewsletterModal({
           <button
             type="submit"
             disabled={isSubmitting}
-            className="from-orange mbs-5 flex items-center justify-center gap-2 rounded-full bg-linear-to-r to-amber-500 text-sm font-semibold text-white shadow-md transition-all duration-300 block-11 inline-full active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 pointer-fine:hover:scale-[1.02] pointer-fine:hover:shadow-lg pointer-fine:hover:shadow-orange-500/30 disabled:pointer-fine:hover:scale-100"
+            className="mbs-5 flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-orange to-amber-500 text-sm font-semibold text-white shadow-md transition-all duration-300 block-11 inline-full active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-50 pointer-fine:hover:scale-[1.02] pointer-fine:hover:shadow-lg pointer-fine:hover:shadow-orange-500/30 disabled:pointer-fine:hover:scale-100"
           >
-            {isSubmitting ? (
+            {isSubmitting ?
               <Loader2 className="animate-spin block-4 inline-4" />
-            ) : (
-              t("footer.newsletterSubscribe")
-            )}
+            : t("footer.newsletterSubscribe")}
           </button>
         </form>
       </div>

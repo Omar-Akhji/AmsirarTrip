@@ -1,8 +1,10 @@
 ﻿# AmsirarTrip — AI Agent Instructions
 
-Next.js 16 / React 19 tourism website for Morocco travel. Feature-based architecture with SSR, i18n (en/fr/de/es), and security-first API design.
+Next.js 16 / React 19 tourism website for Morocco travel. Feature-based architecture with SSR, i18n
+(en/fr/de/es), and security-first API design.
 
-**Key tech versions:** pnpm 10, Zod v4, Tailwind CSS v4 (CSS-first config), `motion` v12 (not `framer-motion`), React Compiler enabled, ESLint v10 flat config, ESM (`"type": "module"`).
+**Key tech versions:** pnpm 10, Zod v4, Tailwind CSS v4 (CSS-first config), `motion` v12 (not
+`framer-motion`), React Compiler enabled, ESLint v10 flat config, ESM (`"type": "module"`).
 
 ## Architecture
 
@@ -19,7 +21,9 @@ src/
 └── proxy.ts               # ⚠ Middleware file (not middleware.ts) — i18n routing + CSP nonces
 ```
 
-**Data flow:** Static data in `features/{name}/data/` → thin page wrappers call feature components → forms use Server Actions (`useActionState`) → POST to API routes with Zod v4 validation → email via Nodemailer.
+**Data flow:** Static data in `features/{name}/data/` → thin page wrappers call feature components →
+forms use Server Actions (`useActionState`) → POST to API routes with Zod v4 validation → email via
+Nodemailer.
 
 ## Key Files
 
@@ -41,18 +45,10 @@ src/
 ### Page Component — always `await params`
 
 ```tsx
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}) {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "tours" });
-  return generateSEOMetadata({
-    title: t("meta.title"),
-    path: "/tours",
-    locale,
-  });
+  return generateSEOMetadata({ title: t("meta.title"), path: "/tours", locale });
 }
 ```
 
@@ -60,7 +56,8 @@ Pages are thin wrappers — delegate rendering to feature components (e.g., `<To
 
 ### React Compiler — no manual memoization
 
-React Compiler is enabled project-wide (`reactCompiler: true` in next.config.ts). **Never add `useMemo`, `useCallback`, or `React.memo`** — the compiler handles this automatically.
+React Compiler is enabled project-wide (`reactCompiler: true` in next.config.ts). **Never add
+`useMemo`, `useCallback`, or `React.memo`** — the compiler handles this automatically.
 
 ### i18n (next-intl v4)
 
@@ -125,8 +122,10 @@ pnpm react-doctor    # React health check
 
 ## Adding Tours/Excursions
 
-1. Add runtime data to `features/{tours|excursions}/data/{name}Data.ts` — use i18n keys for all text, `ROUTES` constant for path
-2. Add SEO metadata to `features/{tours|excursions}/data/{name}Metadata.ts` — English strings, slug, keywords, pricing, ISO duration
+1. Add runtime data to `features/{tours|excursions}/data/{name}Data.ts` — use i18n keys for all
+   text, `ROUTES` constant for path
+2. Add SEO metadata to `features/{tours|excursions}/data/{name}Metadata.ts` — English strings, slug,
+   keywords, pricing, ISO duration
 3. Add translations to all 4 `public/locales/{locale}/common.json`
 4. Dynamic `[slug]` routing + `generateStaticParams()` handles page creation automatically
 5. Include JSON-LD via `generateTourJsonLd()` / `generateExcursionJsonLd()` + `<JsonLd>` component

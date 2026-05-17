@@ -1,6 +1,7 @@
 # AmsirarTrip - Morocco Travel & Tours Website
 
-A modern Next.js 16 application for a Morocco travel and tourism website, featuring desert tours, city excursions, and adventure camping experiences.
+A modern Next.js 16 application for a Morocco travel and tourism website, featuring desert tours,
+city excursions, and adventure camping experiences.
 
 ## 🚀 Features
 
@@ -274,8 +275,8 @@ features/tours/
 Import features using barrel exports:
 
 ```typescript
-import { toursData, Tour } from "@/features/tours";
 import { ExcursionLayout, excursionsData } from "@/features/excursions";
+import { Tour, toursData } from "@/features/tours";
 ```
 
 ## 📋 Development Guidelines
@@ -286,10 +287,9 @@ Use path aliases for clean imports:
 
 ```typescript
 // ✅ Correct
-import { Button } from "@/shared/ui/button";
 import { toursData } from "@/features/tours";
 import { sanitizeString } from "@/lib/api-utils";
-
+import { Button } from "@/shared/ui/button";
 // ❌ Wrong
 import { Button } from "../../../shared/ui/button";
 ```

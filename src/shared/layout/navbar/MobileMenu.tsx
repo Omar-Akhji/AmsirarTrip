@@ -1,11 +1,11 @@
 import React from "react";
+import { Menu, X } from "lucide-react";
 import { Link, usePathname } from "@/i18n/routing";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { cn } from "@/lib/utils";
-import { Menu, X } from "lucide-react";
-import { NAV_LINKS, Language } from "./constants";
-import { SocialLinks } from "./SocialLinks";
+import { Language, NAV_LINKS } from "./constants";
 import { LanguageSelector } from "./LanguageSelector";
+import { SocialLinks } from "./SocialLinks";
 
 interface MobileMenuProps {
   scrolled: boolean;
@@ -47,7 +47,11 @@ export function MobileMenu({
     <div className="relative flex items-center gap-3 px-2 inline-full">
       {viewport === "tablet" && (
         <div className="me-auto flex items-center gap-2">
-          <SocialLinks className="gap-2" compact={true} scrolled={scrolled} />
+          <SocialLinks
+            className="gap-2"
+            compact={true}
+            scrolled={scrolled}
+          />
           <LanguageSelector
             size="sm"
             langOpen={langOpen}
@@ -65,20 +69,15 @@ export function MobileMenu({
         className={cn(
           "text-[1.4rem] font-semibold tracking-tight",
           scrolled ? "text-zinc-900" : "text-white",
-          viewport === "tablet" || viewport === "mobile"
-            ? "absolute start-1/2 z-10 -translate-x-1/2"
-            : "",
+          viewport === "tablet" || viewport === "mobile" ?
+            "absolute start-1/2 z-10 -translate-x-1/2"
+          : "",
         )}
         onClick={handleNavClick}
         aria-label="Amsirar Trip Home"
       >
         Amsirar
-        <span
-          className={cn(
-            "font-brand ms-1 font-light",
-            scrolled ? "text-orange" : "text-white",
-          )}
-        >
+        <span className={cn("ms-1 font-brand font-light", scrolled ? "text-orange" : "text-white")}>
           Trip
         </span>
       </Link>
@@ -101,25 +100,19 @@ export function MobileMenu({
         type="button"
         id="navbar-show-btn"
         className={cn(
-          "focus-visible:outline-orange ms-2 flex size-10 items-center justify-center rounded-md text-lg transition-all duration-150 focus-visible:outline focus-visible:outline-offset-2",
-          scrolled
-            ? "bg-white text-zinc-900"
-            : "bg-[rgba(0,0,0,0.35)] text-white shadow-[0_8px_20px_rgba(3,7,18,0.12)]",
+          "ms-2 flex size-10 items-center justify-center rounded-md text-lg transition-all duration-150 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-orange",
+          scrolled ? "bg-white text-zinc-900" : (
+            "bg-[rgba(0,0,0,0.35)] text-white shadow-[0_8px_20px_rgba(3,7,18,0.12)]"
+          ),
         )}
         aria-expanded={asideOpen}
         aria-controls="navbar-collapse"
         onClick={() => setAsideOpen((s) => !s)}
         ref={btnRef}
       >
-        {asideOpen ? (
-          <X
-            className={cn("size-5", scrolled ? "text-zinc-900" : "text-white")}
-          />
-        ) : (
-          <Menu
-            className={cn("size-5", scrolled ? "text-zinc-900" : "text-white")}
-          />
-        )}
+        {asideOpen ?
+          <X className={cn("size-5", scrolled ? "text-zinc-900" : "text-white")} />
+        : <Menu className={cn("size-5", scrolled ? "text-zinc-900" : "text-white")} />}
       </button>
 
       <div
@@ -127,20 +120,22 @@ export function MobileMenu({
         ref={collapseRef}
         className={cn(
           getCollapseClasses(),
-          viewport === "tablet" &&
-            "start-auto end-0.5 top-[calc(100%+0.75rem)] translate-x-0 inline-1/2",
+          viewport === "tablet"
+            && "start-auto end-0.5 top-[calc(100%+0.75rem)] translate-x-0 inline-1/2",
         )}
       >
         {viewport === "mobile" && (
           <div
             className={cn(
               "flex items-center justify-center gap-4 px-4 py-4",
-              scrolled
-                ? "border-b border-zinc-200/30"
-                : "border-b border-white/20",
+              scrolled ? "border-b border-zinc-200/30" : "border-b border-white/20",
             )}
           >
-            <SocialLinks className="gap-4" compact={true} scrolled={scrolled} />
+            <SocialLinks
+              className="gap-4"
+              compact={true}
+              scrolled={scrolled}
+            />
           </div>
         )}
         <ul className="flex flex-col items-center gap-3 p-4">

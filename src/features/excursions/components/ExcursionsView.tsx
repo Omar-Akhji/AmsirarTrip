@@ -1,14 +1,10 @@
+import { ArrowRight } from "lucide-react";
 import { getTranslations } from "next-intl/server";
 import { EXCURSIONS_DATA } from "@/features/excursions/data/excursionsData";
-import { ArrowRight } from "lucide-react";
-import {
-  PageHeader,
-  HeaderCTA,
-  HeaderSecondaryCTA,
-} from "@/shared/layout/PageHeader";
 import { StatHighlights } from "@/features/tours/components/StatHighlights";
-import { ExcursionCard } from "./ExcursionCard";
+import { HeaderCTA, HeaderSecondaryCTA, PageHeader } from "@/shared/layout/PageHeader";
 import { AnimateOnScroll } from "@/shared/ui";
+import { ExcursionCard } from "./ExcursionCard";
 
 export default async function ExcursionView() {
   const t = await getTranslations();
@@ -19,24 +15,22 @@ export default async function ExcursionView() {
       value: "6+",
       label: t("excursion.stats.routes") || "Signature excursions",
       description:
-        t("excursion.stats.routesDesc") ||
-        "Handpicked day trips from waterfalls to desert sunsets.",
+        t("excursion.stats.routesDesc")
+        || "Handpicked day trips from waterfalls to desert sunsets.",
     },
     {
       id: "local",
       value: "100%",
       label: t("excursion.stats.local") || "Local expertise",
       description:
-        t("excursion.stats.localDesc") ||
-        "Guided by Marrakech-based storytellers and drivers.",
+        t("excursion.stats.localDesc") || "Guided by Marrakech-based storytellers and drivers.",
     },
     {
       id: "support",
       value: "24/7",
       label: t("excursion.stats.support") || "On-trip support",
       description:
-        t("excursion.stats.supportDesc") ||
-        "Flexible departures and concierge-style planning.",
+        t("excursion.stats.supportDesc") || "Flexible departures and concierge-style planning.",
     },
   ];
 
@@ -46,10 +40,7 @@ export default async function ExcursionView() {
         title={t("excursion.title")}
         subtitle={t("excursion.headerSubtitle")}
         bgImage="/images/Header/header-1.webp"
-        breadcrumbs={[
-          { label: t("nav.home"), href: "/" },
-          { label: t("nav.excursions") },
-        ]}
+        breadcrumbs={[{ label: t("nav.home"), href: "/" }, { label: t("nav.excursions") }]}
       >
         <HeaderSecondaryCTA
           href="https://www.tripadvisor.de/Attraction_Review-g293734-d32584739-Reviews-Amsirar_Travel-Marrakech_Marrakech_Safi.html"
@@ -64,7 +55,10 @@ export default async function ExcursionView() {
       </PageHeader>
 
       <main className="text-zinc-900">
-        <section className="py-12" aria-labelledby="excursion-highlights">
+        <section
+          className="py-12"
+          aria-labelledby="excursion-highlights"
+        >
           <div className="mx-auto px-4 max-inline-7xl">
             <div className="mx-auto mbe-10 text-center max-inline-3xl">
               <p className="inline-flex items-center justify-center rounded-full border-2 border-white bg-orange-600 px-6 py-3 text-sm font-semibold tracking-[0.45em] text-white uppercase">
@@ -80,9 +74,7 @@ export default async function ExcursionView() {
                 className="mx-auto mbs-4 rounded-full bg-orange-500 block-1 inline-20"
                 aria-hidden="true"
               />
-              <p className="mbs-4 text-base text-taupe-600">
-                {t("excursion.detailsSubtitle")}
-              </p>
+              <p className="mbs-4 text-base text-taupe-600">{t("excursion.detailsSubtitle")}</p>
             </div>
 
             <AnimateOnScroll animation="fade-up">
@@ -108,9 +100,7 @@ export default async function ExcursionView() {
                 className="mx-auto mbs-4 rounded-full bg-orange-500 block-1 inline-20"
                 aria-hidden="true"
               />
-              <p className="mbs-4 text-base text-taupe-600">
-                {t("excursion.sectionSubtitle")}
-              </p>
+              <p className="mbs-4 text-base text-taupe-600">{t("excursion.sectionSubtitle")}</p>
             </div>
 
             <div className="grid grid-cols-1 gap-8 min-[901px]:grid-cols-2 min-[1150px]:grid-cols-3">

@@ -1,18 +1,18 @@
 "use client";
 
-import { useActionState, useRef, useEffect, useReducer } from "react";
-import { useFormStatus } from "react-dom";
+import { useActionState, useEffect, useReducer, useRef } from "react";
 import Form from "next/form";
+import { useFormStatus } from "react-dom";
 import ReCAPTCHA from "react-google-recaptcha";
-import { useTranslation } from "@/lib/hooks/useTranslation";
-import { LoadingSpinner } from "@/shared/ui/Loading";
-import { cn } from "@/lib/utils";
-import { RECAPTCHA_V2_SITE_KEY, hasRecaptchaV2 } from "@/lib/client-env";
-import { submitContactAction } from "../actions/contact-action";
+import { hasRecaptchaV2, RECAPTCHA_V2_SITE_KEY } from "@/lib/client-env";
 import type { FormState } from "@/lib/form-types";
+import { useTranslation } from "@/lib/hooks/useTranslation";
+import { cn } from "@/lib/utils";
+import { AnimateOnScroll } from "@/shared/ui";
+import { LoadingSpinner } from "@/shared/ui/Loading";
+import { submitContactAction } from "../actions/contact-action";
 import { ContactFormFields } from "./ContactFormFields";
 import { ContactInfoSidebar } from "./ContactInfoSidebar";
-import { AnimateOnScroll } from "@/shared/ui";
 
 // Submit button component that uses useFormStatus
 function SubmitButton() {
@@ -27,9 +27,7 @@ function SubmitButton() {
       aria-busy={pending}
     >
       {pending && <LoadingSpinner size="sm" />}
-      {pending
-        ? t("contact.form.sending", "Sending…")
-        : t("contact.form.cta", "Send message")}
+      {pending ? t("contact.form.sending", "Sending…") : t("contact.form.cta", "Send message")}
     </button>
   );
 }
@@ -44,10 +42,7 @@ type ContactFormUIAction =
   | { type: "RESET_CAPTCHA" }
   | { type: "RESET_AFTER_SUCCESS" };
 
-const initialContactFormUIState: ContactFormUIState = {
-  captchaToken: "",
-  formKey: 0,
-};
+const initialContactFormUIState: ContactFormUIState = { captchaToken: "", formKey: 0 };
 
 function contactFormUIReducer(
   state: ContactFormUIState,
@@ -59,10 +54,7 @@ function contactFormUIReducer(
     case "RESET_CAPTCHA":
       return { ...state, captchaToken: "" };
     case "RESET_AFTER_SUCCESS":
-      return {
-        captchaToken: "",
-        formKey: state.formKey + 1,
-      };
+      return { captchaToken: "", formKey: state.formKey + 1 };
     default:
       return state;
   }
@@ -71,16 +63,10 @@ function contactFormUIReducer(
 const ContactForm = () => {
   const { t } = useTranslation();
   const recaptchaRef = useRef<ReCAPTCHA>(null);
-  const [uiState, dispatch] = useReducer(
-    contactFormUIReducer,
-    initialContactFormUIState,
-  );
+  const [uiState, dispatch] = useReducer(contactFormUIReducer, initialContactFormUIState);
 
   // React 19's useActionState for form state management
-  const [state, formAction] = useActionState<FormState | null, FormData>(
-    submitContactAction,
-    null,
-  );
+  const [state, formAction] = useActionState<FormState | null, FormData>(submitContactAction, null);
 
   // Synchronize form state on action result
   useEffect(() => {
@@ -104,7 +90,10 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="contact-tailwind" className="bg-neutral-50 py-12 md:py-16">
+    <section
+      id="contact-tailwind"
+      className="bg-neutral-50 py-12 md:py-16"
+    >
       <div className="mx-auto px-4 max-inline-6xl sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
           <AnimateOnScroll
@@ -117,10 +106,7 @@ const ContactForm = () => {
                   {t("contact.form.badge", "Plan with locals")}
                 </p>
                 <h2 className="mbs-2 text-2xl font-semibold md:text-3xl">
-                  {t(
-                    "contact.form.title",
-                    "Design Your Custom Morocco Tour & Private Itinerary",
-                  )}
+                  {t("contact.form.title", "Design Your Custom Morocco Tour & Private Itinerary")}
                 </h2>
                 <p className="mbs-3 text-sm text-orange-50/90 md:text-base">
                   {t(
@@ -142,9 +128,7 @@ const ContactForm = () => {
                   <output
                     className={cn(
                       "rounded-2xl px-4 py-3 text-sm font-medium",
-                      state?.["success"]
-                        ? alertClasses["success"]
-                        : alertClasses["error"],
+                      state?.["success"] ? alertClasses["success"] : alertClasses["error"],
                     )}
                     role={state?.["success"] ? undefined : "alert"}
                     aria-live="polite"
@@ -154,40 +138,37 @@ const ContactForm = () => {
                 )}
 
                 {/* Field Errors Summary */}
-                {state?.["errors"] &&
-                  Object.keys(state["errors"]).length > 0 && (
-                    <div
-                      className="rounded-2xl border border-orange-200 bg-orange-50 px-4 py-3"
-                      role="alert"
-                    >
-                      <p className="mbe-2 text-sm font-semibold text-orange-900">
-                        {t(
-                          "contact.form.errors.title",
-                          "Please complete these fields:",
-                        )}
-                      </p>
-                      <ul className="space-y-1 text-xs text-orange-800">
-                        {Object.entries(state["errors"]).map(
-                          ([field, error]) => (
-                            <li key={field} className="flex items-start gap-2">
-                              <svg
-                                className="mbs-0.5 size-4 shrink-0"
-                                fill="currentColor"
-                                viewBox="0 0 20 20"
-                              >
-                                <path
-                                  fillRule="evenodd"
-                                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-                                  clipRule="evenodd"
-                                />
-                              </svg>
-                              <span>{error as string}</span>
-                            </li>
-                          ),
-                        )}
-                      </ul>
-                    </div>
-                  )}
+                {state?.["errors"] && Object.keys(state["errors"]).length > 0 && (
+                  <div
+                    className="rounded-2xl border border-orange-200 bg-orange-50 px-4 py-3"
+                    role="alert"
+                  >
+                    <p className="mbe-2 text-sm font-semibold text-orange-900">
+                      {t("contact.form.errors.title", "Please complete these fields:")}
+                    </p>
+                    <ul className="space-y-1 text-xs text-orange-800">
+                      {Object.entries(state["errors"]).map(([field, error]) => (
+                        <li
+                          key={field}
+                          className="flex items-start gap-2"
+                        >
+                          <svg
+                            className="mbs-0.5 size-4 shrink-0"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                          <span>{error as string}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 {/* Honeypot field — hidden from real users, bots fill it */}
                 <div
@@ -210,22 +191,19 @@ const ContactForm = () => {
                       <div
                         className={cn(
                           "w-fit rounded-2xl border transition-all duration-500",
-                          state?.["errors"]?.["recaptchaToken"]
-                            ? "border-red-300"
-                            : "border-neutral-100",
+                          state?.["errors"]?.["recaptchaToken"] ?
+                            "border-red-300"
+                          : "border-neutral-100",
                         )}
                       >
-                        <div className="origin-top-left scale-85 sm:scale-100 inline-[258px] block-[66px] sm:inline-auto sm:block-auto">
-                          {hasRecaptchaV2 ? (
+                        <div className="origin-top-left scale-85 block-[66px] inline-[258px] sm:scale-100 sm:block-auto sm:inline-auto">
+                          {hasRecaptchaV2 ?
                             <>
                               <ReCAPTCHA
                                 ref={recaptchaRef}
                                 sitekey={RECAPTCHA_V2_SITE_KEY}
                                 onChange={(token) =>
-                                  dispatch({
-                                    type: "SET_CAPTCHA",
-                                    token: token || "",
-                                  })
+                                  dispatch({ type: "SET_CAPTCHA", token: token || "" })
                                 }
                               />
                               <input
@@ -234,11 +212,10 @@ const ContactForm = () => {
                                 value={uiState.captchaToken}
                               />
                             </>
-                          ) : (
-                            <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-600">
+                          : <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-600">
                               ReCAPTCHA not configured (Site Key missing)
                             </div>
-                          )}
+                          }
                         </div>
                       </div>
                     </div>

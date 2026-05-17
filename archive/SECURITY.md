@@ -237,20 +237,16 @@ Gmail SMTP with App Password:
 ```typescript
 const transporter = nodemailer.createTransport({
   service: "gmail",
-  auth: {
-    user: env.GMAIL_USER,
-    pass: env.GMAIL_PASS,
-  },
+  auth: { user: env.GMAIL_USER, pass: env.GMAIL_PASS },
 });
 ```
 
 ### Security Features
 
-✅ **No SSRF Risk**: Gmail service hardcoded (no user-controlled SMTP host)
-✅ **No Open Relay**: Recipient addresses (`MAIL_TO`) hardcoded
-✅ **Email Header Injection Protection**: Inputs sanitized
-✅ **HTML Injection Protection**: All content HTML-escaped
-✅ **No Attachment Upload**: Forms only send text data
+✅ **No SSRF Risk**: Gmail service hardcoded (no user-controlled SMTP host) ✅ **No Open Relay**:
+Recipient addresses (`MAIL_TO`) hardcoded ✅ **Email Header Injection Protection**: Inputs sanitized
+✅ **HTML Injection Protection**: All content HTML-escaped ✅ **No Attachment Upload**: Forms only
+send text data
 
 ### Email Validation
 

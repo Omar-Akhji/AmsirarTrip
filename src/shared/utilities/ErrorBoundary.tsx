@@ -64,12 +64,9 @@ export class ErrorBoundary extends Component<Props, State> {
                 />
               </svg>
             </div>
-            <h2 className="mbe-2 text-xl font-semibold text-neutral-900">
-              Development Error
-            </h2>
+            <h2 className="mbe-2 text-xl font-semibold text-neutral-900">Development Error</h2>
             <p className="mbe-4 text-neutral-600">
-              A component error occurred during development. Check the console
-              for details.
+              A component error occurred during development. Check the console for details.
             </p>
             <button
               onClick={() => window.location.reload()}
@@ -78,7 +75,10 @@ export class ErrorBoundary extends Component<Props, State> {
               Reload Page
             </button>
             {this.state.error && (
-              <details className="group mbs-4 text-start" open>
+              <details
+                className="group mbs-4 text-start"
+                open
+              >
                 <summary className="mbe-2 cursor-pointer text-sm font-semibold text-neutral-700">
                   Error Details
                 </summary>

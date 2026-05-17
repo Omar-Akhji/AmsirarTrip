@@ -2,16 +2,15 @@
 
 import { headers } from "next/headers";
 import { getTranslations } from "next-intl/server";
-import { getBookingSchema } from "@/lib/schemas";
-import { env } from "@/lib/env";
 import { checkRateLimit } from "@/lib/api-utils";
-import { createErrorResponse } from "@/lib/form-types";
-import type { FormState } from "@/lib/form-types";
+import { env } from "@/lib/env";
+import { createErrorResponse, type FormState } from "@/lib/form-types";
+import { getBookingSchema } from "@/lib/schemas";
 import {
-  verifyRecaptcha,
   createMailer,
   escapeHtml,
   logSuspiciousActivity,
+  verifyRecaptcha,
 } from "@/lib/server-utils";
 
 function getLanguageName(code: string = ""): string {
@@ -38,9 +37,9 @@ export async function submitBookingAction(
   try {
     const headersList = await headers();
     const ip =
-      headersList.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-      headersList.get("x-real-ip") ||
-      "unknown";
+      headersList.get("x-forwarded-for")?.split(",")[0]?.trim()
+      || headersList.get("x-real-ip")
+      || "unknown";
 
     // Honeypot check — hidden field filled only by bots
     const honeypot = formData.get("website") as string;
@@ -54,10 +53,7 @@ export async function submitBookingAction(
       if (rateLimit.blocked) {
         logSuspiciousActivity(ip, "BLOCKED_ACTION", "booking-action");
       }
-      return {
-        success: false,
-        message: "Too many requests. Please try again later.",
-      };
+      return { success: false, message: "Too many requests. Please try again later." };
     }
 
     // Extract form data
@@ -85,11 +81,7 @@ export async function submitBookingAction(
         errors[path] = err.message;
       });
 
-      return {
-        success: false,
-        message: "Please check the form for errors",
-        errors,
-      };
+      return { success: false, message: "Please check the form for errors", errors };
     }
 
     const data = validationResult.data;
@@ -98,10 +90,7 @@ export async function submitBookingAction(
     const host = headersList.get("host")?.split(":")[0] || "";
     if (!(await verifyRecaptcha(data.recaptchaToken, host))) {
       logSuspiciousActivity(ip, "CAPTCHA_FAILED", "booking-action");
-      return {
-        success: false,
-        message: "Security verification failed. Please try again.",
-      };
+      return { success: false, message: "Security verification failed. Please try again." };
     }
 
     const transporter = createMailer();
@@ -122,15 +111,11 @@ export async function submitBookingAction(
       <p><strong>Phone Number :</strong> ${escapeHtml(data.phone)}</p>
       <p><strong>E-mail :</strong> ${escapeHtml(data.email)}</p>
       <p><strong>Date of reservation :</strong> ${escapeHtml(data.date)}</p>
-      <p><strong>Number of people :</strong> ${escapeHtml(
-        String(data.persons),
-      )}</p>
+      <p><strong>Number of people :</strong> ${escapeHtml(String(data.persons))}</p>
       ${
-        data.message
-          ? `<p><strong>Message :</strong><br>${escapeHtml(
-              data.message,
-            ).replace(/\n/g, "<br>")}</p>`
-          : ""
+        data.message ?
+          `<p><strong>Message :</strong><br>${escapeHtml(data.message).replace(/\n/g, "<br>")}</p>`
+        : ""
       }
     `;
 
@@ -138,9 +123,7 @@ export async function submitBookingAction(
       from: `Amsirar Trip Bookings <${env.GMAIL_USER}>`,
       to: mailTo,
       replyTo: data.email,
-      subject: `Booking: ${data.fullName} (${cleanReservationType(
-        data.reservationType,
-      )})`,
+      subject: `Booking: ${data.fullName} (${cleanReservationType(data.reservationType)})`,
       text: `Website display language : ${getLanguageName(data.language)}
 Type of reservation : ${cleanReservationType(data.reservationType)}
 Duration : ${data.duration ? `${data.duration} days` : "Not specified"}
@@ -148,16 +131,11 @@ Full Name : ${data.fullName}
 Phone Number : ${data.phone}
 E-mail : ${data.email}
 Date of reservation : ${data.date}
-Number of people : ${data.persons}${
-        data.message ? `\nMessage : ${data.message}` : ""
-      }`,
+Number of people : ${data.persons}${data.message ? `\nMessage : ${data.message}` : ""}`,
       html,
     });
 
-    return {
-      success: true,
-      message: "Your booking request has been sent successfully!",
-    };
+    return { success: true, message: "Your booking request has been sent successfully!" };
   } catch (error) {
     return createErrorResponse(error, "Booking form submission");
   }

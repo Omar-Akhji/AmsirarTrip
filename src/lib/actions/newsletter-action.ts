@@ -2,14 +2,14 @@
 
 import { headers } from "next/headers";
 import { getTranslations } from "next-intl/server";
-import { getNewsletterSchema } from "@/lib/schemas";
-import { env } from "@/lib/env";
 import { checkRateLimit } from "@/lib/api-utils";
+import { env } from "@/lib/env";
+import { getNewsletterSchema } from "@/lib/schemas";
 import {
-  verifyRecaptcha,
   createMailer,
   escapeHtml,
   logSuspiciousActivity,
+  verifyRecaptcha,
 } from "@/lib/server-utils";
 
 export async function submitNewsletterAction(
@@ -20,9 +20,9 @@ export async function submitNewsletterAction(
   try {
     const headersList = await headers();
     const ip =
-      headersList.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-      headersList.get("x-real-ip") ||
-      "unknown";
+      headersList.get("x-forwarded-for")?.split(",")[0]?.trim()
+      || headersList.get("x-real-ip")
+      || "unknown";
 
     const rateLimit = checkRateLimit(ip, 5, 60000);
     if (!rateLimit.allowed) {
@@ -33,11 +33,7 @@ export async function submitNewsletterAction(
     }
 
     const t = await getTranslations("validations");
-    const validationResult = getNewsletterSchema(t).safeParse({
-      name,
-      email,
-      recaptchaToken,
-    });
+    const validationResult = getNewsletterSchema(t).safeParse({ name, email, recaptchaToken });
 
     if (!validationResult.success) {
       return { ok: false, statusKey: "footer.newsletterFailure" };

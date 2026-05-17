@@ -17,11 +17,11 @@ export function FooterBrand() {
         <span className="text-3xl font-bold tracking-tight text-white transition-transform duration-300 group-hover:scale-105">
           Amsirar
         </span>
-        <span className="text-orange font-brand text-3xl transition-all duration-300 group-hover:text-amber-400">
+        <span className="font-brand text-3xl text-orange transition-all duration-300 group-hover:text-amber-400">
           Trip
         </span>
       </Link>
-      <span className="bg-orange mbe-6 block rounded block-1 inline-12" />
+      <span className="mbe-6 block rounded bg-orange block-1 inline-12" />
       <p className="font-fancy text-xl leading-relaxed text-zinc-400 lg:max-inline-sm">
         {t("footer.description")}
       </p>

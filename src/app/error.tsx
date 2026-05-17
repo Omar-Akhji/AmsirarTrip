@@ -15,9 +15,7 @@ export default function Error({
 
   return (
     <div className="flex flex-col items-center justify-center bg-neutral-100 min-block-screen">
-      <h2 className="mbe-4 text-2xl font-semibold text-neutral-800">
-        Something went wrong!
-      </h2>
+      <h2 className="mbe-4 text-2xl font-semibold text-neutral-800">Something went wrong!</h2>
       <button
         onClick={() => reset()}
         className="rounded bg-blue-500 px-4 py-2 text-white pointer-fine:hover:bg-blue-600"

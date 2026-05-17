@@ -1,12 +1,7 @@
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { CountUp } from "@/shared/ui";
-import {
-  PageHeader,
-  HeaderCTA,
-  HeaderSecondaryCTA,
-} from "@/shared/layout/PageHeader";
-import { AnimateOnScroll } from "@/shared/ui";
+import { HeaderCTA, HeaderSecondaryCTA, PageHeader } from "@/shared/layout/PageHeader";
+import { AnimateOnScroll, CountUp } from "@/shared/ui";
 
 export default function AboutView() {
   const t = useTranslations();
@@ -49,18 +44,13 @@ export default function AboutView() {
         subtitle={t("about.headerSubtitle")}
         headingId="about-page-title"
         bgImage="/images/Header/header-1.webp"
-        breadcrumbs={[
-          { label: t("nav.home"), href: "/" },
-          { label: t("nav.about") },
-        ]}
+        breadcrumbs={[{ label: t("nav.home"), href: "/" }, { label: t("nav.about") }]}
       >
         <HeaderCTA href="#about">
           <span>{t("about.ourStory")}</span>
           <span className="sr-only">{t("about.ourStory")}</span>
         </HeaderCTA>
-        <HeaderSecondaryCTA href="#facts">
-          {t("about.facts.smTitle")}
-        </HeaderSecondaryCTA>
+        <HeaderSecondaryCTA href="#facts">{t("about.facts.smTitle")}</HeaderSecondaryCTA>
       </PageHeader>
 
       <main>
@@ -108,7 +98,10 @@ export default function AboutView() {
                       </h3>
                       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                         {[1, 2, 3, 4].map((num) => (
-                          <div key={num} className="flex items-start gap-3">
+                          <div
+                            key={num}
+                            className="flex items-start gap-3"
+                          >
                             <div className="flex shrink-0 items-center justify-center rounded-full bg-orange-500 text-sm font-bold text-white block-8 inline-8">
                               {num}
                             </div>
@@ -125,16 +118,17 @@ export default function AboutView() {
                         className="absolute start-0 top-0 bottom-0 w-1.5 bg-orange-400 block-full"
                         aria-hidden="true"
                       />
-                      <p className="text-sm leading-relaxed">
-                        {t("about.conclusionText")}
-                      </p>
+                      <p className="text-sm leading-relaxed">{t("about.conclusionText")}</p>
                     </blockquote>
                   </article>
                 </AnimateOnScroll>
               </div>
 
               <div className="order-1 lg:order-2">
-                <AnimateOnScroll animation="zoom-in" delay={200}>
+                <AnimateOnScroll
+                  animation="zoom-in"
+                  delay={200}
+                >
                   <figure className="relative">
                     <div className="absolute inset-0 rotate-3 transform rounded-3xl bg-linear-to-br from-orange-500/20 to-amber-500/20"></div>
                     <div className="mask-linear-to-b relative aspect-4/3 overflow-hidden rounded-3xl bg-white from-black via-black to-transparent shadow-2xl">
@@ -147,8 +141,7 @@ export default function AboutView() {
                       />
                       <div className="absolute start-0 end-0 bottom-0 bg-linear-to-t from-neutral-900/60 to-transparent p-6">
                         <p className="text-sm font-medium text-neutral-100">
-                          {t("about.imageCaption") ||
-                            "Discover Morocco with Amsirar"}
+                          {t("about.imageCaption") || "Discover Morocco with Amsirar"}
                         </p>
                       </div>
                     </div>
@@ -191,7 +184,7 @@ export default function AboutView() {
                 >
                   <article
                     aria-labelledby={`fact-${fact.id}-label`}
-                    className="group relative flex block-full transform flex-col justify-between overflow-hidden rounded-2xl bg-zinc-900 px-8 py-10 text-center text-orange-200 shadow-xl ring-1 ring-white/10 transition-transform block-full inline-full pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-2xl"
+                    className="group relative flex transform flex-col justify-between overflow-hidden rounded-2xl bg-zinc-900 px-8 py-10 text-center text-orange-200 shadow-xl ring-1 ring-white/10 transition-transform block-full inline-full pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-2xl"
                   >
                     <div
                       className="pointer-events-none absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"

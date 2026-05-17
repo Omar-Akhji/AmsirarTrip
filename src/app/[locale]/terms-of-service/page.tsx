@@ -1,12 +1,10 @@
+import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { getTranslations } from "next-intl/server";
 import { generateSEOMetadata } from "@/lib/metadata";
-import { Metadata } from "next";
 
 const TermsOfServiceView = dynamic(() =>
-  import("@/features/legal").then((mod) => ({
-    default: mod.TermsOfServiceView,
-  })),
+  import("@/features/legal").then((mod) => ({ default: mod.TermsOfServiceView })),
 );
 
 export async function generateMetadata({

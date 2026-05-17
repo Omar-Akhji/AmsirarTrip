@@ -9,9 +9,7 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 
   // Optional: Set default scroll trigger configurations
-  ScrollTrigger.config({
-    limitCallbacks: true,
-  });
+  ScrollTrigger.config({ limitCallbacks: true });
 }
 
 export * from "gsap";

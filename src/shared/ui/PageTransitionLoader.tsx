@@ -59,13 +59,13 @@ export function PageTransitionLoader({
   return (
     <div
       className={`fixed z-[999999] flex items-center justify-center opacity-100 transition-opacity duration-400 ease-out ${
-        fullscreen
-          ? "inset-0 block-full inline-full bg-zinc-100"
-          : "top-1/2 left-1/2 block-24 inline-24 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-white/90 shadow-[0_24px_64px_rgba(0,0,0,0.24)]"
+        fullscreen ?
+          "inset-0 bg-zinc-100 block-full inline-full"
+        : "top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-white/90 shadow-[0_24px_64px_rgba(0,0,0,0.24)] block-24 inline-24"
       }`}
     >
       <svg
-        className="animate-loader-rotate block-12 inline-12 origin-center"
+        className="origin-center animate-loader-rotate block-12 inline-12"
         width="48px"
         height="48px"
       >

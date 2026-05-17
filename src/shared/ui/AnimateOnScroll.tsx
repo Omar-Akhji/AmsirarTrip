@@ -2,8 +2,8 @@
 
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
-import { gsap } from "@/lib/gsap";
 import { twMerge } from "tailwind-merge";
+import { gsap } from "@/lib/gsap";
 
 interface AnimateOnScrollProps {
   children: React.ReactNode;
@@ -47,9 +47,7 @@ export function AnimateOnScroll({
         scrollTrigger: {
           trigger: container.current,
           start: `top+=${threshold * 100}% bottom`,
-          toggleActions: once
-            ? "play none none none"
-            : "play none none reverse",
+          toggleActions: once ? "play none none none" : "play none none reverse",
           // markers: process.env.NODE_ENV === "development", // Uncomment for debugging
         },
       };

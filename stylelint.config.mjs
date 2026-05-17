@@ -26,10 +26,7 @@ const config = {
 
     /* ─── Unit & value enforcement ───────────────────────────────────────── */
     "unit-allowed-list": ["%", "deg", "px", "rem", "ms", "fr"],
-    "declaration-property-unit-allowed-list": {
-      "/^border/": ["px"],
-      "/^padding|^gap/": ["rem"],
-    },
+    "declaration-property-unit-allowed-list": { "/^border/": ["px"], "/^padding|^gap/": ["rem"] },
     "length-zero-no-unit": [true, { ignore: ["custom-properties"] }],
     "color-hex-length": "short",
     "color-function-notation": "modern",

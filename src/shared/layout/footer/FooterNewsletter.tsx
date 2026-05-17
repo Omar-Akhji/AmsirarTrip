@@ -2,12 +2,10 @@
 
 import { useState } from "react";
 import dynamic from "next/dynamic";
-import { useTranslation } from "@/lib/hooks/useTranslation";
 import { Mail } from "lucide-react";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 
-const NewsletterModal = dynamic(() => import("./NewsletterModal"), {
-  ssr: false,
-});
+const NewsletterModal = dynamic(() => import("./NewsletterModal"), { ssr: false });
 
 /* ─── Footer Newsletter Section ─── */
 
@@ -20,7 +18,7 @@ export function FooterNewsletter() {
       <h3 className="mbe-2 text-sm font-semibold tracking-wider text-white uppercase">
         {t("footer.newsletter")}
       </h3>
-      <span className="bg-orange mbe-6 block rounded block-1 inline-12" />
+      <span className="mbe-6 block rounded bg-orange block-1 inline-12" />
       <div className="rounded-2xl border border-white/10 bg-linear-to-br from-white/5 to-white/2 p-4 backdrop-blur-sm">
         <p className="mbe-4 text-sm leading-relaxed text-zinc-400">
           {t("footer.newsletterDescription")}
@@ -29,7 +27,7 @@ export function FooterNewsletter() {
           type="button"
           onClick={() => setIsModalOpen(true)}
           aria-label={t("footer.newsletterButtonAria")}
-          className="from-orange flex items-center justify-center gap-2 rounded-full bg-linear-to-r to-amber-500 text-sm font-semibold text-white shadow-md transition-all duration-300 block-10 inline-full active:scale-[0.98] pointer-fine:hover:scale-[1.02] pointer-fine:hover:shadow-lg pointer-fine:hover:shadow-orange-500/30"
+          className="flex items-center justify-center gap-2 rounded-full bg-linear-to-r from-orange to-amber-500 text-sm font-semibold text-white shadow-md transition-all duration-300 block-10 inline-full active:scale-[0.98] pointer-fine:hover:scale-[1.02] pointer-fine:hover:shadow-lg pointer-fine:hover:shadow-orange-500/30"
         >
           <Mail className="size-4" />
           {t("footer.newsletterSubscribe")}
@@ -51,7 +49,10 @@ function FooterSocialLinks() {
   const { t } = useTranslation();
 
   return (
-    <nav aria-label={t("footer.socialAria")} className="mbs-4">
+    <nav
+      aria-label={t("footer.socialAria")}
+      className="mbs-4"
+    >
       <ul className="flex flex-wrap items-center justify-center gap-3">
         <li>
           <a
@@ -63,7 +64,7 @@ function FooterSocialLinks() {
           >
             <svg
               viewBox="0 0 320 512"
-              className="text-dark-grey size-4 sm:size-[1.125rem]"
+              className="size-4 text-dark-grey sm:size-[1.125rem]"
               fill="currentColor"
               aria-hidden="true"
             >
@@ -81,7 +82,7 @@ function FooterSocialLinks() {
           >
             <svg
               viewBox="0 0 512 512"
-              className="text-dark-grey size-4 sm:size-[1.125rem]"
+              className="size-4 text-dark-grey sm:size-[1.125rem]"
               fill="currentColor"
               aria-hidden="true"
             >
@@ -99,7 +100,7 @@ function FooterSocialLinks() {
           >
             <svg
               viewBox="0 0 448 512"
-              className="text-dark-grey size-4 sm:size-[1.125rem]"
+              className="size-4 text-dark-grey sm:size-[1.125rem]"
               fill="currentColor"
               aria-hidden="true"
             >
@@ -117,7 +118,7 @@ function FooterSocialLinks() {
           >
             <svg
               viewBox="0 0 448 512"
-              className="text-dark-grey size-4 sm:size-[1.125rem]"
+              className="size-4 text-dark-grey sm:size-[1.125rem]"
               fill="currentColor"
               aria-hidden="true"
             >

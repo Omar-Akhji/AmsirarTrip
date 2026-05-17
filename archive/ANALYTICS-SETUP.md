@@ -27,9 +27,7 @@ export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID || "";
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = (url: string) => {
   if (typeof window.gtag !== "undefined") {
-    window.gtag("config", GA_TRACKING_ID, {
-      page_path: url,
-    });
+    window.gtag("config", GA_TRACKING_ID, { page_path: url });
   }
 };
 
@@ -46,22 +44,14 @@ export const event = ({
   value?: number;
 }) => {
   if (typeof window.gtag !== "undefined") {
-    window.gtag("event", action, {
-      event_category: category,
-      event_label: label,
-      value: value,
-    });
+    window.gtag("event", action, { event_category: category, event_label: label, value: value });
   }
 };
 
 // Type definitions
 declare global {
   interface Window {
-    gtag: (
-      command: string,
-      targetId: string,
-      config?: Record<string, any>,
-    ) => void;
+    gtag: (command: string, targetId: string, config?: Record<string, any>) => void;
   }
 }
 ```
@@ -131,12 +121,7 @@ gaEvent({
 });
 
 // Or for contact form:
-gaEvent({
-  action: "contact_form_submitted",
-  category: "Contact",
-  label: formData.name,
-  value: 1,
-});
+gaEvent({ action: "contact_form_submitted", category: "Contact", label: formData.name, value: 1 });
 ```
 
 ### Track Button Clicks
@@ -145,12 +130,7 @@ gaEvent({
 import { event as gaEvent } from "@/lib/analytics";
 
 const handleBookNowClick = () => {
-  gaEvent({
-    action: "book_now_clicked",
-    category: "CTA",
-    label: "Tour Page",
-    value: 1,
-  });
+  gaEvent({ action: "book_now_clicked", category: "CTA", label: "Tour Page", value: 1 });
   // Navigate to booking
 };
 ```
@@ -371,9 +351,7 @@ fbEvent("InitiateCheckout", {
 });
 
 // After contact submission:
-fbEvent("Contact", {
-  content_name: "Contact Form",
-});
+fbEvent("Contact", { content_name: "Contact Form" });
 ```
 
 ---

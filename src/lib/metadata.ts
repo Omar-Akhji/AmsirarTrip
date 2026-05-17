@@ -9,12 +9,7 @@ const COMPANY_EMAIL = "contact@amsirartrip.com";
  * OpenGraph expects locale in `language_TERRITORY` format.
  * Maps our short locale codes to proper OG locale strings.
  */
-const OG_LOCALES: Record<string, string> = {
-  en: "en_US",
-  fr: "fr_FR",
-  de: "de_DE",
-  es: "es_ES",
-};
+const OG_LOCALES: Record<string, string> = { en: "en_US", fr: "fr_FR", de: "de_DE", es: "es_ES" };
 
 interface SEOConfig {
   title: string;
@@ -47,43 +42,24 @@ export function generateSEOMetadata({
   const isDefaultLocale = locale === "en";
   const localePath = isDefaultLocale ? path : `/${locale}${path}`;
   const url = `${BASE_URL}${localePath}`;
-  const fullTitle = title.includes(SITE_NAME)
-    ? title
-    : `${title} | ${SITE_NAME}`;
+  const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
 
   // Ensure description is optimal length (150-160 chars)
   const truncatedDescription =
-    description.length > 160
-      ? description.substring(0, 157) + "..."
-      : description;
+    description.length > 160 ? description.substring(0, 157) + "..." : description;
 
   return {
-    title: {
-      absolute: fullTitle,
-    },
+    title: { absolute: fullTitle },
     description: truncatedDescription,
     keywords: keywords.length > 0 ? keywords.join(", ") : undefined,
-    authors: author
-      ? [{ name: author, url: BASE_URL }]
-      : [{ name: SITE_NAME, url: BASE_URL }],
+    authors: author ? [{ name: author, url: BASE_URL }] : [{ name: SITE_NAME, url: BASE_URL }],
     creator: SITE_NAME,
     publisher: SITE_NAME,
     category: "Travel & Tourism",
-    formatDetection: {
-      email: false,
-      address: false,
-      telephone: false,
-    },
+    formatDetection: { email: false, address: false, telephone: false },
     metadataBase: new URL(BASE_URL),
-    appleWebApp: {
-      title: SITE_NAME,
-      statusBarStyle: "black-translucent",
-      capable: true,
-    },
-    other: {
-      "contact:phone_number": COMPANY_PHONE,
-      "contact:email": COMPANY_EMAIL,
-    },
+    appleWebApp: { title: SITE_NAME, statusBarStyle: "black-translucent", capable: true },
+    other: { "contact:phone_number": COMPANY_PHONE, "contact:email": COMPANY_EMAIL },
     alternates: {
       canonical: url,
       languages: {
@@ -121,10 +97,7 @@ export function generateSEOMetadata({
       creator: "@amsirartrip",
       title: fullTitle,
       description: truncatedDescription,
-      images: {
-        url: image,
-        alt: `${title} - ${SITE_NAME}`,
-      },
+      images: { url: image, alt: `${title} - ${SITE_NAME}` },
     },
     robots: {
       index: !noIndex,

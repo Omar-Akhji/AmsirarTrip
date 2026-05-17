@@ -1,7 +1,7 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { useState, useEffect, useRef } from "react";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { AnimateOnScroll } from "@/shared/ui";
 
@@ -45,22 +45,17 @@ const VideoSection = () => {
       <div className="mx-auto px-4 max-inline-330">
         <AnimateOnScroll animation="fade-up">
           <div className="relative overflow-hidden rounded-[34px] bg-zinc-900 p-3 shadow-2xl block-[55vh] inline-full sm:block-[65vh] lg:block-[75vh] xl:block-[85vh]">
-            {videoError ? (
+            {videoError ?
               <div className="flex items-center justify-center rounded-[26px] bg-[url(/images/Header/header-1.webp)] bg-cover bg-center px-8 py-12 text-center block-full">
                 <div className="rounded-3xl bg-black/60 p-8">
-                  <h3 className="text-2xl font-semibold">
-                    {t("video.fallback.title")}
-                  </h3>
-                  <p className="mbs-3 text-sm text-white/80">
-                    {t("video.fallback.subtitle")}
-                  </p>
+                  <h3 className="text-2xl font-semibold">{t("video.fallback.title")}</h3>
+                  <p className="mbs-3 text-sm text-white/80">{t("video.fallback.subtitle")}</p>
                   <p className="mbs-4 text-xs tracking-[0.35em] text-orange-300 uppercase">
                     {t("video.fallback.cta")}
                   </p>
                 </div>
               </div>
-            ) : (
-              <div className="relative block-full inline-full">
+            : <div className="relative block-full inline-full">
                 {isLoading && !videoLoaded && (
                   <div className="absolute inset-0 z-10 flex items-center justify-center rounded-[26px] bg-zinc-950/60">
                     <div className="space-y-3 text-center">
@@ -95,7 +90,10 @@ const VideoSection = () => {
                     videoLoaded ? "opacity-100" : "opacity-0"
                   }`}
                 >
-                  <source src={videoSrc} type="video/mp4" />
+                  <source
+                    src={videoSrc}
+                    type="video/mp4"
+                  />
                   {t("video.unsupported")}
                 </video>
                 {videoLoaded && !isPlaying && (
@@ -116,7 +114,7 @@ const VideoSection = () => {
                   </button>
                 )}
               </div>
-            )}
+            }
           </div>
         </AnimateOnScroll>
       </div>

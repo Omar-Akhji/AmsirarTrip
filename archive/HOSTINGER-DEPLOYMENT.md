@@ -1,6 +1,7 @@
 # 🚀 VPS & Docker Deployment Guide - AmsirarTrip
 
-This guide covers deploying AmsirarTrip to a VPS (Hostinger, DigitalOcean, Hetzner, etc.) using Docker.
+This guide covers deploying AmsirarTrip to a VPS (Hostinger, DigitalOcean, Hetzner, etc.) using
+Docker.
 
 ## Prerequisites
 
@@ -65,8 +66,8 @@ You have two main methods to deploy:
    cd amsirartrip
    ```
 
-2. **Create/Edit Environment Variables**:
-   Create a `.env.production` file (DO NOT COMMIT THIS TO GIT):
+2. **Create/Edit Environment Variables**: Create a `.env.production` file (DO NOT COMMIT THIS TO
+   GIT):
 
    ```bash
    nano .env.production
@@ -156,7 +157,8 @@ certbot --nginx -d amsirartrip.com -d www.amsirartrip.com
 
 ## Step 5: Post-Deployment Verification
 
-After the site is live, run the security verification script from your local machine to ensure everything is secure:
+After the site is live, run the security verification script from your local machine to ensure
+everything is secure:
 
 ```bash
 # Verify production security headers and protections

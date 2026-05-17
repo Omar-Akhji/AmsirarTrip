@@ -3,9 +3,7 @@ import withBundleAnalyzer from "@next/bundle-analyzer";
 import createNextIntlPlugin from "next-intl/plugin";
 import { getSecurityHeaders } from "./src/lib/security-headers";
 
-const analyzeBuild = withBundleAnalyzer({
-  enabled: process.env["ANALYZE"] === "true",
-});
+const analyzeBuild = withBundleAnalyzer({ enabled: process.env["ANALYZE"] === "true" });
 
 const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
 
@@ -36,33 +34,20 @@ const nextConfig: NextConfig = {
       {
         // Additional headers for API routes
         source: "/api/:path*",
-        headers: [
-          {
-            key: "Cache-Control",
-            value: "no-store, max-age=0",
-          },
-        ],
+        headers: [{ key: "Cache-Control", value: "no-store, max-age=0" }],
       },
     ];
   },
   transpilePackages: ["gsap", "@gsap/react"],
   reactCompiler: true,
   experimental: {
-    serverActions: {
-      bodySizeLimit: "1mb",
-    },
+    serverActions: { bodySizeLimit: "1mb" },
 
     // Native browser View Transitions API for zero-JS routing animations
     viewTransition: true,
 
     // Optimize package imports to reduce bundle size
-    optimizePackageImports: [
-      "lucide-react",
-      "date-fns",
-      "next-intl",
-      "gsap",
-      "@gsap/react",
-    ],
+    optimizePackageImports: ["lucide-react", "date-fns", "next-intl", "gsap", "@gsap/react"],
     // Enable router caching for faster navigation
     staleTimes: {
       dynamic: 30, // Cache dynamic pages for 30 seconds

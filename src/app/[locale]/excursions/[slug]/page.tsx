@@ -1,14 +1,14 @@
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
-import { Metadata } from "next";
 import ExcursionLayout from "@/features/excursions/components/ExcursionLayout";
+import {
+  getExcursionBySlug,
+  getExcursionSlugs,
+} from "@/features/excursions/data/excursionsMetadata";
 import { generateSEOMetadata } from "@/lib/metadata";
 import { generateExcursionJsonLd } from "@/lib/structuredData";
 import { JsonLd } from "@/shared/ui/JsonLd";
-import {
-  getExcursionSlugs,
-  getExcursionBySlug,
-} from "@/features/excursions/data/excursionsMetadata";
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -19,18 +19,11 @@ export async function generateStaticParams() {
   const locales = ["en", "fr", "de", "es"];
   const slugs = getExcursionSlugs();
 
-  return locales.flatMap((locale) =>
-    slugs.map((slug) => ({
-      locale,
-      slug,
-    })),
-  );
+  return locales.flatMap((locale) => slugs.map((slug) => ({ locale, slug })));
 }
 
 // Generate metadata for SEO
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const awaitedParams = await params;
   const { locale, slug } = awaitedParams;
 
@@ -40,9 +33,7 @@ export async function generateMetadata({
   const excursion = matchedSlug ? getExcursionBySlug(matchedSlug) : undefined;
 
   if (!excursion) {
-    return {
-      title: "Excursion Not Found",
-    };
+    return { title: "Excursion Not Found" };
   }
 
   const t = await getTranslations({ locale });
@@ -50,8 +41,7 @@ export async function generateMetadata({
 
   return generateSEOMetadata({
     title: t(`${keyPrefix}.title`),
-    description:
-      t(`${keyPrefix}.description`) + " " + t(`${keyPrefix}.tagline`),
+    description: t(`${keyPrefix}.description`) + " " + t(`${keyPrefix}.tagline`),
     keywords: excursion.keywords,
     path: `/excursions/${excursion.slug}`,
     locale,

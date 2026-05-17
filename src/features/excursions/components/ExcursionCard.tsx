@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
+import { Link } from "@/i18n/routing";
 
 interface ExcursionCardProps {
   excursion: {
@@ -23,14 +23,13 @@ interface ExcursionCardProps {
   };
 }
 
-export function ExcursionCard({
-  excursion,
-  idx,
-  translations,
-}: ExcursionCardProps) {
+export function ExcursionCard({ excursion, idx, translations }: ExcursionCardProps) {
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-[20px] bg-white p-2.5 shadow-xs ring-1 ring-zinc-100 transition-all duration-500 block-full pointer-fine:hover:-translate-y-2 pointer-fine:hover:shadow-2xl pointer-fine:hover:shadow-orange-900/5">
-      <Link href={excursion.route} className="absolute inset-0 z-20">
+      <Link
+        href={excursion.route}
+        className="absolute inset-0 z-20"
+      >
         <span className="sr-only">
           {translations.exploreLink} - {translations.title}
         </span>

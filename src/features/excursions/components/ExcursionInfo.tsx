@@ -1,21 +1,21 @@
 import { Check } from "lucide-react";
-import { AnimateOnScroll } from "@/shared/ui";
 import { useTranslations } from "next-intl";
+import { AnimateOnScroll } from "@/shared/ui";
 
 interface ExcursionInfoProps {
   highlights: string[];
   overview: string;
 }
 
-export default function ExcursionInfo({
-  highlights,
-  overview,
-}: ExcursionInfoProps) {
+export default function ExcursionInfo({ highlights, overview }: ExcursionInfoProps) {
   const t = useTranslations("excursion");
 
   return (
     <>
-      <AnimateOnScroll animation="fade-up" delay={300}>
+      <AnimateOnScroll
+        animation="fade-up"
+        delay={300}
+      >
         <div>
           <h2 className="text-xl font-semibold text-zinc-900 sm:text-2xl md:text-3xl">
             {t("common.highlights")}
@@ -29,16 +29,17 @@ export default function ExcursionInfo({
                 <span className="inline-flex shrink-0 items-center justify-center justify-self-end rounded-full bg-orange-500 text-white block-8 inline-8">
                   <Check className="size-4" />
                 </span>
-                <p className="text-start text-sm leading-relaxed sm:text-base">
-                  {item}
-                </p>
+                <p className="text-start text-sm leading-relaxed sm:text-base">{item}</p>
               </li>
             ))}
           </ul>
         </div>
       </AnimateOnScroll>
 
-      <AnimateOnScroll animation="fade-up" delay={450}>
+      <AnimateOnScroll
+        animation="fade-up"
+        delay={450}
+      >
         <div className="space-y-4">
           <h2 className="text-xl font-semibold text-zinc-900 sm:text-2xl md:text-3xl">
             {t("common.overview")}

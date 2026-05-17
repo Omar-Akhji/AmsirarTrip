@@ -1,8 +1,8 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 import { PageHeader } from "@/shared/layout/PageHeader";
-import { LegalSectionCard } from "./LegalSectionCard";
 import { LegalPageConfig } from "../types";
+import { LegalSectionCard } from "./LegalSectionCard";
 
 interface LegalPageLayoutProps {
   config: LegalPageConfig;
@@ -22,10 +22,7 @@ export function LegalPageLayout({ config, headingId }: LegalPageLayoutProps) {
         title={t(config.titleKey)}
         subtitle={t(config.subtitleKey)}
         headingId={headingId}
-        breadcrumbs={[
-          { label: t("nav.home"), href: "/" },
-          { label: t(config.titleKey) },
-        ]}
+        breadcrumbs={[{ label: t("nav.home"), href: "/" }, { label: t(config.titleKey) }]}
       />
 
       <main>

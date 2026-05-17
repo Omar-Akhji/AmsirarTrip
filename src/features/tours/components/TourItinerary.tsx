@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigation2, Check, Hotel, Utensils, Tent, Clock } from "lucide-react";
+import { Check, Clock, Hotel, Navigation2, Tent, Utensils } from "lucide-react";
 import { AnimateOnScroll } from "@/shared/ui";
 
 // Helper function to get ordinal suffix
@@ -40,7 +40,11 @@ export default function TourItinerary({
   return (
     <div className="space-y-8">
       {days.map((day, idx) => (
-        <AnimateOnScroll key={day.number} animation="fade-up" delay={idx * 100}>
+        <AnimateOnScroll
+          key={day.number}
+          animation="fade-up"
+          delay={idx * 100}
+        >
           <div className="group relative">
             {/* Day Title with Modern Design */}
             <div className="mbe-6">
@@ -72,9 +76,15 @@ export default function TourItinerary({
                 ))}
               </div>
               {day.text.map((item) => (
-                <div key={item} className="flex items-start gap-3">
+                <div
+                  key={item}
+                  className="flex items-start gap-3"
+                >
                   <div className="mbs-1 flex size-6 shrink-0 items-center justify-center rounded-full bg-linear-to-br from-green-500 to-emerald-600 text-white shadow-xs">
-                    <Check className="size-3.5" aria-hidden />
+                    <Check
+                      className="size-3.5"
+                      aria-hidden
+                    />
                   </div>
                   <p className="flex-1 text-sm leading-relaxed text-neutral-700 sm:text-base">
                     {item}
@@ -83,10 +93,7 @@ export default function TourItinerary({
               ))}
 
               {/* Day Details Grid */}
-              {(day.accommodation ||
-                day.meals ||
-                day.activities ||
-                day.arrival) && (
+              {(day.accommodation || day.meals || day.activities || day.arrival) && (
                 <div className="mbs-4 grid gap-3 sm:grid-cols-2">
                   {day.accommodation && (
                     <div className="flex items-center gap-2 rounded-lg border-[3px] border-amber-200 bg-amber-50 px-3 py-2">
@@ -98,9 +105,7 @@ export default function TourItinerary({
                         <div className="text-xs font-semibold text-amber-700">
                           {accommodationLabel}
                         </div>
-                        <div className="text-sm text-amber-900">
-                          {day.accommodation}
-                        </div>
+                        <div className="text-sm text-amber-900">{day.accommodation}</div>
                       </div>
                     </div>
                   )}
@@ -111,12 +116,8 @@ export default function TourItinerary({
                         aria-hidden
                       />
                       <div>
-                        <div className="text-xs font-semibold text-amber-700">
-                          {mealsLabel}
-                        </div>
-                        <div className="text-sm text-amber-900">
-                          {day.meals}
-                        </div>
+                        <div className="text-xs font-semibold text-amber-700">{mealsLabel}</div>
+                        <div className="text-sm text-amber-900">{day.meals}</div>
                       </div>
                     </div>
                   )}
@@ -130,9 +131,7 @@ export default function TourItinerary({
                         <div className="text-xs font-semibold text-emerald-700">
                           {activitiesLabel}
                         </div>
-                        <div className="text-sm text-emerald-900">
-                          {day.activities}
-                        </div>
+                        <div className="text-sm text-emerald-900">{day.activities}</div>
                       </div>
                     </div>
                   )}
@@ -143,12 +142,8 @@ export default function TourItinerary({
                         aria-hidden
                       />
                       <div>
-                        <div className="text-xs font-semibold text-sky-700">
-                          {arrivalLabel}
-                        </div>
-                        <div className="text-sm text-sky-900">
-                          {day.arrival}
-                        </div>
+                        <div className="text-xs font-semibold text-sky-700">{arrivalLabel}</div>
+                        <div className="text-sm text-sky-900">{day.arrival}</div>
                       </div>
                     </div>
                   )}

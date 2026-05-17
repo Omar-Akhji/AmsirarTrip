@@ -1,9 +1,9 @@
 "use client";
 
 import * as React from "react";
+import { CalendarIcon, ChevronLeft, ChevronRight } from "lucide-react";
 import { DayPicker } from "react-day-picker";
 import { cn } from "@/lib/utils";
-import { ChevronLeft, ChevronRight, CalendarIcon } from "lucide-react";
 
 interface EnhancedCalendarProps {
   initialDate?: Date | undefined;
@@ -25,16 +25,10 @@ type CalendarAction =
   | { type: "GO_TO_TODAY"; today: Date };
 
 function createCalendarState(initialDate: Date | undefined): CalendarState {
-  return {
-    selectedDate: initialDate,
-    currentMonth: initialDate ?? new Date(),
-  };
+  return { selectedDate: initialDate, currentMonth: initialDate ?? new Date() };
 }
 
-function calendarReducer(
-  state: CalendarState,
-  action: CalendarAction,
-): CalendarState {
+function calendarReducer(state: CalendarState, action: CalendarAction): CalendarState {
   switch (action.type) {
     case "SELECT_DATE":
       return { ...state, selectedDate: action.date };
@@ -42,9 +36,7 @@ function calendarReducer(
       return { ...state, currentMonth: action.month };
     case "MOVE_MONTH": {
       const currentMonth = new Date(state.currentMonth);
-      currentMonth.setMonth(
-        currentMonth.getMonth() + (action.direction === "prev" ? -1 : 1),
-      );
+      currentMonth.setMonth(currentMonth.getMonth() + (action.direction === "prev" ? -1 : 1));
       return { ...state, currentMonth };
     }
     case "GO_TO_TODAY":
@@ -112,10 +104,7 @@ export function EnhancedCalendar({
               className="text-sm font-semibold text-neutral-900"
               suppressHydrationWarning
             >
-              {currentMonth.toLocaleDateString("en-US", {
-                month: "long",
-                year: "numeric",
-              })}
+              {currentMonth.toLocaleDateString("en-US", { month: "long", year: "numeric" })}
             </span>
           </div>
 
@@ -145,16 +134,15 @@ export function EnhancedCalendar({
             nav: "hidden",
             month_caption: "hidden",
             weekdays: "flex",
-            weekday:
-              "text-muted-foreground text-xs font-medium inline-9 text-center",
+            weekday: "text-muted-foreground text-xs font-medium inline-9 text-center",
             week: "flex inline-full mbs-1",
             day: "relative p-0 text-center group/day aspect-square flex items-center justify-center",
             day_button: cn(
-              "block-9 inline-9 p-0 font-normal rounded-full text-sm transition-all duration-200",
+              "rounded-full p-0 text-sm font-normal transition-all duration-200 block-9 inline-9",
               "pointer-fine:hover:bg-orange-100 pointer-fine:hover:text-orange-900",
-              "focus:outline-hidden focus:ring-2 focus:ring-orange-500 focus:ring-offset-1",
-              "aria-selected:bg-orange-600 aria-selected:text-white aria-selected:font-semibold",
-              "disabled:opacity-30 disabled:cursor-not-allowed",
+              "focus:ring-2 focus:ring-orange-500 focus:ring-offset-1 focus:outline-hidden",
+              "aria-selected:bg-orange-600 aria-selected:font-semibold aria-selected:text-white",
+              "disabled:cursor-not-allowed disabled:opacity-30",
             ),
             today:
               "relative after:content-[''] after:absolute after:bottom-1 after:start-1/2 after:-translate-x-1/2 after:block-1 after:inline-1 after:rounded-full after:bg-orange-600",
@@ -176,9 +164,9 @@ export function EnhancedCalendar({
                   className="text-xs font-medium text-neutral-500"
                   suppressHydrationWarning
                 >
-                  {selectedDate.getTime() === initialDate?.getTime()
-                    ? "Current Date"
-                    : "New Selection"}
+                  {selectedDate.getTime() === initialDate?.getTime() ?
+                    "Current Date"
+                  : "New Selection"}
                 </p>
                 <p
                   className="truncate text-sm font-semibold text-neutral-900"
@@ -216,10 +204,7 @@ export function EnhancedCalendar({
             </button>
             <button
               onClick={handleApply}
-              disabled={
-                !selectedDate ||
-                selectedDate.getTime() === initialDate?.getTime()
-              }
+              disabled={!selectedDate || selectedDate.getTime() === initialDate?.getTime()}
               type="button"
               className="rounded-lg bg-linear-to-r from-orange-500 to-orange-600 px-4 py-2 text-sm font-medium text-white shadow-md transition-all duration-200 focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 focus:outline-hidden disabled:cursor-not-allowed disabled:opacity-50 pointer-fine:hover:from-orange-600 pointer-fine:hover:to-orange-700 pointer-fine:hover:shadow-lg disabled:pointer-fine:hover:from-orange-500 disabled:pointer-fine:hover:to-orange-600"
             >

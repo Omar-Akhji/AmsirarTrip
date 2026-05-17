@@ -15,10 +15,7 @@ const GENERIC_ERROR = "An unexpected error occurred. Please try again.";
  * Create a safe error response that never leaks internal details
  * Logs the real error server-side for debugging
  */
-export function createErrorResponse(
-  error: unknown,
-  context: string,
-): FormState {
+export function createErrorResponse(error: unknown, context: string): FormState {
   console.error(`${context} error:`, error);
   return { success: false, message: GENERIC_ERROR };
 }

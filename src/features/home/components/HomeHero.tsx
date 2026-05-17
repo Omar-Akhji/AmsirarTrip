@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
-import { useTranslation, useMediaQuery } from "@/lib/hooks";
+import { useMediaQuery, useTranslation } from "@/lib/hooks";
 
 // Static assets outside component to ensure reference stability
 const HEADER_IMAGES = [
@@ -171,23 +171,20 @@ export default function HomeHero() {
             id="hero-heading"
             className="lg:text-shadow-xl text-3xl leading-tight font-semibold text-shadow-black/60 text-shadow-lg sm:text-4xl lg:text-5xl"
           >
-            {isMobileOrTablet ? (
+            {isMobileOrTablet ?
               <span className="inline-block transition-opacity duration-500">
                 {heroTexts[currentTextIndex]}
               </span>
-            ) : (
-              <>
+            : <>
                 <span>{typed}</span>
                 <span
                   aria-hidden
                   className="ms-2 inline-block animate-pulse bg-white/90 block-6 inline-px"
                 />
               </>
-            )}
+            }
           </h2>
-          <p className="font-fancy text-lg text-zinc-200 lg:text-xl">
-            {t("home.heroSubtitle")}
-          </p>
+          <p className="font-fancy text-lg text-zinc-200 lg:text-xl">{t("home.heroSubtitle")}</p>
           <div className="flex flex-wrap items-center justify-center gap-4 pbs-2">
             <Link
               href="/tours"

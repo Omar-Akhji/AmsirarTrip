@@ -2,16 +2,15 @@
 
 import { headers } from "next/headers";
 import { getTranslations } from "next-intl/server";
-import { getContactSchema } from "@/lib/schemas";
-import { env } from "@/lib/env";
 import { checkRateLimit } from "@/lib/api-utils";
-import { createErrorResponse } from "@/lib/form-types";
-import type { FormState } from "@/lib/form-types";
+import { env } from "@/lib/env";
+import { createErrorResponse, type FormState } from "@/lib/form-types";
+import { getContactSchema } from "@/lib/schemas";
 import {
-  verifyRecaptcha,
   createMailer,
   escapeHtml,
   logSuspiciousActivity,
+  verifyRecaptcha,
 } from "@/lib/server-utils";
 
 /**
@@ -24,9 +23,9 @@ export async function submitContactAction(
   try {
     const headersList = await headers();
     const ip =
-      headersList.get("x-forwarded-for")?.split(",")[0]?.trim() ||
-      headersList.get("x-real-ip") ||
-      "unknown";
+      headersList.get("x-forwarded-for")?.split(",")[0]?.trim()
+      || headersList.get("x-real-ip")
+      || "unknown";
 
     // Honeypot check — hidden field filled only by bots
     const honeypot = formData.get("website") as string;
@@ -40,10 +39,7 @@ export async function submitContactAction(
       if (rateLimit.blocked) {
         logSuspiciousActivity(ip, "BLOCKED_ACTION", "contact-action");
       }
-      return {
-        success: false,
-        message: "Too many requests. Please try again later.",
-      };
+      return { success: false, message: "Too many requests. Please try again later." };
     }
 
     // Extract form data
@@ -66,27 +62,18 @@ export async function submitContactAction(
         errors[path] = err.message;
       });
 
-      return {
-        success: false,
-        message: "Please check the form for errors",
-        errors,
-      };
+      return { success: false, message: "Please check the form for errors", errors };
     }
 
     const data = validationResult.data;
     const topic = formData.get("topic") as string;
-    const messageContent = topic
-      ? `${topic.trim()}\n\n${data.message}`
-      : data.message;
+    const messageContent = topic ? `${topic.trim()}\n\n${data.message}` : data.message;
 
     // Verify CAPTCHA
     const host = headersList.get("host")?.split(":")[0] || "";
     if (!(await verifyRecaptcha(data.recaptchaToken, host))) {
       logSuspiciousActivity(ip, "CAPTCHA_FAILED", "contact-action");
-      return {
-        success: false,
-        message: "Security verification failed. Please try again.",
-      };
+      return { success: false, message: "Security verification failed. Please try again." };
     }
 
     const transporter = createMailer();
@@ -97,10 +84,7 @@ export async function submitContactAction(
       <p><strong>Name :</strong> ${escapeHtml(data.name)}</p>
       <p><strong>E-mail :</strong> ${escapeHtml(data.email)}</p>
       <p><strong>Phone :</strong> ${escapeHtml(data.phone)}</p>
-      <p><strong>Message :</strong><br>${escapeHtml(messageContent).replace(
-        /\n/g,
-        "<br>",
-      )}</p>
+      <p><strong>Message :</strong><br>${escapeHtml(messageContent).replace(/\n/g, "<br>")}</p>
     `;
 
     await transporter.sendMail({
@@ -112,10 +96,7 @@ export async function submitContactAction(
       html,
     });
 
-    return {
-      success: true,
-      message: "Message sent! We will reply within 24 hours.",
-    };
+    return { success: true, message: "Message sent! We will reply within 24 hours." };
   } catch (error) {
     return createErrorResponse(error, "Contact form submission");
   }

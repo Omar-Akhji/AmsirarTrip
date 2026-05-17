@@ -1,8 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { useTranslation } from "@/lib/hooks/useTranslation";
 import { Quote } from "lucide-react";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 import { AnimateOnScroll } from "@/shared/ui";
 
 const TestimonialsSection = () => {
@@ -10,7 +10,10 @@ const TestimonialsSection = () => {
   const testimonials = [{ key: "kevin" }, { key: "ben" }, { key: "sara" }];
 
   return (
-    <section id="testimonials" className="bg-zinc-50 py-12">
+    <section
+      id="testimonials"
+      className="bg-zinc-50 py-12"
+    >
       <div className="mx-auto px-4 max-inline-330">
         <AnimateOnScroll animation="fade-up">
           <div className="mx-auto mbe-10 space-y-4 text-center max-inline-4xl">
@@ -37,7 +40,7 @@ const TestimonialsSection = () => {
                   delay={idx * 150}
                   className={`flex block-full inline-full ${idx === 2 ? "md:col-span-2 lg:col-span-1" : ""}`}
                 >
-                  <article className="relative flex inline-full transform flex-col justify-between overflow-hidden rounded-2xl bg-zinc-900 p-6 text-start text-orange-200 shadow-lg ring-1 ring-white/10 transition-transform block-full inline-full pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-xl">
+                  <article className="relative flex transform flex-col justify-between overflow-hidden rounded-2xl bg-zinc-900 p-6 text-start text-orange-200 shadow-lg ring-1 ring-white/10 transition-transform block-full inline-full pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-xl">
                     {/* Decorative Quote Icon */}
                     <div
                       className="absolute inset-e-4 top-2 -rotate-12 opacity-10 select-none"

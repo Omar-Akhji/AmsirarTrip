@@ -1,18 +1,11 @@
-import { Link } from "@/i18n/routing";
-import { useTranslations } from "next-intl";
 import type { Metadata } from "next";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 export const metadata: Metadata = {
   title: "Page Not Found | Amsirar Trip",
   description: "The page you are looking for could not be found.",
-  robots: {
-    index: false,
-    follow: false,
-    googleBot: {
-      index: false,
-      follow: false,
-    },
-  },
+  robots: { index: false, follow: false, googleBot: { index: false, follow: false } },
 };
 
 export default function NotFound() {
@@ -33,9 +26,7 @@ export default function NotFound() {
         </h1>
 
         {/* Title */}
-        <h2 className="text-2xl font-semibold text-white sm:text-3xl">
-          {t("title")}
-        </h2>
+        <h2 className="text-2xl font-semibold text-white sm:text-3xl">{t("title")}</h2>
 
         {/* Description */}
         <p className="text-lg text-zinc-300">{t("description")}</p>

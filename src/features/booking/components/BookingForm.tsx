@@ -1,20 +1,20 @@
 "use client";
 
-import { useActionState, useRef, useEffect, useReducer, useState } from "react";
-import { useFormStatus } from "react-dom";
+import { useActionState, useEffect, useReducer, useRef, useState } from "react";
 import Form from "next/form";
-import { useTranslation } from "@/lib/hooks/useTranslation";
+import { useFormStatus } from "react-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 import { TOURS_DATA } from "@/features/tours";
-import { LoadingSpinner } from "@/shared/ui/Loading";
-import { cn } from "@/lib/utils";
-import { RECAPTCHA_V2_SITE_KEY, hasRecaptchaV2 } from "@/lib/client-env";
-import { submitBookingAction } from "../actions/booking-action";
+import { hasRecaptchaV2, RECAPTCHA_V2_SITE_KEY } from "@/lib/client-env";
 import type { FormState } from "@/lib/form-types";
+import { useTranslation } from "@/lib/hooks/useTranslation";
+import { cn } from "@/lib/utils";
+import { AnimateOnScroll } from "@/shared/ui";
+import { LoadingSpinner } from "@/shared/ui/Loading";
+import { submitBookingAction } from "../actions/booking-action";
+import { BookingFormFields } from "./BookingFormFields";
 import { BookingSidebar } from "./BookingSidebar";
 import { FormStatusMessages } from "./FormStatusMessages";
-import { BookingFormFields } from "./BookingFormFields";
-import { AnimateOnScroll } from "@/shared/ui";
 
 // ── Local state reducer (UI behavioral states) ──────────────
 
@@ -77,16 +77,16 @@ function SubmitButton({ buttonText }: { buttonText: string }) {
   return (
     <button
       type="submit"
-      className="inline-flex transform items-center justify-center gap-2 rounded-full bg-linear-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-semibold tracking-wide whitespace-nowrap text-white uppercase border border-orange-400 transition duration-300 ease-in-out inline-full disabled:cursor-not-allowed disabled:opacity-60 md:inline-auto md:min-inline-50 pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:brightness-110"
+      className="inline-flex transform items-center justify-center gap-2 rounded-full border border-orange-400 bg-linear-to-r from-orange-500 to-orange-600 px-6 py-3 text-sm font-semibold tracking-wide whitespace-nowrap text-white uppercase transition duration-300 ease-in-out inline-full disabled:cursor-not-allowed disabled:opacity-60 md:inline-auto md:min-inline-50 pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:brightness-110"
       disabled={pending}
       aria-busy={pending}
     >
       {pending && <LoadingSpinner size="sm" />}
-      {pending
-        ? t("booking.sending", "Sending...")
-        : buttonText === "booking.checkAvailability"
-          ? t(buttonText, "Reserve Now")
-          : buttonText}
+      {pending ?
+        t("booking.sending", "Sending...")
+      : buttonText === "booking.checkAvailability" ?
+        t(buttonText, "Reserve Now")
+      : buttonText}
     </button>
   );
 }
@@ -109,10 +109,7 @@ function BookingForm({
   const [uiState, dispatch] = useReducer(formUIReducer, initialUIState);
 
   // React 19's useActionState for form state management
-  const [state, formAction] = useActionState<FormState | null, FormData>(
-    submitBookingAction,
-    null,
-  );
+  const [state, formAction] = useActionState<FormState | null, FormData>(submitBookingAction, null);
 
   // Handle successful submission via component remount
   useEffect(() => {
@@ -124,10 +121,7 @@ function BookingForm({
         // Delay the remount slightly to show specific success text first
         successTimerRef.current = setTimeout(() => {
           setFormKey((prev) => prev + 1);
-          dispatch({
-            type: "SET_BUTTON_TEXT",
-            text: "booking.checkAvailability",
-          });
+          dispatch({ type: "SET_BUTTON_TEXT", text: "booking.checkAvailability" });
         }, 4000);
       });
     }
@@ -147,30 +141,20 @@ function BookingForm({
   }, [state]);
 
   const perks = [
-    {
-      id: "experts",
-      text: t("booking.perkLocalExperts", "Licensed local drivers & guides"),
-    },
-    {
-      id: "flexible",
-      text: t("booking.perkFlexible", "Flexible departures from Marrakech"),
-    },
-    {
-      id: "support",
-      text: t("booking.perkSupport", "Fast responses within 24 hours"),
-    },
+    { id: "experts", text: t("booking.perkLocalExperts", "Licensed local drivers & guides") },
+    { id: "flexible", text: t("booking.perkFlexible", "Flexible departures from Marrakech") },
+    { id: "support", text: t("booking.perkSupport", "Fast responses within 24 hours") },
   ];
 
   const selectedTour =
-    tourTitle && tourId
-      ? `${tourTitle} - Duration: ${
-          TOURS_DATA.find((t) => t.id === Number(tourId))?.duration || ""
-        } Days`
-      : tourTitle || excursionTitle || "";
+    tourTitle && tourId ?
+      `${tourTitle} - Duration: ${
+        TOURS_DATA.find((t) => t.id === Number(tourId))?.duration || ""
+      } Days`
+    : tourTitle || excursionTitle || "";
 
-  const tourDuration = tourId
-    ? (TOURS_DATA.find((t) => t.id === Number(tourId))?.duration ?? null)
-    : null;
+  const tourDuration =
+    tourId ? (TOURS_DATA.find((t) => t.id === Number(tourId))?.duration ?? null) : null;
 
   return (
     <section
@@ -191,10 +175,7 @@ function BookingForm({
                   {t("booking.makeReservation", "Make your reservation")}
                 </h2>
                 <p className="mbs-3 text-sm text-orange-50/90 md:text-base">
-                  {t(
-                    "booking.description",
-                    "Book your perfect Morocco adventure with us",
-                  )}
+                  {t("booking.description", "Book your perfect Morocco adventure with us")}
                 </p>
               </div>
 
@@ -235,9 +216,7 @@ function BookingForm({
                   locale={i18n.language}
                   calendarOpen={uiState.calendarOpen}
                   reservationDate={uiState.reservationDate}
-                  onCalendarOpenChange={(open) =>
-                    dispatch({ type: "SET_CALENDAR_OPEN", open })
-                  }
+                  onCalendarOpenChange={(open) => dispatch({ type: "SET_CALENDAR_OPEN", open })}
                   onDateSelect={(date) => dispatch({ type: "SET_DATE", date })}
                 />
 
@@ -247,22 +226,19 @@ function BookingForm({
                       <div
                         className={cn(
                           "w-fit rounded-2xl border transition-all duration-500",
-                          state?.["errors"]?.["recaptchaToken"]
-                            ? "border-red-300"
-                            : "border-neutral-100",
+                          state?.["errors"]?.["recaptchaToken"] ?
+                            "border-red-300"
+                          : "border-neutral-100",
                         )}
                       >
-                        <div className="origin-top-left scale-85 sm:scale-100 inline-[258px] block-[66px] sm:inline-auto sm:block-auto">
-                          {hasRecaptchaV2 ? (
+                        <div className="origin-top-left scale-85 block-[66px] inline-[258px] sm:scale-100 sm:block-auto sm:inline-auto">
+                          {hasRecaptchaV2 ?
                             <>
                               <ReCAPTCHA
                                 ref={recaptchaRef}
                                 sitekey={RECAPTCHA_V2_SITE_KEY}
                                 onChange={(token) =>
-                                  dispatch({
-                                    type: "SET_CAPTCHA",
-                                    token: token || "",
-                                  })
+                                  dispatch({ type: "SET_CAPTCHA", token: token || "" })
                                 }
                               />
                               <input
@@ -271,11 +247,10 @@ function BookingForm({
                                 value={uiState.captchaToken}
                               />
                             </>
-                          ) : (
-                            <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-600">
+                          : <div className="rounded-lg border border-amber-200 bg-amber-50 px-3 py-2 text-sm text-amber-600">
                               ReCAPTCHA not configured (Site Key missing)
                             </div>
-                          )}
+                          }
                         </div>
                       </div>
                     </div>

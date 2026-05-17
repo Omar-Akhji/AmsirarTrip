@@ -1,4 +1,5 @@
 "use client";
+
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { AnimateOnScroll } from "@/shared/ui";
 
@@ -19,24 +20,21 @@ export default function HomeStats() {
       id: "routes",
       value: "35+",
       label: t("excursion.stats.routes", "Signature excursions"),
-      description: t(
-        "home.stats.routes",
-        "Handpicked story-driven routes from dunes to oceans.",
-      ),
+      description: t("home.stats.routes", "Handpicked story-driven routes from dunes to oceans."),
     },
     {
       id: "care",
       value: "24/7",
       label: t("excursion.stats.support", "On-trip support"),
-      description: t(
-        "home.stats.care",
-        "Dedicated coordinators for every mile of your journey.",
-      ),
+      description: t("home.stats.care", "Dedicated coordinators for every mile of your journey."),
     },
   ];
 
   return (
-    <section className="py-12" aria-labelledby="home-highlights">
+    <section
+      className="py-12"
+      aria-labelledby="home-highlights"
+    >
       <div className="mx-auto px-4 max-inline-7xl">
         <AnimateOnScroll animation="fade-up">
           <div className="mx-auto mbe-10 space-y-4 text-center max-inline-4xl">
@@ -53,9 +51,7 @@ export default function HomeStats() {
               className="mx-auto mbs-4 rounded-full bg-orange-500 block-1 inline-20"
               aria-hidden="true"
             />
-            <p className="mbs-4 text-base text-taupe-600">
-              {t("tours.detailsSubtitle")}
-            </p>
+            <p className="mbs-4 text-base text-taupe-600">{t("tours.detailsSubtitle")}</p>
           </div>
         </AnimateOnScroll>
 
@@ -67,16 +63,10 @@ export default function HomeStats() {
               delay={idx * 150}
               className="flex block-full inline-full"
             >
-              <article className="inline-full rounded-3xl border border-orange-100 bg-white p-6 shadow-xs shadow-orange-100/70">
-                <p className="text-4xl font-bold text-orange-600">
-                  {stat.value}
-                </p>
-                <h3 className="mbs-3 text-lg font-semibold text-zinc-900">
-                  {stat.label}
-                </h3>
-                <p className="mbs-2 text-sm text-taupe-600">
-                  {stat.description}
-                </p>
+              <article className="rounded-3xl border border-orange-100 bg-white p-6 shadow-xs shadow-orange-100/70 inline-full">
+                <p className="text-4xl font-bold text-orange-600">{stat.value}</p>
+                <h3 className="mbs-3 text-lg font-semibold text-zinc-900">{stat.label}</h3>
+                <p className="mbs-2 text-sm text-taupe-600">{stat.description}</p>
               </article>
             </AnimateOnScroll>
           ))}

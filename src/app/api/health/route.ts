@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const tokenFromQuery = searchParams.get("token");
@@ -17,8 +18,6 @@ export async function GET(request: NextRequest) {
       timestamp: new Date().toISOString(),
       environment: process.env.NODE_ENV || "production",
     },
-    {
-      headers: { "Cache-Control": "no-store, max-age=0" },
-    },
+    { headers: { "Cache-Control": "no-store, max-age=0" } },
   );
 }

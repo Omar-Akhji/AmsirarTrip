@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useEffect, useId, useCallback } from "react";
+import React, { useCallback, useEffect, useId, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 interface NativePopoverProps {
@@ -55,10 +55,7 @@ export function NativePopover({
       left = Math.max(8, viewportWidth - popoverWidth - 16);
     }
 
-    if (
-      top + popoverHeight > viewportHeight &&
-      triggerRect.top > popoverHeight
-    ) {
+    if (top + popoverHeight > viewportHeight && triggerRect.top > popoverHeight) {
       top = triggerRect.top - popoverHeight - 8;
     }
 
@@ -125,10 +122,7 @@ export function NativePopover({
     const handler = () => positionPopoverHandlerRef.current();
 
     window.addEventListener("resize", handler, { passive: true });
-    window.addEventListener("scroll", handler, {
-      capture: true,
-      passive: true,
-    });
+    window.addEventListener("scroll", handler, { capture: true, passive: true });
 
     return () => {
       window.removeEventListener("resize", handler);
@@ -141,7 +135,7 @@ export function NativePopover({
       {/* Trigger Container */}
       <div
         ref={triggerRef}
-        className="inline-full cursor-pointer"
+        className="cursor-pointer inline-full"
         role="button"
         tabIndex={0}
         onClick={() => onOpenChange(!isOpen)}
@@ -167,11 +161,7 @@ export function NativePopover({
           className,
         )}
       >
-        {isOpen && (
-          <div className="animate-in fade-in zoom-in-95 duration-200">
-            {children}
-          </div>
-        )}
+        {isOpen && <div className="animate-in fade-in zoom-in-95 duration-200">{children}</div>}
       </dialog>
     </div>
   );

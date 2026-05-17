@@ -1,5 +1,5 @@
-import { useTranslation } from "@/lib/hooks/useTranslation";
 import type { FormState } from "@/lib/form-types";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 import { BookingPersonalFields } from "./BookingPersonalFields";
 import { BookingTripDetails } from "./BookingTripDetails";
 
@@ -39,11 +39,23 @@ export function BookingFormFields({
       {/* Hidden fields for tour/excursion context */}
       {selectedTour && (
         <>
-          <input type="hidden" name="reservationType" value={selectedTour} />
+          <input
+            type="hidden"
+            name="reservationType"
+            value={selectedTour}
+          />
           {tourDuration && (
-            <input type="hidden" name="duration" value={tourDuration} />
+            <input
+              type="hidden"
+              name="duration"
+              value={tourDuration}
+            />
           )}
-          <input type="hidden" name="language" value={locale} />
+          <input
+            type="hidden"
+            name="language"
+            value={locale}
+          />
         </>
       )}
 

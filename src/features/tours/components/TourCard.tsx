@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
+import { Link } from "@/i18n/routing";
 
 interface TourCardProps {
   tour: {
@@ -30,7 +30,10 @@ interface TourCardProps {
 export function TourCard({ tour, translations }: TourCardProps) {
   return (
     <article className="group relative flex flex-col overflow-hidden rounded-[20px] bg-white p-2.5 shadow-xs ring-1 ring-zinc-100 transition-all duration-500 block-full pointer-fine:hover:-translate-y-2 pointer-fine:hover:shadow-2xl pointer-fine:hover:shadow-orange-900/5">
-      <Link href={tour.route} className="absolute inset-0 z-20">
+      <Link
+        href={tour.route}
+        className="absolute inset-0 z-20"
+      >
         <span className="sr-only">
           {translations.exploreLink} - {translations.title}
         </span>
@@ -67,17 +70,13 @@ export function TourCard({ tour, translations }: TourCardProps) {
             <span className="text-xs font-medium tracking-widest text-zinc-400 uppercase">
               {translations.startLabelShort}
             </span>
-            <span className="truncate font-bold text-zinc-900">
-              {translations.start}
-            </span>
+            <span className="truncate font-bold text-zinc-900">{translations.start}</span>
           </div>
           <div className="flex flex-col border-s border-zinc-100 ps-4">
             <span className="text-xs font-medium tracking-widest text-zinc-400 uppercase">
               {translations.endLabelShort}
             </span>
-            <span className="truncate font-bold text-zinc-900">
-              {translations.end}
-            </span>
+            <span className="truncate font-bold text-zinc-900">{translations.end}</span>
           </div>
         </div>
 

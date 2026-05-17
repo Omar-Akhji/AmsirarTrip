@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "@/i18n/routing";
 import useNavbar from "@/lib/hooks/useNavbar";
 import { useTranslation } from "@/lib/hooks/useTranslation";
@@ -17,9 +17,7 @@ function Navbar() {
 
   const [asideOpen, setAsideOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
-  const [viewport, setViewport] = useState<"mobile" | "tablet" | "desktop">(
-    "desktop",
-  );
+  const [viewport, setViewport] = useState<"mobile" | "tablet" | "desktop">("desktop");
 
   const collapseRef = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLButtonElement>(null);
@@ -34,8 +32,7 @@ function Navbar() {
 
       if (asideOpen && collapseRef.current && btnRef.current) {
         const clickedOutside =
-          !collapseRef.current.contains(target) &&
-          !btnRef.current.contains(target);
+          !collapseRef.current.contains(target) && !btnRef.current.contains(target);
         if (clickedOutside) setAsideOpen(false);
       }
 
@@ -53,7 +50,9 @@ function Navbar() {
     const evaluateViewport = () => {
       const width = window.innerWidth;
       const newViewport =
-        width < 768 ? "mobile" : width < 1090 ? "tablet" : "desktop";
+        width < 768 ? "mobile"
+        : width < 1090 ? "tablet"
+        : "desktop";
       setViewport(newViewport);
     };
 
@@ -68,8 +67,7 @@ function Navbar() {
     setLangOpen(false);
   };
 
-  const currentLanguage =
-    LANGUAGES.find((l) => l.code === i18n.language) || LANGUAGES[0]!;
+  const currentLanguage = LANGUAGES.find((l) => l.code === i18n.language) || LANGUAGES[0]!;
 
   // React Compiler handles function memoization automatically
   const changeLanguage = (code: string) => {
@@ -94,9 +92,7 @@ function Navbar() {
     // router.replace will keep the current path and just change the locale
     const targetPath = pathname || "/";
     try {
-      replace(targetPath, {
-        locale: code as "en" | "fr" | "de" | "es",
-      });
+      replace(targetPath, { locale: code as "en" | "fr" | "de" | "es" });
       setLangOpen(false);
     } catch (error) {
       console.error("Failed to change language:", error);
@@ -104,21 +100,19 @@ function Navbar() {
   };
 
   const navClassName = cn(
-    "navbar fixed start-1/2 top-2 z-50 inline-[min(1100px,calc(100%-2rem))] rounded-2xl border border-white/10 px-4 py-2 shadow-[0_10px_30px_rgba(3,7,18,0.12)] backdrop-blur-xl has-data-[state=open]:backdrop-blur-[8px] transition-colors duration-200",
+    "navbar fixed start-1/2 top-2 z-50 rounded-2xl border border-white/10 px-4 py-2 shadow-[0_10px_30px_rgba(3,7,18,0.12)] backdrop-blur-xl transition-colors duration-200 inline-[min(1100px,calc(100%-2rem))] has-data-[state=open]:backdrop-blur-[8px]",
     "translate-x-[-50%] will-change-auto",
-    scrolled
-      ? "bg-white text-slate-900 shadow-[0_12px_30px_rgba(3,7,18,0.08)]"
-      : "bg-white/10 text-white",
+    scrolled ?
+      "bg-white text-slate-900 shadow-[0_12px_30px_rgba(3,7,18,0.08)]"
+    : "bg-white/10 text-white",
   );
 
-  const getNavLinkClasses = (
-    isActive: boolean,
-    isMobile: boolean = false,
-  ): string => {
+  const getNavLinkClasses = (isActive: boolean, isMobile: boolean = false): string => {
     const base =
       "inline-flex items-center gap-2 rounded-full font-medium transition-all duration-200";
-    const sizing = isMobile
-      ? "mx-auto inline-fit min-inline-40 justify-center px-8 py-2.5 text-base"
+    const sizing =
+      isMobile ?
+        "mx-auto inline-fit min-inline-40 justify-center px-8 py-2.5 text-base"
       : "px-3 py-2 text-[0.98rem] tracking-tight";
 
     // Active link styles
@@ -126,9 +120,9 @@ function Navbar() {
       return cn(
         base,
         sizing,
-        scrolled
-          ? "bg-orange text-white shadow-[0_10px_26px_rgba(229,74,31,0.12)]"
-          : "bg-white/10 text-white shadow-xs backdrop-blur",
+        scrolled ?
+          "bg-orange text-white shadow-[0_10px_26px_rgba(229,74,31,0.12)]"
+        : "bg-white/10 text-white shadow-xs backdrop-blur",
       );
     }
 
@@ -144,19 +138,24 @@ function Navbar() {
   const getCollapseClasses = () => {
     const baseClasses =
       "fixed start-1/2 top-[calc(100%+0.75rem)] z-40 inline-full -translate-x-1/2 overflow-y-auto max-h-[calc(100vh-6rem)] rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.3)] transition-all duration-300";
-    const colorClasses = scrolled
-      ? "border border-white/10 bg-white text-slate-900"
+    const colorClasses =
+      scrolled ?
+        "border border-white/10 bg-white text-slate-900"
       : "border border-white/20 bg-slate-900 text-white";
-    const visibilityClasses = asideOpen
-      ? "pointer-events-auto opacity-100 translate-y-0"
+    const visibilityClasses =
+      asideOpen ?
+        "pointer-events-auto opacity-100 translate-y-0"
       : "pointer-events-none opacity-0 -translate-y-4";
 
     return cn(baseClasses, colorClasses, visibilityClasses);
   };
 
   return (
-    <nav className={navClassName} ref={navbarRef}>
-      {viewport === "desktop" ? (
+    <nav
+      className={navClassName}
+      ref={navbarRef}
+    >
+      {viewport === "desktop" ?
         <DesktopMenu
           scrolled={scrolled}
           langOpen={langOpen}
@@ -167,8 +166,7 @@ function Navbar() {
           handleNavClick={handleNavClick}
           getNavLinkClasses={getNavLinkClasses}
         />
-      ) : (
-        <MobileMenu
+      : <MobileMenu
           scrolled={scrolled}
           langOpen={langOpen}
           setLangOpen={setLangOpen}
@@ -184,7 +182,7 @@ function Navbar() {
           getCollapseClasses={getCollapseClasses}
           viewport={viewport}
         />
-      )}
+      }
     </nav>
   );
 }

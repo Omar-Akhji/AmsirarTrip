@@ -89,7 +89,8 @@ This app supports 4 languages:
 
 Translation files are in `public/locales/{lang}/common.json`.
 
-Locale routing is automatic via middleware. URLs are prefixed with locale codes only when needed (e.g., `/fr/tours`).
+Locale routing is automatic via middleware. URLs are prefixed with locale codes only when needed
+(e.g., `/fr/tours`).
 
 ## 🔧 Key Technologies
 
@@ -122,7 +123,8 @@ Locale routing is automatic via middleware. URLs are prefixed with locale codes 
 
 ### Client vs Server Components
 
-- Most components are **client components** (`'use client'` directive) because they use hooks, browser APIs, or event handlers
+- Most components are **client components** (`'use client'` directive) because they use hooks,
+  browser APIs, or event handlers
 - Server components are used for layouts and static content where possible
 - Always add `'use client'` at the top of components that use:
   - React hooks (`useState`, `useEffect`, etc.)

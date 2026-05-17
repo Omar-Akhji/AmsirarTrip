@@ -1,7 +1,7 @@
+import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import ContactView from "@/features/contact/components/ContactView";
 import { generateSEOMetadata } from "@/lib/metadata";
-import { Metadata } from "next";
 
 export async function generateMetadata({
   params,

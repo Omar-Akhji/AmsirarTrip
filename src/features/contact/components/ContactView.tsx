@@ -1,20 +1,15 @@
 "use client";
 
-import { useTranslation } from "@/lib/hooks/useTranslation";
 import dynamic from "next/dynamic";
-import { ArrowRight, Phone, Mail, MapPin } from "lucide-react";
-import { WhatsAppIcon } from "@/shared/ui/icons";
-import {
-  PageHeader,
-  HeaderCTA,
-  HeaderSecondaryCTA,
-} from "@/shared/layout/PageHeader";
+import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
+import { useTranslation } from "@/lib/hooks/useTranslation";
+import { HeaderCTA, HeaderSecondaryCTA, PageHeader } from "@/shared/layout/PageHeader";
 import { AnimateOnScroll } from "@/shared/ui";
+import { WhatsAppIcon } from "@/shared/ui/icons";
 
-const ContactForm = dynamic(
-  () => import("@/features/contact/components/ContactForm"),
-  { ssr: false },
-);
+const ContactForm = dynamic(() => import("@/features/contact/components/ContactForm"), {
+  ssr: false,
+});
 
 export default function ContactView() {
   const { t } = useTranslation();
@@ -23,10 +18,7 @@ export default function ContactView() {
     {
       id: "phone",
       icon: <Phone className="size-6" />,
-      title: t(
-        "contact.card.phoneTitle",
-        "Feel free to contact us — we're here to help",
-      ),
+      title: t("contact.card.phoneTitle", "Feel free to contact us — we're here to help"),
       description: t(
         "contact.card.phoneSeo",
         "Have a quick question or want to book now? Our local team answers calls and messages promptly — reach out and we'll help plan the perfect Morocco trip.",
@@ -35,10 +27,7 @@ export default function ContactView() {
     {
       id: "email",
       icon: <Mail className="size-6" />,
-      title: t(
-        "contact.card.emailTitle",
-        "Send a message — we'll reply with a tailored plan",
-      ),
+      title: t("contact.card.emailTitle", "Send a message — we'll reply with a tailored plan"),
       description: t(
         "contact.card.emailSeo",
         "Prefer to write? Send us your plans, dates and priorities — we'll prepare a personalised itinerary and respond quickly with options and clear next steps.",
@@ -47,10 +36,7 @@ export default function ContactView() {
     {
       id: "location",
       icon: <MapPin className="size-6" />,
-      title: t(
-        "contact.card.visitTitle",
-        "Visit our Marrakech office — friendly, local support",
-      ),
+      title: t("contact.card.visitTitle", "Visit our Marrakech office — friendly, local support"),
       description: t(
         "contact.card.visitSeo",
         "Drop by for an in-person chat, help with bookings, or to learn more about our desert excursions and private tours — our team is ready to welcome you.",
@@ -66,21 +52,24 @@ export default function ContactView() {
         smTitle={t("contact.smTitle", "get in touch with us")}
         gradientPosition="top-right"
         bgImage="/images/Header/header-1.webp"
-        breadcrumbs={[
-          { label: t("nav.home"), href: "/" },
-          { label: t("nav.contact") },
-        ]}
+        breadcrumbs={[{ label: t("nav.home"), href: "/" }, { label: t("nav.contact") }]}
       >
         <HeaderCTA href="#contact-form-section">
           <span>{t("contact.form.cta", "Send message")}</span>
           <ArrowRight className="size-4" />
         </HeaderCTA>
-        <HeaderSecondaryCTA href="https://wa.me/212661173144" external>
+        <HeaderSecondaryCTA
+          href="https://wa.me/212661173144"
+          external
+        >
           <WhatsAppIcon className="size-4" />
           <span>WhatsApp</span>
         </HeaderSecondaryCTA>
       </PageHeader>
-      <section className="relative isolate py-16" aria-label="Contact Methods">
+      <section
+        className="relative isolate py-16"
+        aria-label="Contact Methods"
+      >
         <div className="mx-auto px-4 max-inline-7xl">
           <div className="grid gap-6 md:grid-cols-3">
             {contactMethods.map((method, idx) => (
@@ -91,17 +80,13 @@ export default function ContactView() {
                 className="flex block-full inline-full"
               >
                 <article
-                  aria-label={
-                    typeof method.title === "string" ? method.title : undefined
-                  }
-                  className="contact-info-card group inline-full rounded-3xl border border-orange-100 bg-white px-6 py-8 shadow-lg shadow-orange-100/70 transition pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-xl"
+                  aria-label={typeof method.title === "string" ? method.title : undefined}
+                  className="contact-info-card group rounded-3xl border border-orange-100 bg-white px-6 py-8 shadow-lg shadow-orange-100/70 transition inline-full pointer-fine:hover:-translate-y-1 pointer-fine:hover:shadow-xl"
                 >
                   <div className="mbe-4 inline-flex items-center justify-center rounded-full bg-orange-50 text-orange-600 transition block-14 inline-14 group-hover:bg-orange-600 group-hover:text-white">
                     {method.icon}
                   </div>
-                  <h3 className="text-xl font-semibold text-zinc-900">
-                    {method.title}
-                  </h3>
+                  <h3 className="text-xl font-semibold text-zinc-900">{method.title}</h3>
                   <p className="mbs-3 text-base leading-relaxed text-zinc-700">
                     {method.description}
                   </p>

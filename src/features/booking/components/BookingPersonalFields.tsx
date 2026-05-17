@@ -1,5 +1,5 @@
-import { useTranslation } from "@/lib/hooks/useTranslation";
 import type { FormState } from "@/lib/form-types";
+import { useTranslation } from "@/lib/hooks/useTranslation";
 
 interface BookingPersonalFieldsProps {
   state: FormState | null;
@@ -13,7 +13,10 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
       {/* Name + Phone row */}
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         <div>
-          <label htmlFor="fullName" className="sr-only">
+          <label
+            htmlFor="fullName"
+            className="sr-only"
+          >
             {t("booking.fullName", "Full Name")}
           </label>
           <input
@@ -26,20 +29,24 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
             aria-label={t("booking.fullName", "Full Name")}
             autoComplete="name"
             aria-invalid={state?.errors?.["fullName"] ? "true" : "false"}
-            aria-describedby={
-              state?.errors?.["fullName"] ? "fullName-error" : undefined
-            }
+            aria-describedby={state?.errors?.["fullName"] ? "fullName-error" : undefined}
             required
           />
           {state?.errors?.["fullName"] && (
-            <p id="fullName-error" className="mbs-1 text-xs text-red-600">
+            <p
+              id="fullName-error"
+              className="mbs-1 text-xs text-red-600"
+            >
               {state.errors["fullName"]}
             </p>
           )}
         </div>
 
         <div>
-          <label htmlFor="phone" className="sr-only">
+          <label
+            htmlFor="phone"
+            className="sr-only"
+          >
             {t("booking.phone", "Phone Number")}
           </label>
           <input
@@ -52,13 +59,14 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
             aria-label={t("booking.phone", "Phone Number")}
             autoComplete="tel"
             aria-invalid={state?.errors?.["phone"] ? "true" : "false"}
-            aria-describedby={
-              state?.errors?.["phone"] ? "phone-error" : undefined
-            }
+            aria-describedby={state?.errors?.["phone"] ? "phone-error" : undefined}
             required
           />
           {state?.errors?.["phone"] && (
-            <p id="phone-error" className="mbs-1 text-xs text-red-600">
+            <p
+              id="phone-error"
+              className="mbs-1 text-xs text-red-600"
+            >
               {state.errors["phone"]}
             </p>
           )}
@@ -67,7 +75,10 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
 
       {/* Email row */}
       <div>
-        <label htmlFor="email" className="sr-only">
+        <label
+          htmlFor="email"
+          className="sr-only"
+        >
           {t("booking.email", "Email")}
         </label>
         <input
@@ -79,13 +90,14 @@ export function BookingPersonalFields({ state }: BookingPersonalFieldsProps) {
           aria-label={t("booking.email", "Email")}
           autoComplete="email"
           aria-invalid={state?.errors?.["email"] ? "true" : "false"}
-          aria-describedby={
-            state?.errors?.["email"] ? "email-error" : undefined
-          }
+          aria-describedby={state?.errors?.["email"] ? "email-error" : undefined}
           required
         />
         {state?.errors?.["email"] && (
-          <p id="email-error" className="mbs-1 text-xs text-red-600">
+          <p
+            id="email-error"
+            className="mbs-1 text-xs text-red-600"
+          >
             {state.errors["email"]}
           </p>
         )}

@@ -6,12 +6,7 @@ interface TourSpecific {
   startLocation: string;
   endLocation: string;
   seo: TourSeoContent;
-  jsonLd: {
-    name: string;
-    description: string;
-    price?: number;
-    currency?: string;
-  };
+  jsonLd: { name: string; description: string; price?: number; currency?: string };
 }
 
 type TourMetadata = BaseTripMetadata & TourSpecific;
@@ -27,10 +22,7 @@ export interface TourSeoContent {
   lead: string;
   primaryKeyword: string;
   secondaryKeywords: string[];
-  price: {
-    label: string;
-    note: string;
-  };
+  price: { label: string; note: string };
   imageAlt: string;
   highlights: string[];
   faqs: TourSeoFaq[];
@@ -69,8 +61,7 @@ const TOURS_METADATA: Record<string, TourMetadata> = {
       title: "3-Day Merzouga Desert Tour from Marrakech",
       metaDescription:
         "Book a 3-day Sahara desert tour from Marrakech to Merzouga with camel trek, Erg Chebbi camp, Ait Ben Haddou, Dades Valley, and Todra Gorge.",
-      lead:
-        "A focused 3-day Sahara desert tour from Marrakech with High Atlas scenery, kasbah stops, Erg Chebbi camel trekking, and an overnight Merzouga desert camp.",
+      lead: "A focused 3-day Sahara desert tour from Marrakech with High Atlas scenery, kasbah stops, Erg Chebbi camel trekking, and an overnight Merzouga desert camp.",
       primaryKeyword: "3 day Sahara desert tour Morocco",
       secondaryKeywords: [
         "Merzouga camel trek",
@@ -149,8 +140,7 @@ const TOURS_METADATA: Record<string, TourMetadata> = {
       title: "6-Day Morocco Tour from Casablanca",
       metaDescription:
         "Plan a 6-day Morocco tour from Casablanca to Chefchaouen, Fes, Merzouga desert, Dades Valley, Ait Ben Haddou, and Marrakech.",
-      lead:
-        "A complete 6-day Morocco tour from Casablanca combining imperial cities, Chefchaouen, Fes, Erg Chebbi camel trekking, and a Marrakech finish.",
+      lead: "A complete 6-day Morocco tour from Casablanca combining imperial cities, Chefchaouen, Fes, Erg Chebbi camel trekking, and a Marrakech finish.",
       primaryKeyword: "6 day Morocco tour itinerary",
       secondaryKeywords: [
         "Casablanca to Marrakech tour",
@@ -224,8 +214,7 @@ const TOURS_METADATA: Record<string, TourMetadata> = {
       title: "3-Day Fes to Marrakech Desert Tour",
       metaDescription:
         "Take a 3-day Fes to Marrakech desert tour via Ifrane, Ziz Valley, Merzouga camel trek, Todra Gorge, Dades Valley, and Ait Ben Haddou.",
-      lead:
-        "A practical 3-day Fes to Marrakech desert tour that crosses the Middle Atlas, reaches the Erg Chebbi dunes, and continues through southern Morocco's kasbah valleys.",
+      lead: "A practical 3-day Fes to Marrakech desert tour that crosses the Middle Atlas, reaches the Erg Chebbi dunes, and continues through southern Morocco's kasbah valleys.",
       primaryKeyword: "Fes to Marrakech desert tour 3 days",
       secondaryKeywords: [
         "3 day desert tour from Fes",
@@ -234,8 +223,7 @@ const TOURS_METADATA: Record<string, TourMetadata> = {
         "Sahara desert tour from Fes",
       ],
       price: customQuotePricing,
-      imageAlt:
-        "Camel caravan in Erg Chebbi on a 3-day Fes to Marrakech desert tour",
+      imageAlt: "Camel caravan in Erg Chebbi on a 3-day Fes to Marrakech desert tour",
       highlights: [
         "Travel from Fes through Ifrane, Azrou, Midelt, and Ziz Valley",
         "Ride camels into Erg Chebbi for sunset and desert camping",
@@ -299,8 +287,7 @@ const TOURS_METADATA: Record<string, TourMetadata> = {
       title: "5-Day Imperial Cities Tour from Casablanca",
       metaDescription:
         "Explore a 5-day imperial cities tour from Casablanca to Rabat, Chefchaouen, Volubilis, Meknes, and Fes with private Morocco transport.",
-      lead:
-        "A culture-first 5-day imperial cities tour from Casablanca through Rabat, Chefchaouen, Roman Volubilis, Meknes, and Fes.",
+      lead: "A culture-first 5-day imperial cities tour from Casablanca through Rabat, Chefchaouen, Roman Volubilis, Meknes, and Fes.",
       primaryKeyword: "5 day Morocco imperial cities tour",
       secondaryKeywords: [
         "Casablanca to Fes tour",
@@ -374,8 +361,7 @@ const TOURS_METADATA: Record<string, TourMetadata> = {
       title: "10-Day Morocco Tour from Marrakech",
       metaDescription:
         "Book a 10-day Morocco tour from Marrakech with Sahara desert camping, Fes, Chefchaouen, Rabat, Casablanca, Atlas Mountains, and kasbahs.",
-      lead:
-        "A broad 10-day Morocco tour from Marrakech built for travelers who want desert, imperial cities, Chefchaouen, Atlas scenery, and Atlantic coast highlights in one circuit.",
+      lead: "A broad 10-day Morocco tour from Marrakech built for travelers who want desert, imperial cities, Chefchaouen, Atlas scenery, and Atlantic coast highlights in one circuit.",
       primaryKeyword: "10 day Morocco tour",
       secondaryKeywords: [
         "Morocco highlights tour package",
@@ -449,8 +435,7 @@ const TOURS_METADATA: Record<string, TourMetadata> = {
       title: "4-Day Marrakech to Merzouga Desert Tour",
       metaDescription:
         "Join a 4-day Marrakech to Merzouga desert tour with Ait Ben Haddou, Dades Valley, Todra Gorge, Erg Chebbi camel trek, and Ouarzazate.",
-      lead:
-        "A slower 4-day Marrakech to Merzouga desert tour with more breathing room across the Atlas Mountains, Erg Chebbi dunes, Dades Valley, and Ouarzazate.",
+      lead: "A slower 4-day Marrakech to Merzouga desert tour with more breathing room across the Atlas Mountains, Erg Chebbi dunes, Dades Valley, and Ouarzazate.",
       primaryKeyword: "4 day Marrakech to Merzouga desert tour",
       secondaryKeywords: [
         "Marrakech desert tour 4 days",
@@ -459,8 +444,7 @@ const TOURS_METADATA: Record<string, TourMetadata> = {
         "Erg Chebbi camel trekking tour",
       ],
       price: customQuotePricing,
-      imageAlt:
-        "Erg Chebbi dunes at sunrise on a 4-day Marrakech to Merzouga desert tour",
+      imageAlt: "Erg Chebbi dunes at sunrise on a 4-day Marrakech to Merzouga desert tour",
       highlights: [
         "Cross the High Atlas and visit Ait Ben Haddou",
         "Spend one night in Dades Valley and one night in a Merzouga camp",
@@ -524,8 +508,7 @@ const TOURS_METADATA: Record<string, TourMetadata> = {
       title: "4-Day Agadir to Marrakech Desert Tour",
       metaDescription:
         "Travel from Agadir to Marrakech on a 4-day desert tour via Taroudant, Dades Valley, Merzouga camel trek, Erg Chebbi, and Ouarzazate.",
-      lead:
-        "A 4-day Agadir to Marrakech desert tour for travelers who want to connect Morocco's Atlantic coast, Anti-Atlas landscapes, Sahara dunes, and the Red City.",
+      lead: "A 4-day Agadir to Marrakech desert tour for travelers who want to connect Morocco's Atlantic coast, Anti-Atlas landscapes, Sahara dunes, and the Red City.",
       primaryKeyword: "Agadir to Marrakech desert tour",
       secondaryKeywords: [
         "4 day Morocco tour from Agadir",
@@ -599,8 +582,7 @@ const TOURS_METADATA: Record<string, TourMetadata> = {
       title: "3-Day Chegaga Desert Tour from Marrakech",
       metaDescription:
         "Book a 3-day Chegaga desert tour from Marrakech to Ait Ben Haddou, Draa Valley, M'Hamid, remote Sahara dunes, camel trek, and camp.",
-      lead:
-        "A remote 3-day Chegaga desert tour from Marrakech for travelers who want wilder Sahara dunes, the Draa Valley, M'Hamid, and a less crowded camp experience.",
+      lead: "A remote 3-day Chegaga desert tour from Marrakech for travelers who want wilder Sahara dunes, the Draa Valley, M'Hamid, and a less crowded camp experience.",
       primaryKeyword: "Chegaga dunes tour",
       secondaryKeywords: [
         "3 day Chegaga desert tour",
@@ -609,8 +591,7 @@ const TOURS_METADATA: Record<string, TourMetadata> = {
         "M'Hamid desert camp tour",
       ],
       price: customQuotePricing,
-      imageAlt:
-        "Remote Chegaga desert dunes at sunset on a Sahara tour from Marrakech",
+      imageAlt: "Remote Chegaga desert dunes at sunset on a Sahara tour from Marrakech",
       highlights: [
         "Cross the High Atlas and visit Ait Ben Haddou",
         "Follow the Draa Valley toward Zagora and M'Hamid",
@@ -674,8 +655,7 @@ const TOURS_METADATA: Record<string, TourMetadata> = {
       title: "7-Day Northern Morocco Tour from Tangier",
       metaDescription:
         "Explore a 7-day northern Morocco tour from Tangier to Chefchaouen, Fes, Meknes, Volubilis, Middle Atlas, and Marrakech.",
-      lead:
-        "A 7-day northern Morocco tour from Tangier that connects Mediterranean coast, Chefchaouen, Fes, Roman ruins, Middle Atlas scenery, and Marrakech.",
+      lead: "A 7-day northern Morocco tour from Tangier that connects Mediterranean coast, Chefchaouen, Fes, Roman ruins, Middle Atlas scenery, and Marrakech.",
       primaryKeyword: "7 day northern Morocco tour",
       secondaryKeywords: [
         "Tangier Chefchaouen Fes tour",
@@ -684,8 +664,7 @@ const TOURS_METADATA: Record<string, TourMetadata> = {
         "Chefchaouen and Fes tour package",
       ],
       price: customQuotePricing,
-      imageAlt:
-        "Chefchaouen blue medina street on a 7-day northern Morocco tour from Tangier",
+      imageAlt: "Chefchaouen blue medina street on a 7-day northern Morocco tour from Tangier",
       highlights: [
         "Start in Tangier with coast, caves, kasbah, and medina highlights",
         "Spend time in Chefchaouen, the Blue Pearl of Morocco",

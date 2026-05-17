@@ -1,19 +1,18 @@
 "use client";
 
-import Image from "next/image";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useTranslation } from "@/lib/hooks/useTranslation";
+import { DetailsSidebar } from "@/shared/layout/DetailsSidebar";
 import { PageHeader } from "@/shared/layout/PageHeader";
 import { AnimateOnScroll } from "@/shared/ui";
-import { DetailsSidebar } from "@/shared/layout/DetailsSidebar";
 
 const ExcursionInfo = dynamic(() => import("./ExcursionInfo"));
 
-const BookingForm = dynamic(
-  () => import("@/features/booking/components/BookingForm"),
-  { ssr: false },
-);
+const BookingForm = dynamic(() => import("@/features/booking/components/BookingForm"), {
+  ssr: false,
+});
 
 interface ExcursionLayoutProps {
   excursionKey: string;
@@ -21,11 +20,7 @@ interface ExcursionLayoutProps {
   imageSrc: string;
 }
 
-function ExcursionLayout({
-  excursionKey,
-  bookingId,
-  imageSrc,
-}: ExcursionLayoutProps) {
+function ExcursionLayout({ excursionKey, bookingId, imageSrc }: ExcursionLayoutProps) {
   const { t } = useTranslation();
   const rawT = useTranslations();
 
@@ -40,14 +35,8 @@ function ExcursionLayout({
   const title = t(`${excursionKey}.title`);
   const bookingTitle = t(`${excursionKey}.bookingTitle`);
   // Dynamic labels from translations
-  const distanceLabel = t(
-    `${excursionKey}.distanceValue`,
-    "~191 km from Marrakech",
-  );
-  const durationLabel = t(
-    `${excursionKey}.durationLabel`,
-    "Full-day excursion",
-  );
+  const distanceLabel = t(`${excursionKey}.distanceValue`, "~191 km from Marrakech");
+  const durationLabel = t(`${excursionKey}.durationLabel`, "Full-day excursion");
   const altText = t(`${excursionKey}.alt`);
 
   return (
@@ -85,7 +74,10 @@ function ExcursionLayout({
                 </figure>
               </AnimateOnScroll>
 
-              <AnimateOnScroll animation="fade-up" delay={150}>
+              <AnimateOnScroll
+                animation="fade-up"
+                delay={150}
+              >
                 <div className="mbe-6 text-center">
                   <div className="mx-auto inline-block">
                     <span
@@ -94,7 +86,7 @@ function ExcursionLayout({
                     ></span>
                     <h2
                       id="excursion-title"
-                      className="text-orange mbs-2 text-2xl leading-tight font-semibold sm:text-3xl md:text-4xl"
+                      className="mbs-2 text-2xl leading-tight font-semibold text-orange sm:text-3xl md:text-4xl"
                     >
                       {title}
                     </h2>
@@ -103,7 +95,10 @@ function ExcursionLayout({
               </AnimateOnScroll>
 
               <div className="space-y-8">
-                <AnimateOnScroll animation="fade-up" delay={150}>
+                <AnimateOnScroll
+                  animation="fade-up"
+                  delay={150}
+                >
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div className="inline-flex items-center gap-3 rounded-full border border-orange-100 bg-orange-50 px-5 py-3">
                       <svg
@@ -120,9 +115,7 @@ function ExcursionLayout({
                         />
                       </svg>
                       <div className="text-start">
-                        <div className="text-sm font-semibold text-orange-600">
-                          {distanceLabel}
-                        </div>
+                        <div className="text-sm font-semibold text-orange-600">{distanceLabel}</div>
                         <div className="text-xs font-semibold text-amber-300">
                           {t("excursion.common.distanceLabel", "Distance")}
                         </div>
@@ -144,9 +137,7 @@ function ExcursionLayout({
                         />
                       </svg>
                       <div className="text-start">
-                        <div className="text-sm font-semibold text-amber-600">
-                          {durationLabel}
-                        </div>
+                        <div className="text-sm font-semibold text-amber-600">{durationLabel}</div>
                         <div className="text-xs font-semibold text-amber-300">
                           {t("excursion.common.durationLabel", "Duration")}
                         </div>

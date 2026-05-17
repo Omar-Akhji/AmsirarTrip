@@ -1,7 +1,7 @@
+import { Metadata } from "next";
 import { getTranslations } from "next-intl/server";
 import HomeView from "@/features/home/components/HomeView";
-import { generateSEOMetadata, defaultKeywords } from "@/lib/metadata";
-import { Metadata } from "next";
+import { defaultKeywords, generateSEOMetadata } from "@/lib/metadata";
 
 export async function generateMetadata({
   params,

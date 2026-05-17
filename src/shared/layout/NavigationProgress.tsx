@@ -14,10 +14,7 @@ type NavProgressAction =
   | { type: "reset" }
   | { type: "tick"; delta: number };
 
-function navProgressReducer(
-  state: NavProgressState,
-  action: NavProgressAction,
-): NavProgressState {
+function navProgressReducer(state: NavProgressState, action: NavProgressAction): NavProgressState {
   switch (action.type) {
     case "start":
       return { loading: true, progress: 10 };
@@ -26,18 +23,13 @@ function navProgressReducer(
     case "reset":
       return { loading: false, progress: 0 };
     case "tick":
-      return state.progress >= 90
-        ? state
-        : { ...state, progress: state.progress + action.delta };
+      return state.progress >= 90 ? state : { ...state, progress: state.progress + action.delta };
   }
 }
 
 export default function NavigationProgress() {
   const pathname = usePathname();
-  const [state, dispatch] = useReducer(navProgressReducer, {
-    loading: false,
-    progress: 0,
-  });
+  const [state, dispatch] = useReducer(navProgressReducer, { loading: false, progress: 0 });
 
   // Reset loading when pathname changes (navigation complete)
   useEffect(() => {
@@ -63,9 +55,7 @@ export default function NavigationProgress() {
         const currentOrigin = window.location.origin;
         const isExternal = !href.startsWith(currentOrigin);
         const isSpecial =
-          href.startsWith("mailto:") ||
-          href.startsWith("tel:") ||
-          href.includes("#");
+          href.startsWith("mailto:") || href.startsWith("tel:") || href.includes("#");
         const isSamePage = href === window.location.href;
 
         // Start loading for internal navigation links
@@ -77,8 +67,7 @@ export default function NavigationProgress() {
 
     // Use capture phase to catch click before Next.js
     document.addEventListener("click", handleClick, { capture: true });
-    return () =>
-      document.removeEventListener("click", handleClick, { capture: true });
+    return () => document.removeEventListener("click", handleClick, { capture: true });
   }, []);
 
   // Animate progress

@@ -28,10 +28,7 @@ export default function useNavbar() {
       if (!navbar) return;
       try {
         const height = navbar.getBoundingClientRect().height;
-        document.documentElement.style.setProperty(
-          "--spacing-navbar",
-          `${height}px`,
-        );
+        document.documentElement.style.setProperty("--spacing-navbar", `${height}px`);
       } catch {
         /* ignore errors reading element size */
       }

@@ -63,19 +63,17 @@ function buildTripJsonLd<TLocation>(
   providerExtras?: Record<string, unknown>,
 ) {
   const itinerary =
-    data.itinerary && data.itinerary.length > 0
-      ? data.itinerary.map((item) => ({
-          "@type": "ListItem",
-          position: item.position,
-          item: {
-            "@type": "TouristDestination",
-            name: sanitizeForJsonLd(item.name),
-            ...(item.description && {
-              description: sanitizeForJsonLd(item.description),
-            }),
-          },
-        }))
-      : fallbackItinerary;
+    data.itinerary && data.itinerary.length > 0 ?
+      data.itinerary.map((item) => ({
+        "@type": "ListItem",
+        position: item.position,
+        item: {
+          "@type": "TouristDestination",
+          name: sanitizeForJsonLd(item.name),
+          ...(item.description && { description: sanitizeForJsonLd(item.description) }),
+        },
+      }))
+    : fallbackItinerary;
 
   return {
     "@context": "https://schema.org",
@@ -97,10 +95,7 @@ function buildTripJsonLd<TLocation>(
         availability: "https://schema.org/InStock",
       },
     }),
-    itinerary: {
-      "@type": "ItemList",
-      itemListElement: itinerary,
-    },
+    itinerary: { "@type": "ItemList", itemListElement: itinerary },
     touristType,
     duration: sanitizeForJsonLd(data.duration),
     url: resolveUrl(data.url),
@@ -117,11 +112,7 @@ export function generateTourJsonLd(data: TourStructuredData) {
     ["Adventure", "Cultural", "Nature"],
     {
       logo: `${BASE_URL}/horse-head.svg`,
-      address: {
-        "@type": "PostalAddress",
-        addressCountry: "MA",
-        addressLocality: "Marrakech",
-      },
+      address: { "@type": "PostalAddress", addressCountry: "MA", addressLocality: "Marrakech" },
       contactPoint: {
         "@type": "ContactPoint",
         telephone: "+212-661-173-144",
@@ -132,19 +123,14 @@ export function generateTourJsonLd(data: TourStructuredData) {
   );
 }
 
-export function generateFaqJsonLd(
-  faqs: { question: string; answer: string }[],
-) {
+export function generateFaqJsonLd(faqs: { question: string; answer: string }[]) {
   return {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: faqs.map((faq) => ({
       "@type": "Question",
       name: sanitizeForJsonLd(faq.question),
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: sanitizeForJsonLd(faq.answer),
-      },
+      acceptedAnswer: { "@type": "Answer", text: sanitizeForJsonLd(faq.answer) },
     })),
   };
 }
@@ -163,13 +149,7 @@ export function generateOrganizationJsonLd() {
     "@type": "TravelAgency",
     "@id": `${BASE_URL}/#organization`,
     name: "Amsirar Trip",
-    alternateName: [
-      "Amsirar",
-      "AmsirarTrip",
-      "amsirartrip",
-      "Amsirar Tours",
-      "Amsirar Morocco",
-    ],
+    alternateName: ["Amsirar", "AmsirarTrip", "amsirartrip", "Amsirar Tours", "Amsirar Morocco"],
     url: "https://amsirartrip.com",
     logo: "https://amsirartrip.com/horse-head.svg",
     image: "https://amsirartrip.com/images/Header/header-1.webp",
@@ -177,11 +157,7 @@ export function generateOrganizationJsonLd() {
       "Amsirar Trip is a specialist Morocco travel agency offering authentic Sahara desert tours, imperial city excursions, Atlas Mountains treks, and cultural experiences. Book your Morocco adventure with local experts.",
     legalName: "Amsirar Trip",
     foundingDate: "2004",
-    numberOfEmployees: {
-      "@type": "QuantitativeValue",
-      minValue: 10,
-      maxValue: 50,
-    },
+    numberOfEmployees: { "@type": "QuantitativeValue", minValue: 10, maxValue: 50 },
     knowsAbout: [
       "Morocco Tourism",
       "Sahara Desert Tours",
@@ -218,51 +194,27 @@ export function generateOrganizationJsonLd() {
     review: [
       {
         "@type": "Review",
-        author: {
-          "@type": "Person",
-          name: "Kevin B.",
-        },
+        author: { "@type": "Person", name: "Kevin B." },
         datePublished: "2023-11-15",
         reviewBody:
           "An unforgettable journey! From the bustling souks of Marrakech to the silent dunes of Merzouga. Amsirar Trip took care of everything.",
-        reviewRating: {
-          "@type": "Rating",
-          ratingValue: "5",
-          bestRating: "5",
-          worstRating: "1",
-        },
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
       },
       {
         "@type": "Review",
-        author: {
-          "@type": "Person",
-          name: "Ben L.",
-        },
+        author: { "@type": "Person", name: "Ben L." },
         datePublished: "2024-02-10",
         reviewBody:
           "Professional, punctual, and passionate. Our driver was incredibly knowledgeable and made us feel safe throughout the entire Atlas Mountains trek.",
-        reviewRating: {
-          "@type": "Rating",
-          ratingValue: "5",
-          bestRating: "5",
-          worstRating: "1",
-        },
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
       },
       {
         "@type": "Review",
-        author: {
-          "@type": "Person",
-          name: "Sara M.",
-        },
+        author: { "@type": "Person", name: "Sara M." },
         datePublished: "2024-03-22",
         reviewBody:
           "The luxury desert camp was beyond our expectations. Watching the sunrise over the Sahara while sipping traditional mint tea is a memory I'll cherish forever.",
-        reviewRating: {
-          "@type": "Rating",
-          ratingValue: "5",
-          bestRating: "5",
-          worstRating: "1",
-        },
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
       },
     ],
   };
@@ -277,15 +229,12 @@ export function generateWebSiteJsonLd() {
     url: "https://amsirartrip.com",
     description:
       "Amsirar Trip offers authentic Morocco tours, Sahara desert adventures, and cultural experiences with local experts.",
-    publisher: {
-      "@id": `${BASE_URL}/#organization`,
-    },
+    publisher: { "@id": `${BASE_URL}/#organization` },
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate:
-          "https://amsirartrip.com/tours?search={search_term_string}",
+        urlTemplate: "https://amsirartrip.com/tours?search={search_term_string}",
       },
       "query-input": "required name=search_term_string",
     },

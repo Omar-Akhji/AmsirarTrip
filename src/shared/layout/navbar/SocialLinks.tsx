@@ -20,9 +20,7 @@ export function SocialLinks({
     const sizeClass = size === "sm" ? "size-10" : "size-11";
     const baseClasses =
       "flex items-center justify-center rounded-full border-2 transition-all duration-150 pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)]";
-    const socialStyles = scrolled
-      ? ""
-      : "border-white/60 bg-white/10 text-white";
+    const socialStyles = scrolled ? "" : "border-white/60 bg-white/10 text-white";
     return cn(baseClasses, sizeClass, socialStyles);
   };
 
@@ -30,20 +28,14 @@ export function SocialLinks({
     <ul className={cn("flex items-center gap-2.5", className)}>
       {SOCIAL_LINKS.map((link) => {
         const isExternal = link.href.startsWith("http");
-        const buttonClasses = cn(
-          getSocialButtonClasses(size),
-          scrolled && link.accent,
-        );
+        const buttonClasses = cn(getSocialButtonClasses(size), scrolled && link.accent);
 
         return (
           <li key={link.label}>
             <a
               href={link.href}
               className={buttonClasses}
-              {...(isExternal && {
-                target: "_blank",
-                rel: "noopener noreferrer",
-              })}
+              {...(isExternal && { target: "_blank", rel: "noopener noreferrer" })}
               aria-label={link.label}
             >
               <Image
@@ -51,10 +43,7 @@ export function SocialLinks({
                 alt=""
                 width={iconSize}
                 height={iconSize}
-                className={cn(
-                  compact ? "size-5" : "size-6.25",
-                  "object-contain",
-                )}
+                className={cn(compact ? "size-5" : "size-6.25", "object-contain")}
               />
             </a>
           </li>

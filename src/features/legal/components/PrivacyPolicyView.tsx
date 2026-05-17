@@ -1,5 +1,5 @@
-import { LegalPageLayout } from "./LegalPageLayout";
 import { PRIVACY_POLICY_CONFIG } from "../data/legalConfig";
+import { LegalPageLayout } from "./LegalPageLayout";
 
 /**
  * PrivacyPolicyView Component

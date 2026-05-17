@@ -29,8 +29,8 @@ export function ContactInfoSidebar() {
               label: t("contact.form.info.address", "Visit"),
               content: (
                 <p className="mbs-1 text-base text-white">
-                  Imm. J appt N° 5, Résidence La Perle de l&apos;Atlas, angle
-                  Rue aboubakr, Marrakech
+                  Imm. J appt N° 5, Résidence La Perle de l&apos;Atlas, angle Rue aboubakr,
+                  Marrakech
                 </p>
               ),
             },
@@ -78,9 +78,7 @@ export function ContactInfoSidebar() {
               {item.num}
             </span>
             <div className="self-start">
-              <p className="text-xs tracking-wide text-slate-300 uppercase">
-                {item.label}
-              </p>
+              <p className="text-xs tracking-wide text-slate-300 uppercase">{item.label}</p>
               {item.content}
             </div>
           </li>
@@ -88,10 +86,7 @@ export function ContactInfoSidebar() {
       </ul>
 
       <p className="mbs-8 text-xs text-slate-400">
-        {t(
-          "contact.form.infoFooter",
-          "Available every day from 09:00 to 21:00 GMT+1",
-        )}
+        {t("contact.form.infoFooter", "Available every day from 09:00 to 21:00 GMT+1")}
       </p>
     </>
   );

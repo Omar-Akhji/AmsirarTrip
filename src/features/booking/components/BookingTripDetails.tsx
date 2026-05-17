@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { useTranslation } from "@/lib/hooks/useTranslation";
 import { format as formatDate } from "date-fns";
+import { CalendarIcon } from "lucide-react";
+import type { FormState } from "@/lib/form-types";
+import { useTranslation } from "@/lib/hooks/useTranslation";
+import { cn } from "@/lib/utils";
 import { EnhancedCalendar } from "@/shared/ui/calendar";
 import { NativePopover } from "@/shared/ui/NativePopover";
-import { CalendarIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
-import type { FormState } from "@/lib/form-types";
 
 interface BookingTripDetailsProps {
   state: FormState | null;
@@ -31,8 +31,7 @@ export function BookingTripDetails({
   onDateSelect,
 }: BookingTripDetailsProps) {
   const { t } = useTranslation();
-  const [minimumReservationDate, setMinimumReservationDate] =
-    useState<Date | null>(null);
+  const [minimumReservationDate, setMinimumReservationDate] = useState<Date | null>(null);
 
   useEffect(() => {
     let mounted = true;
@@ -53,7 +52,10 @@ export function BookingTripDetails({
       {/* People count + Date picker row */}
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
         <div>
-          <label htmlFor="numberOfPeople" className="sr-only">
+          <label
+            htmlFor="numberOfPeople"
+            className="sr-only"
+          >
             {t("booking.numberOfPeople", "Number of People")}
           </label>
           <input
@@ -67,13 +69,14 @@ export function BookingTripDetails({
             min="1"
             max="50"
             aria-invalid={state?.errors?.["persons"] ? "true" : "false"}
-            aria-describedby={
-              state?.errors?.["persons"] ? "numberOfPeople-error" : undefined
-            }
+            aria-describedby={state?.errors?.["persons"] ? "numberOfPeople-error" : undefined}
             required
           />
           {state?.errors?.["persons"] && (
-            <p id="numberOfPeople-error" className="mbs-1 text-xs text-red-600">
+            <p
+              id="numberOfPeople-error"
+              className="mbs-1 text-xs text-red-600"
+            >
               {state.errors["persons"]}
             </p>
           )}
@@ -89,16 +92,12 @@ export function BookingTripDetails({
                 className={cn(
                   "flex items-center justify-start rounded-2xl border bg-white px-4 py-3 text-start text-sm font-normal transition-colors block-auto inline-full focus:border-orange-500 focus:ring-2 focus:ring-orange-500/20 focus:outline-hidden pointer-fine:hover:bg-neutral-50",
                   !reservationDate && "text-neutral-500",
-                  state?.errors?.["date"]
-                    ? "border-red-300"
-                    : "border-neutral-200",
+                  state?.errors?.["date"] ? "border-red-300" : "border-neutral-200",
                 )}
-                aria-describedby={
-                  state?.errors?.["date"] ? "reservationDate-error" : undefined
-                }
+                aria-describedby={state?.errors?.["date"] ? "reservationDate-error" : undefined}
               >
                 <CalendarIcon className="me-2 size-4" />
-                {reservationDate ? (
+                {reservationDate ?
                   <span suppressHydrationWarning>
                     {reservationDate.toLocaleDateString(locale || "en", {
                       day: "numeric",
@@ -106,9 +105,7 @@ export function BookingTripDetails({
                       year: "numeric",
                     })}
                   </span>
-                ) : (
-                  <span>{t("booking.reservationDate")}</span>
-                )}
+                : <span>{t("booking.reservationDate")}</span>}
               </button>
             }
           >
@@ -130,9 +127,7 @@ export function BookingTripDetails({
           <input
             type="hidden"
             name="reservationDate"
-            value={
-              reservationDate ? formatDate(reservationDate, "yyyy-MM-dd") : ""
-            }
+            value={reservationDate ? formatDate(reservationDate, "yyyy-MM-dd") : ""}
           />
           {state?.errors?.["date"] && (
             <p
@@ -147,7 +142,10 @@ export function BookingTripDetails({
 
       {/* Message textarea */}
       <div className="inline-full">
-        <label htmlFor="message" className="sr-only">
+        <label
+          htmlFor="message"
+          className="sr-only"
+        >
           {t("booking.message", "Your message")}
         </label>
         <textarea
@@ -159,12 +157,13 @@ export function BookingTripDetails({
           autoComplete="off"
           rows={4}
           aria-invalid={state?.errors?.["message"] ? "true" : "false"}
-          aria-describedby={
-            state?.errors?.["message"] ? "message-error" : undefined
-          }
+          aria-describedby={state?.errors?.["message"] ? "message-error" : undefined}
         />
         {state?.errors?.["message"] && (
-          <p id="message-error" className="mbs-1 text-xs text-red-600">
+          <p
+            id="message-error"
+            className="mbs-1 text-xs text-red-600"
+          >
             {state.errors["message"]}
           </p>
         )}

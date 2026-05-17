@@ -14,7 +14,7 @@ export function BookingSidebar({ perks }: BookingSidebarProps) {
   const { t } = useTranslation();
 
   return (
-    <aside className="relative overflow-hidden rounded-3xl bg-slate-950 p-6 text-white lg:p-8 block-full">
+    <aside className="relative overflow-hidden rounded-3xl bg-slate-950 p-6 text-white block-full lg:p-8">
       <div
         className="absolute -end-10 -top-20 rounded-full bg-orange-500/30 blur-3xl block-48 inline-48"
         aria-hidden="true"
@@ -64,7 +64,10 @@ export function BookingSidebar({ perks }: BookingSidebarProps) {
 
         <ul className="grid gap-6 text-sm">
           {perks.map((perk, idx) => (
-            <li key={perk.id} className="inline-flex items-center gap-3">
+            <li
+              key={perk.id}
+              className="inline-flex items-center gap-3"
+            >
               <span className="inline-flex items-center justify-center rounded-full bg-white/15 text-xs font-semibold block-6 inline-6">
                 {idx + 1}
               </span>
@@ -79,12 +82,14 @@ export function BookingSidebar({ perks }: BookingSidebarProps) {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex transform items-center justify-center gap-2 rounded-full bg-[#34E0A1] px-4 py-2 text-sm font-semibold text-black transition duration-300 ease-in-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#34E0A1] pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:bg-[#2bc48d] pointer-fine:hover:shadow-lg"
-            aria-label={t(
-              "booking.tripadvisorCtaAria",
-              "Open TripAdvisor in new tab",
-            )}
+            aria-label={t("booking.tripadvisorCtaAria", "Open TripAdvisor in new tab")}
           >
-            <svg className="size-4" viewBox="0 0 24 24" fill="none" aria-hidden>
+            <svg
+              className="size-4"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden
+            >
               <path
                 d="M5 12h14M12 5l7 7-7 7"
                 stroke="currentColor"

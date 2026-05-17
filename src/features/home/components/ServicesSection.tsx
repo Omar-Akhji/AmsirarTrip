@@ -13,16 +13,8 @@ const ServicesSection = () => {
       icon: "/icons/globus-icon.svg",
       altKey: "services.cards.handcrafted.alt",
     },
-    {
-      key: "guide",
-      icon: "/icons/map-icon.svg",
-      altKey: "services.cards.guide.alt",
-    },
-    {
-      key: "price",
-      icon: "/icons/dollar-icon.svg",
-      altKey: "services.cards.price.alt",
-    },
+    { key: "guide", icon: "/icons/map-icon.svg", altKey: "services.cards.guide.alt" },
+    { key: "price", icon: "/icons/dollar-icon.svg", altKey: "services.cards.price.alt" },
   ];
 
   return (
@@ -41,7 +33,10 @@ const ServicesSection = () => {
         quality={85}
       />
       {/* Dark Overlay */}
-      <div className="absolute inset-0 -z-10 bg-black/40" aria-hidden="true" />
+      <div
+        className="absolute inset-0 -z-10 bg-black/40"
+        aria-hidden="true"
+      />
       <div className="relative mx-auto px-4 max-inline-6xl sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-10">
           <AnimateOnScroll animation="fade-up">
@@ -71,7 +66,7 @@ const ServicesSection = () => {
               delay={idx * 150}
               className={`flex block-full inline-full ${idx === 2 ? "md:col-span-2 lg:col-span-1" : ""}`}
             >
-              <article className="group relative flex inline-full flex-col items-center rounded-3xl border border-white/10 bg-white/5 p-8 text-center shadow-xs ring-1 ring-black/5 backdrop-blur-sm transition pointer-fine:hover:-translate-y-1 pointer-fine:hover:bg-white/10 pointer-fine:hover:shadow-md">
+              <article className="group relative flex flex-col items-center rounded-3xl border border-white/10 bg-white/5 p-8 text-center shadow-xs ring-1 ring-black/5 backdrop-blur-sm transition inline-full pointer-fine:hover:-translate-y-1 pointer-fine:hover:bg-white/10 pointer-fine:hover:shadow-md">
                 <div className="mbe-6 inline-flex size-25 items-center justify-center rounded-full bg-white/5 ring-1 ring-white/10">
                   <Image
                     src={service.icon}

@@ -1,27 +1,22 @@
-import dynamic from "next/dynamic";
-import { Navbar } from "@/shared/layout";
-import { PageTransitionLoader } from "@/shared/ui";
-import { ErrorBoundary } from "@/shared/utilities/ErrorBoundary";
-import { JsonLd } from "@/shared/ui/JsonLd";
-import {
-  generateOrganizationJsonLd,
-  generateWebSiteJsonLd,
-} from "@/lib/structuredData";
-
-// Lazy load below-fold and non-critical components to reduce initial bundle size
-const NavigationProgress = dynamic(
-  () => import("@/shared/layout/NavigationProgress"),
-);
-const Footer = dynamic(() => import("@/shared/layout/Footer"));
-const WhatsAppButton = dynamic(() => import("@/shared/ui/WhatsAppButton"));
-import { NextIntlClientProvider } from "next-intl";
-import { getMessages } from "next-intl/server";
-import { notFound } from "next/navigation";
-import { routing } from "@/i18n/routing";
 import { ReactNode } from "react";
 import type { Metadata, Viewport } from "next";
+import dynamic from "next/dynamic";
 import localFont from "next/font/local";
+import { notFound } from "next/navigation";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
+import { routing } from "@/i18n/routing";
+import { generateOrganizationJsonLd, generateWebSiteJsonLd } from "@/lib/structuredData";
+import { Navbar } from "@/shared/layout";
+import { PageTransitionLoader } from "@/shared/ui";
+import { JsonLd } from "@/shared/ui/JsonLd";
+import { ErrorBoundary } from "@/shared/utilities/ErrorBoundary";
 import "../globals.css";
+
+// Lazy load below-fold and non-critical components to reduce initial bundle size
+const NavigationProgress = dynamic(() => import("@/shared/layout/NavigationProgress"));
+const Footer = dynamic(() => import("@/shared/layout/Footer"));
+const WhatsAppButton = dynamic(() => import("@/shared/ui/WhatsAppButton"));
 
 // Local fonts for better performance (no external network requests)
 const montserrat = localFont({
@@ -78,11 +73,7 @@ export const metadata: Metadata = {
   creator: "Amsirar Trip",
   publisher: "Amsirar Trip",
   category: "Travel & Tourism",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
+  formatDetection: { email: false, address: false, telephone: false },
   metadataBase: new URL("https://amsirartrip.com"),
   alternates: {
     canonical: "https://amsirartrip.com",
@@ -102,11 +93,7 @@ export const metadata: Metadata = {
     apple: [{ url: "/icons/icon-512.png", type: "image/png" }],
     shortcut: ["/favicon.png"],
   },
-  appleWebApp: {
-    title: "Amsirar Trip",
-    statusBarStyle: "black-translucent",
-    capable: true,
-  },
+  appleWebApp: { title: "Amsirar Trip", statusBarStyle: "black-translucent", capable: true },
   manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
@@ -157,20 +144,14 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "Fcx5GvFdkFaYv-hJ0lusirB6y2k48RYTVLw8Ft0SkpU",
-  },
+  verification: { google: "Fcx5GvFdkFaYv-hJ0lusirB6y2k48RYTVLw8Ft0SkpU" },
 };
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
 }
 
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  themeColor: "#1a1a1a",
-};
+export const viewport: Viewport = { width: "device-width", initialScale: 1, themeColor: "#1a1a1a" };
 
 export default async function LocaleLayout({
   children,

@@ -6,16 +6,9 @@ export default getRequestConfig(async ({ requestLocale }) => {
   let locale = await requestLocale;
 
   // Validate that the incoming `locale` parameter is valid
-  if (
-    !locale ||
-    !routing.locales.includes(locale as "en" | "fr" | "de" | "es")
-  ) {
+  if (!locale || !routing.locales.includes(locale as "en" | "fr" | "de" | "es")) {
     locale = routing.defaultLocale;
   }
 
-  return {
-    locale,
-    messages: (await import(`../../public/locales/${locale}/common.json`))
-      .default,
-  };
+  return { locale, messages: (await import(`../../public/locales/${locale}/common.json`)).default };
 });

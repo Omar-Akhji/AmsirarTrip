@@ -1,14 +1,11 @@
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getTranslations } from "next-intl/server";
-import { Metadata } from "next";
 import TourLayout from "@/features/tours/components/TourLayout";
+import { getTourBySlug, getTourSlugs } from "@/features/tours/data/toursMetadata";
 import { generateSEOMetadata } from "@/lib/metadata";
 import { generateFaqJsonLd, generateTourJsonLd } from "@/lib/structuredData";
 import { JsonLd } from "@/shared/ui/JsonLd";
-import {
-  getTourSlugs,
-  getTourBySlug,
-} from "@/features/tours/data/toursMetadata";
 
 interface PageProps {
   params: Promise<{ locale: string; slug: string }>;
@@ -22,9 +19,7 @@ export async function generateStaticParams() {
 }
 
 // Generate metadata for SEO
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { locale, slug } = await params;
   const tour = getTourBySlug(slug);
 
@@ -35,19 +30,17 @@ export async function generateMetadata({
   const isEnglish = locale === "en";
   const t = await getTranslations({ locale });
   const keywords = Array.from(
-    new Set([
-      tour.seo.primaryKeyword,
-      ...tour.seo.secondaryKeywords,
-      ...tour.keywords,
-    ]),
+    new Set([tour.seo.primaryKeyword, ...tour.seo.secondaryKeywords, ...tour.keywords]),
   ).slice(0, 15);
 
   return generateSEOMetadata({
-    title: isEnglish
-      ? tour.seo.title
+    title:
+      isEnglish ?
+        tour.seo.title
       : `${t(`${tour.tourKey}.title`)} (${tour.durationDays} ${t("tours.days")})`,
-    description: isEnglish
-      ? tour.seo.metaDescription
+    description:
+      isEnglish ?
+        tour.seo.metaDescription
       : `${t("tours." + tour.tourKey + ".description")} ${t(`${tour.tourKey}.overview`)}`,
     keywords: isEnglish ? keywords : tour.keywords,
     path: `/tours/${slug}`,
@@ -93,11 +86,7 @@ export default async function TourPage({ params }: PageProps) {
       // JSON-LD descriptions are helpful, not required.
     }
 
-    return {
-      position: dayNumber,
-      name: `Day ${dayNumber}: ${name}`,
-      description,
-    };
+    return { position: dayNumber, name: `Day ${dayNumber}: ${name}`, description };
   });
 
   // Generate structured data for this tour
@@ -117,8 +106,15 @@ export default async function TourPage({ params }: PageProps) {
 
   return (
     <>
-      <JsonLd id={`${tour.tourKey}-jsonld`} data={tourJsonLd} isSync={true} />
-      <JsonLd id={`${tour.tourKey}-faq-jsonld`} data={faqJsonLd} />
+      <JsonLd
+        id={`${tour.tourKey}-jsonld`}
+        data={tourJsonLd}
+        isSync={true}
+      />
+      <JsonLd
+        id={`${tour.tourKey}-faq-jsonld`}
+        data={faqJsonLd}
+      />
       <TourLayout
         tourKey={tour.tourKey}
         bookingId={tour.bookingId}

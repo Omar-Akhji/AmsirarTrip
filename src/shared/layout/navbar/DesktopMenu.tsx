@@ -3,9 +3,9 @@ import Image from "next/image";
 import { Link, usePathname } from "@/i18n/routing";
 import { useTranslation } from "@/lib/hooks/useTranslation";
 import { cn } from "@/lib/utils";
-import { NAV_LINKS, Language } from "./constants";
-import { SocialLinks } from "./SocialLinks";
+import { Language, NAV_LINKS } from "./constants";
 import { LanguageSelector } from "./LanguageSelector";
+import { SocialLinks } from "./SocialLinks";
 
 interface DesktopMenuProps {
   scrolled: boolean;
@@ -35,9 +35,7 @@ export function DesktopMenu({
     const sizeClass = size === "sm" ? "size-10" : "size-11";
     const baseClasses =
       "flex items-center justify-center rounded-full border-2 transition-all duration-150 pointer-fine:hover:-translate-y-0.5 pointer-fine:hover:shadow-[0_8px_18px_rgba(0,0,0,0.28)]";
-    const socialStyles = scrolled
-      ? ""
-      : "border-white/60 bg-white/10 text-white";
+    const socialStyles = scrolled ? "" : "border-white/60 bg-white/10 text-white";
     return cn(baseClasses, sizeClass, socialStyles);
   };
 
@@ -63,9 +61,7 @@ export function DesktopMenu({
             </div>
             <div className="leading-tight">
               <p className="m-0 text-sm opacity-80">{t("helplineTitle")}</p>
-              <p className="m-0 text-base font-semibold">
-                {t("helplineNumber")}
-              </p>
+              <p className="m-0 text-base font-semibold">{t("helplineNumber")}</p>
             </div>
           </a>
           <Link
@@ -75,13 +71,16 @@ export function DesktopMenu({
             aria-label="Amsirar Trip Home"
           >
             Amsirar
-            <span className="font-brand ms-1 font-light">Trip</span>
+            <span className="ms-1 font-brand font-light">Trip</span>
           </Link>
         </div>
       )}
       <div className="relative flex items-center gap-2.5 px-4 py-2">
         <div className="me-auto flex items-center gap-0.5">
-          <SocialLinks className="me-2" scrolled={scrolled} />
+          <SocialLinks
+            className="me-2"
+            scrolled={scrolled}
+          />
           <LanguageSelector
             langOpen={langOpen}
             setLangOpen={setLangOpen}

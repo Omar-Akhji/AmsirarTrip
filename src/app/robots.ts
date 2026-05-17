@@ -18,19 +18,9 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: [
-          "/api/",
-          "/_next/",
-          "/booking/",
-          "/account/",
-          "/search/",
-        ],
+        disallow: ["/api/", "/_next/", "/booking/", "/account/", "/search/"],
       },
-      {
-        userAgent: "Googlebot",
-        allow: "/",
-        disallow: ["/api/", "/booking/", "/account/"],
-      },
+      { userAgent: "Googlebot", allow: "/", disallow: ["/api/", "/booking/", "/account/"] },
       {
         userAgent: "Bingbot",
         allow: "/",
@@ -38,31 +28,12 @@ export default function robots(): MetadataRoute.Robots {
         crawlDelay: 1,
       },
       // AI crawlers — selective access for GEO (Generative Engine Optimisation)
-      {
-        userAgent: "GPTBot",
-        allow: "/",
-        disallow: ["/api/", "/booking/", "/account/"],
-      },
-      {
-        userAgent: "ChatGPT-User",
-        allow: "/",
-      },
-      {
-        userAgent: "CCBot",
-        allow: "/",
-      },
-      {
-        userAgent: "anthropic-ai",
-        allow: "/",
-      },
-      {
-        userAgent: "Google-Extended",
-        allow: "/",
-      },
-      {
-        userAgent: "FacebookBot",
-        allow: "/",
-      },
+      { userAgent: "GPTBot", allow: "/", disallow: ["/api/", "/booking/", "/account/"] },
+      { userAgent: "ChatGPT-User", allow: "/" },
+      { userAgent: "CCBot", allow: "/" },
+      { userAgent: "anthropic-ai", allow: "/" },
+      { userAgent: "Google-Extended", allow: "/" },
+      { userAgent: "FacebookBot", allow: "/" },
     ],
     sitemap: `${BASE_URL}/sitemap.xml`,
   };

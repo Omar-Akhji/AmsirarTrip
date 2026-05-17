@@ -1,5 +1,5 @@
-import { LegalPageLayout } from "./LegalPageLayout";
 import { TERMS_OF_SERVICE_CONFIG } from "../data/legalConfig";
+import { LegalPageLayout } from "./LegalPageLayout";
 
 /**
  * TermsOfServiceView Component

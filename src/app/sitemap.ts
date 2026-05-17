@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
-import { getTourSlugs } from "@/features/tours/data/toursMetadata";
 import { getExcursionSlugs } from "@/features/excursions/data/excursionsMetadata";
+import { getTourSlugs } from "@/features/tours/data/toursMetadata";
 
 const BASE_URL = "https://amsirartrip.com";
 const LOCALES = ["en", "fr", "es", "de"] as const;

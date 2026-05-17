@@ -4,10 +4,7 @@ interface ExcursionSpecific {
   excursionKey: string;
   i18nKeyPrefix: string;
   location: string;
-  jsonLd: {
-    name: string;
-    description: string;
-  };
+  jsonLd: { name: string; description: string };
 }
 
 type ExcursionMetadata = BaseTripMetadata & ExcursionSpecific;
@@ -159,8 +156,6 @@ export function getExcursionSlugs(): string[] {
 }
 
 // Helper to get excursion metadata by slug
-export function getExcursionBySlug(
-  slug: string,
-): ExcursionMetadata | undefined {
+export function getExcursionBySlug(slug: string): ExcursionMetadata | undefined {
   return EXCURSIONS_METADATA[slug];
 }
