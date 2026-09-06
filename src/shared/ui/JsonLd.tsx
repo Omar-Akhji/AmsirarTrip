@@ -21,9 +21,9 @@ interface JsonLdProps {
 export function JsonLd({ data, id }: JsonLdProps) {
   // JSON.stringify with a replacer that escapes dangerous characters
   const safeJson = JSON.stringify(data)
-    .replace(/</g, "\\u003c")
-    .replace(/>/g, "\\u003e")
-    .replace(/&/g, "\\u0026");
+    .replaceAll("<", String.raw`\u003c`)
+    .replaceAll(">", String.raw`\u003e`)
+    .replaceAll("&", String.raw`\u0026`);
 
   return (
     <script

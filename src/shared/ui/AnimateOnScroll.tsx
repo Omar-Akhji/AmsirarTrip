@@ -54,21 +54,26 @@ export function AnimateOnScroll({
 
       // Define initial states and animation targets
       switch (animation) {
-        case "fade-up":
+        case "fade-up": {
           gsap.from(container.current, { ...vars, y: 30, autoAlpha: 0 });
           break;
-        case "fade-in":
+        }
+        case "fade-in": {
           gsap.from(container.current, { ...vars, autoAlpha: 0 });
           break;
-        case "zoom-in":
+        }
+        case "zoom-in": {
           gsap.from(container.current, { ...vars, scale: 0.95, autoAlpha: 0 });
           break;
-        case "fade-left":
+        }
+        case "fade-left": {
           gsap.from(container.current, { ...vars, x: 30, autoAlpha: 0 });
           break;
-        case "fade-right":
+        }
+        case "fade-right": {
           gsap.from(container.current, { ...vars, x: -30, autoAlpha: 0 });
           break;
+        }
       }
     },
     { scope: container },

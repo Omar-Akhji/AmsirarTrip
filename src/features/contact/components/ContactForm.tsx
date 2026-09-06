@@ -49,14 +49,18 @@ function contactFormUIReducer(
   action: ContactFormUIAction,
 ): ContactFormUIState {
   switch (action.type) {
-    case "SET_CAPTCHA":
+    case "SET_CAPTCHA": {
       return { ...state, captchaToken: action.token };
-    case "RESET_CAPTCHA":
+    }
+    case "RESET_CAPTCHA": {
       return { ...state, captchaToken: "" };
-    case "RESET_AFTER_SUCCESS":
+    }
+    case "RESET_AFTER_SUCCESS": {
       return { captchaToken: "", formKey: state.formKey + 1 };
-    default:
+    }
+    default: {
       return state;
+    }
   }
 }
 

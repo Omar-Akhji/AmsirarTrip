@@ -79,7 +79,7 @@ function Navbar() {
     }
 
     // Save language preference to localStorage
-    if (typeof window !== "undefined") {
+    if (globalThis.window !== undefined) {
       try {
         localStorage.setItem("site-language", code);
       } catch (error) {

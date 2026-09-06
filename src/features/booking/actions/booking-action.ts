@@ -48,7 +48,7 @@ export async function submitBookingAction(
       return { success: true, message: "Booking request sent!" };
     }
 
-    const rateLimit = checkRateLimit(ip, 10, 60000);
+    const rateLimit = checkRateLimit(ip, 10, 60_000);
     if (!rateLimit.allowed) {
       if (rateLimit.blocked) {
         logSuspiciousActivity(ip, "BLOCKED_ACTION", "booking-action");
@@ -76,10 +76,10 @@ export async function submitBookingAction(
 
     if (!validationResult.success) {
       const errors: Record<string, string> = {};
-      validationResult.error.issues.forEach((err) => {
+      for (const err of validationResult.error.issues) {
         const path = err.path[0] as string;
         errors[path] = err.message;
-      });
+      }
 
       return { success: false, message: "Please check the form for errors", errors };
     }
@@ -114,7 +114,7 @@ export async function submitBookingAction(
       <p><strong>Number of people :</strong> ${escapeHtml(String(data.persons))}</p>
       ${
         data.message ?
-          `<p><strong>Message :</strong><br>${escapeHtml(data.message).replace(/\n/g, "<br>")}</p>`
+          `<p><strong>Message :</strong><br>${escapeHtml(data.message).replaceAll("\n", "<br>")}</p>`
         : ""
       }
     `;

@@ -34,7 +34,7 @@ export async function submitContactAction(
       return { success: true, message: "Message sent!" };
     }
 
-    const rateLimit = checkRateLimit(ip, 10, 60000);
+    const rateLimit = checkRateLimit(ip, 10, 60_000);
     if (!rateLimit.allowed) {
       if (rateLimit.blocked) {
         logSuspiciousActivity(ip, "BLOCKED_ACTION", "contact-action");
@@ -57,10 +57,10 @@ export async function submitContactAction(
 
     if (!validationResult.success) {
       const errors: Record<string, string> = {};
-      validationResult.error.issues.forEach((err) => {
+      for (const err of validationResult.error.issues) {
         const path = err.path[0] as string;
         errors[path] = err.message;
-      });
+      }
 
       return { success: false, message: "Please check the form for errors", errors };
     }
@@ -84,7 +84,7 @@ export async function submitContactAction(
       <p><strong>Name :</strong> ${escapeHtml(data.name)}</p>
       <p><strong>E-mail :</strong> ${escapeHtml(data.email)}</p>
       <p><strong>Phone :</strong> ${escapeHtml(data.phone)}</p>
-      <p><strong>Message :</strong><br>${escapeHtml(messageContent).replace(/\n/g, "<br>")}</p>
+      <p><strong>Message :</strong><br>${escapeHtml(messageContent).replaceAll("\n", "<br>")}</p>
     `;
 
     await transporter.sendMail({

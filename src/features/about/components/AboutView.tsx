@@ -10,15 +10,15 @@ export default function AboutView() {
     {
       id: "photos",
       icon: "/icons/camera-icon.svg",
-      value: 12200,
-      duration: 14000,
+      value: 12_200,
+      duration: 14_000,
       label: t("about.facts.photos"),
     },
     {
       id: "beaches",
       icon: "/icons/beach-icon.svg",
       value: 4500,
-      duration: 14000,
+      duration: 14_000,
       label: t("about.facts.beaches"),
     },
     {
@@ -32,7 +32,7 @@ export default function AboutView() {
       id: "cruises",
       icon: "/icons/travel-icon.svg",
       value: 1200,
-      duration: 10000,
+      duration: 10_000,
       label: t("about.facts.cruises"),
     },
   ];

@@ -46,7 +46,7 @@ export function generateSEOMetadata({
 
   // Ensure description is optimal length (150-160 chars)
   const truncatedDescription =
-    description.length > 160 ? description.substring(0, 157) + "..." : description;
+    description.length > 160 ? description.slice(0, 157) + "..." : description;
 
   return {
     title: { absolute: fullTitle },

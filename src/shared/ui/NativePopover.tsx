@@ -25,7 +25,7 @@ export function NativePopover({
   className,
   id: preferredId,
 }: NativePopoverProps) {
-  const generatedId = useId().replace(/:/g, "");
+  const generatedId = useId().replaceAll(":", "");
   const popoverId = preferredId || generatedId;
   const popoverRef = useRef<HTMLDialogElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
@@ -84,8 +84,8 @@ export function NativePopover({
           popover.showPopover();
           positionPopover();
         }
-      } catch (e) {
-        console.warn("Popover error:", e);
+      } catch (error) {
+        console.warn("Popover error:", error);
       }
     } else {
       try {

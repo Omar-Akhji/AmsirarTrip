@@ -51,7 +51,7 @@ export async function verifyRecaptcha(token: string, expectedHostname?: string):
       }
     }
 
-    const challengeTs = data.challenge_ts ? Date.parse(data.challenge_ts) : NaN;
+    const challengeTs = data.challenge_ts ? Date.parse(data.challenge_ts) : Number.NaN;
     if (Number.isNaN(challengeTs) || Date.now() - challengeTs > 5 * 60 * 1000) {
       console.warn("CAPTCHA token is stale or missing challenge timestamp");
       return false;
@@ -81,11 +81,11 @@ export function createMailer(): nodemailer.Transporter<any> {
 
 export function escapeHtml(str: string = ""): string {
   return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
 /**

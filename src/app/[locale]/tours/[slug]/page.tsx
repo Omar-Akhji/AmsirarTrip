@@ -29,9 +29,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const isEnglish = locale === "en";
   const t = await getTranslations({ locale });
-  const keywords = Array.from(
-    new Set([tour.seo.primaryKeyword, ...tour.seo.secondaryKeywords, ...tour.keywords]),
-  ).slice(0, 15);
+  const keywords = [
+    ...new Set([tour.seo.primaryKeyword, ...tour.seo.secondaryKeywords, ...tour.keywords]),
+  ].slice(0, 15);
 
   return generateSEOMetadata({
     title:

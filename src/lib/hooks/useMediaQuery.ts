@@ -7,11 +7,15 @@ import { useSyncExternalStore } from "react";
  * @param query - The media query string (e.g., '(max-width: 1023px)')
  * @returns boolean - True if the media query matches, false otherwise.
  */
+const getServerSnapshot = () => {
+  return false;
+};
+
 export function useMediaQuery(query: string): boolean {
   // Manual useCallback removed - React Compiler handles this automatically
   const subscribe = (callback: () => void) => {
-    if (typeof window === "undefined") return () => {};
-    const matchMedia = window.matchMedia(query);
+    if (globalThis.window === undefined) return () => {};
+    const matchMedia = globalThis.matchMedia(query);
     matchMedia.addEventListener("change", callback);
     return () => {
       matchMedia.removeEventListener("change", callback);
@@ -19,12 +23,8 @@ export function useMediaQuery(query: string): boolean {
   };
 
   const getSnapshot = () => {
-    if (typeof window === "undefined") return false;
-    return window.matchMedia(query).matches;
-  };
-
-  const getServerSnapshot = () => {
-    return false;
+    if (globalThis.window === undefined) return false;
+    return globalThis.matchMedia(query).matches;
   };
 
   return useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);

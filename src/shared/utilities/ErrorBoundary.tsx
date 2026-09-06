@@ -69,7 +69,7 @@ export class ErrorBoundary extends Component<Props, State> {
               A component error occurred during development. Check the console for details.
             </p>
             <button
-              onClick={() => window.location.reload()}
+              onClick={() => globalThis.location.reload()}
               className="rounded-lg bg-orange-500 px-6 py-2 font-medium text-white transition-colors pointer-fine:hover:bg-orange-600"
             >
               Reload Page

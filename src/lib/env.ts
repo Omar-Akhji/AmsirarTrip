@@ -54,7 +54,7 @@ export const env = {
   },
   get NEXT_PUBLIC_RECAPTCHA_SITE_KEY() {
     const key = getOptionalEnv("NEXT_PUBLIC_RECAPTCHA_SITE_KEY");
-    if (!key && typeof window !== "undefined") {
+    if (!key && globalThis.window !== undefined) {
       console.warn("NEXT_PUBLIC_RECAPTCHA_SITE_KEY is missing!");
     }
     return key;

@@ -30,19 +30,23 @@ function createCalendarState(initialDate: Date | undefined): CalendarState {
 
 function calendarReducer(state: CalendarState, action: CalendarAction): CalendarState {
   switch (action.type) {
-    case "SELECT_DATE":
+    case "SELECT_DATE": {
       return { ...state, selectedDate: action.date };
-    case "SET_MONTH":
+    }
+    case "SET_MONTH": {
       return { ...state, currentMonth: action.month };
+    }
     case "MOVE_MONTH": {
       const currentMonth = new Date(state.currentMonth);
       currentMonth.setMonth(currentMonth.getMonth() + (action.direction === "prev" ? -1 : 1));
       return { ...state, currentMonth };
     }
-    case "GO_TO_TODAY":
+    case "GO_TO_TODAY": {
       return { selectedDate: action.today, currentMonth: action.today };
-    default:
+    }
+    default: {
       return state;
+    }
   }
 }
 

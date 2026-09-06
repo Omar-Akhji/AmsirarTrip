@@ -6,7 +6,7 @@ const blockedIPs = new Map<string, number>(); // IP -> unblock timestamp
 export function checkRateLimit(
   identifier: string,
   maxRequests: number = 5,
-  windowMs: number = 60000,
+  windowMs: number = 60_000,
 ): { allowed: boolean; remaining: number; blocked?: boolean } {
   const now = Date.now();
 
@@ -34,7 +34,7 @@ export function checkRateLimit(
 
     // Block IP after 3 violations (30 attempts in short time)
     if (record.violations >= 3) {
-      blockedIPs.set(identifier, now + 3600000); // Block for 1 hour
+      blockedIPs.set(identifier, now + 3_600_000); // Block for 1 hour
       logSuspiciousActivity(
         identifier,
         "BLOCKED",
@@ -53,7 +53,7 @@ export function checkRateLimit(
 /**
  * Clean up old rate limit entries and expired blocked IPs periodically
  */
-if (typeof window === "undefined") {
+if (globalThis.window === undefined) {
   setInterval(() => {
     const now = Date.now();
     for (const [key, value] of rateLimitMap.entries()) {
@@ -66,5 +66,5 @@ if (typeof window === "undefined") {
         blockedIPs.delete(key);
       }
     }
-  }, 60000); // Clean up every minute
+  }, 60_000); // Clean up every minute
 }

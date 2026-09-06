@@ -5,7 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
  * Centralized GSAP configuration for the application.
  * Ensures plugins are registered only once and provides a consistent entry point.
  */
-if (typeof window !== "undefined") {
+if (globalThis.window !== undefined) {
   gsap.registerPlugin(ScrollTrigger);
 
   // Optional: Set default scroll trigger configurations
@@ -13,4 +13,5 @@ if (typeof window !== "undefined") {
 }
 
 export * from "gsap";
-export { gsap };
+
+export { gsap } from "gsap";

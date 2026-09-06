@@ -16,14 +16,18 @@ type NavProgressAction =
 
 function navProgressReducer(state: NavProgressState, action: NavProgressAction): NavProgressState {
   switch (action.type) {
-    case "start":
+    case "start": {
       return { loading: true, progress: 10 };
-    case "complete":
+    }
+    case "complete": {
       return { loading: false, progress: 100 };
-    case "reset":
+    }
+    case "reset": {
       return { loading: false, progress: 0 };
-    case "tick":
+    }
+    case "tick": {
       return state.progress >= 90 ? state : { ...state, progress: state.progress + action.delta };
+    }
   }
 }
 
@@ -52,11 +56,11 @@ export default function NavigationProgress() {
       // Check if it's a navigation link (not external, mailto, tel, or hash)
       if (link?.href) {
         const href = link.href;
-        const currentOrigin = window.location.origin;
+        const currentOrigin = globalThis.location.origin;
         const isExternal = !href.startsWith(currentOrigin);
         const isSpecial =
           href.startsWith("mailto:") || href.startsWith("tel:") || href.includes("#");
-        const isSamePage = href === window.location.href;
+        const isSamePage = href === globalThis.location.href;
 
         // Start loading for internal navigation links
         if (!isExternal && !isSpecial && !isSamePage) {

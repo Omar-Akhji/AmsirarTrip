@@ -41,23 +41,29 @@ const initialUIState: FormUIState = {
 
 function formUIReducer(state: FormUIState, action: FormUIAction): FormUIState {
   switch (action.type) {
-    case "SET_CALENDAR_OPEN":
+    case "SET_CALENDAR_OPEN": {
       return { ...state, calendarOpen: action.open };
-    case "SET_DATE":
+    }
+    case "SET_DATE": {
       return { ...state, reservationDate: action.date };
-    case "SET_CAPTCHA":
+    }
+    case "SET_CAPTCHA": {
       return { ...state, captchaToken: action.token };
-    case "SET_BUTTON_TEXT":
+    }
+    case "SET_BUTTON_TEXT": {
       return { ...state, buttonText: action.text };
-    case "RESET_UI_ONLY":
+    }
+    case "RESET_UI_ONLY": {
       return {
         ...state,
         reservationDate: null,
         captchaToken: "",
         buttonText: "Your booking request has been sent",
       };
-    default:
+    }
+    default: {
       return state;
+    }
   }
 }
 

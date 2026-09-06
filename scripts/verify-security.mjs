@@ -1,14 +1,14 @@
-import http from "http";
-import https from "https";
+import http from "node:http";
+import https from "node:https";
 
 const BASE_URL = process.argv[2] || process.env.BASE_URL || "http://localhost:3000";
 
 const colors = {
-  reset: "\x1b[0m",
-  red: "\x1b[31m",
-  green: "\x1b[32m",
-  yellow: "\x1b[33m",
-  blue: "\x1b[34m",
+  reset: "\u001B[0m",
+  red: "\u001B[31m",
+  green: "\u001B[32m",
+  yellow: "\u001B[33m",
+  blue: "\u001B[34m",
 };
 
 function log(type, message) {
@@ -165,4 +165,4 @@ async function runTests() {
   console.log(`\n${colors.yellow}Summary: ${passed} Passed, ${failed} Failed${colors.reset}`);
 }
 
-runTests();
+await runTests();

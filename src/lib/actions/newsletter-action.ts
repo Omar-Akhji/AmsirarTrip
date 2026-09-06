@@ -24,7 +24,7 @@ export async function submitNewsletterAction(
       || headersList.get("x-real-ip")
       || "unknown";
 
-    const rateLimit = checkRateLimit(ip, 5, 60000);
+    const rateLimit = checkRateLimit(ip, 5, 60_000);
     if (!rateLimit.allowed) {
       if (rateLimit.blocked) {
         logSuspiciousActivity(ip, "BLOCKED_ACTION", "newsletter-action");
@@ -51,7 +51,7 @@ export async function submitNewsletterAction(
     const mailTo = env.MAIL_TO || env.GMAIL_USER;
 
     // Sanitize name for subject line to prevent email header injection
-    const safeName = data.name.replace(/[^\p{L}\p{N}\s]/gu, "");
+    const safeName = data.name.replaceAll(/[^\p{L}\p{N}\s]/gu, "");
 
     const html = `
       <h2>New Newsletter Subscription</h2>

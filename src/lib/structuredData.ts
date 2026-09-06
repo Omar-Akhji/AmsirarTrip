@@ -40,9 +40,9 @@ type ExcursionStructuredData = TripStructuredData<ExcursionLocation>;
 function sanitizeForJsonLd(value: string | undefined): string {
   if (!value) return "";
   return value
-    .replace(/<[^>]*>/g, "") // Remove HTML tags
-    .replace(/[<>]/g, "") // Remove angle brackets
-    .replace(/javascript:/gi, "") // Remove javascript: protocol
+    .replaceAll(/<[^>]*>/g, "") // Remove HTML tags
+    .replaceAll(/[<>]/g, "") // Remove angle brackets
+    .replaceAll(/javascript:/gi, "") // Remove javascript: protocol
     .trim();
 }
 

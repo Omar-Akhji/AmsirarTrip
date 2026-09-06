@@ -77,15 +77,7 @@ export default function HomeHero() {
         lastUpdate = timestamp;
         const current = heroTexts[textIndex] || "";
 
-        if (!isDeleting) {
-          charIndex = Math.min(current.length, charIndex + 1);
-          setTyped(current.slice(0, charIndex));
-
-          if (charIndex >= current.length) {
-            isDeleting = true;
-            pauseUntil = timestamp + PAUSE_AFTER_TYPING;
-          }
-        } else {
+        if (isDeleting) {
           charIndex = Math.max(0, charIndex - 1);
           setTyped(current.slice(0, charIndex));
 
@@ -93,6 +85,14 @@ export default function HomeHero() {
             isDeleting = false;
             textIndex = (textIndex + 1) % heroTexts.length;
             pauseUntil = timestamp + PAUSE_AFTER_DELETING;
+          }
+        } else {
+          charIndex = Math.min(current.length, charIndex + 1);
+          setTyped(current.slice(0, charIndex));
+
+          if (charIndex >= current.length) {
+            isDeleting = true;
+            pauseUntil = timestamp + PAUSE_AFTER_TYPING;
           }
         }
       }

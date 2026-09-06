@@ -57,7 +57,7 @@ export const getBookingSchema = (t: (key: string) => string) =>
       persons: z.coerce.number().int().min(1, t("personsMin")).max(50, t("personsMax")),
       date: z
         .string()
-        .refine((val) => !isNaN(Date.parse(val)), { message: t("invalidDate") })
+        .refine((val) => !Number.isNaN(Date.parse(val)), { message: t("invalidDate") })
         .refine(
           (val) => {
             const parsed = new Date(val);
